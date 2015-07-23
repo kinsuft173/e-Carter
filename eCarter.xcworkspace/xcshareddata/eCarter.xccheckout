@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2C8E55AE-2CEC-4555-A612-2FDCB697D58F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>eCarter</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DEE9A8F1F4226A75A9A0ADDB9C0AF93CDB1AA112</key>
+		<string>https://github.com/kinsuft173/e-Carter.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>eCarter.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DEE9A8F1F4226A75A9A0ADDB9C0AF93CDB1AA112</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/kinsuft173/e-Carter.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DEE9A8F1F4226A75A9A0ADDB9C0AF93CDB1AA112</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DEE9A8F1F4226A75A9A0ADDB9C0AF93CDB1AA112</string>
+			<key>IDESourceControlWCCName</key>
+			<string>E-Carter</string>
+		</dict>
+	</array>
+</dict>
+</plist>

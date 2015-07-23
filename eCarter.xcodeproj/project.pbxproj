@@ -92,6 +92,23 @@
 		DE9D12D51B52DBE900046407 /* payRequsestHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = DE9D12D11B52DBE900046407 /* payRequsestHandler.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DE9D12D61B52DBE900046407 /* WXUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = DE9D12D31B52DBE900046407 /* WXUtil.mm */; };
 		DE9D12D81B52DEC100046407 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DE9D12D71B52DEC100046407 /* libsqlite3.0.dylib */; };
+		DECA17231B614B4700FD3418 /* Coupon.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA17221B614B4700FD3418 /* Coupon.m */; };
+		DECA17261B614BD400FD3418 /* CouponDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA17251B614BD400FD3418 /* CouponDetail.m */; };
+		DECA17291B614C1800FD3418 /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA17281B614C1800FD3418 /* Shop.m */; };
+		DECA172C1B614C5B00FD3418 /* ShopDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA172B1B614C5B00FD3418 /* ShopDetail.m */; };
+		DECA172F1B614E9B00FD3418 /* ShopServerTime.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA172E1B614E9B00FD3418 /* ShopServerTime.m */; };
+		DECA17351B61509200FD3418 /* OrderDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA17341B61509200FD3418 /* OrderDetail.m */; };
+		DECA17381B6150EF00FD3418 /* LogForOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA17371B6150EF00FD3418 /* LogForOrder.m */; };
+		DECA173B1B61530C00FD3418 /* MyCountBalance.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA173A1B61530C00FD3418 /* MyCountBalance.m */; };
+		DECA173E1B61534B00FD3418 /* UserRecharge.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA173D1B61534B00FD3418 /* UserRecharge.m */; };
+		DECA17411B6153D000FD3418 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA17401B6153D000FD3418 /* Car.m */; };
+		DECA17471B61543A00FD3418 /* CarBrand.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA17461B61543A00FD3418 /* CarBrand.m */; };
+		DECA174A1B61548400FD3418 /* CarSeries.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA17491B61548400FD3418 /* CarSeries.m */; };
+		DECA174D1B6154C100FD3418 /* UserAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA174C1B6154C100FD3418 /* UserAddress.m */; };
+		DECA17501B61552600FD3418 /* PointTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA174F1B61552600FD3418 /* PointTransaction.m */; };
+		DECA17561B61574500FD3418 /* UserLoginInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA17551B61574500FD3418 /* UserLoginInfo.m */; };
+		DECA17591B615C8400FD3418 /* OrderSingle.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA17581B615C8300FD3418 /* OrderSingle.m */; };
+		DECA175C1B61638800FD3418 /* AdvertisementForEcart.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA175B1B61638800FD3418 /* AdvertisementForEcart.m */; };
 		DED2EADA1B35D3A5006FE893 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2EAD91B35D3A5006FE893 /* main.m */; };
 		DED2EADD1B35D3A5006FE893 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2EADC1B35D3A5006FE893 /* AppDelegate.m */; };
 		DED2EAE01B35D3A5006FE893 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DED2EADF1B35D3A5006FE893 /* ViewController.m */; };
@@ -637,6 +654,40 @@
 		DE9D12D21B52DBE900046407 /* WXUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUtil.h; sourceTree = "<group>"; };
 		DE9D12D31B52DBE900046407 /* WXUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WXUtil.mm; sourceTree = "<group>"; };
 		DE9D12D71B52DEC100046407 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		DECA17211B614B4700FD3418 /* Coupon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coupon.h; sourceTree = "<group>"; };
+		DECA17221B614B4700FD3418 /* Coupon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coupon.m; sourceTree = "<group>"; };
+		DECA17241B614BD400FD3418 /* CouponDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetail.h; sourceTree = "<group>"; };
+		DECA17251B614BD400FD3418 /* CouponDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CouponDetail.m; sourceTree = "<group>"; };
+		DECA17271B614C1800FD3418 /* Shop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shop.h; sourceTree = "<group>"; };
+		DECA17281B614C1800FD3418 /* Shop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shop.m; sourceTree = "<group>"; };
+		DECA172A1B614C5B00FD3418 /* ShopDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopDetail.h; sourceTree = "<group>"; };
+		DECA172B1B614C5B00FD3418 /* ShopDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopDetail.m; sourceTree = "<group>"; };
+		DECA172D1B614E9B00FD3418 /* ShopServerTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopServerTime.h; sourceTree = "<group>"; };
+		DECA172E1B614E9B00FD3418 /* ShopServerTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopServerTime.m; sourceTree = "<group>"; };
+		DECA17331B61509200FD3418 /* OrderDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetail.h; sourceTree = "<group>"; };
+		DECA17341B61509200FD3418 /* OrderDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetail.m; sourceTree = "<group>"; };
+		DECA17361B6150EF00FD3418 /* LogForOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogForOrder.h; sourceTree = "<group>"; };
+		DECA17371B6150EF00FD3418 /* LogForOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogForOrder.m; sourceTree = "<group>"; };
+		DECA17391B61530C00FD3418 /* MyCountBalance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCountBalance.h; sourceTree = "<group>"; };
+		DECA173A1B61530C00FD3418 /* MyCountBalance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCountBalance.m; sourceTree = "<group>"; };
+		DECA173C1B61534B00FD3418 /* UserRecharge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRecharge.h; sourceTree = "<group>"; };
+		DECA173D1B61534B00FD3418 /* UserRecharge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRecharge.m; sourceTree = "<group>"; };
+		DECA173F1B6153D000FD3418 /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
+		DECA17401B6153D000FD3418 /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Car.m; sourceTree = "<group>"; };
+		DECA17451B61543A00FD3418 /* CarBrand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarBrand.h; sourceTree = "<group>"; };
+		DECA17461B61543A00FD3418 /* CarBrand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarBrand.m; sourceTree = "<group>"; };
+		DECA17481B61548400FD3418 /* CarSeries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarSeries.h; sourceTree = "<group>"; };
+		DECA17491B61548400FD3418 /* CarSeries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarSeries.m; sourceTree = "<group>"; };
+		DECA174B1B6154C100FD3418 /* UserAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAddress.h; sourceTree = "<group>"; };
+		DECA174C1B6154C100FD3418 /* UserAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAddress.m; sourceTree = "<group>"; };
+		DECA174E1B61552600FD3418 /* PointTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointTransaction.h; sourceTree = "<group>"; };
+		DECA174F1B61552600FD3418 /* PointTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointTransaction.m; sourceTree = "<group>"; };
+		DECA17541B61574500FD3418 /* UserLoginInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLoginInfo.h; sourceTree = "<group>"; };
+		DECA17551B61574500FD3418 /* UserLoginInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLoginInfo.m; sourceTree = "<group>"; };
+		DECA17571B615C8300FD3418 /* OrderSingle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderSingle.h; sourceTree = "<group>"; };
+		DECA17581B615C8300FD3418 /* OrderSingle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderSingle.m; sourceTree = "<group>"; };
+		DECA175A1B61638800FD3418 /* AdvertisementForEcart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertisementForEcart.h; sourceTree = "<group>"; };
+		DECA175B1B61638800FD3418 /* AdvertisementForEcart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertisementForEcart.m; sourceTree = "<group>"; };
 		DED2EAD41B35D3A5006FE893 /* eCarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eCarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DED2EAD81B35D3A5006FE893 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DED2EAD91B35D3A5006FE893 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1336,6 +1387,47 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		DECA171D1B61381200FD3418 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DECA17211B614B4700FD3418 /* Coupon.h */,
+				DECA17221B614B4700FD3418 /* Coupon.m */,
+				DECA17241B614BD400FD3418 /* CouponDetail.h */,
+				DECA17251B614BD400FD3418 /* CouponDetail.m */,
+				DECA17271B614C1800FD3418 /* Shop.h */,
+				DECA17281B614C1800FD3418 /* Shop.m */,
+				DECA172A1B614C5B00FD3418 /* ShopDetail.h */,
+				DECA172B1B614C5B00FD3418 /* ShopDetail.m */,
+				DECA172D1B614E9B00FD3418 /* ShopServerTime.h */,
+				DECA172E1B614E9B00FD3418 /* ShopServerTime.m */,
+				DECA17331B61509200FD3418 /* OrderDetail.h */,
+				DECA17341B61509200FD3418 /* OrderDetail.m */,
+				DECA17361B6150EF00FD3418 /* LogForOrder.h */,
+				DECA17371B6150EF00FD3418 /* LogForOrder.m */,
+				DECA17391B61530C00FD3418 /* MyCountBalance.h */,
+				DECA173A1B61530C00FD3418 /* MyCountBalance.m */,
+				DECA173C1B61534B00FD3418 /* UserRecharge.h */,
+				DECA173D1B61534B00FD3418 /* UserRecharge.m */,
+				DECA173F1B6153D000FD3418 /* Car.h */,
+				DECA17401B6153D000FD3418 /* Car.m */,
+				DECA17451B61543A00FD3418 /* CarBrand.h */,
+				DECA17461B61543A00FD3418 /* CarBrand.m */,
+				DECA17481B61548400FD3418 /* CarSeries.h */,
+				DECA17491B61548400FD3418 /* CarSeries.m */,
+				DECA174B1B6154C100FD3418 /* UserAddress.h */,
+				DECA174C1B6154C100FD3418 /* UserAddress.m */,
+				DECA174E1B61552600FD3418 /* PointTransaction.h */,
+				DECA174F1B61552600FD3418 /* PointTransaction.m */,
+				DECA17541B61574500FD3418 /* UserLoginInfo.h */,
+				DECA17551B61574500FD3418 /* UserLoginInfo.m */,
+				DECA17571B615C8300FD3418 /* OrderSingle.h */,
+				DECA17581B615C8300FD3418 /* OrderSingle.m */,
+				DECA175A1B61638800FD3418 /* AdvertisementForEcart.h */,
+				DECA175B1B61638800FD3418 /* AdvertisementForEcart.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		DED2EACB1B35D3A5006FE893 = {
 			isa = PBXGroup;
 			children = (
@@ -1359,6 +1451,7 @@
 		DED2EAD61B35D3A5006FE893 /* eCarter */ = {
 			isa = PBXGroup;
 			children = (
+				DECA171D1B61381200FD3418 /* Model */,
 				DEEC3DCB1B5C2832005CE84E /* CommenPages */,
 				DEFDF59F1B5BCF5E00298366 /* NetWorkModule */,
 				DE9D12501B51503400046407 /* Configuration */,
@@ -2467,6 +2560,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DECA173B1B61530C00FD3418 /* MyCountBalance.m in Sources */,
 				DEE336B41B4C282B00357253 /* HKMapCtrl.m in Sources */,
 				DEE87D291B48EC5100D3EDAB /* OrderProgressCell.m in Sources */,
 				DE9D120E1B50ECEC00046407 /* LineDashPolyline.m in Sources */,
@@ -2475,6 +2569,7 @@
 				DEE337AA1B4DF68C00357253 /* SettingCell.m in Sources */,
 				DEE87CD21B48E7A500D3EDAB /* ServiceCommentinfoCell.m in Sources */,
 				DEE87D231B48EC5100D3EDAB /* CallingCell.m in Sources */,
+				DECA17591B615C8400FD3418 /* OrderSingle.m in Sources */,
 				DE9D12091B50ECEC00046407 /* CustomAnnotationView.m in Sources */,
 				DEE87D0B1B48EC0500D3EDAB /* OtherPaymentCell.m in Sources */,
 				DE9D12C31B52BE0000046407 /* MD5DataSigner.m in Sources */,
@@ -2485,17 +2580,22 @@
 				DEE719AF1B3ED21D003221A8 /* PersonalCenterCtrl.m in Sources */,
 				DEEC3DDB1B5C2832005CE84E /* CityCell.m in Sources */,
 				DEE87D0D1B48EC0500D3EDAB /* SelectCarCell.m in Sources */,
+				DECA175C1B61638800FD3418 /* AdvertisementForEcart.m in Sources */,
 				DE237F211B405BF20027767B /* MyScoreNomalCell.m in Sources */,
+				DECA17351B61509200FD3418 /* OrderDetail.m in Sources */,
 				DEE4CA491B3C7D2A0009B73C /* PamentWaySlectedCtrl.m in Sources */,
 				DEE48B8F1B3964FB00458D6F /* MapCell.m in Sources */,
 				DEEC3DDE1B5C2832005CE84E /* LocalCell.m in Sources */,
 				DE237EFC1B4047B60027767B /* AddCarCell.m in Sources */,
 				DE9D12131B50ECEC00046407 /* MANaviRoute.m in Sources */,
+				DECA173E1B61534B00FD3418 /* UserRecharge.m in Sources */,
+				DECA174A1B61548400FD3418 /* CarSeries.m in Sources */,
 				DEE52ECC1B38F9C200C90BA3 /* CouponCtrl.m in Sources */,
 				DE9D12071B50ECEC00046407 /* AnimatedAnnotationView.m in Sources */,
 				DE237F111B4056260027767B /* CustomTradeCell.m in Sources */,
 				DEE093111B3B2CEF00243475 /* NextStepCell.m in Sources */,
 				DED2EB151B35E351006FE893 /* FirstViewCtrl.m in Sources */,
+				DECA174D1B6154C100FD3418 /* UserAddress.m in Sources */,
 				DEE87CCC1B48B1AD00D3EDAB /* HKWebViewCtrl.m in Sources */,
 				DEFDF5A21B5BCF5E00298366 /* NetworkManager.m in Sources */,
 				DEE48BAE1B39AA9E00458D6F /* TotalCountCell.m in Sources */,
@@ -2506,12 +2606,15 @@
 				DEE337B01B4DF68C00357253 /* TransactionCtrl.m in Sources */,
 				DEE52EBF1B38F4D400C90BA3 /* EventBanerCtrl.m in Sources */,
 				DEE87CE91B48EA2000D3EDAB /* AddNewAdress.m in Sources */,
+				DECA17471B61543A00FD3418 /* CarBrand.m in Sources */,
 				DEE3379F1B4DF68C00357253 /* AboutUsCtrl.m in Sources */,
 				DE237F001B404E690027767B /* MyAdressCtrl.m in Sources */,
 				DE237F151B40596B0027767B /* MyCouponCtrl.m in Sources */,
+				DECA17411B6153D000FD3418 /* Car.m in Sources */,
 				DE237F1C1B405BD40027767B /* MyScoreMainCell.m in Sources */,
 				DEE336BD1B4C3DE200357253 /* HKMapManager.m in Sources */,
 				DEE48B9B1B399CB100458D6F /* SelfDetailCtrl.m in Sources */,
+				DECA17381B6150EF00FD3418 /* LogForOrder.m in Sources */,
 				DEE3BE4F1B365A3A00DCE7EC /* ShopGetCarIndicatorCell.m in Sources */,
 				DE9D120F1B50ECEC00046407 /* LocalTileOverlay.m in Sources */,
 				DE237EF71B4047830027767B /* CarInfoCell.m in Sources */,
@@ -2520,6 +2623,7 @@
 				DEE87CEB1B48EA2000D3EDAB /* AddNewCarCtrl.m in Sources */,
 				DE9D12BF1B52BE0000046407 /* Order.m in Sources */,
 				DEE48BA41B39A56600458D6F /* CouponSlectedCell.m in Sources */,
+				DECA17261B614BD400FD3418 /* CouponDetail.m in Sources */,
 				DE237F091B404F600027767B /* AddAdressCell.m in Sources */,
 				DED2EAE01B35D3A5006FE893 /* ViewController.m in Sources */,
 				DE9D12101B50ECEC00046407 /* MANaviAnnotation.m in Sources */,
@@ -2555,12 +2659,14 @@
 				DEE337AC1B4DF68C00357253 /* SettingCtrl.m in Sources */,
 				DEE093021B3B29A500243475 /* PhoneInfoCell.m in Sources */,
 				DE9D12D51B52DBE900046407 /* payRequsestHandler.mm in Sources */,
+				DECA17501B61552600FD3418 /* PointTransaction.m in Sources */,
 				DE9D12191B50EDE600046407 /* CommonUtility.m in Sources */,
 				DEE3BE451B3656CB00DCE7EC /* WeatherInfoCell.m in Sources */,
 				DED2EADD1B35D3A5006FE893 /* AppDelegate.m in Sources */,
 				DEE52ED91B390AF400C90BA3 /* ShopGetCtrl.m in Sources */,
 				DEE719B61B3ED50D003221A8 /* PersonInfoCell.m in Sources */,
 				DEFB2B771B44361700C74FC0 /* mainListCell.m in Sources */,
+				DECA17231B614B4700FD3418 /* Coupon.m in Sources */,
 				DED2EADA1B35D3A5006FE893 /* main.m in Sources */,
 				DEE52ED01B38FAEB00C90BA3 /* CouponMainInfoCell.m in Sources */,
 				DEE48B9F1B39A4BF00458D6F /* TimeCell.m in Sources */,
@@ -2585,6 +2691,8 @@
 				DEE87D271B48EC5100D3EDAB /* OrderManagerCell.m in Sources */,
 				DEE87CF71B48EB8500D3EDAB /* CarNumCell.m in Sources */,
 				DE9D12C51B52BE0000046407 /* openssl_wrapper.m in Sources */,
+				DECA17561B61574500FD3418 /* UserLoginInfo.m in Sources */,
+				DECA172C1B614C5B00FD3418 /* ShopDetail.m in Sources */,
 				DE9D12141B50ECEC00046407 /* POIAnnotation.m in Sources */,
 				DEE337A81B4DF68C00357253 /* ReChargeSuccessCtrl.m in Sources */,
 				DEE87CED1B48EA2000D3EDAB /* BalanceMoneyCtrl.m in Sources */,
@@ -2595,12 +2703,14 @@
 				DE9D12C21B52BE0000046407 /* DataVerifier.m in Sources */,
 				DEE4CA5E1B3C7FAB0009B73C /* TotolPayCell.m in Sources */,
 				DE9D12C41B52BE0000046407 /* NSDataEx.m in Sources */,
+				DECA17291B614C1800FD3418 /* Shop.m in Sources */,
 				DEE48B8A1B3964E400458D6F /* TellCell.m in Sources */,
 				DE9D12C11B52BE0000046407 /* DataSigner.m in Sources */,
 				DEE52EDD1B39119500C90BA3 /* ShopCell.m in Sources */,
 				DE9D12081B50ECEC00046407 /* BusStopAnnotation.m in Sources */,
 				DEE719BB1B3ED54E003221A8 /* PersonNormalCell.m in Sources */,
 				DEE719C11B3ED826003221A8 /* PlaceHolderCell.m in Sources */,
+				DECA172F1B614E9B00FD3418 /* ShopServerTime.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
