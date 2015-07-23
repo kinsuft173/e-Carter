@@ -11,6 +11,8 @@
 @implementation ShopServerTime
 
 
+
+
 + (NSDictionary *)objectClassInArray{
     return @{@"serviceTimeList":[Servicetimelist class]};
 }
