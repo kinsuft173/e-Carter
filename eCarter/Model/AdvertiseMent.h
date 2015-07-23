@@ -10,5 +10,21 @@
 
 @interface AdvertiseMent : NSObject
 
+@property (nonatomic, assign) NSInteger position;
+
+@property (nonatomic, assign) NSInteger city;
+
+@property (nonatomic, copy) NSString *id;
+
+@property (nonatomic, copy) NSString *updateTime;
+
+@property (nonatomic, copy) NSString *imageUrl;
+
+@property (nonatomic, assign) NSInteger idx;
+
+@property (nonatomic, copy) NSString *link;
+
+@property (nonatomic, copy) NSString *cityName;
+
 
 @end

@@ -20,9 +20,8 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - AMap2DMap (2.5.0)
-  - AMapSearch (2.5.0)
   - IQKeyboardManager (3.2.4)
+  - MJExtension (2.5.2)
   - MJRefresh (2.2.0)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
@@ -30,17 +29,15 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
-  - AMap2DMap
-  - AMapSearch
   - IQKeyboardManager
+  - MJExtension
   - MJRefresh
   - SDWebImage (~> 3.6)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
-  AMap2DMap: 4952d35e7d3abdf36a568115bda21bd2b0d65e9b
-  AMapSearch: eafa5a749b1078a46f15e6108e88307f78f75e9b
   IQKeyboardManager: 555b1231fefafb21b19278d7cca72986a27b748b
+  MJExtension: 73e812aca0846e4a7b4d7aca34cfacf48d1f3310
   MJRefresh: 65a2bf14abb6feeaed8696aa1551f70e15ab0a08
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
 
