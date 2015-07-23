@@ -1,0 +1,231 @@
+//
+//  PersonalCenterCtrl.m
+//  eCarter
+//
+//  Created by kinsuft173 on 15/6/27.
+//  Copyright (c) 2015年 kinsuft173. All rights reserved.
+//
+
+#import "PersonalCenterCtrl.h"
+#import "PersonInfoCell.h"
+#import "PersonNormalCell.h"
+#import "PlaceHolderCell.h"
+#import "HKCommen.h"
+
+@interface PersonalCenterCtrl ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic, strong)  NSArray* arrayInfo;
+@property (nonatomic, strong)  NSArray* arrayImage;
+@end
+
+@implementation PersonalCenterCtrl
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    self.arrayInfo = [NSArray arrayWithObjects:@"我的订单",@"我的账户",@"我的车库",@"我的地址",@"交易记录",@"我的优惠券",@"我的e积分", nil];
+    self.arrayImage = [NSArray arrayWithObjects:[UIImage imageNamed:@"mine_My-order"],[UIImage imageNamed:@"mine_My-account"],[UIImage imageNamed:@"mine_mycar"],[UIImage imageNamed:@"mine_Address"],[UIImage imageNamed:@"mine_Trade-record"],[UIImage imageNamed:@"mine_On-Sale"],[UIImage imageNamed:@"mine_Integral"]];
+    
+    
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+
+
+#pragma  mark - tableView DataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 3;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (section == 0) {
+        
+        return 1;
+        
+    }else if (section == 1){
+        
+        return 4;
+        
+    }else{
+    
+        return 5;
+    
+    }
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        
+        return 80;
+        
+    }else if(indexPath.section == 1){
+        
+        if (indexPath.row == 0) {
+            
+            return 10;
+            
+        }
+        
+        return 50;
+        
+    }else{
+    
+    
+        if (indexPath.row == 0) {
+            
+            return 10;
+            
+        }
+    
+        
+        return 50;
+    
+    }
+    
+    
+    return 0;
+    
+}
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    static NSString* cellId1 = @"PersonInfoCell";
+    static NSString* cellId2 = @"PersonNormalCell";
+    static NSString* cellHolderId = @"PlaceHolderCell";
+    
+    if (indexPath.section == 0) {
+        
+        PersonInfoCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
+        
+        if (!cell) {
+            
+            cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
+            
+            
+            
+        }
+        
+        
+        return cell;
+        
+        
+    }else if (indexPath.row == 0){
+        
+        PlaceHolderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellHolderId];
+        
+        if (!cell) {
+            
+            NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:cellHolderId owner:self options:nil];
+            
+            cell = [topLevelObjects objectAtIndex:0];
+            
+            cell.contentView.backgroundColor = [HKCommen  getColor:@"e6e6e6"];
+            
+        }
+        
+        return cell;
+        
+    }else{
+        
+        PersonNormalCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId2];
+        
+        if (!cell) {
+            
+            NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:cellId2 owner:self options:nil];
+            
+            cell = [topLevelObjects objectAtIndex:0];
+            
+            
+        }
+        
+        cell.lblTitel.text = [self.arrayInfo objectAtIndex:(indexPath.section-1)*3+indexPath.row- 1];
+        cell.img.image = [self.arrayImage objectAtIndex:(indexPath.section - 1)*3 + indexPath.row - 1 ];
+        
+        
+        return cell;
+        
+    }
+    
+    
+//    return nil;
+}
+
+
+#pragma mark - tableView delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section==0) {
+        MyAccountCtrl *vc=[[MyAccountCtrl alloc] initWithNibName:@"MyAccountCtrl" bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
+    if (indexPath.section == 1 && indexPath.row == 1 ) {
+        
+        [self performSegueWithIdentifier:@"goMyOrder" sender:nil];
+        
+        
+    }else if (indexPath.section == 1 && indexPath.row == 2){
+    
+        [self performSegueWithIdentifier:@"goMyCount" sender:nil];
+        
+    }else if (indexPath.section == 1 && indexPath.row == 3){
+    
+        [self performSegueWithIdentifier:@"goMyCar" sender:nil];
+    
+    }else if (indexPath.section == 2 && indexPath.row == 1){
+    
+        [self performSegueWithIdentifier:@"goMyAdress" sender:nil];
+    
+    }else if (indexPath.section == 2 && indexPath.row == 2){
+    
+        [self performSegueWithIdentifier:@"goMyTrade" sender:nil];
+    
+    }else if (indexPath.section == 2 && indexPath.row == 3){
+    
+        [self performSegueWithIdentifier:@"goMyCouPon" sender:nil];
+    
+    }else if (indexPath.section == 2 && indexPath.row == 4){
+    
+        PointOfMeCtrl *vc=[[PointOfMeCtrl alloc] initWithNibName:@"PointOfMeCtrl" bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if (indexPath.section == 2 && indexPath.row == 5){
+        
+        SettingCtrl *vc=[[SettingCtrl alloc] initWithNibName:@"SettingCtrl" bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+
+}
+
+- (IBAction)goConfig:(id)sender
+{
+
+    SettingCtrl *vc=[[SettingCtrl alloc] initWithNibName:@"SettingCtrl" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+
+}
+
+
+@end

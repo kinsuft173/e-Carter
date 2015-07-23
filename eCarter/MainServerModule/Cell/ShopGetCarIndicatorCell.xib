@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ShopGetCarIndicatorCell" id="KGk-i7-Jjw" customClass="ShopGetCarIndicatorCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lyJ-xC-875">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="19I-od-rx6">
+                                <rect key="frame" x="10" y="6" width="300" height="78"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_btn_daodianfuwu.png" translatesAutoresizingMaskIntoConstraints="NO" id="9bI-hc-NdI">
+                                        <rect key="frame" x="18" y="21" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="sn8-Lo-Boi"/>
+                                            <constraint firstAttribute="height" constant="36" id="vzG-SZ-ynK"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="到店服务" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mc0-nl-jKK">
+                                        <rect key="frame" x="72" y="29" width="153" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="IWi-mu-Ybq"/>
+                                            <constraint firstAttribute="width" constant="153" id="uQT-SE-lXj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="18"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="9bI-hc-NdI" firstAttribute="leading" secondItem="19I-od-rx6" secondAttribute="leading" constant="18" id="4jx-hi-fjF"/>
+                                    <constraint firstItem="Mc0-nl-jKK" firstAttribute="leading" secondItem="19I-od-rx6" secondAttribute="leading" constant="72" id="LtM-gg-s8l"/>
+                                    <constraint firstItem="9bI-hc-NdI" firstAttribute="top" secondItem="19I-od-rx6" secondAttribute="top" constant="21" id="Od5-tE-qGM"/>
+                                    <constraint firstItem="Mc0-nl-jKK" firstAttribute="top" secondItem="19I-od-rx6" secondAttribute="top" constant="29" id="zok-cd-9xW"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="19I-od-rx6" firstAttribute="top" secondItem="lyJ-xC-875" secondAttribute="top" constant="6" id="ArL-J3-hLJ"/>
+                            <constraint firstAttribute="bottom" secondItem="19I-od-rx6" secondAttribute="bottom" constant="5" id="R0P-dL-Cq6"/>
+                            <constraint firstItem="19I-od-rx6" firstAttribute="leading" secondItem="lyJ-xC-875" secondAttribute="leading" constant="10" id="gHl-Hg-gca"/>
+                            <constraint firstAttribute="trailing" secondItem="19I-od-rx6" secondAttribute="trailing" constant="10" id="uld-Bl-ZQ2"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="lyJ-xC-875" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="Blp-bs-s61"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="lyJ-xC-875" secondAttribute="bottom" constant="-8" id="gOa-3j-Obz"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="lyJ-xC-875" secondAttribute="trailing" constant="-8" id="pni-sz-03w"/>
+                    <constraint firstItem="lyJ-xC-875" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="vk5-dm-LJD"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="home_btn_daodianfuwu.png" width="52" height="54"/>
+    </resources>
+</document>

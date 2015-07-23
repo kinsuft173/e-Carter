@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CarNumCell" rowHeight="60" id="KGk-i7-Jjw" customClass="CarNumCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="粤" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ehe-o6-vuK">
+                        <rect key="frame" x="105" y="0.0" width="22" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="22" id="Ozt-p4-b1T"/>
+                            <constraint firstAttribute="height" constant="44" id="yW8-ha-IsM"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入车牌号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UTD-43-le3">
+                        <rect key="frame" x="160" y="0.0" width="170" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="aMS-Tp-j4m"/>
+                            <constraint firstAttribute="width" constant="170" id="iIl-LS-RbN"/>
+                        </constraints>
+                        <color key="textColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="车牌号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05L-k9-o83">
+                        <rect key="frame" x="10" y="0.0" width="46" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="Nbo-t8-7Ma"/>
+                            <constraint firstAttribute="width" constant="46" id="kSn-8o-87Q"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TtV-iF-2KR">
+                        <rect key="frame" x="130" y="15" width="24" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="24" id="8V8-QC-EyQ"/>
+                            <constraint firstAttribute="height" constant="18" id="Rxo-BH-Rzp"/>
+                        </constraints>
+                        <state key="normal" image="address_btn_PD-Black.png">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Ehe-o6-vuK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="6Hw-cp-E1g"/>
+                    <constraint firstItem="05L-k9-o83" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="6UH-l2-1Tq"/>
+                    <constraint firstItem="TtV-iF-2KR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="122" id="Eka-1z-GJ7"/>
+                    <constraint firstItem="05L-k9-o83" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="L8h-Fa-fhn"/>
+                    <constraint firstItem="UTD-43-le3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="152" id="SjJ-gF-xjn"/>
+                    <constraint firstItem="UTD-43-le3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="fSJ-s4-suo"/>
+                    <constraint firstItem="Ehe-o6-vuK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="97" id="kNo-Fy-UMA"/>
+                    <constraint firstItem="TtV-iF-2KR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="rB9-wE-GC3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="215" y="284"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="address_btn_PD-Black.png" width="16" height="16"/>
+    </resources>
+</document>

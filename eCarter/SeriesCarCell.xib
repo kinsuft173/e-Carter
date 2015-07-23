@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SeriesCarCell" id="KGk-i7-Jjw" customClass="SeriesCarCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xT8-dw-A7g">
+                        <rect key="frame" x="10" y="0.0" width="200" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="200" id="R52-iI-2c0"/>
+                            <constraint firstAttribute="height" constant="44" id="c8n-vs-Vga"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grey.png" translatesAutoresizingMaskIntoConstraints="NO" id="FwU-Pp-lbY">
+                        <rect key="frame" x="275" y="13" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="a7t-SC-Ceb"/>
+                            <constraint firstAttribute="width" constant="20" id="jSG-r2-lLM"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="xT8-dw-A7g" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="0eE-oy-CDW"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="FwU-Pp-lbY" secondAttribute="trailing" constant="17" id="2W0-E3-VxZ"/>
+                    <constraint firstItem="xT8-dw-A7g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="A14-df-vXB"/>
+                    <constraint firstItem="FwU-Pp-lbY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="ezI-5O-TbT"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imgOfColor" destination="FwU-Pp-lbY" id="sn3-uq-XH0"/>
+                <outlet property="lbl_seriesOfCar" destination="xT8-dw-A7g" id="6ee-bi-hRg"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Grey.png" width="20" height="20"/>
+    </resources>
+</document>
