@@ -14,6 +14,8 @@
 @property (nonatomic, strong) NSString* address;
 @property (nonatomic, strong) CLLocation* currentLocation;
 @property (nonatomic, strong) NSString* strCity;
+@property (nonatomic, strong) NSString* userCurrentLongitude;
+@property (nonatomic, strong) NSString* userCurrentLatitude;
 
 + (HKMapManager*)shareMgr;
 

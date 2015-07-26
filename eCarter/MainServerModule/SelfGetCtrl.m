@@ -9,13 +9,15 @@
 #import "SelfGetCtrl.h"
 #import "ShopCell.h"
 #import <MJRefresh.h>
-
+#import "Shop.h"
+#import "NetworkManager.h"
+#import "SelfDetailCtrl.h"
 
 
 
 @interface SelfGetCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic, strong) NSMutableArray* arrayModels;
+@property (nonatomic, strong) NSMutableArray* arrayModel;
 @property (nonatomic, strong) IBOutlet UITableView* tableView;
 
 @end
@@ -26,20 +28,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [HKCommen addHeadTitle:@"到店服务" whichNavigation:self.navigationItem];
-    
-//    NSMutableDictionary *dict1=[[NSMutableDictionary alloc] init];
-//    [dict1 setObject:@"广州天河区赏下汽车美容中心" forKey:@"address"];
-//    [dict1 setObject:@"4.2" forKey:@"evaluation"];
-//    [dict1 setObject:@"0.23km" forKey:@"distance"];
-//    
-//    NSMutableDictionary *dict2=[[NSMutableDictionary alloc] init];
-//    [dict2 setObject:@"广州天河区赏下汽车修理中心" forKey:@"address"];
-//    [dict2 setObject:@"2.3" forKey:@"evaluation"];
-//    [dict2 setObject:@"5.23km" forKey:@"distance"];
-//    
-//    
-//    self.arrayModels = [[NSMutableArray alloc] initWithObjects:dict1,dict2, nil];
+    [HKCommen addHeadTitle:@"上门服务" whichNavigation:self.navigationItem];
+
     
     UIButton *rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
     rightButton.titleLabel.font=[UIFont systemFontOfSize:15.0];
@@ -63,6 +53,14 @@
 }
 
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSNumber*)sender {
+    
+    SelfDetailCtrl* dlg = segue.destinationViewController;
+    
+    dlg.preDataShopId = sender;
+    
+}
+
 
 #pragma  mark - tableView DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -72,12 +70,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.arrayModels.count;
+    return self.arrayModel.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 127;
+    
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -92,18 +91,24 @@
         if (!cell) {
             
             cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
-
+            
         }
         
-        cell.lbl_Adress.text=[[self.arrayModels objectAtIndex:indexPath.row] objectForKey:@"address"];
+        Shop* shop = [Shop objectWithKeyValues:[self.arrayModel  objectAtIndex:indexPath.row]];
         
-        cell.lbl_Distance.text=[[self.arrayModels objectAtIndex:indexPath.row] objectForKey:@"distance"];
+        cell.lbl_Adress.text =  shop.storeName;
         
-        cell.lbl_Evaluation.text=[NSString stringWithFormat:@"(%@)",[[self.arrayModels objectAtIndex:indexPath.row] objectForKey:@"evaluation"]];
+        cell.lbl_Distance.text=  [NSString stringWithFormat:@"%@km",shop.distance];
         
-        [cell initWithDict:[[[self.arrayModels objectAtIndex:indexPath.row] objectForKey:@"evaluation"] floatValue]];
+        cell.lbl_Evaluation.text = [NSString stringWithFormat:@"(%@)",shop.storeScore];
+        
+        [cell initWithDict:[shop.storeScore floatValue]];
+        
+        [cell.img_Service sd_setImageWithURL:[NSURL URLWithString:shop.storeImg]
+                            placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
         
         return cell;
+        
         
     }
     
@@ -114,11 +119,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Shop* shop = [Shop objectWithKeyValues:[self.arrayModel  objectAtIndex:indexPath.row]];
     
-    [self performSegueWithIdentifier:@"goShopDetails" sender:nil];
+    [self performSegueWithIdentifier:@"goShopDetails" sender:[NSNumber numberWithInteger:[shop.id integerValue]]];
     
 }
-
 
 #pragma mark - Refresh
 
@@ -126,52 +131,56 @@
 {
     
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-       
-        self.arrayModels = [[NSMutableArray alloc] init];
         
-        for (int i = 0; i < 20; i++) {
-            
-            NSMutableDictionary *dict1=[[NSMutableDictionary alloc] init];
-            [dict1 setObject:@"广州天河区赏下汽车美容中心" forKey:@"address"];
-            [dict1 setObject:@"4.2" forKey:@"evaluation"];
-            [dict1 setObject:[NSString stringWithFormat:@"0.0%dkm",i] forKey:@"distance"];
-            
-            [self.arrayModels addObject:dict1];
-            
-        }
         
-        [self.tableView reloadData];
+        //        NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:@"",@"page", nil];
         
-        [self.tableView.header endRefreshing];
+        [[NetworkManager shareMgr] server_queryStoreListWithDic:nil completeHandle:^(NSDictionary *response) {
+            
+            NSArray* tempArray = [response objectForKey:@"data"];
+            
+            if (tempArray.count != 0) {
+                
+                self.arrayModel = [[NSMutableArray alloc] init];
+                
+                [self.arrayModel addObjectsFromArray:tempArray];
+                
+            }
+            
+            
+            [self.tableView.header endRefreshing];
+            
+            [self.tableView reloadData];
+            
+        }];
         
     }];
     
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadMoreData方法）
-    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
-        
-        
-        for (int i = 0; i < 20; i++) {
-            
-            NSMutableDictionary *dict1=[[NSMutableDictionary alloc] init];
-            [dict1 setObject:@"广州天河区赏下汽车美容中心" forKey:@"address"];
-            [dict1 setObject:@"4.2" forKey:@"evaluation"];
-            [dict1 setObject:[NSString stringWithFormat:@"0.0%dkm",i] forKey:@"distance"];
-            
-            [self.arrayModels addObject:dict1];
-            
-        }
-        
-        [self.tableView reloadData];
-        
-        [self.tableView.footer endRefreshing];
-        
-    }];
-    
-    // 设置刷新图片
-//    [footer setImages:refreshingImages forState:MJRefreshStateRefreshing];
-    
-    // 设置尾部
-    self.tableView.footer = footer;
+    //    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
+    //
+    //
+    //        for (int i = 0; i < 20; i++) {
+    //
+    //            NSMutableDictionary *dict1=[[NSMutableDictionary alloc] init];
+    //            [dict1 setObject:@"广州天河区赏下汽车美容中心" forKey:@"address"];
+    //            [dict1 setObject:@"4.2" forKey:@"evaluation"];
+    //            [dict1 setObject:[NSString stringWithFormat:@"0.0%dkm",i] forKey:@"distance"];
+    //
+    //            [self.arrayModel addObject:dict1];
+    //
+    //        }
+    //
+    //
+    //        [self.tableView reloadData];
+    //
+    //        [self.tableView.footer endRefreshing];
+    //
+    //    }];
+    //
+    //
+    //    // 设置尾部
+    //    self.tableView.footer = footer;
     
     [self.tableView.header beginRefreshing];
     

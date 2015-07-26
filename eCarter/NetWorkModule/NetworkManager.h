@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "NewworkConfig.h"
 #import "FakeDataMgr.h"
+#import <MJExtension.h>
+#import <MJRefresh.h>
+#import "global.h"
+#import <UIImageView+WebCache.h>
 
 @interface NetworkManager : NSObject
 

@@ -10,4 +10,7 @@
 
 @interface ServerListCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UILabel* lblSeverName;
+@property (strong, nonatomic) IBOutlet UILabel* lblServerPrice;
+
 @end

@@ -9,6 +9,7 @@
 #import "NetworkManager.h"
 #import <AFNetworking/AFNetworking.h>
 #import "FakeDataMgr.h"
+#import "HKMapManager.h"
 
 @interface NetworkManager ()
 
@@ -402,6 +403,8 @@
     //test
     //NSDictionary *parameters = @{@"username": @"18672354399",@"password_hash":@"$2y$13$eD.OPcraVj8wMrADnMTPpeJVDzQTncvRClQcRDt2a0gRPRW4ZKWbC"};
     
+    NSMutableDictionary* dicParams = [self addUserLocationWithDic:dic];
+    
     NSString* strInterface;
     
     if (self.isTestMode) {
@@ -414,11 +417,13 @@
         
     }
     
-    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dicParams success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (self.isTestMode) {
             
             NSDictionary *dictionary = [FakeDataMgr shareMgr].responseQueryStoreList;
+            
+            NSLog(@"server_queryStoreListWithDic ==> %@",dictionary);
             
             if (completeHandle) {
                 
@@ -1423,6 +1428,26 @@
     
 }
 
+- (NSMutableDictionary*)addUserLocationWithDic:(NSDictionary*)dic
+{
+    NSMutableDictionary* dicTemp;
+    
+    if (dic) {
+        
+        dicTemp = [NSMutableDictionary dictionaryWithDictionary:dic];
+        
+    }else{
+    
+        dicTemp = [[NSMutableDictionary alloc] init];
+        
+    }
+    
+    [dicTemp setObject:[HKMapManager shareMgr].userCurrentLongitude forKey:@"dimensions_y"];
+    [dicTemp setObject:[HKMapManager shareMgr].userCurrentLatitude forKey:@"dimensions_x"];
+    
+    return dicTemp;
+
+}
 
 
 @end

@@ -10,4 +10,6 @@
 
 @interface BannerCell : UITableViewCell
 
+@property (nonatomic, strong) IBOutlet UIImageView* img;
+
 @end

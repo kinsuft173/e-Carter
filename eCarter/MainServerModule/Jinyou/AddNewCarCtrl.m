@@ -128,6 +128,8 @@
         }
         [cell.btn_commitButton setTitle:@"确定" forState:UIControlStateNormal];
         
+        [cell.btn_commitButton addTarget:self action:@selector(goCommit:) forControlEvents:UIControlEventTouchUpInside];
+        
         return cell;
         
     }
@@ -177,6 +179,14 @@ heightForHeaderInSection:(NSInteger)section
             
         }
     }
+}
+
+
+- (void)goCommit:(UIButton*)sender
+{
+
+
+
 }
 
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -141,6 +141,12 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="lblAddress" destination="V6v-Bz-93m" id="Ki0-Br-tCh"/>
+                <outlet property="lblDistance" destination="tRx-it-Ctl" id="HEu-ai-m6v"/>
+                <outlet property="lblServerItems" destination="QTP-ge-Gua" id="S3n-69-5O5"/>
+                <outlet property="lblStoreName" destination="R2O-Pg-jzL" id="Hsc-lb-C5M"/>
+                <outlet property="lblStoreScore" destination="fwu-E9-Hpc" id="mKb-2a-umw"/>
+                <outlet property="lblTimeStartAndEnd" destination="l1F-M4-y5F" id="y8T-gW-qCL"/>
                 <outlet property="viewForMask1" destination="Xtl-s2-t1I" id="vV5-pa-qdy"/>
             </connections>
         </tableViewCell>

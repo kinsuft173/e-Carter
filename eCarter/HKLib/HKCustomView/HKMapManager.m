@@ -181,6 +181,10 @@
     CLLocation *currentLocation = [locations lastObject];
     
     self.currentLocation = currentLocation;
+    
+    self.userCurrentLatitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.latitude];
+    self.userCurrentLongitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.longitude];
+    
     // 获取当前所在的城市名
     
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];

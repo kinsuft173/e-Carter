@@ -109,6 +109,14 @@
     return [phoneTest evaluateWithObject:strPhoneNumber];
 }
 
++(BOOL) validateCarNo:(NSString*)carNo
+{
+    NSString *carRegex = @"^[A-Za-z]{1}[A-Za-z_0-9]{5}$";
+    NSPredicate *carTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",carRegex];
+    NSLog(@"carTest is %@",carTest);
+    return [carTest evaluateWithObject:carNo];
+}
+
 //转Json
 + (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString
 {

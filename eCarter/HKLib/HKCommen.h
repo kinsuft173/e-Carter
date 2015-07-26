@@ -25,6 +25,7 @@
 + (BOOL)validatePassword:(NSString *)passWord;
 + (BOOL)validateNickname:(NSString *)nickname;
 + (BOOL)validateMobileWithPhoneNumber:(NSString*)strPhoneNumber;
++ (BOOL)validateCarNo:(NSString*)carNo;
 
 //隐藏多余的分割线
 + (void)setExtraCellLineHidden: (UITableView *)tableView;
