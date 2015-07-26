@@ -10,4 +10,7 @@
 
 @interface CarNumCell : UITableViewCell
 
+@property (nonatomic, strong) IBOutlet UITextField* textFiledCarNo;
+@property (nonatomic, strong) IBOutlet UILabel* lblCarNo;
+
 @end

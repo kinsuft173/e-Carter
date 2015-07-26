@@ -26,6 +26,7 @@
 + (BOOL)validateNickname:(NSString *)nickname;
 + (BOOL)validateMobileWithPhoneNumber:(NSString*)strPhoneNumber;
 + (BOOL)validateCarNo:(NSString*)carNo;
++ (BOOL)validateSixNumber:(NSString*)carNo;
 
 //隐藏多余的分割线
 + (void)setExtraCellLineHidden: (UITableView *)tableView;
@@ -38,5 +39,8 @@
 
 //json转成字典
 + (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString;
+
+//提醒
++ (void)addAlertViewWithTitel:(NSString*)titel;
 
 @end

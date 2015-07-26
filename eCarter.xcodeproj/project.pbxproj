@@ -417,12 +417,12 @@
 		DEEDABE51B63E9D500247916 /* allCouponList.json in Resources */ = {isa = PBXBuildFile; fileRef = DEEDABD31B63E9D500247916 /* allCouponList.json */; };
 		DEEDABE61B63E9D500247916 /* info.json in Resources */ = {isa = PBXBuildFile; fileRef = DEEDABD41B63E9D500247916 /* info.json */; };
 		DEEDABE71B63E9D500247916 /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = DEEDABD51B63E9D500247916 /* login.json */; };
-		DEEDABE81B63E9D500247916 /* queryCarBrand in Resources */ = {isa = PBXBuildFile; fileRef = DEEDABD61B63E9D500247916 /* queryCarBrand */; };
+		DEEDABE81B63E9D500247916 /* queryCarBrand.json in Resources */ = {isa = PBXBuildFile; fileRef = DEEDABD61B63E9D500247916 /* queryCarBrand.json */; };
 		DEEDABE91B63E9D500247916 /* queryCarSeries.json in Resources */ = {isa = PBXBuildFile; fileRef = DEEDABD71B63E9D500247916 /* queryCarSeries.json */; };
 		DEEDABEA1B63E9D500247916 /* queryCoupon.json in Resources */ = {isa = PBXBuildFile; fileRef = DEEDABD81B63E9D500247916 /* queryCoupon.json */; };
 		DEEDABEB1B63E9D500247916 /* queryOrderDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = DEEDABD91B63E9D500247916 /* queryOrderDetail.json */; };
 		DEEDABEC1B63E9D500247916 /* queryOrderList.json in Resources */ = {isa = PBXBuildFile; fileRef = DEEDABDA1B63E9D500247916 /* queryOrderList.json */; };
-		DEEDABED1B63E9D500247916 /* queryOrderLog in Resources */ = {isa = PBXBuildFile; fileRef = DEEDABDB1B63E9D500247916 /* queryOrderLog */; };
+		DEEDABED1B63E9D500247916 /* queryOrderLog.json in Resources */ = {isa = PBXBuildFile; fileRef = DEEDABDB1B63E9D500247916 /* queryOrderLog.json */; };
 		DEEDABEE1B63E9D500247916 /* queryPointTransaction.json in Resources */ = {isa = PBXBuildFile; fileRef = DEEDABDC1B63E9D500247916 /* queryPointTransaction.json */; };
 		DEEDABEF1B63E9D500247916 /* queryStoreDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = DEEDABDD1B63E9D500247916 /* queryStoreDetail.json */; };
 		DEEDABF01B63E9D500247916 /* queryStoreList.json in Resources */ = {isa = PBXBuildFile; fileRef = DEEDABDE1B63E9D500247916 /* queryStoreList.json */; };
@@ -432,6 +432,7 @@
 		DEEDABF41B63E9D500247916 /* queryUserCar.json in Resources */ = {isa = PBXBuildFile; fileRef = DEEDABE21B63E9D500247916 /* queryUserCar.json */; };
 		DEEDABF51B63E9D500247916 /* queryUserRecharge.json in Resources */ = {isa = PBXBuildFile; fileRef = DEEDABE31B63E9D500247916 /* queryUserRecharge.json */; };
 		DEEDABF61B63E9D500247916 /* register.json in Resources */ = {isa = PBXBuildFile; fileRef = DEEDABE41B63E9D500247916 /* register.json */; };
+		DEEDABFA1B6514F100247916 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = DEEDABF91B6514F100247916 /* iToast.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DEFB2B5C1B4435BE00C74FC0 /* MainDriverCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFB2B591B4435BE00C74FC0 /* MainDriverCtrl.m */; };
 		DEFB2B5D1B4435BE00C74FC0 /* mgDriverStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEFB2B5A1B4435BE00C74FC0 /* mgDriverStoryboard.storyboard */; };
 		DEFB2B681B44360B00C74FC0 /* Default_picture.png in Resources */ = {isa = PBXBuildFile; fileRef = DEFB2B611B44360B00C74FC0 /* Default_picture.png */; };
@@ -1104,12 +1105,12 @@
 		DEEDABD31B63E9D500247916 /* allCouponList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = allCouponList.json; sourceTree = "<group>"; };
 		DEEDABD41B63E9D500247916 /* info.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = info.json; sourceTree = "<group>"; };
 		DEEDABD51B63E9D500247916 /* login.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
-		DEEDABD61B63E9D500247916 /* queryCarBrand */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = queryCarBrand; sourceTree = "<group>"; };
+		DEEDABD61B63E9D500247916 /* queryCarBrand.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = queryCarBrand.json; sourceTree = "<group>"; };
 		DEEDABD71B63E9D500247916 /* queryCarSeries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = queryCarSeries.json; sourceTree = "<group>"; };
 		DEEDABD81B63E9D500247916 /* queryCoupon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = queryCoupon.json; sourceTree = "<group>"; };
 		DEEDABD91B63E9D500247916 /* queryOrderDetail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = queryOrderDetail.json; sourceTree = "<group>"; };
 		DEEDABDA1B63E9D500247916 /* queryOrderList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = queryOrderList.json; sourceTree = "<group>"; };
-		DEEDABDB1B63E9D500247916 /* queryOrderLog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = queryOrderLog; sourceTree = "<group>"; };
+		DEEDABDB1B63E9D500247916 /* queryOrderLog.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = queryOrderLog.json; sourceTree = "<group>"; };
 		DEEDABDC1B63E9D500247916 /* queryPointTransaction.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = queryPointTransaction.json; sourceTree = "<group>"; };
 		DEEDABDD1B63E9D500247916 /* queryStoreDetail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = queryStoreDetail.json; sourceTree = "<group>"; };
 		DEEDABDE1B63E9D500247916 /* queryStoreList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = queryStoreList.json; sourceTree = "<group>"; };
@@ -1119,6 +1120,8 @@
 		DEEDABE21B63E9D500247916 /* queryUserCar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = queryUserCar.json; sourceTree = "<group>"; };
 		DEEDABE31B63E9D500247916 /* queryUserRecharge.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = queryUserRecharge.json; sourceTree = "<group>"; };
 		DEEDABE41B63E9D500247916 /* register.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = register.json; sourceTree = "<group>"; };
+		DEEDABF81B6514F100247916 /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
+		DEEDABF91B6514F100247916 /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
 		DEFB2B581B4435BE00C74FC0 /* MainDriverCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainDriverCtrl.h; path = MyDriver/MainDriverCtrl.h; sourceTree = "<group>"; };
 		DEFB2B591B4435BE00C74FC0 /* MainDriverCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainDriverCtrl.m; path = MyDriver/MainDriverCtrl.m; sourceTree = "<group>"; };
 		DEFB2B5A1B4435BE00C74FC0 /* mgDriverStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = mgDriverStoryboard.storyboard; path = MyDriver/mgDriverStoryboard.storyboard; sourceTree = "<group>"; };
@@ -1264,6 +1267,7 @@
 		DE9D12331B514AC100046407 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				DEEDABF71B6514F100247916 /* iTostView */,
 				DE9D12C81B52DB1600046407 /* WexinSDK */,
 				DE9D12561B52BE0000046407 /* AliPay */,
 				DE9D12521B51560F00046407 /* AMapSearchKit.framework */,
@@ -1812,7 +1816,6 @@
 				DEFDF59A1B5BCCFC00298366 /* AdvertisementCell.h */,
 				DEFDF59B1B5BCCFC00298366 /* AdvertisementCell.m */,
 				DEFDF59C1B5BCCFC00298366 /* AdvertisementCell.xib */,
-				DEE87CF61B48EB8500D3EDAB /* CarNumCell.m */,
 				DEE87CF81B48EC0500D3EDAB /* BalanceMoneyCell.h */,
 				DEE87CF91B48EC0500D3EDAB /* BalanceMoneyCell.m */,
 				DEE87CFA1B48EC0500D3EDAB /* BalanceMoneyCell.xib */,
@@ -1820,6 +1823,7 @@
 				DEE87CFC1B48EC0500D3EDAB /* CarDetailCell.m */,
 				DEE87CFD1B48EC0500D3EDAB /* CarDetailCell.xib */,
 				DEE87CFE1B48EC0500D3EDAB /* CarNumCell.h */,
+				DEE87CF61B48EB8500D3EDAB /* CarNumCell.m */,
 				DEE87CFF1B48EC0500D3EDAB /* CarNumCell.xib */,
 				DEE87D001B48EC0500D3EDAB /* OtherPaymentCell.h */,
 				DEE87D011B48EC0500D3EDAB /* OtherPaymentCell.m */,
@@ -2115,12 +2119,12 @@
 				DEEDABD31B63E9D500247916 /* allCouponList.json */,
 				DEEDABD41B63E9D500247916 /* info.json */,
 				DEEDABD51B63E9D500247916 /* login.json */,
-				DEEDABD61B63E9D500247916 /* queryCarBrand */,
+				DEEDABD61B63E9D500247916 /* queryCarBrand.json */,
 				DEEDABD71B63E9D500247916 /* queryCarSeries.json */,
 				DEEDABD81B63E9D500247916 /* queryCoupon.json */,
 				DEEDABD91B63E9D500247916 /* queryOrderDetail.json */,
 				DEEDABDA1B63E9D500247916 /* queryOrderList.json */,
-				DEEDABDB1B63E9D500247916 /* queryOrderLog */,
+				DEEDABDB1B63E9D500247916 /* queryOrderLog.json */,
 				DEEDABDC1B63E9D500247916 /* queryPointTransaction.json */,
 				DEEDABDD1B63E9D500247916 /* queryStoreDetail.json */,
 				DEEDABDE1B63E9D500247916 /* queryStoreList.json */,
@@ -2132,6 +2136,15 @@
 				DEEDABE41B63E9D500247916 /* register.json */,
 			);
 			path = TempJsonFile;
+			sourceTree = "<group>";
+		};
+		DEEDABF71B6514F100247916 /* iTostView */ = {
+			isa = PBXGroup;
+			children = (
+				DEEDABF81B6514F100247916 /* iToast.h */,
+				DEEDABF91B6514F100247916 /* iToast.m */,
+			);
+			path = iTostView;
 			sourceTree = "<group>";
 		};
 		DEFB2B561B4435A500C74FC0 /* MyDriver */ = {
@@ -2418,7 +2431,7 @@
 				DED7F57B1B4760DB0005019C /* icon_time@2x.png in Resources */,
 				DE9D12271B50F11E00046407 /* location_no@2x.png in Resources */,
 				DED7F5961B4761060005019C /* Coupons_but_stop@3x.png in Resources */,
-				DEEDABE81B63E9D500247916 /* queryCarBrand in Resources */,
+				DEEDABE81B63E9D500247916 /* queryCarBrand.json in Resources */,
 				DEE093031B3B29A500243475 /* PhoneInfoCell.xib in Resources */,
 				DEE337411B4C40D900357253 /* Share_sina@3x.png in Resources */,
 				DEE0930D1B3B2A0000243475 /* CarAndAdressCell.xib in Resources */,
@@ -2478,7 +2491,7 @@
 				DED7F54E1B4760DB0005019C /* btn_pay_Cancel.png@2x.png in Resources */,
 				DEE337521B4C417F00357253 /* SeriesCarCell.xib in Resources */,
 				DED7F54A1B4760DB0005019C /* address_btn_PD-White@3x.png in Resources */,
-				DEEDABED1B63E9D500247916 /* queryOrderLog in Resources */,
+				DEEDABED1B63E9D500247916 /* queryOrderLog.json in Resources */,
 				DEE337111B4C40D900357253 /* Other@2x.png in Resources */,
 				DE9D12261B50F11E00046407 /* car@2x.png in Resources */,
 				DEE3371A1B4C40D900357253 /* login_Account@3x.png in Resources */,
@@ -2753,6 +2766,7 @@
 				DEFB2B771B44361700C74FC0 /* mainListCell.m in Sources */,
 				DECA17231B614B4700FD3418 /* Coupon.m in Sources */,
 				DED2EADA1B35D3A5006FE893 /* main.m in Sources */,
+				DEEDABFA1B6514F100247916 /* iToast.m in Sources */,
 				DEE52ED01B38FAEB00C90BA3 /* CouponMainInfoCell.m in Sources */,
 				DEE48B9F1B39A4BF00458D6F /* TimeCell.m in Sources */,
 				DEE48BB31B39AAD200458D6F /* PaymentCell.m in Sources */,
@@ -2948,7 +2962,7 @@
 					"$(PROJECT_DIR)/eCarter/ThirdLib/WexinSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f2654f32-8db3-48c7-b35b-2c655de393d6";
+				PROVISIONING_PROFILE = "70f1f540-dcdb-4760-9546-daab61bc4ddf";
 			};
 			name = Debug;
 		};
@@ -2982,7 +2996,7 @@
 					"$(PROJECT_DIR)/eCarter/ThirdLib/WexinSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f2654f32-8db3-48c7-b35b-2c655de393d6";
+				PROVISIONING_PROFILE = "70f1f540-dcdb-4760-9546-daab61bc4ddf";
 			};
 			name = Release;
 		};

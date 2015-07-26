@@ -7,6 +7,7 @@
 //
 
 #import "HKCommen.h"
+#import "iToast.h"
 
 @implementation HKCommen
 
@@ -117,6 +118,17 @@
     return [carTest evaluateWithObject:carNo];
 }
 
++(BOOL) validateSixNumber:(NSString*)carNo
+{
+//    NSString *carRegex = @"^\\d{n}$";
+//    NSPredicate *carTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",carRegex];
+//    NSLog(@"carTest is %@",carTest);
+//    return [carTest evaluateWithObject:carNo];
+    
+    return YES;
+}
+
+
 //转Json
 + (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString
 {
@@ -134,6 +146,25 @@
         return nil;
     }
     return dic;
+}
+
++ (void)addAlertViewWithTitel:(NSString*)titel
+{
+    NSLog(@"titel = %@",titel);
+    
+    iToastSettings *theSettings = [iToastSettings getSharedSettings];
+    
+    [theSettings setDuration:iToastDurationNormal];
+    
+    
+    
+    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+    
+        [[iToast makeText:titel] show];
+        
+//    });
+
 }
 
 
