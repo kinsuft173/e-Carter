@@ -2962,7 +2962,7 @@
 					"$(PROJECT_DIR)/eCarter/ThirdLib/WexinSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "70f1f540-dcdb-4760-9546-daab61bc4ddf";
+				PROVISIONING_PROFILE = "ec732307-241f-49c0-b20e-16f19f59731b";
 			};
 			name = Debug;
 		};
@@ -2996,7 +2996,7 @@
 					"$(PROJECT_DIR)/eCarter/ThirdLib/WexinSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "70f1f540-dcdb-4760-9546-daab61bc4ddf";
+				PROVISIONING_PROFILE = "ec732307-241f-49c0-b20e-16f19f59731b";
 			};
 			name = Release;
 		};
