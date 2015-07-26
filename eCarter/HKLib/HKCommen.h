@@ -34,4 +34,8 @@
 //简易的颜色获取
 + (UIColor*)getColor:(NSString *)hexColor;
 + (UIColor*)getColor:(NSString *)hexColor WithAlpha:(CGFloat)alpha;
+
+//json转成字典
++ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString;
+
 @end

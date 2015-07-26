@@ -1,0 +1,34 @@
+{
+    "message": "OK", 
+    "status": 2000000, 
+    "data": [
+        {
+            "id": "1", 
+            "userId": "1", 
+            "plateNumber": "粤A6666", 
+            "brandId": "1", 
+            "brandName": "奥迪", 
+            "seriesId": "13", 
+            "seriesName": "A4", 
+            "model": "2011", 
+            "engines": "XXX", 
+            "colour": "白色", 
+            "engineNumber": "123456", 
+            "frameNumber": "123456"
+        }, 
+        {
+            "id": "2", 
+            "userId": "1", 
+            "plateNumber": "粤A5566", 
+            "brandId": "1", 
+            "brandName": "迪奥", 
+            "seriesId": "13", 
+            "seriesName": "4A", 
+            "model": "2012", 
+            "engines": "XXX", 
+            "colour": "色色", 
+            "engineNumber": "123456", 
+            "frameNumber": "123456"
+        }
+    ]
+}

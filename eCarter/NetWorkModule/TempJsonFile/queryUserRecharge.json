@@ -1,0 +1,22 @@
+{
+    "message": "OK", 
+    "status": 2000000, 
+    "data": [
+        {
+            "id": "123", 
+            "userId": "1", 
+            "amount": 100, 
+            "discountAmount": 1, 
+            "payStyle": "WEIXIN", 
+            "createTime": "Jul 22, 2015 10:37:31 AM"
+        }, 
+        {
+            "id": "123", 
+            "userId": "1", 
+            "amount": 50, 
+            "discountAmount": 0.5, 
+            "payStyle": "ALIP", 
+            "createTime": "Jul 22, 2015 10:37:31 AM"
+        }
+    ]
+}

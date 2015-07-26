@@ -1,0 +1,46 @@
+{ 
+    "message": "OK", 
+    "status": 2000000, 
+    "data": {
+        "storeInfo": {
+            "id": "1", 
+            "storeImg": "http://img3.imgtn.bdimg.com/it/u=3818981675,2653652792&fm=21&gp=0.jpg", 
+            "storeName": "广州市天河区棠下西沙汽车美容中心", 
+            "storeScore": "4.2", 
+            "distance": "1.2", 
+            "startBusinessTime": "8:30", 
+            "endBusinessTime": "9:30", 
+            "address": "广州市天河区棠安路148", 
+            "mobile": "13800138000"
+        }, 
+        "serviceItemList": [
+            {
+                "id": "1", 
+                "storeId": "1", 
+                "serviceItemName": "泡妞", 
+                "amount": "23.5"
+            }, 
+            {
+                "id": "2", 
+                "storeId": "1", 
+                "serviceItemName": "优衣库", 
+                "amount": "31.5"
+            }
+        ], 
+        "reviewsList": [
+            {
+                "id": "1", 
+                "storeId": "1", 
+                "reviews": "工期赶死人了", 
+                "userId": "1001"
+            }, 
+            {
+                "id": "1", 
+                "storeId": "1", 
+                "orderId": "2015001", 
+                "reviews": "工期赶死人了", 
+                "userId": "1001"
+            }
+        ]
+    }
+}

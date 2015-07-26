@@ -1,0 +1,60 @@
+{ 
+    "message": "OK", 
+    "status": 2000000, 
+    "data": [
+        {
+            "id": "1", 
+            "storeId": "1", 
+            "serviceDate": "2015-07-25", 
+            "serviceTimeList": [
+                {
+                    "id": "1", 
+                    "serviceTimeS": "8:00", 
+                    "serviceTimeE": "9:00"
+                }, 
+                {
+                    "id": "2", 
+                    "serviceTimeS": "9:00", 
+                    "serviceTimeE": "10:00"
+                }, 
+                {
+                    "id": "3", 
+                    "serviceTimeS": "10:00", 
+                    "serviceTimeE": "11:00"
+                }, 
+                {
+                    "id": "4", 
+                    "serviceTimeS": "11:00", 
+                    "serviceTimeE": "12:00"
+                }
+            ]
+        }, 
+        {
+            "id": "2", 
+            "storeId": "1", 
+            "serviceDate": "2015-07-26", 
+            "serviceTimeList": [
+                {
+                    "id": "1", 
+                    "serviceTimeS": "8:00", 
+                    "serviceTimeE": "9:00"
+                }, 
+                {
+                    "id": "2", 
+                    "serviceTimeS": "9:00", 
+                    "serviceTimeE": "10:00"
+                }, 
+                {
+                    "id": "3", 
+                    "serviceTimeS": "10:00", 
+                    "serviceTimeE": "11:00"
+                }, 
+                {
+                    "id": "4", 
+                    "serviceTimeS": "11:00", 
+                    "serviceTimeE": "12:00"
+                }
+            ]
+        }
+    ]
+}

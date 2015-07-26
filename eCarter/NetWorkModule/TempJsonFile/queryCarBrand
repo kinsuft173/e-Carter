@@ -1,0 +1,22 @@
+{
+    "message": "OK", 
+    "status": 2000000, 
+    "data": [
+        {
+            "id": "1", 
+            "brandName": "奥迪"
+        }, 
+        {
+            "id": "2", 
+            "brandName": "本田"
+        }, 
+        {
+            "id": "3", 
+            "brandName": "法拉利"
+        }, 
+        {
+            "id": "4", 
+            "brandName": "兰博基尼"
+        }
+    ]
+}

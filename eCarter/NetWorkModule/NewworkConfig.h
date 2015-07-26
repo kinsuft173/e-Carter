@@ -11,56 +11,58 @@
 
 
 #define SERVER    @"http://115.28.85.76/gaoshou/api/web/?r="
+#define ISINTEST  YES
 
 #pragma mark - 网络接口回调类型
 typedef void (^CompleteHandle)(NSDictionary*);
-
+typedef void (^ErrorHandle)(NSError*);
 
 #pragma mark - 网络相关url
 
+//test
+#define ECATER_TEST_INTERFACE @"order/create"
+
 //用户部分
-#define USER_REGESTER_URL @"user/create"
-#define USER_FETCH_URL @"user/view"   
-#define USER_UPDATE_URL @"user/update"  
+#define ECATER_LOGIN_INTERFACE @"/ecar/mobile/login"
+#define ECATER_GENCODE_INTERFACE @"/ecar/mobile/genCode"
+#define ECATER_REGISTER_INTERFACE @"/ecar/mobile/register"
+#define ECATER_LOGOUT_INTERFACE @"/ecar/mobile/logout"
 
-//广告部分
-#define APP_AD_URL @"advertisement/index"
+//首页部分
+#define ECATER_INFO_INTERFACE @"/api/user/info"
+#define ECATER_AllCOUPON_LIST_INTERFACE @"/ecar/mobile/allCouponList"
+#define ECATER_QUERY_COUPON_INTERFACE @"/ecar/mobile/queryCoupon"
+#define ECATER_QUERY_STORE_LIST_INTERFACE @"/ecar/mobile/queryStoreList"
+#define ECATER_QUERY_STROE_DETAIL_INTERFACE @"/ecar/mobile/queryStoreDetail"
+#define ECATER_QUERY_STORE_SERVICETIME_INTERFACE @"/ecar/mobile/queryStoreServiceTime"
+#define ECATER_SAVE_SERVICE_ORDER_INTERFACE @"/ecar/mobile/saveServiceOrder"
+#define ECATER_SAVE_ORDER_PAY_INTERFACE @"/ecar/mobile/saveOrderPay"
 
-//医生
-#define DOCTOR_FETCH_URL @"doctor/index"
 
-//咨询问诊
-#define CONSULATION_CREATE_URL @"consultation/create"
-#define CONSULATION_FETCH_URL @"consultation/index"
+#define ECATER_QUERY_ORDER_LIST_INTERFACE @"/ecar/mobile/queryOrderList"
+#define ECATER_QUERY_ODERD_ETAIL_INTERFACE @"/ecar/mobile/queryOrderDetail"
+#define ECATER_QUERY_ODER_LOG_INTERFACE @"/ecar/mobile/queryOrderLog"
+#define ECATER_UPDATE_ORDER_STATUS_INTERFACE @"/ecar/mobile/updateOrderStatus"
+#define ECATER_SUBMIT_ODERRE_VIEW_INTERFACE @"/ecar/mobile/submitOrderReviews"
+#define ECATER_USER_ACCOUNT_INTERFACE @"/ecar/mobile/queryUserAccount"
+#define ECATER_QUERY_USERRECHARGE_INTERFACE @"/ecar/mobile/queryUserRecharge"
+#define ECATER_SUBMIT_RECHARGEINO_INTERFACE @"/ecar/mobile/submitRechargeInfo"
+#define ECATER_QUERY_USER_CAR_INTERFACE @"/ecar/mobile/queryUserCar"
+#define ECATER_ADD_CAR_INTERFACE @"/ecar/mobile/addCar"
 
-//订单创建
-#define ORDER_CREATE_URL @"order/create"
-#define ORDER_FETCH_URL @"order/index"
-#define ORDER_UPDATE_URL @"order/update"
 
-//病史
-#define ANAMNESIS_FETCH_URL @"anamnesis/index"
+#define ECATER_QUERY_CAR_BRAND_INTERFACE @"/ecar/mobile/queryCarBrand"
+#define ECATER_QUERY_CAR_SERIES_INTERFACE @"/ecar/mobile/queryCarSeries"
 
-//分类
-#define CATEGORY_FETCH_URL @"category/index"
 
-//城市
-#define CITY_FETCH_URL @"city/index"
+#define ECATER_QUERY_USER_ADDRESS_INTERFACE @"/ecar/mobile/queryUserAddress"
+#define ECATER_ADD_USER_ADDRESS_INTERFACE @"/ecar/mobile/addUserAddress"
 
-//评价
-#define EVALUATE_CREATE_URL @"evaluate/create"
-#define EVALUATE_FETCH_URL @"evaluate/index"
+#define ECATER_POINT_TRANSACTION_INTERFACE @"/ecar/mobile/queryPointTransaction"
 
-//专长
-#define EXPERTISE_FETCH_URL @"expertise/index"
 
-//收藏
-#define FAVORITES_FETCH_URL @"favorites/index"
-#define FAVORITES_CREATE_URL @"favorites/create"
-//投死
-#define REPINE_CREATE_URL @"repine/create"
+//#define ECATER_INFO_INTERFACE @""
+//#define ECATER_INFO_INTERFACE @""
 
-//症状
-#define REPINE_FETCH_URL @"symptom/index"
 
 #endif

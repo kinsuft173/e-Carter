@@ -9,10 +9,13 @@
 #import "ShopGetCtrl.h"
 #import "ShopCell.h"
 #import <MJRefresh.h>
+#import <MJExtension.h>
+#import "Shop.h"
+#import "NetworkManager.h"
 
 @interface ShopGetCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
-@property (nonatomic, strong) NSMutableArray* arrayModels;
+@property (nonatomic, strong) NSMutableArray* arrayModel;
 @property (nonatomic, strong) IBOutlet UITableView* tableView;
 
 @end
@@ -51,7 +54,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.arrayModels.count;
+    return self.arrayModel.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -75,13 +78,13 @@
             
         }
         
-        cell.lbl_Adress.text=[[self.arrayModels objectAtIndex:indexPath.row] objectForKey:@"address"];
+        cell.lbl_Adress.text=[[self.arrayModel objectAtIndex:indexPath.row] objectForKey:@"address"];
         
-        cell.lbl_Distance.text=[[self.arrayModels objectAtIndex:indexPath.row] objectForKey:@"distance"];
+        cell.lbl_Distance.text=[[self.arrayModel objectAtIndex:indexPath.row] objectForKey:@"distance"];
         
-        cell.lbl_Evaluation.text=[NSString stringWithFormat:@"(%@)",[[self.arrayModels objectAtIndex:indexPath.row] objectForKey:@"evaluation"]];
+        cell.lbl_Evaluation.text=[NSString stringWithFormat:@"(%@)",[[self.arrayModel objectAtIndex:indexPath.row] objectForKey:@"evaluation"]];
         
-        [cell initWithDict:[[[self.arrayModels objectAtIndex:indexPath.row] objectForKey:@"evaluation"] floatValue]];
+        [cell initWithDict:[[[self.arrayModel objectAtIndex:indexPath.row] objectForKey:@"evaluation"] floatValue]];
         
         return cell;
     
@@ -108,22 +111,41 @@
     
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
-        self.arrayModels = [[NSMutableArray alloc] init];
         
-        for (int i = 0; i < 20; i++) {
-            
-            NSMutableDictionary *dict1=[[NSMutableDictionary alloc] init];
-            [dict1 setObject:@"广州天河区赏下汽车美容中心" forKey:@"address"];
-            [dict1 setObject:@"4.2" forKey:@"evaluation"];
-            [dict1 setObject:[NSString stringWithFormat:@"0.0%dkm",i] forKey:@"distance"];
-            
-            [self.arrayModels addObject:dict1];
-            
-        }
+        NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:@"",@"page", nil];
         
-        [self.tableView reloadData];
-        
-        [self.tableView.header endRefreshing];
+        [[NetworkManager shareMgr] server_fetchDoctorsWithDic:dic completeHandle:^(NSDictionary *response) {
+            
+            NSArray* tempArray = [[response objectForKey:@"data"] objectForKey:@"items"];
+            
+            if (tempArray.count != 0) {
+                
+                [self.arrayModel addObjectsFromArray:tempArray];
+                
+            }else{
+                
+                return ;
+            
+            }
+            
+            self.arrayModel = [[NSMutableArray alloc] init];
+            
+            for (int i = 0; i < 20; i++) {
+                
+                NSMutableDictionary *dict1=[[NSMutableDictionary alloc] init];
+                [dict1 setObject:@"广州天河区赏下汽车美容中心" forKey:@"address"];
+                [dict1 setObject:@"4.2" forKey:@"evaluation"];
+                [dict1 setObject:[NSString stringWithFormat:@"0.0%dkm",i] forKey:@"distance"];
+                
+                [self.arrayModel addObject:dict1];
+                
+            }
+            
+            [self.tableView.header endRefreshing];
+            
+            [self.tableView reloadData];
+            
+        }];
         
     }];
     
@@ -138,7 +160,7 @@
             [dict1 setObject:@"4.2" forKey:@"evaluation"];
             [dict1 setObject:[NSString stringWithFormat:@"0.0%dkm",i] forKey:@"distance"];
             
-            [self.arrayModels addObject:dict1];
+            [self.arrayModel addObject:dict1];
             
         }
         

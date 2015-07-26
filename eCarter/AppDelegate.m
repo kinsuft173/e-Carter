@@ -12,6 +12,7 @@
 #import "HKMapManager.h"
 #import "WXApi.h"
 #import "payRequsestHandler.h"
+#import "NetworkManager.h"
 
 @interface AppDelegate ()
 
@@ -34,11 +35,12 @@
     [MAMapServices sharedServices].apiKey = (NSString *)APIKey;
     
     [WXApi registerApp:APP_ID withDescription:@"demo 2.0"];
+    
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-//    [self configureAPIKey];
+    [self configureAPIKey];
     [HKMapManager shareMgr];
     
     return YES;
