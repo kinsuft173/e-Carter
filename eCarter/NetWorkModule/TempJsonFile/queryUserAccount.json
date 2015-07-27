@@ -1,0 +1,11 @@
+{
+    "message": "OK", 
+    "status": 2000000, 
+    "data": {
+        "id": "12345", 
+        "userId": "1", 
+        "accountType": "1", 
+        "accountAmount": 1000002, 
+        "updateTime": "Jul 22, 2015 10:36:07 AM"
+    }
+}

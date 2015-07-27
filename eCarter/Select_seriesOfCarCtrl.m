@@ -8,6 +8,9 @@
 
 #import "Select_seriesOfCarCtrl.h"
 #import "HKCommen.h"
+#import "NetworkManager.h"
+#import "CarBrand.h"
+#import "CarSeries.h"
 
 @interface Select_seriesOfCarCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -23,28 +26,57 @@
 
 -(void)initUI
 {
-    if ([self.JudgeWhereFrom isEqualToString:@"series"])
+    if ([self.JudgeWhereFrom isEqualToString:@"name"])
     {
         [HKCommen addHeadTitle:@"选择车系" whichNavigation:self.navigationItem];
         
-        self.array_showArray=[NSArray arrayWithObjects:@"2014款 2.0L",@"2014款 2.0L",@"2014款 2.0L", nil];
-    }
-    else if ([self.JudgeWhereFrom isEqualToString:@"name"])
+        [[NetworkManager shareMgr] server_queryCarBrandWithDic:nil completeHandle:^(NSDictionary *response) {
+            
+            NSArray* tempArray = [response objectForKey:@"data"];
+            
+            if (tempArray.count != 0) {
+                
+                self.array_showArray = [[NSMutableArray alloc] init];
+                
+                [self.array_showArray addObjectsFromArray:tempArray];
+                
+            }
+            
+            
+            [self.myTable reloadData];
+            
+        }];
+        
+        
+    }else if ([self.JudgeWhereFrom isEqualToString:@"series"])
     {
         
-        [HKCommen addHeadTitle:@"奥迪" whichNavigation:self.navigationItem];
-        self.array_showArray=[NSArray arrayWithObjects:@"奥迪A6L",@"奥迪Q5",@"奥迪R8", nil];
-    }
-    else if ([self.JudgeWhereFrom isEqualToString:@"color"])
+        [HKCommen addHeadTitle:self.preBrand whichNavigation:self.navigationItem];
+        
+        [[NetworkManager shareMgr] server_queryCarSeriesWithDic:nil completeHandle:^(NSDictionary *response) {
+            
+            NSArray* tempArray = [response objectForKey:@"data"];
+            
+            if (tempArray.count != 0) {
+                
+                self.array_showArray = [[NSMutableArray alloc] init];
+                
+                [self.array_showArray addObjectsFromArray:tempArray];
+                
+            }
+            
+            
+            [self.myTable reloadData];
+            
+        }];
+    }else if ([self.JudgeWhereFrom isEqualToString:@"color"])
     {
         [HKCommen addHeadTitle:@"选择颜色" whichNavigation:self.navigationItem];
-       self.array_showArray=[NSArray arrayWithObjects:@"银色",@"黑色",@"白色",@"红色",@"灰色",@"蓝色",@"棕色",@"深蓝色",@"香槟金",@"其他", nil];
         
+        self.array_showArray=[NSArray arrayWithObjects:@"银色",@"黑色",@"白色",@"红色",@"灰色",@"蓝色",@"棕色",@"深蓝色",@"香槟金",@"其他", nil];
         self.array_color=[NSArray arrayWithObjects:@"Silver",@"Black",@"White",@"red",@"Grey",@"blue",@"Brown",@"Navy_Blue",@"Champagne_gold",@"Other", nil];
     }
-    
-    
-    
+
     
     UIButton *rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
     rightButton.titleLabel.font=[UIFont systemFontOfSize:15.0];
@@ -90,7 +122,7 @@
     static NSString* cellId = @"SeriesCarCell";
 
         
-        SeriesCarCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    SeriesCarCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId];
         
         if (!cell) {
             
@@ -110,10 +142,52 @@
         cell.imgOfColor.hidden=YES;
     }
     
-    cell.lbl_seriesOfCar.text=[self.array_showArray objectAtIndex:indexPath.row];
+    if ([self.JudgeWhereFrom isEqualToString:@"series"]) {
         
-        return cell;
+        CarSeries* carBrand = [CarSeries objectWithKeyValues:[self.array_showArray objectAtIndex:indexPath.row]] ;
+        
+        cell.lbl_seriesOfCar.text = carBrand.seriesName;
+        
+    }else  if([self.JudgeWhereFrom isEqualToString:@"name"]){
+    
+        CarBrand* carBrand = [CarBrand objectWithKeyValues:[self.array_showArray objectAtIndex:indexPath.row]] ;
+        
+        cell.lbl_seriesOfCar.text = carBrand.brandName;
+    
+    }
+        
+    return cell;
 
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary* dic;
+    
+    if ([self.JudgeWhereFrom isEqualToString:@"color"]) {
+        
+        dic = [NSDictionary dictionaryWithObjectsAndKeys:[self.array_showArray objectAtIndex:indexPath.row], @"color",nil];
+  
+    }else if ([self.JudgeWhereFrom isEqualToString:@"series"]) {
+        
+        CarSeries* carBrand = [CarSeries objectWithKeyValues:[self.array_showArray objectAtIndex:indexPath.row]] ;
+        
+        dic = [NSDictionary dictionaryWithObjectsAndKeys:carBrand.seriesName,@"series", nil];
+        
+        
+    }else  if([self.JudgeWhereFrom isEqualToString:@"name"]){
+    
+        
+        CarBrand* carBrand = [CarBrand objectWithKeyValues:[self.array_showArray objectAtIndex:indexPath.row]] ;
+        
+        dic = [NSDictionary dictionaryWithObjectsAndKeys:carBrand.brandName,@"name", nil];
+    }
+    
+    NSLog(@"dic = %@",dic);
+    
+    [self.delegate handleCarSlect:dic];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

@@ -14,4 +14,12 @@
 @property (strong,nonatomic) starView *star;
 @property (strong,nonatomic) IBOutlet UIView* viewForMask1;
 
+@property (strong, nonatomic) IBOutlet UILabel* lblStoreName;
+@property (strong, nonatomic) IBOutlet UILabel* lblStoreScore;
+@property (strong, nonatomic) IBOutlet UILabel* lblDistance;
+@property (strong, nonatomic) IBOutlet UILabel* lblTimeStartAndEnd;
+@property (strong, nonatomic) IBOutlet UILabel* lblAddress;
+@property (strong, nonatomic) IBOutlet UILabel* lblServerItems;
+
+
 @end

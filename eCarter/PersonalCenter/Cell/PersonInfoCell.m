@@ -15,6 +15,9 @@
     if ([self.contentView respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
         self.contentView.preservesSuperviewLayoutMargins = NO;
     }
+    
+    self.imgHead.layer.cornerRadius = 30;
+    self.imgHead.layer.masksToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

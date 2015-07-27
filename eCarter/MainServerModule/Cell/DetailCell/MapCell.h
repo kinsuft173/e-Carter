@@ -10,4 +10,6 @@
 
 @interface MapCell : UITableViewCell
 
+@property (nonatomic, strong) IBOutlet UILabel* lblAdress;
+
 @end

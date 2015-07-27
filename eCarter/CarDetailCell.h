@@ -10,4 +10,7 @@
 
 @interface CarDetailCell : UITableViewCell
 
+@property (nonatomic, strong) IBOutlet UITextField* textFiledFadongji;
+@property (nonatomic, strong) IBOutlet UITextField* textFiledChejia;
+
 @end

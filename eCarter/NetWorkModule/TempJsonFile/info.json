@@ -1,0 +1,16 @@
+{
+    "message": "OK", 
+    "status": 2000000, 
+    "data": [
+        {
+            "id": "1", 
+           "position": 1, 
+            "idx": 1, 
+            "imageUrl": "https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superplus/img/logo_white_ee663702.png", 
+            "link": "http://www.baidu.com", 
+            "updateTime": "1425891774741", 
+           "city": 0, 
+            "cityName": "默认"
+       }
+    ]
+}

@@ -18,10 +18,13 @@
 #import "CommentCell.h"
 #import "ServiceCommentinfoCell.h"
 #import "PaymentCtrl.h"
+#import "NetworkManager.h"
+#import "ShopDetail.h"
 
 @interface SelfDetailCtrl ()
 
 @property (nonatomic, strong) IBOutlet UITableView* tableView;
+@property (nonatomic, strong) ShopDetail* shopDetail;
 
 @end
 
@@ -31,15 +34,48 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        [self.tableView setLayoutMargins: UIEdgeInsetsZero];
-    }
+    [HKCommen setExtraCellLineHidden:self.tableView];
+    
+    [self addRefresh];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)addRefresh
+{
+    
+    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        
+        NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:self.preDataShopId,@"storeId", nil];
+        
+        [[NetworkManager shareMgr] server_queryStoreDetailWithDic:dic completeHandle:^(NSDictionary *response) {
+            
+            NSDictionary* dic = [response objectForKey:@"data"];
+            
+            if (dic) {
+                
+                self.shopDetail = [ShopDetail objectWithKeyValues:dic];
+                
+            }
+            
+            
+            [self.tableView.header endRefreshing];
+            
+            [self.tableView reloadData];
+            
+        }];
+        
+    }];
+    
+    
+    [self.tableView.header beginRefreshing];
+    
+}
+
 
 /*
 #pragma mark - Navigation
@@ -55,6 +91,11 @@
 #pragma  mark - tableView DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    if (!self.shopDetail) {
+        
+        return 0;
+    }
+    
     return 5;
 }
 
@@ -74,11 +115,11 @@
         
     }else if (section == 3){
         
-        return 8;
+        return self.shopDetail.serviceItemList.count + 4;
         
     }else if (section == 4){
         
-        return 3;
+        return self.shopDetail.reviewsList.count + 1;
     }
     
     return 0;
@@ -100,7 +141,7 @@
         
     }else if(indexPath.section == 3){
         
-        if (indexPath.row == 7) {
+        if (indexPath.row == self.shopDetail.serviceItemList.count + 3) {
             
             return 84;
             
@@ -150,6 +191,9 @@
             
         }
         
+        [cell.img sd_setImageWithURL:[NSURL URLWithString:self.shopDetail.storeInfo.storeImg]
+                    placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
+        
         return cell;
         
     }else if (indexPath.section == 1) {
@@ -173,6 +217,33 @@
             [cell.contentView addSubview:divideView1];
             
         }
+        
+        cell.lblAddress.text = self.shopDetail.storeInfo.address;
+        cell.lblDistance.text = [NSString stringWithFormat:@"%@km",self.shopDetail.storeInfo.distance];
+        cell.lblStoreName.text = self.shopDetail.storeInfo.storeName;
+        cell.lblStoreScore.text = [NSString stringWithFormat:@"(%@)",self.shopDetail.storeInfo.storeScore];
+        cell.lblTimeStartAndEnd.text = [NSString stringWithFormat:@"营业时间:%@ - %@",self.shopDetail.storeInfo.startBusinessTime,self.shopDetail.storeInfo.endBusinessTime];
+        [cell.star setStarForValue:[self.shopDetail.storeInfo.storeScore floatValue]];
+        
+        NSString* strServerItems = @"";
+        for (int i = 0; i < self.shopDetail.serviceItemList.count; i++ ) {
+            
+            Serviceitemlist* item = [self.shopDetail.serviceItemList objectAtIndex:i];
+            
+            if (i == 0) {
+                
+                strServerItems = [strServerItems stringByAppendingString:[NSString stringWithFormat:@"%@",item.serviceItemName]];
+                
+            }else{
+                
+                strServerItems = [strServerItems stringByAppendingString:[NSString stringWithFormat:@"/%@",item.serviceItemName]];
+                
+            }
+            
+            
+        }
+        
+        cell.lblServerItems.text = strServerItems;
         
         return cell;
         
@@ -223,6 +294,11 @@
             [cell.contentView addSubview:divideView];
             
             }
+            
+            Serviceitemlist* item = [self.shopDetail.serviceItemList objectAtIndex:indexPath.row];
+            
+            cell.lblServerPrice.text = [NSString stringWithFormat:@"¥%@",item.amount];
+            cell.lblSeverName.text = item.serviceItemName;
             
         }
         

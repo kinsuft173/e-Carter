@@ -10,4 +10,6 @@
 
 @interface TellCell : UITableViewCell
 
+@property (nonatomic, strong) IBOutlet UILabel* lblPhone;
+
 @end

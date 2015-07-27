@@ -7,6 +7,7 @@
 //
 
 #import "HKCommen.h"
+#import "iToast.h"
 
 @implementation HKCommen
 
@@ -107,6 +108,63 @@
     NSString *phoneRegex = @"^((13[0-9])|((17[6-8]))|(15[^4,\\D])|(18[0,0-9]))\\d{8}$";
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
     return [phoneTest evaluateWithObject:strPhoneNumber];
+}
+
++(BOOL) validateCarNo:(NSString*)carNo
+{
+    NSString *carRegex = @"^[A-Za-z]{1}[A-Za-z_0-9]{5}$";
+    NSPredicate *carTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",carRegex];
+    NSLog(@"carTest is %@",carTest);
+    return [carTest evaluateWithObject:carNo];
+}
+
++(BOOL) validateSixNumber:(NSString*)carNo
+{
+//    NSString *carRegex = @"^\\d{n}$";
+//    NSPredicate *carTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",carRegex];
+//    NSLog(@"carTest is %@",carTest);
+//    return [carTest evaluateWithObject:carNo];
+    
+    return YES;
+}
+
+
+//转Json
++ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString
+{
+    if (jsonString == nil) {
+        return nil;
+    }
+    
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&err];
+    if(err) {
+        NSLog(@"json解析失败：%@",err);
+        return nil;
+    }
+    return dic;
+}
+
++ (void)addAlertViewWithTitel:(NSString*)titel
+{
+    NSLog(@"titel = %@",titel);
+    
+    iToastSettings *theSettings = [iToastSettings getSharedSettings];
+    
+    [theSettings setDuration:iToastDurationNormal];
+    
+    
+    
+    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+    
+        [[iToast makeText:titel] show];
+        
+//    });
+
 }
 
 

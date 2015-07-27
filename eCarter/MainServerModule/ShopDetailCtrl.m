@@ -18,11 +18,14 @@
 #import "ServiceCommentinfoCell.h"
 #import "HKMapManager.h"
 #import "HKCommen.h"
+#import "ShopDetail.h"
+#import "NetworkManager.h"
 
-@interface ShopDetailCtrl ()<UITableViewDataSource,UITableViewDelegate>
+@interface ShopDetailCtrl ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>
 
-@property (nonatomic, strong) NSDictionary* dicModel;
 @property (nonatomic, strong) IBOutlet UITableView* tableView;
+@property (nonatomic, strong) ShopDetail* shopDetail;
+@property (nonatomic, strong) UIActionSheet *asheet;
 
 @end
 
@@ -31,15 +34,51 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        [self.tableView setLayoutMargins: UIEdgeInsetsZero];
-    }
+//    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+//        [self.tableView setLayoutMargins: UIEdgeInsetsZero];
+//    }
+    
+    [HKCommen setExtraCellLineHidden:self.tableView];
+    
+    [self addRefresh];
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)addRefresh
+{
+    
+    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        
+        NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:self.preDataShopId,@"storeId", nil];
+        
+        [[NetworkManager shareMgr] server_queryStoreDetailWithDic:dic completeHandle:^(NSDictionary *response) {
+            
+            NSDictionary* dic = [response objectForKey:@"data"];
+            
+            if (dic) {
+                
+                self.shopDetail = [ShopDetail objectWithKeyValues:dic];
+                
+            }
+            
+            
+            [self.tableView.header endRefreshing];
+            
+            [self.tableView reloadData];
+            
+        }];
+        
+    }];
+    
+    
+    [self.tableView.header beginRefreshing];
+    
 }
 
 /*
@@ -55,6 +94,12 @@
 #pragma  mark - tableView DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    if (!self.shopDetail) {
+        
+        return 0;
+        
+    }
+    
     return 5;
 }
 
@@ -70,7 +115,7 @@
         
     }else if (section == 2){
     
-        return 3;
+        return self.shopDetail.serviceItemList.count;
         
     }else if (section == 3){
     
@@ -78,7 +123,7 @@
     
     }else if (section == 4){
     
-        return 3;
+        return self.shopDetail.reviewsList.count + 1;
     }
     
     return 0;
@@ -137,6 +182,9 @@
             
         }
         
+        [cell.img sd_setImageWithURL:[NSURL URLWithString:self.shopDetail.storeInfo.storeImg]
+                    placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
+        
         return cell;
         
     }else if (indexPath.section == 1) {
@@ -161,6 +209,33 @@
             
         }
         
+        cell.lblAddress.text = self.shopDetail.storeInfo.address;
+        cell.lblDistance.text = [NSString stringWithFormat:@"%@km",self.shopDetail.storeInfo.distance];
+        cell.lblStoreName.text = self.shopDetail.storeInfo.storeName;
+        cell.lblStoreScore.text = [NSString stringWithFormat:@"(%@)",self.shopDetail.storeInfo.storeScore];
+        cell.lblTimeStartAndEnd.text = [NSString stringWithFormat:@"营业时间:%@ - %@",self.shopDetail.storeInfo.startBusinessTime,self.shopDetail.storeInfo.endBusinessTime];
+        [cell.star setStarForValue:[self.shopDetail.storeInfo.storeScore floatValue]];
+        
+        NSString* strServerItems = @"";
+        for (int i = 0; i < self.shopDetail.serviceItemList.count; i++ ) {
+            
+            Serviceitemlist* item = [self.shopDetail.serviceItemList objectAtIndex:i];
+            
+            if (i == 0) {
+                
+                strServerItems = [strServerItems stringByAppendingString:[NSString stringWithFormat:@"%@",item.serviceItemName]];
+                
+            }else{
+            
+                strServerItems = [strServerItems stringByAppendingString:[NSString stringWithFormat:@"/%@",item.serviceItemName]];
+            
+            }
+            
+            
+        }
+        
+        cell.lblServerItems.text = strServerItems;
+        
         return cell;
         
     }else if (indexPath.section == 2) {
@@ -179,7 +254,7 @@
                 
                 [cell.contentView addSubview:divideView];
                 
-            }else if (indexPath.row == 2){
+            }else if (indexPath.row == (self.shopDetail.serviceItemList.count -1)){
             
                 UIView* divideView = [[UIView alloc] initWithFrame:CGRectMake(0, 33.5, SCREEN_WIDTH, 0.5)];
                 
@@ -188,6 +263,12 @@
                 [cell.contentView addSubview:divideView];
             
             }
+            
+            
+            Serviceitemlist* item = [self.shopDetail.serviceItemList objectAtIndex:indexPath.row];
+            
+            cell.lblServerPrice.text = [NSString stringWithFormat:@"¥%@",item.amount];
+            cell.lblSeverName.text = item.serviceItemName;
             
         }
         
@@ -209,6 +290,8 @@
             
         }
         
+        cell.lblPhone.text = self.shopDetail.storeInfo.mobile;
+        
         return cell;
         
     }else if (indexPath.section == 3 && indexPath.row == 1) {
@@ -226,6 +309,8 @@
             [cell.contentView addSubview:divideView];
             
         }
+        
+        cell.lblAdress.text = self.shopDetail.storeInfo.address;
         
         return cell;
         
@@ -302,10 +387,58 @@
             [[HKMapManager shareMgr] openAPPLEMAPWihStartCoordinate:startPoint AndEndCoordinate:desPoint];
             
         }
+        
+    }else if (indexPath.section == 3 && indexPath.row == 0){
+    
+        
+        self.asheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                   delegate:self
+                                          cancelButtonTitle:@"取消"
+                                     destructiveButtonTitle:nil
+                                          otherButtonTitles:[NSString stringWithFormat:@"致电 %@",self.shopDetail.storeInfo.mobile], nil];
+        
+        //sheet.tag = 300;
+        if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+            
+            [self.asheet showInView:self.view];
+            
+        }else{
+            
+            [self.asheet showFromRect:CGRectMake(600, 0, 100, 80) inView:self.view animated:YES];
+        
+        }
+    
+    
     }
 
 
 }
+
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    if (actionSheet == self.asheet) {
+        
+        switch (buttonIndex)
+        {
+                
+            case 0:
+                
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.shopDetail.storeInfo.mobile]]];
+                
+                break;
+                
+            case 1:
+                
+                break;
+        }
+    }
+    
+    return;
+    
+}
+
 
 
 @end

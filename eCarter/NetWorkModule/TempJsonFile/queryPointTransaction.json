@@ -1,0 +1,22 @@
+{
+    "message": "OK", 
+    "status": 2000000, 
+    "data": [
+        {
+            "id": "1", 
+            "userId": "1", 
+            "totalPoint": 60, 
+            "point": 15, 
+            "description": "洗车消费150元赠送15个积分", 
+            "createTime": "Jul 22, 2015 11:10:20 AM"
+        }, 
+        {
+            "id": "2", 
+            "userId": "1", 
+            "totalPoint": 45, 
+            "point": -10, 
+            "description": "洗车抵扣", 
+            "createTime": "Jul 22, 2015 11:10:20 AM"
+        }
+    ]
+}

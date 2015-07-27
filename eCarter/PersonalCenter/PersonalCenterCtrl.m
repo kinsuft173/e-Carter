@@ -11,11 +11,15 @@
 #import "PersonNormalCell.h"
 #import "PlaceHolderCell.h"
 #import "HKCommen.h"
+#import "NetworkManager.h"
+#import "UserDataManager.h"
 
 @interface PersonalCenterCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong)  NSArray* arrayInfo;
 @property (nonatomic, strong)  NSArray* arrayImage;
+@property (nonatomic, strong)  IBOutlet UITableView* tableView;
+
 @end
 
 @implementation PersonalCenterCtrl
@@ -24,11 +28,32 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self getModel];
+    
     self.arrayInfo = [NSArray arrayWithObjects:@"我的订单",@"我的账户",@"我的车库",@"我的地址",@"交易记录",@"我的优惠券",@"我的e积分", nil];
     self.arrayImage = [NSArray arrayWithObjects:[UIImage imageNamed:@"mine_My-order"],[UIImage imageNamed:@"mine_My-account"],[UIImage imageNamed:@"mine_mycar"],[UIImage imageNamed:@"mine_Address"],[UIImage imageNamed:@"mine_Trade-record"],[UIImage imageNamed:@"mine_On-Sale"],[UIImage imageNamed:@"mine_Integral"]];
     
     
     
+}
+
+- (void)getModel
+{
+
+    [[NetworkManager shareMgr] server_loginWithDic:nil completeHandle:^(NSDictionary *response) {
+        
+        NSDictionary* dicTmep = [response objectForKey:@"data"];
+        
+        if (dicTmep) {
+            
+            [UserDataManager shareManager].userLoginInfo = [UserLoginInfo objectWithKeyValues:dicTmep];
+            
+        }
+        
+        [self.tableView  reloadData];
+        
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -126,9 +151,18 @@
             
         }
         
+        if ([UserDataManager shareManager].userLoginInfo) {
+            
+            [cell.imgHead sd_setImageWithURL:[NSURL URLWithString:[UserDataManager shareManager].userLoginInfo.user.avatarUrl]
+                                placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
+            
+            cell.lblName.text = [UserDataManager shareManager].userLoginInfo.user.nickname;
+            
+            cell.lblPhoneNumber.text = [UserDataManager shareManager].userLoginInfo.user.phone;
+            
+        }
         
         return cell;
-        
         
     }else if (indexPath.row == 0){
         

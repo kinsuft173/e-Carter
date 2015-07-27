@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -15,30 +15,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入手机号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Us-0l-hOy">
-                        <rect key="frame" x="15" y="8" width="295" height="30"/>
-                        <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="295" id="Ygg-Jg-SyN"/>
-                            <constraint firstAttribute="height" constant="30" id="nx7-73-bdw"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <textInputTraits key="textInputTraits"/>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Ygg-Jg-SyN"/>
-                            </mask>
-                        </variation>
-                    </textField>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="车架号的后六位" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8JV-xx-0Qq">
-                        <rect key="frame" x="15" y="54" width="295" height="30"/>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="车架号的后六位" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8JV-xx-0Qq">
+                        <rect key="frame" x="15" y="53" width="295" height="30"/>
                         <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="2zC-GA-6H3"/>
                             <constraint firstAttribute="width" constant="295" id="Zlk-7c-l7w"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Zlk-7c-l7w"/>
@@ -67,6 +52,21 @@
                             <constraint firstAttribute="height" constant="1" id="ynL-88-9bm"/>
                         </constraints>
                     </view>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="发动机后六位" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Us-0l-hOy">
+                        <rect key="frame" x="15" y="8" width="295" height="30"/>
+                        <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="295" id="Ygg-Jg-SyN"/>
+                            <constraint firstAttribute="height" constant="30" id="nx7-73-bdw"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Ygg-Jg-SyN"/>
+                            </mask>
+                        </variation>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstItem="VGx-oq-axc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="36" id="4Cv-fF-uBy"/>
@@ -86,6 +86,10 @@
                     <constraint firstAttribute="centerX" secondItem="2Us-0l-hOy" secondAttribute="centerX" constant="-2.5" id="xfz-ZB-YS3"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="textFiledChejia" destination="8JV-xx-0Qq" id="JAn-Vr-5Pa"/>
+                <outlet property="textFiledFadongji" destination="2Us-0l-hOy" id="E0u-PS-tqh"/>
+            </connections>
             <point key="canvasLocation" x="149" y="335"/>
         </tableViewCell>
     </objects>

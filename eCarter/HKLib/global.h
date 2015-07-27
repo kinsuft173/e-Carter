@@ -10,6 +10,6 @@
 #define eCarter_global_h
 
 #define BannerInfoWebUrl @"http://www.baidu.com"
-
+#define PlaceHolderImage  @"loading-ios"
 
 #endif

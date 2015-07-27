@@ -10,6 +10,7 @@
 #import "OrderCell.h"
 #import "PlaceHolderCell.h"
 #import "HKCommen.h"
+#import "NetworkManager.h"
 
 @interface MyOrderCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -19,6 +20,11 @@
 @property (nonatomic, strong) UITableView* tableView;
 @property (nonatomic, strong) IBOutlet UIScrollView* scrollView;
 @property (nonatomic, strong) IBOutlet UIView* selectView;
+@property (nonatomic, strong) NSArray* arrayAllOrder;
+@property (nonatomic, strong) NSMutableArray* arrayOrderWaitConfirm;
+@property (nonatomic, strong) NSMutableArray* arrayOrderProcessing;
+@property (nonatomic, strong) NSMutableArray* arrayOrderFinished;
+@property (nonatomic, strong) NSMutableArray* arrayOrderAbort;
 
 @end
 
@@ -29,7 +35,38 @@
     // Do any additional setup after loading the view.
     
     [self initScrollTables:5];
+    
+    [self getModel];
 }
+
+- (void)getModel
+{
+    
+    [[NetworkManager shareMgr] server_loginWithDic:nil completeHandle:^(NSDictionary *response) {
+        
+        NSArray* arrayTemp = [response objectForKey:@"data"];
+        
+        if (arrayTemp.count != 0) {
+            
+            self.arrayAllOrder = arrayTemp;
+            
+            for (int i = 0 ; i < arrayTemp.count; i ++) {
+                
+                
+
+                
+            }
+            
+        }
+        
+        [self.tableView  reloadData];
+        
+    }];
+    
+}
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

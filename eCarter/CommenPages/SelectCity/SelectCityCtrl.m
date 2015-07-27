@@ -47,21 +47,21 @@
 
 - (void)getModel
 {
-    [[NetworkManager shareMgr] server_fetchCityWithDic:nil completeHandle:^(NSDictionary *response) {
-        
-        self.arrayModel = [[NSMutableArray alloc] init];
-        
-        NSArray* resultArray = [[response objectForKey:@"data"] objectForKey:@"items"];
-        
-        if (resultArray.count != 0) {
-            
-            self.arrayModel = resultArray;
-            
-        }
-        
-        [self.tableView reloadData];
-        
-    }];
+//    [[NetworkManager shareMgr] server_fetchCityWithDic:nil completeHandle:^(NSDictionary *response) {
+//        
+//        self.arrayModel = [[NSMutableArray alloc] init];
+//        
+//        NSArray* resultArray = [[response objectForKey:@"data"] objectForKey:@"items"];
+//        
+//        if (resultArray.count != 0) {
+//            
+//            self.arrayModel = resultArray;
+//            
+//        }
+//        
+//        [self.tableView reloadData];
+//        
+//    }];
     
 }
 

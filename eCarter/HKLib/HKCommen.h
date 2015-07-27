@@ -25,6 +25,8 @@
 + (BOOL)validatePassword:(NSString *)passWord;
 + (BOOL)validateNickname:(NSString *)nickname;
 + (BOOL)validateMobileWithPhoneNumber:(NSString*)strPhoneNumber;
++ (BOOL)validateCarNo:(NSString*)carNo;
++ (BOOL)validateSixNumber:(NSString*)carNo;
 
 //隐藏多余的分割线
 + (void)setExtraCellLineHidden: (UITableView *)tableView;
@@ -34,4 +36,11 @@
 //简易的颜色获取
 + (UIColor*)getColor:(NSString *)hexColor;
 + (UIColor*)getColor:(NSString *)hexColor WithAlpha:(CGFloat)alpha;
+
+//json转成字典
++ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString;
+
+//提醒
++ (void)addAlertViewWithTitel:(NSString*)titel;
+
 @end

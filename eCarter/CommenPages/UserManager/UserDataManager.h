@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UserLoginInfo.h"
 
 @interface UserDataManager : NSObject
 
@@ -14,6 +15,8 @@
 @property (nonatomic, strong) NSString* userId;
 @property (nonatomic, strong) NSString* userType;
 @property (nonatomic, strong) NSString* city;
+
+@property (nonatomic, strong) UserLoginInfo* userLoginInfo;
 
 + (UserDataManager*)shareManager;
 

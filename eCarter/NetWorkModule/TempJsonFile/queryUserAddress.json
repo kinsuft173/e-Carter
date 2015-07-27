@@ -1,0 +1,26 @@
+{
+    "message": "OK", 
+    "status": 2000000, 
+    "data": [
+        {
+            "id": "1", 
+            "type": "1", 
+            "province": "1", 
+            "city": "11", 
+            "area": "111", 
+            "detail": "北京路10号", 
+            "man": "冯XX", 
+            "isDefault": true
+        }, 
+        {
+            "id": "1", 
+            "type": "1", 
+            "province": "2", 
+            "city": "22", 
+            "area": "222", 
+            "detail": "北京路100号", 
+            "man": "SB", 
+            "isDefault": false
+        }
+    ]
+}

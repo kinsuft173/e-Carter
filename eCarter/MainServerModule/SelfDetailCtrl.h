@@ -10,4 +10,6 @@
 
 @interface SelfDetailCtrl : UIViewController
 
+@property (nonatomic,strong) NSNumber* preDataShopId;
+
 @end

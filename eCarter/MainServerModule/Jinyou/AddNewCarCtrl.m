@@ -13,7 +13,7 @@
 #import "ButtonCell.h"
 #import "HKCommen.h"
 
-@interface AddNewCarCtrl ()<UITableViewDataSource,UITableViewDelegate>
+@interface AddNewCarCtrl ()<UITableViewDataSource,UITableViewDelegate,carSelect>
 
 @end
 
@@ -74,8 +74,8 @@
 {
     NSString* cellId1 = @"CarNumCell";
     NSString* cellId2 = @"SelectCarCell";
-    NSString* cellId3=@"CarDetailCell";
-    NSString* cellId4=@"ButtonCell";
+    NSString* cellId3 = @"CarDetailCell";
+    NSString* cellId4 = @"ButtonCell";
     
     if (indexPath.section == 0) {
         
@@ -128,6 +128,8 @@
         }
         [cell.btn_commitButton setTitle:@"确定" forState:UIControlStateNormal];
         
+        [cell.btn_commitButton addTarget:self action:@selector(goCommit:) forControlEvents:UIControlEventTouchUpInside];
+        
         return cell;
         
     }
@@ -151,16 +153,18 @@ heightForHeaderInSection:(NSInteger)section
     if (indexPath.section==1) {
         if (indexPath.row==0) {
             Select_seriesOfCarCtrl *vc=[[Select_seriesOfCarCtrl alloc] initWithNibName:@"Select_seriesOfCarCtrl" bundle:nil];
-            vc.JudgeWhereFrom=@"series";
+            vc.JudgeWhereFrom=@"name";
+            
+            vc.delegate = self;
             
             [self.navigationController pushViewController:vc animated:YES];
-            
-            
         }
         
         else if (indexPath.row==1) {
             Select_seriesOfCarCtrl *vc=[[Select_seriesOfCarCtrl alloc] initWithNibName:@"Select_seriesOfCarCtrl" bundle:nil];
-            vc.JudgeWhereFrom=@"name";
+            vc.JudgeWhereFrom=@"series";
+            
+            vc.delegate = self;
             
             [self.navigationController pushViewController:vc animated:YES];
             
@@ -172,12 +176,126 @@ heightForHeaderInSection:(NSInteger)section
             
             vc.JudgeWhereFrom=@"color";
             
+            vc.delegate = self;
+            
             [self.navigationController pushViewController:vc animated:YES];
             
             
         }
     }
 }
+
+
+- (void)goCommit:(UIButton*)sender
+{
+    CarNumCell* cellCarNo = (CarNumCell*)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+
+    NSString* strCarNo = [NSString stringWithFormat:@"%@%@",cellCarNo.lblCarNo.text,cellCarNo.textFiledCarNo.text];
+    
+    //车系
+    
+    SelectCarCell* cellSelectCar1 = (SelectCarCell*)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+    
+    NSString* strSelectCar1 = cellSelectCar1.lbl_KindOfCar.text;
+    
+    //排量
+    
+    SelectCarCell* cellSelectCar2 = (SelectCarCell*)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
+    
+    NSString* strSelectCar2 = cellSelectCar2.lbl_KindOfCar.text;
+    
+    //颜色
+    
+    SelectCarCell* cellSelectCar3 = (SelectCarCell*)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
+    
+    NSString* strSelectCar3 = cellSelectCar3.lbl_KindOfCar.text;
+    
+    
+    CarDetailCell* cellCarDetail = (CarDetailCell*)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
+    
+    NSString* strFadongji = cellCarDetail.textFiledFadongji.text;
+    NSString* strChejia   = cellCarDetail.textFiledChejia.text;
+    
+    if (![HKCommen validateCarNo:cellCarNo.textFiledCarNo.text]) {
+        
+        [HKCommen addAlertViewWithTitel:@"请输入正确的车牌号"];
+     
+        return;
+        
+    }else if ([strSelectCar1 isEqualToString:[self.arrayOfCar objectAtIndex:0]]){
+    
+        [HKCommen addAlertViewWithTitel:@"请选择车系"];
+        
+        return;
+    
+    }else if ([strSelectCar2 isEqualToString:[self.arrayOfCar objectAtIndex:1]]){
+        
+        [HKCommen addAlertViewWithTitel:@"请选择车款"];
+        
+        return;
+        
+    }else if ([strSelectCar3 isEqualToString:[self.arrayOfCar objectAtIndex:2]]){
+        
+        [HKCommen addAlertViewWithTitel:@"请选择颜色"];
+        
+        return;
+        
+        
+    }else if (![HKCommen validateSixNumber:strFadongji]){
+    
+        [HKCommen addAlertViewWithTitel:@"请输入发动机号后六位"];
+        
+        return;
+    
+    
+    }else if (![HKCommen validateSixNumber:strChejia]){
+        
+        [HKCommen addAlertViewWithTitel:@"请输入车架号后六位"];
+        
+        return;
+        
+        
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+
+- (void)handleCarSlect:(NSDictionary *)dic
+{
+    NSLog(@"handleCarSlect = %@",dic);
+    //车系
+    SelectCarCell* cellSelectCar1 = (SelectCarCell*)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+    
+    //排量
+    SelectCarCell* cellSelectCar2 = (SelectCarCell*)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
+    
+    //颜色
+    SelectCarCell* cellSelectCar3 = (SelectCarCell*)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
+    
+    
+    if ([dic objectForKey:@"name"]) {
+        
+        cellSelectCar1.lbl_KindOfCar.text = [dic objectForKey:@"name"];
+        
+        
+    }else if ([dic objectForKey:@"series"]) {
+        
+        cellSelectCar2.lbl_KindOfCar.text = [dic objectForKey:@"series"];
+        
+    }else if ([dic objectForKey:@"color"]) {
+        
+        cellSelectCar3.lbl_KindOfCar.text = [dic objectForKey:@"color"];
+        
+        
+    }
+
+
+}
+
+
+
 
 @end
 
