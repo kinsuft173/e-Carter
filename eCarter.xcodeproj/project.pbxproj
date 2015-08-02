@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B4A59FE5E3923AFF3BA7FAB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA8F7F1A0C3E67F78D061FC8 /* libPods.a */; };
+		DE06386C1B6D19C900EFB576 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = DE06386B1B6D19C900EFB576 /* iToast.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DE237EE71B3FA8AA0027767B /* MyCountMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE237EE51B3FA8AA0027767B /* MyCountMoneyCell.m */; };
 		DE237EE81B3FA8AA0027767B /* MyCountMoneyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE237EE61B3FA8AA0027767B /* MyCountMoneyCell.xib */; };
 		DE237EEC1B3FA8F70027767B /* MyCountNomalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE237EEA1B3FA8F70027767B /* MyCountNomalCell.m */; };
@@ -432,7 +433,6 @@
 		DEEDABF41B63E9D500247916 /* queryUserCar.json in Resources */ = {isa = PBXBuildFile; fileRef = DEEDABE21B63E9D500247916 /* queryUserCar.json */; };
 		DEEDABF51B63E9D500247916 /* queryUserRecharge.json in Resources */ = {isa = PBXBuildFile; fileRef = DEEDABE31B63E9D500247916 /* queryUserRecharge.json */; };
 		DEEDABF61B63E9D500247916 /* register.json in Resources */ = {isa = PBXBuildFile; fileRef = DEEDABE41B63E9D500247916 /* register.json */; };
-		DEEDABFA1B6514F100247916 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = DEEDABF91B6514F100247916 /* iToast.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DEFB2B5C1B4435BE00C74FC0 /* MainDriverCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFB2B591B4435BE00C74FC0 /* MainDriverCtrl.m */; };
 		DEFB2B5D1B4435BE00C74FC0 /* mgDriverStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEFB2B5A1B4435BE00C74FC0 /* mgDriverStoryboard.storyboard */; };
 		DEFB2B681B44360B00C74FC0 /* Default_picture.png in Resources */ = {isa = PBXBuildFile; fileRef = DEFB2B611B44360B00C74FC0 /* Default_picture.png */; };
@@ -467,6 +467,8 @@
 		89320E9E3422FB0DACAE4240 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A81116FB39819334A18ABA35 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DA8F7F1A0C3E67F78D061FC8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE06386A1B6D19C900EFB576 /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
+		DE06386B1B6D19C900EFB576 /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
 		DE237EE41B3FA8AA0027767B /* MyCountMoneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCountMoneyCell.h; path = PersonalCenter/Cell/MyCountMoneyCell.h; sourceTree = "<group>"; };
 		DE237EE51B3FA8AA0027767B /* MyCountMoneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCountMoneyCell.m; path = PersonalCenter/Cell/MyCountMoneyCell.m; sourceTree = "<group>"; };
 		DE237EE61B3FA8AA0027767B /* MyCountMoneyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyCountMoneyCell.xib; path = PersonalCenter/Cell/MyCountMoneyCell.xib; sourceTree = "<group>"; };
@@ -1120,8 +1122,6 @@
 		DEEDABE21B63E9D500247916 /* queryUserCar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = queryUserCar.json; sourceTree = "<group>"; };
 		DEEDABE31B63E9D500247916 /* queryUserRecharge.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = queryUserRecharge.json; sourceTree = "<group>"; };
 		DEEDABE41B63E9D500247916 /* register.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = register.json; sourceTree = "<group>"; };
-		DEEDABF81B6514F100247916 /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
-		DEEDABF91B6514F100247916 /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
 		DEFB2B581B4435BE00C74FC0 /* MainDriverCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainDriverCtrl.h; path = MyDriver/MainDriverCtrl.h; sourceTree = "<group>"; };
 		DEFB2B591B4435BE00C74FC0 /* MainDriverCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainDriverCtrl.m; path = MyDriver/MainDriverCtrl.m; sourceTree = "<group>"; };
 		DEFB2B5A1B4435BE00C74FC0 /* mgDriverStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = mgDriverStoryboard.storyboard; path = MyDriver/mgDriverStoryboard.storyboard; sourceTree = "<group>"; };
@@ -1192,6 +1192,15 @@
 				89320E9E3422FB0DACAE4240 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		DE0638691B6D19C900EFB576 /* iTostView */ = {
+			isa = PBXGroup;
+			children = (
+				DE06386A1B6D19C900EFB576 /* iToast.h */,
+				DE06386B1B6D19C900EFB576 /* iToast.m */,
+			);
+			path = iTostView;
 			sourceTree = "<group>";
 		};
 		DE9D11E51B50ECEC00046407 /* Models */ = {
@@ -1267,7 +1276,7 @@
 		DE9D12331B514AC100046407 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
-				DEEDABF71B6514F100247916 /* iTostView */,
+				DE0638691B6D19C900EFB576 /* iTostView */,
 				DE9D12C81B52DB1600046407 /* WexinSDK */,
 				DE9D12561B52BE0000046407 /* AliPay */,
 				DE9D12521B51560F00046407 /* AMapSearchKit.framework */,
@@ -2138,15 +2147,6 @@
 			path = TempJsonFile;
 			sourceTree = "<group>";
 		};
-		DEEDABF71B6514F100247916 /* iTostView */ = {
-			isa = PBXGroup;
-			children = (
-				DEEDABF81B6514F100247916 /* iToast.h */,
-				DEEDABF91B6514F100247916 /* iToast.m */,
-			);
-			path = iTostView;
-			sourceTree = "<group>";
-		};
 		DEFB2B561B4435A500C74FC0 /* MyDriver */ = {
 			isa = PBXGroup;
 			children = (
@@ -2766,7 +2766,7 @@
 				DEFB2B771B44361700C74FC0 /* mainListCell.m in Sources */,
 				DECA17231B614B4700FD3418 /* Coupon.m in Sources */,
 				DED2EADA1B35D3A5006FE893 /* main.m in Sources */,
-				DEEDABFA1B6514F100247916 /* iToast.m in Sources */,
+				DE06386C1B6D19C900EFB576 /* iToast.m in Sources */,
 				DEE52ED01B38FAEB00C90BA3 /* CouponMainInfoCell.m in Sources */,
 				DEE48B9F1B39A4BF00458D6F /* TimeCell.m in Sources */,
 				DEE48BB31B39AAD200458D6F /* PaymentCell.m in Sources */,
