@@ -10,6 +10,10 @@
 		5B4A59FE5E3923AFF3BA7FAB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA8F7F1A0C3E67F78D061FC8 /* libPods.a */; };
 		DE06386C1B6D19C900EFB576 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = DE06386B1B6D19C900EFB576 /* iToast.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DE06386F1B6DFB2D00EFB576 /* loading-ios@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE06386E1B6DFB2D00EFB576 /* loading-ios@2x.png */; };
+		DE06387B1B6E721000EFB576 /* defoult_1.png in Resources */ = {isa = PBXBuildFile; fileRef = DE0638771B6E721000EFB576 /* defoult_1.png */; };
+		DE06387C1B6E721000EFB576 /* defoult_2.png in Resources */ = {isa = PBXBuildFile; fileRef = DE0638781B6E721000EFB576 /* defoult_2.png */; };
+		DE06387D1B6E721000EFB576 /* defoult_3.png in Resources */ = {isa = PBXBuildFile; fileRef = DE0638791B6E721000EFB576 /* defoult_3.png */; };
+		DE06387E1B6E721000EFB576 /* defoult_4.png in Resources */ = {isa = PBXBuildFile; fileRef = DE06387A1B6E721000EFB576 /* defoult_4.png */; };
 		DE237EE71B3FA8AA0027767B /* MyCountMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE237EE51B3FA8AA0027767B /* MyCountMoneyCell.m */; };
 		DE237EE81B3FA8AA0027767B /* MyCountMoneyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE237EE61B3FA8AA0027767B /* MyCountMoneyCell.xib */; };
 		DE237EEC1B3FA8F70027767B /* MyCountNomalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE237EEA1B3FA8F70027767B /* MyCountNomalCell.m */; };
@@ -477,6 +481,10 @@
 		DE06386A1B6D19C900EFB576 /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
 		DE06386B1B6D19C900EFB576 /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
 		DE06386E1B6DFB2D00EFB576 /* loading-ios@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loading-ios@2x.png"; path = "IMAGE/loading-ios@2x.png"; sourceTree = "<group>"; };
+		DE0638771B6E721000EFB576 /* defoult_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defoult_1.png; sourceTree = "<group>"; };
+		DE0638781B6E721000EFB576 /* defoult_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defoult_2.png; sourceTree = "<group>"; };
+		DE0638791B6E721000EFB576 /* defoult_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defoult_3.png; sourceTree = "<group>"; };
+		DE06387A1B6E721000EFB576 /* defoult_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defoult_4.png; sourceTree = "<group>"; };
 		DE237EE41B3FA8AA0027767B /* MyCountMoneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCountMoneyCell.h; path = PersonalCenter/Cell/MyCountMoneyCell.h; sourceTree = "<group>"; };
 		DE237EE51B3FA8AA0027767B /* MyCountMoneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCountMoneyCell.m; path = PersonalCenter/Cell/MyCountMoneyCell.m; sourceTree = "<group>"; };
 		DE237EE61B3FA8AA0027767B /* MyCountMoneyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyCountMoneyCell.xib; path = PersonalCenter/Cell/MyCountMoneyCell.xib; sourceTree = "<group>"; };
@@ -1227,6 +1235,25 @@
 			name = "New Group";
 			sourceTree = "<group>";
 		};
+		DE0638751B6E721000EFB576 /* 图片管理 */ = {
+			isa = PBXGroup;
+			children = (
+				DE0638761B6E721000EFB576 /* 引导图 */,
+			);
+			path = "图片管理";
+			sourceTree = "<group>";
+		};
+		DE0638761B6E721000EFB576 /* 引导图 */ = {
+			isa = PBXGroup;
+			children = (
+				DE0638771B6E721000EFB576 /* defoult_1.png */,
+				DE0638781B6E721000EFB576 /* defoult_2.png */,
+				DE0638791B6E721000EFB576 /* defoult_3.png */,
+				DE06387A1B6E721000EFB576 /* defoult_4.png */,
+			);
+			path = "引导图";
+			sourceTree = "<group>";
+		};
 		DE9D11E51B50ECEC00046407 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1527,6 +1554,7 @@
 		DED2EAD61B35D3A5006FE893 /* eCarter */ = {
 			isa = PBXGroup;
 			children = (
+				DE0638751B6E721000EFB576 /* 图片管理 */,
 				DECA171D1B61381200FD3418 /* Model */,
 				DEEC3DCB1B5C2832005CE84E /* CommenPages */,
 				DEFDF59F1B5BCF5E00298366 /* NetWorkModule */,
@@ -2437,6 +2465,7 @@
 				DEE48B951B39653F00458D6F /* CommentCell.xib in Resources */,
 				DEE3372E1B4C40D900357253 /* mine_mycar@2x.png in Resources */,
 				DE9D12321B50FC2D00046407 /* startPoint@2x.png in Resources */,
+				DE06387C1B6E721000EFB576 /* defoult_2.png in Resources */,
 				DED7F58A1B4760DB0005019C /* pay_password@3x.png in Resources */,
 				DED7F5831B4760DB0005019C /* ip_add@2x.png in Resources */,
 				DEFB2B6A1B44360B00C74FC0 /* mine_Commission@3x.png in Resources */,
@@ -2500,6 +2529,7 @@
 				DE9D12231B50F11E00046407 /* bus.png in Resources */,
 				DED7F5751B4760DB0005019C /* icon_more@2x.png in Resources */,
 				DEE87D2A1B48EC5100D3EDAB /* OrderProgressCell.xib in Resources */,
+				DE06387B1B6E721000EFB576 /* defoult_1.png in Resources */,
 				DEEDABEB1B63E9D500247916 /* queryOrderDetail.json in Resources */,
 				DEE337391B4C40D900357253 /* Process_History@3x.png in Resources */,
 				DEE337351B4C40D900357253 /* mine_Trade-record@3x.png in Resources */,
@@ -2529,6 +2559,7 @@
 				DED7F5771B4760DB0005019C /* icon_Right@2x.png in Resources */,
 				DEE337B11B4DF68C00357253 /* TransactionCtrl.xib in Resources */,
 				DE237EE81B3FA8AA0027767B /* MyCountMoneyCell.xib in Resources */,
+				DE06387D1B6E721000EFB576 /* defoult_3.png in Resources */,
 				DED7F5581B4760DB0005019C /* but_dial@2x.png in Resources */,
 				DED7F5631B4760DB0005019C /* Evaluation_1@2x.png in Resources */,
 				DEE3371B1B4C40D900357253 /* login_code.png in Resources */,
@@ -2598,6 +2629,7 @@
 				DEE337131B4C40D900357253 /* red@2x.png in Resources */,
 				DEE3370B1B4C40D900357253 /* Champagne_gold@2x.png in Resources */,
 				DEE3373B1B4C40D900357253 /* Process_now@3x.png in Resources */,
+				DE06387E1B6E721000EFB576 /* defoult_4.png in Resources */,
 				DED7F56F1B4760DB0005019C /* icon_Distance@2x.png in Resources */,
 				DEEDABF51B63E9D500247916 /* queryUserRecharge.json in Resources */,
 				DEE48BB41B39AAD200458D6F /* PaymentCell.xib in Resources */,
