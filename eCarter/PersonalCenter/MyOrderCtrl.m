@@ -11,6 +11,8 @@
 #import "PlaceHolderCell.h"
 #import "HKCommen.h"
 #import "NetworkManager.h"
+#import "CommentCtrl.h"
+#import "MoneyReturnDetailCtrl.h"
 
 @interface MyOrderCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -53,10 +55,7 @@
             for (int i = 0 ; i < arrayTemp.count; i ++) {
                 
                 //test
-
-                
             }
-            
         }
         
         [self.tableView  reloadData];
@@ -66,22 +65,20 @@
 }
 
 
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 - (void)initScrollTables:(NSInteger)tableCount
@@ -218,7 +215,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 10;
-
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -228,13 +225,13 @@
         return 5;
         
     }else if(indexPath.row%2 == 0){
-
+        
         return 284;
-    
+        
     }else{
-    
+        
         return 394;
-    
+        
     }
     
 }
@@ -244,81 +241,126 @@
     
     static NSString* cellId1 = @"OrderCell";
     static NSString* cellHolderId = @"PlaceHolderCell";
-//    static NSString* cellHolderId = @"PlaceHolderCell";    
+    //    static NSString* cellHolderId = @"PlaceHolderCell";
     
-   if (indexPath.row == 0) {
-    
-       PlaceHolderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellHolderId];
-       
-       if (!cell) {
-           
-           NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:cellHolderId owner:self options:nil];
-           
-           cell = [topLevelObjects objectAtIndex:0];
-           
-           cell.contentView.backgroundColor = [HKCommen  getColor:@"aaaaaa" WithAlpha:0.2];
-           
-       }
-       
-       return cell;
-       
-       
-   }else if(indexPath.row%2 == 0){
-   
-       OrderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
-       
-       if (!cell) {
-           
-           cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
-           
-           UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
-           UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 , SCREEN_WIDTH - 10, 0.5)];
-           UIView* viewDivide3 = [[UIView alloc] initWithFrame:CGRectMake(0, 230, SCREEN_WIDTH, 0.5)];
-           
-           viewDivide1.backgroundColor = [HKCommen getColor:@"ccccccc"];
-           viewDivide2.backgroundColor = [HKCommen getColor:@"e0e0e0"];
-           viewDivide3.backgroundColor = [HKCommen getColor:@"ccccccc"];
-           
-           
-           [cell.viewMask1 addSubview:viewDivide1];
-           [cell.viewMask1 addSubview:viewDivide2];
-           [cell.viewMask1 addSubview:viewDivide3];
-       }
-       
-       return cell;
-
-   }else{
-   
+    if (indexPath.row == 0) {
+        
+        PlaceHolderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellHolderId];
+        
+        if (!cell) {
+            
+            NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:cellHolderId owner:self options:nil];
+            
+            cell = [topLevelObjects objectAtIndex:0];
+            
+            cell.contentView.backgroundColor = [HKCommen  getColor:@"aaaaaa" WithAlpha:0.2];
+            
+        }
+        
+        return cell;
+        
+        
+    }else if(indexPath.row%2 == 0){
+        
         OrderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
-       
-       if (!cell) {
-           
-           cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:1];
-           
-           UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
-           UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 , SCREEN_WIDTH - 10, 0.5)];
-           UIView* viewDivide3 = [[UIView alloc] initWithFrame:CGRectMake(0, 230, SCREEN_WIDTH, 0.5)];
-           UIView* viewDivide4 = [[UIView alloc] initWithFrame:CGRectMake(0, 340, SCREEN_WIDTH, 0.5)];
-           
-           viewDivide1.backgroundColor = [HKCommen getColor:@"ccccccc"];
-           viewDivide2.backgroundColor = [HKCommen getColor:@"e0e0e0"];
-           viewDivide3.backgroundColor = [HKCommen getColor:@"ccccccc"];
-           viewDivide4.backgroundColor = [HKCommen getColor:@"ccccccc"];
-           
-           [cell.viewMask1 addSubview:viewDivide1];
-           [cell.viewMask1 addSubview:viewDivide2];
-           [cell.viewMask1 addSubview:viewDivide3];
-           [cell.viewMask1 addSubview:viewDivide4];
-       }
-       
-       return cell;
-   
-   
-   }
-    
-    
+        
+        if (!cell) {
+            
+            cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
+            
+            UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
+            UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 , SCREEN_WIDTH - 10, 0.5)];
+            UIView* viewDivide3 = [[UIView alloc] initWithFrame:CGRectMake(0, 230, SCREEN_WIDTH, 0.5)];
+            
+            viewDivide1.backgroundColor = [HKCommen getColor:@"ccccccc"];
+            viewDivide2.backgroundColor = [HKCommen getColor:@"e0e0e0"];
+            viewDivide3.backgroundColor = [HKCommen getColor:@"ccccccc"];
+            
+            
+            [cell.viewMask1 addSubview:viewDivide1];
+            [cell.viewMask1 addSubview:viewDivide2];
+            [cell.viewMask1 addSubview:viewDivide3];
+        }
+        
+        cell.judgeWhichStatus=0;
+        if (cell.judgeWhichStatus==0) {
+            
+            cell.btnGoCommentPage.hidden=NO;
+            [cell.btnGoCommentPage setTitle:@"待评价" forState:UIControlStateNormal];
+            [cell.btnGoCommentPage addTarget:self action:@selector(goCommentPage) forControlEvents:UIControlEventTouchUpInside];
+        }
+        else if (cell.judgeWhichStatus==1)
+        {
+            cell.btnGoCommentPage.hidden=NO;
+            [cell.btnGoCommentPage setTitle:@"退款详情" forState:UIControlStateNormal];
+            [cell.btnGoCommentPage addTarget:self action:@selector(goMoneyReturnPage) forControlEvents:UIControlEventTouchUpInside];
+        }
+        else
+        {
+            cell.btnGoCommentPage.hidden=YES;
+        }
+        
+        return cell;
+        
+    }else{
+        
+        OrderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
+        
+        if (!cell) {
+            
+            cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:1];
+            
+            UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
+            UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 , SCREEN_WIDTH - 10, 0.5)];
+            UIView* viewDivide3 = [[UIView alloc] initWithFrame:CGRectMake(0, 230, SCREEN_WIDTH, 0.5)];
+            UIView* viewDivide4 = [[UIView alloc] initWithFrame:CGRectMake(0, 340, SCREEN_WIDTH, 0.5)];
+            
+            viewDivide1.backgroundColor = [HKCommen getColor:@"ccccccc"];
+            viewDivide2.backgroundColor = [HKCommen getColor:@"e0e0e0"];
+            viewDivide3.backgroundColor = [HKCommen getColor:@"ccccccc"];
+            viewDivide4.backgroundColor = [HKCommen getColor:@"ccccccc"];
+            
+            [cell.viewMask1 addSubview:viewDivide1];
+            [cell.viewMask1 addSubview:viewDivide2];
+            [cell.viewMask1 addSubview:viewDivide3];
+            [cell.viewMask1 addSubview:viewDivide4];
+        }
+        
+        
+        if (cell.judgeWhichStatus==0) {
+            
+            cell.btnGoCommentPage.hidden=NO;
+            [cell.btnGoCommentPage setTitle:@"待评价" forState:UIControlStateNormal];
+            [cell.btnGoCommentPage addTarget:self action:@selector(goCommentPage) forControlEvents:UIControlEventTouchUpInside];
+        }
+        else if (cell.judgeWhichStatus==1)
+        {
+            cell.btnGoCommentPage.hidden=NO;
+            [cell.btnGoCommentPage setTitle:@"退款详情" forState:UIControlStateNormal];
+            [cell.btnGoCommentPage addTarget:self action:@selector(goMoneyReturnPage) forControlEvents:UIControlEventTouchUpInside];
+        }
+        else
+        {
+            cell.btnGoCommentPage.hidden=YES;
+        }
+        
+        
+        
+        return cell;
+    }
 }
 
+-(void)goCommentPage
+{
+    CommentCtrl *vc=[[CommentCtrl alloc]initWithNibName:@"CommentCtrl" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)goMoneyReturnPage
+{
+    MoneyReturnDetailCtrl *vc=[[MoneyReturnDetailCtrl alloc]initWithNibName:@"MoneyReturnDetailCtrl" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 
 @end

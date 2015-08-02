@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -128,13 +128,26 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bb7-ih-7FT">
+                                <rect key="frame" x="254" y="31" width="62" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="62" id="9Zt-rH-l2b"/>
+                                    <constraint firstAttribute="height" constant="40" id="uo3-m2-tVQ"/>
+                                </constraints>
+                                <state key="normal" title="已评价">
+                                    <color key="titleColor" red="0.92044377330000005" green="0.23679480820000001" blue="0.44371461109999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bb7-ih-7FT" secondAttribute="trailing" constant="4" id="G7C-Cl-2nN"/>
                             <constraint firstAttribute="trailing" secondItem="7IF-wo-bkq" secondAttribute="trailing" constant="10" id="PgH-rP-Dbu"/>
                             <constraint firstAttribute="bottom" secondItem="F8B-26-Wpw" secondAttribute="bottom" constant="10" id="hRF-7Z-k48"/>
                             <constraint firstItem="7IF-wo-bkq" firstAttribute="top" secondItem="bM8-FW-SKM" secondAttribute="top" constant="10" id="j51-9B-f2V"/>
                             <constraint firstAttribute="trailing" secondItem="F8B-26-Wpw" secondAttribute="trailing" constant="8" id="ozC-Pq-6hv"/>
+                            <constraint firstItem="bb7-ih-7FT" firstAttribute="top" secondItem="bM8-FW-SKM" secondAttribute="top" constant="31" id="pqY-mx-lFT"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -147,6 +160,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnGoCommentPage" destination="bb7-ih-7FT" id="BUB-d0-81n"/>
                 <outlet property="viewMask1" destination="bM8-FW-SKM" id="sRG-ha-Oxx"/>
             </connections>
             <point key="canvasLocation" x="214" y="190"/>
