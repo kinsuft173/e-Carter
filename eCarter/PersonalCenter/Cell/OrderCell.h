@@ -11,5 +11,7 @@
 @interface OrderCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UIView* viewMask1;
+@property (weak, nonatomic) IBOutlet UIButton *btnGoCommentPage;
+@property (assign) NSUInteger judgeWhichStatus;
 
 @end

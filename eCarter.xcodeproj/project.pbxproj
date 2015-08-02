@@ -451,6 +451,12 @@
 		DEFDF59D1B5BCCFC00298366 /* AdvertisementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFDF59B1B5BCCFC00298366 /* AdvertisementCell.m */; };
 		DEFDF59E1B5BCCFC00298366 /* AdvertisementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEFDF59C1B5BCCFC00298366 /* AdvertisementCell.xib */; };
 		DEFDF5A21B5BCF5E00298366 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFDF5A11B5BCF5E00298366 /* NetworkManager.m */; };
+		E98B3A821B6DE9F400980C16 /* MoneyReturnDetailCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E98B3A801B6DE9F400980C16 /* MoneyReturnDetailCtrl.m */; };
+		E98B3A831B6DE9F400980C16 /* MoneyReturnDetailCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = E98B3A811B6DE9F400980C16 /* MoneyReturnDetailCtrl.xib */; };
+		E98B3A861B6DEA3000980C16 /* MoneyReturnProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E98B3A851B6DEA3000980C16 /* MoneyReturnProgressView.m */; };
+		E98B3A881B6DEA4900980C16 /* MoneyReturnProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E98B3A871B6DEA4900980C16 /* MoneyReturnProgressView.xib */; };
+		E9CB14041B6DCFE200A46117 /* CommentCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CB14021B6DCFE200A46117 /* CommentCtrl.m */; };
+		E9CB14051B6DCFE200A46117 /* CommentCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9CB14031B6DCFE200A46117 /* CommentCtrl.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1147,6 +1153,15 @@
 		DEFDF5A01B5BCF5E00298366 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		DEFDF5A11B5BCF5E00298366 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		DEFDF5A31B5BCF7500298366 /* NewworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewworkConfig.h; sourceTree = "<group>"; };
+		E98B3A7F1B6DE9F400980C16 /* MoneyReturnDetailCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoneyReturnDetailCtrl.h; sourceTree = "<group>"; };
+		E98B3A801B6DE9F400980C16 /* MoneyReturnDetailCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoneyReturnDetailCtrl.m; sourceTree = "<group>"; };
+		E98B3A811B6DE9F400980C16 /* MoneyReturnDetailCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoneyReturnDetailCtrl.xib; sourceTree = "<group>"; };
+		E98B3A841B6DEA3000980C16 /* MoneyReturnProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoneyReturnProgressView.h; sourceTree = "<group>"; };
+		E98B3A851B6DEA3000980C16 /* MoneyReturnProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoneyReturnProgressView.m; sourceTree = "<group>"; };
+		E98B3A871B6DEA4900980C16 /* MoneyReturnProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoneyReturnProgressView.xib; sourceTree = "<group>"; };
+		E9CB14011B6DCFE200A46117 /* CommentCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCtrl.h; sourceTree = "<group>"; };
+		E9CB14021B6DCFE200A46117 /* CommentCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCtrl.m; sourceTree = "<group>"; };
+		E9CB14031B6DCFE200A46117 /* CommentCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCtrl.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1936,24 +1951,17 @@
 		DEE719AC1B3ED12D003221A8 /* PersonalCenter */ = {
 			isa = PBXGroup;
 			children = (
+				E9CB14001B6DCF8900A46117 /* Order */,
 				DEE719B21B3ED446003221A8 /* Cell */,
-				DEE719AD1B3ED21D003221A8 /* PersonalCenterCtrl.h */,
-				DEE719AE1B3ED21D003221A8 /* PersonalCenterCtrl.m */,
-				DEE719B01B3ED2E2003221A8 /* PersonalCenter.storyboard */,
-				DEE719C31B3EEA45003221A8 /* MyOrderCtrl.h */,
-				DEE719C41B3EEA45003221A8 /* MyOrderCtrl.m */,
-				DE237EEE1B3FD1CD0027767B /* MyCountCtrl.h */,
-				DE237EEF1B3FD1CD0027767B /* MyCountCtrl.m */,
-				DE237EF11B40475B0027767B /* MyCarLibrary.h */,
-				DE237EF21B40475B0027767B /* MyCarLibrary.m */,
-				DE237EFE1B404E690027767B /* MyAdressCtrl.h */,
-				DE237EFF1B404E690027767B /* MyAdressCtrl.m */,
-				DE237F0B1B4055FB0027767B /* MyTradeCtrl.h */,
-				DE237F0C1B4055FB0027767B /* MyTradeCtrl.m */,
-				DE237F131B40596B0027767B /* MyCouponCtrl.h */,
-				DE237F141B40596B0027767B /* MyCouponCtrl.m */,
-				DE237F161B405B650027767B /* MyScoreCtrl.h */,
-				DE237F171B405B650027767B /* MyScoreCtrl.m */,
+				E9CB14011B6DCFE200A46117 /* CommentCtrl.h */,
+				E9CB14021B6DCFE200A46117 /* CommentCtrl.m */,
+				E9CB14031B6DCFE200A46117 /* CommentCtrl.xib */,
+				E98B3A7F1B6DE9F400980C16 /* MoneyReturnDetailCtrl.h */,
+				E98B3A801B6DE9F400980C16 /* MoneyReturnDetailCtrl.m */,
+				E98B3A811B6DE9F400980C16 /* MoneyReturnDetailCtrl.xib */,
+				E98B3A841B6DEA3000980C16 /* MoneyReturnProgressView.h */,
+				E98B3A851B6DEA3000980C16 /* MoneyReturnProgressView.m */,
+				E98B3A871B6DEA4900980C16 /* MoneyReturnProgressView.xib */,
 			);
 			name = PersonalCenter;
 			sourceTree = "<group>";
@@ -2253,6 +2261,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E9CB14001B6DCF8900A46117 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				DEE719AD1B3ED21D003221A8 /* PersonalCenterCtrl.h */,
+				DEE719AE1B3ED21D003221A8 /* PersonalCenterCtrl.m */,
+				DEE719B01B3ED2E2003221A8 /* PersonalCenter.storyboard */,
+				DEE719C31B3EEA45003221A8 /* MyOrderCtrl.h */,
+				DEE719C41B3EEA45003221A8 /* MyOrderCtrl.m */,
+				DE237EEE1B3FD1CD0027767B /* MyCountCtrl.h */,
+				DE237EEF1B3FD1CD0027767B /* MyCountCtrl.m */,
+				DE237EF11B40475B0027767B /* MyCarLibrary.h */,
+				DE237EF21B40475B0027767B /* MyCarLibrary.m */,
+				DE237EFE1B404E690027767B /* MyAdressCtrl.h */,
+				DE237EFF1B404E690027767B /* MyAdressCtrl.m */,
+				DE237F0B1B4055FB0027767B /* MyTradeCtrl.h */,
+				DE237F0C1B4055FB0027767B /* MyTradeCtrl.m */,
+				DE237F131B40596B0027767B /* MyCouponCtrl.h */,
+				DE237F141B40596B0027767B /* MyCouponCtrl.m */,
+				DE237F161B405B650027767B /* MyScoreCtrl.h */,
+				DE237F171B405B650027767B /* MyScoreCtrl.m */,
+			);
+			name = Order;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2379,6 +2411,7 @@
 				DEE48B7C1B39645400458D6F /* ShopInfoCell.xib in Resources */,
 				DEE87CF11B48EA2000D3EDAB /* PaymentCtrl.xib in Resources */,
 				DE9D12281B50F11E00046407 /* location_yes@2x.png in Resources */,
+				E98B3A881B6DEA4900980C16 /* MoneyReturnProgressView.xib in Resources */,
 				DEE337161B4C40D900357253 /* Silver@3x.png in Resources */,
 				DED2EAE31B35D3A5006FE893 /* Main.storyboard in Resources */,
 				DED7F59A1B4761060005019C /* Coupons_line@2x.png in Resources */,
@@ -2386,6 +2419,7 @@
 				DEE3373E1B4C40D900357253 /* Share_qq@2x.png in Resources */,
 				DEE337261B4C40D900357253 /* mine_icon_woman@2x.png in Resources */,
 				DED7F5951B4761060005019C /* Coupons_but_more@3x.png in Resources */,
+				E98B3A831B6DE9F400980C16 /* MoneyReturnDetailCtrl.xib in Resources */,
 				DED7F5501B4760DB0005019C /* btn_pay_det@2x.png in Resources */,
 				DEE337301B4C40D900357253 /* mine_On-Sale@2x.png in Resources */,
 				DEE337401B4C40D900357253 /* Share_sina@2x.png in Resources */,
@@ -2427,6 +2461,7 @@
 				DEE3373D1B4C40D900357253 /* share_pengyouquan@3x.png in Resources */,
 				DEE337121B4C40D900357253 /* Other@3x.png in Resources */,
 				DE237EF81B4047830027767B /* CarInfoCell.xib in Resources */,
+				E9CB14051B6DCFE200A46117 /* CommentCtrl.xib in Resources */,
 				DEE337241B4C40D900357253 /* mine_icon_man@2x.png in Resources */,
 				DED7F57B1B4760DB0005019C /* icon_time@2x.png in Resources */,
 				DE9D12271B50F11E00046407 /* location_no@2x.png in Resources */,
@@ -2692,7 +2727,9 @@
 				DE9D12071B50ECEC00046407 /* AnimatedAnnotationView.m in Sources */,
 				DE237F111B4056260027767B /* CustomTradeCell.m in Sources */,
 				DEE093111B3B2CEF00243475 /* NextStepCell.m in Sources */,
+				E98B3A821B6DE9F400980C16 /* MoneyReturnDetailCtrl.m in Sources */,
 				DED2EB151B35E351006FE893 /* FirstViewCtrl.m in Sources */,
+				E98B3A861B6DEA3000980C16 /* MoneyReturnProgressView.m in Sources */,
 				DECA174D1B6154C100FD3418 /* UserAddress.m in Sources */,
 				DEE87CCC1B48B1AD00D3EDAB /* HKWebViewCtrl.m in Sources */,
 				DEFDF5A21B5BCF5E00298366 /* NetworkManager.m in Sources */,
@@ -2746,6 +2783,7 @@
 				DEE719C51B3EEA45003221A8 /* MyOrderCtrl.m in Sources */,
 				DEE52EC81B38F5C400C90BA3 /* EventInfoCell.m in Sources */,
 				DE9D12C71B52BE0000046407 /* RSADataVerifier.m in Sources */,
+				E9CB14041B6DCFE200A46117 /* CommentCtrl.m in Sources */,
 				DE9D12D61B52DBE900046407 /* WXUtil.mm in Sources */,
 				DEEC3DE01B5C2832005CE84E /* SelectCityCtrl.m in Sources */,
 				DEE87CEF1B48EA2000D3EDAB /* JYCommon.m in Sources */,
