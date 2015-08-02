@@ -1423,6 +1423,7 @@
         
         NSLog(@"Error: %@", error);
         
+
         
     }];
     
@@ -1439,6 +1440,12 @@
     }else{
     
         dicTemp = [[NSMutableDictionary alloc] init];
+        
+    }
+    
+    if ([HKMapManager shareMgr].currentLocation == nil || [HKMapManager shareMgr].userCurrentLatitude == nil) {
+        
+        return dicTemp;
         
     }
     
