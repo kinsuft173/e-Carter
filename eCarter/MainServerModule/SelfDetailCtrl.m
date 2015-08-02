@@ -277,7 +277,7 @@
         
         return cell;
         
-    }else if (indexPath.section == 3 && indexPath.row < 4) {
+    }else if (indexPath.section == 3 && indexPath.row < self.shopDetail.serviceItemList.count) {
         
         ServerListCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId4];
         
@@ -304,7 +304,7 @@
         
         return cell;
         
-    }else if (indexPath.section == 3 && indexPath.row == 4) {
+    }else if (indexPath.section == 3 && indexPath.row == self.shopDetail.serviceItemList.count) {
         
         CouponSlectedCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId5];
         
@@ -316,7 +316,7 @@
         
         return cell;
         
-    }else if (indexPath.section == 3 && indexPath.row == 5) {
+    }else if (indexPath.section == 3 && indexPath.row == self.shopDetail.serviceItemList.count +1) {
         
         DiscountScoreCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId6];
         
@@ -328,7 +328,7 @@
         
         return cell;
         
-    }else if (indexPath.section == 3 && indexPath.row == 6) {
+    }else if (indexPath.section == 3 && indexPath.row == self.shopDetail.serviceItemList.count +2) {
         
         TotalCountCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId7];
         
@@ -340,7 +340,7 @@
         
         return cell;
         
-    }else if (indexPath.section == 3 && indexPath.row == 7) {
+    }else if (indexPath.section == 3 && indexPath.row == self.shopDetail.serviceItemList.count + 3) {
         
         PaymentCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId8];
         

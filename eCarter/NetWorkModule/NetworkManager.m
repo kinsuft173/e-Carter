@@ -1457,4 +1457,30 @@
 }
 
 
+#pragma mark - 广告页面
+
+- (void)server_fetchAdvertisementWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    //test
+    //    NSDictionary *parameters = @{@"id": @"1"};
+    
+    [manager GET:[NSString stringWithFormat:@"%@%@",SERVERADTEST,APP_AD_URL] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        
+        NSLog(@"JSON: %@", responseObject);
+        
+        completeHandle(responseObject);
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+    }];
+    
+}
+
+
 @end

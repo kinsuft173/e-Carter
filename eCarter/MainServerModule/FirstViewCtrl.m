@@ -98,16 +98,16 @@
 
 - (void)getModel
 {
-//    [[NetworkManager shareMgr] server_fetchAdvertisementWithDic:nil completeHandle:^(NSDictionary *responseBanner) {
-//        
-//        
-//        
-//        self.array_advertisement = [[responseBanner objectForKey:@"data"] objectForKey:@"items"];
-//        
-//        [self.tableView reloadData];
-//        
-//        
-//    }];
+    [[NetworkManager shareMgr] server_fetchAdvertisementWithDic:nil completeHandle:^(NSDictionary *responseBanner) {
+        
+        
+        
+        self.array_advertisement = [[responseBanner objectForKey:@"data"] objectForKey:@"items"];
+        
+        [self.tableView reloadData];
+        
+        
+    }];
     
     
     
@@ -176,8 +176,6 @@
         
         [cell customUI:self.array_advertisement];
         
-        
-        
         return cell;
     }
     
@@ -189,8 +187,7 @@
             
             cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
             
-            
-            
+        
         }
         
         

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5B4A59FE5E3923AFF3BA7FAB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA8F7F1A0C3E67F78D061FC8 /* libPods.a */; };
 		DE06386C1B6D19C900EFB576 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = DE06386B1B6D19C900EFB576 /* iToast.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DE06386F1B6DFB2D00EFB576 /* loading-ios@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE06386E1B6DFB2D00EFB576 /* loading-ios@2x.png */; };
 		DE237EE71B3FA8AA0027767B /* MyCountMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE237EE51B3FA8AA0027767B /* MyCountMoneyCell.m */; };
 		DE237EE81B3FA8AA0027767B /* MyCountMoneyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE237EE61B3FA8AA0027767B /* MyCountMoneyCell.xib */; };
 		DE237EEC1B3FA8F70027767B /* MyCountNomalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE237EEA1B3FA8F70027767B /* MyCountNomalCell.m */; };
@@ -469,6 +470,7 @@
 		DA8F7F1A0C3E67F78D061FC8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE06386A1B6D19C900EFB576 /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
 		DE06386B1B6D19C900EFB576 /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
+		DE06386E1B6DFB2D00EFB576 /* loading-ios@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loading-ios@2x.png"; path = "IMAGE/loading-ios@2x.png"; sourceTree = "<group>"; };
 		DE237EE41B3FA8AA0027767B /* MyCountMoneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCountMoneyCell.h; path = PersonalCenter/Cell/MyCountMoneyCell.h; sourceTree = "<group>"; };
 		DE237EE51B3FA8AA0027767B /* MyCountMoneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCountMoneyCell.m; path = PersonalCenter/Cell/MyCountMoneyCell.m; sourceTree = "<group>"; };
 		DE237EE61B3FA8AA0027767B /* MyCountMoneyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyCountMoneyCell.xib; path = PersonalCenter/Cell/MyCountMoneyCell.xib; sourceTree = "<group>"; };
@@ -1203,6 +1205,13 @@
 			path = iTostView;
 			sourceTree = "<group>";
 		};
+		DE06386D1B6DF6F200EFB576 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		DE9D11E51B50ECEC00046407 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1570,6 +1579,7 @@
 		DED2EB121B35E336006FE893 /* MainServerModule */ = {
 			isa = PBXGroup;
 			children = (
+				DE06386D1B6DF6F200EFB576 /* New Group */,
 				DEFDF5961B5B83BE00298366 /* Model */,
 				DEE87CD41B48EA0C00D3EDAB /* lijingyou */,
 				DEE3BE411B3655E800DCE7EC /* Cell */,
@@ -1598,6 +1608,7 @@
 		DED7F5001B4760BF0005019C /* IMAGE1 */ = {
 			isa = PBXGroup;
 			children = (
+				DE06386E1B6DFB2D00EFB576 /* loading-ios@2x.png */,
 				DEE336BE1B4C40D900357253 /* 个人中心 */,
 				DED7F58B1B4760F40005019C /* Coupons */,
 				DED7F5011B4760DB0005019C /* Address_btn_map@2x.png */,
@@ -2410,6 +2421,7 @@
 				DEE337191B4C40D900357253 /* login_Account@2x.png in Resources */,
 				DED2EAE81B35D3A5006FE893 /* LaunchScreen.xib in Resources */,
 				DE237F051B404E8A0027767B /* AdressCell.xib in Resources */,
+				DE06386F1B6DFB2D00EFB576 /* loading-ios@2x.png in Resources */,
 				DEE337291B4C40D900357253 /* mine_Integral@3x.png in Resources */,
 				DEE337081B4C40D900357253 /* blue@3x.png in Resources */,
 				DEEC3DDC1B5C2832005CE84E /* CityCell.xib in Resources */,

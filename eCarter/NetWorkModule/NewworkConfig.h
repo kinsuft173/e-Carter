@@ -11,6 +11,7 @@
 
 
 #define SERVER    @"http://gc.ditu.aliyun.com/regeocoding?l=39.938133,116.395739&type=001"
+#define SERVERADTEST    @"http://115.28.85.76/gaoshou/api/web/?r="
 #define ISINTEST  YES
 
 #pragma mark - 网络接口回调类型
@@ -59,6 +60,9 @@ typedef void (^ErrorHandle)(NSError*);
 #define ECATER_ADD_USER_ADDRESS_INTERFACE @"/ecar/mobile/addUserAddress"
 
 #define ECATER_POINT_TRANSACTION_INTERFACE @"/ecar/mobile/queryPointTransaction"
+
+//广告部分
+#define APP_AD_URL @"advertisement/index"
 
 
 //#define ECATER_INFO_INTERFACE @""
