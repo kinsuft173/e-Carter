@@ -10,7 +10,7 @@
 #define GSAPP_NewworkConfig_h
 
 
-#define SERVER    @"http://115.28.85.76/gaoshou/api/web/?r="
+#define SERVER    @"http://gc.ditu.aliyun.com/regeocoding?l=39.938133,116.395739&type=001"
 #define ISINTEST  YES
 
 #pragma mark - 网络接口回调类型
@@ -20,7 +20,7 @@ typedef void (^ErrorHandle)(NSError*);
 #pragma mark - 网络相关url
 
 //test
-#define ECATER_TEST_INTERFACE @"order/create"
+#define ECATER_TEST_INTERFACE @""
 
 //用户部分
 #define ECATER_LOGIN_INTERFACE @"/ecar/mobile/login"
