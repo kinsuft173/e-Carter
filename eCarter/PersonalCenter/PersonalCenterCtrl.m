@@ -33,13 +33,34 @@
     self.arrayInfo = [NSArray arrayWithObjects:@"我的订单",@"我的账户",@"我的车库",@"我的地址",@"交易记录",@"我的优惠券",@"我的e积分", nil];
     self.arrayImage = [NSArray arrayWithObjects:[UIImage imageNamed:@"mine_My-order"],[UIImage imageNamed:@"mine_My-account"],[UIImage imageNamed:@"mine_mycar"],[UIImage imageNamed:@"mine_Address"],[UIImage imageNamed:@"mine_Trade-record"],[UIImage imageNamed:@"mine_On-Sale"],[UIImage imageNamed:@"mine_Integral"]];
     
+    UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
+    [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
+    [leftButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton ];
     
     
+    
+    if(([[[UIDevice currentDevice] systemVersion] floatValue]>=7.0?20:0)){
+        UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                           initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                           target:nil action:nil];
+        negativeSpacer.width = -17;
+        self.navigationItem.leftBarButtonItems = @[negativeSpacer, leftItem];
+    }else
+    {
+        self.navigationItem.leftBarButtonItem=leftItem;
+    }
+}
+
+-(void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)getModel
 {
-
+    
     [[NetworkManager shareMgr] server_loginWithDic:nil completeHandle:^(NSDictionary *response) {
         
         NSDictionary* dicTmep = [response objectForKey:@"data"];
@@ -53,7 +74,7 @@
         [self.tableView  reloadData];
         
     }];
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,14 +83,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 
@@ -90,9 +111,9 @@
         return 4;
         
     }else{
-    
+        
         return 5;
-    
+        
     }
     
 }
@@ -114,17 +135,17 @@
         return 50;
         
     }else{
-    
-    
+        
+        
         if (indexPath.row == 0) {
             
             return 10;
             
         }
-    
+        
         
         return 50;
-    
+        
     }
     
     
@@ -154,7 +175,7 @@
         if ([UserDataManager shareManager].userLoginInfo) {
             
             [cell.imgHead sd_setImageWithURL:[NSURL URLWithString:[UserDataManager shareManager].userLoginInfo.user.avatarUrl]
-                                placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
+                            placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
             
             cell.lblName.text = [UserDataManager shareManager].userLoginInfo.user.nickname;
             
@@ -202,7 +223,7 @@
     }
     
     
-//    return nil;
+    //    return nil;
 }
 
 
@@ -221,27 +242,27 @@
         
         
     }else if (indexPath.section == 1 && indexPath.row == 2){
-    
+        
         [self performSegueWithIdentifier:@"goMyCount" sender:nil];
         
     }else if (indexPath.section == 1 && indexPath.row == 3){
-    
+        
         [self performSegueWithIdentifier:@"goMyCar" sender:nil];
-    
+        
     }else if (indexPath.section == 2 && indexPath.row == 1){
-    
+        
         [self performSegueWithIdentifier:@"goMyAdress" sender:nil];
-    
+        
     }else if (indexPath.section == 2 && indexPath.row == 2){
-    
+        
         [self performSegueWithIdentifier:@"goMyTrade" sender:nil];
-    
+        
     }else if (indexPath.section == 2 && indexPath.row == 3){
-    
+        
         [self performSegueWithIdentifier:@"goMyCouPon" sender:nil];
-    
+        
     }else if (indexPath.section == 2 && indexPath.row == 4){
-    
+        
         PointOfMeCtrl *vc=[[PointOfMeCtrl alloc] initWithNibName:@"PointOfMeCtrl" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -250,15 +271,15 @@
         SettingCtrl *vc=[[SettingCtrl alloc] initWithNibName:@"SettingCtrl" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
     }
-
+    
 }
 
 - (IBAction)goConfig:(id)sender
 {
-
+    
     SettingCtrl *vc=[[SettingCtrl alloc] initWithNibName:@"SettingCtrl" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
-
+    
 }
 
 
