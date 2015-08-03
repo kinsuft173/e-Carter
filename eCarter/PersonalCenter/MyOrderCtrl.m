@@ -326,6 +326,7 @@
             [cell.viewMask1 addSubview:viewDivide4];
         }
         
+        cell.judgeWhichStatus = 1;
         
         if (cell.judgeWhichStatus==0) {
             
@@ -335,6 +336,8 @@
         }
         else if (cell.judgeWhichStatus==1)
         {
+            NSLog(@"hehhe");
+            
             cell.btnGoCommentPage.hidden=NO;
             [cell.btnGoCommentPage setTitle:@"退款详情" forState:UIControlStateNormal];
             [cell.btnGoCommentPage addTarget:self action:@selector(goMoneyReturnPage) forControlEvents:UIControlEventTouchUpInside];

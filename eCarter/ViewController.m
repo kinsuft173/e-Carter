@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "HKCommen.h"
 
-#define PageNumberOfScrollView 3
+#define PageNumberOfScrollView 4
 
 @interface ViewController ()<UIScrollViewDelegate>
 
@@ -28,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
     
     NSString* strFlag = [NSString stringWithFormat:@"isFirstStartWithVersion_%@",[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"]];
     
@@ -78,10 +79,12 @@
     self.scrollView.bounces = NO;
     
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.5*(self.view.frame.size.width -120),self.view.frame.size.height - 60, 120, 30)];
-    self.pageControl.numberOfPages = 3;
+    self.pageControl.numberOfPages = PageNumberOfScrollView;
     [self.pageControl addTarget:self action:@selector(goPage:) forControlEvents:UIControlEventValueChanged];
     
     [self.view addSubview:self.pageControl];
+    
+    self.pageControl.hidden = YES;
     
     
     for (int i = 0; i < PageNumberOfScrollView; i++) {
@@ -89,7 +92,7 @@
         NSLog(@"11");
         
         
-        UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"bg%d.png",i]];
+        UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"defoult_%d.png",i + 1]];
         
         
         UIImageView*  imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*self.view.frame.size.width,0,self.view.frame.size.width,self.view.frame.size.height)];
@@ -104,14 +107,14 @@
         [self.arrayImageView addObject:imageView];
         
         
-        if (i == PageNumberOfScrollView - 1) {
-            
-            UIButton* btn = [UIButton buttonWithType:UIButtonTypeSystem];
-            btn.backgroundColor = [UIColor redColor];
-            [btn setTitleColor:[UIColor yellowColor] forState:UIControlStateNormal];
-            [btn setTitle:@"点击进入" forState:UIControlStateNormal];
-            
-            btn.frame = CGRectMake(self.view.frame.size.width*0.5 - 30, self.view.frame.size.height*0.8 - 25, 60, 50);
+//        if (i == PageNumberOfScrollView - 1) {
+        
+            UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//            btn.backgroundColor = [UIColor redColor];
+//            [btn setTitleColor:[UIColor yellowColor] forState:UIControlStateNormal];
+//            [btn setTitle:@"点击进入" forState:UIControlStateNormal];
+        
+            btn.frame = CGRectMake(self.view.frame.size.width*0.5 - 80, self.view.frame.size.height*0.8 - 10 , 160, 50);
             
             
             btn.userInteractionEnabled = YES;
@@ -120,12 +123,12 @@
             [imageView addSubview:btn];
             
             
-            self.btnStart = btn;
+//            self.btnStart = btn;
             
             [imageView addSubview:btn];
             
             imageView.userInteractionEnabled = YES;
-        }
+//        }
         
         
         
