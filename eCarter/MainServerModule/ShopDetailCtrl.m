@@ -26,6 +26,7 @@
 @property (nonatomic, strong) IBOutlet UITableView* tableView;
 @property (nonatomic, strong) ShopDetail* shopDetail;
 @property (nonatomic, strong) UIActionSheet *asheet;
+@property (assign) BOOL checkService;
 
 @end
 
@@ -37,7 +38,7 @@
 //    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
 //        [self.tableView setLayoutMargins: UIEdgeInsetsZero];
 //    }
-    
+    self.checkService=NO;
     [HKCommen setExtraCellLineHidden:self.tableView];
     
     [self addRefresh];
@@ -411,7 +412,24 @@
             
         }
         
-    }else if (indexPath.section == 3 && indexPath.row == 0){
+    }
+    else if (indexPath.section==2)
+    {
+        ServerListCell *cell=(ServerListCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:2]];
+        
+        if (self.checkService) {
+            [cell.img_Button setImage:[UIImage imageNamed:@"but_checked"]];
+
+        }
+        else
+        {
+            [cell.img_Button setImage:[UIImage imageNamed:@"but_Unchecked"]];
+            
+        }
+        self.checkService=!self.checkService;
+    }
+    
+    else if (indexPath.section == 3 && indexPath.row == 0){
     
         
         self.asheet = [[UIActionSheet alloc] initWithTitle:nil

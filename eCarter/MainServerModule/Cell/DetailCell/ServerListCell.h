@@ -10,6 +10,7 @@
 
 @interface ServerListCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *img_Button;
 @property (strong, nonatomic) IBOutlet UILabel* lblSeverName;
 @property (strong, nonatomic) IBOutlet UILabel* lblServerPrice;
 
