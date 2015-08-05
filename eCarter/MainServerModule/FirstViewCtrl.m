@@ -273,13 +273,15 @@
                                                   url:@"http://www.mob.com"
                                           description:@"这是一条演示信息"
                                             mediaType:SSPublishContentMediaTypeNews];
-    //1+创建弹出菜单容器（iPad必要）
-    id<ISSContainer> container = [ShareSDK container];
-    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    //1+创建弹出菜单容器
+    //id<ISSContainer> container = [ShareSDK container];
+    //[container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    
+    NSArray *shareList = [ShareSDK getShareListWithType:ShareTypeQQ,ShareTypeWeixiSession,ShareTypeWeixiTimeline,ShareTypeSinaWeibo,nil];
     
     //2、弹出分享菜单
-    [ShareSDK showShareActionSheet:container
-                         shareList:nil
+    [ShareSDK showShareActionSheet:nil
+                         shareList:shareList
                            content:publishContent
                      statusBarTips:YES
                        authOptions:nil
