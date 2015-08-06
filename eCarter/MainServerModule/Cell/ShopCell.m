@@ -19,8 +19,10 @@
 
     
     self.star=[[[NSBundle mainBundle]loadNibNamed:@"starView" owner:self options:nil] objectAtIndex:0];
+    
+    [self.star setFrame:CGRectMake(0, 11, 82, 15)];
 
-    [self.viewMask addSubview:self.star];
+    [self.viewForStar addSubview:self.star];
 //    if ([[UIScreen mainScreen]bounds].size.width==320) {
 //        [self.star setFrame:CGRectMake(150, 55, 82, 15)];
 //    }
@@ -52,8 +54,6 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
-    [self.star setFrame:CGRectMake(115, 51, 82, 15)];
     
 }
 

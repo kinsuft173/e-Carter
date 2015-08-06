@@ -26,6 +26,36 @@
     [HKCommen addHeadTitle:@"新增车辆" whichNavigation:self.navigationItem];
     [HKCommen setExtraCellLineHidden:self.myTable];
     self.arrayOfCar=[NSArray arrayWithObjects:@"请选择品牌／车系",@"选择车款／排量系",@"请选择颜色", nil];
+    UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
+    [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
+    [leftButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton ];
+    
+    
+    
+    if(([[[UIDevice currentDevice] systemVersion] floatValue]>=7.0?20:0)){
+        UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                           initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                           target:nil action:nil];
+        negativeSpacer.width = -17;
+        self.navigationItem.leftBarButtonItems = @[negativeSpacer, leftItem];
+    }else
+    {
+        self.navigationItem.leftBarButtonItem=leftItem;
+    }
+    
+    UIButton *rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    [rightButton setFrame:CGRectMake(0, 0, 40, 40)];
+    [rightButton setTitle:@"确定" forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(goCommit:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton ];
+    self.navigationItem.rightBarButtonItem=rightItem;
+}
+
+-(void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,7 +67,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 3;
     
 }
 
@@ -63,10 +93,7 @@
     {
         return 133;
     }
-    else
-    {
-        return 85;
-    }
+    return 0;
     
 }
 
@@ -118,21 +145,7 @@
         return cell;
         
     }
-    else  if(indexPath.section==3){
-        
-        ButtonCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId4];
-        
-        if (!cell) {
-            
-            cell = [[[NSBundle mainBundle] loadNibNamed:cellId4 owner:self options:nil] objectAtIndex:0];
-        }
-        [cell.btn_commitButton setTitle:@"确定" forState:UIControlStateNormal];
-        
-        [cell.btn_commitButton addTarget:self action:@selector(goCommit:) forControlEvents:UIControlEventTouchUpInside];
-        
-        return cell;
-        
-    }
+
     
     return nil;
     
@@ -188,6 +201,7 @@ heightForHeaderInSection:(NSInteger)section
 
 - (void)goCommit:(UIButton*)sender
 {
+
     CarNumCell* cellCarNo = (CarNumCell*)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 
     NSString* strCarNo = [NSString stringWithFormat:@"%@%@",cellCarNo.lblCarNo.text,cellCarNo.textFiledCarNo.text];

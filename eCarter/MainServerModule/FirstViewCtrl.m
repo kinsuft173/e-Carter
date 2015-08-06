@@ -16,6 +16,8 @@
 #import "SelectCityCtrl.h"
 #import "UserDataManager.h"
 
+#import <ShareSDK/ShareSDK.h>
+
 
 #define BANNER_COUNT 3
 #define BANNER_RATIO 9/16
@@ -141,11 +143,12 @@
         
     }else if(indexPath.section == 2){
     
-        return CELL_GapLength + CELL_HIGHT;
+        return CELL_HIGHT + CELL_GapLength;
+        
     
     }else if (indexPath.section == 3){
     
-        return CELL_HIGHT + CELL_GapLength;
+        return CELL_GapLength + CELL_HIGHT;
     }
     
     return 0;
@@ -196,6 +199,19 @@
         
     }else if (indexPath.section == 3){
     
+        ShopGetCarIndicatorCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId3];
+        
+        if (!cell) {
+            
+            cell = [[[NSBundle mainBundle] loadNibNamed:cellId3 owner:self options:nil] objectAtIndex:0];
+            
+        }
+        
+        return cell;
+    
+    }else if (indexPath.section == 2){
+        
+        
         SelfGetCarIndicatorCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId2];
         
         if (!cell) {
@@ -205,18 +221,6 @@
             
         }
         
-        
-        return cell;
-    
-    }else if (indexPath.section == 2){
-        
-        ShopGetCarIndicatorCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId3];
-        
-        if (!cell) {
-            
-            cell = [[[NSBundle mainBundle] loadNibNamed:cellId3 owner:self options:nil] objectAtIndex:0];
-            
-        }
         
         return cell;
     }
@@ -232,7 +236,7 @@
 {
     if (indexPath.section == 2) {
         
-        [self performSegueWithIdentifier:@"goShopGet" sender:nil];
+        [self performSegueWithIdentifier:@"goSelfGet" sender:nil];
         
     }else if (indexPath.section == 3){
     
@@ -242,7 +246,11 @@
 //        vc.city=@"广州市";
 //        [self.navigationController pushViewController:vc animated:YES];
         
-        [self performSegueWithIdentifier:@"goSelfGet" sender:nil];
+        
+        [self performSegueWithIdentifier:@"goShopGet" sender:nil];
+        
+        
+        
     }
 
 }
@@ -257,6 +265,55 @@
 
 - (IBAction)goPersonalCenter:(id)sender
 {
+    /*
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK" ofType:@"jpg"];
+    
+    //1、构造分享内容
+    id<ISSContent> publishContent = [ShareSDK content:@"要分享的内容"
+                                       defaultContent:@"默认内容"
+                                                image:[ShareSDK imageWithPath:imagePath]
+                                                title:@"ShareSDK"
+                                                  url:@"http://www.mob.com"
+                                          description:@"这是一条演示信息"
+                                            mediaType:SSPublishContentMediaTypeNews];
+    //1+创建弹出菜单容器
+    //id<ISSContainer> container = [ShareSDK container];
+    //[container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    
+    NSArray *shareList = [ShareSDK getShareListWithType:ShareTypeQQ,ShareTypeWeixiSession,ShareTypeWeixiTimeline,ShareTypeSinaWeibo,nil];
+    
+    //2、弹出分享菜单
+    [ShareSDK showShareActionSheet:nil
+                         shareList:shareList
+                           content:publishContent
+                     statusBarTips:YES
+                       authOptions:nil
+                      shareOptions:nil
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
+                                //可以根据回调提示用户。
+                                if (state == SSResponseStateSuccess)
+                                {
+                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享成功"
+                                                                                    message:nil
+                                                                                   delegate:self
+                                                                          cancelButtonTitle:@"OK"
+                                                                          otherButtonTitles:nil, nil];
+                                    [alert show];
+                                }
+                                else if (state == SSResponseStateFail)
+                                {
+                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享失败"
+                                                                                    message:[NSString stringWithFormat:@"失败描述：%@",[error errorDescription]]
+                                                                                   delegate:self
+                                                                          cancelButtonTitle:@"OK"
+                                                                          otherButtonTitles:nil, nil];
+                                    [alert show];
+                                }
+                            }];
+    
+    */
+    
     NSLog(@"goPersonalCenter");
     
     UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"PersonalCenter" bundle:nil];
@@ -265,9 +322,7 @@
     
     [self.navigationController pushViewController:vc animated:YES];
 
-//    UIStoryboard *mainDriverStory=[UIStoryboard storyboardWithName:@"mgDriverStoryboard" bundle:nil];
-//    UIViewController *vc=[mainDriverStory instantiateViewControllerWithIdentifier:@"MainDriverCtrl"];
-//    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
 

@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *img_Service;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_Adress;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_Distance;
+@property (weak, nonatomic) IBOutlet UIView *viewForStar;
 
 
 -(void)initWithDict:(CGFloat)value;

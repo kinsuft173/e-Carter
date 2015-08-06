@@ -26,6 +26,7 @@
 @property (nonatomic, strong) IBOutlet UITableView* tableView;
 @property (nonatomic, strong) ShopDetail* shopDetail;
 @property (nonatomic, strong) UIActionSheet *asheet;
+@property (assign) BOOL checkService;
 
 @end
 
@@ -37,11 +38,34 @@
 //    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
 //        [self.tableView setLayoutMargins: UIEdgeInsetsZero];
 //    }
-    
+    self.checkService=NO;
     [HKCommen setExtraCellLineHidden:self.tableView];
     
     [self addRefresh];
     
+    UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
+    [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
+    [leftButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton ];
+    
+    
+    
+    if(([[[UIDevice currentDevice] systemVersion] floatValue]>=7.0?20:0)){
+        UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                           initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                           target:nil action:nil];
+        negativeSpacer.width = -17;
+        self.navigationItem.leftBarButtonItems = @[negativeSpacer, leftItem];
+    }else
+    {
+        self.navigationItem.leftBarButtonItem=leftItem;
+    }
+}
+
+-(void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -388,7 +412,24 @@
             
         }
         
-    }else if (indexPath.section == 3 && indexPath.row == 0){
+    }
+    else if (indexPath.section==2)
+    {
+        ServerListCell *cell=(ServerListCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:2]];
+        
+        if (self.checkService) {
+            [cell.img_Button setImage:[UIImage imageNamed:@"but_checked"]];
+
+        }
+        else
+        {
+            [cell.img_Button setImage:[UIImage imageNamed:@"but_Unchecked"]];
+            
+        }
+        self.checkService=!self.checkService;
+    }
+    
+    else if (indexPath.section == 3 && indexPath.row == 0){
     
         
         self.asheet = [[UIActionSheet alloc] initWithTitle:nil
