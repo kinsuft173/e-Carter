@@ -36,6 +36,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [HKCommen addHeadTitle:@"我的订单" whichNavigation:self.navigationItem];
+    
     [self initScrollTables:5];
     
     [self getModel];
@@ -141,7 +143,9 @@
         //        btn.backgroundColor = [UIColor blueColor];
         btn.tag = i;
         
-        btn.titleLabel.font = [UIFont fontWithName:@"Hel vetica-Bold " size:15];
+        btn.titleLabel.font=[UIFont systemFontOfSize:15.0];
+        
+        
         
         if (i != 0) {
             

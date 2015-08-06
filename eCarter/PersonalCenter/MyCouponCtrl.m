@@ -9,6 +9,7 @@
 #import "MyCouponCtrl.h"
 #import "CouponMainInfoCell.h"
 #import "CouponExtraInfoCell.h"
+#import "HKCommen.h"
 
 @interface MyCouponCtrl ()
 
@@ -24,6 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [HKCommen addHeadTitle:@"我的优惠劵" whichNavigation:self.navigationItem];
     
     self.arrayModel = [NSArray arrayWithObjects:@"1",@"2", nil];
     self.arrayIndex = [NSMutableArray arrayWithObjects:@1,@0, nil];

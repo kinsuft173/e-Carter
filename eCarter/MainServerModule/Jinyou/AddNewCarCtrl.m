@@ -44,6 +44,13 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+    
+    UIButton *rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    [rightButton setFrame:CGRectMake(0, 0, 40, 40)];
+    [rightButton setTitle:@"确定" forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(goCommit:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton ];
+    self.navigationItem.leftBarButtonItem=rightItem;
 }
 
 -(void)back
@@ -86,10 +93,7 @@
     {
         return 133;
     }
-    else
-    {
-        return 85;
-    }
+    return 0;
     
 }
 
@@ -141,21 +145,7 @@
         return cell;
         
     }
-    else  if(indexPath.section==3){
-        
-        ButtonCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId4];
-        
-        if (!cell) {
-            
-            cell = [[[NSBundle mainBundle] loadNibNamed:cellId4 owner:self options:nil] objectAtIndex:0];
-        }
-        [cell.btn_commitButton setTitle:@"确定" forState:UIControlStateNormal];
-        
-        [cell.btn_commitButton addTarget:self action:@selector(goCommit:) forControlEvents:UIControlEventTouchUpInside];
-        
-        return cell;
-        
-    }
+
     
     return nil;
     

@@ -143,11 +143,12 @@
         
     }else if(indexPath.section == 2){
     
-        return CELL_GapLength + CELL_HIGHT;
+        return CELL_HIGHT + CELL_GapLength;
+        
     
     }else if (indexPath.section == 3){
     
-        return CELL_HIGHT + CELL_GapLength;
+        return CELL_GapLength + CELL_HIGHT;
     }
     
     return 0;
@@ -198,6 +199,19 @@
         
     }else if (indexPath.section == 3){
     
+        ShopGetCarIndicatorCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId3];
+        
+        if (!cell) {
+            
+            cell = [[[NSBundle mainBundle] loadNibNamed:cellId3 owner:self options:nil] objectAtIndex:0];
+            
+        }
+        
+        return cell;
+    
+    }else if (indexPath.section == 2){
+        
+        
         SelfGetCarIndicatorCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId2];
         
         if (!cell) {
@@ -207,18 +221,6 @@
             
         }
         
-        
-        return cell;
-    
-    }else if (indexPath.section == 2){
-        
-        ShopGetCarIndicatorCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId3];
-        
-        if (!cell) {
-            
-            cell = [[[NSBundle mainBundle] loadNibNamed:cellId3 owner:self options:nil] objectAtIndex:0];
-            
-        }
         
         return cell;
     }
@@ -234,7 +236,7 @@
 {
     if (indexPath.section == 2) {
         
-        [self performSegueWithIdentifier:@"goShopGet" sender:nil];
+        [self performSegueWithIdentifier:@"goSelfGet" sender:nil];
         
     }else if (indexPath.section == 3){
     
@@ -245,10 +247,10 @@
 //        [self.navigationController pushViewController:vc animated:YES];
         
         
+        [self performSegueWithIdentifier:@"goShopGet" sender:nil];
         
         
         
-        [self performSegueWithIdentifier:@"goSelfGet" sender:nil];
     }
 
 }
@@ -263,6 +265,7 @@
 
 - (IBAction)goPersonalCenter:(id)sender
 {
+    /*
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK" ofType:@"jpg"];
     
     //1、构造分享内容
@@ -309,8 +312,8 @@
                                 }
                             }];
     
+    */
     
-    /*
     NSLog(@"goPersonalCenter");
     
     UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"PersonalCenter" bundle:nil];
@@ -318,7 +321,7 @@
     UIViewController* vc = [storyBoard instantiateViewControllerWithIdentifier:@"PersonalCenter"];
     
     [self.navigationController pushViewController:vc animated:YES];
-*/
+
 
 }
 
