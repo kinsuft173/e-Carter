@@ -433,6 +433,8 @@
             
         }else{
             
+            NSLog(@"server_queryStoreListWithDic ==> %@",responseObject);
+            
             if (completeHandle) {
                 
                 completeHandle(responseObject);
@@ -483,6 +485,8 @@
             }
             
         }else{
+            
+             NSLog(@"server_queryStoreDetailWithDic ==> %@",responseObject);
             
             if (completeHandle) {
                 
@@ -742,6 +746,7 @@
             }
             
         }else{
+                      
             
             if (completeHandle) {
                 
