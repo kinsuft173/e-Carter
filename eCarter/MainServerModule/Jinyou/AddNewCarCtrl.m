@@ -50,7 +50,7 @@
     [rightButton setTitle:@"确定" forState:UIControlStateNormal];
     [rightButton addTarget:self action:@selector(goCommit:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton ];
-    self.navigationItem.leftBarButtonItem=rightItem;
+    self.navigationItem.rightBarButtonItem=rightItem;
 }
 
 -(void)back
@@ -67,7 +67,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 3;
     
 }
 
@@ -201,6 +201,7 @@ heightForHeaderInSection:(NSInteger)section
 
 - (void)goCommit:(UIButton*)sender
 {
+
     CarNumCell* cellCarNo = (CarNumCell*)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 
     NSString* strCarNo = [NSString stringWithFormat:@"%@%@",cellCarNo.lblCarNo.text,cellCarNo.textFiledCarNo.text];
