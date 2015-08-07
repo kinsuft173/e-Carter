@@ -46,8 +46,9 @@
     }
     
     UIButton *rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    [rightButton setFrame:CGRectMake(0, 0, 40, 40)];
+    [rightButton setFrame:CGRectMake(0, 0, 30, 40)];
     [rightButton setTitle:@"确定" forState:UIControlStateNormal];
+    [rightButton.titleLabel setFont:[UIFont systemFontOfSize:15.0]];
     [rightButton addTarget:self action:@selector(goCommit:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton ];
     self.navigationItem.rightBarButtonItem=rightItem;

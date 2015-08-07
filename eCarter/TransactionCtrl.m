@@ -27,6 +27,7 @@
     self.txt_phone.layer.masksToBounds=YES;
     self.txt_phone.layer.borderWidth=1.0;
     self.txt_phone.layer.borderColor=[UIColor colorWithRed:104.0/255.0 green:190.0/255.0 blue:239.0/255.0 alpha:1.0].CGColor;
+    self.txt_phone.delegate=self;
     
     UIImageView *codeView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_code"]];
     [codeView setFrame:CGRectMake(10, 0, 14, 22)];
@@ -38,9 +39,11 @@
     self.txt_code.layer.masksToBounds=YES;
     self.txt_code.layer.borderWidth=1.0;
     self.txt_code.layer.borderColor=[UIColor colorWithRed:181.0/255.0 green:181.0/255.0 blue:181.0/255.0 alpha:1.0].CGColor;
+    self.txt_code.delegate=self;
     
     self.btn_sendCode.layer.cornerRadius=5.0;
     self.btn_sendCode.layer.masksToBounds=YES;
+    [self.btn_sendCode addTarget:self action:@selector(sendCode) forControlEvents:UIControlEventTouchUpInside];
     
     [HKCommen addHeadTitle:@"设置交易密码" whichNavigation:self.navigationItem];
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -61,6 +64,35 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    
+    if (self.txt_code==textField) {
+        NSLog(@"测试1");
+        self.txt_code.layer.borderColor=[UIColor colorWithRed:104.0/255.0 green:190.0/255.0 blue:239.0/255.0 alpha:1.0].CGColor;
+        
+        self.txt_phone.layer.borderColor=[UIColor colorWithRed:181.0/255.0 green:181.0/255.0 blue:181.0/255.0 alpha:1.0].CGColor;
+        
+        return YES;
+    }
+    
+    if(self.txt_phone==textField)
+    {
+        NSLog(@"测试2");
+        self.txt_code.layer.borderColor=[UIColor colorWithRed:104.0/255.0 green:190.0/255.0 blue:239.0/255.0 alpha:1.0].CGColor;
+        
+        self.txt_phone.layer.borderColor=[UIColor colorWithRed:181.0/255.0 green:181.0/255.0 blue:181.0/255.0 alpha:1.0].CGColor;
+        return YES;
+    }
+    
+    return YES;
+}
+
+-(void)sendCode
+{
+   
 }
 
 -(void)back

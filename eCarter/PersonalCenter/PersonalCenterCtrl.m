@@ -28,6 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [HKCommen setExtraCellLineHidden:self.tableView];
     [self getModel];
     
     self.arrayInfo = [NSArray arrayWithObjects:@"我的订单",@"我的账户",@"我的车库",@"我的地址",@"交易记录",@"我的优惠券",@"我的e积分", nil];
@@ -132,7 +133,7 @@
             
         }
         
-        return 50;
+        return 44;
         
     }else{
         
@@ -144,7 +145,7 @@
         }
         
         
-        return 50;
+        return 44;
         
     }
     
@@ -168,9 +169,9 @@
             
             cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
             
-            
-            
         }
+        cell.imgHead.layer.cornerRadius=30.0;
+        cell.imgHead.layer.masksToBounds=YES;
         
         if ([UserDataManager shareManager].userLoginInfo) {
             

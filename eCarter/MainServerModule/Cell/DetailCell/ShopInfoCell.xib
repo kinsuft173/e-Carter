@@ -18,8 +18,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQa-vP-T54">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="广州市天河区棠下美容中心" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2O-Pg-jzL">
-                                <rect key="frame" x="10" y="10" width="204" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="广州市天河区棠下美容中心" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2O-Pg-jzL">
+                                <rect key="frame" x="10" y="10" width="247" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="Pc2-ii-l9E"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -34,6 +37,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="服务内容:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nav-87-XMd">
                                 <rect key="frame" x="10" y="62" width="68" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="洗车/打蜡/保养/检修" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTP-ge-Gua">
@@ -50,7 +54,7 @@
                                     <constraint firstAttribute="width" constant="41" id="vn6-5G-6TL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -59,7 +63,7 @@
                                 </variation>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xtl-s2-t1I">
-                                <rect key="frame" x="10" y="35" width="82" height="15"/>
+                                <rect key="frame" x="10" y="38" width="82" height="15"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="WyZ-LX-owl"/>
@@ -69,9 +73,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="R2O-Pg-jzL" secondAttribute="trailing" constant="63" id="9F7-YF-iBQ"/>
                             <constraint firstItem="fwu-E9-Hpc" firstAttribute="leading" secondItem="ZQa-vP-T54" secondAttribute="leading" constant="100" id="G9S-8F-iOF"/>
                             <constraint firstItem="fwu-E9-Hpc" firstAttribute="top" secondItem="ZQa-vP-T54" secondAttribute="top" constant="35" id="IjV-OK-bZh"/>
-                            <constraint firstItem="Xtl-s2-t1I" firstAttribute="top" secondItem="ZQa-vP-T54" secondAttribute="top" constant="35" id="OLR-eJ-Ofu"/>
+                            <constraint firstItem="R2O-Pg-jzL" firstAttribute="top" secondItem="ZQa-vP-T54" secondAttribute="top" constant="10" id="J1B-tn-sU6"/>
+                            <constraint firstItem="R2O-Pg-jzL" firstAttribute="leading" secondItem="ZQa-vP-T54" secondAttribute="leading" constant="10" id="N8i-93-5qh"/>
+                            <constraint firstItem="Xtl-s2-t1I" firstAttribute="top" secondItem="ZQa-vP-T54" secondAttribute="top" constant="38" id="OLR-eJ-Ofu"/>
                             <constraint firstItem="Xtl-s2-t1I" firstAttribute="leading" secondItem="ZQa-vP-T54" secondAttribute="leading" constant="10" id="bXm-64-FGp"/>
                         </constraints>
                     </view>
@@ -79,14 +86,14 @@
                         <rect key="frame" x="0.0" y="86" width="320" height="62"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="广州市棠安路" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6v-Bz-93m">
-                                <rect key="frame" x="31" y="10" width="132" height="14"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="31" y="10" width="157" height="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.23km" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRx-it-Ctl">
-                                <rect key="frame" x="216" y="10" width="57" height="14"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="217" y="10" width="74" height="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -100,8 +107,8 @@
                                 <rect key="frame" x="10" y="35" width="13" height="13"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="营业时间: 8:00-23:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1F-M4-y5F">
-                                <rect key="frame" x="31" y="35" width="161" height="14"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="31" y="35" width="198" height="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>

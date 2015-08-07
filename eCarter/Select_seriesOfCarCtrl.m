@@ -178,6 +178,7 @@
         cell.lbl_seriesOfCar.text = carBrand.brandName;
     
     }
+    cell.lbl_seriesOfCar.text=[self.array_showArray objectAtIndex:indexPath.row];
         
     return cell;
 

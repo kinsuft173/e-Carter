@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,25 +15,51 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg0.png" translatesAutoresizingMaskIntoConstraints="NO" id="AQB-M6-bY2">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg0.png" translatesAutoresizingMaskIntoConstraints="NO" id="AQB-M6-bY2">
                         <rect key="frame" x="10" y="10" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="9Yc-09-VGX"/>
+                            <constraint firstAttribute="width" constant="60" id="PV1-Uw-H3O"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="逃到城北以北" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91c-hS-64W">
-                        <rect key="frame" x="93" y="15" width="206" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="逃到城北以北" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91c-hS-64W">
+                        <rect key="frame" x="79" y="21" width="239" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="oXZ-rG-orH"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="18672354399" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szn-bL-AQW">
-                        <rect key="frame" x="119" y="44" width="105" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18672354399" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szn-bL-AQW">
+                        <rect key="frame" x="97" y="44" width="188" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="moC-tn-6Zu"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mine_phone.png" translatesAutoresizingMaskIntoConstraints="NO" id="zRe-y3-2fN">
-                        <rect key="frame" x="95" y="47" width="9" height="14"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_phone.png" translatesAutoresizingMaskIntoConstraints="NO" id="zRe-y3-2fN">
+                        <rect key="frame" x="80" y="47" width="9" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="9" id="gbU-po-qrt"/>
+                            <constraint firstAttribute="height" constant="14" id="qJr-MC-Iz4"/>
+                        </constraints>
                     </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="AQB-M6-bY2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="FcQ-mW-xbV"/>
+                    <constraint firstItem="zRe-y3-2fN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="39" id="H6l-mQ-Qkj"/>
+                    <constraint firstItem="szn-bL-AQW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="89" id="KTt-qa-HJB"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="szn-bL-AQW" secondAttribute="trailing" constant="27" id="Pmg-1p-HUv"/>
+                    <constraint firstItem="91c-hS-64W" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="13" id="V7O-IW-i7J"/>
+                    <constraint firstItem="zRe-y3-2fN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="72" id="Yaj-Yk-c7q"/>
+                    <constraint firstItem="91c-hS-64W" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="71" id="cpR-jJ-sIv"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="91c-hS-64W" secondAttribute="trailing" constant="-6" id="eK0-XF-X38"/>
+                    <constraint firstItem="AQB-M6-bY2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="sxh-3C-uQ5"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="szn-bL-AQW" secondAttribute="bottom" constant="6" id="wso-5v-qvR"/>
+                </constraints>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
@@ -41,6 +68,7 @@
                 <outlet property="lblName" destination="91c-hS-64W" id="L9Z-YJ-pjG"/>
                 <outlet property="lblPhoneNumber" destination="szn-bL-AQW" id="wQA-yQ-CPN"/>
             </connections>
+            <point key="canvasLocation" x="303" y="162"/>
         </tableViewCell>
     </objects>
     <resources>

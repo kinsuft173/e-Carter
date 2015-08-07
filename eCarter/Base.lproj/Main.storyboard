@@ -184,7 +184,7 @@
             </objects>
             <point key="canvasLocation" x="630" y="2379"/>
         </scene>
-        <!--到店服务商家详情-->
+        <!--Shop Detail Ctrl-->
         <scene sceneID="oK9-0Z-flt">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="w0E-iG-jYS" customClass="ShopDetailCtrl" sceneMemberID="viewController">
@@ -214,7 +214,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="rfN-XF-izj" secondAttribute="trailing" constant="-16" id="xrZ-3T-4ET"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="到店服务商家详情" id="qCJ-mt-u0K"/>
+                    <navigationItem key="navigationItem" id="qCJ-mt-u0K"/>
                     <connections>
                         <outlet property="tableView" destination="rfN-XF-izj" id="aJx-Eu-c9x"/>
                     </connections>
@@ -223,7 +223,7 @@
             </objects>
             <point key="canvasLocation" x="1923" y="925"/>
         </scene>
-        <!--上门取车专家详情-->
+        <!--Self Detail Ctrl-->
         <scene sceneID="O0v-bC-8Uf">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="GsF-pJ-wey" customClass="SelfDetailCtrl" sceneMemberID="viewController">
@@ -252,7 +252,7 @@
                             <constraint firstItem="zzy-fW-OtY" firstAttribute="top" secondItem="52B-vY-ibc" secondAttribute="bottom" id="YPT-Rf-MCa"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="上门取车专家详情" id="dcf-LC-1OZ"/>
+                    <navigationItem key="navigationItem" id="dcf-LC-1OZ"/>
                     <connections>
                         <outlet property="tableView" destination="zzy-fW-OtY" id="Bkt-Gk-kT3"/>
                     </connections>

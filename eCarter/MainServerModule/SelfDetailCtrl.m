@@ -36,6 +36,8 @@
     
     [HKCommen setExtraCellLineHidden:self.tableView];
     
+    [HKCommen addHeadTitle:@"商家详情" whichNavigation:self.navigationItem];
+    
     [self addRefresh];
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
