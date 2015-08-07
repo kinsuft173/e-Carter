@@ -9,7 +9,9 @@
 #import "TransactionCtrl.h"
 
 @interface TransactionCtrl ()
-
+@property (nonatomic,strong)NSTimer *count_Timer;
+@property (assign)NSUInteger numCount;
+@property (assign) NSUInteger countEveryTime;
 @end
 
 @implementation TransactionCtrl
@@ -66,11 +68,11 @@
     }
 }
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+- (BOOL)textFieldDidBeginEditing:(UITextField *)textField
 {
     
-    if (self.txt_code==textField) {
-        NSLog(@"测试1");
+    if (textField==self.txt_code) {
+
         self.txt_code.layer.borderColor=[UIColor colorWithRed:104.0/255.0 green:190.0/255.0 blue:239.0/255.0 alpha:1.0].CGColor;
         
         self.txt_phone.layer.borderColor=[UIColor colorWithRed:181.0/255.0 green:181.0/255.0 blue:181.0/255.0 alpha:1.0].CGColor;
@@ -78,21 +80,66 @@
         return YES;
     }
     
-    if(self.txt_phone==textField)
+    else if (textField==self.txt_phone)
     {
-        NSLog(@"测试2");
-        self.txt_code.layer.borderColor=[UIColor colorWithRed:104.0/255.0 green:190.0/255.0 blue:239.0/255.0 alpha:1.0].CGColor;
+
+        self.txt_phone.layer.borderColor=[UIColor colorWithRed:104.0/255.0 green:190.0/255.0 blue:239.0/255.0 alpha:1.0].CGColor;
         
-        self.txt_phone.layer.borderColor=[UIColor colorWithRed:181.0/255.0 green:181.0/255.0 blue:181.0/255.0 alpha:1.0].CGColor;
+        self.txt_code.layer.borderColor=[UIColor colorWithRed:181.0/255.0 green:181.0/255.0 blue:181.0/255.0 alpha:1.0].CGColor;
         return YES;
     }
     
     return YES;
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self stop];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+}
+
 -(void)sendCode
 {
-   
+    self.numCount=10;
+    self.count_Timer=[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(CountTime) userInfo:nil repeats:YES];
+    [self.btn_sendCode setBackgroundColor:[UIColor lightGrayColor]];
+    [self.btn_sendCode setTitle:@"" forState:UIControlStateNormal];
+    self.btn_sendCode.enabled=NO;
+    
+}
+
+-(void)CountTime
+{
+    if (self.numCount!=0) {
+        self.lbl_ShowTime.hidden=NO;
+        self.lbl_ShowTime.text=[NSString stringWithFormat:@"%d",self.numCount];
+        self.numCount--;
+    }
+    else
+    {
+        [self stop];
+        self.lbl_ShowTime.hidden=YES;
+        self.btn_sendCode.enabled=YES;
+        [self.btn_sendCode setBackgroundColor:[UIColor colorWithRed:104.0/255.0 green:190.0/255.0 blue:239.0/255.0 alpha:1.0]];
+        [self.btn_sendCode setTitle:@"发送验证码" forState:UIControlStateNormal];
+    }
+    
+    
+}
+
+-(void)stop
+{
+    if (self.count_Timer&&[self.count_Timer isValid]) {
+        [self.count_Timer invalidate];
+    }
+    
+    self.count_Timer=nil;
 }
 
 -(void)back

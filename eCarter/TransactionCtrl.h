@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *txt_phone;
 @property (weak, nonatomic) IBOutlet UITextField *txt_code;
 @property (weak, nonatomic) IBOutlet UIButton *btn_sendCode;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_ShowTime;
 
 @end

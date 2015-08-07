@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransactionCtrl">
             <connections>
                 <outlet property="btn_sendCode" destination="Sdg-Wy-f23" id="Msl-RF-5d0"/>
+                <outlet property="lbl_ShowTime" destination="CIl-0K-JWF" id="Ftc-Nf-guO"/>
                 <outlet property="txt_code" destination="kOJ-c8-4LY" id="hEO-5l-cGM"/>
                 <outlet property="txt_phone" destination="bnp-SF-XBa" id="FQv-vm-I9b"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -66,6 +67,16 @@
                                 <action selector="goSetPassword:" destination="-1" eventType="touchUpInside" id="RjE-En-XiW"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIl-0K-JWF">
+                            <rect key="frame" x="220" y="12" width="90" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="96V-Ci-qKN"/>
+                                <constraint firstAttribute="width" constant="90" id="AYb-CB-zNj"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -73,9 +84,11 @@
                         <constraint firstItem="Sdg-Wy-f23" firstAttribute="top" secondItem="EUE-7x-zWa" secondAttribute="top" constant="12" id="2Rb-TY-ql6"/>
                         <constraint firstItem="kOJ-c8-4LY" firstAttribute="top" secondItem="EUE-7x-zWa" secondAttribute="top" constant="65" id="5b4-y9-g1U"/>
                         <constraint firstAttribute="trailing" secondItem="Sdg-Wy-f23" secondAttribute="trailing" constant="10" id="7Ij-m4-ejc"/>
+                        <constraint firstAttribute="trailing" secondItem="CIl-0K-JWF" secondAttribute="trailing" constant="10" id="AFe-i2-cpB"/>
                         <constraint firstItem="bnp-SF-XBa" firstAttribute="top" secondItem="EUE-7x-zWa" secondAttribute="top" constant="12" id="LCb-iO-x4g"/>
                         <constraint firstItem="bnp-SF-XBa" firstAttribute="leading" secondItem="EUE-7x-zWa" secondAttribute="leading" constant="10" id="QKu-GQ-JfE"/>
                         <constraint firstAttribute="trailing" secondItem="bnp-SF-XBa" secondAttribute="trailing" constant="110" id="U5z-Zx-wZp"/>
+                        <constraint firstItem="CIl-0K-JWF" firstAttribute="top" secondItem="EUE-7x-zWa" secondAttribute="top" constant="12" id="WQu-0L-tfc"/>
                         <constraint firstAttribute="centerX" secondItem="kOJ-c8-4LY" secondAttribute="centerX" id="iJ8-Pg-xEa"/>
                         <constraint firstAttribute="centerX" secondItem="uNj-vh-ION" secondAttribute="centerX" id="j52-Ae-aOc"/>
                         <constraint firstItem="uNj-vh-ION" firstAttribute="top" secondItem="EUE-7x-zWa" secondAttribute="top" constant="128" id="mSz-Us-10A"/>
