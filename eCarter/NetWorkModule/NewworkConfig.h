@@ -10,9 +10,9 @@
 #define GSAPP_NewworkConfig_h
 
 
-#define SERVER    @"http://gc.ditu.aliyun.com/regeocoding?l=39.938133,116.395739&type=001"
+#define SERVER     @"http://119.29.0.81:8087/ecf/app"//@"http://gc.ditu.aliyun.com/regeocoding?l=39.938133,116.395739&type=001"
 #define SERVERADTEST    @"http://115.28.85.76/gaoshou/api/web/?r="
-#define ISINTEST  YES
+#define ISINTEST  NO
 
 #pragma mark - 网络接口回调类型
 typedef void (^CompleteHandle)(NSDictionary*);
