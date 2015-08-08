@@ -14,6 +14,7 @@
 #import "CommonUtility.h"
 #import "CustomAnnotationView.h"
 #import "CustomCalloutView.h"
+#import "HKCommen.h"
 
 #define MapKey @"97661ae00266c9ff0aa32c7178c64457"
 const NSString *NavigationViewControllerStartTitle       = @"起点";
@@ -191,8 +192,42 @@ const NSString *NavigationViewControllerDestinationTitle = @"终点";
 - (void)initUI
 {
 //    self.navigationItem.titleView = self.viewForTitel;
+    
+    [HKCommen addHeadTitle:@"地图选址" whichNavigation:self.navigationItem];
+
+
+    UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
+    [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
+    [leftButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton ];
+    
+    
+    
+    if(([[[UIDevice currentDevice] systemVersion] floatValue]>=7.0?20:0)){
+        UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                           initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                           target:nil action:nil];
+        negativeSpacer.width = -17;
+        self.navigationItem.leftBarButtonItems = @[negativeSpacer, leftItem];
+    }else
+    {
+        self.navigationItem.leftBarButtonItem=leftItem;
+    }
+    
+    UIButton *rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    [rightButton setFrame:CGRectMake(0, 0, 30, 40)];
+    [rightButton setTitle:@"保存" forState:UIControlStateNormal];
+    [rightButton.titleLabel setFont:[UIFont systemFontOfSize:15.0]];
+    [rightButton addTarget:self action:@selector(goCommit:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton ];
+    self.navigationItem.rightBarButtonItem=rightItem;
 }
 
+-(void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 - (void)initMap

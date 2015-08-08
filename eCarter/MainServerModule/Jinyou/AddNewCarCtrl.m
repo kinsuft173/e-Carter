@@ -12,6 +12,9 @@
 #import "CarDetailCell.h"
 #import "ButtonCell.h"
 #import "HKCommen.h"
+#import "SvGridView.h"
+
+
 
 @interface AddNewCarCtrl ()<UITableViewDataSource,UITableViewDelegate,carSelect>
 
@@ -274,6 +277,26 @@ heightForHeaderInSection:(NSInteger)section
     
     [self.navigationController popViewControllerAnimated:YES];
     
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] init];
+    headerView.backgroundColor = [UIColor clearColor];
+    
+    
+
+    UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0 - SINGLE_LINE_ADJUST_OFFSET, [UIScreen mainScreen].bounds.size.width,SINGLE_LINE_WIDTH)];
+    headView.backgroundColor=[UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0];
+    
+    UIView *underView=[[UIView alloc]initWithFrame:CGRectMake(0, 12.0 - SINGLE_LINE_ADJUST_OFFSET, [UIScreen mainScreen].bounds.size.width,SINGLE_LINE_WIDTH)];
+    underView.backgroundColor=[UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0];
+    
+    NSLog(@"线的高度：%f",SINGLE_LINE_WIDTH);
+    
+    [headerView addSubview:headView];
+    [headerView addSubview:underView];
+    return headerView;
 }
 
 

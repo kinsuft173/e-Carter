@@ -315,7 +315,7 @@
     
     */
     
-    /*
+    
     NSLog(@"goPersonalCenter");
     
     UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"PersonalCenter" bundle:nil];
@@ -323,8 +323,8 @@
     UIViewController* vc = [storyBoard instantiateViewControllerWithIdentifier:@"PersonalCenter"];
     
     [self.navigationController pushViewController:vc animated:YES];
-    */
-
+    
+    /*
     if (!self.activityView) {
         self.activityView = [[HYActivityView alloc]initWithTitle:@"分享到" referView:self.view];
         
@@ -358,6 +358,7 @@
     }
     
     [self.activityView show];
+     */
 }
 
 -(void)shareQQ

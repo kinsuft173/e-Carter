@@ -7,6 +7,7 @@
 //
 
 #import "ShopCell.h"
+#import "HKCommen.h"
 
 @implementation ShopCell
 
@@ -36,6 +37,14 @@
 //        [self.star setFrame:CGRectMake(110, 55, 82, 15)];
 //    }
     
+    UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 12.0 - SINGLE_LINE_ADJUST_OFFSET, [UIScreen mainScreen].bounds.size.width,SINGLE_LINE_WIDTH)];
+    headView.backgroundColor=[UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0];
+    
+    UIView *underView=[[UIView alloc]initWithFrame:CGRectMake(0, 128.0 - SINGLE_LINE_ADJUST_OFFSET, [UIScreen mainScreen].bounds.size.width,SINGLE_LINE_WIDTH)];
+    underView.backgroundColor=[UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0];
+    
+    [self.contentView addSubview:headView];
+    [self.contentView addSubview:underView];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

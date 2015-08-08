@@ -17,6 +17,9 @@
 
 #define IOS8 [[[UIDevice currentDevice]systemVersion] floatValue] >= 8.0
 
+#define SINGLE_LINE_WIDTH           (1 / [UIScreen mainScreen].scale)
+#define SINGLE_LINE_ADJUST_OFFSET   ((1 / [UIScreen mainScreen].scale) / 2)
+
 @interface HKCommen : NSObject
 
 

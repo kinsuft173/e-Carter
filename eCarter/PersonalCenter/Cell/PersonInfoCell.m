@@ -7,6 +7,7 @@
 //
 
 #import "PersonInfoCell.h"
+#import "HKCommen.h"
 
 @implementation PersonInfoCell
 
@@ -18,6 +19,15 @@
     
     self.imgHead.layer.cornerRadius = 30;
     self.imgHead.layer.masksToBounds = YES;
+    
+    UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0 - SINGLE_LINE_ADJUST_OFFSET, [UIScreen mainScreen].bounds.size.width,SINGLE_LINE_WIDTH)];
+    headView.backgroundColor=[UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0];
+    
+    UIView *underView=[[UIView alloc]initWithFrame:CGRectMake(0, 80.0 - SINGLE_LINE_ADJUST_OFFSET, [UIScreen mainScreen].bounds.size.width,SINGLE_LINE_WIDTH)];
+    underView.backgroundColor=[UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0];
+    
+    [self.contentView addSubview:headView];
+    [self.contentView addSubview:underView];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

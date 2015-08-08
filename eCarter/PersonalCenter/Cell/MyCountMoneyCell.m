@@ -7,6 +7,7 @@
 //
 
 #import "MyCountMoneyCell.h"
+#import "HKCommen.h"
 
 @implementation MyCountMoneyCell
 
@@ -15,6 +16,15 @@
     if ([self.contentView respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
         self.contentView.preservesSuperviewLayoutMargins = NO;
     }
+    
+    UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0 - SINGLE_LINE_ADJUST_OFFSET, [UIScreen mainScreen].bounds.size.width,SINGLE_LINE_WIDTH)];
+    headView.backgroundColor=[UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0];
+    
+    UIView *underView=[[UIView alloc]initWithFrame:CGRectMake(0, 44.0 - SINGLE_LINE_ADJUST_OFFSET, [UIScreen mainScreen].bounds.size.width,SINGLE_LINE_WIDTH)];
+    underView.backgroundColor=[UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0];
+    
+    [self.contentView addSubview:headView];
+    [self.contentView addSubview:underView];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

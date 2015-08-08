@@ -170,7 +170,7 @@
             
             return 84;
             
-        }else if (indexPath.row <=3){
+        }else if (indexPath.row <2){
             
             return 34;
         
@@ -440,6 +440,7 @@
 #pragma  mark - custom methods
 - (void)goToConfirmPage:(UIButton*)btn
 {
+    NSLog(@"测试");
 //    [self performSegueWithIdentifier:@"goToConfirmPage" sender:nil];
         PaymentCtrl *vc=[[PaymentCtrl alloc] initWithNibName:@"PaymentCtrl" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];

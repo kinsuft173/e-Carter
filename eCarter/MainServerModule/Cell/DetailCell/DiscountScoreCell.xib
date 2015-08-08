@@ -26,20 +26,20 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="可用积分120分" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FT4-cD-eRq">
-                        <rect key="frame" x="88" y="11" width="114" height="21"/>
+                        <rect key="frame" x="88" y="0.0" width="114" height="44"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="114" id="gXY-Fn-qNK"/>
-                            <constraint firstAttribute="height" constant="21" id="zCi-37-ddx"/>
+                            <constraint firstAttribute="height" constant="44" id="zCi-37-ddx"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="－1.2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Uo-hv-50m">
-                        <rect key="frame" x="210" y="11" width="41" height="21"/>
+                        <rect key="frame" x="210" y="0.0" width="41" height="44"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="41" id="hzN-uf-Gju"/>
-                            <constraint firstAttribute="height" constant="21" id="k6z-WL-MA5"/>
+                            <constraint firstAttribute="height" constant="44" id="k6z-WL-MA5"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -55,9 +55,9 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="E5w-gb-8c3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="255" id="1Bj-W2-qDQ"/>
-                    <constraint firstItem="FT4-cD-eRq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="36T-cU-0nf"/>
+                    <constraint firstItem="FT4-cD-eRq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="36T-cU-0nf"/>
                     <constraint firstItem="sMh-pM-4jz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="JXx-gP-xI9"/>
-                    <constraint firstItem="5Uo-hv-50m" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="QZS-yb-3Hy"/>
+                    <constraint firstItem="5Uo-hv-50m" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="QZS-yb-3Hy"/>
                     <constraint firstItem="5Uo-hv-50m" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="202" id="Rwl-Bz-Eky"/>
                     <constraint firstAttribute="trailingMargin" secondItem="sMh-pM-4jz" secondAttribute="trailing" constant="268" id="b4i-hl-NhM"/>
                     <constraint firstItem="sMh-pM-4jz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="c6g-Tv-CYR"/>
