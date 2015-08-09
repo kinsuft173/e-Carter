@@ -15,5 +15,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *txt_code;
 @property (weak, nonatomic) IBOutlet UIButton *btn_sendCode;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_ShowTime;
+@property (strong,nonatomic)NSString *judgeLoginOrPassword;
+@property (weak, nonatomic) IBOutlet UIButton *btn_goNext;
+@property (nonatomic,strong) NSString *checkCode;
+
 
 @end

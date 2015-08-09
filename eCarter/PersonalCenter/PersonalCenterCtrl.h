@@ -12,5 +12,5 @@
 #import "SettingCtrl.h"
 
 @interface PersonalCenterCtrl : UIViewController
-
+@property (strong,nonatomic) NSString *loginCome;
 @end

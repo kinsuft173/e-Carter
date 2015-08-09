@@ -13,6 +13,7 @@
 #import "HKCommen.h"
 #import "NetworkManager.h"
 #import "UserDataManager.h"
+#import "FirstViewCtrl.h"
 
 @interface PersonalCenterCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -56,7 +57,31 @@
 
 -(void)back
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    NSString *check=[[NSUserDefaults standardUserDefaults] objectForKey:@"checkUser"];
+    
+    if ([self.loginCome isEqualToString:@"yes"]) {
+        UIStoryboard *story=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        FirstViewCtrl *vc=[story instantiateViewControllerWithIdentifier:@"FirstViewCtrl"];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else
+    {
+        if ([check isEqualToString:@"yes"]) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else
+        {
+            UIStoryboard *story=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            FirstViewCtrl *vc=[story instantiateViewControllerWithIdentifier:@"FirstViewCtrl"];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
+    
+
+    
+    
+    
+    
 }
 
 - (void)getModel
@@ -184,6 +209,23 @@
             
         }
         
+        CGFloat pixelAdjustOffset = 0;
+        
+        if (((int)(SINGLE_LINE_WIDTH * [UIScreen mainScreen].scale) + 1) % 2 == 0) {
+            
+            pixelAdjustOffset = SINGLE_LINE_ADJUST_OFFSET;
+            
+        }
+        
+        UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0 - pixelAdjustOffset, [UIScreen mainScreen].bounds.size.width,SINGLE_LINE_WIDTH)];
+        headView.backgroundColor=[UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0];
+        
+        UIView *underView=[[UIView alloc]initWithFrame:CGRectMake(0, 80.0 - pixelAdjustOffset, [UIScreen mainScreen].bounds.size.width,SINGLE_LINE_WIDTH)];
+        underView.backgroundColor=[UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0];
+        
+        [cell.contentView addSubview:headView];
+        [cell.contentView addSubview:underView];
+        
         return cell;
         
     }else if (indexPath.row == 0){
@@ -218,13 +260,29 @@
         cell.lblTitel.text = [self.arrayInfo objectAtIndex:(indexPath.section-1)*3+indexPath.row- 1];
         cell.img.image = [self.arrayImage objectAtIndex:(indexPath.section - 1)*3 + indexPath.row - 1 ];
         
+        /*
+        CGFloat pixelAdjustOffset = 0;
         
+        if (((int)(SINGLE_LINE_WIDTH * [UIScreen mainScreen].scale) + 1) % 2 == 0) {
+            
+            pixelAdjustOffset = SINGLE_LINE_ADJUST_OFFSET;
+            
+        }
+        
+        
+        UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0 + pixelAdjustOffset, [UIScreen mainScreen].bounds.size.width,SINGLE_LINE_WIDTH)];
+        headView.backgroundColor=[UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0];
+        
+        
+        UIView *underView=[[UIView alloc]initWithFrame:CGRectMake(0, 44.0 + pixelAdjustOffset, [UIScreen mainScreen].bounds.size.width,SINGLE_LINE_WIDTH)];
+        underView.backgroundColor=[UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0];
+        
+        [cell.contentView addSubview:headView];
+        [cell.contentView addSubview:underView];
+        */
         return cell;
         
     }
-    
-    
-    //    return nil;
 }
 
 

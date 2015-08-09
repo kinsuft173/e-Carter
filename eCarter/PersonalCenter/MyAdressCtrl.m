@@ -10,6 +10,7 @@
 #import "AdressCell.h"
 #import "AddAdressCell.h"
 #import "HKCommen.h"
+#import "FirstViewCtrl.h"
 
 @interface MyAdressCtrl ()
 
@@ -54,6 +55,8 @@
 -(void)back
 {
     [self.navigationController popViewControllerAnimated:YES];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

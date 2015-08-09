@@ -116,15 +116,18 @@
 
 -(void)loginOut
 {
-    SetTransactionPassworsCtrl *vc=[[SetTransactionPassworsCtrl alloc] initWithNibName:@"SetTransactionPassworsCtrl" bundle:nil];
+    TransactionCtrl *vc=[[TransactionCtrl alloc] initWithNibName:@"TransactionCtrl" bundle:nil];
     vc.judgeLoginOrPassword=@"login";
     [self.navigationController pushViewController:vc animated:YES];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"no" forKey:@"checkUser"];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row==0) {
         TransactionCtrl *vc=[[TransactionCtrl alloc] initWithNibName:@"TransactionCtrl" bundle:nil];
+        vc.judgeLoginOrPassword=@"password";
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (indexPath.row==1) {

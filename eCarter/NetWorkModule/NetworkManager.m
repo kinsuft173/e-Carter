@@ -10,6 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "FakeDataMgr.h"
 #import "HKMapManager.h"
+#import "SBJsonParser.h"
 
 @interface NetworkManager ()
 
@@ -87,9 +88,109 @@
 
 }
 
+- (NSString*)server_GetIdentyCode:(NSMutableDictionary*)dic url:(NSString*)ctUrl
+{
+    
+    //download from server
+    NSString* strUrl = ctUrl;//[NSString stringWithFormat:@"%@/base/addAppointmentOrder?", SERVER];
+    
+
+    
+    //download from server
+    //NSString* strUrl = [NSString stringWithFormat:@"%@/base/addArchiveRecord", SERVER];
+    
+    
+    NSString *BoundaryConstant = @"bP8bMGL3HEiJbMKsS289FSuSKw9Kq8iklhSPysQ";
+    
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:strUrl]
+                                                           cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                                       timeoutInterval:10];
+    
+    NSString *contentType = [[NSString alloc]initWithFormat:@"multipart/form-data; boundary=%@",BoundaryConstant];
+    [request setValue:contentType forHTTPHeaderField: @"Content-Type"];
+    
+    // post body
+    NSMutableData *body = [NSMutableData data];
+    
+    
+    
+    for (NSString *key in [dic allKeys])
+    {
+        
+        
+        
+        id value = dic[key];
+        if (([value isKindOfClass:[NSString class]] && ((NSString*)value).length == 0) ||
+            value == [NSNull null] )
+        {
+            continue;
+        }
+        
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", BoundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", key] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"%@\r\n", value] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+    
+    
+    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", BoundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // setting the body of the post to the reqeust
+    
+    
+    [request setHTTPBody:body];
+    [request setHTTPMethod:@"POST"];
+    
+    // set the content-length
+    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[body length]];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    
+    
+    NSURLResponse *response;
+    NSError *error;
+    
+    NSLog(@"Post Request = %@",request);
+    
+    NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    
+    
+    if (error == nil)
+    {
+        // Parse data here
+        NSString* myString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"myString = %@",myString);
+        
+        
+        
+        
+        //debug
+        //NSLog(@"server_addAppointmentOrder=> %@", myString);
+        
+        // parse
+        SBJsonParser *parser = [[SBJsonParser alloc] init];
+        
+        // parse the JSON string into an object - assuming json_string is a NSString of JSON data
+        NSDictionary *object = [parser objectWithString:myString];
+        
+        // check result
+        NSNumber* status = [object objectForKey:@"status"];
+        
+        
+        
+        if([status intValue] == 5000101)
+        {
+           // return object;
+        }
+        return myString;
+    }
+    
+    return nil;
+}
 
 - (void)server_genCodeWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {
+    NSLog(@"测试");
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     //test
@@ -97,42 +198,38 @@
     
     NSString* strInterface;
     
+    /*
     if (self.isTestMode) {
         
         strInterface = ECATER_TEST_INTERFACE;
         
     }else{
-        
+     
+     */
+     
         strInterface = ECATER_GENCODE_INTERFACE;
-        
-    }
+
+    
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer=[AFHTTPResponseSerializer serializer];
+
     
     [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        if (self.isTestMode) {
-            
-            NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"3495",@"data", nil];
-            
-            if (completeHandle) {
-                
-                completeHandle(dictionary);
-                
-            }
-            
-        }else{
+
             
             if (completeHandle) {
                 
                 completeHandle(responseObject);
             }
             
-        }
+        
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         //ErrorHandle(error);
         
-        NSLog(@"Error: %@", error);
+        NSLog(@"错误: %@", error);
         
         
     }];

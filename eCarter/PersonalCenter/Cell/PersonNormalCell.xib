@@ -28,14 +28,35 @@
                             <constraint firstAttribute="width" constant="30" id="xtd-ye-Dze"/>
                         </constraints>
                     </imageView>
+                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="28B-X4-4fx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="azv-kf-hvk"/>
+                        </constraints>
+                    </view>
+                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rlc-MJ-SS4">
+                        <rect key="frame" x="0.0" y="43" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.49999999999999961"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="pvb-1V-GD3"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="wfO-Nx-CVw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="1fs-bD-WBL"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="28B-X4-4fx" secondAttribute="trailing" constant="-8" id="8Nt-UZ-k05"/>
+                    <constraint firstItem="28B-X4-4fx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="ERa-ai-Ag8"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="rlc-MJ-SS4" secondAttribute="bottom" constant="-9" id="Fmz-rN-G92"/>
                     <constraint firstItem="wfO-Nx-CVw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-1" id="JmI-tc-tiD"/>
                     <constraint firstAttribute="trailingMargin" secondItem="7hm-c8-7NW" secondAttribute="trailing" constant="-2" id="NzX-0Y-mzz"/>
                     <constraint firstItem="7hm-c8-7NW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="57" id="PxI-tO-e54"/>
                     <constraint firstItem="7hm-c8-7NW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="WgP-bg-Wb7"/>
                     <constraint firstAttribute="bottomMargin" secondItem="7hm-c8-7NW" secondAttribute="bottom" constant="-9" id="bt7-k8-8Yf"/>
+                    <constraint firstItem="rlc-MJ-SS4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="dC8-HF-mPF"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="rlc-MJ-SS4" secondAttribute="trailing" constant="-8" id="o2b-ra-Ct8"/>
+                    <constraint firstItem="28B-X4-4fx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="teN-hK-qAU"/>
                 </constraints>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="1" minY="0.0" maxX="0.0" maxY="0.0"/>

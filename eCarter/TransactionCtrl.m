@@ -7,6 +7,9 @@
 //
 
 #import "TransactionCtrl.h"
+#import "NetworkManager.h"
+#import "NewworkConfig.h"
+#import "PersonalCenterCtrl.h"
 
 @interface TransactionCtrl ()
 @property (nonatomic,strong)NSTimer *count_Timer;
@@ -19,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+
     UIImageView *phoneView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"login_phone"]];
     [phoneView setFrame:CGRectMake(10, 0, 14, 22)];
     UIView *firstView=[[UIView alloc] initWithFrame:CGRectMake(10, 0, 40, 22)];
@@ -46,15 +50,42 @@
     self.btn_sendCode.layer.cornerRadius=5.0;
     self.btn_sendCode.layer.masksToBounds=YES;
     [self.btn_sendCode addTarget:self action:@selector(sendCode) forControlEvents:UIControlEventTouchUpInside];
+
     
+    if ([self.judgeLoginOrPassword isEqualToString:@"login"]) {
+        [self initLogin];
+    }
+    else if ([self.judgeLoginOrPassword isEqualToString:@"password"])
+    {
+        [self initPassword];
+    }
+}
+
+-(void)initLogin
+{
+    [HKCommen addHeadTitle:@"登录" whichNavigation:self.navigationItem];
+    [self.btn_goNext addTarget:self action:@selector(goToPersonalCenter) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
+    [leftButton addTarget:self action:@selector(doNothing) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton ];
+    self.navigationItem.leftBarButtonItem=leftItem;
+    
+}
+
+-(void)doNothing
+{}
+
+-(void)initPassword
+{
     [HKCommen addHeadTitle:@"设置交易密码" whichNavigation:self.navigationItem];
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
     [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
     [leftButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton ];
-    
-    
     
     if(([[[UIDevice currentDevice] systemVersion] floatValue]>=7.0?20:0)){
         UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
@@ -66,6 +97,8 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+    
+    [self.btn_goNext addTarget:self action:@selector(goSetPassword) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (BOOL)textFieldDidBeginEditing:(UITextField *)textField
@@ -112,6 +145,17 @@
     [self.btn_sendCode setTitle:@"" forState:UIControlStateNormal];
     self.btn_sendCode.enabled=NO;
     
+    NSString* strUrl = [NSString stringWithFormat:@"%@/ecar/mobile/genCode", SERVER];
+    
+    NSMutableDictionary* dic = [[NSMutableDictionary alloc] init];
+    [dic setObject:self.txt_phone.text forKey:@"phone"];
+    
+    
+    NSString *result= [[NetworkManager shareMgr] server_GetIdentyCode:dic url:strUrl];
+    
+    self.checkCode=result;
+    
+    
 }
 
 -(void)CountTime
@@ -147,7 +191,36 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)goSetPassword:(UIButton *)sender {
+-(void)goToPersonalCenter
+{
+    if (![self.txt_code.text isEqualToString:self.checkCode]) {
+
+        
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"验证码错误" message:[NSString stringWithFormat:@"请输入：%@",self.checkCode] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+
+        [alert addButtonWithTitle:@"Yes"];
+        [alert show];
+    }
+    else
+    {
+        NSLog(@"goPersonalCenter");
+        
+        UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"PersonalCenter" bundle:nil];
+        PersonalCenterCtrl* vc = [storyBoard instantiateViewControllerWithIdentifier:@"PersonalCenter"];
+        vc.loginCome=@"yes";
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"checkUser"];
+    }
+    
+    
+    
+}
+
+- (void)goSetPassword
+{
     SetTransactionPassworsCtrl *vc=[[SetTransactionPassworsCtrl alloc] initWithNibName:@"SetTransactionPassworsCtrl" bundle:nil];
     vc.judgeLoginOrPassword=@"password";
     [self.navigationController pushViewController:vc animated:YES];
