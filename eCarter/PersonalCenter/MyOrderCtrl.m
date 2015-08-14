@@ -13,6 +13,7 @@
 #import "NetworkManager.h"
 #import "CommentCtrl.h"
 #import "MoneyReturnDetailCtrl.h"
+#import "OrderDetail.h"
 
 @interface MyOrderCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -27,6 +28,7 @@
 @property (nonatomic, strong) NSMutableArray* arrayOrderProcessing;
 @property (nonatomic, strong) NSMutableArray* arrayOrderFinished;
 @property (nonatomic, strong) NSMutableArray* arrayOrderAbort;
+@property (nonatomic,strong) OrderDetail *myOrder;
 
 @end
 
@@ -40,7 +42,7 @@
     
     [self initScrollTables:5];
     
-    [self getModel];
+    //[self getModel];
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
     [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
@@ -71,6 +73,7 @@
     
     [[NetworkManager shareMgr] server_loginWithDic:nil completeHandle:^(NSDictionary *response) {
         
+        NSLog(@"订单字典：%@",response);
         NSArray* arrayTemp = [response objectForKey:@"data"];
         
         if (arrayTemp.count != 0) {

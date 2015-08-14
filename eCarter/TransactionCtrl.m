@@ -145,16 +145,26 @@
     [self.btn_sendCode setTitle:@"" forState:UIControlStateNormal];
     self.btn_sendCode.enabled=NO;
     
-    NSString* strUrl = [NSString stringWithFormat:@"%@/ecar/mobile/genCode", SERVER];
-    
-    NSMutableDictionary* dic = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init ];
     [dic setObject:self.txt_phone.text forKey:@"phone"];
     
+    
+    [[NetworkManager shareMgr] server_genCodeWithDic:dic completeHandle:^(NSDictionary *response) {
+        
+        NSData *doubi = response;
+        
+        NSString *shabi =  [[NSString alloc]initWithData:doubi encoding:NSUTF8StringEncoding];
+        NSLog(@"订单字典：%@",shabi);
+    }];
+    
+    
+    /*
+    NSString* strUrl = [NSString stringWithFormat:@"%@/ecar/mobile/genCode", SERVER];
     
     NSString *result= [[NetworkManager shareMgr] server_GetIdentyCode:dic url:strUrl];
     
     self.checkCode=result;
-    
+    */
     
 }
 
@@ -193,6 +203,7 @@
 
 -(void)goToPersonalCenter
 {
+    /*
     if (![self.txt_code.text isEqualToString:self.checkCode]) {
 
         
@@ -204,18 +215,32 @@
     }
     else
     {
+     */
         NSLog(@"goPersonalCenter");
         
-        UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"PersonalCenter" bundle:nil];
-        PersonalCenterCtrl* vc = [storyBoard instantiateViewControllerWithIdentifier:@"PersonalCenter"];
-        vc.loginCome=@"yes";
+        NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
         
-        [self.navigationController pushViewController:vc animated:YES];
+        [dic setObject:self.txt_phone.text forKey:@"phone"];
+        [dic setObject:self.txt_code.text forKey:@"code"];
         
-        [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"checkUser"];
-    }
-    
-    
+        [[NetworkManager shareMgr] server_loginWithDic:dic completeHandle:^(NSDictionary *response) {
+            
+            NSDictionary* dicTmep = [response objectForKey:@"data"];
+            NSLog(@"登陆字典：%@",response);
+            
+            if (dicTmep) {
+                
+                UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"PersonalCenter" bundle:nil];
+                PersonalCenterCtrl* vc = [storyBoard instantiateViewControllerWithIdentifier:@"PersonalCenter"];
+                vc.loginCome=@"yes";
+                
+                [self.navigationController pushViewController:vc animated:YES];
+                
+                [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"checkUser"];
+                
+            }
+            
+        }];
     
 }
 

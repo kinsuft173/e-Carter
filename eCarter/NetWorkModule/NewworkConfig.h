@@ -24,7 +24,7 @@ typedef void (^ErrorHandle)(NSError*);
 #define ECATER_TEST_INTERFACE @""
 
 //用户部分
-#define ECATER_LOGIN_INTERFACE @"/ecar/mobile/login"
+#define ECATER_LOGIN_INTERFACE @"/ecar/mobile/code/login"
 #define ECATER_GENCODE_INTERFACE @"/ecar/mobile/genCode"
 #define ECATER_REGISTER_INTERFACE @"/ecar/mobile/register"
 #define ECATER_LOGOUT_INTERFACE @"/ecar/mobile/logout"

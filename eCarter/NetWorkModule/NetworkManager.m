@@ -152,7 +152,7 @@
     
     NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     
-    
+    NSLog(@"数据%@",data);
     
     if (error == nil)
     {
@@ -190,47 +190,40 @@
 
 - (void)server_genCodeWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {
-    NSLog(@"测试");
+
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer=[AFHTTPResponseSerializer serializer];
     
     //test
     //NSDictionary *parameters = @{@"username": @"18672354399",@"password_hash":@"$2y$13$eD.OPcraVj8wMrADnMTPpeJVDzQTncvRClQcRDt2a0gRPRW4ZKWbC"};
     
     NSString* strInterface;
     
-    /*
+
     if (self.isTestMode) {
         
         strInterface = ECATER_TEST_INTERFACE;
         
     }else{
-     
-     */
-     
+
         strInterface = ECATER_GENCODE_INTERFACE;
 
-    
-    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
-    manager.responseSerializer=[AFHTTPResponseSerializer serializer];
-
+    }
     
     [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
 
-            
             if (completeHandle) {
+                
                 
                 completeHandle(responseObject);
             }
-            
-        
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         //ErrorHandle(error);
         
-        NSLog(@"错误: %@", error);
-        
+        NSLog(@"错误: %@", error);  
         
     }];
     
@@ -238,12 +231,15 @@
 
 - (void)server_loginWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {
+    NSLog(@"输入的字典：%@",dic);
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     //test
     //NSDictionary *parameters = @{@"username": @"18672354399",@"password_hash":@"$2y$13$eD.OPcraVj8wMrADnMTPpeJVDzQTncvRClQcRDt2a0gRPRW4ZKWbC"};
     
     NSString* strInterface;
+    
     
     if (self.isTestMode) {
         

@@ -30,7 +30,7 @@
     // Do any additional setup after loading the view.
     
     [HKCommen setExtraCellLineHidden:self.tableView];
-    [self getModel];
+    //[self getModel];
     
     self.arrayInfo = [NSArray arrayWithObjects:@"我的订单",@"我的账户",@"我的车库",@"我的地址",@"交易记录",@"我的优惠券",@"我的e积分", nil];
     self.arrayImage = [NSArray arrayWithObjects:[UIImage imageNamed:@"mine_My-order"],[UIImage imageNamed:@"mine_My-account"],[UIImage imageNamed:@"mine_mycar"],[UIImage imageNamed:@"mine_Address"],[UIImage imageNamed:@"mine_Trade-record"],[UIImage imageNamed:@"mine_On-Sale"],[UIImage imageNamed:@"mine_Integral"]];
