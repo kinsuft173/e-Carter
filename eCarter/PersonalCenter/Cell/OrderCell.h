@@ -14,4 +14,21 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnGoCommentPage;
 @property (assign) NSUInteger judgeWhichStatus;
 
+@property (weak, nonatomic) IBOutlet UILabel *lblServiceCompany;
+@property (weak, nonatomic) IBOutlet UILabel *orderId;
+@property (weak, nonatomic) IBOutlet UILabel *lblMobile;
+@property (weak, nonatomic) IBOutlet UILabel *lblCarNum;
+@property (weak, nonatomic) IBOutlet UILabel *lblServiceContent;
+@property (weak, nonatomic) IBOutlet UILabel *price;
+@property (weak, nonatomic) IBOutlet UILabel *lblGetOrder;
+@property (weak, nonatomic) IBOutlet UILabel *lblStatusOfOrder;
+@property (weak, nonatomic) IBOutlet UIButton *lblStatusOfComment;
+@property (weak, nonatomic) IBOutlet UILabel *lblCheap;
+@property (weak, nonatomic) IBOutlet UILabel *lblPayment;
+
+@property (weak, nonatomic) IBOutlet UIImageView *img_OrderPhoto1;
+@property (weak, nonatomic) IBOutlet UIImageView *img_OrderPhoto2;
+@property (weak, nonatomic) IBOutlet UIImageView *img_OrderPhoto3;
+
+
 @end

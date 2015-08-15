@@ -7,9 +7,14 @@
 //
 
 #import "PointOfMeCtrl.h"
+#import "UserDataManager.h"
+#import "UserLoginInfo.h"
+#import "NetworkManager.h"
+#import "PointTransaction.h"
 
 @interface PointOfMeCtrl ()
-
+@property (strong,nonatomic) NSArray *arrayOfCount;
+@property (strong,nonatomic) UserLoginInfo *userInfo;
 @end
 
 @implementation PointOfMeCtrl
@@ -38,12 +43,39 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+    
+    [self getModel];
 }
 
 -(void)back
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (void)getModel
+{
+    self.userInfo=[UserDataManager shareManager].userLoginInfo;
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:self.userInfo.user.phone forKey:@"phone"];
+    [dic setObject:self.userInfo.sessionId forKey:@"sessionId"];
+    
+    [[NetworkManager shareMgr] server_queryUserAddressWithDic:dic completeHandle:^(NSDictionary *response) {
+        
+        NSDictionary *dictOfCount=[[NSDictionary alloc]init];
+        dictOfCount = [[response objectForKey:@"data"] objectForKey:@"items"];
+        
+        self.lbl_myCount.text=[dictOfCount objectForKey:@"point"];
+    }];
+    
+    [[NetworkManager shareMgr] server_queryUserAddressWithDic:dic completeHandle:^(NSDictionary *response) {
+        
+        self.arrayOfCount = [[response objectForKey:@"data"] objectForKey:@"items"];
+        
+        [self.myTable reloadData];
+    }];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -81,9 +113,12 @@
         NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:cellId owner:self options:nil];
         
         cell = [topLevelObjects objectAtIndex:0];
-        
-        
     }
+    PointTransaction *myPoint=[self.arrayOfCount objectAtIndex:indexPath.row];
+    cell.lbl_thisPoint.text=[NSString stringWithFormat:@"%ld",myPoint.point];
+    cell.lbl_totalPoint.text=[NSString stringWithFormat:@"%ld",myPoint.totalPoint];
+    cell.lbl_time.text=myPoint.createTime;
+    cell.lbl_type.text=myPoint.type;
     
     return cell;
     

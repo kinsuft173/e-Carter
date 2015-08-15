@@ -110,12 +110,7 @@
         self.array_advertisement = [[responseBanner objectForKey:@"data"] objectForKey:@"items"];
         
         [self.tableView reloadData];
-        
-        
     }];
-    
-    
-    
 }
 
 

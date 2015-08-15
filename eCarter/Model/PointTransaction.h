@@ -20,7 +20,7 @@
 
 @property (nonatomic, assign) NSInteger point;
 
-@property (nonatomic, copy) NSString *description;
+@property (nonatomic, copy) NSString *type;
 
 
 //test

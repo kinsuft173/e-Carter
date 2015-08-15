@@ -12,5 +12,6 @@
 
 @interface PointOfMeCtrl : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *myTable;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_myCount;
 
 @end

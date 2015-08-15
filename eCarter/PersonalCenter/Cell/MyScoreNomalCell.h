@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface MyScoreNomalCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *lbl_thisPoint;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_totalPoint;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_time;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_type;
 
 @end

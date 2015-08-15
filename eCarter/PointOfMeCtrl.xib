@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PointOfMeCtrl">
             <connections>
+                <outlet property="lbl_myCount" destination="yI0-UI-rt2" id="5OZ-rV-bbE"/>
                 <outlet property="myTable" destination="clL-UO-cVa" id="VsR-ZA-X0Z"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -80,6 +81,7 @@
                     <exclude reference="7C8-cS-TOn"/>
                 </mask>
             </variation>
+            <point key="canvasLocation" x="53" y="187"/>
         </view>
     </objects>
     <resources>

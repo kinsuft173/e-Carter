@@ -34,6 +34,8 @@
 
 @property (nonatomic, copy) NSString *bUserId;
 
+
+
 @property (nonatomic, copy) NSString *realname;
 
 @property (nonatomic, assign) NSInteger type;

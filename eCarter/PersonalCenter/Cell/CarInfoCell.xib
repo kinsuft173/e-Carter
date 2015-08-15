@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -273,6 +273,17 @@
                     <constraint firstItem="N6W-JQ-NSP" firstAttribute="top" secondItem="oFe-mX-wZp" secondAttribute="top" id="yrd-Ax-7Mu"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lbl_brand" destination="ODF-GA-dAp" id="22Z-ck-KdM"/>
+                <outlet property="lbl_colorOfCar" destination="N7a-CM-xbp" id="9QE-fA-6Lp"/>
+                <outlet property="lbl_engine" destination="QzT-yH-xi8" id="MAq-Ju-3px"/>
+                <outlet property="lbl_nameOfCar" destination="ryo-G2-ZbH" id="IaH-s9-M8T"/>
+                <outlet property="lbl_numOfCar" destination="JMV-tN-Eo6" id="YMu-eB-Epr"/>
+                <outlet property="lbl_numOfFrame" destination="c6U-Q7-tIm" id="RmO-LI-VoC"/>
+                <outlet property="lbl_seriesOfCar" destination="4dc-Z0-DVs" id="oTB-Y7-ONG"/>
+                <outlet property="lbl_volume" destination="W6B-sU-G9M" id="XEX-sZ-Xue"/>
+                <outlet property="lbl_year" destination="zay-oE-jga" id="9c3-Gn-UMe"/>
+            </connections>
             <point key="canvasLocation" x="324.5" y="198"/>
         </tableViewCell>
     </objects>

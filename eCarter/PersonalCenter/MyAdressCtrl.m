@@ -11,11 +11,17 @@
 #import "AddAdressCell.h"
 #import "HKCommen.h"
 #import "FirstViewCtrl.h"
+#import "UserDataManager.h"
+#import "UserLoginInfo.h"
+#import "NetworkManager.h"
+#import "UserAddress.h"
 
 @interface MyAdressCtrl ()
 
 @property (nonatomic, strong) NSMutableArray* arrayModel;
 @property (nonatomic, strong) IBOutlet UITableView* tableView;
+@property (nonatomic,strong) UserLoginInfo *userInfo;
+@property (nonatomic,strong) NSArray *arrayOfAdress;
 
 @end
 
@@ -28,6 +34,8 @@
     NSDictionary* dic1 = [NSDictionary dictionaryWithObjectsAndKeys:@"广州市天河区黄村高德汇11号",@"家庭地址",nil];
     NSDictionary* dic2 = [NSDictionary dictionaryWithObjectsAndKeys:@"广州市天河区黄村高德汇11号",@"家庭地址",nil];
     NSDictionary* dic3 = [NSDictionary dictionaryWithObjectsAndKeys:@"广州市天河区黄村高德汇11号",@"家庭地址",nil];
+    
+    [self getModel];
     
     self.arrayModel = [NSMutableArray arrayWithObjects:dic1,dic2,dic3, nil];
     
@@ -52,6 +60,22 @@
     }
 }
 
+- (void)getModel
+{
+    self.userInfo=[UserDataManager shareManager].userLoginInfo;
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:self.userInfo.user.uid forKey:@"userId"];
+    
+    [[NetworkManager shareMgr] server_queryUserAddressWithDic:dic completeHandle:^(NSDictionary *response) {
+        
+        self.arrayOfAdress = [[response objectForKey:@"data"] objectForKey:@"items"];
+        
+        [self.tableView reloadData];
+    }];
+}
+
+
 -(void)back
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -65,14 +89,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 #pragma  mark - tableView DataSource
@@ -113,7 +137,7 @@
     
     static NSString* cellId1 = @"AdressCell";
     static NSString* cellId2 = @"AddAdressCell";
-//    static NSString* cellHolderId = @"PlaceHolderCell";
+    //    static NSString* cellHolderId = @"PlaceHolderCell";
     
     if(indexPath.section == 0){
         
@@ -125,8 +149,11 @@
             
         }
         
-        cell.lblAdressTitel.text = [[[self.arrayModel objectAtIndex:indexPath.row] allKeys] objectAtIndex:0];
-        cell.lblAdressContent.text = [[[self.arrayModel objectAtIndex:indexPath.row] allObjects] objectAtIndex:0];
+        UserAddress *userAddress = [self.arrayOfAdress objectAtIndex:indexPath.row];
+        cell.lblAdressTitel.text=userAddress.type;
+        cell.lblAdressContent.text=userAddress.detail;
+        
+        
         
         return cell;
         

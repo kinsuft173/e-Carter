@@ -167,6 +167,20 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnGoCommentPage" destination="bb7-ih-7FT" id="BUB-d0-81n"/>
+                <outlet property="img_OrderPhoto1" destination="rPB-jX-zto" id="8BW-8z-gJD"/>
+                <outlet property="img_OrderPhoto2" destination="wlc-h9-cWW" id="eEH-w5-P7R"/>
+                <outlet property="img_OrderPhoto3" destination="A9x-Ye-LQT" id="S6g-4E-Ao5"/>
+                <outlet property="lblCarNum" destination="s8P-3m-wp3" id="7TL-Gy-l10"/>
+                <outlet property="lblCheap" destination="JXb-gk-0Kw" id="QTC-Ow-iGe"/>
+                <outlet property="lblGetOrder" destination="BYl-EU-4kX" id="R8M-Uh-FJt"/>
+                <outlet property="lblMobile" destination="fgP-ge-DPc" id="8nW-y6-37m"/>
+                <outlet property="lblPayment" destination="Bds-mo-EYB" id="LbA-X4-uMY"/>
+                <outlet property="lblServiceCompany" destination="bSu-ve-D1z" id="8hR-PU-sE9"/>
+                <outlet property="lblServiceContent" destination="BUV-0X-OnC" id="uCT-gZ-ddP"/>
+                <outlet property="lblStatusOfComment" destination="HaG-xA-OFg" id="c7G-ce-fte"/>
+                <outlet property="lblStatusOfOrder" destination="EcW-Qh-dyM" id="WMe-RU-TFC"/>
+                <outlet property="orderId" destination="cf2-15-fmk" id="D6d-jK-n1d"/>
+                <outlet property="price" destination="M4u-UT-Aqr" id="FLn-GK-A2p"/>
                 <outlet property="viewMask1" destination="bM8-FW-SKM" id="sRG-ha-Oxx"/>
             </connections>
             <point key="canvasLocation" x="214" y="190"/>

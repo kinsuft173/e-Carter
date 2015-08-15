@@ -14,6 +14,7 @@
 #import "CommentCtrl.h"
 #import "MoneyReturnDetailCtrl.h"
 #import "OrderDetail.h"
+#import "UserDataManager.h"
 
 @interface MyOrderCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -29,6 +30,7 @@
 @property (nonatomic, strong) NSMutableArray* arrayOrderFinished;
 @property (nonatomic, strong) NSMutableArray* arrayOrderAbort;
 @property (nonatomic,strong) OrderDetail *myOrder;
+@property (nonatomic, strong) UserLoginInfo* userLoginInfo;
 
 @end
 
@@ -42,7 +44,7 @@
     
     [self initScrollTables:5];
     
-    //[self getModel];
+    [self getModel];
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
     [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
@@ -70,10 +72,18 @@
 
 - (void)getModel
 {
+   self.userLoginInfo= [UserDataManager shareManager].userLoginInfo;
     
-    [[NetworkManager shareMgr] server_loginWithDic:nil completeHandle:^(NSDictionary *response) {
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setValue:self.userLoginInfo.user.phone forKey:@"phone"];
+    [dic setValue:self.userLoginInfo.sessionId forKey:@"sessionId"];
+    
+    NSLog(@"订单字典：%@",dic);
+    
+    [[NetworkManager shareMgr] server_queryOrderListWithDic:dic completeHandle:^(NSDictionary *response) {
         
-        NSLog(@"订单字典：%@",response);
+        NSLog(@"打印字典：%@",response);
+        /*
         NSArray* arrayTemp = [response objectForKey:@"data"];
         
         if (arrayTemp.count != 0) {
@@ -82,9 +92,10 @@
             
             for (int i = 0 ; i < arrayTemp.count; i ++) {
                 
-                //test
+               
             }
         }
+         */
         
         [self.tableView  reloadData];
         

@@ -11,10 +11,13 @@
 #import "CarInfoCell.h"
 #import "PlaceHolderCell.h"
 #import "HKCommen.h"
-
+#import "NetworkManager.h"
+#import "Car.h"
+#import "UserDataManager.h"
+#import "UserLoginInfo.h"
 
 @interface MyCarLibrary ()<UITableViewDelegate,UITableViewDataSource>
-
+@property (strong,nonatomic)NSArray *arrayOfCar;
 @end
 
 @implementation MyCarLibrary
@@ -31,7 +34,7 @@
     [leftButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton ];
     
-    
+    [self getModel];
     
     if(([[[UIDevice currentDevice] systemVersion] floatValue]>=7.0?20:0)){
         UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
@@ -43,6 +46,30 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+}
+
+- (void)getModel
+{
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
+    
+    
+    
+    [[NetworkManager shareMgr] server_queryCarSeriesWithDic:dic completeHandle:^(NSDictionary *responseBanner) {
+        
+        
+        
+        self.arrayOfCar = [responseBanner objectForKey:@"data"];
+        
+        [self.myTable reloadData];
+        
+        
+    }];
+    
+    
+    
 }
 
 -(void)back

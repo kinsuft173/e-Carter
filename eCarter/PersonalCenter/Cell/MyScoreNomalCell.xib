@@ -128,6 +128,13 @@
                     <constraint firstItem="kgy-p6-EwH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="xmn-ag-d9l"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lbl_thisPoint" destination="kQE-Dw-u1L" id="ldK-7q-ND0"/>
+                <outlet property="lbl_time" destination="evi-3a-vhg" id="XTR-be-8zD"/>
+                <outlet property="lbl_totalPoint" destination="J3r-WH-6aQ" id="3wt-uO-0Ow"/>
+                <outlet property="lbl_type" destination="D5m-Np-N3y" id="dIc-Hc-Ho7"/>
+            </connections>
+            <point key="canvasLocation" x="157" y="153"/>
         </tableViewCell>
     </objects>
 </document>

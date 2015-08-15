@@ -10,6 +10,7 @@
 #import "NetworkManager.h"
 #import "NewworkConfig.h"
 #import "PersonalCenterCtrl.h"
+#import "UserDataManager.h"
 
 @interface TransactionCtrl ()
 @property (nonatomic,strong)NSTimer *count_Timer;
@@ -226,9 +227,12 @@
         [[NetworkManager shareMgr] server_loginWithDic:dic completeHandle:^(NSDictionary *response) {
             
             NSDictionary* dicTmep = [response objectForKey:@"data"];
-            NSLog(@"登陆字典：%@",response);
+            NSLog(@"登陆字典：%@",dicTmep);
             
             if (dicTmep) {
+                
+                [UserDataManager shareManager].userLoginInfo = [UserLoginInfo objectWithKeyValues:dicTmep];
+                [UserDataManager shareManager].userLoginInfo.user = [User objectWithKeyValues:dicTmep];
                 
                 UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"PersonalCenter" bundle:nil];
                 PersonalCenterCtrl* vc = [storyBoard instantiateViewControllerWithIdentifier:@"PersonalCenter"];

@@ -23,7 +23,7 @@
         
         instance = [[UserDataManager alloc] init];
         
-        [instance fakeDate];
+        //[instance fakeDate];
         
         
     });

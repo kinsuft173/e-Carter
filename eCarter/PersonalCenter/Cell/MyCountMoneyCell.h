@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MyCountMoneyCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *lbl_BalanceMoney;
 
 @end

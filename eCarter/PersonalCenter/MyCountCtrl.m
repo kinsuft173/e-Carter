@@ -11,9 +11,13 @@
 #import "MyCountNomalCell.h"
 #import "PlaceHolderCell.h"
 #import "HKCommen.h"
+#import "MyCountBalance.h"
+#import "UserDataManager.h"
+#import "UserLoginInfo.h"
+#import "NetworkManager.h"
 
 @interface MyCountCtrl ()
-
+@property (strong,nonatomic) UserLoginInfo *userData;
 @end
 
 @implementation MyCountCtrl
@@ -42,6 +46,40 @@
         self.navigationItem.leftBarButtonItem=leftItem;
     }
 }
+
+- (void)getModel
+{
+    self.userData= [UserDataManager shareManager].userLoginInfo;
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setValue:self.userData.user.uid forKey:@"userId"];
+    [dic setValue:@"1" forKey:@"accountType"];
+    
+    NSLog(@"账户字典：%@",dic);
+    
+    [[NetworkManager shareMgr] server_queryUserAccountWithDic:dic completeHandle:^(NSDictionary *response) {
+        
+        NSLog(@"字典：%@",response);
+        /*
+         NSArray* arrayTemp = [response objectForKey:@"data"];
+         
+         if (arrayTemp.count != 0) {
+         
+         self.arrayAllOrder = arrayTemp;
+         
+         for (int i = 0 ; i < arrayTemp.count; i ++) {
+         
+         
+         }
+         }
+         */
+        
+        [self.myTable  reloadData];
+        
+    }];
+    
+}
+
 
 -(void)back
 {
@@ -131,7 +169,7 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
             
         }
-        
+        cell.lbl_BalanceMoney.text=@"100.0元";
         return cell;
         
         

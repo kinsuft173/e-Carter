@@ -54,6 +54,7 @@ typedef void (^ErrorHandle)(NSError*);
 
 #define ECATER_QUERY_CAR_BRAND_INTERFACE @"/ecar/mobile/queryCarBrand"
 #define ECATER_QUERY_CAR_SERIES_INTERFACE @"/ecar/mobile/queryCarSeries"
+#define ECATER_QUERY_CAR_LISTS_INTERFACE @"/ecar/mobile/queryCustomerCar"
 
 
 #define ECATER_QUERY_USER_ADDRESS_INTERFACE @"/ecar/mobile/queryUserAddress"
