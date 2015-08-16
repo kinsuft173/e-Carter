@@ -152,6 +152,9 @@
     
     [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
+        
+        NSLog(@"server_loginWithDic=>%@",responseObject);
+        
         if (self.isTestMode) {
             
             NSDictionary *dictionary = [FakeDataMgr shareMgr].responseLogin;
@@ -452,8 +455,12 @@
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
+    
+    
     //test
     //NSDictionary *parameters = @{@"username": @"18672354399",@"password_hash":@"$2y$13$eD.OPcraVj8wMrADnMTPpeJVDzQTncvRClQcRDt2a0gRPRW4ZKWbC"};
+    
+    NSMutableDictionary* dicParams = [self addUserLocationWithDic:dic];
     
     NSString* strInterface;
     
@@ -467,7 +474,7 @@
         
     }
     
-    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dicParams success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (self.isTestMode) {
             
@@ -1285,6 +1292,8 @@
     
     [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
+        NSLog(@"server_queryUserAddressWithDic=>%@",responseObject);
+        
         if (self.isTestMode) {
             
             NSDictionary *dictionary = [FakeDataMgr shareMgr].responseQueryUserAddress;
@@ -1372,6 +1381,8 @@
     
     //test
     //NSDictionary *parameters = @{@"username": @"18672354399",@"password_hash":@"$2y$13$eD.OPcraVj8wMrADnMTPpeJVDzQTncvRClQcRDt2a0gRPRW4ZKWbC"};
+    
+    
     
     NSString* strInterface;
     

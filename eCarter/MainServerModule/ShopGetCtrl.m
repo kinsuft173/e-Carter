@@ -107,9 +107,9 @@
         
         cell.lbl_Adress.text =  shop.storeName;
         
-        cell.lbl_Distance.text=  [NSString stringWithFormat:@"%@km",shop.distance];
+        cell.lbl_Distance.text=  [NSString stringWithFormat:@"%.1fkm",[shop.distance floatValue]];
         
-        cell.lbl_Evaluation.text = [NSString stringWithFormat:@"(%@)",shop.storeScore];
+        cell.lbl_Evaluation.text = [NSString stringWithFormat:@"(%.1f)",[shop.storeScore floatValue]];
         
         [cell initWithDict:[shop.storeScore floatValue]];
         
@@ -144,7 +144,9 @@
         
 //        NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:@"",@"page", nil];
         
-        [[NetworkManager shareMgr] server_queryStoreListWithDic:nil completeHandle:^(NSDictionary *response) {
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"style", nil];
+        
+        [[NetworkManager shareMgr] server_queryStoreListWithDic:dic completeHandle:^(NSDictionary *response) {
             
             NSArray* tempArray = [response objectForKey:@"data"];
             

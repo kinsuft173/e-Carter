@@ -88,19 +88,19 @@
 - (void)getModel
 {
     
-    [[NetworkManager shareMgr] server_loginWithDic:nil completeHandle:^(NSDictionary *response) {
-        
-        NSDictionary* dicTmep = [response objectForKey:@"data"];
-        
-        if (dicTmep) {
-            
-            [UserDataManager shareManager].userLoginInfo = [UserLoginInfo objectWithKeyValues:dicTmep];
-            
-        }
-        
-        [self.tableView  reloadData];
-        
-    }];
+//    [[NetworkManager shareMgr] server_loginWithDic:nil completeHandle:^(NSDictionary *response) {
+//        
+//        NSDictionary* dicTmep = [response objectForKey:@"data"];
+//        
+//        if (dicTmep) {
+//            
+//            [UserDataManager shareManager].userLoginInfo = [UserLoginInfo objectWithKeyValues:dicTmep];
+//            
+//        }
+//        
+//        [self.tableView  reloadData];
+//        
+//    }];
     
 }
 

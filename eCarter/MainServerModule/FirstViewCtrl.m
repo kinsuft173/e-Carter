@@ -53,6 +53,8 @@
     
     [self getModel];
     
+    
+    
 //    [self scrollViewSetImages];
     
 }
@@ -104,7 +106,6 @@
 - (void)getModel
 {
     [[NetworkManager shareMgr] server_fetchAdvertisementWithDic:nil completeHandle:^(NSDictionary *responseBanner) {
-        
         
         
         self.array_advertisement = [[responseBanner objectForKey:@"data"] objectForKey:@"items"];
@@ -238,7 +239,7 @@
         
         if ([check isEqualToString:@"yes"]) {
             
-            [self performSegueWithIdentifier:@"goShopGet" sender:nil];
+            [self performSegueWithIdentifier:@"goSelfGet" sender:nil];
             
         }else{
             
@@ -282,10 +283,6 @@
         vc.judgeLoginOrPassword=@"login";
         [self.navigationController pushViewController:vc animated:YES];
     }
-    
-    
-    
-
     
     /*
     NSLog(@"goPersonalCenter");

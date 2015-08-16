@@ -208,7 +208,7 @@
             
         }
         
-        [cell.img sd_setImageWithURL:[NSURL URLWithString:self.shopDetail.storeInfo.storeImg]
+        [cell.img sd_setImageWithURL:[NSURL URLWithString:self.shopDetail.storeImg]
                     placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
         
         return cell;
@@ -235,12 +235,13 @@
             
         }
         
-        cell.lblAddress.text = self.shopDetail.storeInfo.address;
-        cell.lblDistance.text = [NSString stringWithFormat:@"%@km",self.shopDetail.storeInfo.distance];
-        cell.lblStoreName.text = self.shopDetail.storeInfo.storeName;
-        cell.lblStoreScore.text = [NSString stringWithFormat:@"(%@)",self.shopDetail.storeInfo.storeScore];
-        cell.lblTimeStartAndEnd.text = [NSString stringWithFormat:@"营业时间:%@ - %@",self.shopDetail.storeInfo.startBusinessTime,self.shopDetail.storeInfo.endBusinessTime];
-        [cell.star setStarForValue:[self.shopDetail.storeInfo.storeScore floatValue]];
+        cell.lblAddress.text = self.shopDetail.address;
+        cell.lblDistance.text = [NSString stringWithFormat:@"%.1fkm",[self.shopDetail.distance floatValue]];
+        cell.lblStoreName.text = self.shopDetail.storeName;
+        cell.lblStoreScore.text = [NSString stringWithFormat:@"(%.1f)",[self.shopDetail.storeScore floatValue]];
+        cell.lblTimeStartAndEnd.text = [NSString stringWithFormat:@"营业时间:%@ - %@",self.shopDetail.startBusinessTime,self.shopDetail.endBusinessTime];
+        [cell.star setStarForValue:[self.shopDetail.storeScore floatValue]];
+
         
         NSString* strServerItems = @"";
         for (int i = 0; i < self.shopDetail.serviceItemList.count; i++ ) {
@@ -293,6 +294,7 @@
             
             Serviceitemlist* item = [self.shopDetail.serviceItemList objectAtIndex:indexPath.row];
             
+            cell.img_Button.hidden = YES;
             cell.lblServerPrice.text = [NSString stringWithFormat:@"¥%@",item.amount];
             cell.lblSeverName.text = item.serviceItemName;
             
@@ -316,7 +318,7 @@
             
         }
         
-        cell.lblPhone.text = self.shopDetail.storeInfo.mobile;
+        cell.lblPhone.text = self.shopDetail.mobile;
         
         return cell;
         
@@ -336,7 +338,7 @@
             
         }
         
-        cell.lblAdress.text = self.shopDetail.storeInfo.address;
+        cell.lblAdress.text = self.shopDetail.address;
         
         return cell;
         
@@ -438,7 +440,7 @@
                                                    delegate:self
                                           cancelButtonTitle:@"取消"
                                      destructiveButtonTitle:nil
-                                          otherButtonTitles:[NSString stringWithFormat:@"致电 %@",self.shopDetail.storeInfo.mobile], nil];
+                                          otherButtonTitles:[NSString stringWithFormat:@"致电 %@",self.shopDetail.mobile], nil];
         
         //sheet.tag = 300;
         if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
@@ -468,7 +470,7 @@
                 
             case 0:
                 
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.shopDetail.storeInfo.mobile]]];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.shopDetail.mobile]]];
                 
                 break;
                 

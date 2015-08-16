@@ -12,6 +12,7 @@
 #import "CarAndAdressCell.h"
 #import "NextStepCell.h"
 #import "HKCommen.h"
+#import "NetworkManager.h"
 
 @interface SelectCarAndAressCtrl ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -59,6 +60,30 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+    
+    [self getModel];
+}
+
+
+- (void)getModel
+{
+    
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"phone", nil];
+    
+    [[NetworkManager shareMgr] server_queryUserAddressWithDic:dic completeHandle:^(NSDictionary *response) {
+        
+        NSArray* tempArray = [response objectForKey:@"data"];
+        
+        if (tempArray.count != 0) {
+            
+            self.arrayCars = tempArray;
+            
+        }
+    
+        [self.tableView reloadData];
+        
+    }];
+
 }
 
 -(void)back

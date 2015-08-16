@@ -13,7 +13,26 @@
 
 @property (nonatomic, strong) NSArray *reviewsList;
 
-@property (nonatomic, strong) Storeinfo *storeInfo;
+
+@property (nonatomic, copy) NSString *address;
+
+@property (nonatomic, copy) NSString *mobile;
+
+@property (nonatomic, copy) NSString *distance;
+
+@property (nonatomic, copy) NSString *id;
+
+@property (nonatomic, copy) NSString *endBusinessTime;
+
+@property (nonatomic, copy) NSString *storeScore;
+
+@property (nonatomic, copy) NSString *storeImg;
+
+@property (nonatomic, copy) NSString *storeName;
+
+@property (nonatomic, copy) NSString *startBusinessTime;
+
+//@property (nonatomic, strong) Storeinfo *storeInfo;
 
 @property (nonatomic, strong) NSArray *serviceItemList;
 

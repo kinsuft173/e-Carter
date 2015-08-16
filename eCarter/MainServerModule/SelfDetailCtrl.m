@@ -216,7 +216,7 @@
             
         }
         
-        [cell.img sd_setImageWithURL:[NSURL URLWithString:self.shopDetail.storeInfo.storeImg]
+        [cell.img sd_setImageWithURL:[NSURL URLWithString:self.shopDetail.storeImg]
                     placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
         
         return cell;
@@ -243,12 +243,12 @@
             
         }
         
-        cell.lblAddress.text = self.shopDetail.storeInfo.address;
-        cell.lblDistance.text = [NSString stringWithFormat:@"%@km",self.shopDetail.storeInfo.distance];
-        cell.lblStoreName.text = self.shopDetail.storeInfo.storeName;
-        cell.lblStoreScore.text = [NSString stringWithFormat:@"(%@)",self.shopDetail.storeInfo.storeScore];
-        cell.lblTimeStartAndEnd.text = [NSString stringWithFormat:@"营业时间:%@ - %@",self.shopDetail.storeInfo.startBusinessTime,self.shopDetail.storeInfo.endBusinessTime];
-        [cell.star setStarForValue:[self.shopDetail.storeInfo.storeScore floatValue]];
+        cell.lblAddress.text = self.shopDetail.address;
+        cell.lblDistance.text = [NSString stringWithFormat:@"%.1fkm",[self.shopDetail.distance floatValue]];
+        cell.lblStoreName.text = self.shopDetail.storeName;
+        cell.lblStoreScore.text = [NSString stringWithFormat:@"(%.1f)",[self.shopDetail.storeScore floatValue]];
+        cell.lblTimeStartAndEnd.text = [NSString stringWithFormat:@"营业时间:%@ - %@",self.shopDetail.startBusinessTime,self.shopDetail.endBusinessTime];
+        [cell.star setStarForValue:[self.shopDetail.storeScore floatValue]];
         
         NSString* strServerItems = @"";
         for (int i = 0; i < self.shopDetail.serviceItemList.count; i++ ) {

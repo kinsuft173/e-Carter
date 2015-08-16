@@ -156,9 +156,9 @@
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
         
-        //        NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:@"",@"page", nil];
+        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"2",@"style", nil];
         
-        [[NetworkManager shareMgr] server_queryStoreListWithDic:nil completeHandle:^(NSDictionary *response) {
+        [[NetworkManager shareMgr] server_queryStoreListWithDic:dic completeHandle:^(NSDictionary *response) {
             
             NSArray* tempArray = [response objectForKey:@"data"];
             

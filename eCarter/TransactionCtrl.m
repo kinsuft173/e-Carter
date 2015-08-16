@@ -177,6 +177,7 @@
         
         NSString *shabi =  [[NSString alloc]initWithData:doubi encoding:NSUTF8StringEncoding];
         NSLog(@"订单字典：%@",shabi);
+        self.txt_code.text = shabi;
     }];
     
     
