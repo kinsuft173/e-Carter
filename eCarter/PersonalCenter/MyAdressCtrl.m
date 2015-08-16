@@ -156,7 +156,7 @@
         
         UserAddress *userAddress = [self.arrayOfAdress objectAtIndex:indexPath.row];
         cell.lblAdressTitel.text=userAddress.type;
-        cell.lblAdressContent.text=userAddress.detail;
+        cell.lblAdressContent.text=userAddress.address;
         
         
         

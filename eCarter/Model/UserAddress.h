@@ -11,7 +11,7 @@
 @interface UserAddress : NSObject
 
 
-@property (nonatomic, copy) NSString *detail;
+@property (nonatomic, copy) NSString *address;
 
 @property (nonatomic, copy) NSString *city;
 

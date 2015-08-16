@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg2.png" translatesAutoresizingMaskIntoConstraints="NO" id="LC4-WW-SlN">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="but_Unchecked.png" translatesAutoresizingMaskIntoConstraints="NO" id="LC4-WW-SlN">
                         <rect key="frame" x="10" y="10" width="23" height="23"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="23" id="3Ll-Ls-KAb"/>
@@ -42,11 +42,12 @@
             </tableViewCellContentView>
             <inset key="separatorInset" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
+                <outlet property="img_btn" destination="LC4-WW-SlN" id="GKV-0n-k8z"/>
                 <outlet property="lblContent" destination="RrL-Xq-ESA" id="ptu-2g-EfL"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="bg2.png" width="1080" height="496"/>
+        <image name="but_Unchecked.png" width="22" height="22"/>
     </resources>
 </document>

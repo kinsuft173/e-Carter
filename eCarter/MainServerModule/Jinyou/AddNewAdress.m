@@ -11,8 +11,10 @@
 #import "HKMapCtrl.h"
 #import "HKMapManager.h"
 #import "HKMapManager.h"
+#import "NetworkManager.h"
+#import "UserDataManager.h"
 
-@interface AddNewAdress ()
+@interface AddNewAdress ()<UITextViewDelegate>
 
 @end
 
@@ -24,6 +26,7 @@
     self.province=@"广东省";
     self.city=@"广州市";
     self.place=@"天河区";
+    self.type = @"1";
     
     [self initUI];
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -74,7 +77,7 @@
     UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:rightButton ];
     self.navigationItem.rightBarButtonItem=item;
     
-    self.lbl_Alert.text=@"你选择的位置暂时未提供服务；已反馈给商家，敬请期待";
+    self.lbl_Alert.text= @"你选择的位置暂时未提供服务；已反馈给商家，敬请期待";
     self.lbl_AdressOfSelect.text=[NSString stringWithFormat:@"%@%@%@",self.province,self.city,self.place];
 }
 
@@ -85,6 +88,46 @@
 
 -(void)save
 {
+    
+    
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"正在加载...";
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    
+    [dic setObject:self.type forKey:@"type"];
+    [dic setObject:self.province forKey:@"string"];
+    [dic setObject:self.city forKey:@"city"];
+    [dic setObject:self.place forKey:@"area"];
+    
+    if (self.txt_AdressDetail.text) {
+        [dic setObject:self.txt_AdressDetail.text forKey:@"detail"];
+    }
+
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
+    
+    [[NetworkManager shareMgr] server_addUserAddressWithDic:dic completeHandle:^(NSDictionary *response) {
+        
+        
+
+        NSString* messege = [response objectForKey:@"message"];
+
+        
+        if ([messege isEqualToString:@"OK"]) {
+            
+
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"changeCarOrAddress" object:nil];
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        }
+        
+        hud.hidden = YES;
+        
+    }];
+    
 
 }
 
@@ -95,6 +138,22 @@
     [self.navigationController pushViewController:vc animated:YES];
     
 }
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    if (textView.text.length == 0) {
+        
+        self.lbl_placeHolder.text = @"请输入详细地址";
+        
+    }else{
+    
+        self.lbl_placeHolder.text = @"";
+    
+    }
+
+
+}
+
 
 
 

@@ -20,11 +20,14 @@
 #import "PaymentCtrl.h"
 #import "NetworkManager.h"
 #import "ShopDetail.h"
+#import "UserDataManager.h"
 
-@interface SelfDetailCtrl ()
+@interface SelfDetailCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView* tableView;
 @property (nonatomic, strong) ShopDetail* shopDetail;
+
+@property (nonatomic, strong) NSMutableArray* arraySelectedSevice;
 
 @end
 
@@ -84,6 +87,14 @@
             if (dic) {
                 
                 self.shopDetail = [ShopDetail objectWithKeyValues:dic];
+                
+                self.arraySelectedSevice = [[NSMutableArray alloc] init];
+                
+                for (int i = 0 ; i < self.shopDetail.serviceItemList.count; i ++) {
+                    
+                    [self.arraySelectedSevice addObject:@"0"];
+                    
+                }
                 
             }
             
@@ -325,6 +336,16 @@
             cell.lblServerPrice.text = [NSString stringWithFormat:@"¥%@",item.amount];
             cell.lblSeverName.text = item.serviceItemName;
             
+            if ([[self.arraySelectedSevice objectAtIndex:indexPath.row] isEqualToString:@"0"]) {
+                
+                cell.img_Button.image = [UIImage imageNamed:@"but_Unchecked"];
+                
+            }else{
+            
+                cell.img_Button.image = [UIImage imageNamed:@"but_checked"];
+            
+            }
+            
         }
         
         return cell;
@@ -441,9 +462,136 @@
 - (void)goToConfirmPage:(UIButton*)btn
 {
     NSLog(@"测试");
+    
+
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"正在加载...";
+    
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
+    [dic setObject:self.shopDetail.id forKey:@"storeId"];
+    
+    [dic setObject:[NSNumber numberWithInteger:self.userCar.id] forKey:@"carid"];
+    [dic setObject:self.userCar.no forKey:@"carnum"];
+    
+    NSString* str = @"";
+    
+    for (int i = 0 ; i < self.arraySelectedSevice.count; i ++) {
+        
+        if ( [str isEqualToString:@""] && [[self.arraySelectedSevice objectAtIndex:i] isEqualToString:@"1"]) {
+            
+            
+            Serviceitemlist* list = [Serviceitemlist objectWithKeyValues:[self.shopDetail.serviceItemList objectAtIndex:i]];
+            
+            str = [str stringByAppendingString:list.id];
+            
+        }else if ([[self.arraySelectedSevice objectAtIndex:i] isEqualToString:@"1"]){
+        
+            Serviceitemlist* list = [Serviceitemlist objectWithKeyValues:[self.shopDetail.serviceItemList objectAtIndex:i]];
+            
+            NSString* strTemp = [NSString stringWithFormat:@",%@",list.id];
+            
+            str = [str stringByAppendingString:strTemp];
+        
+        
+        }
+        
+        
+    }
+    
+    if ([str isEqualToString:@""]) {
+        
+        [HKCommen addAlertViewWithTitel:@"请选择一项服务"];
+        
+        return;
+        
+    }
+    
+    
+    
+    NSString* strItemNames = @"";
+    
+    for (int i = 0 ; i < self.arraySelectedSevice.count; i ++) {
+        
+        if ( [str isEqualToString:@""] && [[self.arraySelectedSevice objectAtIndex:i] isEqualToString:@"1"]) {
+            
+            
+            Serviceitemlist* list = [Serviceitemlist objectWithKeyValues:[self.shopDetail.serviceItemList objectAtIndex:i]];
+            
+            strItemNames = [strItemNames stringByAppendingString:list.serviceItemName];
+            
+        }else if ([[self.arraySelectedSevice objectAtIndex:i] isEqualToString:@"1"]){
+            
+            Serviceitemlist* list = [Serviceitemlist objectWithKeyValues:[self.shopDetail.serviceItemList objectAtIndex:i]];
+            
+            NSString* strTemp = [NSString stringWithFormat:@",%@",list.serviceItemName];
+            
+            strItemNames = [strItemNames stringByAppendingString:strTemp];
+            
+            
+        }
+        
+        
+    }
+    
+    [dic setObject:@"0.01" forKey:@"serviceCost"];
+    [dic setObject: @"0.01" forKey:@"amount"];
+    
+    [dic setObject:@"0.01" forKey:@"pay"];
+    [dic setObject:@"2015-08-11" forKey:@"serviceDate"];
+    
+    [dic setObject:@"17:30-18:00" forKey:@"serviceTime"];
+    [dic setObject:self.userAddress.address forKey:@"userAddress"];
+    
+    
+    
+    [[NetworkManager shareMgr] server_saveOrderPayWithDic:dic completeHandle:^(NSDictionary *response) {
+        
+        NSDictionary* dicTmep = [response objectForKey:@"data"];
+        NSLog(@"登陆字典：%@",dicTmep);
+        
+        if (dicTmep) {
+            
+            PaymentCtrl *vc=[[PaymentCtrl alloc] initWithNibName:@"PaymentCtrl" bundle:nil];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        }
+        
+        hud.hidden = YES;
+        
+    }];
+    
+    
 //    [self performSegueWithIdentifier:@"goToConfirmPage" sender:nil];
-        PaymentCtrl *vc=[[PaymentCtrl alloc] initWithNibName:@"PaymentCtrl" bundle:nil];
-        [self.navigationController pushViewController:vc animated:YES];
+
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 3 && indexPath.row < self.shopDetail.serviceItemList.count) {
+        
+        if ([[self.arraySelectedSevice objectAtIndex:indexPath.row] isEqualToString:@"0"]) {
+            
+            [self.arraySelectedSevice replaceObjectAtIndex:indexPath.row withObject:@"1"];
+            
+            
+        }else{
+        
+            [self.arraySelectedSevice replaceObjectAtIndex:indexPath.row withObject:@"0"];
+            
+        }
+        
+        
+        [self.tableView reloadData];
+        
+    }
+
+
 }
 
 @end

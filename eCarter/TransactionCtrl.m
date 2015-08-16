@@ -261,6 +261,8 @@
                 PersonalCenterCtrl* vc = [storyBoard instantiateViewControllerWithIdentifier:@"PersonalCenter"];
                 vc.loginCome=@"yes";
                 
+                [[UserDataManager shareManager] writeUserData];
+                
                 [self.navigationController pushViewController:vc animated:YES];
                 
                 [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"checkUser"];

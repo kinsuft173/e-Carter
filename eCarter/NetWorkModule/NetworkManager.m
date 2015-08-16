@@ -631,6 +631,9 @@
     
     [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
+        
+        NSLog(@"server_saveOrderPayWithDic=>%@",responseObject);
+        
         if (self.isTestMode) {
             
             NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"",@"message",[NSNumber numberWithInt:200000],@"status", nil];;
@@ -654,7 +657,10 @@
         
         //ErrorHandle(error);
         
-        NSLog(@"Error: %@", error);
+        if (completeHandle) {
+            
+            completeHandle(nil);
+        }
         
         
     }];
@@ -1343,7 +1349,9 @@
         
     }
     
-    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"server_addUserAddressWithDic ==> %@",responseObject);
         
         if (self.isTestMode) {
             
@@ -1369,6 +1377,11 @@
         //ErrorHandle(error);
         
         NSLog(@"Error: %@", error);
+        
+        if (completeHandle) {
+            
+            completeHandle(nil);
+        }
         
         
     }];

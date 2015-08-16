@@ -219,9 +219,15 @@ const NSString *NavigationViewControllerDestinationTitle = @"终点";
     [rightButton setFrame:CGRectMake(0, 0, 30, 40)];
     [rightButton setTitle:@"保存" forState:UIControlStateNormal];
     [rightButton.titleLabel setFont:[UIFont systemFontOfSize:15.0]];
-    [rightButton addTarget:self action:@selector(goCommit:) forControlEvents:UIControlEventTouchUpInside];
+    [rightButton addTarget:self action:@selector(goCommit) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton ];
     self.navigationItem.rightBarButtonItem=rightItem;
+}
+
+- (void)goCommit
+{
+    [self.navigationController popViewControllerAnimated:YES];
+
 }
 
 -(void)back

@@ -18,7 +18,11 @@
 
 @property (nonatomic, strong) UserLoginInfo* userLoginInfo;
 
+
 + (UserDataManager*)shareManager;
+
+- (void)writeUserData;
+- (void)readUserData;
 
 
 

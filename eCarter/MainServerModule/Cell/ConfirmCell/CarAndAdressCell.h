@@ -11,5 +11,6 @@
 @interface CarAndAdressCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UILabel* lblContent;
+@property (nonatomic, strong) IBOutlet UIImageView* img_btn;
 
 @end

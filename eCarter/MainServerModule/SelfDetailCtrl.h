@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Car.h"
+#import "UserAddress.h"
 
 @interface SelfDetailCtrl : UIViewController
 
 @property (nonatomic,strong) NSNumber* preDataShopId;
+@property (strong,nonatomic) Car* userCar;
+@property (strong,nonatomic) UserAddress* userAddress;
 
 @end

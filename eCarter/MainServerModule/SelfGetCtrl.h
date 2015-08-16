@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "HKCommen.h"
+#import "Car.h"
+#import "UserAddress.h"
 
 @interface SelfGetCtrl : UIViewController
 @property (strong,nonatomic) NSString *city;
+@property (strong,nonatomic) Car* userCar;
+@property (strong,nonatomic) UserAddress* userAddress;
+
 @end

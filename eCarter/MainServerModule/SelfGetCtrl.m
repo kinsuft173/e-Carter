@@ -81,6 +81,8 @@
     SelfDetailCtrl* dlg = segue.destinationViewController;
     
     dlg.preDataShopId = sender;
+    dlg.userCar = self.userCar;
+    dlg.userAddress = self.userAddress;
     
 }
 
