@@ -11,5 +11,10 @@
 @interface CouponMainInfoCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UIButton* btnExpand;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_company;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_price;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_date;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_number;
+
 
 @end

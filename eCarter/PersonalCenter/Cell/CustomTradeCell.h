@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomTradeCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *lbl_money;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_wayOfPay;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_content;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_time;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_merchant;
+
 
 @end

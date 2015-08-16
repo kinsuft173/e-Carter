@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -122,6 +122,10 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnExpand" destination="A0F-bm-lVR" id="xLv-o1-JDF"/>
+                <outlet property="lbl_company" destination="K9i-fM-gJr" id="oLM-61-azb"/>
+                <outlet property="lbl_date" destination="QpI-B0-Zxs" id="kg1-aL-FAQ"/>
+                <outlet property="lbl_number" destination="WJF-UO-4gp" id="RKh-WW-uzk"/>
+                <outlet property="lbl_price" destination="GTr-xy-vCw" id="03z-9K-7Pg"/>
             </connections>
             <point key="canvasLocation" x="424" y="410.5"/>
         </tableViewCell>
@@ -228,10 +232,10 @@
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
-                        <exclude reference="hDW-Jq-din"/>
-                        <exclude reference="sSl-Ha-SzD"/>
                         <exclude reference="d85-Ug-GRf"/>
                         <exclude reference="h7d-gc-Iyx"/>
+                        <exclude reference="hDW-Jq-din"/>
+                        <exclude reference="sSl-Ha-SzD"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>

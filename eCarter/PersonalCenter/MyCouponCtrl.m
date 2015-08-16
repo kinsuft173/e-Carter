@@ -10,12 +10,17 @@
 #import "CouponMainInfoCell.h"
 #import "CouponExtraInfoCell.h"
 #import "HKCommen.h"
+#import "NetworkManager.h"
+#import "UserDataManager.h"
+#import "UserLoginInfo.h"
+#import "Coupon.h"
 
 @interface MyCouponCtrl ()
 
 @property (nonatomic, strong) IBOutlet UITableView* tableView;
-@property (nonatomic, strong) NSArray* arrayModel;
+@property (nonatomic, strong) NSArray* arrayOfCoupon;
 @property (nonatomic, strong) NSMutableArray* arrayIndex;
+@property (nonatomic,strong) UserLoginInfo *userInfo;
 
 @end
 
@@ -27,7 +32,9 @@
     
     [HKCommen addHeadTitle:@"我的优惠劵" whichNavigation:self.navigationItem];
     
-    self.arrayModel = [NSArray arrayWithObjects:@"1",@"2", nil];
+    [self getModel];
+    
+
     self.arrayIndex = [NSMutableArray arrayWithObjects:@1,@0, nil];
     
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -61,6 +68,25 @@
 
 }
 
+- (void)getModel
+{
+   self.userInfo= [UserDataManager shareManager].userLoginInfo;
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:self.userInfo.user.phone forKey:@"phone"];
+    [dic setObject:self.userInfo.sessionId forKey:@"sessionId"];
+    
+    NSLog(@"优惠劵字典:%@",dic);
+    
+    [[NetworkManager shareMgr] server_fetchQueryUserCouponList:dic completeHandle:^(NSDictionary *responseBanner) {
+        
+        NSLog(@"字典：%@",responseBanner);
+        self.arrayOfCoupon = [responseBanner objectForKey:@"data"];
+        
+        [self.tableView reloadData];
+    }];
+}
+
 /*
 #pragma mark - Navigation
 
@@ -74,7 +100,7 @@
 #pragma tableView DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.arrayModel.count;
+    return self.arrayOfCoupon.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -116,7 +142,7 @@
             cell.btnExpand.tag = indexPath.section;
             
         }
-        
+        Coupon *coupon=[self.arrayOfCoupon objectAtIndex:indexPath.row];
         
         return cell;
         

@@ -65,11 +65,16 @@
     self.userInfo=[UserDataManager shareManager].userLoginInfo;
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
-    [dic setObject:self.userInfo.user.uid forKey:@"userId"];
+    [dic setObject:self.userInfo.user.phone forKey:@"phone"];
+    [dic setObject:self.userInfo.sessionId forKey:@"sessionId"];
+    
+    NSLog(@"地址字典：%@",dic);
     
     [[NetworkManager shareMgr] server_queryUserAddressWithDic:dic completeHandle:^(NSDictionary *response) {
         
-        self.arrayOfAdress = [[response objectForKey:@"data"] objectForKey:@"items"];
+        NSLog(@"字典：%@",response);
+        
+        self.arrayOfAdress = [response objectForKey:@"data"];
         
         [self.tableView reloadData];
     }];

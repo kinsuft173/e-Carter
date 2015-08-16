@@ -10,24 +10,19 @@
 
 @interface Coupon : NSObject
 
+@property (nonatomic, copy) NSString *code;
 
-@property (nonatomic, assign) NSInteger amount;
+@property (nonatomic, copy) NSString *endTimeString;
 
 @property (nonatomic, copy) NSString *id;
 
-@property (nonatomic, copy) NSString *endTime;
+@property (nonatomic, copy) NSString *price;
 
-@property (nonatomic, copy) NSString *couponDescription;
+@property (nonatomic, copy) NSString *remark;
 
-@property (nonatomic, copy) NSString *couponName;
+@property (nonatomic, copy) NSString *startTimeString;
 
-@property (nonatomic, copy) NSString *imageUrl;
-
-@property (nonatomic, copy) NSString *couponLink;
-
-@property (nonatomic, copy) NSString *startTime;
-
-@property (nonatomic, copy) NSString *createTime;
+@property (nonatomic, copy) NSString *state;
 
 
 @end

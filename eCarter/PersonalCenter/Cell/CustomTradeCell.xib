@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -18,68 +18,130 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lW6-re-03I">
                         <rect key="frame" x="10" y="6" width="300" height="155"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="消费金额" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBY-9B-EVZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消费金额" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBY-9B-EVZ">
                                 <rect key="frame" x="10" y="10" width="68" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="68" id="W48-jE-qHH"/>
+                                    <constraint firstAttribute="height" constant="15" id="mCE-Rx-IJf"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="消费内容" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjG-xo-2qt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消费内容" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjG-xo-2qt">
                                 <rect key="frame" x="10" y="60" width="68" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="68" id="U3z-co-964"/>
+                                    <constraint firstAttribute="height" constant="15" id="spe-yg-s0r"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="消费时间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoy-xq-s84">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消费时间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoy-xq-s84">
                                 <rect key="frame" x="10" y="85" width="68" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="3Yu-bv-azu"/>
+                                    <constraint firstAttribute="width" constant="68" id="O0Q-R9-423"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="服务商家" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMe-Jj-hHu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服务商家" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMe-Jj-hHu">
                                 <rect key="frame" x="10" y="110" width="75" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="1zs-pa-5AB"/>
+                                    <constraint firstAttribute="height" constant="15" id="YSC-MW-LDF"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="－100Y" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jba-HX-zFG">
-                                <rect key="frame" x="100" y="10" width="57" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="－100Y" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jba-HX-zFG">
+                                <rect key="frame" x="100" y="10" width="150" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="NVL-Z3-FSr"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="账户余额支付" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f24-Mc-ZX0">
-                                <rect key="frame" x="100" y="35" width="102" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账户余额支付" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f24-Mc-ZX0">
+                                <rect key="frame" x="100" y="35" width="180" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="Rbm-go-KWv"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="洗车" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSh-sD-1XD">
-                                <rect key="frame" x="100" y="60" width="34" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="洗车" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSh-sD-1XD">
+                                <rect key="frame" x="100" y="60" width="180" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="Acq-BO-tun"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" 2015-05-25 11:07:25" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abL-hm-ckS">
-                                <rect key="frame" x="100" y="85" width="234" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 2015-05-25 11:07:25" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abL-hm-ckS">
+                                <rect key="frame" x="100" y="85" width="190" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="rrb-Ym-NW2"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="天河区棠下细沙汽车美容中心" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNA-9j-05t">
-                                <rect key="frame" x="100" y="110" width="153" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天河区棠下细沙汽车美容中心" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNA-9j-05t">
+                                <rect key="frame" x="100" y="110" width="194" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="mkc-F9-WD3"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="付款方式" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwk-kQ-oQI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="付款方式" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwk-kQ-oQI">
                                 <rect key="frame" x="10" y="35" width="68" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="68" id="NYS-Wl-AtZ"/>
+                                    <constraint firstAttribute="height" constant="15" id="n43-13-hfu"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cwk-kQ-oQI" firstAttribute="leading" secondItem="lW6-re-03I" secondAttribute="leading" constant="10" id="0o4-C5-HIH"/>
+                            <constraint firstItem="XjG-xo-2qt" firstAttribute="leading" secondItem="lW6-re-03I" secondAttribute="leading" constant="10" id="4aW-2m-VWL"/>
+                            <constraint firstItem="abL-hm-ckS" firstAttribute="top" secondItem="lW6-re-03I" secondAttribute="top" constant="85" id="5Ct-Ey-5KO"/>
+                            <constraint firstItem="cwk-kQ-oQI" firstAttribute="top" secondItem="lW6-re-03I" secondAttribute="top" constant="35" id="Akw-Rn-65L"/>
+                            <constraint firstAttribute="trailing" secondItem="KSh-sD-1XD" secondAttribute="trailing" constant="20" id="BoT-Ca-gsX"/>
+                            <constraint firstItem="KSh-sD-1XD" firstAttribute="leading" secondItem="lW6-re-03I" secondAttribute="leading" constant="100" id="EUq-VE-HSV"/>
+                            <constraint firstAttribute="trailing" secondItem="jba-HX-zFG" secondAttribute="trailing" constant="50" id="JoV-12-kqX"/>
+                            <constraint firstAttribute="trailing" secondItem="f24-Mc-ZX0" secondAttribute="trailing" constant="20" id="Kkd-EA-z0Z"/>
+                            <constraint firstItem="FBY-9B-EVZ" firstAttribute="top" secondItem="lW6-re-03I" secondAttribute="top" constant="10" id="LIe-qB-UDQ"/>
+                            <constraint firstItem="abL-hm-ckS" firstAttribute="leading" secondItem="lW6-re-03I" secondAttribute="leading" constant="100" id="Lfp-vY-dL3"/>
+                            <constraint firstItem="KSh-sD-1XD" firstAttribute="top" secondItem="lW6-re-03I" secondAttribute="top" constant="60" id="O8a-xV-k0t"/>
+                            <constraint firstItem="jba-HX-zFG" firstAttribute="leading" secondItem="lW6-re-03I" secondAttribute="leading" constant="100" id="S6n-gk-fMX"/>
+                            <constraint firstItem="aNA-9j-05t" firstAttribute="leading" secondItem="lW6-re-03I" secondAttribute="leading" constant="100" id="SeF-Sd-15E"/>
+                            <constraint firstItem="FBY-9B-EVZ" firstAttribute="leading" secondItem="lW6-re-03I" secondAttribute="leading" constant="10" id="YyJ-EI-h3n"/>
+                            <constraint firstItem="jba-HX-zFG" firstAttribute="top" secondItem="lW6-re-03I" secondAttribute="top" constant="10" id="bLf-z5-L8l"/>
+                            <constraint firstItem="f24-Mc-ZX0" firstAttribute="leading" secondItem="lW6-re-03I" secondAttribute="leading" constant="100" id="cVd-ta-WIJ"/>
+                            <constraint firstItem="xMe-Jj-hHu" firstAttribute="leading" secondItem="lW6-re-03I" secondAttribute="leading" constant="10" id="cww-5X-Wo3"/>
+                            <constraint firstItem="XjG-xo-2qt" firstAttribute="top" secondItem="lW6-re-03I" secondAttribute="top" constant="60" id="eGD-s1-79n"/>
+                            <constraint firstAttribute="trailing" secondItem="aNA-9j-05t" secondAttribute="trailing" constant="6" id="eXT-N2-3Uk"/>
+                            <constraint firstAttribute="trailing" secondItem="abL-hm-ckS" secondAttribute="trailing" constant="10" id="it7-VF-8uo"/>
+                            <constraint firstItem="aNA-9j-05t" firstAttribute="top" secondItem="lW6-re-03I" secondAttribute="top" constant="110" id="l5J-xe-MM9"/>
+                            <constraint firstItem="xMe-Jj-hHu" firstAttribute="top" secondItem="lW6-re-03I" secondAttribute="top" constant="110" id="obh-TX-AuJ"/>
+                            <constraint firstItem="eoy-xq-s84" firstAttribute="top" secondItem="lW6-re-03I" secondAttribute="top" constant="85" id="p2J-5B-5sg"/>
+                            <constraint firstItem="f24-Mc-ZX0" firstAttribute="top" secondItem="lW6-re-03I" secondAttribute="top" constant="35" id="pYl-wP-Xxw"/>
+                            <constraint firstItem="eoy-xq-s84" firstAttribute="leading" secondItem="lW6-re-03I" secondAttribute="leading" constant="10" id="ziz-mA-je4"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.66666666669999997" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
@@ -90,7 +152,14 @@
                     <constraint firstItem="lW6-re-03I" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="yTe-3L-Ng9"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="491" y="267.5"/>
+            <connections>
+                <outlet property="lbl_content" destination="KSh-sD-1XD" id="DFM-Oc-fRN"/>
+                <outlet property="lbl_merchant" destination="aNA-9j-05t" id="cnJ-f1-Ggb"/>
+                <outlet property="lbl_money" destination="xrR-VF-eMs" id="jIT-TJ-tNw"/>
+                <outlet property="lbl_time" destination="IDa-Ey-8GO" id="jQe-ve-KcY"/>
+                <outlet property="lbl_wayOfPay" destination="lBq-pm-Vye" id="Zd2-HZ-dfS"/>
+            </connections>
+            <point key="canvasLocation" x="213" y="170.5"/>
         </tableViewCell>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bwC-ND-r7R" customClass="CustomTradeCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="97"/>
@@ -102,44 +171,82 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BRJ-Xm-tpU">
                         <rect key="frame" x="10" y="6" width="300" height="85"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="消费金额" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="moe-QJ-Ucp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消费金额" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="moe-QJ-Ucp">
                                 <rect key="frame" x="10" y="10" width="68" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="990-rH-ZVO"/>
+                                    <constraint firstAttribute="width" constant="68" id="q01-0D-KcK"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="消费时间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34U-da-yOF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消费时间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34U-da-yOF">
                                 <rect key="frame" x="10" y="60" width="68" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="68" id="IEt-kb-EPm"/>
+                                    <constraint firstAttribute="height" constant="15" id="fYE-1r-LJN"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="－100Y" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrR-VF-eMs">
-                                <rect key="frame" x="100" y="10" width="57" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="－100Y" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrR-VF-eMs">
+                                <rect key="frame" x="100" y="10" width="180" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="PLE-8C-OYp"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="账户余额支付" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lBq-pm-Vye">
-                                <rect key="frame" x="100" y="35" width="102" height="15"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="付款方式" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5d-jb-uyA">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="付款方式" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5d-jb-uyA">
                                 <rect key="frame" x="10" y="35" width="68" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="68" id="eeb-kJ-MaF"/>
+                                    <constraint firstAttribute="height" constant="15" id="rHn-Le-dgD"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" 2015-05-25 11:07:25" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDa-Ey-8GO">
-                                <rect key="frame" x="95" y="60" width="234" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 2015-05-25 11:07:25" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDa-Ey-8GO">
+                                <rect key="frame" x="95" y="60" width="195" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="XS6-Az-Q6y"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账户余额支付" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lBq-pm-Vye">
+                                <rect key="frame" x="100" y="35" width="180" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="eva-E9-OYI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lBq-pm-Vye" firstAttribute="leading" secondItem="BRJ-Xm-tpU" secondAttribute="leading" constant="100" id="3kn-Jw-anR"/>
+                            <constraint firstItem="IDa-Ey-8GO" firstAttribute="top" secondItem="BRJ-Xm-tpU" secondAttribute="top" constant="60" id="9Tb-3i-A2j"/>
+                            <constraint firstItem="b5d-jb-uyA" firstAttribute="leading" secondItem="BRJ-Xm-tpU" secondAttribute="leading" constant="10" id="Cld-Dy-NVx"/>
+                            <constraint firstItem="34U-da-yOF" firstAttribute="leading" secondItem="BRJ-Xm-tpU" secondAttribute="leading" constant="10" id="G21-85-mIa"/>
+                            <constraint firstItem="lBq-pm-Vye" firstAttribute="top" secondItem="BRJ-Xm-tpU" secondAttribute="top" constant="35" id="J6t-5A-LdH"/>
+                            <constraint firstItem="IDa-Ey-8GO" firstAttribute="leading" secondItem="BRJ-Xm-tpU" secondAttribute="leading" constant="95" id="Jyt-z9-86f"/>
+                            <constraint firstItem="b5d-jb-uyA" firstAttribute="top" secondItem="BRJ-Xm-tpU" secondAttribute="top" constant="35" id="L9f-Gt-Nq1"/>
+                            <constraint firstItem="xrR-VF-eMs" firstAttribute="top" secondItem="BRJ-Xm-tpU" secondAttribute="top" constant="10" id="Lge-VE-mRi"/>
+                            <constraint firstAttribute="trailing" secondItem="IDa-Ey-8GO" secondAttribute="trailing" constant="10" id="SRe-sI-cfe"/>
+                            <constraint firstItem="moe-QJ-Ucp" firstAttribute="top" secondItem="BRJ-Xm-tpU" secondAttribute="top" constant="10" id="XJz-sl-vfx"/>
+                            <constraint firstItem="moe-QJ-Ucp" firstAttribute="leading" secondItem="BRJ-Xm-tpU" secondAttribute="leading" constant="10" id="Y8t-2I-0GF"/>
+                            <constraint firstItem="xrR-VF-eMs" firstAttribute="leading" secondItem="BRJ-Xm-tpU" secondAttribute="leading" constant="100" id="dgc-4Q-29G"/>
+                            <constraint firstAttribute="trailing" secondItem="xrR-VF-eMs" secondAttribute="trailing" constant="20" id="gM6-3O-7Tj"/>
+                            <constraint firstAttribute="trailing" secondItem="lBq-pm-Vye" secondAttribute="trailing" constant="20" id="iml-61-I8b"/>
+                            <constraint firstItem="34U-da-yOF" firstAttribute="top" secondItem="BRJ-Xm-tpU" secondAttribute="top" constant="60" id="y59-vg-Kia"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.66666666669999997" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>

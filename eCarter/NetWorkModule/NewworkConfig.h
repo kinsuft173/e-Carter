@@ -62,6 +62,8 @@ typedef void (^ErrorHandle)(NSError*);
 
 #define ECATER_POINT_TRANSACTION_INTERFACE @"/ecar/mobile/queryPointTransaction"
 
+#define ECATER_QUERY_USER_COUPON @"/ecar/mobile/queryUserCoupon"
+
 //广告部分
 #define APP_AD_URL @"advertisement/index"
 

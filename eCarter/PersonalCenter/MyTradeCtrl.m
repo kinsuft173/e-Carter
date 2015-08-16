@@ -10,11 +10,15 @@
 #import "CustomTradeCell.h"
 #import "HKCommen.h"
 #import "PlaceHolderCell.h"
+#import "NetworkManager.h"
+#import "UserDataManager.h"
+#import "UserLoginInfo.h"
 
 @interface MyTradeCtrl ()
 
 @property (nonatomic, strong) IBOutlet UITableView* tableView;
-
+@property (nonatomic,strong) UserLoginInfo *userInfo;
+@property (nonatomic,strong)NSArray *arrayOfTrade;
 @end
 
 @implementation MyTradeCtrl
@@ -23,6 +27,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tableView.backgroundColor = [HKCommen getColor:@"aaaaaa" WithAlpha:0.2];
+    
+    [self getModel];
     
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
@@ -42,6 +48,28 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+}
+
+- (void)getModel
+{
+    self.userInfo=[UserDataManager shareManager].userLoginInfo;
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:self.userInfo.user.phone forKey:@"phone"];
+    [dic setObject:self.userInfo.sessionId forKey:@"sessionId"];
+    [dic setObject:@"1" forKey:@"pageNum"];
+    [dic setObject:@"10" forKey:@"pageSize"];
+    
+    NSLog(@"交易字典：%@",dic);
+    
+    [[NetworkManager shareMgr] server_queryOrderLogWithDic:dic completeHandle:^(NSDictionary *responseBanner) {
+
+        NSLog(@"字典:%@",responseBanner);
+        
+        self.arrayOfTrade = [responseBanner objectForKey:@"data"];
+        
+        [self.tableView reloadData];
+    }];
 }
 
 -(void)back

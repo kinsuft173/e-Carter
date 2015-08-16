@@ -55,11 +55,11 @@
     [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
     [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
     
-    
+    NSLog(@"车库字典：%@",dic);
     
     [[NetworkManager shareMgr] server_queryCarSeriesWithDic:dic completeHandle:^(NSDictionary *responseBanner) {
         
-        
+        NSLog(@"字典：%@",responseBanner);
         
         self.arrayOfCar = [responseBanner objectForKey:@"data"];
         

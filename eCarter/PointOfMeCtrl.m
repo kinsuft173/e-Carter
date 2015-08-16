@@ -60,10 +60,13 @@
     [dic setObject:self.userInfo.user.phone forKey:@"phone"];
     [dic setObject:self.userInfo.sessionId forKey:@"sessionId"];
     
+    NSLog(@"积分字典：%@",dic);
+    
     [[NetworkManager shareMgr] server_queryUserAddressWithDic:dic completeHandle:^(NSDictionary *response) {
         
+        NSLog(@"字典：%@",response);
         NSDictionary *dictOfCount=[[NSDictionary alloc]init];
-        dictOfCount = [[response objectForKey:@"data"] objectForKey:@"items"];
+        dictOfCount = [response objectForKey:@"data"];
         
         self.lbl_myCount.text=[dictOfCount objectForKey:@"point"];
     }];

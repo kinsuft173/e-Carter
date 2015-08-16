@@ -10,4 +10,7 @@
 
 @interface CouponExtraInfoCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *lbl_couponDetail;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_userDate;
+
 @end

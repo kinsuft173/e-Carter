@@ -77,6 +77,8 @@
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
     [dic setValue:self.userLoginInfo.user.phone forKey:@"phone"];
     [dic setValue:self.userLoginInfo.sessionId forKey:@"sessionId"];
+    [dic setValue:@"1" forKey:@"pageNum"];
+    [dic setValue:@"10" forKey:@"pageSize"];
     
     NSLog(@"订单字典：%@",dic);
     

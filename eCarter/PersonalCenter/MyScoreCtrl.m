@@ -10,6 +10,7 @@
 #import "MyScoreMainCell.h"
 #import "MyScoreNomalCell.h"
 
+
 @interface MyScoreCtrl ()
 
 @end
