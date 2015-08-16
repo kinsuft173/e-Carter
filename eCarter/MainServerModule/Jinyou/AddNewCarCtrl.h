@@ -14,4 +14,5 @@
 @interface AddNewCarCtrl : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *myTable;
 @property (strong,nonatomic)NSArray *arrayOfCar;
+@property (strong,nonatomic)NSString *carId;
 @end

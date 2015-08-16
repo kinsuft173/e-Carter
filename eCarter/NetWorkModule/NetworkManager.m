@@ -1280,6 +1280,104 @@
     
 }
 
+- (void)server_queryCarLists:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    NSString* strInterface;
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = ECATER_QUERY_CAR_LISTS;
+        
+    }
+    
+    [manager GET:[NSString stringWithFormat:@"%@%@",SERVER_CAR,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (self.isTestMode) {
+            
+            NSDictionary *dictionary = [FakeDataMgr shareMgr].responseQueryCarSeries;
+            
+            if (completeHandle) {
+                
+                completeHandle(dictionary);
+                
+            }
+            
+        }else{
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        //ErrorHandle(error);
+        
+        NSLog(@"Error: %@", error);
+        
+        
+    }];
+    
+}
+
+- (void)server_queryCarDetails:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    NSString* strInterface;
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = ECATER_QUERY_CAR_DETAILS;
+        
+    }
+    
+    [manager GET:[NSString stringWithFormat:@"%@%@",SERVER_CAR,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (self.isTestMode) {
+            
+            NSDictionary *dictionary = [FakeDataMgr shareMgr].responseQueryCarSeries;
+            
+            if (completeHandle) {
+                
+                completeHandle(dictionary);
+                
+            }
+            
+        }else{
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        //ErrorHandle(error);
+        
+        NSLog(@"Error: %@", error);
+        
+        
+    }];
+    
+}
+
 - (void)server_queryUserAddressWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

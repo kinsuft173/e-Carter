@@ -20,6 +20,7 @@
 
 @property (strong,nonatomic)NSArray *array_color;
 @property (strong,nonatomic)NSString *JudgeWhereFrom;
+@property (strong,nonatomic)NSString *carId;
 
 @property (strong,nonatomic)NSMutableArray *array_showArray;
 

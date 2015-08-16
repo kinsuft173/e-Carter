@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
 #import "global.h"
 
 #define SERVER    @"http://api.kswiki.net/kswiki/api/v2"     //@"http://192.168.1.23/kswiki/api"

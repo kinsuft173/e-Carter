@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -16,9 +16,8 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xT8-dw-A7g">
-                        <rect key="frame" x="10" y="0.0" width="200" height="44"/>
+                        <rect key="frame" x="10" y="0.0" width="260" height="44"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="200" id="R52-iI-2c0"/>
                             <constraint firstAttribute="height" constant="44" id="c8n-vs-Vga"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -38,6 +37,7 @@
                     <constraint firstAttribute="trailingMargin" secondItem="FwU-Pp-lbY" secondAttribute="trailing" constant="17" id="2W0-E3-VxZ"/>
                     <constraint firstItem="xT8-dw-A7g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="A14-df-vXB"/>
                     <constraint firstItem="FwU-Pp-lbY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="ezI-5O-TbT"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="xT8-dw-A7g" secondAttribute="trailing" constant="42" id="vQb-RK-eQd"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

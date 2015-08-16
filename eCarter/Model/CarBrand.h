@@ -10,9 +10,9 @@
 
 @interface CarBrand : NSObject
 
-@property (nonatomic, copy) NSString *id;
+@property (nonatomic, copy) NSString *I;
 
-@property (nonatomic, copy) NSString *brandName;
+@property (nonatomic, copy) NSString *N;
 
 
 @end

@@ -10,7 +10,10 @@
 #define GSAPP_NewworkConfig_h
 
 
-#define SERVER     @"http://119.29.0.81:8087/ecf/app"//@"http://gc.ditu.aliyun.com/regeocoding?l=39.938133,116.395739&type=001"
+#define SERVER     @"http://119.29.0.81:8087/ecf/app"
+
+#define SERVER_CAR     @"http://apis.haoservice.com"
+
 #define SERVERADTEST    @"http://115.28.85.76/gaoshou/api/web/?r="
 #define ISINTEST  NO
 
@@ -55,6 +58,10 @@ typedef void (^ErrorHandle)(NSError*);
 #define ECATER_QUERY_CAR_BRAND_INTERFACE @"/ecar/mobile/queryCarBrand"
 #define ECATER_QUERY_CAR_SERIES_INTERFACE @"/ecar/mobile/queryCarSeries"
 #define ECATER_QUERY_CAR_LISTS_INTERFACE @"/ecar/mobile/queryCustomerCar"
+
+#define ECATER_QUERY_CAR_LISTS @"/lifeservice/car/GetSeries"
+
+#define ECATER_QUERY_CAR_DETAILS @"/lifeservice/car/GetModel/"
 
 
 #define ECATER_QUERY_USER_ADDRESS_INTERFACE @"/ecar/mobile/queryUserAddress"
