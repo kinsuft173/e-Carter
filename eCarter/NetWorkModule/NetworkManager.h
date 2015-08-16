@@ -13,6 +13,7 @@
 #import <MJRefresh.h>
 #import "global.h"
 #import <UIImageView+WebCache.h>
+#import "MBProgressHUD.h"
 
 @interface NetworkManager : NSObject
 

@@ -173,7 +173,10 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        //ErrorHandle(error);
+//        if (completeHandle) {
+//            
+//            completeHandle(responseObject);
+//        }
         
         NSLog(@"Error: %@", error);
         

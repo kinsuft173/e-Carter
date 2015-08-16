@@ -51,6 +51,23 @@
     self.btn_sendCode.layer.cornerRadius=5.0;
     self.btn_sendCode.layer.masksToBounds=YES;
     [self.btn_sendCode addTarget:self action:@selector(sendCode) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
+    [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
+    [leftButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton ];
+    
+    if(([[[UIDevice currentDevice] systemVersion] floatValue]>=7.0?20:0)){
+        UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                           initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                           target:nil action:nil];
+        negativeSpacer.width = -17;
+        self.navigationItem.leftBarButtonItems = @[negativeSpacer, leftItem];
+    }else
+    {
+        self.navigationItem.leftBarButtonItem=leftItem;
+    }
 
     
     if ([self.judgeLoginOrPassword isEqualToString:@"login"]) {
@@ -62,11 +79,15 @@
     }
 }
 
+-(void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 -(void)initLogin
 {
     [HKCommen addHeadTitle:@"登录" whichNavigation:self.navigationItem];
     [self.btn_goNext addTarget:self action:@selector(goToPersonalCenter) forControlEvents:UIControlEventTouchUpInside];
-    
     
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
@@ -197,10 +218,7 @@
     self.count_Timer=nil;
 }
 
--(void)back
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
+
 
 -(void)goToPersonalCenter
 {
@@ -218,6 +236,10 @@
     {
      */
         NSLog(@"goPersonalCenter");
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"正在加载...";
         
         NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
         
@@ -243,6 +265,8 @@
                 [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"checkUser"];
                 
             }
+            
+            hud.hidden = YES;
             
         }];
     

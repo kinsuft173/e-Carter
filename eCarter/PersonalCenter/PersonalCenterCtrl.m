@@ -57,26 +57,27 @@
 
 -(void)back
 {
-    NSString *check=[[NSUserDefaults standardUserDefaults] objectForKey:@"checkUser"];
+//    NSString *check=[[NSUserDefaults standardUserDefaults] objectForKey:@"checkUser"];
+//    
+//    if ([self.loginCome isEqualToString:@"yes"]) {
+//        UIStoryboard *story=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        FirstViewCtrl *vc=[story instantiateViewControllerWithIdentifier:@"FirstViewCtrl"];
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
+//    else
+//    {
+//        if ([check isEqualToString:@"yes"]) {
+//            [self.navigationController popViewControllerAnimated:YES];
+//        }
+//        else
+//        {
+//            UIStoryboard *story=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//            FirstViewCtrl *vc=[story instantiateViewControllerWithIdentifier:@"FirstViewCtrl"];
+//            [self.navigationController pushViewController:vc animated:YES];
+//        }
+//    }
     
-    if ([self.loginCome isEqualToString:@"yes"]) {
-        UIStoryboard *story=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        FirstViewCtrl *vc=[story instantiateViewControllerWithIdentifier:@"FirstViewCtrl"];
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    else
-    {
-        if ([check isEqualToString:@"yes"]) {
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-        else
-        {
-            UIStoryboard *story=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            FirstViewCtrl *vc=[story instantiateViewControllerWithIdentifier:@"FirstViewCtrl"];
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-    }
-    
+    [self.navigationController popToRootViewControllerAnimated:YES];
 
     
     

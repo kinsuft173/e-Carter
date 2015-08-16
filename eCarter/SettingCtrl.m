@@ -116,11 +116,17 @@
 
 -(void)loginOut
 {
-    TransactionCtrl *vc=[[TransactionCtrl alloc] initWithNibName:@"TransactionCtrl" bundle:nil];
-    vc.judgeLoginOrPassword=@"login";
-    [self.navigationController pushViewController:vc animated:YES];
-    
     [[NSUserDefaults standardUserDefaults] setObject:@"no" forKey:@"checkUser"];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    return;
+    
+    //傻屌 面对对象是啥？
+//    TransactionCtrl *vc=[[TransactionCtrl alloc] initWithNibName:@"TransactionCtrl" bundle:nil];
+//    vc.judgeLoginOrPassword=@"login";
+//    [self.navigationController pushViewController:vc animated:YES];
+//    
+//    [[NSUserDefaults standardUserDefaults] setObject:@"no" forKey:@"checkUser"];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

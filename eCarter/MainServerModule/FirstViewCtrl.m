@@ -234,20 +234,24 @@
 {
     if (indexPath.section == 2) {
         
-        [self performSegueWithIdentifier:@"goSelfGet" sender:nil];
+        NSString *check=[[NSUserDefaults standardUserDefaults] objectForKey:@"checkUser"];
+        
+        if ([check isEqualToString:@"yes"]) {
+            
+            [self performSegueWithIdentifier:@"goShopGet" sender:nil];
+            
+        }else{
+            
+            
+            [HKCommen addAlertViewWithTitel:@"尚未登陆"];
+            
+        }
+        
         
     }else if (indexPath.section == 3){
-    
-//        UIStoryboard *story=[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//        SelfGetCtrl *vc=[story instantiateViewControllerWithIdentifier:@"SelfGetCtrl"];
-        
-//        vc.city=@"广州市";
-//        [self.navigationController pushViewController:vc animated:YES];
-        
-        
+
+            
         [self performSegueWithIdentifier:@"goShopGet" sender:nil];
-        
-        
         
     }
 
@@ -263,6 +267,7 @@
 
 - (IBAction)goPersonalCenter:(id)sender
 {
+    
     
     NSString *check=[[NSUserDefaults standardUserDefaults] objectForKey:@"checkUser"];
     

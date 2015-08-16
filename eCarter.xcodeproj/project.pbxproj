@@ -98,6 +98,7 @@
 		DE9D12D51B52DBE900046407 /* payRequsestHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = DE9D12D11B52DBE900046407 /* payRequsestHandler.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DE9D12D61B52DBE900046407 /* WXUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = DE9D12D31B52DBE900046407 /* WXUtil.mm */; };
 		DE9D12D81B52DEC100046407 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DE9D12D71B52DEC100046407 /* libsqlite3.0.dylib */; };
+		DEAAA7201B80AD5800829FB7 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAAA71F1B80AD5800829FB7 /* MBProgressHUD.m */; };
 		DECA17231B614B4700FD3418 /* Coupon.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA17221B614B4700FD3418 /* Coupon.m */; };
 		DECA17261B614BD400FD3418 /* CouponDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA17251B614BD400FD3418 /* CouponDetail.m */; };
 		DECA17291B614C1800FD3418 /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA17281B614C1800FD3418 /* Shop.m */; };
@@ -739,6 +740,8 @@
 		DE9D12D21B52DBE900046407 /* WXUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXUtil.h; sourceTree = "<group>"; };
 		DE9D12D31B52DBE900046407 /* WXUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WXUtil.mm; sourceTree = "<group>"; };
 		DE9D12D71B52DEC100046407 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		DEAAA71E1B80AD5800829FB7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		DEAAA71F1B80AD5800829FB7 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		DECA17211B614B4700FD3418 /* Coupon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coupon.h; sourceTree = "<group>"; };
 		DECA17221B614B4700FD3418 /* Coupon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coupon.m; sourceTree = "<group>"; };
 		DECA17241B614BD400FD3418 /* CouponDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetail.h; sourceTree = "<group>"; };
@@ -1624,6 +1627,15 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		DEAAA71D1B80A10A00829FB7 /* E车夫首页 */ = {
+			isa = PBXGroup;
+			children = (
+				DED2EB131B35E351006FE893 /* FirstViewCtrl.h */,
+				DED2EB141B35E351006FE893 /* FirstViewCtrl.m */,
+			);
+			name = "E车夫首页";
+			sourceTree = "<group>";
+		};
 		DECA171D1B61381200FD3418 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1745,6 +1757,8 @@
 		DED2EB0B1B35DDC6006FE893 /* HKLib */ = {
 			isa = PBXGroup;
 			children = (
+				DEAAA71E1B80AD5800829FB7 /* MBProgressHUD.h */,
+				DEAAA71F1B80AD5800829FB7 /* MBProgressHUD.m */,
 				DEE719BD1B3ED814003221A8 /* PublicCell */,
 				DED2EB0C1B35DDD9006FE893 /* HKCommen.h */,
 				DED2EB0D1B35DDD9006FE893 /* HKCommen.m */,
@@ -1756,12 +1770,11 @@
 		DED2EB121B35E336006FE893 /* MainServerModule */ = {
 			isa = PBXGroup;
 			children = (
+				DEAAA71D1B80A10A00829FB7 /* E车夫首页 */,
 				DE06386D1B6DF6F200EFB576 /* New Group */,
 				DEFDF5961B5B83BE00298366 /* Model */,
 				DEE87CD41B48EA0C00D3EDAB /* lijingyou */,
 				DEE3BE411B3655E800DCE7EC /* Cell */,
-				DED2EB131B35E351006FE893 /* FirstViewCtrl.h */,
-				DED2EB141B35E351006FE893 /* FirstViewCtrl.m */,
 				DEE52EBD1B38F4D400C90BA3 /* EventBanerCtrl.h */,
 				DEE52EBE1B38F4D400C90BA3 /* EventBanerCtrl.m */,
 				DEE52ECA1B38F9C200C90BA3 /* CouponCtrl.h */,
@@ -3152,6 +3165,7 @@
 				DECA17231B614B4700FD3418 /* Coupon.m in Sources */,
 				DED2EADA1B35D3A5006FE893 /* main.m in Sources */,
 				DE06386C1B6D19C900EFB576 /* iToast.m in Sources */,
+				DEAAA7201B80AD5800829FB7 /* MBProgressHUD.m in Sources */,
 				DEE52ED01B38FAEB00C90BA3 /* CouponMainInfoCell.m in Sources */,
 				DEE48B9F1B39A4BF00458D6F /* TimeCell.m in Sources */,
 				DEE48BB31B39AAD200458D6F /* PaymentCell.m in Sources */,
