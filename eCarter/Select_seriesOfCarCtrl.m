@@ -13,14 +13,15 @@
 #import "CarSeries.h"
 
 @interface Select_seriesOfCarCtrl ()<UITableViewDataSource,UITableViewDelegate>
-
+@property (nonatomic,strong)NSArray *arrayOfCarBrand;
+@property (nonatomic,strong)NSArray *arrayOfYear;
 @end
 
 @implementation Select_seriesOfCarCtrl
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
     [self initUI];
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
@@ -51,20 +52,16 @@
 {
     if ([self.JudgeWhereFrom isEqualToString:@"name"])
     {
+
         [HKCommen addHeadTitle:@"选择车系" whichNavigation:self.navigationItem];
         
-        [[NetworkManager shareMgr] server_queryCarBrandWithDic:nil completeHandle:^(NSDictionary *response) {
+        NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+        [dic setObject:@"03a7fd1bcecb40e98fb8d5b1600df58a" forKey:@"key"];
+        
+        [[NetworkManager shareMgr] server_queryCarLists:dic completeHandle:^(NSDictionary *response) {
             
-            NSArray* tempArray = [response objectForKey:@"data"];
-            
-            if (tempArray.count != 0) {
-                
-                self.array_showArray = [[NSMutableArray alloc] init];
-                
-                [self.array_showArray addObjectsFromArray:tempArray];
-                
-            }
-            
+            NSLog(@"获得字典：%@",response);
+            self.arrayOfCarBrand = [response objectForKey:@"result"];
             
             [self.myTable reloadData];
             
@@ -73,21 +70,20 @@
         
     }else if ([self.JudgeWhereFrom isEqualToString:@"series"])
     {
+        [HKCommen addHeadTitle:@"年款排量" whichNavigation:self.navigationItem];
         
-        [HKCommen addHeadTitle:self.preBrand whichNavigation:self.navigationItem];
+        NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+        [dic setObject:@"03a7fd1bcecb40e98fb8d5b1600df58a" forKey:@"key"];
         
-        [[NetworkManager shareMgr] server_queryCarSeriesWithDic:nil completeHandle:^(NSDictionary *response) {
+        [dic setObject:self.carId forKey:@"id"];
+        
+        [[NetworkManager shareMgr] server_queryCarDetails:dic completeHandle:^(NSDictionary *response) {
             
-            NSArray* tempArray = [response objectForKey:@"data"];
+            NSLog(@"未初始化的字典:%@",[response objectForKey:@"result"]);
             
-            if (tempArray.count != 0) {
-                
-                self.array_showArray = [[NSMutableArray alloc] init];
-                
-                [self.array_showArray addObjectsFromArray:tempArray];
-                
-            }
+            self.arrayOfYear=[[response objectForKey:@"result"] objectForKey:@"List"];
             
+            NSLog(@"获得年款字典：%@",[[self.arrayOfYear objectAtIndex:0] objectForKey:@"List"]);
             
             [self.myTable reloadData];
             
@@ -124,12 +120,37 @@
 #pragma  mark - tableView DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    if([self.JudgeWhereFrom isEqualToString:@"name"]){
+        return self.arrayOfCarBrand.count;
+    }
+    else
+    {
+        return 1;
+    }
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.array_showArray.count;
+    
+    if([self.JudgeWhereFrom isEqualToString:@"name"]){
+        
+        return 1;
+    }
+    
+    if([self.JudgeWhereFrom isEqualToString:@"series"]){
+        
+        NSArray *array=[[self.arrayOfYear objectAtIndex:0] objectForKey:@"List"];
+        NSLog(@"数组个数:%d",array.count);
+        return array.count;
+    
+    }
+    else
+    {
+        return self.array_showArray.count;
+    }
+    
+    
     
 }
 
@@ -167,18 +188,38 @@
     
     if ([self.JudgeWhereFrom isEqualToString:@"series"]) {
         
-        CarSeries* carBrand = [CarSeries objectWithKeyValues:[self.array_showArray objectAtIndex:indexPath.row]] ;
+        //CarSeries* carBrand = [CarSeries objectWithKeyValues:[self.array_showArray objectAtIndex:indexPath.row]] ;
         
-        cell.lbl_seriesOfCar.text = carBrand.seriesName;
+        NSArray *array= [[self.arrayOfYear objectAtIndex:0] objectForKey:@"List"];
+        
+        NSLog(@"测试:%@",[[[[self.arrayOfYear objectAtIndex:0] objectForKey:@"List"] objectAtIndex:0] objectForKey:@"I"]);
+        
+        cell.lbl_seriesOfCar.text = [NSString stringWithFormat:@"%@",[[[[self.arrayOfYear objectAtIndex:0] objectForKey:@"List"] objectAtIndex:0] objectForKey:@"I"]];
         
     }else  if([self.JudgeWhereFrom isEqualToString:@"name"]){
     
-        CarBrand* carBrand = [CarBrand objectWithKeyValues:[self.array_showArray objectAtIndex:indexPath.row]] ;
         
-        cell.lbl_seriesOfCar.text = carBrand.brandName;
+        
+        CarBrand* carBrand = [CarBrand objectWithKeyValues:[[self.arrayOfCarBrand objectAtIndex:indexPath.section]objectForKey:@"List"]] ;
+
+        NSDictionary *dic=[[NSDictionary alloc] init];
+        NSArray *array=[[NSArray alloc]init];
+        
+        if ([[[self.arrayOfCarBrand objectAtIndex:indexPath.section]objectForKey:@"List"] isKindOfClass:[NSDictionary class]]) {
+            
+            NSLog(@"品牌字典:%@",[[self.arrayOfCarBrand objectAtIndex:indexPath.section]objectForKey:@"List"]);
+        }
+        else if ([[[self.arrayOfCarBrand objectAtIndex:indexPath.section]objectForKey:@"List"] isKindOfClass:[NSArray class]])
+        {
+            
+            array=[[self.arrayOfCarBrand objectAtIndex:indexPath.section]objectForKey:@"List"];
+            
+            
+            cell.lbl_seriesOfCar.text = [[[[array objectAtIndex:0]objectForKey:@"List" ]objectAtIndex:0] objectForKey:@"N"];
+        }
     
     }
-    cell.lbl_seriesOfCar.text=[self.array_showArray objectAtIndex:indexPath.row];
+    //cell.lbl_seriesOfCar.text=[self.array_showArray objectAtIndex:indexPath.row];
         
     return cell;
 
@@ -186,25 +227,31 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary* dic;
+    NSMutableDictionary* dic;
     
     if ([self.JudgeWhereFrom isEqualToString:@"color"]) {
         
-        dic = [NSDictionary dictionaryWithObjectsAndKeys:[self.array_showArray objectAtIndex:indexPath.row], @"color",nil];
+        dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:[self.array_showArray objectAtIndex:indexPath.row], @"color",nil];
+        
+        
   
     }else if ([self.JudgeWhereFrom isEqualToString:@"series"]) {
         
-        CarSeries* carBrand = [CarSeries objectWithKeyValues:[self.array_showArray objectAtIndex:indexPath.row]] ;
+
         
-        dic = [NSDictionary dictionaryWithObjectsAndKeys:carBrand.seriesName,@"series", nil];
+        NSString *string = [NSString stringWithFormat:@"%@",[[[[self.arrayOfYear objectAtIndex:0] objectForKey:@"List"] objectAtIndex:0] objectForKey:@"I"]];
+        
+        dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:string,@"series", nil];
         
         
     }else  if([self.JudgeWhereFrom isEqualToString:@"name"]){
-    
+
         
-        CarBrand* carBrand = [CarBrand objectWithKeyValues:[self.array_showArray objectAtIndex:indexPath.row]] ;
+       NSArray *array=[[self.arrayOfCarBrand objectAtIndex:indexPath.section]objectForKey:@"List"];
         
-        dic = [NSDictionary dictionaryWithObjectsAndKeys:carBrand.brandName,@"name", nil];
+        dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:[[[[array objectAtIndex:0]objectForKey:@"List" ]objectAtIndex:0] objectForKey:@"N"],@"name", nil];
+        
+        [dic setObject:[[[[array objectAtIndex:0]objectForKey:@"List" ]objectAtIndex:0] objectForKey:@"I"] forKey:@"Id"];
     }
     
     NSLog(@"dic = %@",dic);

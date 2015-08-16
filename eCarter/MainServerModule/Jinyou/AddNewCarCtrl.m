@@ -179,6 +179,7 @@ heightForHeaderInSection:(NSInteger)section
         
         else if (indexPath.row==1) {
             Select_seriesOfCarCtrl *vc=[[Select_seriesOfCarCtrl alloc] initWithNibName:@"Select_seriesOfCarCtrl" bundle:nil];
+            vc.carId=self.carId;
             vc.JudgeWhereFrom=@"series";
             
             vc.delegate = self;
@@ -292,8 +293,6 @@ heightForHeaderInSection:(NSInteger)section
     UIView *underView=[[UIView alloc]initWithFrame:CGRectMake(0, 12.0 - SINGLE_LINE_ADJUST_OFFSET, [UIScreen mainScreen].bounds.size.width,SINGLE_LINE_WIDTH)];
     underView.backgroundColor=[UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0];
     
-    NSLog(@"线的高度：%f",SINGLE_LINE_WIDTH);
-    
     [headerView addSubview:headView];
     [headerView addSubview:underView];
     return headerView;
@@ -317,6 +316,8 @@ heightForHeaderInSection:(NSInteger)section
         
         cellSelectCar1.lbl_KindOfCar.text = [dic objectForKey:@"name"];
         
+        NSLog(@"收到的ID是:%@",[dic objectForKey:@"Id"]);
+        self.carId=[dic objectForKey:@"Id"];
         
     }else if ([dic objectForKey:@"series"]) {
         
