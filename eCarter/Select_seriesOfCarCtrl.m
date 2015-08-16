@@ -180,6 +180,7 @@
     if ([self.JudgeWhereFrom isEqualToString:@"color"]) {
         cell.imgOfColor.hidden=NO;
         [cell.imgOfColor setImage:[UIImage imageNamed:[self.array_color objectAtIndex:indexPath.row]]];
+        cell.lbl_seriesOfCar.text=[self.array_showArray objectAtIndex:indexPath.row];
     }
     else
     {
@@ -190,11 +191,10 @@
         
         //CarSeries* carBrand = [CarSeries objectWithKeyValues:[self.array_showArray objectAtIndex:indexPath.row]] ;
         
-        NSArray *array= [[self.arrayOfYear objectAtIndex:0] objectForKey:@"List"];
         
-        NSLog(@"测试:%@",[[[[self.arrayOfYear objectAtIndex:0] objectForKey:@"List"] objectAtIndex:0] objectForKey:@"I"]);
+        NSDictionary *dict=[[[[[self.arrayOfYear objectAtIndex:0] objectForKey:@"List"]objectAtIndex:0 ] objectForKey:@"List"] objectAtIndex:0];
         
-        cell.lbl_seriesOfCar.text = [NSString stringWithFormat:@"%@",[[[[self.arrayOfYear objectAtIndex:0] objectForKey:@"List"] objectAtIndex:0] objectForKey:@"I"]];
+        cell.lbl_seriesOfCar.text = [dict objectForKey:@"N"];
         
     }else  if([self.JudgeWhereFrom isEqualToString:@"name"]){
     
@@ -237,11 +237,10 @@
   
     }else if ([self.JudgeWhereFrom isEqualToString:@"series"]) {
         
+        NSDictionary *dict=[[[[[self.arrayOfYear objectAtIndex:0] objectForKey:@"List"]objectAtIndex:0 ] objectForKey:@"List"] objectAtIndex:0];
 
         
-        NSString *string = [NSString stringWithFormat:@"%@",[[[[self.arrayOfYear objectAtIndex:0] objectForKey:@"List"] objectAtIndex:0] objectForKey:@"I"]];
-        
-        dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:string,@"series", nil];
+        dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:[dict objectForKey:@"N"],@"series", nil];
         
         
     }else  if([self.JudgeWhereFrom isEqualToString:@"name"]){
