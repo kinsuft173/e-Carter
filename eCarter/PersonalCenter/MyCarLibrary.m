@@ -95,7 +95,7 @@
 #pragma  mark - tableView DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -106,7 +106,7 @@
         
     }else{
     
-        return 4;
+        return self.arrayOfCar.count*2;
     }
     
 }
@@ -175,6 +175,20 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:cellId2 owner:self options:nil] objectAtIndex:0];
             
         }
+        
+        NSUInteger row=(indexPath.row-1)/2;
+        NSLog(@"队列字典：%@",[self.arrayOfCar objectAtIndex:row]);
+        Car *car=[Car objectWithKeyValues:[self.arrayOfCar objectAtIndex:row]];
+        cell.lbl_brand.text=car.brand;
+        cell.lbl_colorOfCar.text=car.color;
+        cell.lbl_engine.text=car.engineNo;
+        cell.lbl_nameOfCar.text=car.brand;
+        cell.lbl_numOfCar.text=car.no;
+        cell.lbl_numOfFrame.text=car.frameNo;
+        cell.lbl_year.text=car.year;
+        cell.lbl_volume.text=car.volume;
+        cell.lbl_seriesOfCar.text=car.model;
+        
         
         return cell;
     

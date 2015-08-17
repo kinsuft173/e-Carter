@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -7,6 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyAccountCtrl">
             <connections>
+                <outlet property="btn_boy" destination="gUo-dU-fYa" id="3cM-Jy-M2r"/>
+                <outlet property="btn_girl" destination="UBj-7e-vMl" id="bXr-uk-P4R"/>
+                <outlet property="lbl_mobile" destination="Zbb-9c-2XL" id="z21-hh-jL9"/>
+                <outlet property="txt_name" destination="mwG-An-oUp" id="7Zj-dD-jRK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -118,7 +122,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="王" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mwG-An-oUp">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mwG-An-oUp">
                             <rect key="frame" x="85" y="0.0" width="97" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="HVb-Qk-ed4"/>
@@ -128,14 +132,43 @@
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDL-IW-EID">
+                            <rect key="frame" x="76" y="44" width="69" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="69" id="LnS-5B-Wco"/>
+                                <constraint firstAttribute="height" constant="44" id="zVH-LF-mOC"/>
+                            </constraints>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="selectBOT:" destination="-1" eventType="touchUpInside" id="CU4-cs-yRV"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1FJ-Mc-w5r">
+                            <rect key="frame" x="165" y="44" width="63" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="63" id="7nf-sH-5f1"/>
+                                <constraint firstAttribute="height" constant="44" id="hv3-Ey-JiP"/>
+                            </constraints>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="selectGIRL:" destination="-1" eventType="touchUpInside" id="3C2-iz-azw"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="UBj-7e-vMl" firstAttribute="top" secondItem="dpz-ND-UGB" secondAttribute="top" id="4ll-DL-uee"/>
                         <constraint firstItem="mwG-An-oUp" firstAttribute="leading" secondItem="lvv-eO-1j4" secondAttribute="leading" constant="85" id="ABe-Ue-T2w"/>
+                        <constraint firstItem="nDL-IW-EID" firstAttribute="leading" secondItem="lvv-eO-1j4" secondAttribute="leading" constant="76" id="BE8-gR-jwd"/>
                         <constraint firstItem="dpz-ND-UGB" firstAttribute="top" secondItem="VAJ-oy-n7q" secondAttribute="top" id="CRe-jf-iQg"/>
                         <constraint firstItem="VAJ-oy-n7q" firstAttribute="leading" secondItem="lvv-eO-1j4" secondAttribute="leading" constant="201" id="HAc-wJ-BiI"/>
                         <constraint firstItem="dpz-ND-UGB" firstAttribute="top" secondItem="gLv-VU-AbF" secondAttribute="top" id="ISP-RQ-2Ya"/>
+                        <constraint firstItem="dpz-ND-UGB" firstAttribute="top" secondItem="nDL-IW-EID" secondAttribute="top" id="Imz-YC-e8D"/>
+                        <constraint firstItem="1FJ-Mc-w5r" firstAttribute="top" secondItem="dpz-ND-UGB" secondAttribute="top" id="Kic-uv-uSt"/>
                         <constraint firstItem="Xo1-pN-AVf" firstAttribute="top" secondItem="lvv-eO-1j4" secondAttribute="top" id="R1l-cr-wj7"/>
                         <constraint firstAttribute="height" constant="88" id="RWA-VM-pNt"/>
                         <constraint firstItem="dpz-ND-UGB" firstAttribute="top" secondItem="lvv-eO-1j4" secondAttribute="top" constant="44" id="Ur9-gw-sl4"/>
@@ -146,7 +179,10 @@
                         <constraint firstItem="dpz-ND-UGB" firstAttribute="top" secondItem="pti-mA-xRe" secondAttribute="top" id="fGv-lT-4vQ"/>
                         <constraint firstItem="Xo1-pN-AVf" firstAttribute="leading" secondItem="lvv-eO-1j4" secondAttribute="leading" constant="10" id="fW8-1i-stL"/>
                         <constraint firstItem="dpz-ND-UGB" firstAttribute="top" secondItem="gUo-dU-fYa" secondAttribute="top" id="gWc-Jr-Nh0"/>
+                        <constraint firstAttribute="bottom" secondItem="nDL-IW-EID" secondAttribute="bottom" id="hx3-6r-dNx"/>
+                        <constraint firstAttribute="bottom" secondItem="1FJ-Mc-w5r" secondAttribute="bottom" id="qYo-Zd-zBS"/>
                         <constraint firstItem="gLv-VU-AbF" firstAttribute="leading" secondItem="lvv-eO-1j4" secondAttribute="leading" constant="122" id="tEz-0F-WVV"/>
+                        <constraint firstItem="1FJ-Mc-w5r" firstAttribute="leading" secondItem="lvv-eO-1j4" secondAttribute="leading" constant="165" id="vUq-bi-OpF"/>
                         <constraint firstItem="gUo-dU-fYa" firstAttribute="leading" secondItem="lvv-eO-1j4" secondAttribute="leading" constant="85" id="znf-Ph-fiE"/>
                         <constraint firstItem="UBj-7e-vMl" firstAttribute="leading" secondItem="lvv-eO-1j4" secondAttribute="leading" constant="165" id="zr6-Ce-449"/>
                     </constraints>

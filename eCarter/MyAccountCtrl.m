@@ -8,9 +8,12 @@
 
 #import "MyAccountCtrl.h"
 #import "HKCommen.h"
+#import "UserDataManager.h"
+#import "UserLoginInfo.h"
+#import "NetworkManager.h"
 
 @interface MyAccountCtrl ()
-
+@property (nonatomic,strong)UserLoginInfo *userInfo;
 @end
 
 @implementation MyAccountCtrl
@@ -20,6 +23,9 @@
     // Do any additional setup after loading the view from its nib.
     
     [HKCommen addHeadTitle:@"个人信息" whichNavigation:self.navigationItem];
+    self.judgeSex=YES;
+    
+    self.lbl_mobile.text=[UserDataManager shareManager].userLoginInfo.user.phone;
     
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
@@ -53,6 +59,19 @@
     [self setLine];
 }
 
+- (IBAction)selectBOT:(UIButton *)sender {
+    self.judgeSex=YES;
+    [self.btn_boy setImage:[UIImage imageNamed:@"but_checked"] forState:UIControlStateNormal];
+    [self.btn_girl setImage:[UIImage imageNamed:@"but_Unchecked"] forState:UIControlStateNormal];
+}
+
+- (IBAction)selectGIRL:(UIButton *)sender {
+    self.judgeSex=NO;
+    [self.btn_boy setImage:[UIImage imageNamed:@"but_Unchecked"] forState:UIControlStateNormal];
+    [self.btn_girl setImage:[UIImage imageNamed:@"but_checked"] forState:UIControlStateNormal];
+}
+
+
 -(void)setLine
 {
     UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 44.0 - SINGLE_LINE_ADJUST_OFFSET, [UIScreen mainScreen].bounds.size.width,SINGLE_LINE_WIDTH)];
@@ -70,7 +89,43 @@
 }
 
 -(void)save
-{}
+{
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    
+    NSString *sex;
+    if (self.judgeSex) {
+        sex=@"男";
+    }
+    else
+    {
+    sex=@"女";
+    }
+    
+    if ([self.txt_name.text isEqualToString:@""]) {
+        [HKCommen addAlertViewWithTitel:@"请输入姓名"];
+        return;
+    }
+    
+   
+    [dic setValue:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
+    [dic setValue:self.txt_name.text forKey:@"name"];
+    [dic setValue:sex forKey:@"sex"];
+    
+    NSLog(@"账户字典：%@",dic);
+    
+    [[NetworkManager shareMgr] server_EditUserInfo:dic completeHandle:^(NSDictionary *response) {
+        
+        if ([[response objectForKey:@"message"] isEqualToString:@"OK"]) {
+            
+            NSLog(@"修改成功");
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else
+        {
+            NSLog(@"修改失败");
+        }
+    }];
+}
 
 -(void)back
 {

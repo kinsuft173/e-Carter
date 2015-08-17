@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface MyAccountCtrl : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *lbl_mobile;
+@property (weak, nonatomic) IBOutlet UITextField *txt_name;
+@property (weak, nonatomic) IBOutlet UIButton *btn_boy;
+@property (weak, nonatomic) IBOutlet UIButton *btn_girl;
+@property (assign,nonatomic)BOOL judgeSex;
 
 @end

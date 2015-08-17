@@ -7,7 +7,7 @@
 //
 
 #import "HKCommen.h"
-#import "iToast.h"
+//#import "iToast.h"
 
 @implementation HKCommen
 
@@ -153,18 +153,18 @@
     NSLog(@"titel = %@",titel);
     
    
-    iToastSettings *theSettings = [iToastSettings getSharedSettings];
-    
-    [theSettings setDuration:iToastDurationNormal];
-    
-    
-    
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-    
-        [[iToast makeText:titel] show];
-        
-    });
+//    iToastSettings *theSettings = [iToastSettings getSharedSettings];
+//    
+//    [theSettings setDuration:iToastDurationNormal];
+//    
+//    
+//    
+//    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//    
+//        [[iToast makeText:titel] show];
+//        
+//    });
    
 }
 
