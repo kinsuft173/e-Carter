@@ -62,16 +62,16 @@
     
     NSLog(@"积分字典：%@",dic);
     
-    [[NetworkManager shareMgr] server_queryUserAddressWithDic:dic completeHandle:^(NSDictionary *response) {
-        
-        NSLog(@"字典：%@",response);
-        NSDictionary *dictOfCount=[[NSDictionary alloc]init];
-        dictOfCount = [response objectForKey:@"data"];
-        
-        self.lbl_myCount.text=[dictOfCount objectForKey:@"point"];
-    }];
+//    [[NetworkManager shareMgr] server_queryUserAddressWithDic:dic completeHandle:^(NSDictionary *response) {
+//        
+//        NSLog(@"字典：%@",response);
+//        NSDictionary *dictOfCount=[[NSDictionary alloc]init];
+//        dictOfCount = [response objectForKey:@"data"];
+//        
+//        self.lbl_myCount.text=[dictOfCount objectForKey:@"point"];
+//    }];
     
-    [[NetworkManager shareMgr] server_queryUserAddressWithDic:dic completeHandle:^(NSDictionary *response) {
+    [[NetworkManager shareMgr] server_queryPointTransactionWithDic:dic completeHandle:^(NSDictionary *response) {
         
         self.arrayOfCount = [[response objectForKey:@"data"] objectForKey:@"items"];
         

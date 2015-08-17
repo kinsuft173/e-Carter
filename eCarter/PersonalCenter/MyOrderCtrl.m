@@ -63,6 +63,8 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+    
+  
 }
 
 -(void)back

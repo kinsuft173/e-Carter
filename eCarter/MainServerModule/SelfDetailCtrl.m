@@ -181,7 +181,7 @@
             
             return 84;
             
-        }else if (indexPath.row <2){
+        }else if (indexPath.row <self.shopDetail.serviceItemList.count){
             
             return 34;
         
@@ -461,7 +461,7 @@
 #pragma  mark - custom methods
 - (void)goToConfirmPage:(UIButton*)btn
 {
-    NSLog(@"测试");
+
     
 
     
@@ -478,7 +478,7 @@
     [dic setObject:[NSNumber numberWithInteger:self.userCar.id] forKey:@"carid"];
     [dic setObject:self.userCar.no forKey:@"carnum"];
     
-    NSString* str = @"";
+    NSString* str = @"2";
     
     for (int i = 0 ; i < self.arraySelectedSevice.count; i ++) {
         
@@ -487,13 +487,13 @@
             
             Serviceitemlist* list = [Serviceitemlist objectWithKeyValues:[self.shopDetail.serviceItemList objectAtIndex:i]];
             
-            str = [str stringByAppendingString:list.id];
+            str = [str stringByAppendingString:list.serviceId];
             
         }else if ([[self.arraySelectedSevice objectAtIndex:i] isEqualToString:@"1"]){
         
             Serviceitemlist* list = [Serviceitemlist objectWithKeyValues:[self.shopDetail.serviceItemList objectAtIndex:i]];
             
-            NSString* strTemp = [NSString stringWithFormat:@",%@",list.id];
+            NSString* strTemp = [NSString stringWithFormat:@",%@",list.serviceId];
             
             str = [str stringByAppendingString:strTemp];
         
@@ -507,13 +507,15 @@
         
         [HKCommen addAlertViewWithTitel:@"请选择一项服务"];
         
+        hud.hidden = YES;
+        
         return;
         
     }
     
     
     
-    NSString* strItemNames = @"";
+    NSString* strItemNames = @"test";
     
     for (int i = 0 ; i < self.arraySelectedSevice.count; i ++) {
         

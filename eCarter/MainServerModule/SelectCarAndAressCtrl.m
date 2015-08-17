@@ -204,6 +204,9 @@
             
         }
         
+        
+        cell.lblPhone.text = [UserDataManager shareManager].userLoginInfo.user.phone;
+        
         return cell;
         
     }else if ((indexPath.section == 1 && indexPath.row == 0)|| (indexPath.section == 2 && indexPath.row == 0)){
@@ -261,9 +264,13 @@
         if (indexPath.section == 1) {
             
             
-
+            NSDictionary* dic = [self.arrayCars objectAtIndex:indexPath.row - 1];
             
-            cell.lblContent.text = @"粤A8888 白色 奥迪A1";
+            if ([[dic class] isSubclassOfClass:[NSDictionary class]]) {
+                cell.lblContent.text = [NSString  stringWithFormat:@"%@  %@  %@",[dic objectForKey:@"no"],[dic objectForKey:@"color"],[dic objectForKey:@"brand"] ];
+            }
+            
+
             
             if (self.indexPathCar.row == indexPath.row && self.indexPathCar.section == indexPath.section) {
                 

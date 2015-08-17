@@ -116,6 +116,13 @@
         [cell.img_Service sd_setImageWithURL:[NSURL URLWithString:shop.storeImg]
                      placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
         
+//        cell.img_Service.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:shop.storeImg]]];
+        
+//        NSString* encodedString = [shop.storeImg stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//        
+//        [cell.img_Service sd_setImageWithURL: [NSURL URLWithString:encodedString]
+//                            placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
+        
         return cell;
     
         

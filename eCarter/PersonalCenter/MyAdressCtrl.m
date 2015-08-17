@@ -58,6 +58,8 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+    
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getModel) name:@"changeCarOrAddress" object:nil];
 }
 
 - (void)getModel
@@ -74,7 +76,17 @@
         
         NSLog(@"字典：%@",response);
         
-        self.arrayOfAdress = [response objectForKey:@"data"];
+        if ([[[response objectForKey:@"data"] class] isSubclassOfClass:[NSArray class]]) {
+            
+            self.arrayOfAdress = [response objectForKey:@"data"];
+            
+        }else{
+            
+            self.arrayOfAdress = nil;
+        
+        }
+        
+
         
         [self.tableView reloadData];
     }];
@@ -114,7 +126,7 @@
 {
     if (section == 0) {
         
-        return self.arrayModel.count;
+        return self.arrayOfAdress.count;
         
     }else{
         
@@ -154,9 +166,9 @@
             
         }
         
-        UserAddress *userAddress = [self.arrayOfAdress objectAtIndex:indexPath.row];
-        cell.lblAdressTitel.text=userAddress.type;
-        cell.lblAdressContent.text=userAddress.address;
+        UserAddress *userAddress =  [UserAddress objectWithKeyValues:[self.arrayOfAdress objectAtIndex:indexPath.row]];//[self.arrayOfAdress objectAtIndex:indexPath.row];
+        cell.lblAdressTitel.text= @"家庭地址:";//userAddress.type;
+        cell.lblAdressContent.text= [NSString stringWithFormat:@"%@%@%@",userAddress.city,userAddress.area,userAddress.address];
         
         
         

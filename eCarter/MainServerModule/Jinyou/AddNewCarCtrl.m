@@ -13,6 +13,9 @@
 #import "ButtonCell.h"
 #import "HKCommen.h"
 #import "SvGridView.h"
+#import "MBProgressHUD.h"
+#import "UserDataManager.h"
+#import "NetworkManager.h"
 
 
 
@@ -258,25 +261,60 @@ heightForHeaderInSection:(NSInteger)section
         [HKCommen addAlertViewWithTitel:@"请选择颜色"];
         
         return;
-        
-        
-    }else if (![HKCommen validateSixNumber:strFadongji]){
-    
-        [HKCommen addAlertViewWithTitel:@"请输入发动机号后六位"];
-        
-        return;
-    
-    
-    }else if (![HKCommen validateSixNumber:strChejia]){
-        
-        [HKCommen addAlertViewWithTitel:@"请输入车架号后六位"];
-        
-        return;
-        
-        
     }
     
-    [self.navigationController popViewControllerAnimated:YES];
+//    }else if (![HKCommen validateSixNumber:strFadongji]){
+//    
+//        [HKCommen addAlertViewWithTitel:@"请输入发动机号后六位"];
+//        
+//        return;
+//    
+//    
+//    }else if (![HKCommen validateSixNumber:strChejia]){
+//        
+//        [HKCommen addAlertViewWithTitel:@"请输入车架号后六位"];
+//        
+//        return;
+//        
+//        
+//    }
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"正在加载...";
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    
+    [dic setObject:[NSString stringWithFormat:@"%@%@",@"粤",cellCarNo.textFiledCarNo.text] forKey:@"no"];
+    [dic setObject:strSelectCar1 forKey:@"brand"];
+    [dic setObject:strSelectCar2 forKey:@"model"];
+    [dic setObject:@"2014" forKey:@"year"];
+     [dic setObject:strSelectCar3 forKey:@"color"];
+     [dic setObject:strSelectCar2 forKey:@"volume"];
+    
+
+    
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
+    
+    [[NetworkManager shareMgr] server_addCarWithDic:dic completeHandle:^(NSDictionary *response) {
+        
+        
+        
+        NSString* messege = [response objectForKey:@"message"];
+        
+        
+        if ([messege isEqualToString:@"OK"]) {
+            
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"changeCarOrAddress" object:nil];
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        }
+        
+        hud.hidden = YES;
+        
+    }];
     
 }
 

@@ -123,13 +123,16 @@
         
         cell.lbl_Adress.text =  shop.storeName;
         
-        cell.lbl_Distance.text=  [NSString stringWithFormat:@"%@km",shop.distance];
+        cell.lbl_Distance.text=  [NSString stringWithFormat:@"%.1fkm",[shop.distance floatValue]];
         
-        cell.lbl_Evaluation.text = [NSString stringWithFormat:@"(%@)",shop.storeScore];
+        cell.lbl_Evaluation.text = [NSString stringWithFormat:@"(%.1f)",[shop.storeScore floatValue]];
         
         [cell initWithDict:[shop.storeScore floatValue]];
         
-        [cell.img_Service sd_setImageWithURL:[NSURL URLWithString:shop.storeImg]
+        
+//        NSString* encodedString = [shop.storeImg stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        [cell.img_Service sd_setImageWithURL: [NSURL URLWithString:shop.storeImg]
                             placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
         
         return cell;

@@ -76,7 +76,7 @@
 
 @property (nonatomic, copy) NSString *amount;
 
-@property (nonatomic, copy) NSString *id;
+@property (nonatomic, copy) NSString *serviceId;
 
 @property (nonatomic, copy) NSString *storeId;
 
