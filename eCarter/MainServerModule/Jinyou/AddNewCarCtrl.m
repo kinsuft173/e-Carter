@@ -16,7 +16,7 @@
 #import "MBProgressHUD.h"
 #import "UserDataManager.h"
 #import "NetworkManager.h"
-
+#import "SelectProvinceCtrl.h"
 
 
 @interface AddNewCarCtrl ()<UITableViewDataSource,UITableViewDelegate,carSelect>
@@ -120,7 +120,7 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
             
         }
-
+        [cell.btn_selectProvince addTarget:self action:@selector(goSelectProvince) forControlEvents:UIControlEventTouchUpInside];
         
         return cell;
         
@@ -156,6 +156,20 @@
     
     return nil;
     
+}
+
+-(void)goSelectProvince
+{
+    SelectProvinceCtrl *vc=[[SelectProvinceCtrl alloc] initWithNibName:@"SelectProvinceCtrl" bundle:nil];
+    vc.delegate=self;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)pickCarProvince:(NSString*)string
+{
+    CarNumCell *cell=(CarNumCell*)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    cell.lblCarNo.text=string;
+    [self.myTable reloadData];
 }
 
 - (CGFloat)tableView:(UITableView * )tableView
@@ -210,6 +224,8 @@ heightForHeaderInSection:(NSInteger)section
 - (void)goCommit:(UIButton*)sender
 {
 
+    
+    
     CarNumCell* cellCarNo = (CarNumCell*)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
 
     NSString* strCarNo = [NSString stringWithFormat:@"%@%@",cellCarNo.lblCarNo.text,cellCarNo.textFiledCarNo.text];
@@ -279,13 +295,15 @@ heightForHeaderInSection:(NSInteger)section
 //        
 //    }
     
+    
+    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"正在加载...";
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
     
-    [dic setObject:[NSString stringWithFormat:@"%@%@",@"粤",cellCarNo.textFiledCarNo.text] forKey:@"no"];
+    [dic setObject:[NSString stringWithFormat:@"%@%@",cellCarNo.lblCarNo.text,cellCarNo.textFiledCarNo.text] forKey:@"no"];
     [dic setObject:strSelectCar1 forKey:@"brand"];
     [dic setObject:strSelectCar2 forKey:@"model"];
     [dic setObject:@"2014" forKey:@"year"];

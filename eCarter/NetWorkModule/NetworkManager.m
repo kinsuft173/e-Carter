@@ -1632,10 +1632,8 @@
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    //test
-    //    NSDictionary *parameters = @{@"id": @"1"};
     
-    [manager GET:[NSString stringWithFormat:@"%@%@",SERVERADTEST,APP_AD_URL] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,ECATER_QUERY_ADVERTISEMENT] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         
         NSLog(@"JSON: %@", responseObject);

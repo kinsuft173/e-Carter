@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) IBOutlet UITextField* textFiledCarNo;
 @property (nonatomic, strong) IBOutlet UILabel* lblCarNo;
+@property (weak, nonatomic) IBOutlet UIButton *btn_selectProvince;
 
 @end

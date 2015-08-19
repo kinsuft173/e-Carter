@@ -72,6 +72,8 @@ typedef void (^ErrorHandle)(NSError*);
 
 #define ECATER_QUERY_USER_COUPON @"/ecar/mobile/queryUserCoupon"
 
+#define ECATER_QUERY_ADVERTISEMENT @"/api/user/info"
+
 //广告部分
 #define APP_AD_URL @"advertisement/index"
 

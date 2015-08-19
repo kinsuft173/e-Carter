@@ -483,6 +483,10 @@
 		E98B3A881B6DEA4900980C16 /* MoneyReturnProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E98B3A871B6DEA4900980C16 /* MoneyReturnProgressView.xib */; };
 		E9CB14041B6DCFE200A46117 /* CommentCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CB14021B6DCFE200A46117 /* CommentCtrl.m */; };
 		E9CB14051B6DCFE200A46117 /* CommentCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9CB14031B6DCFE200A46117 /* CommentCtrl.xib */; };
+		E9EB56921B836DF500E0FCBF /* SelectProvinceCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB56901B836DF500E0FCBF /* SelectProvinceCtrl.m */; };
+		E9EB56931B836DF500E0FCBF /* SelectProvinceCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9EB56911B836DF500E0FCBF /* SelectProvinceCtrl.xib */; };
+		E9EB56971B836F6300E0FCBF /* ProvinceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB56951B836F6300E0FCBF /* ProvinceCell.m */; };
+		E9EB56981B836F6300E0FCBF /* ProvinceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9EB56961B836F6300E0FCBF /* ProvinceCell.xib */; };
 		E9F9CE3A1B74D8C0007781AC /* HYActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F9CE311B74D8C0007781AC /* HYActivityView.m */; };
 		E9F9D0271B74E7CF007781AC /* QQConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F9D00A1B74E7CF007781AC /* QQConnection.framework */; };
 		E9F9D0281B74E7CF007781AC /* QZoneConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F9D00B1B74E7CF007781AC /* QZoneConnection.framework */; };
@@ -1256,6 +1260,12 @@
 		E9CB14011B6DCFE200A46117 /* CommentCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCtrl.h; sourceTree = "<group>"; };
 		E9CB14021B6DCFE200A46117 /* CommentCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCtrl.m; sourceTree = "<group>"; };
 		E9CB14031B6DCFE200A46117 /* CommentCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCtrl.xib; sourceTree = "<group>"; };
+		E9EB568F1B836DF500E0FCBF /* SelectProvinceCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectProvinceCtrl.h; sourceTree = "<group>"; };
+		E9EB56901B836DF500E0FCBF /* SelectProvinceCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectProvinceCtrl.m; sourceTree = "<group>"; };
+		E9EB56911B836DF500E0FCBF /* SelectProvinceCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectProvinceCtrl.xib; sourceTree = "<group>"; };
+		E9EB56941B836F6300E0FCBF /* ProvinceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvinceCell.h; sourceTree = "<group>"; };
+		E9EB56951B836F6300E0FCBF /* ProvinceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvinceCell.m; sourceTree = "<group>"; };
+		E9EB56961B836F6300E0FCBF /* ProvinceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProvinceCell.xib; sourceTree = "<group>"; };
 		E9F9CE301B74D8C0007781AC /* HYActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HYActivityView.h; path = MainServerModule/Jinyou/HYActivityView.h; sourceTree = "<group>"; };
 		E9F9CE311B74D8C0007781AC /* HYActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HYActivityView.m; path = MainServerModule/Jinyou/HYActivityView.m; sourceTree = "<group>"; };
 		E9F9D00A1B74E7CF007781AC /* QQConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QQConnection.framework; sourceTree = "<group>"; };
@@ -1362,13 +1372,6 @@
 				DE06386B1B6D19C900EFB576 /* iToast.m */,
 			);
 			path = iTostView;
-			sourceTree = "<group>";
-		};
-		DE06386D1B6DF6F200EFB576 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
 			sourceTree = "<group>";
 		};
 		DE0638751B6E721000EFB576 /* 图片管理 */ = {
@@ -1771,7 +1774,6 @@
 			isa = PBXGroup;
 			children = (
 				DEAAA71D1B80A10A00829FB7 /* E车夫首页 */,
-				DE06386D1B6DF6F200EFB576 /* New Group */,
 				DEFDF5961B5B83BE00298366 /* Model */,
 				DEE87CD41B48EA0C00D3EDAB /* lijingyou */,
 				DEE3BE411B3655E800DCE7EC /* Cell */,
@@ -1791,6 +1793,9 @@
 				DEE092FC1B3B276300243475 /* SelectCarAndAressCtrl.m */,
 				DEE4CA471B3C7D2A0009B73C /* PamentWaySlectedCtrl.h */,
 				DEE4CA481B3C7D2A0009B73C /* PamentWaySlectedCtrl.m */,
+				E9EB568F1B836DF500E0FCBF /* SelectProvinceCtrl.h */,
+				E9EB56901B836DF500E0FCBF /* SelectProvinceCtrl.m */,
+				E9EB56911B836DF500E0FCBF /* SelectProvinceCtrl.xib */,
 			);
 			name = MainServerModule;
 			sourceTree = "<group>";
@@ -2068,6 +2073,9 @@
 				DEE52EDA1B39119500C90BA3 /* ShopCell.h */,
 				DEE52EDB1B39119500C90BA3 /* ShopCell.m */,
 				DEE52EDC1B39119500C90BA3 /* ShopCell.xib */,
+				E9EB56941B836F6300E0FCBF /* ProvinceCell.h */,
+				E9EB56951B836F6300E0FCBF /* ProvinceCell.m */,
+				E9EB56961B836F6300E0FCBF /* ProvinceCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -2715,6 +2723,7 @@
 				DEE48B8B1B3964E400458D6F /* TellCell.xib in Resources */,
 				DED7F5781B4760DB0005019C /* icon_Right@3x.png in Resources */,
 				DEE3370C1B4C40D900357253 /* Champagne_gold@3x.png in Resources */,
+				E9EB56981B836F6300E0FCBF /* ProvinceCell.xib in Resources */,
 				DEE52ED61B38FB4800C90BA3 /* CouponExtraInfoCell.xib in Resources */,
 				DED7F5511B4760DB0005019C /* btn_pay_det@3x.png in Resources */,
 				DEE3371F1B4C40D900357253 /* login_phone@2x.png in Resources */,
@@ -2877,6 +2886,7 @@
 				DEEC3DDD1B5C2832005CE84E /* CityHeadView.xib in Resources */,
 				DEEDABE61B63E9D500247916 /* info.json in Resources */,
 				DED7F5731B4760DB0005019C /* icon_Location@2x.png in Resources */,
+				E9EB56931B836DF500E0FCBF /* SelectProvinceCtrl.xib in Resources */,
 				DEE337331B4C40D900357253 /* mine_phone@3x.png in Resources */,
 				DED7F57C1B4760DB0005019C /* icon_time@3x.png in Resources */,
 				DED7F56D1B4760DB0005019C /* icon_Distance_blue@2x.png in Resources */,
@@ -3190,6 +3200,7 @@
 				DEFB2B751B44361700C74FC0 /* MainDriverCell.m in Sources */,
 				DEE87D271B48EC5100D3EDAB /* OrderManagerCell.m in Sources */,
 				DEE87CF71B48EB8500D3EDAB /* CarNumCell.m in Sources */,
+				E9EB56921B836DF500E0FCBF /* SelectProvinceCtrl.m in Sources */,
 				DE9D12C51B52BE0000046407 /* openssl_wrapper.m in Sources */,
 				DECA17561B61574500FD3418 /* UserLoginInfo.m in Sources */,
 				DECA172C1B614C5B00FD3418 /* ShopDetail.m in Sources */,
@@ -3213,6 +3224,7 @@
 				DEE719BB1B3ED54E003221A8 /* PersonNormalCell.m in Sources */,
 				DEE719C11B3ED826003221A8 /* PlaceHolderCell.m in Sources */,
 				DECA172F1B614E9B00FD3418 /* ShopServerTime.m in Sources */,
+				E9EB56971B836F6300E0FCBF /* ProvinceCell.m in Sources */,
 				E96A2DF01B77AE8400DC9B05 /* SBJsonStreamWriter.m in Sources */,
 				E954E0EB1B759B5500627977 /* SvGridView.m in Sources */,
 			);

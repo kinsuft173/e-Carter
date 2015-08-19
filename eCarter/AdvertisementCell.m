@@ -62,7 +62,13 @@
         
         self.myScroll.pagingEnabled = YES;
         
-        NSString* strUrl = [[array objectAtIndex:i%(array.count)] objectForKey:@"uri"];
+
+        
+        
+        NSDictionary *dic=[array objectAtIndex:i%(array.count)];
+
+        NSString* strUrl =[dic objectForKey:@"pic"];
+        
         
         [imageView sd_setImageWithURL:[NSURL URLWithString:strUrl]
                     placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];

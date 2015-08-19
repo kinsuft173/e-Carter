@@ -105,10 +105,16 @@
 
 - (void)getModel
 {
-    [[NetworkManager shareMgr] server_fetchAdvertisementWithDic:nil completeHandle:^(NSDictionary *responseBanner) {
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    //[dic setObject:@"2" forKey:@"position"];
+    [dic setObject:@"101280101" forKey:@"cityId"];
+    
+    NSLog(@"上传字典：%@",dic);
+    
+    [[NetworkManager shareMgr] server_fetchAdvertisementWithDic:dic completeHandle:^(NSDictionary *responseBanner) {
         
-        
-        self.array_advertisement = [[responseBanner objectForKey:@"data"] objectForKey:@"items"];
+        NSLog(@"获得的字典：%@",responseBanner);
+        self.array_advertisement = [responseBanner objectForKey:@"data"];
         
         [self.tableView reloadData];
     }];
