@@ -20,4 +20,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_howMuch;
 @property (weak, nonatomic) IBOutlet UITableView *myTable;
 
+@property (nonatomic, strong) NSDictionary* dicPreParams;
+
 @end

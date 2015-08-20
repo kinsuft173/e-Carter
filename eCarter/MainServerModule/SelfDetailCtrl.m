@@ -558,7 +558,11 @@
         
         if (dicTmep) {
             
+            
+            
             PaymentCtrl *vc=[[PaymentCtrl alloc] initWithNibName:@"PaymentCtrl" bundle:nil];
+            vc.dicPreParams = dicTmep;
+            
             [self.navigationController pushViewController:vc animated:YES];
             
         }
