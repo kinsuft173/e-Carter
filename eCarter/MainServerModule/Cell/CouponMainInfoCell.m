@@ -20,9 +20,7 @@
 
 - (IBAction)getMyTicket:(UIButton *)sender {
     
-    [sender obj];
-    
-    [self.delegate getTicket:[NSString stringWithFormat:@"%ld",sender.tag] StoreNum:sender.description];
+    [self.delegate getTicket:self.couponId StoreNum:self.storeId];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

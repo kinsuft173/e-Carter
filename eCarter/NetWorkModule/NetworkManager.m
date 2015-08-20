@@ -1692,6 +1692,28 @@
 }
 
 
+- (void)server_snapCoupon:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,ECATER_SNAP_COUPON] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        
+        NSLog(@"JSON: %@", responseObject);
+        
+        completeHandle(responseObject);
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+    }];
+    
+}
+
+
 - (void)server_fetchQueryUserCouponList:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {
     

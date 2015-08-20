@@ -143,9 +143,10 @@
         
 
         
-        [cell.btn_getTicket setTag:[[dic objectForKey:@"couponId"] intValue]];
+        //[cell.btn_getTicket setTag:[[dic objectForKey:@"couponId"] intValue]];
         
-        [cell.btn_getTicket setValue:[dic objectForKey:@"id"] forKey:@"storeId"];
+       cell.couponId= [dic objectForKey:@"couponId"];
+        cell.storeId=[dic objectForKey:@"id"];
         
         cell.delegate=self;
         
@@ -177,7 +178,22 @@
 
 -(void)getTicket:(NSString *)couponCode StoreNum:(NSString*)storeId
 {
-    NSLog(@"测试:%@_%@",storeId,couponCode);
+    if ([[UserDataManager shareManager].userLoginInfo.user.phone isEqualToString:@""]) {
+        NSLog(@"用户没登陆");
+        return;
+    }
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
+    [dic setObject:couponCode forKey:@"couponCode"];
+    [dic setObject:storeId forKey:@"storeId"];
+    
+    [[NetworkManager shareMgr] server_snapCoupon:dic completeHandle:^(NSDictionary *response) {
+        
+        NSLog(@"抢到的优惠：%@",response);
+    }];
 }
 
 - (void)expandEventHandle:(UIButton*)btn

@@ -26,6 +26,7 @@
 - (void)server_logoutWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 
 - (NSString*)server_GetIdentyCode:(NSMutableDictionary*)dic url:(NSString*)ctUrl;
+- (void)server_snapCoupon:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 
 //首页
 - (void)server_infoWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;

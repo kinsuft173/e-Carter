@@ -23,5 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_date;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_number;
 
+@property (strong,nonatomic) NSString *couponId;
+@property (strong,nonatomic) NSString *storeId;
+
 @property (weak, nonatomic) id<addTicket> delegate;
 @end
