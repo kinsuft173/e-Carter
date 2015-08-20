@@ -1649,6 +1649,49 @@
     
 }
 
+- (void)server_fetchAdvertisementDetails:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,ECATER_DETAILS_ADVERTISEMENT] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        
+        NSLog(@"JSON: %@", responseObject);
+        
+        completeHandle(responseObject);
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+    }];
+    
+}
+
+- (void)server_fetchAllCheapTickets:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,ECATER_CHEAP_TICKETS] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        
+        NSLog(@"JSON: %@", responseObject);
+        
+        completeHandle(responseObject);
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+    }];
+    
+}
+
+
 - (void)server_fetchQueryUserCouponList:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {
     

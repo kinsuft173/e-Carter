@@ -36,6 +36,7 @@
 - (void)server_queryStoreServiceTimeWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 - (void)server_saveOrderPayWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 - (void)server_fetchQueryUserCouponList:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+- (void)server_fetchAllCheapTickets:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 
 //用户部分
 - (void)server_queryOrderListWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
@@ -43,6 +44,7 @@
 - (void)server_queryOrderLogWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 - (void)server_updateOrderStatusWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 - (void)server_EditUserInfo:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+- (void)server_fetchAdvertisementDetails:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 
 - (void)server_queryCarDetails:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 

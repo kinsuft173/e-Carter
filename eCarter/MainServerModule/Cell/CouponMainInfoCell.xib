@@ -58,6 +58,9 @@
                                     <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="getMyTicket:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="buv-vd-7e8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0F-bm-lVR">
                                 <rect key="frame" x="255" y="35" width="32" height="32"/>
@@ -65,7 +68,7 @@
                                     <constraint firstAttribute="width" constant="32" id="Rl3-bK-ZpK"/>
                                     <constraint firstAttribute="height" constant="32" id="eBf-K8-Oxp"/>
                                 </constraints>
-                                <state key="normal" image="Coupons_but_more.png">
+                                <state key="normal" image="Coupons_buts_top.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -122,10 +125,11 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnExpand" destination="A0F-bm-lVR" id="xLv-o1-JDF"/>
-                <outlet property="lbl_company" destination="K9i-fM-gJr" id="oLM-61-azb"/>
+                <outlet property="btn_getTicket" destination="G7M-lh-NiT" id="KUo-2o-hNm"/>
+                <outlet property="lbl_company" destination="pQu-Vc-4vQ" id="3MP-QW-3yF"/>
                 <outlet property="lbl_date" destination="QpI-B0-Zxs" id="kg1-aL-FAQ"/>
                 <outlet property="lbl_number" destination="WJF-UO-4gp" id="RKh-WW-uzk"/>
-                <outlet property="lbl_price" destination="GTr-xy-vCw" id="03z-9K-7Pg"/>
+                <outlet property="lbl_price" destination="kLm-aJ-uxv" id="SFE-aN-JU2"/>
             </connections>
             <point key="canvasLocation" x="424" y="410.5"/>
         </tableViewCell>
@@ -174,7 +178,7 @@
                                     <constraint firstAttribute="width" constant="32" id="XCd-QJ-5XQ"/>
                                     <constraint firstAttribute="height" constant="32" id="hvj-Sp-kaZ"/>
                                 </constraints>
-                                <state key="normal" image="Coupons_but_more.png">
+                                <state key="normal" image="Coupons_buts_top.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -246,7 +250,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Coupons_but_more.png" width="32" height="32"/>
+        <image name="Coupons_buts_top.png" width="32" height="32"/>
         <image name="Coupons_line.png" width="1" height="1"/>
         <image name="but_bg_woyaoqiang.png" width="80" height="30"/>
     </resources>

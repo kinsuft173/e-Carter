@@ -9,12 +9,16 @@
 #import "CouponCtrl.h"
 #import "CouponExtraInfoCell.h"
 #import "CouponMainInfoCell.h"
+#import "NetworkManager.h"
+#import "UserLoginInfo.h"
+#import "UserDataManager.h"
 
 @interface CouponCtrl()
 
 @property (nonatomic, strong) IBOutlet UITableView* tableView;
-@property (nonatomic, strong) NSArray* arrayModel;
+@property (nonatomic, strong) NSArray* arrayOfCheap;
 @property (nonatomic, strong) NSMutableArray* arrayIndex;
+@property (nonatomic,strong) UserLoginInfo *userInfo;
 
 @end
 
@@ -25,15 +29,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.arrayModel = [NSArray arrayWithObjects:@"1",@"2", nil];
-    self.arrayIndex = [NSMutableArray arrayWithObjects:@0,@0, nil];
+  
+    self.arrayIndex=[[NSMutableArray alloc] init];
+    
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
     [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
     [leftButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton ];
     
-    
+    [self getModel];
     
     if(([[[UIDevice currentDevice] systemVersion] floatValue]>=7.0?20:0)){
         UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
@@ -58,15 +63,41 @@
 }
 
 
+- (void)getModel
+{
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:@"1" forKey:@"pageNum"];
+    [dic setObject:@"20" forKey:@"pageSize"];
+    
+    NSLog(@"上传字典：%@",dic);
+    
+    [[NetworkManager shareMgr] server_fetchAllCheapTickets:dic completeHandle:^(NSDictionary *responseBanner) {
+        
+        NSLog(@"获得的字典：%@",responseBanner);
+        self.arrayOfCheap = [responseBanner objectForKey:@"data"];
+        
+        if (self.arrayOfCheap.count!=0) {
+            
+            for (int i=0; i<self.arrayOfCheap.count; i++) {
+                [self.arrayIndex addObject:@0];
+            }
+        }
+        
+        [self.tableView reloadData];
+    }];
+}
+
 
 #pragma tableView DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.arrayModel.count;
+    return self.arrayOfCheap.count;
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+  
     NSNumber* isExpand = [self.arrayIndex objectAtIndex:section];
     
     if (isExpand.boolValue == YES) {
@@ -77,7 +108,8 @@
     
         return 1;
     }
-    
+  
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -104,7 +136,18 @@
             cell.btnExpand.tag = indexPath.section;
             
         }
+       NSDictionary *dic= [self.arrayOfCheap objectAtIndex:indexPath.row];
+
+        cell.lbl_company.text=[dic objectForKey:@"storeName"];
+        cell.lbl_price.text=[dic objectForKey:@"price"];
         
+
+        
+        [cell.btn_getTicket setTag:[[dic objectForKey:@"couponId"] intValue]];
+        
+        [cell.btn_getTicket setValue:[dic objectForKey:@"id"] forKey:@"storeId"];
+        
+        cell.delegate=self;
         
         return cell;
         
@@ -120,6 +163,9 @@
             
         }
         
+        NSDictionary *dic= [self.arrayOfCheap objectAtIndex:indexPath.row];
+
+        cell.lbl_couponDetail.text=[dic objectForKey:@"remark"];
         
         return cell;
         
@@ -127,6 +173,11 @@
     
     
     return nil;
+}
+
+-(void)getTicket:(NSString *)couponCode StoreNum:(NSString*)storeId
+{
+    NSLog(@"测试:%@_%@",storeId,couponCode);
 }
 
 - (void)expandEventHandle:(UIButton*)btn
@@ -151,8 +202,8 @@
         [self.tableView insertRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationAutomatic];
         
 //        [btn setTitle:@"收起" forState:UIControlStateNormal];
-        [btn setImage:[UIImage imageNamed:@"Coupons_buts_top.png"] forState:UIControlStateNormal];
         
+        [btn setImage:[UIImage imageNamed:@"Coupons_but_more.png"] forState:UIControlStateNormal];
     }else{
     
         NSIndexPath* indexPath = [NSIndexPath indexPathForRow:1 inSection:index];
@@ -162,7 +213,7 @@
         [self.tableView deleteRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationAutomatic];
         
 //        [btn setTitle:@"展开" forState:UIControlStateNormal];
-        [btn setImage:[UIImage imageNamed:@"Coupons_but_more.png"] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:@"Coupons_buts_top.png"] forState:UIControlStateNormal];
     }
     
     

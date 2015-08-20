@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    NSLog(@"测试优惠劵");
     [HKCommen addHeadTitle:@"我的优惠劵" whichNavigation:self.navigationItem];
     
     [self getModel];

@@ -11,5 +11,8 @@
 @interface EventInfoCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UIButton* btnGoWebsite;
+@property (weak, nonatomic) IBOutlet UITextView *txt_Details;
+@property (weak, nonatomic) IBOutlet UIButton *btnLinks;
+
 
 @end

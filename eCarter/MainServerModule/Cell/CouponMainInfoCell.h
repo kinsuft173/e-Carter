@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol addTicket <NSObject>
+
+-(void)getTicket:(NSString *)couponCode StoreNum:(NSString*)storeId;
+
+@end
+
 @interface CouponMainInfoCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIButton *btn_getTicket;
 
 @property (nonatomic, strong) IBOutlet UIButton* btnExpand;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_company;
@@ -16,5 +23,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_date;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_number;
 
-
+@property (weak, nonatomic) id<addTicket> delegate;
 @end

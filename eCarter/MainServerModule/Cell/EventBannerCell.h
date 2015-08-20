@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface EventBannerCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *img_advertisement;
 
 @end

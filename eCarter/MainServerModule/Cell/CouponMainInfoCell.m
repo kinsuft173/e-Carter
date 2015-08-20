@@ -18,6 +18,13 @@
     
 }
 
+- (IBAction)getMyTicket:(UIButton *)sender {
+    
+    [sender obj];
+    
+    [self.delegate getTicket:[NSString stringWithFormat:@"%ld",sender.tag] StoreNum:sender.description];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
