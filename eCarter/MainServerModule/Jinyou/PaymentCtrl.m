@@ -22,6 +22,8 @@
 //服务端签名只需要用到下面一个头文件
 #import "ApiXml.h"
 #import <QuartzCore/QuartzCore.h>
+#import "NetworkManager.h"
+#import "UserDataManager.h"
 
 
 @interface PaymentCtrl ()<UITableViewDataSource,UITableViewDelegate>
@@ -240,8 +242,6 @@
             
             if (resultStatus.integerValue == 9000) {
                 
-                
-                
                 SuccessCtrl *vc=[[SuccessCtrl alloc] initWithNibName:@"SuccessCtrl" bundle:nil];
                 [self.navigationController pushViewController:vc animated:YES];
                 
@@ -253,6 +253,34 @@
                 if (mStr != nil && ![mStr isEqualToString:@""]) {
 //                    [CTCommon addAlertWithTitle:[resultDic objectForKey:@"memo"]];
                 }
+                
+                NSMutableDictionary* dic = [[NSMutableDictionary alloc] init];
+                
+                [dic setObject:[self.dicPreParams objectForKey:@"orderId"] forKey:@"orderId"];
+                [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
+                [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
+                [dic setObject:@"2" forKey:@"payStyle"];
+                
+                [dic setObject:@"0.01" forKey:@"amount"];
+                [dic setObject:@"1" forKey:@"couponId"];
+                [dic setObject:@"0.01" forKey:@"couponAmount"];
+                [dic setObject:@"0.01" forKey:@"payAmount"];
+                
+                [[NetworkManager shareMgr] server_saveOrderPayWithDic:dic completeHandle:^(NSDictionary *response) {
+                    
+                    NSDictionary* dicTmep = [response objectForKey:@"data"];
+                    NSLog(@"保存订单：%@",dicTmep);
+                    
+                    if (dicTmep) {
+                        
+                        
+                
+                        
+                    }
+                    
+                
+                    
+                }];
                 
             }
             

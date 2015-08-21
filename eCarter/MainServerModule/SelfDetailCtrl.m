@@ -471,27 +471,27 @@
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
     
-    [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
     [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
     [dic setObject:self.shopDetail.id forKey:@"storeId"];
     
-    [dic setObject:[NSNumber numberWithInteger:self.userCar.id] forKey:@"carid"];
+    [dic setObject:[NSNumber numberWithInteger:self.userCar.id] forKey:@"carId"];
     [dic setObject:self.userCar.no forKey:@"carnum"];
     
-    NSString* str = @"2";
+    NSString* str = @"";
     
     for (int i = 0 ; i < self.arraySelectedSevice.count; i ++) {
         
         if ( [str isEqualToString:@""] && [[self.arraySelectedSevice objectAtIndex:i] isEqualToString:@"1"]) {
             
             
-            Serviceitemlist* list = [Serviceitemlist objectWithKeyValues:[self.shopDetail.serviceItemList objectAtIndex:i]];
+            Serviceitemlist* list = [self.shopDetail.serviceItemList objectAtIndex:i]; //[Serviceitemlist objectWithKeyValues:[self.shopDetail.serviceItemList objectAtIndex:i]];
             
-            str = [str stringByAppendingString:list.serviceId];
+            str = list.serviceId;//[str stringByAppendingString:list.serviceId];
             
         }else if ([[self.arraySelectedSevice objectAtIndex:i] isEqualToString:@"1"]){
         
-            Serviceitemlist* list = [Serviceitemlist objectWithKeyValues:[self.shopDetail.serviceItemList objectAtIndex:i]];
+            Serviceitemlist* list = [self.shopDetail.serviceItemList objectAtIndex:i];//[Serviceitemlist objectWithKeyValues:[self.shopDetail.serviceItemList objectAtIndex:i]];
             
             NSString* strTemp = [NSString stringWithFormat:@",%@",list.serviceId];
             
@@ -503,9 +503,10 @@
         
     }
     
-    if ([str isEqualToString:@""]) {
+    if ([str isEqualToString:@""]|| str == nil) {
         
         [HKCommen addAlertViewWithTitel:@"请选择一项服务"];
+    
         
         hud.hidden = YES;
         
@@ -515,20 +516,20 @@
     
     
     
-    NSString* strItemNames = @"test";
+    NSString* strItemNames = @"";
     
     for (int i = 0 ; i < self.arraySelectedSevice.count; i ++) {
         
         if ( [str isEqualToString:@""] && [[self.arraySelectedSevice objectAtIndex:i] isEqualToString:@"1"]) {
             
             
-            Serviceitemlist* list = [Serviceitemlist objectWithKeyValues:[self.shopDetail.serviceItemList objectAtIndex:i]];
+            Serviceitemlist* list = [self.shopDetail.serviceItemList objectAtIndex:i];//[Serviceitemlist objectWithKeyValues:[self.shopDetail.serviceItemList objectAtIndex:i]];
             
-            strItemNames = [strItemNames stringByAppendingString:list.serviceItemName];
+            strItemNames = list.serviceItemName; //[strItemNames stringByAppendingString:list.serviceItemName];
             
         }else if ([[self.arraySelectedSevice objectAtIndex:i] isEqualToString:@"1"]){
             
-            Serviceitemlist* list = [Serviceitemlist objectWithKeyValues:[self.shopDetail.serviceItemList objectAtIndex:i]];
+            Serviceitemlist* list = [self.shopDetail.serviceItemList objectAtIndex:i];//[Serviceitemlist objectWithKeyValues:[self.shopDetail.serviceItemList objectAtIndex:i]];
             
             NSString* strTemp = [NSString stringWithFormat:@",%@",list.serviceItemName];
             
@@ -540,6 +541,9 @@
         
     }
     
+    NSLog(@"str = %@",str);
+    [dic setObject:str forKey:@"serviceItemId"];
+    [dic setObject:strItemNames forKey:@"serviceItemName"];
     [dic setObject:@"0.01" forKey:@"serviceCost"];
     [dic setObject: @"0.01" forKey:@"amount"];
     
@@ -547,11 +551,13 @@
     [dic setObject:@"2015-08-11" forKey:@"serviceDate"];
     
     [dic setObject:@"17:30-18:00" forKey:@"serviceTime"];
-    [dic setObject:self.userAddress.address forKey:@"userAddress"];
+    [dic setObject:[NSString stringWithFormat:@"%@%@%@",self.userAddress.city,self.userAddress.area,self.userAddress.address ]forKey:@"userAddress"];
+    
+    NSLog(@"dic = %@",dic);
     
     
     
-    [[NetworkManager shareMgr] server_saveOrderPayWithDic:dic completeHandle:^(NSDictionary *response) {
+    [[NetworkManager shareMgr] server_saveServiceOrderWithDic:dic completeHandle:^(NSDictionary *response) {
         
         NSDictionary* dicTmep = [response objectForKey:@"data"];
         NSLog(@"登陆字典：%@",dicTmep);
@@ -562,6 +568,7 @@
             
             PaymentCtrl *vc=[[PaymentCtrl alloc] initWithNibName:@"PaymentCtrl" bundle:nil];
             vc.dicPreParams = dicTmep;
+
             
             [self.navigationController pushViewController:vc animated:YES];
             

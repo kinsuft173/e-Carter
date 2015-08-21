@@ -134,6 +134,8 @@
         
         vc.userAddress = [UserAddress objectWithKeyValues:[self.arrayAdresses objectAtIndex:(self.indexPathAddress.row - 1)]];
         
+        NSLog(@"vc.userAdreess = %@ /n====>%@",vc.userAddress.address,[self.arrayAdresses objectAtIndex:(self.indexPathAddress.row - 1)]);
+        
         vc.userCar = [Car objectWithKeyValues:[self.arrayCars  objectAtIndex:self.indexPathCar.row - 1]];
     }
 }

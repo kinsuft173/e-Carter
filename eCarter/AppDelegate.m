@@ -18,6 +18,7 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "WeiboSDK.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface AppDelegate ()
 
@@ -152,8 +153,17 @@
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation
-{
+         annotation:(id)annotation{
+    
+
+    if ([url.host isEqualToString:@"safepay"]) {
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url
+                                                  standbyCallback:^(NSDictionary *resultDic) {
+                                                      NSLog(@"result1 = %@",resultDic);
+                                                  }];
+        
+    }
+    
     return [ShareSDK handleOpenURL:url
                  sourceApplication:sourceApplication
                         annotation:annotation
