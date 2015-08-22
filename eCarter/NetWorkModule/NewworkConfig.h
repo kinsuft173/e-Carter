@@ -40,7 +40,7 @@ typedef void (^ErrorHandle)(NSError*);
 #define ECATER_QUERY_STROE_DETAIL_INTERFACE @"/ecar/mobile/queryStoreDetail"
 #define ECATER_QUERY_STORE_SERVICETIME_INTERFACE @"/ecar/mobile/queryStoreServiceTime"
 #define ECATER_SAVE_SERVICE_ORDER_INTERFACE @"/ecar/mobile/saveServiceOrder"
-#define ECATER_SAVE_ORDER_PAY_INTERFACE @"/ecar/mobile/saveServiceOrder"
+#define ECATER_SAVE_ORDER_PAY_INTERFACE @"/ecar/mobile/saveOrderPay"
 
 
 #define ECATER_QUERY_ORDER_LIST_INTERFACE @"/ecar/mobile/queryOrderList"
