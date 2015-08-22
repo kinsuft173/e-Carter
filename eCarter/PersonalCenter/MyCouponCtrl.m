@@ -142,8 +142,24 @@
             cell.btnExpand.tag = indexPath.section;
             
         }
-        Coupon *coupon=[self.arrayOfCoupon objectAtIndex:indexPath.row];
         
+        Coupon *coupon=[Coupon objectWithKeyValues:[self.arrayOfCoupon objectAtIndex:indexPath.row]];
+        NSDictionary *dict=[self.arrayOfCoupon objectAtIndex:indexPath.row];
+        
+        NSLog(@"测试字典:%@",dict);
+        cell.lbl_shop.text=[dict objectForKey:@"remark"];
+        cell.lbl_value.text=[dict objectForKey:@"price"];
+
+//       NSString *startMonth= [[dict objectForKey:@"startTimeString"] substringWithRange:NSMakeRange(5, 7)];
+//        NSString *startDay= [[dict objectForKey:@"startTimeString"] substringWithRange:NSMakeRange(8, 10)];
+//        
+//        NSString *endMonth= [[dict objectForKey:@"endTimeString"] substringWithRange:NSMakeRange(5, 7)];
+//        NSString *endDay= [[dict objectForKey:@"endTimeString"] substringWithRange:NSMakeRange(8, 10)];
+//        
+//        cell.lbl_endTime.text=[NSString stringWithFormat:@"期限%@.%@-%@%.@",startMonth,startDay,endMonth,endDay];
+ 
+        cell.lbl_ticketNo.text=[NSString stringWithFormat:@"编号：%@",[dict objectForKey:@"state"]];
+    
         return cell;
         
         

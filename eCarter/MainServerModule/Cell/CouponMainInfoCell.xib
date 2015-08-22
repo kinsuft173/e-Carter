@@ -126,10 +126,13 @@
             <connections>
                 <outlet property="btnExpand" destination="A0F-bm-lVR" id="xLv-o1-JDF"/>
                 <outlet property="btn_getTicket" destination="G7M-lh-NiT" id="KUo-2o-hNm"/>
-                <outlet property="lbl_company" destination="pQu-Vc-4vQ" id="3MP-QW-3yF"/>
-                <outlet property="lbl_date" destination="QpI-B0-Zxs" id="kg1-aL-FAQ"/>
-                <outlet property="lbl_number" destination="WJF-UO-4gp" id="RKh-WW-uzk"/>
-                <outlet property="lbl_price" destination="kLm-aJ-uxv" id="SFE-aN-JU2"/>
+                <outlet property="lbl_company" destination="pQu-Vc-4vQ" id="HVN-ih-qwq"/>
+                <outlet property="lbl_date" destination="QpI-B0-Zxs" id="9xo-o2-02q"/>
+                <outlet property="lbl_endTime" destination="QpI-B0-Zxs" id="jeY-IT-7Th"/>
+                <outlet property="lbl_price" destination="kLm-aJ-uxv" id="1iQ-Al-hiK"/>
+                <outlet property="lbl_shop" destination="K9i-fM-gJr" id="Gu8-VV-epR"/>
+                <outlet property="lbl_ticketNo" destination="WJF-UO-4gp" id="pAd-3d-SBq"/>
+                <outlet property="lbl_value" destination="GTr-xy-vCw" id="dNt-aZ-Qib"/>
             </connections>
             <point key="canvasLocation" x="424" y="410.5"/>
         </tableViewCell>
