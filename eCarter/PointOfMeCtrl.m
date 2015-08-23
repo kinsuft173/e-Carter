@@ -73,6 +73,7 @@
     
     [[NetworkManager shareMgr] server_queryPointTransactionWithDic:dic completeHandle:^(NSDictionary *response) {
         
+        NSLog(@"获得的字典：%@",response);
         self.arrayOfCount = [[response objectForKey:@"data"] objectForKey:@"items"];
         
         [self.myTable reloadData];

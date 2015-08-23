@@ -23,7 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_date;
 
 @property (weak, nonatomic) IBOutlet UILabel *lbl_shop;
-@property (weak, nonatomic) IBOutlet UILabel *lbl_value;
+@property (strong, nonatomic) IBOutlet UILabel *lbl_value;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *lbl_endTime;

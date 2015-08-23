@@ -10,5 +10,7 @@
 #import "HKCommen.h"
 
 @interface GetRealMoneyCtrl : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *lbl_balance;
+@property (strong,nonatomic) NSString *balance;
 
 @end

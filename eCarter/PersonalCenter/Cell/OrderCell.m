@@ -23,4 +23,10 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)getPicture:(UIButton *)sender {
+    
+    [self.delegate localImageShow:sender.tag TableRow:self.row];
+}
+
+
 @end
