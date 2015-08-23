@@ -18,6 +18,7 @@
 
 @interface MyCountCtrl ()
 @property (strong,nonatomic) UserLoginInfo *userData;
+@property (strong,nonatomic) NSString *stringOfCount;
 @end
 
 @implementation MyCountCtrl
@@ -26,6 +27,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [HKCommen setExtraCellLineHidden:self.myTable];
+    self.stringOfCount=[[NSString alloc]init];
     
     [self getModel];
 
@@ -62,6 +64,9 @@
     [[NetworkManager shareMgr] server_queryUserAccountWithDic:dic completeHandle:^(NSDictionary *response) {
         
         NSLog(@"字典：%@",response);
+        
+        self.stringOfCount=[NSString stringWithFormat:@"%@元",[response objectForKey:@"data"]];
+  
         /*
          NSArray* arrayTemp = [response objectForKey:@"data"];
          
@@ -171,7 +176,8 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
             
         }
-        cell.lbl_BalanceMoney.text=@"100.0元";
+        
+        cell.lbl_BalanceMoney.text=self.stringOfCount;
         return cell;
         
         
@@ -205,14 +211,15 @@
     if (indexPath.row==3) {
  
         RechargeMoneyCtrl *chargeCtrl=[[RechargeMoneyCtrl alloc] initWithNibName:@"RechargeMoneyCtrl" bundle:nil];
-
+        chargeCtrl.balance=self.stringOfCount;
         [self.navigationController pushViewController:chargeCtrl animated:YES];
 
     }
     
    else if (indexPath.row==4) {
         GetRealMoneyCtrl *vc=[[GetRealMoneyCtrl alloc]initWithNibName:@"GetRealMoneyCtrl" bundle:nil];
-        [self.navigationController pushViewController:vc animated:YES];
+       vc.balance=self.stringOfCount;
+       [self.navigationController pushViewController:vc animated:YES];
     }
 }
 

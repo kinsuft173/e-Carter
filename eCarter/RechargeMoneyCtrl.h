@@ -11,5 +11,7 @@
 #import "ReChargeSuccessCtrl.h"
 
 @interface RechargeMoneyCtrl : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *lbl_balance;
+@property (strong,nonatomic) NSString *balance;
 
 @end

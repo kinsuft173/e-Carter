@@ -145,7 +145,7 @@
         
         //[cell.btn_getTicket setTag:[[dic objectForKey:@"couponId"] intValue]];
         
-       cell.couponId= [dic objectForKey:@"couponId"];
+       cell.couponId= [dic objectForKey:@"couponcode"];
         cell.storeId=[dic objectForKey:@"id"];
         
         cell.delegate=self;
@@ -190,6 +190,8 @@
     [dic setObject:couponCode forKey:@"couponCode"];
     [dic setObject:storeId forKey:@"storeId"];
     
+    
+    NSLog(@"抢优惠劵的上传：%@",dic);
     [[NetworkManager shareMgr] server_snapCoupon:dic completeHandle:^(NSDictionary *response) {
         
         NSLog(@"抢到的优惠：%@",response);

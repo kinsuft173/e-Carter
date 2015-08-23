@@ -20,6 +20,7 @@
 
     [HKCommen addHeadTitle:@"充值" whichNavigation:self.navigationItem];
 
+    self.lbl_balance.text=self.balance;
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
     [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];

@@ -63,7 +63,7 @@
     NSLog(@"交易字典：%@",dic);
     
     [[NetworkManager shareMgr] server_queryOrderLogWithDic:dic completeHandle:^(NSDictionary *responseBanner) {
-
+        
         NSLog(@"字典:%@",responseBanner);
         
         self.arrayOfTrade = [responseBanner objectForKey:@"data"];
@@ -83,14 +83,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 #pragma  mark - tableView DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -100,23 +100,27 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return self.arrayOfTrade.count;
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
-        
-        return 5;
-        
-    }else if (indexPath.row == 3){
+    NSDictionary *dic=[self.arrayOfTrade objectAtIndex:indexPath.row];
     
+    int type=[[dic objectForKey:@"type"] intValue];
+    
+    if(type  == 1 || type == 2 || type == 4){
+        return 167;
+    }
+    else if (type==3)
+    {
         return 97;
-    
+    }else
+    {
+        return 5;
     }
     
-    return 167;
     
 }
 
@@ -127,7 +131,13 @@
     static NSString* cellId2 = @"PlaceHolderCell";
     //    static NSString* cellHolderId = @"PlaceHolderCell";
     
-    if(indexPath.row  == 1 || indexPath.row == 2){
+    
+    NSLog(@"获得的字典%@",[self.arrayOfTrade objectAtIndex:indexPath.row]);
+    NSDictionary *dic=[self.arrayOfTrade objectAtIndex:indexPath.row];
+    
+    int type=[[dic objectForKey:@"type"] intValue];
+    
+    if(type  == 1 || type == 2 || type == 4){
         
         CustomTradeCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
         
@@ -137,9 +147,27 @@
             
         }
         
+        cell.lbl_money.text=[NSString stringWithFormat:@"￥%@",[dic objectForKey:@"amount"]];
+        
+        int paytype=[[dic objectForKey:@"paytype"] intValue];
+        if (paytype==1) {
+            cell.lbl_wayOfPay.text=@"支付宝";
+        }
+        else if (paytype==1) {
+            cell.lbl_wayOfPay.text=@"微信";
+        }
+        else
+        {
+        cell.lbl_wayOfPay.text=@"余额";
+        }
+        
+        cell.lbl_content.text=[dic objectForKey:@"items"];
+        
+        cell.lbl_time.text=[dic objectForKey:@"time"];
+        cell.lbl_merchant.text=[dic objectForKey:@"storeName"];
         return cell;
         
-    }else if(indexPath.row == 3){
+    }else if(type==3){
         
         CustomTradeCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
         
@@ -148,6 +176,23 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:1];
             
         }
+        
+        cell.lbl_money.text=[NSString stringWithFormat:@"￥%@",[dic objectForKey:@"amount"]];
+        
+        int paytype=[[dic objectForKey:@"paytype"] intValue];
+        if (paytype==1) {
+            cell.lbl_wayOfPay.text=@"支付宝";
+        }
+        else if (paytype==1) {
+            cell.lbl_wayOfPay.text=@"微信";
+        }
+        else
+        {
+            cell.lbl_wayOfPay.text=@"余额";
+        }
+        
+        cell.lbl_time.text=[dic objectForKey:@"time"];
+
         
         return cell;
         

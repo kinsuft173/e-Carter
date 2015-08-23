@@ -197,10 +197,11 @@
     
     [[NetworkManager shareMgr] server_genCodeWithDic:dic completeHandle:^(NSDictionary *response) {
         
+        NSLog(@"订单字典：%@",response);
         NSData *doubi = response;
         
         NSString *shabi =  [[NSString alloc]initWithData:doubi encoding:NSUTF8StringEncoding];
-        NSLog(@"订单字典：%@",shabi);
+        
         self.txt_code.text = shabi;
     }];
     

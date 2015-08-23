@@ -45,7 +45,7 @@ typedef void (^ErrorHandle)(NSError*);
 
 #define ECATER_QUERY_ORDER_LIST_INTERFACE @"/ecar/mobile/queryOrderList"
 #define ECATER_QUERY_ODERD_ETAIL_INTERFACE @"/ecar/mobile/queryOrderDetail"
-#define ECATER_QUERY_ODER_LOG_INTERFACE @"/ecar/mobile/queryOrderLog"
+#define ECATER_QUERY_ODER_LOG_INTERFACE @"/ecar/mobile/tranRecord"
 #define ECATER_UPDATE_ORDER_STATUS_INTERFACE @"/ecar/mobile/updateOrderStatus"
 #define ECATER_SUBMIT_ODERRE_VIEW_INTERFACE @"/ecar/mobile/submitOrderReviews"
 #define ECATER_USER_ACCOUNT_INTERFACE @"/ecar/mobile/queryUserAccount"

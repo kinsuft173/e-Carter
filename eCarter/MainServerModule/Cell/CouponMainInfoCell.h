@@ -21,7 +21,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_company;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_price;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_date;
-@property (weak, nonatomic) IBOutlet UILabel *lbl_number;
+
+@property (weak, nonatomic) IBOutlet UILabel *lbl_shop;
+@property (strong, nonatomic) IBOutlet UILabel *lbl_value;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *lbl_endTime;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_ticketNo;
+
+
 
 @property (strong,nonatomic) NSString *couponId;
 @property (strong,nonatomic) NSString *storeId;

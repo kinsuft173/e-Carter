@@ -142,8 +142,24 @@
             cell.btnExpand.tag = indexPath.section;
             
         }
-        Coupon *coupon=[self.arrayOfCoupon objectAtIndex:indexPath.row];
         
+        Coupon *coupon=[Coupon objectWithKeyValues:[self.arrayOfCoupon objectAtIndex:indexPath.row]];
+        
+        NSLog(@"测试字典:%@",[self.arrayOfCoupon objectAtIndex:indexPath.row]);
+        //cell.lbl_shop.text=coupon.remark;
+        cell.lbl_value.text=coupon.price;
+
+        
+       NSString *startMonth= [coupon.startTimeString substringWithRange:NSMakeRange(5, 2)];
+        NSString *startDay= [coupon.startTimeString substringWithRange:NSMakeRange(8, 2)];
+        
+        NSString *endMonth= [coupon.endTimeString substringWithRange:NSMakeRange(5, 2)];
+        NSString *endDay= [coupon.endTimeString substringWithRange:NSMakeRange(8, 2)];
+        
+        cell.lbl_endTime.text=[NSString stringWithFormat:@"期限%@.%@-%@.%@",startMonth,startDay,endMonth,endDay];
+ 
+        cell.lbl_ticketNo.text=[NSString stringWithFormat:@"编号：%@",coupon.id];
+    
         return cell;
         
         
@@ -154,10 +170,14 @@
         if (!cell) {
             
             cell = [[[NSBundle mainBundle] loadNibNamed:cellId2 owner:self options:nil] objectAtIndex:0];
-            
-            
         }
         
+        Coupon *coupon=[Coupon objectWithKeyValues:[self.arrayOfCoupon objectAtIndex:indexPath.row]];
+        
+        cell.lbl_couponDetail.text=coupon.remark;
+        
+        
+        cell.lbl_userDate.text=[NSString stringWithFormat:@"使用期限：%@ 至 %@",coupon.startTimeString,coupon.endTimeString];
         
         return cell;
         
