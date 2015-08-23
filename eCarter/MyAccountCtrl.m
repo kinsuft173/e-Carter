@@ -26,6 +26,7 @@
     self.judgeSex=YES;
     
     self.lbl_mobile.text=[UserDataManager shareManager].userLoginInfo.user.phone;
+    self.txt_name.placeholder = [UserDataManager shareManager].userLoginInfo.user.nickname;
     
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
@@ -115,14 +116,19 @@
     
     [[NetworkManager shareMgr] server_EditUserInfo:dic completeHandle:^(NSDictionary *response) {
         
+        NSLog(@"response = %@",response);
+        
         if ([[response objectForKey:@"message"] isEqualToString:@"OK"]) {
             
-            NSLog(@"修改成功");
+           // NSLog(@"修改成功");
+            
+            [HKCommen addAlertViewWithTitel:@"修改成功"];
             [self.navigationController popViewControllerAnimated:YES];
         }
         else
         {
-            NSLog(@"修改失败");
+            [HKCommen addAlertViewWithTitel:@"字符集不一致导致的修改失败!"];
+            //NSLog(@"修改失败");
         }
     }];
 }

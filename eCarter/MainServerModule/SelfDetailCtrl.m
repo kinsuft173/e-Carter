@@ -564,7 +564,11 @@
         
         if (dicTmep) {
             
-            
+            [[NetworkManager shareMgr] server_payNotifytWithDic:[NSDictionary dictionaryWithObjectsAndKeys:dicTmep[@"orderId"],@"id", nil] completeHandle:^(NSDictionary *dic) {
+                
+                [HKCommen addAlertViewWithTitel:@"当前测试模式下，已经对该订单进行了支付操作"];
+                
+            } ];
             
             PaymentCtrl *vc=[[PaymentCtrl alloc] initWithNibName:@"PaymentCtrl" bundle:nil];
             vc.dicPreParams = dicTmep;

@@ -42,6 +42,10 @@ typedef void (^ErrorHandle)(NSError*);
 #define ECATER_SAVE_SERVICE_ORDER_INTERFACE @"/ecar/mobile/saveServiceOrder"
 #define ECATER_SAVE_ORDER_PAY_INTERFACE @"/ecar/mobile/saveOrderPay"
 
+//城市
+
+#define CITY_URL @"/api/city/info?province=all"
+
 
 #define ECATER_QUERY_ORDER_LIST_INTERFACE @"/ecar/mobile/queryOrderList"
 #define ECATER_QUERY_ODERD_ETAIL_INTERFACE @"/ecar/mobile/queryOrderDetail"
@@ -79,6 +83,9 @@ typedef void (^ErrorHandle)(NSError*);
 
 //广告部分
 #define APP_AD_URL @"advertisement/index"
+
+//支付回调
+#define PAY_ALI_NOTIFY @"/order/notify/alipay/"
 
 
 //#define ECATER_INFO_INTERFACE @""

@@ -63,8 +63,8 @@
 - (void)initUI
 {
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
-//    [HKCommen setExtraCellLineHidden:self.tableView];
+//    
+    [HKCommen setExtraCellLineHidden:self.tableView];
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         [self.tableView setLayoutMargins: UIEdgeInsetsZero];
     }
@@ -73,21 +73,23 @@
 
 - (void)getModel
 {
-//    [[NetworkManager shareMgr] server_fetchCityWithDic:nil completeHandle:^(NSDictionary *response) {
-//        
-//        self.arrayModel = [[NSMutableArray alloc] init];
-//        
-//        NSArray* resultArray = [[response objectForKey:@"data"] objectForKey:@"items"];
-//        
-//        if (resultArray.count != 0) {
-//            
-//            self.arrayModel = resultArray;
-//            
-//        }
-//        
-//        [self.tableView reloadData];
-//        
-//    }];
+    [[NetworkManager shareMgr] server_fetchCityWithDic:nil completeHandle:^(NSDictionary *response) {
+        
+        NSLog(@"城市数据 =  %@",response);
+        
+        self.arrayModel = [[NSMutableArray alloc] init];
+        
+        NSArray* resultArray = [response objectForKey:@"data"];
+        
+        if (resultArray.count != 0) {
+            
+            self.arrayModel = resultArray;
+            
+        }
+        
+        [self.tableView reloadData];
+        
+    }];
     
 }
 
@@ -163,7 +165,7 @@
             
         }
         
-        cell.lblCity.text = [[self.arrayModel objectAtIndex:indexPath.row] objectForKey:@"name"];
+        cell.lblCity.text = [[self.arrayModel objectAtIndex:indexPath.row] objectForKey:@"cityName"];
         
         return cell;
     

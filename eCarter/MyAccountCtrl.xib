@@ -62,7 +62,7 @@
                                 <constraint firstAttribute="height" constant="1" id="DXU-oC-8aF"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xo1-pN-AVf">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xo1-pN-AVf">
                             <rect key="frame" x="10" y="0.0" width="42" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="42" id="GH5-Q7-Hwm"/>
@@ -123,7 +123,7 @@
                             </state>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mwG-An-oUp">
-                            <rect key="frame" x="85" y="0.0" width="97" height="44"/>
+                            <rect key="frame" x="85" y="0.0" width="218" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="HVb-Qk-ed4"/>
                                 <constraint firstAttribute="width" constant="97" id="HYl-aM-4je"/>
@@ -131,6 +131,11 @@
                             <color key="textColor" red="0.37647058820000001" green="0.37647058820000001" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="HYl-aM-4je"/>
+                                </mask>
+                            </variation>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDL-IW-EID">
                             <rect key="frame" x="76" y="44" width="69" height="44"/>
@@ -172,6 +177,7 @@
                         <constraint firstItem="Xo1-pN-AVf" firstAttribute="top" secondItem="lvv-eO-1j4" secondAttribute="top" id="R1l-cr-wj7"/>
                         <constraint firstAttribute="height" constant="88" id="RWA-VM-pNt"/>
                         <constraint firstItem="dpz-ND-UGB" firstAttribute="top" secondItem="lvv-eO-1j4" secondAttribute="top" constant="44" id="Ur9-gw-sl4"/>
+                        <constraint firstAttribute="trailing" secondItem="mwG-An-oUp" secondAttribute="trailing" constant="17" id="V0e-wD-ybQ"/>
                         <constraint firstItem="mwG-An-oUp" firstAttribute="top" secondItem="lvv-eO-1j4" secondAttribute="top" id="VI5-Ob-zsc"/>
                         <constraint firstAttribute="trailing" secondItem="dpz-ND-UGB" secondAttribute="trailing" id="Woc-lP-Two"/>
                         <constraint firstItem="dpz-ND-UGB" firstAttribute="leading" secondItem="lvv-eO-1j4" secondAttribute="leading" id="XwJ-x1-IMT"/>

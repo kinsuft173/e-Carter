@@ -10,4 +10,6 @@
 
 @interface EventBanerCtrl : UIViewController
 
+@property (nonatomic, strong) NSDictionary* dicModel;
+
 @end

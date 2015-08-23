@@ -18,6 +18,7 @@
 #import "HYActivityView.h"
 #import "SetTransactionPassworsCtrl.h"
 #import "TransactionCtrl.h"
+#import "EventBanerCtrl.h"
 
 #import <ShareSDK/ShareSDK.h>
 
@@ -50,6 +51,25 @@
     [self initUI];
     
     [self customNaverBarItems];
+    
+    NSDictionary* dicCity = [[NSUserDefaults standardUserDefaults] objectForKey:@"cityObject"];
+    
+    NSLog(@"dicCity = %@",dicCity);
+    
+    if (dicCity) {
+    
+        [UserDataManager shareManager].city = dicCity[@"cityName"];
+        [UserDataManager shareManager].cityId = dicCity[@"cityId"];
+        
+        
+    }else{
+    
+        [UserDataManager shareManager].city = @"广州";//dicCity[@"cityName"];
+        [UserDataManager shareManager].cityId = @"101280101";//dicCity[@"cityId"];
+    
+    }
+    
+    self.lblCity.text = [UserDataManager shareManager ].city;
     
     [self getModel];
     
@@ -106,8 +126,8 @@
 - (void)getModel
 {
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
-    //[dic setObject:@"1" forKey:@"position"];
-    [dic setObject:@"101280101" forKey:@"cityId"];
+    [dic setObject:@"2" forKey:@"position"];
+    [dic setObject:[UserDataManager shareManager].cityId forKey:@"cityId"];
     
     NSLog(@"上传字典：%@",dic);
     
@@ -268,7 +288,15 @@
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(NSDictionary*)sender {
+    
+    if ([segue.identifier isEqualToString:@"goGuanggao"]) {
+        
+        EventBanerCtrl* vc = segue.destinationViewController;
+        
+        vc.dicModel = sender;
+        
+    }
 
 }
 
@@ -492,15 +520,26 @@
 
 - (void)didSelectAdvertiseAtRow:(NSInteger)row
 {
-    if (row == 0) {
+//    if (row == 0) {
+//        
+//        [self performSegueWithIdentifier:@"goGuanggao" sender:nil];
+//
+//        
+//    }else if(row == 1){
+//    
+//        [self performSegueWithIdentifier:@"goCoupon" sender:nil];
+//
+//    }
+    
+   NSDictionary* dic  =  [self.array_advertisement objectAtIndex:row];
+    
+    if ([[dic objectForKey:@"state"] integerValue] == 1) {
         
-        [self performSegueWithIdentifier:@"goGuanggao" sender:nil];
-
+         [self performSegueWithIdentifier:@"goGuanggao" sender:nil];
         
-    }else if(row == 1){
+    }else if ([[dic objectForKey:@"state"] integerValue] == 2){
     
         [self performSegueWithIdentifier:@"goCoupon" sender:nil];
-
     }
 
 
@@ -511,8 +550,11 @@
 - (void)handleCitySelectedWithDic:(NSDictionary *)dic
 {
     NSLog(@"cityDic = %@",dic);
-    [UserDataManager shareManager].city = dic[@"name"];
-    self.lblCity.text = dic[@"name"];
+    [UserDataManager shareManager].city = dic[@"cityName"];
+    self.lblCity.text = dic[@"cityName"];
+    [UserDataManager shareManager].cityId = dic[@"cityId"];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDictionary dictionaryWithDictionary:dic] forKey:@"cityObject"];
 }
 
 

@@ -40,6 +40,9 @@
 - (void)server_saveServiceOrderWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 - (void)server_fetchAllCheapTickets:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 
+//城市
+- (void)server_fetchCityWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+
 //用户部分
 - (void)server_queryOrderListWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 - (void)server_queryOrderDetailWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
@@ -71,5 +74,8 @@
 
 //广告
 - (void)server_fetchAdvertisementWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+
+//支付回调
+- (void)server_payNotifytWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 
 @end

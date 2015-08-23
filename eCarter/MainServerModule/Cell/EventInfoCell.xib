@@ -58,7 +58,6 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnGoWebsite" destination="yBc-2A-NFj" id="eGd-0B-TFq"/>
-                <outlet property="btnLinks" destination="yBc-2A-NFj" id="JxJ-4H-NQW"/>
                 <outlet property="txt_Details" destination="F2h-Ll-vvW" id="mWF-Rk-Bf2"/>
             </connections>
         </tableViewCell>

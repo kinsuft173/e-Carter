@@ -12,6 +12,7 @@
 #import "NetworkManager.h"
 #import "UserLoginInfo.h"
 #import "UserDataManager.h"
+#import "HKCommen.h"
 
 @interface CouponCtrl()
 
@@ -133,10 +134,13 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
             
             [cell.btnExpand addTarget:self action:@selector(expandEventHandle:) forControlEvents:UIControlEventTouchUpInside];
-            cell.btnExpand.tag = indexPath.section;
+         
             
         }
-       NSDictionary *dic= [self.arrayOfCheap objectAtIndex:indexPath.row];
+        
+           cell.btnExpand.tag = indexPath.section;
+        
+       NSDictionary *dic= [self.arrayOfCheap objectAtIndex:indexPath.section];
 
         cell.lbl_company.text=[dic objectForKey:@"storeName"];
         cell.lbl_price.text=[dic objectForKey:@"price"];
@@ -164,7 +168,7 @@
             
         }
         
-        NSDictionary *dic= [self.arrayOfCheap objectAtIndex:indexPath.row];
+        NSDictionary *dic= [self.arrayOfCheap objectAtIndex:indexPath.section];
 
         cell.lbl_couponDetail.text=[dic objectForKey:@"remark"];
         
@@ -195,6 +199,20 @@
     [[NetworkManager shareMgr] server_snapCoupon:dic completeHandle:^(NSDictionary *response) {
         
         NSLog(@"抢到的优惠：%@",response);
+        
+        if ([[response objectForKey:@"status"] integerValue]== 1) {
+            
+            [HKCommen addAlertViewWithTitel:@"抢优惠券失败"];
+            
+        }else if ([[response objectForKey:@"status"] integerValue]== 2){
+        
+            [HKCommen addAlertViewWithTitel:@"抢优惠券成功"];
+            
+        }else if ([[response objectForKey:@"status"] integerValue]== 3){
+            
+            [HKCommen addAlertViewWithTitel:@"不能重复领取优惠券"];
+        }
+        
     }];
 }
 

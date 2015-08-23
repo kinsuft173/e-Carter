@@ -83,6 +83,13 @@
         NSLog(@"字典：%@",responseBanner);
         self.arrayOfCoupon = [responseBanner objectForKey:@"data"];
         
+        if (self.arrayOfCoupon.count!=0) {
+            
+            for (int i=0; i<self.arrayOfCoupon.count; i++) {
+                [self.arrayIndex addObject:@0];
+            }
+        }
+        
         [self.tableView reloadData];
     }];
 }
@@ -143,7 +150,7 @@
             
         }
         
-        Coupon *coupon=[Coupon objectWithKeyValues:[self.arrayOfCoupon objectAtIndex:indexPath.row]];
+        Coupon *coupon=[Coupon objectWithKeyValues:[self.arrayOfCoupon objectAtIndex:indexPath.section]];
         
         NSLog(@"测试字典:%@",[self.arrayOfCoupon objectAtIndex:indexPath.row]);
         //cell.lbl_shop.text=coupon.remark;
@@ -172,7 +179,7 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:cellId2 owner:self options:nil] objectAtIndex:0];
         }
         
-        Coupon *coupon=[Coupon objectWithKeyValues:[self.arrayOfCoupon objectAtIndex:indexPath.row]];
+        Coupon *coupon=[Coupon objectWithKeyValues:[self.arrayOfCoupon objectAtIndex:indexPath.section]];
         
         cell.lbl_couponDetail.text=coupon.remark;
         

@@ -63,10 +63,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0F-bm-lVR">
-                                <rect key="frame" x="255" y="35" width="32" height="32"/>
+                                <rect key="frame" x="246" y="26" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="Rl3-bK-ZpK"/>
-                                    <constraint firstAttribute="height" constant="32" id="eBf-K8-Oxp"/>
+                                    <constraint firstAttribute="width" constant="50" id="Rl3-bK-ZpK"/>
+                                    <constraint firstAttribute="height" constant="50" id="eBf-K8-Oxp"/>
                                 </constraints>
                                 <state key="normal" image="Coupons_buts_top.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -86,8 +86,8 @@
                             <constraint firstItem="NfU-1T-30d" firstAttribute="leading" secondItem="Pss-Er-M79" secondAttribute="leading" constant="113" id="9ze-A6-CQp"/>
                             <constraint firstAttribute="trailing" secondItem="pQu-Vc-4vQ" secondAttribute="trailing" constant="10" id="Hje-Nd-qdf"/>
                             <constraint firstItem="kLm-aJ-uxv" firstAttribute="leading" secondItem="Pss-Er-M79" secondAttribute="leading" constant="47" id="HxO-Ag-BDN"/>
-                            <constraint firstItem="A0F-bm-lVR" firstAttribute="top" secondItem="Pss-Er-M79" secondAttribute="top" constant="35" id="JsD-9C-dNm"/>
-                            <constraint firstAttribute="trailing" secondItem="A0F-bm-lVR" secondAttribute="trailing" constant="13" id="ZKS-K8-fwr"/>
+                            <constraint firstItem="A0F-bm-lVR" firstAttribute="top" secondItem="Pss-Er-M79" secondAttribute="top" constant="26" id="JsD-9C-dNm"/>
+                            <constraint firstAttribute="trailing" secondItem="A0F-bm-lVR" secondAttribute="trailing" constant="4" id="ZKS-K8-fwr"/>
                             <constraint firstItem="EgA-ab-l9b" firstAttribute="top" secondItem="Pss-Er-M79" secondAttribute="top" constant="40" id="ZTI-vW-e63"/>
                             <constraint firstItem="G7M-lh-NiT" firstAttribute="leading" secondItem="Pss-Er-M79" secondAttribute="leading" constant="130" id="ZTL-P6-Z9a"/>
                             <constraint firstItem="kLm-aJ-uxv" firstAttribute="top" secondItem="Pss-Er-M79" secondAttribute="top" constant="35" id="dxj-1V-ogd"/>

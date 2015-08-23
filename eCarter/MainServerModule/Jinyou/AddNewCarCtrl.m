@@ -195,6 +195,15 @@ heightForHeaderInSection:(NSInteger)section
         }
         
         else if (indexPath.row==1) {
+            
+            if (!self.carId) {
+                
+                [HKCommen addAlertViewWithTitel:@"请先选择品牌/车系"];
+                
+                return;
+                
+            }
+            
             Select_seriesOfCarCtrl *vc=[[Select_seriesOfCarCtrl alloc] initWithNibName:@"Select_seriesOfCarCtrl" bundle:nil];
             vc.carId=self.carId;
             vc.JudgeWhereFrom=@"series";

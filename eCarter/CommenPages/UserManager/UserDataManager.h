@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString* userId;
 @property (nonatomic, strong) NSString* userType;
 @property (nonatomic, strong) NSString* city;
+@property (nonatomic, strong) NSString* cityId;
 
 @property (nonatomic, strong) UserLoginInfo* userLoginInfo;
 

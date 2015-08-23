@@ -71,9 +71,11 @@
     
     UIButton *rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
     rightButton.titleLabel.font=[UIFont systemFontOfSize:15.0];
-    [rightButton setFrame:CGRectMake(0, 0, 30, 100)];
+    [rightButton setFrame:CGRectMake(0, 0, 30, 50)];
     [rightButton setTitle:@"保存" forState:UIControlStateNormal];
     [rightButton addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
+    
+    rightButton.backgroundColor = [UIColor redColor];
     UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:rightButton ];
     self.navigationItem.rightBarButtonItem=item;
     
