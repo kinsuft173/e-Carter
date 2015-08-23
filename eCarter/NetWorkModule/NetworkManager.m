@@ -1333,6 +1333,8 @@
         
         //ErrorHandle(error);
         
+        completeHandle(nil);
+        
         NSLog(@"Error: %@", error);
         
         
