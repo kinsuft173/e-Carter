@@ -11,6 +11,7 @@
 @protocol getHighPicture <NSObject>
 
 -(void)localImageShow:(NSUInteger)index TableRow:(NSUInteger)row;
+-(void)networkImageShow:(NSUInteger)index TableRow:(NSUInteger)row;
 
 @end
 

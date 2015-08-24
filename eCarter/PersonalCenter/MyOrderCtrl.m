@@ -34,7 +34,7 @@
 @property (nonatomic, strong) UserLoginInfo* userLoginInfo;
 @property (nonatomic,strong) NSArray *arrayOfOrder;
 @property (nonatomic,strong) NSMutableArray *arrayOfTables;
-@property (nonatomic,strong) NSArray *images;
+@property (nonatomic,strong) NSMutableArray *images;
 @property (nonatomic,strong) NSMutableArray *networkImages;
 
 @end
@@ -50,6 +50,20 @@
     self.arrayOfOrder=[[NSArray alloc] init];
     self.arrayOfTables=[[NSMutableArray alloc]init];
     self.networkImages=[[NSMutableArray alloc]init];
+    [self.networkImages addObject:@"http://img5.imgtn.bdimg.com/it/u=2291374817,432518394&fm=21&gp=0.jpg"];
+    [self.networkImages addObject:@"http://img5.imgtn.bdimg.com/it/u=2291374817,432518394&fm=21&gp=0.jpg"];
+    [self.networkImages addObject:@"http://img5.imgtn.bdimg.com/it/u=2291374817,432518394&fm=21&gp=0.jpg"];
+    
+    self.images=[[NSMutableArray alloc]init];
+    UIImage *image1=[UIImage imageNamed:@"bg0"];
+    UIImage *image2=[UIImage imageNamed:@"bg1"];
+    UIImage *image3=[UIImage imageNamed:@"bg2"];
+    UIImage *image4=[UIImage imageNamed:@"bg3"];
+    [self.images addObject:image1];
+    [self.images addObject:image2];
+    [self.images addObject:image3];
+    [self.images addObject:image4];
+    
     
     [self getModel];
     [self initScrollTables:5];
@@ -275,11 +289,35 @@
         
     }
         
-        //return 284;
+    
         
     else{
         
+        NSUInteger row=indexPath.row-1;
+        
+        NSDictionary *dict=[self.arrayOfOrder objectAtIndex:row];
+        
+        NSArray *orderImageList=[dict objectForKey:@"orderImageList"];
+        
+        for (int i=0; i<orderImageList.count; i++) {
+            [self.networkImages addObject:[[orderImageList objectAtIndex:i] objectForKey:@"imageUrl"]];
+        }
+        
+        
+        NSArray *returnImageList=[dict objectForKey:@"returnImageList"];
+        for (int i=0; i<returnImageList.count; i++) {
+            [self.networkImages addObject:[[returnImageList objectAtIndex:i] objectForKey:@"imageUrl"]];
+        }
+        
+        if (self.networkImages.count==0) {
+            return 284;
+        }
+        else
+        {
         return 394;
+        }
+        
+        
         
     }
     
@@ -359,6 +397,66 @@
     */
     else{
         
+        
+        
+        OrderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
+        
+        if (!cell) {
+            
+            if (self.networkImages.count==0) {
+                cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
+                
+                UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
+                UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 , SCREEN_WIDTH - 10, 0.5)];
+                UIView* viewDivide3 = [[UIView alloc] initWithFrame:CGRectMake(0, 230, SCREEN_WIDTH, 0.5)];
+                
+                viewDivide1.backgroundColor = [HKCommen getColor:@"ccccccc"];
+                viewDivide2.backgroundColor = [HKCommen getColor:@"e0e0e0"];
+                viewDivide3.backgroundColor = [HKCommen getColor:@"ccccccc"];
+                
+                
+                [cell.viewMask1 addSubview:viewDivide1];
+                [cell.viewMask1 addSubview:viewDivide2];
+                [cell.viewMask1 addSubview:viewDivide3];
+                
+            }
+            else
+            {
+            cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:1];
+                
+                UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
+                UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 , SCREEN_WIDTH - 10, 0.5)];
+                UIView* viewDivide3 = [[UIView alloc] initWithFrame:CGRectMake(0, 230, SCREEN_WIDTH, 0.5)];
+                UIView* viewDivide4 = [[UIView alloc] initWithFrame:CGRectMake(0, 340, SCREEN_WIDTH, 0.5)];
+                
+                viewDivide1.backgroundColor = [HKCommen getColor:@"ccccccc"];
+                viewDivide2.backgroundColor = [HKCommen getColor:@"e0e0e0"];
+                viewDivide3.backgroundColor = [HKCommen getColor:@"ccccccc"];
+                viewDivide4.backgroundColor = [HKCommen getColor:@"ccccccc"];
+                
+                [cell.viewMask1 addSubview:viewDivide1];
+                [cell.viewMask1 addSubview:viewDivide2];
+                [cell.viewMask1 addSubview:viewDivide3];
+                [cell.viewMask1 addSubview:viewDivide4];
+                
+                cell.delegate=self;
+            }
+            
+            
+            
+            
+        }
+        
+        cell.row=indexPath.row;
+        
+        [cell.btn_image1 setTag:0];
+        [cell.btn_image2 setTag:1];
+        [cell.btn_image3 setTag:2];
+        
+        
+        
+        
+        
         NSUInteger row=indexPath.row-1;
         
         
@@ -377,39 +475,6 @@
         for (int i=0; i<returnImageList.count; i++) {
             [self.networkImages addObject:[[returnImageList objectAtIndex:i] objectForKey:@"imageUrl"]];
         }
-        
-        OrderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
-        
-        if (!cell) {
-            
-            if (self.networkImages.count==0) {
-                cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
-            }
-            else
-            {
-            cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
-            }
-            
-            
-            
-            UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
-            UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 , SCREEN_WIDTH - 10, 0.5)];
-            UIView* viewDivide3 = [[UIView alloc] initWithFrame:CGRectMake(0, 230, SCREEN_WIDTH, 0.5)];
-            UIView* viewDivide4 = [[UIView alloc] initWithFrame:CGRectMake(0, 340, SCREEN_WIDTH, 0.5)];
-            
-            viewDivide1.backgroundColor = [HKCommen getColor:@"ccccccc"];
-            viewDivide2.backgroundColor = [HKCommen getColor:@"e0e0e0"];
-            viewDivide3.backgroundColor = [HKCommen getColor:@"ccccccc"];
-            viewDivide4.backgroundColor = [HKCommen getColor:@"ccccccc"];
-            
-            [cell.viewMask1 addSubview:viewDivide1];
-            [cell.viewMask1 addSubview:viewDivide2];
-            [cell.viewMask1 addSubview:viewDivide3];
-            [cell.viewMask1 addSubview:viewDivide4];
-        }
-        
-        cell.row=indexPath.row;
-        
         
         /*
         [cell.btn_image1 addTarget:self action:@selector(selectPhoto:) forControlEvents:UIControlEventTouchUpInside];
@@ -499,6 +564,8 @@
  */
 -(void)localImageShow:(NSUInteger)index TableRow:(NSUInteger)row{
     
+     NSLog(@"测试");
+    
     UITableView *table=[self.arrayOfTables objectAtIndex:0];
     OrderCell *cell=(OrderCell*)[table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
     
@@ -540,6 +607,8 @@
  */
 -(void)networkImageShow:(NSUInteger)index TableRow:(NSUInteger)row
 {
+    
+    
     UITableView *table=[self.arrayOfTables objectAtIndex:0];
     OrderCell *cell=(OrderCell*)[table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
     
