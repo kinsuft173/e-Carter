@@ -36,6 +36,7 @@
 @property (nonatomic,strong) NSMutableArray *arrayOfTables;
 @property (nonatomic,strong) NSMutableArray *images;
 @property (nonatomic,strong) NSMutableArray *networkImages;
+@property (nonatomic,strong)NSMutableArray *arrayOfState;
 
 @end
 
@@ -50,9 +51,12 @@
     self.arrayOfOrder=[[NSArray alloc] init];
     self.arrayOfTables=[[NSMutableArray alloc]init];
     self.networkImages=[[NSMutableArray alloc]init];
-    [self.networkImages addObject:@"http://img5.imgtn.bdimg.com/it/u=2291374817,432518394&fm=21&gp=0.jpg"];
-    [self.networkImages addObject:@"http://img5.imgtn.bdimg.com/it/u=2291374817,432518394&fm=21&gp=0.jpg"];
-    [self.networkImages addObject:@"http://img5.imgtn.bdimg.com/it/u=2291374817,432518394&fm=21&gp=0.jpg"];
+    
+    /*
+     [self.networkImages addObject:@"http://img5.imgtn.bdimg.com/it/u=2291374817,432518394&fm=21&gp=0.jpg"];
+     [self.networkImages addObject:@"http://img5.imgtn.bdimg.com/it/u=2291374817,432518394&fm=21&gp=0.jpg"];
+     [self.networkImages addObject:@"http://img5.imgtn.bdimg.com/it/u=2291374817,432518394&fm=21&gp=0.jpg"];
+     */
     
     self.images=[[NSMutableArray alloc]init];
     UIImage *image1=[UIImage imageNamed:@"bg0"];
@@ -64,8 +68,18 @@
     [self.images addObject:image3];
     [self.images addObject:image4];
     
+    self.arrayOfState=[[NSMutableArray alloc]init];
+    [self.arrayOfState addObject:@"1"];
+    [self.arrayOfState addObject:@"2"];
+    [self.arrayOfState addObject:@"3"];
+    [self.arrayOfState addObject:@"4"];
+    [self.arrayOfState addObject:@"5"];
+    [self.arrayOfState addObject:@"6"];
+    [self.arrayOfState addObject:@"7"];
+    [self.arrayOfState addObject:@"8"];
     
-    [self getModel];
+    
+    [self getModel:self.arrayOfState];
     [self initScrollTables:5];
     
     
@@ -92,7 +106,7 @@
         self.navigationItem.leftBarButtonItem=leftItem;
     }
     
-  
+    
 }
 
 -(void)back
@@ -102,7 +116,7 @@
 
 - (void)getModel
 {
-   self.userLoginInfo= [UserDataManager shareManager].userLoginInfo;
+    self.userLoginInfo= [UserDataManager shareManager].userLoginInfo;
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
     [dic setValue:self.userLoginInfo.user.phone forKey:@"phone"];
@@ -110,12 +124,13 @@
     [dic setValue:@"1" forKey:@"pageNum"];
     [dic setValue:@"10" forKey:@"pageSize"];
     
-
+    NSLog(@"上传字典:%@",dic);
     
     [[NetworkManager shareMgr] server_queryOrderListWithDic:dic completeHandle:^(NSDictionary *response) {
         
         self.arrayOfOrder= [response objectForKey:@"data"];
-
+        
+        NSLog(@"订单结果：%@",response);
         for (int i=0; i<self.arrayOfTables.count; i++) {
             UITableView *table=[self.arrayOfTables objectAtIndex:i];
             [table  reloadData];
@@ -123,6 +138,34 @@
     }];
     
 }
+
+- (void)getModel:(NSArray *)state
+{
+    self.userLoginInfo= [UserDataManager shareManager].userLoginInfo;
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setValue:self.userLoginInfo.user.phone forKey:@"phone"];
+    [dic setValue:self.userLoginInfo.sessionId forKey:@"sessionId"];
+    [dic setValue:@"1" forKey:@"pageNum"];
+    [dic setValue:@"10" forKey:@"pageSize"];
+    [dic setValue:state forKey:@"status"];
+    
+    NSLog(@"上传字典:%@",dic);
+    
+    [[NetworkManager shareMgr] server_queryOrderListWithDic:dic completeHandle:^(NSDictionary *response) {
+        
+        self.arrayOfOrder= [response objectForKey:@"data"];
+        
+        NSLog(@"订单结果：%@",response);
+        for (int i=0; i<self.arrayOfTables.count; i++) {
+            UITableView *table=[self.arrayOfTables objectAtIndex:i];
+            [table  reloadData];
+        }
+    }];
+    
+}
+
+
 
 
 - (void)didReceiveMemoryWarning {
@@ -225,6 +268,61 @@
         
         if (table.tag == index) {
             
+            if (index==0) {
+                NSLog(@"测试0");
+                self.arrayOfState=[[NSMutableArray alloc]init];
+                [self.arrayOfState addObject:@"1"];
+                [self.arrayOfState addObject:@"2"];
+                [self.arrayOfState addObject:@"3"];
+                [self.arrayOfState addObject:@"4"];
+                [self.arrayOfState addObject:@"5"];
+                [self.arrayOfState addObject:@"6"];
+                [self.arrayOfState addObject:@"7"];
+                [self.arrayOfState addObject:@"8"];
+                
+                
+                [self getModel:self.arrayOfState];
+                [table reloadData];
+            }
+            else if (index==1)
+            {
+                NSLog(@"测试1");
+                self.arrayOfState=[[NSMutableArray alloc]init];
+                [self.arrayOfState addObject:@"1"];
+                [self.arrayOfState addObject:@"2"];
+                [self.arrayOfState addObject:@"4"];
+                
+                [self getModel:self.arrayOfState];
+                [table reloadData];
+            }
+            else if (index==2)
+            {
+                NSLog(@"测试2");
+                self.arrayOfState=[[NSMutableArray alloc]init];
+                [self.arrayOfState addObject:@"3"];
+                
+                [self getModel:self.arrayOfState];
+                [table reloadData];
+            }
+            else if (index==3)
+            {
+                NSLog(@"测试3");
+                self.arrayOfState=[[NSMutableArray alloc]init];
+                [self.arrayOfState addObject:@"5"];
+                
+                [self getModel:self.arrayOfState];
+                [table reloadData];
+            }
+            else if (index==4)
+            {
+                NSLog(@"测试4");
+                self.arrayOfState=[[NSMutableArray alloc]init];
+                [self.arrayOfState addObject:@"8"];
+                
+                [self getModel:self.arrayOfState];
+                [table reloadData];
+            }
+            
             table.hidden = NO;
             
         }else{
@@ -288,9 +386,9 @@
         return 5;
         
     }
-        
     
-        
+    
+    
     else{
         
         NSUInteger row=indexPath.row-1;
@@ -314,7 +412,7 @@
         }
         else
         {
-        return 394;
+            return 394;
         }
         
         
@@ -349,52 +447,52 @@
         
     }
     /*
-    else if(indexPath.row%2 == 0){
-        
-        OrderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
-        
-        if (!cell) {
-            
-            cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
-            
-            UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
-            UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 , SCREEN_WIDTH - 10, 0.5)];
-            UIView* viewDivide3 = [[UIView alloc] initWithFrame:CGRectMake(0, 230, SCREEN_WIDTH, 0.5)];
-            
-            viewDivide1.backgroundColor = [HKCommen getColor:@"ccccccc"];
-            viewDivide2.backgroundColor = [HKCommen getColor:@"e0e0e0"];
-            viewDivide3.backgroundColor = [HKCommen getColor:@"ccccccc"];
-            
-            
-            [cell.viewMask1 addSubview:viewDivide1];
-            [cell.viewMask1 addSubview:viewDivide2];
-            [cell.viewMask1 addSubview:viewDivide3];
-        }
-        NSLog(@"每行1的字典：%@",[self.arrayOfOrder objectAtIndex:indexPath.row*0.5]);
-        
-
-        cell.judgeWhichStatus=0;
-        if (cell.judgeWhichStatus==0) {
-            
-            cell.btnGoCommentPage.hidden=NO;
-            [cell.btnGoCommentPage setTitle:@"待评价" forState:UIControlStateNormal];
-            [cell.btnGoCommentPage addTarget:self action:@selector(goCommentPage) forControlEvents:UIControlEventTouchUpInside];
-        }
-        else if (cell.judgeWhichStatus==1)
-        {
-            cell.btnGoCommentPage.hidden=NO;
-            [cell.btnGoCommentPage setTitle:@"退款详情" forState:UIControlStateNormal];
-            [cell.btnGoCommentPage addTarget:self action:@selector(goMoneyReturnPage) forControlEvents:UIControlEventTouchUpInside];
-        }
-        else
-        {
-            cell.btnGoCommentPage.hidden=YES;
-        }
-        
-        return cell;
-        
-    }
-    */
+     else if(indexPath.row%2 == 0){
+     
+     OrderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
+     
+     if (!cell) {
+     
+     cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
+     
+     UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
+     UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 , SCREEN_WIDTH - 10, 0.5)];
+     UIView* viewDivide3 = [[UIView alloc] initWithFrame:CGRectMake(0, 230, SCREEN_WIDTH, 0.5)];
+     
+     viewDivide1.backgroundColor = [HKCommen getColor:@"ccccccc"];
+     viewDivide2.backgroundColor = [HKCommen getColor:@"e0e0e0"];
+     viewDivide3.backgroundColor = [HKCommen getColor:@"ccccccc"];
+     
+     
+     [cell.viewMask1 addSubview:viewDivide1];
+     [cell.viewMask1 addSubview:viewDivide2];
+     [cell.viewMask1 addSubview:viewDivide3];
+     }
+     NSLog(@"每行1的字典：%@",[self.arrayOfOrder objectAtIndex:indexPath.row*0.5]);
+     
+     
+     cell.judgeWhichStatus=0;
+     if (cell.judgeWhichStatus==0) {
+     
+     cell.btnGoCommentPage.hidden=NO;
+     [cell.btnGoCommentPage setTitle:@"待评价" forState:UIControlStateNormal];
+     [cell.btnGoCommentPage addTarget:self action:@selector(goCommentPage) forControlEvents:UIControlEventTouchUpInside];
+     }
+     else if (cell.judgeWhichStatus==1)
+     {
+     cell.btnGoCommentPage.hidden=NO;
+     [cell.btnGoCommentPage setTitle:@"退款详情" forState:UIControlStateNormal];
+     [cell.btnGoCommentPage addTarget:self action:@selector(goMoneyReturnPage) forControlEvents:UIControlEventTouchUpInside];
+     }
+     else
+     {
+     cell.btnGoCommentPage.hidden=YES;
+     }
+     
+     return cell;
+     
+     }
+     */
     else{
         
         
@@ -422,7 +520,7 @@
             }
             else
             {
-            cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:1];
+                cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:1];
                 
                 UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
                 UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 , SCREEN_WIDTH - 10, 0.5)];
@@ -477,14 +575,14 @@
         }
         
         /*
-        [cell.btn_image1 addTarget:self action:@selector(selectPhoto:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.btn_image1 setTag:0];
-        
-        [cell.btn_image2 addTarget:self action:@selector(selectPhoto:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.btn_image2 setTag:1];
+         [cell.btn_image1 addTarget:self action:@selector(selectPhoto:) forControlEvents:UIControlEventTouchUpInside];
+         [cell.btn_image1 setTag:0];
          
-        [cell.btn_image3 addTarget:self action:@selector(selectPhoto:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.btn_image3 setTag:2];
+         [cell.btn_image2 addTarget:self action:@selector(selectPhoto:) forControlEvents:UIControlEventTouchUpInside];
+         [cell.btn_image2 setTag:1];
+         
+         [cell.btn_image3 addTarget:self action:@selector(selectPhoto:) forControlEvents:UIControlEventTouchUpInside];
+         [cell.btn_image3 setTag:2];
          */
         
         int state= [[dict objectForKey:@"state"] intValue];
@@ -526,8 +624,8 @@
         {
             cell.btnGoCommentPage.hidden=YES;
             
-//1、待受理  2、待接车 3、服务中 4、待还车  5、已完成 6、提交退款申请 7、商家审批通过 8、退款成功
-
+            //1、待受理  2、待接车 3、服务中 4、待还车  5、已完成 6、提交退款申请 7、商家审批通过 8、退款成功
+            
             if (state==1) {
                 cell.lblStatusOfOrder.text=@"待受理";
             }
@@ -542,29 +640,24 @@
             }
             else if (state==6)
             {
-            cell.lblStatusOfOrder.text=@"提交退款申请";
+                cell.lblStatusOfOrder.text=@"提交退款申请";
             }
             else
             {
                 cell.lblStatusOfOrder.text=@"商家审批通过";
             }
         }
-
+        
         return cell;
     }
 }
 
--(void)selectPhoto:(UIButton*)sender
-{
-    int i=[sender tag];
-}
 
 /*
  *  本地图片展示
  */
 -(void)localImageShow:(NSUInteger)index TableRow:(NSUInteger)row{
     
-     NSLog(@"测试");
     
     UITableView *table=[self.arrayOfTables objectAtIndex:0];
     OrderCell *cell=(OrderCell*)[table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
