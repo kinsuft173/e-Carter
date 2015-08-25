@@ -127,7 +127,7 @@
         }
         else
         {
-            [HKCommen addAlertViewWithTitel:@"字符集不一致导致的修改失败!"];
+            [HKCommen addAlertViewWithTitel:@"修改失败!"];
             //NSLog(@"修改失败");
         }
     }];

@@ -32,11 +32,18 @@
 @property (nonatomic, strong) NSMutableArray* arrayOrderAbort;
 @property (nonatomic,strong) OrderDetail *myOrder;
 @property (nonatomic, strong) UserLoginInfo* userLoginInfo;
-@property (nonatomic,strong) NSArray *arrayOfOrder;
+@property (nonatomic,strong) NSMutableArray *arrayOfOrder;
 @property (nonatomic,strong) NSMutableArray *arrayOfTables;
 @property (nonatomic,strong) NSMutableArray *images;
 @property (nonatomic,strong) NSMutableArray *networkImages;
 @property (nonatomic,strong)NSMutableArray *arrayOfState;
+
+@property (nonatomic,strong)NSMutableArray *arrayOfWaiting;
+@property (nonatomic,strong)NSMutableArray *arrayOfServicing;
+@property (nonatomic,strong)NSMutableArray *arrayOfComplete;
+@property (nonatomic,strong)NSMutableArray *arrayOfCancel;
+
+@property (nonatomic,strong)NSMutableArray *arrayOfShow;
 
 @end
 
@@ -48,9 +55,16 @@
     
     [HKCommen addHeadTitle:@"我的订单" whichNavigation:self.navigationItem];
     
-    self.arrayOfOrder=[[NSArray alloc] init];
+    self.arrayOfOrder=[[NSMutableArray alloc] init];
     self.arrayOfTables=[[NSMutableArray alloc]init];
     self.networkImages=[[NSMutableArray alloc]init];
+    
+    self.arrayOfWaiting=[[NSMutableArray alloc]init];
+    self.arrayOfServicing=[[NSMutableArray alloc]init];
+    self.arrayOfComplete=[[NSMutableArray alloc]init];
+    self.arrayOfCancel=[[NSMutableArray alloc]init];
+    
+    self.arrayOfShow=[[NSMutableArray alloc]init];
     
     /*
      [self.networkImages addObject:@"http://img5.imgtn.bdimg.com/it/u=2291374817,432518394&fm=21&gp=0.jpg"];
@@ -68,18 +82,10 @@
     [self.images addObject:image3];
     [self.images addObject:image4];
     
-    self.arrayOfState=[[NSMutableArray alloc]init];
-    [self.arrayOfState addObject:@"1"];
-    [self.arrayOfState addObject:@"2"];
-    [self.arrayOfState addObject:@"3"];
-    [self.arrayOfState addObject:@"4"];
-    [self.arrayOfState addObject:@"5"];
-    [self.arrayOfState addObject:@"6"];
-    [self.arrayOfState addObject:@"7"];
-    [self.arrayOfState addObject:@"8"];
+  
+
     
-    
-    [self getModel:self.arrayOfState];
+    [self getModel];
     [self initScrollTables:5];
     
     
@@ -130,7 +136,40 @@
         
         self.arrayOfOrder= [response objectForKey:@"data"];
         
+        self.arrayOfShow=self.arrayOfOrder;
+        
         NSLog(@"订单结果：%@",response);
+        
+        for (int i=0; i<self.arrayOfOrder.count; i++) {
+            
+           int state= [[[self.arrayOfOrder objectAtIndex:i] objectForKey:@"state"] intValue];
+            
+            if (state==1) {
+                [self.arrayOfWaiting addObject:[self.arrayOfOrder objectAtIndex:i]];
+            }
+            else if (state==2)
+            {
+            [self.arrayOfWaiting addObject:[self.arrayOfOrder objectAtIndex:i]];
+            }
+            else if (state==3)
+            {
+                [self.arrayOfServicing addObject:[self.arrayOfOrder objectAtIndex:i]];
+            }
+            else if (state==4)
+            {
+                [self.arrayOfWaiting addObject:[self.arrayOfOrder objectAtIndex:i]];
+            }
+            else if (state==5)
+            {
+                [self.arrayOfComplete addObject:[self.arrayOfOrder objectAtIndex:i]];
+            }
+        
+            else if (state==8)
+            {
+                [self.arrayOfCancel addObject:[self.arrayOfOrder objectAtIndex:i]];
+            }
+        }
+        
         for (int i=0; i<self.arrayOfTables.count; i++) {
             UITableView *table=[self.arrayOfTables objectAtIndex:i];
             [table  reloadData];
@@ -144,13 +183,12 @@
     self.userLoginInfo= [UserDataManager shareManager].userLoginInfo;
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+
     [dic setValue:self.userLoginInfo.user.phone forKey:@"phone"];
     [dic setValue:self.userLoginInfo.sessionId forKey:@"sessionId"];
     [dic setValue:@"1" forKey:@"pageNum"];
     [dic setValue:@"10" forKey:@"pageSize"];
-    [dic setValue:state forKey:@"status"];
-    
-    NSLog(@"上传字典:%@",dic);
+    [dic setValue:@[@1, @2, @4] forKey:@"state"];
     
     [[NetworkManager shareMgr] server_queryOrderListWithDic:dic completeHandle:^(NSDictionary *response) {
         
@@ -269,57 +307,27 @@
         if (table.tag == index) {
             
             if (index==0) {
-                NSLog(@"测试0");
-                self.arrayOfState=[[NSMutableArray alloc]init];
-                [self.arrayOfState addObject:@"1"];
-                [self.arrayOfState addObject:@"2"];
-                [self.arrayOfState addObject:@"3"];
-                [self.arrayOfState addObject:@"4"];
-                [self.arrayOfState addObject:@"5"];
-                [self.arrayOfState addObject:@"6"];
-                [self.arrayOfState addObject:@"7"];
-                [self.arrayOfState addObject:@"8"];
-                
-                
-                [self getModel:self.arrayOfState];
+                self.arrayOfShow=self.arrayOfOrder;
                 [table reloadData];
             }
             else if (index==1)
             {
-                NSLog(@"测试1");
-                self.arrayOfState=[[NSMutableArray alloc]init];
-                [self.arrayOfState addObject:@"1"];
-                [self.arrayOfState addObject:@"2"];
-                [self.arrayOfState addObject:@"4"];
-                
-                [self getModel:self.arrayOfState];
+                self.arrayOfShow=self.arrayOfWaiting;
                 [table reloadData];
             }
             else if (index==2)
             {
-                NSLog(@"测试2");
-                self.arrayOfState=[[NSMutableArray alloc]init];
-                [self.arrayOfState addObject:@"3"];
-                
-                [self getModel:self.arrayOfState];
+                self.arrayOfShow=self.arrayOfServicing;
                 [table reloadData];
             }
             else if (index==3)
             {
-                NSLog(@"测试3");
-                self.arrayOfState=[[NSMutableArray alloc]init];
-                [self.arrayOfState addObject:@"5"];
-                
-                [self getModel:self.arrayOfState];
+                self.arrayOfShow=self.arrayOfComplete;
                 [table reloadData];
             }
             else if (index==4)
             {
-                NSLog(@"测试4");
-                self.arrayOfState=[[NSMutableArray alloc]init];
-                [self.arrayOfState addObject:@"8"];
-                
-                [self getModel:self.arrayOfState];
+                self.arrayOfShow=self.arrayOfCancel;
                 [table reloadData];
             }
             
@@ -376,7 +384,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.arrayOfOrder.count+1;
+    return self.arrayOfShow.count+1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -393,7 +401,7 @@
         
         NSUInteger row=indexPath.row-1;
         
-        NSDictionary *dict=[self.arrayOfOrder objectAtIndex:row];
+        NSDictionary *dict=[self.arrayOfShow objectAtIndex:row];
         
         NSArray *orderImageList=[dict objectForKey:@"orderImageList"];
         
@@ -558,9 +566,9 @@
         NSUInteger row=indexPath.row-1;
         
         
-        NSLog(@"序号：%@",[self.arrayOfOrder objectAtIndex:row]);
+        NSLog(@"序号：%@",[self.arrayOfShow objectAtIndex:row]);
         
-        NSDictionary *dict=[self.arrayOfOrder objectAtIndex:row];
+        NSDictionary *dict=[self.arrayOfShow objectAtIndex:row];
         
         NSArray *orderImageList=[dict objectForKey:@"orderImageList"];
         
