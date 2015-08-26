@@ -133,16 +133,31 @@
                                 <constraint firstAttribute="height" constant="44" id="kiW-aO-aFt"/>
                             </constraints>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vUI-Ju-fxo">
+                            <rect key="frame" x="113" y="0.0" width="195" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="195" id="Ezm-wK-amp"/>
+                                <constraint firstAttribute="height" constant="44" id="K7v-DK-7Fq"/>
+                            </constraints>
+                            <state key="normal" title="Button">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="goSelectAdress:" destination="-1" eventType="touchUpInside" id="jf3-8X-8ma"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="138" id="0Nd-s9-m5K"/>
+                        <constraint firstItem="vUI-Ju-fxo" firstAttribute="top" secondItem="JKc-Tq-rXd" secondAttribute="top" id="16q-pE-j3b"/>
                         <constraint firstAttribute="trailing" secondItem="1Xr-si-FIa" secondAttribute="trailing" constant="10" id="2iU-5b-cuz"/>
                         <constraint firstItem="H4c-jS-b0r" firstAttribute="leading" secondItem="JKc-Tq-rXd" secondAttribute="leading" constant="63" id="4bH-SN-NAU"/>
                         <constraint firstItem="Lyh-df-ngU" firstAttribute="top" secondItem="JKc-Tq-rXd" secondAttribute="top" constant="47" id="C6E-Vc-jUD"/>
                         <constraint firstAttribute="trailing" secondItem="TOs-WD-YPQ" secondAttribute="trailing" constant="12" id="Cxg-PZ-Qxl"/>
                         <constraint firstItem="H4c-jS-b0r" firstAttribute="top" secondItem="JKc-Tq-rXd" secondAttribute="top" id="D83-83-Irg"/>
                         <constraint firstItem="6d9-qH-Qkg" firstAttribute="leading" secondItem="JKc-Tq-rXd" secondAttribute="leading" constant="115" id="Exh-CY-ObW"/>
+                        <constraint firstAttribute="trailing" secondItem="vUI-Ju-fxo" secondAttribute="trailing" constant="12" id="FVb-m4-wk5"/>
                         <constraint firstItem="b5m-Er-j2P" firstAttribute="leading" secondItem="JKc-Tq-rXd" secondAttribute="leading" constant="104" id="J8m-27-QkP"/>
                         <constraint firstAttribute="bottom" secondItem="1Xr-si-FIa" secondAttribute="bottom" constant="5" id="Jnf-6r-6jR"/>
                         <constraint firstItem="TOs-WD-YPQ" firstAttribute="top" secondItem="JKc-Tq-rXd" secondAttribute="top" id="QIh-47-O4F"/>

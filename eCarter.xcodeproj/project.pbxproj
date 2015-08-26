@@ -525,6 +525,13 @@
 		E99318AB1B8A1BC700B56AE9 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E993188A1B8A1BC700B56AE9 /* SVProgressHUD.bundle */; };
 		E99318AC1B8A1BC700B56AE9 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E993188C1B8A1BC700B56AE9 /* SVProgressHUD.m */; };
 		E99318AD1B8A1BC700B56AE9 /* LFRoundProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E993188F1B8A1BC700B56AE9 /* LFRoundProgressView.m */; };
+		E9A4F3D41B8E347000C6F600 /* GetProvinceCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A4F3D21B8E347000C6F600 /* GetProvinceCtrl.m */; };
+		E9A4F3D51B8E347000C6F600 /* GetProvinceCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A4F3D31B8E347000C6F600 /* GetProvinceCtrl.xib */; };
+		E9A4F3D91B8E360700C6F600 /* GetCityCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A4F3D71B8E360700C6F600 /* GetCityCtrl.m */; };
+		E9A4F3DA1B8E360700C6F600 /* GetCityCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A4F3D81B8E360700C6F600 /* GetCityCtrl.xib */; };
+		E9A4F3DE1B8E362900C6F600 /* GetRegionCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A4F3DC1B8E362900C6F600 /* GetRegionCtrl.m */; };
+		E9A4F3DF1B8E362900C6F600 /* GetRegionCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A4F3DD1B8E362900C6F600 /* GetRegionCtrl.xib */; };
+		E9A4F3E11B8E390C00C6F600 /* location.xml in Resources */ = {isa = PBXBuildFile; fileRef = E9A4F3E01B8E390C00C6F600 /* location.xml */; };
 		E9CB14041B6DCFE200A46117 /* CommentCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CB14021B6DCFE200A46117 /* CommentCtrl.m */; };
 		E9CB14051B6DCFE200A46117 /* CommentCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9CB14031B6DCFE200A46117 /* CommentCtrl.xib */; };
 		E9EB56921B836DF500E0FCBF /* SelectProvinceCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB56901B836DF500E0FCBF /* SelectProvinceCtrl.m */; };
@@ -1386,6 +1393,16 @@
 		E993188C1B8A1BC700B56AE9 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		E993188E1B8A1BC700B56AE9 /* LFRoundProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFRoundProgressView.h; sourceTree = "<group>"; };
 		E993188F1B8A1BC700B56AE9 /* LFRoundProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFRoundProgressView.m; sourceTree = "<group>"; };
+		E9A4F3D11B8E347000C6F600 /* GetProvinceCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetProvinceCtrl.h; sourceTree = "<group>"; };
+		E9A4F3D21B8E347000C6F600 /* GetProvinceCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetProvinceCtrl.m; sourceTree = "<group>"; };
+		E9A4F3D31B8E347000C6F600 /* GetProvinceCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetProvinceCtrl.xib; sourceTree = "<group>"; };
+		E9A4F3D61B8E360700C6F600 /* GetCityCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetCityCtrl.h; sourceTree = "<group>"; };
+		E9A4F3D71B8E360700C6F600 /* GetCityCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetCityCtrl.m; sourceTree = "<group>"; };
+		E9A4F3D81B8E360700C6F600 /* GetCityCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetCityCtrl.xib; sourceTree = "<group>"; };
+		E9A4F3DB1B8E362900C6F600 /* GetRegionCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetRegionCtrl.h; sourceTree = "<group>"; };
+		E9A4F3DC1B8E362900C6F600 /* GetRegionCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetRegionCtrl.m; sourceTree = "<group>"; };
+		E9A4F3DD1B8E362900C6F600 /* GetRegionCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetRegionCtrl.xib; sourceTree = "<group>"; };
+		E9A4F3E01B8E390C00C6F600 /* location.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = location.xml; sourceTree = "<group>"; };
 		E9CB14011B6DCFE200A46117 /* CommentCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCtrl.h; sourceTree = "<group>"; };
 		E9CB14021B6DCFE200A46117 /* CommentCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCtrl.m; sourceTree = "<group>"; };
 		E9CB14031B6DCFE200A46117 /* CommentCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCtrl.xib; sourceTree = "<group>"; };
@@ -1904,6 +1921,7 @@
 		DED2EB121B35E336006FE893 /* MainServerModule */ = {
 			isa = PBXGroup;
 			children = (
+				E9A4F3D01B8E33F400C6F600 /* SelectAdress */,
 				DEAAA71D1B80A10A00829FB7 /* E车夫首页 */,
 				DEFDF5961B5B83BE00298366 /* Model */,
 				DEE87CD41B48EA0C00D3EDAB /* lijingyou */,
@@ -2351,12 +2369,15 @@
 		DEE87CD41B48EA0C00D3EDAB /* lijingyou */ = {
 			isa = PBXGroup;
 			children = (
+				E9F9CE321B74D8C0007781AC /* image */,
 				E96A2DD01B77AE8400DC9B05 /* Classes */,
 				E954E0E91B759B5500627977 /* SvGridView.h */,
 				E954E0EA1B759B5500627977 /* SvGridView.m */,
+				DEE87CD51B48EA2000D3EDAB /* AddNewAdress.h */,
+				DEE87CD61B48EA2000D3EDAB /* AddNewAdress.m */,
+				DEE87CD71B48EA2000D3EDAB /* AddNewAdress.xib */,
 				E9F9CE301B74D8C0007781AC /* HYActivityView.h */,
 				E9F9CE311B74D8C0007781AC /* HYActivityView.m */,
-				E9F9CE321B74D8C0007781AC /* image */,
 				DEE337831B4DF68C00357253 /* AboutUsCtrl.h */,
 				DEE337841B4DF68C00357253 /* AboutUsCtrl.m */,
 				DEE337851B4DF68C00357253 /* AboutUsCtrl.xib */,
@@ -2394,9 +2415,6 @@
 				DEE3374A1B4C417F00357253 /* SeriesCarCell.h */,
 				DEE3374B1B4C417F00357253 /* SeriesCarCell.m */,
 				DEE3374C1B4C417F00357253 /* SeriesCarCell.xib */,
-				DEE87CD51B48EA2000D3EDAB /* AddNewAdress.h */,
-				DEE87CD61B48EA2000D3EDAB /* AddNewAdress.m */,
-				DEE87CD71B48EA2000D3EDAB /* AddNewAdress.xib */,
 				DEE87CD81B48EA2000D3EDAB /* AddNewCarCtrl.h */,
 				DEE87CD91B48EA2000D3EDAB /* AddNewCarCtrl.m */,
 				DEE87CDA1B48EA2000D3EDAB /* AddNewCarCtrl.xib */,
@@ -2978,6 +2996,23 @@
 			path = LFRoundProgressView;
 			sourceTree = "<group>";
 		};
+		E9A4F3D01B8E33F400C6F600 /* SelectAdress */ = {
+			isa = PBXGroup;
+			children = (
+				E9A4F3E01B8E390C00C6F600 /* location.xml */,
+				E9A4F3D11B8E347000C6F600 /* GetProvinceCtrl.h */,
+				E9A4F3D21B8E347000C6F600 /* GetProvinceCtrl.m */,
+				E9A4F3D31B8E347000C6F600 /* GetProvinceCtrl.xib */,
+				E9A4F3D61B8E360700C6F600 /* GetCityCtrl.h */,
+				E9A4F3D71B8E360700C6F600 /* GetCityCtrl.m */,
+				E9A4F3D81B8E360700C6F600 /* GetCityCtrl.xib */,
+				E9A4F3DB1B8E362900C6F600 /* GetRegionCtrl.h */,
+				E9A4F3DC1B8E362900C6F600 /* GetRegionCtrl.m */,
+				E9A4F3DD1B8E362900C6F600 /* GetRegionCtrl.xib */,
+			);
+			name = SelectAdress;
+			sourceTree = "<group>";
+		};
 		E9CB14001B6DCF8900A46117 /* Order */ = {
 			isa = PBXGroup;
 			children = (
@@ -3200,6 +3235,7 @@
 				DEE337061B4C40D900357253 /* Black@3x.png in Resources */,
 				DEE48B8B1B3964E400458D6F /* TellCell.xib in Resources */,
 				DED7F5781B4760DB0005019C /* icon_Right@3x.png in Resources */,
+				E9A4F3DA1B8E360700C6F600 /* GetCityCtrl.xib in Resources */,
 				DEE3370C1B4C40D900357253 /* Champagne_gold@3x.png in Resources */,
 				E9EB56981B836F6300E0FCBF /* ProvinceCell.xib in Resources */,
 				DEE52ED61B38FB4800C90BA3 /* CouponExtraInfoCell.xib in Resources */,
@@ -3325,6 +3361,7 @@
 				DEE337221B4C40D900357253 /* mine_Address@3x.png in Resources */,
 				DED7F5821B4760DB0005019C /* img_default@3x.png in Resources */,
 				DEE4CA501B3C7F570009B73C /* AliPayCell.xib in Resources */,
+				E9A4F3DF1B8E362900C6F600 /* GetRegionCtrl.xib in Resources */,
 				DEE3371E1B4C40D900357253 /* login_passwore@3x.png in Resources */,
 				DEE87CD31B48E7A500D3EDAB /* ServiceCommentinfoCell.xib in Resources */,
 				DEE87D0E1B48EC0500D3EDAB /* SelectCarCell.xib in Resources */,
@@ -3412,6 +3449,7 @@
 				E9F9D0441B74F32C007781AC /* Share_qq@3x.png in Resources */,
 				DED7F5571B4760DB0005019C /* but_checked@3x.png in Resources */,
 				DED7F55C1B4760DB0005019C /* but_Unchecked@2x.png in Resources */,
+				E9A4F3E11B8E390C00C6F600 /* location.xml in Resources */,
 				DEE52ED11B38FAEB00C90BA3 /* CouponMainInfoCell.xib in Resources */,
 				DEE337151B4C40D900357253 /* Silver@2x.png in Resources */,
 				DEE337A71B4DF68C00357253 /* RechargeMoneyCtrl.xib in Resources */,
@@ -3478,6 +3516,7 @@
 				DEE337361B4C40D900357253 /* my-points_bg@2x.png in Resources */,
 				DEE337141B4C40D900357253 /* red@3x.png in Resources */,
 				DEE3373A1B4C40D900357253 /* Process_now@2x.png in Resources */,
+				E9A4F3D51B8E347000C6F600 /* GetProvinceCtrl.xib in Resources */,
 				DE9D12391B514B1500046407 /* AMap.bundle in Resources */,
 				DEE87D261B48EC5100D3EDAB /* DeductMoneyCell.xib in Resources */,
 				DEEDABF61B63E9D500247916 /* register.json in Resources */,
@@ -3557,6 +3596,7 @@
 				DE9D120D1B50ECEC00046407 /* GeocodeAnnotation.m in Sources */,
 				E99318AC1B8A1BC700B56AE9 /* SVProgressHUD.m in Sources */,
 				DEE4CA591B3C7F8A0009B73C /* WeixinPayCell.m in Sources */,
+				E9A4F3D41B8E347000C6F600 /* GetProvinceCtrl.m in Sources */,
 				DE9D12151B50ECEC00046407 /* ReGeocodeAnnotation.m in Sources */,
 				DEE4CA541B3C7F6C0009B73C /* CountPayCell.m in Sources */,
 				E99318991B8A1BC700B56AE9 /* UIColor+Extend.m in Sources */,
@@ -3636,6 +3676,7 @@
 				DEE48B851B3964B400458D6F /* ServerListCell.m in Sources */,
 				DEE48BA91B39A81600458D6F /* DiscountScoreCell.m in Sources */,
 				E99318301B8A152E00B56AE9 /* PBConst.m in Sources */,
+				E9A4F3D91B8E360700C6F600 /* GetCityCtrl.m in Sources */,
 				E99318AA1B8A1BC700B56AE9 /* SVIndefiniteAnimatedView.m in Sources */,
 				DE9D12D41B52DBE900046407 /* ApiXml.mm in Sources */,
 				E993189A1B8A1BC700B56AE9 /* UIDevice+Extend.m in Sources */,
@@ -3747,6 +3788,7 @@
 				DEE719C11B3ED826003221A8 /* PlaceHolderCell.m in Sources */,
 				DECA172F1B614E9B00FD3418 /* ShopServerTime.m in Sources */,
 				E9EB56971B836F6300E0FCBF /* ProvinceCell.m in Sources */,
+				E9A4F3DE1B8E362900C6F600 /* GetRegionCtrl.m in Sources */,
 				E96A2DF01B77AE8400DC9B05 /* SBJsonStreamWriter.m in Sources */,
 				E954E0EB1B759B5500627977 /* SvGridView.m in Sources */,
 			);
