@@ -202,6 +202,7 @@
             
         }
         
+        NSLog(@"广告入口:%@",self.array_advertisement);
         [cell customUI:self.array_advertisement];
         
         return cell;

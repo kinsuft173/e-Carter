@@ -10,4 +10,12 @@
 
 @implementation PointTransaction
 
+@dynamic description;
+
++(NSDictionary *)replacedKeyFromPropertyName{
+    
+    return @{@"Description":@"description"};
+    
+}
+
 @end

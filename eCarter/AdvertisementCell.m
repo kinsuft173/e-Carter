@@ -29,6 +29,7 @@
 
 -(void)customUI:(NSMutableArray*)array
 {
+    NSLog(@"广告数组:%@",array);
     
     if (self.myScroll.tag == 1001 || array.count == 0) {
         

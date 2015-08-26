@@ -10,15 +10,17 @@
 
 @interface PointTransaction : NSObject
 
-@property (nonatomic, copy) NSString *id;
-
-@property (nonatomic, assign) NSInteger totalPoint;
-
 @property (nonatomic, copy) NSString *createTime;
 
-@property (nonatomic, copy) NSString *userId;
+@property (nonatomic, copy) NSString *Description;
 
-@property (nonatomic, assign) NSInteger point;
+@property (nonatomic, copy) NSString *id;
+
+@property (nonatomic, copy) NSString *orderId;
+
+@property (nonatomic, copy) NSString *point;
+
+@property (nonatomic, copy) NSString *totalPoint;
 
 @property (nonatomic, copy) NSString *type;
 

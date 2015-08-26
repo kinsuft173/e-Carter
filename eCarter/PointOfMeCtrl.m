@@ -59,24 +59,28 @@
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
     [dic setObject:self.userInfo.user.phone forKey:@"phone"];
     [dic setObject:self.userInfo.sessionId forKey:@"sessionId"];
+    [dic setObject:@"1" forKey:@"pageNum"];
+    [dic setObject:@"10" forKey:@"pageSize"];
     
     NSLog(@"积分字典：%@",dic);
-    
-//    [[NetworkManager shareMgr] server_queryUserAddressWithDic:dic completeHandle:^(NSDictionary *response) {
-//        
-//        NSLog(@"字典：%@",response);
-//        NSDictionary *dictOfCount=[[NSDictionary alloc]init];
-//        dictOfCount = [response objectForKey:@"data"];
-//        
-//        self.lbl_myCount.text=[dictOfCount objectForKey:@"point"];
-//    }];
     
     [[NetworkManager shareMgr] server_queryPointTransactionWithDic:dic completeHandle:^(NSDictionary *response) {
         
         NSLog(@"获得的字典：%@",response);
-        self.arrayOfCount = [[response objectForKey:@"data"] objectForKey:@"items"];
+        self.arrayOfCount = [response objectForKey:@"data"];
         
         [self.myTable reloadData];
+    }];
+    
+    NSMutableDictionary *dicAccount=[[NSMutableDictionary alloc]init];
+    [dicAccount setValue:self.userInfo.user.uid forKey:@"userId"];
+    [dicAccount setValue:@"2" forKey:@"accountType"];
+
+    [[NetworkManager shareMgr] server_queryUserAccountWithDic:dicAccount completeHandle:^(NSDictionary *response) {
+        
+        NSLog(@"字典：%@",response);
+        self.lbl_myCount.text=[NSString stringWithFormat:@"%@",[response objectForKey:@"data"]];
+        
     }];
 }
 
@@ -94,7 +98,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return self.arrayOfCount.count;
     
 }
 
@@ -118,11 +122,11 @@
         
         cell = [topLevelObjects objectAtIndex:0];
     }
-    PointTransaction *myPoint=[self.arrayOfCount objectAtIndex:indexPath.row];
-    cell.lbl_thisPoint.text=[NSString stringWithFormat:@"%ld",myPoint.point];
-    cell.lbl_totalPoint.text=[NSString stringWithFormat:@"%ld",myPoint.totalPoint];
+    PointTransaction *myPoint=[PointTransaction objectWithKeyValues:[self.arrayOfCount objectAtIndex:indexPath.row]];
+    cell.lbl_thisPoint.text=myPoint.point;
+    cell.lbl_totalPoint.text=myPoint.totalPoint;
     cell.lbl_time.text=myPoint.createTime;
-    cell.lbl_type.text=myPoint.type;
+    cell.lbl_type.text=myPoint.Description;
     
     return cell;
     
