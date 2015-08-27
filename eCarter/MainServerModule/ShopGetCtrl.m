@@ -79,6 +79,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (self.arrayModel.count==0) {
+        return 2;
+    }
     return self.arrayModel.count;
 }
 
@@ -151,7 +154,10 @@
         
 //        NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:@"",@"page", nil];
         
-        NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"style", nil];
+        NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1",@"style", nil];
+        
+        [dic setObject:@"113.3380580000" forKey:@"dimensions_x"];
+        [dic setObject:@"23.3380580000" forKey:@"dimensions_y"];
         
         [[NetworkManager shareMgr] server_queryStoreListWithDic:dic completeHandle:^(NSDictionary *response) {
             

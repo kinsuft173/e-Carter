@@ -1,26 +1,27 @@
 //
-//  GetRegionCtrl.m
+//  SelectStoreTimeCtrl.m
 //  eCarter
 //
-//  Created by lijingyou on 15/8/27.
+//  Created by lijingyou on 15/8/28.
 //  Copyright (c) 2015年 kinsuft173. All rights reserved.
 //
 
-#import "GetRegionCtrl.h"
+#import "SelectStoreTimeCtrl.h"
+#import "NetworkManager.h"
 #import "HKCommen.h"
 #import "ProvinceCell.h"
-#import "AddNewAdress.h"
 
-@interface GetRegionCtrl ()
+@interface SelectStoreTimeCtrl ()
 
 @end
 
-@implementation GetRegionCtrl
+@implementation SelectStoreTimeCtrl
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [HKCommen addHeadTitle:@"选择地区" whichNavigation:self.navigationItem];
+    
+    [HKCommen addHeadTitle:@"选择服务时间" whichNavigation:self.navigationItem];
     [HKCommen setExtraCellLineHidden:self.myTable];
     
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -41,16 +42,18 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    [self getModel];
 }
 
 -(void)back
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - tableView delegate
@@ -102,14 +105,29 @@ heightForHeaderInSection:(NSInteger)section
 {
     ProvinceCell *cell=(ProvinceCell *)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section]];
     
-   // self.province=cell.lbl_province.text;
+    // self.province=cell.lbl_province.text;
     
     
-    [self.delegate pickAdress:cell.lbl_province.text];
-    AddNewAdress *vc=[[AddNewAdress alloc]initWithNibName:@"AddNewAdress" bundle:nil];
-    [self.navigationController popToViewController:vc animated:YES];
+    [self.delegate pickTime:cell.lbl_province.text];
+    [self.navigationController popViewControllerAnimated:YES];
     
+    
+}
 
+
+
+-(void)getModel
+{
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:@"1" forKey:@"storeId"];
+    
+    [[NetworkManager shareMgr] server_queryStoreServiceTimeWithDic:dic completeHandle:^(NSDictionary *response) {
+        
+        
+        NSLog(@"时间字典：%@",[response objectForKey:@"data"]);
+        
+        
+    }];
 }
 
 

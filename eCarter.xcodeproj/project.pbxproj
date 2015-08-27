@@ -481,6 +481,8 @@
 		E98B3A831B6DE9F400980C16 /* MoneyReturnDetailCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = E98B3A811B6DE9F400980C16 /* MoneyReturnDetailCtrl.xib */; };
 		E98B3A861B6DEA3000980C16 /* MoneyReturnProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E98B3A851B6DEA3000980C16 /* MoneyReturnProgressView.m */; };
 		E98B3A881B6DEA4900980C16 /* MoneyReturnProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E98B3A871B6DEA4900980C16 /* MoneyReturnProgressView.xib */; };
+		E98B89521B8FD5C500270E7D /* SelectStoreTimeCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E98B89501B8FD5C500270E7D /* SelectStoreTimeCtrl.m */; };
+		E98B89531B8FD5C500270E7D /* SelectStoreTimeCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = E98B89511B8FD5C500270E7D /* SelectStoreTimeCtrl.xib */; };
 		E993182F1B8A152E00B56AE9 /* UIView+PBExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = E99318101B8A152E00B56AE9 /* UIView+PBExtend.m */; };
 		E99318301B8A152E00B56AE9 /* PBConst.m in Sources */ = {isa = PBXBuildFile; fileRef = E99318131B8A152E00B56AE9 /* PBConst.m */; };
 		E99318311B8A152E00B56AE9 /* PhotoBroswerLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E99318161B8A152E00B56AE9 /* PhotoBroswerLayout.m */; };
@@ -1308,6 +1310,9 @@
 		E98B3A841B6DEA3000980C16 /* MoneyReturnProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoneyReturnProgressView.h; sourceTree = "<group>"; };
 		E98B3A851B6DEA3000980C16 /* MoneyReturnProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoneyReturnProgressView.m; sourceTree = "<group>"; };
 		E98B3A871B6DEA4900980C16 /* MoneyReturnProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoneyReturnProgressView.xib; sourceTree = "<group>"; };
+		E98B894F1B8FD5C500270E7D /* SelectStoreTimeCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectStoreTimeCtrl.h; sourceTree = "<group>"; };
+		E98B89501B8FD5C500270E7D /* SelectStoreTimeCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectStoreTimeCtrl.m; sourceTree = "<group>"; };
+		E98B89511B8FD5C500270E7D /* SelectStoreTimeCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectStoreTimeCtrl.xib; sourceTree = "<group>"; };
 		E993180F1B8A152E00B56AE9 /* UIView+PBExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PBExtend.h"; sourceTree = "<group>"; };
 		E99318101B8A152E00B56AE9 /* UIView+PBExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PBExtend.m"; sourceTree = "<group>"; };
 		E99318121B8A152E00B56AE9 /* PBConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBConst.h; sourceTree = "<group>"; };
@@ -3009,6 +3014,9 @@
 				E9A4F3DB1B8E362900C6F600 /* GetRegionCtrl.h */,
 				E9A4F3DC1B8E362900C6F600 /* GetRegionCtrl.m */,
 				E9A4F3DD1B8E362900C6F600 /* GetRegionCtrl.xib */,
+				E98B894F1B8FD5C500270E7D /* SelectStoreTimeCtrl.h */,
+				E98B89501B8FD5C500270E7D /* SelectStoreTimeCtrl.m */,
+				E98B89511B8FD5C500270E7D /* SelectStoreTimeCtrl.xib */,
 			);
 			name = SelectAdress;
 			sourceTree = "<group>";
@@ -3373,6 +3381,7 @@
 				DED7F5481B4760DB0005019C /* address_btn_PD-Black@2x.png in Resources */,
 				DEE4CA5F1B3C7FAB0009B73C /* TotolPayCell.xib in Resources */,
 				DEE48B771B39643800458D6F /* BannerCell.xib in Resources */,
+				E98B89531B8FD5C500270E7D /* SelectStoreTimeCtrl.xib in Resources */,
 				E993183A1B8A152E00B56AE9 /* PhotoItemView.xib in Resources */,
 				DED7F56A1B4760DB0005019C /* home_btn_shangmenquche@3x.png in Resources */,
 				DE9D12311B50FC2D00046407 /* startPoint.png in Resources */,
@@ -3751,6 +3760,7 @@
 				E99318951B8A1BC700B56AE9 /* NSDate+Extend.m in Sources */,
 				E993182F1B8A152E00B56AE9 /* UIView+PBExtend.m in Sources */,
 				DEE87CF01B48EA2000D3EDAB /* PaymentCtrl.m in Sources */,
+				E98B89521B8FD5C500270E7D /* SelectStoreTimeCtrl.m in Sources */,
 				DEE87D211B48EC5100D3EDAB /* ButtonCell.m in Sources */,
 				DE9D12C61B52BE0000046407 /* RSADataSigner.m in Sources */,
 				E99318911B8A1BC700B56AE9 /* CoreArchive.m in Sources */,

@@ -367,6 +367,7 @@
 
 - (void)goNextStep:(UIButton*)btn
 {
+    /*
     if (self.indexPathAddress.row == 0) {
         
         [HKCommen addAlertViewWithTitel:@"请选择地址"];
@@ -382,12 +383,9 @@
         return;
         
     }
-    
-    
-    [self performSegueWithIdentifier:@"goSelfList" sender:nil];
-//    PaymentCtrl *vc=[[PaymentCtrl alloc] initWithNibName:@"PaymentCtrl" bundle:nil];
-//    [self.navigationController pushViewController:vc animated:YES];
+     */
 
+    [self performSegueWithIdentifier:@"goSelfList" sender:nil];
 }
 
 @end

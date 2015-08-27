@@ -21,6 +21,8 @@
 #import "NetworkManager.h"
 #import "ShopDetail.h"
 #import "UserDataManager.h"
+#import "MyCouponCtrl.h"
+#import "SelectStoreTimeCtrl.h"
 
 @interface SelfDetailCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -41,7 +43,7 @@
     
     [HKCommen addHeadTitle:@"商家详情" whichNavigation:self.navigationItem];
     
-    [self addRefresh];
+    //[self addRefresh];
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
     [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
@@ -129,7 +131,7 @@
 {
     if (!self.shopDetail) {
         
-        return 0;
+        return 5;
     }
     
     return 5;
@@ -590,7 +592,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section==2) {
+        NSLog(@"测试油耗");
+        
+        SelectStoreTimeCtrl *vc=[[SelectStoreTimeCtrl alloc]initWithNibName:@"SelectStoreTimeCtrl" bundle:nil];
+        vc.delegate=self;
+        [self.navigationController pushViewController:vc animated:YES];
+        return;
+    }
+    
+    
     if (indexPath.section == 3 && indexPath.row < self.shopDetail.serviceItemList.count) {
+        
         
         if ([[self.arraySelectedSevice objectAtIndex:indexPath.row] isEqualToString:@"0"]) {
             
@@ -607,8 +620,18 @@
         [self.tableView reloadData];
         
     }
+    else
+    {
+        UIStoryboard *story=[UIStoryboard storyboardWithName:@"PersonalCenter" bundle:nil];
+        MyCouponCtrl *vc=[story instantiateViewControllerWithIdentifier:@"MyCouponCtrl"];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
 
-
+-(void)pickTime:(NSString*)string
+{
+    TimeCell *cell=(TimeCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
+    cell.lbl_Time.text=string;
 }
 
 @end

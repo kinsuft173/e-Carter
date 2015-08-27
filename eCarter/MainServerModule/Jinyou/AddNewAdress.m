@@ -103,7 +103,7 @@
     [rightButton setTitle:@"保存" forState:UIControlStateNormal];
     [rightButton addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
     
-    rightButton.backgroundColor = [UIColor redColor];
+    //rightButton.backgroundColor = [UIColor redColor];
     UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:rightButton ];
     self.navigationItem.rightBarButtonItem=item;
     

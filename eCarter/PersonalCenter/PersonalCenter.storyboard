@@ -266,7 +266,7 @@
         <!--My Coupon Ctrl-->
         <scene sceneID="kXj-KU-UdT">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="8pR-YR-6b6" customClass="MyCouponCtrl" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyCouponCtrl" automaticallyAdjustsScrollViewInsets="NO" id="8pR-YR-6b6" customClass="MyCouponCtrl" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Owo-GH-X92"/>
                         <viewControllerLayoutGuide type="bottom" id="qDc-gs-ScG"/>

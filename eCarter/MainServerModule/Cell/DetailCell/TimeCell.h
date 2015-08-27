@@ -10,4 +10,7 @@
 
 @interface TimeCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *lbl_Time;
+
+
 @end
