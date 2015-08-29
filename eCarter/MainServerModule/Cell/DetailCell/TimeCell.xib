@@ -15,11 +15,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-05-20 10:30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfb-M3-uaq">
-                        <rect key="frame" x="60" y="14" width="171" height="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfb-M3-uaq">
+                        <rect key="frame" x="60" y="0.0" width="227" height="44"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="15" id="bd0-i9-UZS"/>
-                            <constraint firstAttribute="width" constant="171" id="pui-Ie-JF1"/>
+                            <constraint firstAttribute="height" constant="44" id="bd0-i9-UZS"/>
+                            <constraint firstAttribute="width" constant="227" id="pui-Ie-JF1"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -40,7 +40,7 @@
                     <constraint firstItem="gbz-vL-wpc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="9eY-Xg-XtW"/>
                     <constraint firstItem="gbz-vL-wpc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="IZ5-fR-TLp"/>
                     <constraint firstItem="bfb-M3-uaq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="52" id="VgA-dH-sVp"/>
-                    <constraint firstItem="bfb-M3-uaq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="j0Z-3H-bb2"/>
+                    <constraint firstItem="bfb-M3-uaq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="j0Z-3H-bb2"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

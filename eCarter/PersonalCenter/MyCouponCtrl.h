@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol selectCard <NSObject>
+
+-(void)saveMoney:(NSMutableDictionary*)dic;
+
+@end
+
 @interface MyCouponCtrl : UIViewController
+@property (nonatomic, strong) IBOutlet UITableView* tableView;
+@property (nonatomic,assign) BOOL isCardSelected;
+@property (nonatomic, strong) NSMutableDictionary *dictOfCard;
+@property (nonatomic, strong) NSMutableArray *arrayOfCard;
+@property (nonatomic, weak) id<selectCard> delegate;
 
 @end

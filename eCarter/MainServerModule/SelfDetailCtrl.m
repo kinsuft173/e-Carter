@@ -593,7 +593,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==2) {
-        NSLog(@"测试油耗");
+        
         
         SelectStoreTimeCtrl *vc=[[SelectStoreTimeCtrl alloc]initWithNibName:@"SelectStoreTimeCtrl" bundle:nil];
         vc.delegate=self;
@@ -624,9 +624,21 @@
     {
         UIStoryboard *story=[UIStoryboard storyboardWithName:@"PersonalCenter" bundle:nil];
         MyCouponCtrl *vc=[story instantiateViewControllerWithIdentifier:@"MyCouponCtrl"];
+        vc.delegate=self;
+       
+        
+        vc.isCardSelected=YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
+
+-(void)saveMoney:(NSMutableDictionary*)dic
+{
+    NSLog(@"获得的优惠劵字典：%@",dic);
+    CouponSlectedCell* cell = (CouponSlectedCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
+    cell.lbl_price.text=[NSString stringWithFormat:@"%@元优惠劵",[dic objectForKey:@"price"]];
+}
+
 
 -(void)pickTime:(NSString*)string
 {
