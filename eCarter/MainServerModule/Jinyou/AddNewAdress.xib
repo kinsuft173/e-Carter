@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="lbl_AdressOfSelect" destination="6d9-qH-Qkg" id="A14-ds-45d"/>
                 <outlet property="lbl_Alert" destination="tCb-J3-yT8" id="rpe-fD-ldF"/>
+                <outlet property="lbl_homeType" destination="Jwr-T2-T08" id="3wq-Zb-8KH"/>
                 <outlet property="lbl_placeHolder" destination="Lyh-df-ngU" id="f6Y-QT-XOF"/>
                 <outlet property="txt_AdressDetail" destination="1Xr-si-FIa" id="naJ-Hz-WJW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -146,6 +147,19 @@
                                 <action selector="goSelectAdress:" destination="-1" eventType="touchUpInside" id="jf3-8X-8ma"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcA-rV-K9k">
+                            <rect key="frame" x="8" y="6" width="88" height="38"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="88" id="4eL-qh-Fqi"/>
+                                <constraint firstAttribute="height" constant="38" id="8IS-Az-UgD"/>
+                            </constraints>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="goSelectHomeType:" destination="-1" eventType="touchUpInside" id="BAZ-el-XV9"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -154,8 +168,10 @@
                         <constraint firstAttribute="trailing" secondItem="1Xr-si-FIa" secondAttribute="trailing" constant="10" id="2iU-5b-cuz"/>
                         <constraint firstItem="H4c-jS-b0r" firstAttribute="leading" secondItem="JKc-Tq-rXd" secondAttribute="leading" constant="63" id="4bH-SN-NAU"/>
                         <constraint firstItem="Lyh-df-ngU" firstAttribute="top" secondItem="JKc-Tq-rXd" secondAttribute="top" constant="47" id="C6E-Vc-jUD"/>
+                        <constraint firstItem="NcA-rV-K9k" firstAttribute="top" secondItem="JKc-Tq-rXd" secondAttribute="top" constant="6" id="CHE-TL-MmZ"/>
                         <constraint firstAttribute="trailing" secondItem="TOs-WD-YPQ" secondAttribute="trailing" constant="12" id="Cxg-PZ-Qxl"/>
                         <constraint firstItem="H4c-jS-b0r" firstAttribute="top" secondItem="JKc-Tq-rXd" secondAttribute="top" id="D83-83-Irg"/>
+                        <constraint firstItem="NcA-rV-K9k" firstAttribute="leading" secondItem="JKc-Tq-rXd" secondAttribute="leading" constant="8" id="Dyw-Px-7zR"/>
                         <constraint firstItem="6d9-qH-Qkg" firstAttribute="leading" secondItem="JKc-Tq-rXd" secondAttribute="leading" constant="115" id="Exh-CY-ObW"/>
                         <constraint firstAttribute="trailing" secondItem="vUI-Ju-fxo" secondAttribute="trailing" constant="12" id="FVb-m4-wk5"/>
                         <constraint firstItem="b5m-Er-j2P" firstAttribute="leading" secondItem="JKc-Tq-rXd" secondAttribute="leading" constant="104" id="J8m-27-QkP"/>

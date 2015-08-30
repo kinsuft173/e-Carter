@@ -17,6 +17,8 @@
 		DE0C3ED41B92E57A006D2840 /* loading-ios@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE0C3ED31B92E57A006D2840 /* loading-ios@3x.png */; };
 		DE0C3ED71B93267D006D2840 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0C3ED61B93267D006D2840 /* CommentModel.m */; };
 		DE0C3EDC1B93656C006D2840 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0C3ED91B93656C006D2840 /* libWeChatSDK.a */; };
+		DE0C3EE01B93C76F006D2840 /* HomeTypeSelectedCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0C3EDE1B93C76F006D2840 /* HomeTypeSelectedCtrl.m */; };
+		DE0C3EE11B93C76F006D2840 /* HomeTypeSelectedCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE0C3EDF1B93C76F006D2840 /* HomeTypeSelectedCtrl.xib */; };
 		DE237EE71B3FA8AA0027767B /* MyCountMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE237EE51B3FA8AA0027767B /* MyCountMoneyCell.m */; };
 		DE237EE81B3FA8AA0027767B /* MyCountMoneyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE237EE61B3FA8AA0027767B /* MyCountMoneyCell.xib */; };
 		DE237EEC1B3FA8F70027767B /* MyCountNomalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE237EEA1B3FA8F70027767B /* MyCountNomalCell.m */; };
@@ -595,6 +597,9 @@
 		DE0C3ED91B93656C006D2840 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		DE0C3EDA1B93656C006D2840 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		DE0C3EDB1B93656C006D2840 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		DE0C3EDD1B93C76F006D2840 /* HomeTypeSelectedCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTypeSelectedCtrl.h; sourceTree = "<group>"; };
+		DE0C3EDE1B93C76F006D2840 /* HomeTypeSelectedCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTypeSelectedCtrl.m; sourceTree = "<group>"; };
+		DE0C3EDF1B93C76F006D2840 /* HomeTypeSelectedCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTypeSelectedCtrl.xib; sourceTree = "<group>"; };
 		DE237EE41B3FA8AA0027767B /* MyCountMoneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCountMoneyCell.h; path = PersonalCenter/Cell/MyCountMoneyCell.h; sourceTree = "<group>"; };
 		DE237EE51B3FA8AA0027767B /* MyCountMoneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCountMoneyCell.m; path = PersonalCenter/Cell/MyCountMoneyCell.m; sourceTree = "<group>"; };
 		DE237EE61B3FA8AA0027767B /* MyCountMoneyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyCountMoneyCell.xib; path = PersonalCenter/Cell/MyCountMoneyCell.xib; sourceTree = "<group>"; };
@@ -2421,6 +2426,9 @@
 				DEE87CE61B48EA2000D3EDAB /* SuccessCtrl.h */,
 				DEE87CE71B48EA2000D3EDAB /* SuccessCtrl.m */,
 				DEE87CE81B48EA2000D3EDAB /* SuccessCtrl.xib */,
+				DE0C3EDD1B93C76F006D2840 /* HomeTypeSelectedCtrl.h */,
+				DE0C3EDE1B93C76F006D2840 /* HomeTypeSelectedCtrl.m */,
+				DE0C3EDF1B93C76F006D2840 /* HomeTypeSelectedCtrl.xib */,
 			);
 			name = lijingyou;
 			sourceTree = "<group>";
@@ -3210,6 +3218,7 @@
 				DED7F57F1B4760DB0005019C /* icon_WeChatpay@2x.png in Resources */,
 				DEE337371B4C40D900357253 /* my-points_bg@3x.png in Resources */,
 				DED7F55F1B4760DB0005019C /* Evaluation_0.5@2x.png in Resources */,
+				DE0C3EE11B93C76F006D2840 /* HomeTypeSelectedCtrl.xib in Resources */,
 				DEEDABE91B63E9D500247916 /* queryCarSeries.json in Resources */,
 				DE237EED1B3FA8F70027767B /* MyCountNomalCell.xib in Resources */,
 				DEE337251B4C40D900357253 /* mine_icon_man@3x.png in Resources */,
@@ -3763,6 +3772,7 @@
 				DEE4CA5E1B3C7FAB0009B73C /* TotolPayCell.m in Sources */,
 				DE9D12C41B52BE0000046407 /* NSDataEx.m in Sources */,
 				DECA17291B614C1800FD3418 /* Shop.m in Sources */,
+				DE0C3EE01B93C76F006D2840 /* HomeTypeSelectedCtrl.m in Sources */,
 				DEE48B8A1B3964E400458D6F /* TellCell.m in Sources */,
 				DE9D12C11B52BE0000046407 /* DataSigner.m in Sources */,
 				DEE52EDD1B39119500C90BA3 /* ShopCell.m in Sources */,

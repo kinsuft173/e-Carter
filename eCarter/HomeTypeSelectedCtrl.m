@@ -1,27 +1,26 @@
 //
-//  GetRegionCtrl.m
+//  HomeTypeSelectedCtrl.m
 //  eCarter
 //
-//  Created by lijingyou on 15/8/27.
+//  Created by kinsuft173 on 15/8/31.
 //  Copyright (c) 2015年 kinsuft173. All rights reserved.
 //
 
-#import "GetRegionCtrl.h"
-#import "HKCommen.h"
+#import "HomeTypeSelectedCtrl.h"
 #import "ProvinceCell.h"
-#import "AddNewAdress.h"
+#import "HKCommen.h"
 #import "HKMapManager.h"
 
-@interface GetRegionCtrl ()
+@interface HomeTypeSelectedCtrl ()
 
 @end
 
-@implementation GetRegionCtrl
+@implementation HomeTypeSelectedCtrl
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [HKCommen addHeadTitle:@"选择地区" whichNavigation:self.navigationItem];
+    [HKCommen addHeadTitle:@"选择地址类型" whichNavigation:self.navigationItem];
     [HKCommen setExtraCellLineHidden:self.myTable];
     
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -42,18 +41,16 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
-    
-    NSLog(@"地区字典：%@",self.arrayOfRegion);
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)back
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - tableView delegate
@@ -66,10 +63,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.arrayOfRegion.count==0) {
-        return 1;
-    }
-    return self.arrayOfRegion.count;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -91,20 +85,17 @@
         
     }
     
-    if (self.arrayOfRegion.count>0) {
-        
-        
-        
-        cell.lbl_province.text=[self.arrayOfRegion objectAtIndex:indexPath.row];
-        
-        
-        
-    }
-    else
-    {
-       cell.lbl_province.text=@"没有数据";
+    if (indexPath.row == 0) {
+        cell.lbl_province.text=@"家庭地址";
+    }else if (indexPath.row == 1){
+        cell.lbl_province.text=@"工作地址";
+    
+    }else{
+    
+        cell.lbl_province.text=@"其他地址";
     }
     
+
     return cell;
     
 }
@@ -119,30 +110,25 @@ heightForHeaderInSection:(NSInteger)section
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ProvinceCell *cell=(ProvinceCell *)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section]];
+    if (indexPath.row == 0) {
+        
+        [HKMapManager shareMgr].adressType = @"1";
+        
+    }else if(indexPath.row == 1) {
+        
+        [HKMapManager shareMgr].adressType = @"2";
+        
+    }else if(indexPath.row == 2) {
+        
+        [HKMapManager shareMgr].adressType = @"3";
+        
+    }
     
-   // self.province=cell.lbl_province.text;
-    [HKMapManager shareMgr].place = cell.lbl_province.text;
+    [self.navigationController popViewControllerAnimated:YES];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"selectAdress" object:cell.lbl_province.text];//
-
     
-    NSArray* arrayVC = self.navigationController.childViewControllers;
-    
-    UIViewController* vc = [arrayVC objectAtIndex:arrayVC.count -4];
-    
-    [self.navigationController popToViewController:vc animated:YES];
 }
 
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

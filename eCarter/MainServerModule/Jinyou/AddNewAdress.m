@@ -14,6 +14,8 @@
 #import "NetworkManager.h"
 #import "UserDataManager.h"
 #import "GetProvinceCtrl.h"
+#import "HomeTypeSelectedCtrl.h"
+
 
 
 @interface AddNewAdress ()<UITextViewDelegate,NSXMLParserDelegate>
@@ -69,7 +71,7 @@
     }
     self.lbl_AdressOfSelect.text=@"请选择城市";
     
-     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(getAdress:) name:@"selectAdress" object:nil];
+//     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(getAdress:) name:@"selectAdress" object:nil];
 
 }
 
@@ -81,8 +83,6 @@
 
 -(void)back
 {
-    
-    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -103,6 +103,8 @@
     vc.arrayOfProvince=self.arrayProvince;
     vc.arrayOfCity=self.arrayCity;
     vc.arrayOfRegion=self.arrayRegion;
+    
+    NSLog(@"self.arrayCity = %@",self.arrayCity);
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -113,8 +115,49 @@
     
     if ([HKMapManager shareMgr].address) {
         
-        //self.lbl_AdressOfSelect.text = [HKMapManager shareMgr].address;
+        self.lbl_AdressOfSelect.text =  [NSString stringWithFormat:@"%@%@%@",[HKMapManager shareMgr].regeocode.addressComponent.province,[HKMapManager shareMgr].regeocode.addressComponent.city,[HKMapManager shareMgr].regeocode.addressComponent.district];//[HKMapManager shareMgr].address;
+        
+        self.txt_AdressDetail.text = [NSString stringWithFormat:@"%@",[HKMapManager shareMgr].regeocode.addressComponent.township];
+        self.lbl_placeHolder.text = @"";
+        
+        self.province = [HKMapManager shareMgr].regeocode.addressComponent.province;
+        self.city = [HKMapManager shareMgr].regeocode.addressComponent.city;
+        self.place = [HKMapManager shareMgr].regeocode.addressComponent.district;
+        
+        [HKMapManager shareMgr].address = nil;
+        [HKMapManager shareMgr].regeocode = nil;
     }
+    
+    if ([HKMapManager shareMgr].place) {
+        
+        self.province = [HKMapManager shareMgr].province;
+        self.city = [HKMapManager shareMgr].city;
+        self.place = [HKMapManager shareMgr].place;
+        
+        self.lbl_AdressOfSelect.text =  [NSString stringWithFormat:@"%@%@%@",self.province,self.city ,self.place];
+        
+        [HKMapManager shareMgr].province = nil;
+        [HKMapManager shareMgr].city = nil;
+        [HKMapManager shareMgr].place = nil;
+    }
+    
+    if ([[HKMapManager shareMgr].adressType isEqualToString:@"1"]) {
+        self.type = [HKMapManager shareMgr].adressType;
+        [HKMapManager shareMgr].adressType = nil;
+        self.lbl_homeType.text = @"家庭地址";
+        
+    }else if ([[HKMapManager shareMgr].adressType isEqualToString:@"2"]) {
+        self.type = [HKMapManager shareMgr].adressType;
+        [HKMapManager shareMgr].adressType = nil;
+        self.lbl_homeType.text = @"工作地址";
+        
+    }else if ([[HKMapManager shareMgr].adressType isEqualToString:@"3"]) {
+        self.type = [HKMapManager shareMgr].adressType;
+        [HKMapManager shareMgr].adressType = nil;
+        self.lbl_homeType.text = @"其他地址";
+        
+    }
+
 
 }
 
@@ -144,9 +187,6 @@
 
 -(void)save
 {
-    
-    
-    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"正在加载...";
@@ -154,7 +194,7 @@
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
     
     [dic setObject:self.type forKey:@"type"];
-    [dic setObject:self.province forKey:@"string"];
+    [dic setObject:self.province forKey:@"province"];
     [dic setObject:self.city forKey:@"city"];
     [dic setObject:self.place forKey:@"area"];
     
@@ -207,7 +247,6 @@
     
     }
 
-
 }
 
 - (void)parserDidStartDocument:(NSXMLParser *)parser
@@ -224,7 +263,6 @@
 {
     if([elementName isEqualToString:@"Province"])
     {
-        
         
         [self.arrayProvince addObject:[attributeDict objectForKey:@"FullName"]];
         
@@ -261,6 +299,15 @@
 - (void)parserDidEndDocument:(NSXMLParser *)parser
 {
     
+}
+
+
+- (IBAction)goSelectHomeType:(id)sender
+{
+    HomeTypeSelectedCtrl* vc  = [[HomeTypeSelectedCtrl alloc]  initWithNibName:@"HomeTypeSelectedCtrl" bundle:nil];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
 

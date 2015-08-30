@@ -10,6 +10,7 @@
 #import "HKCommen.h"
 #import "ProvinceCell.h"
 #import "GetCityCtrl.h"
+#import "HKMapManager.h"
 
 @interface GetProvinceCtrl ()
 
@@ -87,7 +88,8 @@
         
     }
     
-    cell.lbl_province.text=[self.arrayOfProvince objectAtIndex:indexPath.row];
+    cell.lbl_province.text = [self.arrayOfProvince objectAtIndex:indexPath.row];
+    
     return cell;
     
 }
@@ -110,17 +112,23 @@ heightForHeaderInSection:(NSInteger)section
     
     for (int i=0; i<self.arrayOfCity.count; i++) {
         if ([[self.arrayOfCity objectAtIndex:i] hasPrefix:cell.lbl_province.text]) {
-            [array addObject:[self.arrayOfCity objectAtIndex:i]];
+            
+            NSString* str = [self.arrayOfCity objectAtIndex:i];
+                             
+                NSString* strCity = [str substringFromIndex:cell.lbl_province.text.length];
+                             
+            [array addObject:strCity];
         }
     }
     
-    
-    
+    [HKMapManager shareMgr].province = cell.lbl_province.text;
     
     GetCityCtrl *vc=[[GetCityCtrl alloc]initWithNibName:@"GetCityCtrl" bundle:nil];
+
     vc.arrayOfCity=array;
     vc.arrayOfRegion=self.arrayOfRegion;
     //vc.delegate=self;
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 

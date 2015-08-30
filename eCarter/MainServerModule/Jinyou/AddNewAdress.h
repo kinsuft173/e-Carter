@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MAMapKit/MAMapKit.h>
+#import <AMapSearchKit/AMapSearchAPI.h>
 
 @interface AddNewAdress : UIViewController
 
@@ -19,5 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_AdressOfSelect;
 @property (weak, nonatomic) IBOutlet UITextView *txt_AdressDetail;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_placeHolder;
+@property (weak, nonatomic) IBOutlet UILabel *lbl_homeType;
+@property(nonatomic, strong) AMapReGeocode *regeocode;
 
 @end

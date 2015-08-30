@@ -10,6 +10,7 @@
 #import "HKCommen.h"
 #import "ProvinceCell.h"
 #import "GetRegionCtrl.h"
+#import "HKMapManager.h"
 
 @interface GetCityCtrl ()
 
@@ -107,24 +108,37 @@ heightForHeaderInSection:(NSInteger)section
     NSMutableArray *array=[[NSMutableArray alloc]init];
     
     for (int i=0; i<self.arrayOfRegion.count; i++) {
-        if ([[self.arrayOfRegion objectAtIndex:i] hasPrefix:cell.lbl_province.text]) {
-            [array addObject:[self.arrayOfRegion objectAtIndex:i]];
+        if ([[self.arrayOfRegion objectAtIndex:i] rangeOfString:cell.lbl_province.text].length > 0) {
+            
+            NSString* str = [self.arrayOfRegion objectAtIndex:i];
+            
+            NSRange range = [str rangeOfString:cell.lbl_province.text];
+            
+            NSString* disctrict = [str substringFromIndex:range.location +range.length];
+            
+            [array addObject:disctrict];
         }
     }
     
     if (array.count==0) {
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"selectAdress" object:cell.lbl_province.text];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"selectAdress" object:cell.lbl_province.text];
+//        
+//        
+//        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:3]
+//                                              animated:YES];
         
         
-        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:3]
-                                              animated:YES];
+        [HKCommen addAlertViewWithTitel:@"没有县级区域可以选择了"];
+        
     }
     else
     {
         GetRegionCtrl *vc=[[GetRegionCtrl alloc]initWithNibName:@"GetRegionCtrl" bundle:nil];
         
         vc.arrayOfRegion=array;
+        
+           [HKMapManager shareMgr].city = cell.lbl_province.text;
         //vc.delegate=self;
         [self.navigationController pushViewController:vc animated:YES];
     }

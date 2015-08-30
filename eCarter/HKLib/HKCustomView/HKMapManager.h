@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import <AMapSearchKit/AMapSearchAPI.h>
 
 @interface HKMapManager : NSObject
 
@@ -16,6 +17,13 @@
 @property (nonatomic, strong) NSString* strCity;
 @property (nonatomic, strong) NSString* userCurrentLongitude;
 @property (nonatomic, strong) NSString* userCurrentLatitude;
+
+@property (strong,nonatomic)NSString *province;
+@property (strong,nonatomic)NSString *city;
+@property (strong,nonatomic)NSString *place;
+@property (strong,nonatomic)NSString *adressType;
+
+@property(nonatomic, strong) AMapReGeocode *regeocode;
 
 + (HKMapManager*)shareMgr;
 

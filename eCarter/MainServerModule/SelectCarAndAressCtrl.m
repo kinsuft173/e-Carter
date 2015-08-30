@@ -376,7 +376,7 @@
 
 - (void)goNextStep:(UIButton*)btn
 {
-    /*
+ 
     if (self.indexPathAddress.row == 0) {
         
         [HKCommen addAlertViewWithTitel:@"请选择地址"];
@@ -392,7 +392,9 @@
         return;
         
     }
-     */
+   
+    
+    
 
     [self performSegueWithIdentifier:@"goSelfList" sender:nil];
 }

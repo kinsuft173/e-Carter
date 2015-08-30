@@ -15,6 +15,7 @@
 #import "CustomAnnotationView.h"
 #import "CustomCalloutView.h"
 #import "HKCommen.h"
+#import "MBProgressHUD.h"
 
 #define MapKey @"97661ae00266c9ff0aa32c7178c64457"
 const NSString *NavigationViewControllerStartTitle       = @"起点";
@@ -37,6 +38,7 @@ const NSString *NavigationViewControllerDestinationTitle = @"终点";
 @property (nonatomic, strong) IBOutlet UIButton* btnBus;
 @property (nonatomic, strong) IBOutlet UIButton* btnWalk;
 @property (nonatomic, strong) NSString* strCity;
+@property (nonatomic, strong) MBProgressHUD* hud;
 
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -459,6 +461,9 @@ const NSString *NavigationViewControllerDestinationTitle = @"终点";
     // 选中定位annotation的时候进行逆地理编码查询
     if ([view.annotation isKindOfClass:[MAUserLocation class]])
     {
+        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        self.hud.labelText = @"正在加载";
+        
         [self reGeoAction];
     }
 }
@@ -468,11 +473,18 @@ const NSString *NavigationViewControllerDestinationTitle = @"终点";
 
 - (void)searchRequest:(id)request didFailWithError:(NSError *)error
 {
+    self.hud.hidden = YES;
+    
+    [HKCommen addAlertViewWithTitel:@"获取当前地址失败"];
+    
     NSLog(@"request :%@, error :%@", request, error);
 }
 
 - (void)onReGeocodeSearchDone:(AMapReGeocodeSearchRequest *)request response:(AMapReGeocodeSearchResponse *)response
 {
+    
+    self.hud.hidden = YES;
+    
     NSLog(@"response :%@", response);
     
     NSString *title = response.regeocode.addressComponent.city;
@@ -490,7 +502,9 @@ const NSString *NavigationViewControllerDestinationTitle = @"终点";
     
  
         
-        [HKMapManager shareMgr].address = response.regeocode.formattedAddress;
+    [HKMapManager shareMgr].address = response.regeocode.formattedAddress;
+    
+    [HKMapManager shareMgr].regeocode = response.regeocode;
    
     
 }
