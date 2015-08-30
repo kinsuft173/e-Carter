@@ -15,9 +15,10 @@
 #import "UserLoginInfo.h"
 #import "Coupon.h"
 
+
 @interface MyCouponCtrl ()
 
-@property (nonatomic, strong) IBOutlet UITableView* tableView;
+
 @property (nonatomic, strong) NSArray* arrayOfCoupon;
 @property (nonatomic, strong) NSMutableArray* arrayIndex;
 @property (nonatomic,strong) UserLoginInfo *userInfo;
@@ -31,10 +32,15 @@
     // Do any additional setup after loading the view.
     
     [HKCommen addHeadTitle:@"我的优惠劵" whichNavigation:self.navigationItem];
+    self.dictOfCard=[[NSMutableDictionary alloc]init];
+    self.arrayOfCard=[[NSMutableArray alloc]init];
     
     [self getModel];
     
-
+    if (self.isCardSelected) {
+        [self editModel];
+    }
+    
     self.arrayIndex = [NSMutableArray arrayWithObjects:@1,@0, nil];
     
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -57,8 +63,30 @@
     }
 }
 
+-(void)editModel
+{
+    [self.tableView setEditing:YES animated:YES];
+    self.tableView.allowsMultipleSelectionDuringEditing = YES;
+}
+
 -(void)back
 {
+    if (self.isCardSelected) {
+        self.arrayOfCard=[[NSMutableArray alloc] initWithArray:[self.tableView indexPathsForSelectedRows]];
+        
+        if (self.arrayOfCard.count>1) {
+            [HKCommen addAlertViewWithTitel:@"只能选择一个优惠劵"];
+            return;
+        }
+        
+        if (self.arrayOfCard.count>0) {
+            NSIndexPath *index=[self.arrayOfCard objectAtIndex:0];
+            [self.delegate saveMoney:[self.arrayOfCoupon objectAtIndex:index.section]];
+        }
+        
+       
+    }
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -108,7 +136,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (self.arrayOfCoupon.count==0) {
-        return 2;
+        return 0;
     }
     
     return self.arrayOfCoupon.count;
@@ -116,16 +144,24 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSNumber* isExpand = [self.arrayIndex objectAtIndex:section];
-    
-    if (isExpand.boolValue == YES) {
-        
-        return 2;
-        
-    }else{
-        
+    if (self.isCardSelected) {
         return 1;
     }
+    else
+    {
+        NSNumber* isExpand = [self.arrayIndex objectAtIndex:section];
+        
+        if (isExpand.boolValue == YES) {
+            
+            return 2;
+            
+        }else{
+            
+            return 1;
+        }
+    }
+    
+    
     
 }
 
@@ -170,7 +206,16 @@
         cell.lbl_endTime.text=[NSString stringWithFormat:@"期限%@.%@-%@.%@",startMonth,startDay,endMonth,endDay];
  
         cell.lbl_ticketNo.text=[NSString stringWithFormat:@"编号：%@",coupon.id];
-    
+        
+        if (self.isCardSelected) {
+            cell.selectedBackgroundView=[[UIView alloc]initWithFrame:cell.frame];
+            cell.selectedBackgroundView.backgroundColor=[UIColor colorWithRed:104.0/255.0 green:190.0/255.0 blue:239.0/255.0 alpha:1.0];
+        }
+        else
+        {
+           cell.selectionStyle=UITableViewCellAccessoryNone;
+        }
+        
         return cell;
         
         
@@ -196,6 +241,12 @@
     
     
     return nil;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //return UITableViewCellEditingStyleDelete;
+    return UITableViewCellEditingStyleInsert;
 }
 
 - (void)expandEventHandle:(UIButton*)btn
@@ -238,7 +289,5 @@
     [self. tableView endUpdates];
     
 }
-
-
 
 @end

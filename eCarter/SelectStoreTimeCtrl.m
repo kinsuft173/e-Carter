@@ -68,7 +68,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.arrayOfRegion.count;
+    if (self.arrayTime.count==0) {
+        return 2;
+    }
+    return self.arrayTime.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -89,8 +92,12 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:cellId owner:self options:nil] objectAtIndex:0];
         
     }
+    NSLog(@"测试row:%@",[self.arrayTime objectAtIndex:indexPath.row]);
     
-    cell.lbl_province.text=[self.arrayOfRegion objectAtIndex:indexPath.row];
+    NSDictionary *dic=[self.arrayTime objectAtIndex:indexPath.row];
+    
+    
+    cell.lbl_province.text=[NSString stringWithFormat:@"%@ %@至%@",[dic objectForKey:@"servicedate"],[dic objectForKey:@"timeStart"],[dic objectForKey:@"timeEnd"]];
     return cell;
     
 }
@@ -125,10 +132,9 @@ heightForHeaderInSection:(NSInteger)section
     
     [[NetworkManager shareMgr] server_queryStoreServiceTimeWithDic:dic completeHandle:^(NSDictionary *response) {
         
+        self.arrayTime=[response objectForKey:@"data"];
         
-        NSLog(@"时间字典：%@",[response objectForKey:@"data"]);
-        
-        
+        [self.myTable reloadData];
     }];
 }
 

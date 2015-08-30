@@ -41,6 +41,8 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+    
+    NSLog(@"地区字典：%@",self.arrayOfRegion);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,6 +65,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (self.arrayOfRegion.count==0) {
+        return 1;
+    }
     return self.arrayOfRegion.count;
 }
 
@@ -85,7 +90,14 @@
         
     }
     
-    cell.lbl_province.text=[self.arrayOfRegion objectAtIndex:indexPath.row];
+    if (self.arrayOfRegion.count>0) {
+        cell.lbl_province.text=[self.arrayOfRegion objectAtIndex:indexPath.row];
+    }
+    else
+    {
+       cell.lbl_province.text=@"没有数据";
+    }
+    
     return cell;
     
 }
@@ -104,10 +116,9 @@ heightForHeaderInSection:(NSInteger)section
     
    // self.province=cell.lbl_province.text;
     
-    
-    [self.delegate pickAdress:cell.lbl_province.text];
-    AddNewAdress *vc=[[AddNewAdress alloc]initWithNibName:@"AddNewAdress" bundle:nil];
-    [self.navigationController popToViewController:vc animated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"selectAdress" object:cell.lbl_province.text];
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:3]
+                                          animated:YES];
     
 
 }

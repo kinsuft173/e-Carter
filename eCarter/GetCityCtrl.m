@@ -103,10 +103,33 @@ heightForHeaderInSection:(NSInteger)section
     ProvinceCell *cell=(ProvinceCell *)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section]];
     
     //self.province=cell.lbl_province.text;
-    GetRegionCtrl *vc=[[GetRegionCtrl alloc]initWithNibName:@"GetRegionCtrl" bundle:nil];
     
-    vc.arrayOfRegion=self.arrayOfRegion;
-    [self.navigationController pushViewController:vc animated:YES];
+    NSMutableArray *array=[[NSMutableArray alloc]init];
+    
+    for (int i=0; i<self.arrayOfRegion.count; i++) {
+        if ([[self.arrayOfRegion objectAtIndex:i] hasPrefix:cell.lbl_province.text]) {
+            [array addObject:[self.arrayOfRegion objectAtIndex:i]];
+        }
+    }
+    
+    if (array.count==0) {
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"selectAdress" object:cell.lbl_province.text];
+        
+        
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:3]
+                                              animated:YES];
+    }
+    else
+    {
+        GetRegionCtrl *vc=[[GetRegionCtrl alloc]initWithNibName:@"GetRegionCtrl" bundle:nil];
+        
+        vc.arrayOfRegion=array;
+        //vc.delegate=self;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+
+    
 }
 
 

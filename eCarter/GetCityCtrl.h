@@ -14,4 +14,5 @@
 @property (strong,nonatomic) NSMutableArray *arrayOfRegion;
 
 @property (strong,nonatomic) NSString *city;
+
 @end
