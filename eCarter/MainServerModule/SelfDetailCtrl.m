@@ -463,9 +463,6 @@
 #pragma  mark - custom methods
 - (void)goToConfirmPage:(UIButton*)btn
 {
-
-    
-
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
@@ -620,7 +617,7 @@
         [self.tableView reloadData];
         
     }
-    else
+    else  if (indexPath.section == 3 && indexPath.row  == self.shopDetail.serviceItemList.count )
     {
         UIStoryboard *story=[UIStoryboard storyboardWithName:@"PersonalCenter" bundle:nil];
         MyCouponCtrl *vc=[story instantiateViewControllerWithIdentifier:@"MyCouponCtrl"];

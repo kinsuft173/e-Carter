@@ -7,7 +7,7 @@
 //
 
 #import "PaymentRequest.h"
-#import "PaymentConfig.h"
+//#import "PaymentConfig.h"
 #import <CommonCrypto/CommonDigest.h>
 
 @implementation PaymentRequest
@@ -50,31 +50,6 @@
 
 @synthesize appId = _appId,package = _package, noncestr = _noncestr, timestamp = _timestamp, sign = _sign, partnerid = _partnerid;
 
-
-- (NSString*)appId
-{
-    
-    if (!_appId) {
-        
-        _appId = WX_APP_ID;
-    }
-    
-    
-    return _appId;
-
-}
-
-- (NSString*)partnerid
-{
-    if (!_partnerid) {
-        
-        _partnerid = WX_MCH_ID;
-    }
-    
-    
-    return _partnerid;
-
-}
 
 - (NSString*)package
 {
@@ -156,7 +131,7 @@
     }
     
     
-    stringForSign = [stringForSign stringByAppendingString:[NSString stringWithFormat:@"&key=%@",WX_API_KEY]];
+  //  stringForSign = [stringForSign stringByAppendingString:[NSString stringWithFormat:@"&key=%@",WX_API_KEY]];
     
     NSLog(@"stringForSign = %@",stringForSign);
     

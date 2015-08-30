@@ -11,7 +11,7 @@
 #import "HKCommen.h"
 #import "BalanceMoneyCtrl.h"
 #import "PaymentRequest.h"
-#import "PaymentConfig.h"
+//#import "PaymentConfig.h"
 
 @interface PaymentCtrl : UIViewController
 

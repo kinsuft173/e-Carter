@@ -14,6 +14,7 @@
 		DE06387C1B6E721000EFB576 /* defoult_2.png in Resources */ = {isa = PBXBuildFile; fileRef = DE0638781B6E721000EFB576 /* defoult_2.png */; };
 		DE06387D1B6E721000EFB576 /* defoult_3.png in Resources */ = {isa = PBXBuildFile; fileRef = DE0638791B6E721000EFB576 /* defoult_3.png */; };
 		DE06387E1B6E721000EFB576 /* defoult_4.png in Resources */ = {isa = PBXBuildFile; fileRef = DE06387A1B6E721000EFB576 /* defoult_4.png */; };
+		DE0C3ED41B92E57A006D2840 /* loading-ios@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE0C3ED31B92E57A006D2840 /* loading-ios@3x.png */; };
 		DE237EE71B3FA8AA0027767B /* MyCountMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE237EE51B3FA8AA0027767B /* MyCountMoneyCell.m */; };
 		DE237EE81B3FA8AA0027767B /* MyCountMoneyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE237EE61B3FA8AA0027767B /* MyCountMoneyCell.xib */; };
 		DE237EEC1B3FA8F70027767B /* MyCountNomalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE237EEA1B3FA8F70027767B /* MyCountNomalCell.m */; };
@@ -591,6 +592,7 @@
 		DE0638781B6E721000EFB576 /* defoult_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defoult_2.png; sourceTree = "<group>"; };
 		DE0638791B6E721000EFB576 /* defoult_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defoult_3.png; sourceTree = "<group>"; };
 		DE06387A1B6E721000EFB576 /* defoult_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defoult_4.png; sourceTree = "<group>"; };
+		DE0C3ED31B92E57A006D2840 /* loading-ios@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loading-ios@3x.png"; path = "IMAGE/loading-ios@3x.png"; sourceTree = "<group>"; };
 		DE237EE41B3FA8AA0027767B /* MyCountMoneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCountMoneyCell.h; path = PersonalCenter/Cell/MyCountMoneyCell.h; sourceTree = "<group>"; };
 		DE237EE51B3FA8AA0027767B /* MyCountMoneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCountMoneyCell.m; path = PersonalCenter/Cell/MyCountMoneyCell.m; sourceTree = "<group>"; };
 		DE237EE61B3FA8AA0027767B /* MyCountMoneyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyCountMoneyCell.xib; path = PersonalCenter/Cell/MyCountMoneyCell.xib; sourceTree = "<group>"; };
@@ -1273,7 +1275,6 @@
 		DEFDF5A31B5BCF7500298366 /* NewworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewworkConfig.h; sourceTree = "<group>"; };
 		DEFF6A6F1B9181E6002C2FBB /* PaymentRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentRequest.h; sourceTree = "<group>"; };
 		DEFF6A701B9181E6002C2FBB /* PaymentRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentRequest.m; sourceTree = "<group>"; };
-		DEFF6A721B918217002C2FBB /* PaymentConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentConfig.h; sourceTree = "<group>"; };
 		E954E0E91B759B5500627977 /* SvGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SvGridView.h; sourceTree = "<group>"; };
 		E954E0EA1B759B5500627977 /* SvGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SvGridView.m; sourceTree = "<group>"; };
 		E96A2DD11B77AE8400DC9B05 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
@@ -1961,6 +1962,7 @@
 		DED7F5001B4760BF0005019C /* IMAGE1 */ = {
 			isa = PBXGroup;
 			children = (
+				DE0C3ED31B92E57A006D2840 /* loading-ios@3x.png */,
 				DE06386E1B6DFB2D00EFB576 /* loading-ios@2x.png */,
 				DEE336BE1B4C40D900357253 /* 个人中心 */,
 				DED7F58B1B4760F40005019C /* Coupons */,
@@ -2378,7 +2380,6 @@
 		DEE87CD41B48EA0C00D3EDAB /* lijingyou */ = {
 			isa = PBXGroup;
 			children = (
-				DEFF6A721B918217002C2FBB /* PaymentConfig.h */,
 				DEFF6A6F1B9181E6002C2FBB /* PaymentRequest.h */,
 				DEFF6A701B9181E6002C2FBB /* PaymentRequest.m */,
 				E9F9CE321B74D8C0007781AC /* image */,
@@ -3440,6 +3441,7 @@
 				DEE337431B4C40D900357253 /* share_WeChat@3x.png in Resources */,
 				DE237F121B4056260027767B /* CustomTradeCell.xib in Resources */,
 				DED7F5551B4760DB0005019C /* but_bg_woyaoqiang@3x.png in Resources */,
+				DE0C3ED41B92E57A006D2840 /* loading-ios@3x.png in Resources */,
 				DEE87CF31B48EA2000D3EDAB /* starView.xib in Resources */,
 				DEE3370E1B4C40D900357253 /* Grey@3x.png in Resources */,
 				DED7F5591B4760DB0005019C /* but_dial@3x.png in Resources */,
