@@ -29,7 +29,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_endTime;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_ticketNo;
 
-
+@property (nonatomic, strong) IBOutlet UIButton* btnCheck;
 
 @property (strong,nonatomic) NSString *couponId;
 @property (strong,nonatomic) NSString *storeId;
