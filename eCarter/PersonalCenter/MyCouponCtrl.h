@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShopDetail.h"
 
 @protocol selectCard <NSObject>
 
@@ -20,5 +21,8 @@
 @property (nonatomic, strong) NSMutableDictionary *dictOfCard;
 @property (nonatomic, strong) NSMutableArray *arrayOfCard;
 @property (nonatomic, weak) id<selectCard> delegate;
+
+@property (nonatomic, strong) ShopDetail* shopDetail;
+
 
 @end

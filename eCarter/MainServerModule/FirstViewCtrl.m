@@ -150,7 +150,14 @@
     [[NetworkManager shareMgr] server_fetchWeatherWithDic:dicWeather completeHandle:^(NSDictionary *responseBanner) {
         
         NSLog(@"天气数据：%@",responseBanner);
-        self.dic_weather = [[responseBanner objectForKey:@"result"] objectForKey:@"today"] ;
+    
+        if (![[[responseBanner objectForKey:@"result"] class] isSubclassOfClass:[NSNull class]]) {
+
+            self.dic_weather = [[responseBanner objectForKey:@"result"] objectForKey:@"today"] ;
+            
+        }
+        
+
         
         [self.tableView reloadData];
         

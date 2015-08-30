@@ -23,6 +23,8 @@
 @property (nonatomic, strong) NSMutableArray* arrayIndex;
 @property (nonatomic,strong) UserLoginInfo *userInfo;
 
+@property  NSInteger indexCheck;
+
 @end
 
 @implementation MyCouponCtrl
@@ -35,13 +37,15 @@
     self.dictOfCard=[[NSMutableDictionary alloc]init];
     self.arrayOfCard=[[NSMutableArray alloc]init];
     
+    self.indexCheck = -1;
+    
     [self getModel];
     
     if (self.isCardSelected) {
         [self editModel];
     }
     
-    self.arrayIndex = [NSMutableArray arrayWithObjects:@1,@0, nil];
+    self.arrayIndex = [NSMutableArray arrayWithObjects:@0,@0, nil];
     
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
@@ -65,26 +69,22 @@
 
 -(void)editModel
 {
-    [self.tableView setEditing:YES animated:YES];
-    self.tableView.allowsMultipleSelectionDuringEditing = YES;
+//    [self.tableView setEditing:YES animated:YES];
+//    self.tableView.allowsMultipleSelectionDuringEditing = YES;
 }
 
 -(void)back
 {
     if (self.isCardSelected) {
-        self.arrayOfCard=[[NSMutableArray alloc] initWithArray:[self.tableView indexPathsForSelectedRows]];
         
-        if (self.arrayOfCard.count>1) {
-            [HKCommen addAlertViewWithTitel:@"只能选择一个优惠劵"];
-            return;
+        //self.arrayOfCard= [[NSMutableArray alloc] initWithArray:[self.tableView indexPathsForSelectedRows]];
+        
+        if (self.indexCheck != -1) {
+            
+            [self.delegate saveMoney:[self.arrayOfCoupon objectAtIndex:self.indexCheck]];
+            
         }
-        
-        if (self.arrayOfCard.count>0) {
-            NSIndexPath *index=[self.arrayOfCard objectAtIndex:0];
-            [self.delegate saveMoney:[self.arrayOfCoupon objectAtIndex:index.section]];
-        }
-        
-       
+    
     }
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -103,6 +103,12 @@
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
     [dic setObject:self.userInfo.user.phone forKey:@"phone"];
     [dic setObject:self.userInfo.sessionId forKey:@"sessionId"];
+    
+    if (self.isCardSelected == YES) {
+        
+        [dic setObject:self.shopDetail.id forKey:@"storeId"];
+        
+    }
     
     NSLog(@"优惠劵字典:%@",dic);
     
@@ -183,10 +189,26 @@
         
         if (!cell) {
             
-            cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:1];
+            if (self.isCardSelected == YES) {
+                
+                cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:2];
+                
+                [cell.btnCheck addTarget:self action:@selector(selectCheck:) forControlEvents:UIControlEventTouchUpInside];
+                
+            }else{
+                
+                cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:1];
             
+            }
+        
             [cell.btnExpand addTarget:self action:@selector(expandEventHandle:) forControlEvents:UIControlEventTouchUpInside];
             cell.btnExpand.tag = indexPath.section;
+            
+        }
+        
+        if (self.isCardSelected == YES) {
+            
+            cell.btnExpand.hidden = YES;
             
         }
         
@@ -208,8 +230,11 @@
         cell.lbl_ticketNo.text=[NSString stringWithFormat:@"编号：%@",coupon.id];
         
         if (self.isCardSelected) {
-            cell.selectedBackgroundView=[[UIView alloc]initWithFrame:cell.frame];
-            cell.selectedBackgroundView.backgroundColor=[UIColor colorWithRed:104.0/255.0 green:190.0/255.0 blue:239.0/255.0 alpha:1.0];
+//            cell.selectedBackgroundView=[[UIView alloc]initWithFrame:cell.frame];
+//            cell.selectedBackgroundView.backgroundColor=[UIColor colorWithRed:104.0/255.0 green:190.0/255.0 blue:239.0/255.0 alpha:1.0];
+            
+            cell.btnCheck.tag = indexPath.section;
+            
         }
         else
         {
@@ -288,6 +313,24 @@
     
     [self. tableView endUpdates];
     
+}
+
+- (void)selectCheck:(UIButton*)sender
+{
+    if (sender.tag == self.indexCheck) {
+        
+        self.indexCheck = -1;
+        
+        [self.tableView reloadData];
+        
+    }else{
+    
+        self.indexCheck = sender.tag;
+        
+        [self.tableView reloadData];
+    
+    }
+
 }
 
 @end

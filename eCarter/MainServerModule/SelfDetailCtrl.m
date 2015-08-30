@@ -594,6 +594,9 @@
         
         SelectStoreTimeCtrl *vc=[[SelectStoreTimeCtrl alloc]initWithNibName:@"SelectStoreTimeCtrl" bundle:nil];
         vc.delegate=self;
+        
+        
+        
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
@@ -623,7 +626,7 @@
         MyCouponCtrl *vc=[story instantiateViewControllerWithIdentifier:@"MyCouponCtrl"];
         vc.delegate=self;
        
-        
+        vc.shopDetail = self.shopDetail;
         vc.isCardSelected=YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
