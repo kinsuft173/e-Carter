@@ -41,7 +41,7 @@ typedef void (^ErrorHandle)(NSError*);
 #define ECATER_QUERY_STORE_SERVICETIME_INTERFACE @"/ecar/mobile/queryStoreServiceTime"
 #define ECATER_SAVE_SERVICE_ORDER_INTERFACE @"/ecar/mobile/saveServiceOrder"
 #define ECATER_SAVE_ORDER_PAY_INTERFACE @"/ecar/mobile/saveOrderPay"
-
+#define ECATER_QUERY_STROE_COMMENT_INTERFACE @"/ecar/mobile/queryStoreComment"
 //城市
 
 #define CITY_URL @"/api/city/info?province=all"
@@ -89,8 +89,18 @@ typedef void (^ErrorHandle)(NSError*);
 
 //支付回调
 #define PAY_ALI_NOTIFY @"/order/notify/alipay/"
-#define PAY_WX_ORDER_PRE @"/order/prepay/"
+#define PAY_WX_NOTIFY @"/order/notify/wechat/"
+#define PAY_Recharge_WX_NOTIFY @"/recharge/notify/wechat"
 
+//获得微信preID
+#define PAY_WX_ORDER_PRE @"/order/prepay/"
+ #define PAY_WX_RECHARGE_ORDER_PRE @"/recharge/prepay/wechat"
+
+//提现
+ #define PAY_TIXIAN @"/ecar/mobile/userAccountWithdrawCash"
+
+//余额支付
+#define ETREA_PAY_WX_ORDER_PRE @"/order/notify/deposit/"
 //订单微信获取pre地址
 
 

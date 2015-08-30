@@ -57,7 +57,7 @@
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
     [dic setValue:self.userData.user.uid forKey:@"userId"];
-    [dic setValue:@"1" forKey:@"accountType"];
+//    [dic setValue:@"1" forKey:@"accountType"];
     
     NSLog(@"账户字典：%@",dic);
     

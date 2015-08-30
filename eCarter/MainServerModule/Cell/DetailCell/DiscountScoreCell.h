@@ -10,4 +10,7 @@
 
 @interface DiscountScoreCell : UITableViewCell
 
+@property (nonatomic, strong) IBOutlet UILabel* lblDiscount;
+@property (nonatomic, strong) IBOutlet UILabel* lblRMBDiscount;
+@property (nonatomic, strong) IBOutlet UISwitch* switchCount;
 @end

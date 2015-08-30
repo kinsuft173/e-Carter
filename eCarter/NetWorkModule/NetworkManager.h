@@ -77,11 +77,21 @@
 
 //支付回调
 - (void)server_payNotifytWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+- (void)server_wxPayNotify:(NSString*)orderId completeHandle:(CompleteHandle)completeHandle;
+- (void)server_wxRechargeNotify:(NSString*)orderId completeHandle:(CompleteHandle)completeHandle;
 
 //微信正常的获取preID
-- (void)server_getOrderPreId:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+- (void)server_getOrderPreId:(NSString*)orderId completeHandle:(CompleteHandle)completeHandle;
+- (void)server_etraPayWithOrderId:(NSString*)orderId completeHandle:(CompleteHandle)completeHandle;
+- (void)server_getRechangePreId:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+
+//提现
+- (void)server_userAccountWithdrawCash:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 
 //天气
 - (void)server_fetchWeatherWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+
+//获得商家评论
+- (void)server_queryStoreCommemtWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 
 @end

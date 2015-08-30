@@ -17,13 +17,14 @@
 #import "WXApiObject.h"
 #import "WXApi.h"
 //APP端签名相关头文件
-#import "payRequsestHandler.h"
 
 //服务端签名只需要用到下面一个头文件
-#import "ApiXml.h"
 #import <QuartzCore/QuartzCore.h>
 #import "NetworkManager.h"
 #import "UserDataManager.h"
+
+#import "AppDelegate.h"
+#import "SuccessCtrl.h"
 
 
 @interface PaymentCtrl ()<UITableViewDataSource,UITableViewDelegate>
@@ -38,8 +39,10 @@
     
     [HKCommen addHeadTitle:@"付款" whichNavigation:self.navigationItem];
     
-    self.howMuch=@"39.00元";
-    self.BalanceMoney=100.0;
+    AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+    appDelegate.payCtrl  = self;
+    
+    self.howMuch= [NSString stringWithFormat:@"%.2f元",[self.strTotalMount floatValue]];
     self.arrayOfPayment=[NSArray arrayWithObjects:@"支付宝付款",@"微信付款", nil];
     
     self.lbl_howMuch.text=self.howMuch;
@@ -61,7 +64,36 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+    
+    NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId", nil];
+    
+    [[NetworkManager shareMgr] server_queryUserAccountWithDic:dic completeHandle:^(NSDictionary *response) {
+        
+        if (response[@"data"]) {
+            
+            self.BalanceMoney = [response[@"data"] floatValue];
+            
+        }
+        
+
+    }];
+
+
 }
+
+- (PaymentRequest*)paymentRequest
+{
+    if (!_paymentRequest) {
+        
+        _paymentRequest = [[PaymentRequest alloc] init];
+        _paymentRequest.wxPayParames = [[WxPayParams alloc] init];
+        _paymentRequest.aliPayParames = [[AliPayParames alloc] init];
+        
+    }
+    
+    return _paymentRequest;
+}
+
 
 -(void)back
 {
@@ -131,11 +163,6 @@
         [cell.img_Payment setImage:[UIImage imageNamed:@"icon_WeChatpay"]];
     }
         
-        
-        
-        
-        
-        
         return cell;
         
     }
@@ -150,6 +177,14 @@
     if (indexPath.row==0) {
         
         BalanceMoneyCtrl *vc=[[BalanceMoneyCtrl alloc] initWithNibName:@"BalanceMoneyCtrl" bundle:nil];
+        
+        vc.strTotalMount = self.strTotalMount;
+        vc.strShopName = self.strShopName;
+        vc.strSeviceItem = self.strSeviceItem;
+        vc.BalanceMoney = self.BalanceMoney;
+        vc.dicPreParams = self.dicPreParams;
+        
+        
         [self.navigationController pushViewController:vc animated:YES];
         
     }else if(indexPath.row == 1){
@@ -217,7 +252,6 @@
     order.inputCharset = @"utf-8";
     order.itBPay = @"30m";
     order.showUrl = @"m.alipay.com";
-    
     order.notifyURL = [NSString stringWithFormat:@"%@/order/notify/alipay/%@",SERVER,self.dicPreParams[@"orderId"]];
     
     //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
@@ -244,45 +278,11 @@
             
             if (resultStatus.integerValue == 9000) {
                 
-                SuccessCtrl *vc=[[SuccessCtrl alloc] initWithNibName:@"SuccessCtrl" bundle:nil];
-                [self.navigationController pushViewController:vc animated:YES];
+                [self paySucceed];
                 
             }
             else {
                 
-//                NSString *mStr = [resultDic objectForKey:@"memo"];
-//                
-//                if (mStr != nil && ![mStr isEqualToString:@""]) {
-////                    [CTCommon addAlertWithTitle:[resultDic objectForKey:@"memo"]];
-//                }
-//                
-//                NSMutableDictionary* dic = [[NSMutableDictionary alloc] init];
-//                
-//                [dic setObject:[self.dicPreParams objectForKey:@"orderId"] forKey:@"orderId"];
-//                [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
-//                [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
-//                [dic setObject:@"2" forKey:@"payStyle"];
-//                
-//                [dic setObject:@"0.01" forKey:@"amount"];
-//                [dic setObject:@"1" forKey:@"couponId"];
-//                [dic setObject:@"0.01" forKey:@"couponAmount"];
-//                [dic setObject:@"0.01" forKey:@"payAmount"];
-//                
-//                [[NetworkManager shareMgr] server_saveOrderPayWithDic:dic completeHandle:^(NSDictionary *response) {
-//                    
-//                    NSDictionary* dicTmep = [response objectForKey:@"data"];
-//                    NSLog(@"保存订单：%@",dicTmep);
-//                    
-//                    if (dicTmep) {
-//                        
-//                        
-//                
-//                        
-//                    }
-//                    
-//                
-//                    
-//                }];
                 
                 [HKCommen addAlertViewWithTitel:@"支付失败"];
                 
@@ -346,26 +346,48 @@
     hud.labelText = @"正在加载";
     
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+//        
+//        NSDictionary* dic; /// = [[NetworkManager shareMgr] serve :param];
+//        
+//        NSLog(@"dic counsel_order_id=  %@",dic);
+//        
+//        []
+//        
+//        self.paymentRequest.wxPayParames.prepayid = [dic[@"payment"] objectForKey:@"prepay_id"];//[@"prepay_id"];
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            
+//            
+//            [hud setHidden:YES];
+//            [self payWexin];
+//            
+//        });
+//    });
+    
+    
+    [[NetworkManager shareMgr] server_getOrderPreId:self.dicPreParams[@"orderId"] completeHandle:^(NSDictionary *responese) {
         
-        NSDictionary* dic; /// = [[NetworkManager shareMgr] serve :param];
-        
-        NSLog(@"dic counsel_order_id=  %@",dic);
-        
-        self.paymentRequest.wxPayParames.prepayid = [dic[@"payment"] objectForKey:@"prepay_id"];//[@"prepay_id"];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
+        if (responese == nil) {
             
             
-            [hud setHidden:YES];
-            [self payWexin];
-            
-        });
-    });
+            hud.hidden = YES;
+        }
+        
+        
+        hud.hidden = YES;
+        
+        NSDictionary* dic = [responese objectForKey:@"xml"];
+        
+    
+        
+        [self payWexin:dic];
+        
+    }];
     
 }
 
-- (void)payWexin
+- (void)payWexin:(NSDictionary*)dic
 {
     PayReq* req             = [[PayReq alloc] init];
     
@@ -374,18 +396,133 @@
     //self.paymentRequest.wxPayParames.prepayid = @"wx20150819164931377b75bdb00179201367";
     //self.paymentRequest.wxPayParames.noncestr = @"9f655cc8884fda7ad6d8a6fb15cc001e";
     
-    req.openID              = self.paymentRequest.wxPayParames.appId;
-    req.partnerId           = self.paymentRequest.wxPayParames.partnerid;
-    req.prepayId            = self.paymentRequest.wxPayParames.prepayid;
-    req.nonceStr            = self.paymentRequest.wxPayParames.noncestr;
-    req.timeStamp           = self.paymentRequest.wxPayParames.timestamp.integerValue;
+    req.openID              =  @"wx14658f9874c6c7af";//dic[@"appid"];
+    req.partnerId           =   @"1266652601";//dic[@"mch_id"];
+    req.prepayId            = dic[@"prepay_id"];
+
+
+    req.nonceStr            =  self.paymentRequest.wxPayParames.noncestr;//dic[@"nonce_str"];
+    req.timeStamp           = [NSString stringWithFormat:@"%ld",time(NULL)].integerValue;
     req.package             = self.paymentRequest.wxPayParames.package;
+    
+    
+    self.paymentRequest.wxPayParames.appId = req.openID;
+    self.paymentRequest.wxPayParames.partnerid = req.partnerId;
+    self.paymentRequest.wxPayParames.prepayid = req.prepayId;
+    self.paymentRequest.wxPayParames.noncestr = req.nonceStr;
+    self.paymentRequest.wxPayParames.timestamp = [NSString stringWithFormat:@"%u",(unsigned int)req.timeStamp];//req.timeStamp;
     
     req.sign                = self.paymentRequest.wxPayParames.sign;
     
     
     NSLog(@"appid=%@\npartid=%@\nprepayid=%@\nnoncestr=%@\ntimestamp=%ld\npackage=%@\nsign=%@",req.openID,req.partnerId,req.prepayId,req.nonceStr,(long)req.timeStamp,req.package,req.sign );
     [WXApi sendReq:req];
+}
+
+
+//- (NSString*)sign
+//{
+//    NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:self.appId,@"appid",self.partnerid,@"partnerid",self.prepayid,@"prepayid",self.package,@"package",
+//                         
+//                         self.noncestr,@"noncestr",self.timestamp,@"timestamp",nil];
+//    
+//    
+//    NSString* tempStr = [self translateDicIntoSignString:dic];
+//    
+//    return [self md5:tempStr].uppercaseString;
+//    
+//}
+//
+//- (NSString*)translateDicIntoSignString:(NSDictionary*)dic
+//{
+//    NSArray* array           = [dic allKeys];
+//    NSArray* paramSortAarray = [array sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+//        return  [obj1 compare:obj2 options:NSNumericSearch];
+//    }];
+//    
+//    NSString* stringForSign = [[NSString alloc] init];
+//    for (int i = 0; i < [array count] ; i++) {
+//        
+//        NSString* tempKey       = [paramSortAarray objectAtIndex:i];
+//        NSString* tempContent   = [dic objectForKey:tempKey];
+//        
+//        if ((((NSString*)tempContent).length == 0) ||
+//            (id)tempContent == [NSNull null] ) {
+//            
+//            continue;
+//        }
+//        
+//        if ( i == [array count] - 1) {
+//            
+//            NSString* appendString = [NSString stringWithFormat:@"%@=%@",tempKey,tempContent];
+//            stringForSign = [stringForSign stringByAppendingString:appendString];
+//            
+//        }else{
+//            
+//            NSString* appendString = [NSString stringWithFormat:@"%@=%@&",tempKey,tempContent];
+//            stringForSign = [stringForSign stringByAppendingString:appendString];
+//            
+//        }
+//        
+//    }
+//    
+//    
+////    stringForSign = [stringForSign stringByAppendingString:[NSString stringWithFormat:@"&key=%@",WX_API_KEY]];
+//    
+//    NSLog(@"stringForSign = %@",stringForSign);
+//    
+//    return stringForSign;
+//}
+//
+
+//- (NSString *)md5:(NSString *)str
+//{
+//    const char *cStr = [str UTF8String];
+//    unsigned char result[16];
+//    CC_MD5(cStr, strlen(cStr), result); // This is the md5 call
+//    
+//    return [NSString stringWithFormat:
+//            @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
+//            result[0], result[1], result[2], result[3],
+//            result[4], result[5], result[6], result[7],
+//            result[8], result[9], result[10], result[11],
+//            result[12], result[13], result[14], result[15]
+//            ];
+//}
+
+
+-(void)onResp:(BaseResp*)resp{
+    
+    if ([resp isKindOfClass:[PayResp class]]){
+        
+        PayResp*response=(PayResp*)resp;
+        
+        if (response.errCode == WXSuccess) {
+            
+            [[NetworkManager shareMgr] server_wxPayNotify:[self.dicPreParams objectForKey:@"orderId"] completeHandle:^(NSDictionary *response) {
+                
+//                [self paySucceed];
+                
+            }];
+            
+                [self paySucceed];
+            
+        }else{
+        
+        
+            [HKCommen addAlertViewWithTitel:@"微信支付失败"];
+        }
+        
+
+    }
+}
+
+
+- (void)paySucceed
+{
+    SuccessCtrl *vc=[[SuccessCtrl alloc] initWithNibName:@"SuccessCtrl" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
 

@@ -20,6 +20,7 @@
 #import "HKCommen.h"
 #import "ShopDetail.h"
 #import "NetworkManager.h"
+#import "CommentModel.h"
 
 @interface ShopDetailCtrl ()<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>
 
@@ -27,6 +28,8 @@
 @property (nonatomic, strong) ShopDetail* shopDetail;
 @property (nonatomic, strong) UIActionSheet *asheet;
 @property (assign) BOOL checkService;
+@property (nonatomic, strong) NSMutableArray* arrayComment;
+
 
 @end
 
@@ -100,10 +103,65 @@
             
         }];
         
+        //self.preDataShopId
+        
+        NSDictionary* dicComment = [NSDictionary dictionaryWithObjectsAndKeys:self.preDataShopId,@"storeId",@"1",@"pageNum",@"100",@"pageSize", nil];
+        
+        
+        [[NetworkManager shareMgr] server_queryStoreCommemtWithDic:dicComment completeHandle:^(NSDictionary *response) {
+            
+            if ([[response objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
+                
+                self.arrayComment = [NSMutableArray arrayWithArray:[response objectForKey:@"data"] ];
+                
+            }
+            
+            
+            
+            
+            [self.tableView reloadData];
+            
+        }];
+        
+        
     }];
     
     
     [self.tableView.header beginRefreshing];
+    
+    
+    self.tableView.footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+        
+        
+        NSDictionary* dicComment = [NSDictionary dictionaryWithObjectsAndKeys:self.preDataShopId,@"storeId",[NSString stringWithFormat:@"%d",(self.arrayComment.count + 1)],@"pageNum",@"100",@"pageSize", nil];
+        
+        
+        [[NetworkManager shareMgr] server_queryStoreCommemtWithDic:dicComment completeHandle:^(NSDictionary *response) {
+            
+            if ([[response objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
+                
+                if ([[response objectForKey:@"data"] count] != 0) {
+                    if (self.arrayComment.count == 0) {
+                        
+                        
+                        self.arrayComment = [[NSMutableArray alloc] init];
+                        
+                        [self.arrayComment  addObjectsFromArray:[response objectForKey:@"data"]];
+                    }
+                }
+                
+
+                
+            }
+            
+            
+            [self.tableView.footer endRefreshing];
+            
+            [self.tableView reloadData];
+            
+        }];
+        
+    }];
     
 }
 
@@ -149,7 +207,7 @@
     
     }else if (section == 4){
     
-        return self.shopDetail.reviewsList.count + 1;
+        return self.arrayComment.count + 1;
     }
     
     return 0;
@@ -351,6 +409,14 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:cellId6 owner:self options:nil] objectAtIndex:0];
             
         }
+        
+        CommentModel* comment = [CommentModel objectWithKeyValues:[self.arrayComment objectAtIndex:indexPath.row -1]];
+        
+        cell.lblContent.text = comment.commentContent;
+        cell.lblPhone.text = comment.userPhone;
+        cell.lblServerItems.text = comment.serviceItem;
+        cell.lblTime.text = comment.createTime;
+        [cell.star setStarForValue:comment.storeScore.floatValue];
         
         return cell;
         

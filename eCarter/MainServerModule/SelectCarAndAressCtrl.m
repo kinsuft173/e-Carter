@@ -77,6 +77,10 @@
 - (void)getModel
 {
     
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"正在加载...";
+    
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.phone,@"phone", [UserDataManager shareManager].userLoginInfo.sessionId,@"sessionId",nil];
     
     [[NetworkManager shareMgr] server_queryUserAddressWithDic:dic completeHandle:^(NSDictionary *response) {
@@ -89,6 +93,9 @@
             
         }
     
+        hud.hidden = YES;
+        
+        
         [self.tableView reloadData];
         
     }];
@@ -103,6 +110,8 @@
             self.arrayCars = tempArray;
             
         }
+        
+        hud.hidden = YES;
         
         [self.tableView reloadData];
         

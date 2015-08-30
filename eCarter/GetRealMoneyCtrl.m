@@ -8,6 +8,8 @@
 
 #import "GetRealMoneyCtrl.h"
 #import "ReChargeSuccessCtrl.h"
+#import "UserDataManager.h"
+#import "NetworkManager.h"
 
 @interface GetRealMoneyCtrl ()
 
@@ -53,9 +55,47 @@
 }
 
 - (IBAction)commitGetRealMoney:(UIButton *)sender {
-    ReChargeSuccessCtrl *vc=[[ReChargeSuccessCtrl alloc] initWithNibName:@"ReChargeSuccessCtrl" bundle:nil];
-    vc.judgeRefillOrGetReal=@"getReal";
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    if ([self.txt_amount.text isEqualToString:@"请输入提现金额"] || [self.txt_amount.text  isEqualToString:@""]) {
+        
+        [HKCommen addAlertViewWithTitel:@"请输入提现金额"];
+        
+        return;
+        
+    }
+    
+    MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"正在加载";
+    NSDictionary* dicNew = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",@"0.01",@"amount" ,nil];
+    
+    [[NetworkManager shareMgr] server_userAccountWithdrawCash:dicNew completeHandle:^(NSDictionary *responese) {
+        
+        if (responese == nil) {
+            
+            hud.hidden = YES;
+        }
+        
+        
+        hud.hidden = YES;
+        
+        
+        if ([[responese objectForKey:@"message"] isEqualToString:@"OK"]) {
+            
+            ReChargeSuccessCtrl *vc=[[ReChargeSuccessCtrl alloc] initWithNibName:@"ReChargeSuccessCtrl" bundle:nil];
+            vc.judgeRefillOrGetReal=@"getReal";
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        }else{
+        
+        
+            [HKCommen addAlertViewWithTitel:@"提现失败"];
+        
+        }
+        
+        
+    }];
+    
+
 }
 
 

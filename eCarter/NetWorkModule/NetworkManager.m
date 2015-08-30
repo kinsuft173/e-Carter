@@ -559,6 +559,57 @@
     
 }
 
+
+- (void)server_queryStoreCommemtWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+//     NSMutableDictionary* dicParams = [self addUserLocationWithDic:dic];
+    
+    NSString* strInterface;
+    
+
+        
+    strInterface = ECATER_QUERY_STROE_COMMENT_INTERFACE;
+        
+    
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        
+        if (self.isTestMode) {
+            
+            NSDictionary *dictionary = [FakeDataMgr shareMgr].responseQueryStoreDetail;
+            
+            if (completeHandle) {
+                
+                completeHandle(dictionary);
+                
+            }
+            
+        }else{
+            
+            NSLog(@"server_queryStoreCommemtWithDic ==> %@",responseObject);
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        //ErrorHandle(error);
+        
+        NSLog(@"Error: %@", error);
+        
+        
+    }];
+    
+}
+
 - (void)server_queryStoreServiceTimeWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -1000,7 +1051,9 @@
         
     }
     
-    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"用户账户数据:%@",responseObject);
         
         if (self.isTestMode) {
             
@@ -1181,6 +1234,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         //ErrorHandle(error);
+        completeHandle(nil);
         
         NSLog(@"Error: %@", error);
         
@@ -1538,6 +1592,8 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         //ErrorHandle(error);
+        
+        completeHandle(nil);
         
         NSLog(@"Error: %@", error);
         
@@ -1962,7 +2018,7 @@
 }
 
 
-- (void)server_getOrderPreId:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+- (void)server_getOrderPreId:(NSString*)orderId completeHandle:(CompleteHandle)completeHandle
 {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -1977,7 +2033,59 @@
         
     }else{
         
-        strInterface = ECATER_QUERY_USER_COUPON;
+        strInterface = PAY_WX_ORDER_PRE;
+        
+    }
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@%@",SERVER,strInterface,orderId] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (self.isTestMode) {
+            
+            NSDictionary *dictionary = [FakeDataMgr shareMgr].responseLogin;
+            
+            if (completeHandle) {
+                
+                completeHandle(dictionary);
+                
+            }
+            
+        }else{
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        completeHandle(nil);
+        
+    }];
+
+
+
+}
+
+
+- (void)server_getRechangePreId:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    NSString* strInterface;
+    
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = PAY_WX_RECHARGE_ORDER_PRE;
         
     }
     
@@ -2005,7 +2113,60 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"Error: %@", error);
+        completeHandle(nil);
         
+    }];
+    
+    
+    
+}
+
+//提现
+
+- (void)server_userAccountWithdrawCash:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    NSString* strInterface;
+    
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = PAY_TIXIAN;
+        
+    }
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (self.isTestMode) {
+            
+            NSDictionary *dictionary = [FakeDataMgr shareMgr].responseLogin;
+            
+            if (completeHandle) {
+                
+                completeHandle(dictionary);
+                
+            }
+            
+        }else{
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        completeHandle(nil);
         
     }];
 
@@ -2013,6 +2174,154 @@
 
 }
 
+
+- (void)server_etraPayWithOrderId:(NSString*)orderId completeHandle:(CompleteHandle)completeHandle
+{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    NSString* strInterface;
+    
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = ETREA_PAY_WX_ORDER_PRE;
+        
+    }
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@%@",SERVER,strInterface,orderId] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (self.isTestMode) {
+            
+            NSDictionary *dictionary = [FakeDataMgr shareMgr].responseLogin;
+            
+            if (completeHandle) {
+                
+                completeHandle(dictionary);
+                
+            }
+            
+        }else{
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        completeHandle(nil);
+        
+    }];
+
+}
+
+
+- (void)server_wxPayNotify:(NSString*)orderId completeHandle:(CompleteHandle)completeHandle
+{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    NSString* strInterface;
+    
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = PAY_WX_NOTIFY;
+        
+    }
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@%@",SERVER,strInterface,orderId] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (self.isTestMode) {
+            
+            NSDictionary *dictionary = [FakeDataMgr shareMgr].responseLogin;
+            
+            if (completeHandle) {
+                
+                completeHandle(dictionary);
+                
+            }
+            
+        }else{
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        completeHandle(nil);
+        
+    }];
+    
+}
+
+- (void)server_wxRechargeNotify:(NSString*)orderId completeHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    NSString* strInterface;
+    
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = PAY_Recharge_WX_NOTIFY;
+        
+    }
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@%@",SERVER,strInterface,orderId] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (self.isTestMode) {
+            
+            NSDictionary *dictionary = [FakeDataMgr shareMgr].responseLogin;
+            
+            if (completeHandle) {
+                
+                completeHandle(dictionary);
+                
+            }
+            
+        }else{
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        completeHandle(nil);
+        
+    }];
+
+
+}
 
 
 @end

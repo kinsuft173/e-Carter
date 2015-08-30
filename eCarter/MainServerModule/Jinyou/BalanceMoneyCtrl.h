@@ -19,4 +19,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_Receiver;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_Service;
 
+@property (nonatomic, strong) NSString* strTotalMount;
+@property (nonatomic, strong) NSString* strShopName;
+@property (nonatomic, strong) NSString* strSeviceItem;
+@property (nonatomic, strong) NSDictionary* dicPreParams;
+
+@property CGFloat BalanceMoney;
+
 @end

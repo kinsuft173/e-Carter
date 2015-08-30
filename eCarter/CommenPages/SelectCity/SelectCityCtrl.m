@@ -202,7 +202,33 @@
   
     if (indexPath.section == 0) {
         
+        int index = -1;
+        
+        for (int i = 0 ;  i < self.arrayModel.count; i ++) {
+            
+            NSString* strCityName = [[self.arrayModel objectAtIndex:i]objectForKey:@"cityName"];
+            NSString* strMyCityName = [HKMapManager shareMgr].strCity;;
+  
+            
+            if ([strMyCityName rangeOfString:strCityName].length > 0) {
+                
+                index = i ;
+                
+                
+            }
+        }
+        
+        if (index == -1) {
+            
+            [HKCommen addAlertViewWithTitel:@"您所在的城市尚无法选择"];
+            
+            return;
+            
+        }else{
+        
         [self.navigationController popViewControllerAnimated:YES];
+        [self.delegate handleCitySelectedWithDic:[self.arrayModel objectAtIndex:indexPath.row]];
+        }
         
         return;
         

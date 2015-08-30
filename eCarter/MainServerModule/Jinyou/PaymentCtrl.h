@@ -26,4 +26,8 @@
 
 @property (nonatomic, strong) PaymentRequest* paymentRequest;
 
+@property (nonatomic, strong) NSString* strTotalMount;
+@property (nonatomic, strong) NSString* strShopName;
+@property (nonatomic, strong) NSString* strSeviceItem;
+
 @end

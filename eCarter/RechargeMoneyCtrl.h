@@ -14,4 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_balance;
 @property (strong,nonatomic) NSString *balance;
 
+@property (weak, nonatomic) IBOutlet UITextField *txt_amount;
+
 @end

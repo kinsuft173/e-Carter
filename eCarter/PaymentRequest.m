@@ -51,6 +51,31 @@
 @synthesize appId = _appId,package = _package, noncestr = _noncestr, timestamp = _timestamp, sign = _sign, partnerid = _partnerid;
 
 
+//- (NSString*)appId
+//{
+//    
+//    if (!_appId) {
+//        
+//        _appId = WX_APP_ID;
+//    }
+//    
+//    
+//    return _appId;
+//    
+//}
+//
+//- (NSString*)partnerid
+//{
+//    if (!_partnerid) {
+//        
+//        _partnerid = WX_MCH_ID;
+//    }
+//    
+//    
+//    return _partnerid;
+//    
+//}
+
 - (NSString*)package
 {
     return @"Sign=WXPay";
@@ -62,14 +87,14 @@
     
     if (!_noncestr) {
         
-        NSInteger nonce = arc4random()%1000000000000;
+        NSUInteger nonce = arc4random()%1000000000000;
         
         _noncestr = [NSString stringWithFormat:@"%ld",(long)nonce];
         
     }
     
     return _noncestr;
-
+    
 }
 
 - (NSString*)timestamp
@@ -81,7 +106,7 @@
     }
     
     return _timestamp;
-
+    
 }
 
 - (NSString*)sign
@@ -89,7 +114,7 @@
     NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:self.appId,@"appid",self.partnerid,@"partnerid",self.prepayid,@"prepayid",self.package,@"package",
                          
                          self.noncestr,@"noncestr",self.timestamp,@"timestamp",nil];
-
+    
     
     NSString* tempStr = [self translateDicIntoSignString:dic];
     
@@ -106,10 +131,10 @@
     
     NSString* stringForSign = [[NSString alloc] init];
     for (int i = 0; i < [array count] ; i++) {
-       
+        
         NSString* tempKey       = [paramSortAarray objectAtIndex:i];
         NSString* tempContent   = [dic objectForKey:tempKey];
-       
+        
         if ((((NSString*)tempContent).length == 0) ||
             (id)tempContent == [NSNull null] ) {
             
@@ -130,8 +155,8 @@
         
     }
     
-    
-  //  stringForSign = [stringForSign stringByAppendingString:[NSString stringWithFormat:@"&key=%@",WX_API_KEY]];
+    //这里添加WX_API_KEY
+    stringForSign = [stringForSign stringByAppendingString:[NSString stringWithFormat:@"&key=%@",@"Yunzhiya111666GG6197576V12NOMING"]];
     
     NSLog(@"stringForSign = %@",stringForSign);
     

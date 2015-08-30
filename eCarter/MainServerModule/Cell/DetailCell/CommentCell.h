@@ -13,5 +13,8 @@
 
 @property (strong,nonatomic) starView *star;
 @property (strong,nonatomic) IBOutlet UIView* viewForMask1;
-
+@property (strong,nonatomic) IBOutlet UILabel* lblPhone;
+@property (strong,nonatomic) IBOutlet UILabel* lblContent;
+@property (strong,nonatomic) IBOutlet UILabel* lblServerItems;
+@property (strong,nonatomic) IBOutlet UILabel* lblTime;
 @end

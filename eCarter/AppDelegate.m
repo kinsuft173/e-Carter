@@ -11,7 +11,6 @@
 #import <MAMapKit/MAMapKit.h>
 #import "HKMapManager.h"
 #import "WXApi.h"
-#import "payRequsestHandler.h"
 #import "NetworkManager.h"
 
 #import <ShareSDK/ShareSDK.h>
@@ -40,7 +39,7 @@
     
     [MAMapServices sharedServices].apiKey = (NSString *)APIKey;
     
-    [WXApi registerApp:APP_ID withDescription:@"demo 2.0"];
+    [WXApi registerApp:@"wx14658f9874c6c7af" withDescription:@""];
     
 }
 
@@ -70,17 +69,17 @@
      http://open.weixin.qq.com上注册应用，并将相关信息填写以下字段
      **/
     //    [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885" wechatCls:[WXApi class]];
-    [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885"
-                           appSecret:@"64020361b8ec4c99936c0e3999a9f249"
-                           wechatCls:[WXApi class]];
+//    [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885"
+//                           appSecret:@"64020361b8ec4c99936c0e3999a9f249"
+//                           wechatCls:[WXApi class]];
     /**
      连接QQ应用以使用相关功能，此应用需要引用QQConnection.framework和QQApi.framework库
      http://mobile.qq.com/api/上注册应用，并将相关信息填写到以下字段
      **/
     
-    [ShareSDK connectQQWithQZoneAppKey:@"100371282"
-                     qqApiInterfaceCls:[QQApiInterface class]
-                       tencentOAuthCls:[TencentOAuth class]];
+//    [ShareSDK connectQQWithQZoneAppKey:@"100371282"
+//                     qqApiInterfaceCls:[QQApiInterface class]
+//                       tencentOAuthCls:[TencentOAuth class]];
     
 
 }
@@ -163,6 +162,13 @@
                                                   }];
         
     }
+    
+    if ([url.host isEqualToString:@"pay"]) {
+        
+        return  [WXApi handleOpenURL:url delegate:self.payCtrl];
+        
+    }
+    
     
     return [ShareSDK handleOpenURL:url
                  sourceApplication:sourceApplication

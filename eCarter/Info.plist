@@ -33,20 +33,21 @@
 			</array>
 		</dict>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>weixin</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>wb3225526301</string>
 				<string>fb107704292745179</string>
 				<string>wb568898243</string>
 				<string>wx4868b35061f87885</string>
+				<string>wx14658f9874c6c7af</string>
 				<string>tencent100371282</string>
 				<string>QQ05FB8B52</string>
 				<string>QQ075BCD15</string>
 			</array>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>weixin</string>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>

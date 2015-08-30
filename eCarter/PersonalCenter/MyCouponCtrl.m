@@ -16,7 +16,7 @@
 #import "Coupon.h"
 
 
-@interface MyCouponCtrl ()
+@interface MyCouponCtrl ()<UITableViewDelegate>
 
 
 @property (nonatomic, strong) NSArray* arrayOfCoupon;
@@ -235,6 +235,16 @@
             
             cell.btnCheck.tag = indexPath.section;
             
+            if(indexPath.section == self.indexCheck){
+            
+                [cell.btnCheck setImage:[UIImage imageNamed:@"but_checked"] forState:UIControlStateNormal];
+            
+            }else{
+            
+                [cell.btnCheck setImage:[UIImage imageNamed:@"but_Unchecked"] forState:UIControlStateNormal];
+            
+            }
+            
         }
         else
         {
@@ -331,6 +341,24 @@
     
     }
 
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if (indexPath.section == self.indexCheck) {
+        
+        self.indexCheck = -1;
+        
+        [self.tableView reloadData];
+        
+    }else{
+        
+        self.indexCheck = indexPath.section;
+        
+        [self.tableView reloadData];
+        
+    }
 }
 
 @end

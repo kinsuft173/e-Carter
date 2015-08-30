@@ -23,6 +23,8 @@
 #import "UserDataManager.h"
 #import "MyCouponCtrl.h"
 #import "SelectStoreTimeCtrl.h"
+#import "Coupon.h"
+#import  "CommentModel.h"
 
 @interface SelfDetailCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -30,6 +32,16 @@
 @property (nonatomic, strong) ShopDetail* shopDetail;
 
 @property (nonatomic, strong) NSMutableArray* arraySelectedSevice;
+@property (nonatomic, strong) NSMutableArray* arrayComment;
+
+@property (nonatomic, strong) Coupon* coupon;
+
+@property (strong,nonatomic) NSString *stringOfCount;
+
+@property BOOL isUseDiscount;
+
+@property (strong,nonatomic) NSString *stringOfTotal;
+@property (strong,nonatomic) NSString *stringOfTimel;
 
 @end
 
@@ -101,7 +113,61 @@
             }
             
             
+            
             [self.tableView.header endRefreshing];
+            
+            [self.tableView reloadData];
+            
+        }];
+        
+        
+        NSDictionary* dicComment = [NSDictionary dictionaryWithObjectsAndKeys:self.preDataShopId,@"storeId",@"1",@"pageNum",@"100",@"pageSize", nil];
+    
+        
+        [[NetworkManager shareMgr] server_queryStoreCommemtWithDic:dicComment completeHandle:^(NSDictionary *response) {
+            
+            if ([[response objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
+                
+                self.arrayComment = [NSMutableArray arrayWithArray:[response objectForKey:@"data"] ];
+                
+            }
+            
+
+            
+            
+            [self.tableView reloadData];
+            
+        }];
+        
+        
+        
+    }];
+    
+    self.tableView.footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+        
+        
+        NSDictionary* dicComment = [NSDictionary dictionaryWithObjectsAndKeys:self.preDataShopId,@"storeId",[NSString stringWithFormat:@"%d",(self.arrayComment.count + 1)],@"pageNum",@"100",@"pageSize", nil];
+        
+        
+        [[NetworkManager shareMgr] server_queryStoreCommemtWithDic:dicComment completeHandle:^(NSDictionary *response) {
+            
+            if ([[response objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
+                
+                if ([[response objectForKey:@"data"] count] != 0) {
+                    if (self.arrayComment.count == 0) {
+                        
+                        
+                        self.arrayComment = [[NSMutableArray alloc] init];
+                        
+                        [self.arrayComment  addObjectsFromArray:[response objectForKey:@"data"]];
+                    }
+                }
+                
+            }
+            
+            
+            
+            [self.tableView.footer endRefreshing];
             
             [self.tableView reloadData];
             
@@ -110,7 +176,35 @@
     }];
     
     
+    
+    NSMutableDictionary *dicNew=[[NSMutableDictionary alloc]init];
+    [dicNew setValue:[UserDataManager shareManager].userLoginInfo.user.uid forKey:@"userId"];
+    [dicNew setValue:@"1" forKey:@"accountType"];
+    
+    
+    [[NetworkManager shareMgr] server_queryUserAccountWithDic:dicNew completeHandle:^(NSDictionary *response) {
+        
+        NSLog(@"字典：%@",response);
+        
+        self.stringOfCount= [response objectForKey:@"data"];
+        
+        
+        [self.tableView  reloadData];
+        
+    }];
+    
+    
+    
+    
+    
+    
+    
+    
     [self.tableView.header beginRefreshing];
+    
+    
+    
+    
     
 }
 
@@ -157,7 +251,7 @@
         
     }else if (section == 4){
         
-        return self.shopDetail.reviewsList.count + 1;
+        return self.arrayComment.count + 1;
     }
     
     return 0;
@@ -333,20 +427,21 @@
             
             }
             
-            Serviceitemlist* item = [self.shopDetail.serviceItemList objectAtIndex:indexPath.row];
             
-            cell.lblServerPrice.text = [NSString stringWithFormat:@"¥%@",item.amount];
-            cell.lblSeverName.text = item.serviceItemName;
+        }
+        
+        Serviceitemlist* item = [self.shopDetail.serviceItemList objectAtIndex:indexPath.row];
+        
+        cell.lblServerPrice.text = [NSString stringWithFormat:@"¥%@",item.amount];
+        cell.lblSeverName.text = item.serviceItemName;
+        
+        if ([[self.arraySelectedSevice objectAtIndex:indexPath.row] isEqualToString:@"0"]) {
             
-            if ([[self.arraySelectedSevice objectAtIndex:indexPath.row] isEqualToString:@"0"]) {
-                
-                cell.img_Button.image = [UIImage imageNamed:@"but_Unchecked"];
-                
-            }else{
+            cell.img_Button.image = [UIImage imageNamed:@"but_Unchecked"];
             
-                cell.img_Button.image = [UIImage imageNamed:@"but_checked"];
+        }else{
             
-            }
+            cell.img_Button.image = [UIImage imageNamed:@"but_checked"];
             
         }
         
@@ -362,6 +457,17 @@
             cell.separatorInset = UIEdgeInsetsZero;
         }
         
+        if (self.coupon.price) {
+            
+            cell.lbl_price.text = [NSString stringWithFormat:@"%@元优惠劵",self.coupon.price];
+            
+        }else{
+            
+            cell.lbl_price.text = @"";//[NSString stringWithFormat:@"%@元优惠劵",self.coupon.price];
+        
+        }
+
+        
         return cell;
         
     }else if (indexPath.section == 3 && indexPath.row == self.shopDetail.serviceItemList.count +1) {
@@ -372,7 +478,25 @@
             
             cell = [[[NSBundle mainBundle] loadNibNamed:cellId6 owner:self options:nil] objectAtIndex:0];
             cell.separatorInset = UIEdgeInsetsZero;
+            
+            [cell.switchCount addTarget:self action:@selector(selectedDiscunt:) forControlEvents:UIControlEventValueChanged];
         }
+
+        
+      //  cell.lblDiscount.text =  [UserDataManager shareManager].userLoginInfo.user.
+        
+        if ([self.stringOfCount integerValue] != 0) {
+            
+            cell.lblDiscount.text = [NSString stringWithFormat:@"可用积分%@分",self.stringOfCount];
+            cell.lblRMBDiscount.text = [NSString stringWithFormat:@"-%.1f元",[self.stringOfCount integerValue]/100.0];
+            
+        }else{
+        
+             cell.lblDiscount.text = [NSString stringWithFormat:@"无可用积分"];
+             cell.lblRMBDiscount.text = @"";
+        }
+        
+        
         
         return cell;
         
@@ -386,6 +510,45 @@
             cell.separatorInset = UIEdgeInsetsZero;
         }
         
+
+        
+        CGFloat money = 0;
+        
+        for (int i = 0 ; i < self.arraySelectedSevice.count; i ++) {
+            
+            if ( [[self.arraySelectedSevice objectAtIndex:i] isEqualToString:@"1"]) {
+                
+                
+                Serviceitemlist* list = [self.shopDetail.serviceItemList objectAtIndex:i];//[Serviceitemlist objectWithKeyValues:[self.shopDetail.serviceItemList objectAtIndex:i]];
+                
+                money  += list.amount.floatValue;
+                
+                //strItemNames = list.serviceItemName; //[strItemNames stringByAppendingString:list.serviceItemName];
+                
+            }
+        }
+        
+        if (self.coupon.price) {
+            
+            money -= self.coupon.price.floatValue;
+            
+        }
+        
+        if (self.isUseDiscount) {
+            
+            money -= self.stringOfCount.floatValue/100.0;
+            
+        }
+        
+        if (money < 0) {
+            
+            money = 0.01;
+        }
+        
+        self.stringOfTotal = [NSString stringWithFormat:@"%.2f",money];
+        
+        cell.lblTotel.text = [NSString stringWithFormat:@"%@元",self.stringOfTotal];
+
         return cell;
         
     }else if (indexPath.section == 3 && indexPath.row == self.shopDetail.serviceItemList.count + 3) {
@@ -405,13 +568,22 @@
         
     }else if (indexPath.section == 4 && indexPath.row != 0) {
         
-        CommentCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId6];
+        CommentCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId9];
         
         if (!cell) {
             
             cell = [[[NSBundle mainBundle] loadNibNamed:cellId9 owner:self options:nil] objectAtIndex:0];
             
         }
+        
+        CommentModel* comment = [CommentModel objectWithKeyValues:[self.arrayComment objectAtIndex:indexPath.row -1]];
+        
+        
+        cell.lblContent.text = comment.commentContent;
+        cell.lblPhone.text = comment.userPhone;
+        cell.lblServerItems.text = comment.serviceItem;
+        cell.lblTime.text = comment.createTime;
+        [cell.star setStarForValue:comment.storeScore.floatValue];
         
         return cell;
         
@@ -425,6 +597,7 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:cellId10 owner:self options:nil] objectAtIndex:0];
             
         }
+        
         
         return cell;
         
@@ -514,12 +687,24 @@
     }
     
     
+    if ([self.stringOfTimel isEqualToString:@""]|| self.stringOfTimel == nil) {
+        
+        [HKCommen addAlertViewWithTitel:@"请选择预约时间"];
+        
+        
+        hud.hidden = YES;
+        
+        return;
+        
+    }
+    
+    
     
     NSString* strItemNames = @"";
     
     for (int i = 0 ; i < self.arraySelectedSevice.count; i ++) {
         
-        if ( [str isEqualToString:@""] && [[self.arraySelectedSevice objectAtIndex:i] isEqualToString:@"1"]) {
+        if (strItemNames && [[self.arraySelectedSevice objectAtIndex:i] isEqualToString:@"1"]) {
             
             
             Serviceitemlist* list = [self.shopDetail.serviceItemList objectAtIndex:i];//[Serviceitemlist objectWithKeyValues:[self.shopDetail.serviceItemList objectAtIndex:i]];
@@ -540,19 +725,71 @@
         
     }
     
+    //获取总额
+    CGFloat money = 0;
+    
+    for (int i = 0 ; i < self.arraySelectedSevice.count; i ++) {
+        
+        if ( [[self.arraySelectedSevice objectAtIndex:i] isEqualToString:@"1"]) {
+            
+            
+            Serviceitemlist* list = [self.shopDetail.serviceItemList objectAtIndex:i];//[Serviceitemlist objectWithKeyValues:[self.shopDetail.serviceItemList objectAtIndex:i]];
+            
+            money  += list.amount.floatValue;
+            
+            //strItemNames = list.serviceItemName; //[strItemNames stringByAppendingString:list.serviceItemName];
+            
+        }
+    }
+    
     NSLog(@"str = %@",str);
     [dic setObject:str forKey:@"serviceItemId"];
     [dic setObject:strItemNames forKey:@"serviceItemName"];
-    [dic setObject:@"0.01" forKey:@"serviceCost"];
-    [dic setObject: @"0.01" forKey:@"amount"];
+    [dic setObject:self.stringOfTotal forKey:@"serviceCost"];
+    [dic setObject:[NSString stringWithFormat:@"%.2f",money] forKey:@"amount"];
     
-    [dic setObject:@"0.01" forKey:@"pay"];
-    [dic setObject:@"2015-08-11" forKey:@"serviceDate"];
+    [dic setObject:self.stringOfTotal forKey:@"pay"];
     
-    [dic setObject:@"17:30-18:00" forKey:@"serviceTime"];
+    
+    
+    NSString* strDate,*strHour;
+    
+    if (self.stringOfTimel.length > 10) {
+        
+        strDate = [self.stringOfTimel substringToIndex:10];
+        
+    }
+    
+    NSString* strTemp = [self.stringOfTimel stringByReplacingOccurrencesOfString:@"至" withString:@"-"];
+    
+    NSRange rang1;
+    
+    rang1.location = 11;
+    
+    rang1.length = 11;
+    
+    strHour = [strTemp substringWithRange:rang1];
+    
+    
+    [dic setObject:strDate forKey:@"serviceDate"];
+    
+    [dic setObject:strHour forKey:@"serviceTime"];
     [dic setObject:[NSString stringWithFormat:@"%@%@%@",self.userAddress.city,self.userAddress.area,self.userAddress.address ]forKey:@"userAddress"];
     
+//    if (self.isUseDiscount) {
+//        
+//        [dic setObject:self.stringOfCount forKey:@"point"];
+//        
+//    }
+    
+    if (self.coupon) {
+        
+        
+        [dic setObject:self.coupon.id forKey:@"couponRecordId"];
+    }
+    
     NSLog(@"dic = %@",dic);
+    
     
     
     
@@ -571,6 +808,9 @@
             
             PaymentCtrl *vc=[[PaymentCtrl alloc] initWithNibName:@"PaymentCtrl" bundle:nil];
             vc.dicPreParams = dicTmep;
+            vc.strTotalMount = self.stringOfTotal;
+            vc.strSeviceItem = strItemNames;
+            vc.strShopName = self.shopDetail.storeName;
 
             
             [self.navigationController pushViewController:vc animated:YES];
@@ -583,6 +823,22 @@
     
     
 //    [self performSegueWithIdentifier:@"goToConfirmPage" sender:nil];
+
+}
+
+- (void)selectedDiscunt:(UISwitch*)switchDiscount
+{
+    if (switchDiscount.isOn == YES) {
+        
+        self.isUseDiscount = YES;
+        
+    }else{
+    
+        self.isUseDiscount = NO;
+    
+    }
+
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.shopDetail.serviceItemList.count +2 inSection:3]] withRowAnimation:UITableViewRowAnimationAutomatic];
 
 }
 
@@ -635,8 +891,19 @@
 -(void)saveMoney:(NSMutableDictionary*)dic
 {
     NSLog(@"获得的优惠劵字典：%@",dic);
-    CouponSlectedCell* cell = (CouponSlectedCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:3]];
-    cell.lbl_price.text=[NSString stringWithFormat:@"%@元优惠劵",[dic objectForKey:@"price"]];
+  //  CouponSlectedCell* cell = (CouponSlectedCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.shopDetail.serviceItemList.count inSection:3]];
+    
+    self.coupon = [Coupon objectWithKeyValues:[NSDictionary dictionaryWithDictionary:dic]];
+    
+    //if ([[cell class] isSubclassOfClass:[CouponSlectedCell class]]) {
+    
+//        cell.lbl_price.text=[NSString stringWithFormat:@"%@元优惠劵",[dic objectForKey:@"price"]];
+
+        
+    //}
+    
+    [self.tableView reloadData];
+    
 }
 
 
@@ -644,6 +911,8 @@
 {
     TimeCell *cell=(TimeCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
     cell.lbl_Time.text=string;
+    
+    self.stringOfTimel = string;
 }
 
 @end

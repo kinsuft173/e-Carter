@@ -10,4 +10,6 @@
 
 @interface TotalCountCell : UITableViewCell
 
+@property (nonatomic, strong) IBOutlet UILabel* lblTotel;
+
 @end

@@ -81,6 +81,8 @@
 
 -(void)back
 {
+    
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -131,6 +133,7 @@
     self.navigationItem.rightBarButtonItem=item;
     
     self.lbl_Alert.text= @"你选择的位置暂时未提供服务；已反馈给商家，敬请期待";
+    self.lbl_Alert.hidden = YES;
     self.lbl_AdressOfSelect.text=[NSString stringWithFormat:@"%@%@%@",self.province,self.city,self.place];
 }
 

@@ -7,6 +7,8 @@
 //
 
 #import "BalanceMoneyCtrl.h"
+#import "NetworkManager.h"
+#import "UserDataManager.h"
 
 @interface BalanceMoneyCtrl ()
 
@@ -21,10 +23,10 @@
     [HKCommen addHeadTitle:@"余额支付" whichNavigation:self.navigationItem];
     
     self.dict=[[NSMutableDictionary alloc] init];
-    [self.dict setObject:@"广州市天河区汽车美容服务部" forKey:@"company"];
-    [self.dict setObject:@"39.00元" forKey:@"money"];
+    [self.dict setObject:self.strShopName forKey:@"company"];
+    [self.dict setObject:[NSString stringWithFormat:@"%.2f元",[self.strTotalMount floatValue]] forKey:@"money"];
     [self.dict setObject:@"E车夫" forKey:@"receiver"];
-    [self.dict setObject:@"洗车" forKey:@"service"];
+    [self.dict setObject:self.strSeviceItem forKey:@"service"];
     
     [self initUI];
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -66,6 +68,31 @@
 }
 
 - (IBAction)finishPayment:(UIButton *)sender {
+    
+    if (self.BalanceMoney < self.strTotalMount.floatValue) {
+        
+        [HKCommen addAlertViewWithTitel:@"余额不足"];
+        
+        return;
+        
+    }
+    
+    
+   // NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId", nil];
+    
+    [[NetworkManager shareMgr] server_etraPayWithOrderId:[self.dicPreParams objectForKey:@"orderId"] completeHandle:^(NSDictionary *response) {
+        
+        NSLog(@"response = %@");
+        
+        if (response[@"data"]) {
+            
+            self.BalanceMoney = [response[@"data"] floatValue];
+            
+        }
+        
+        
+    }];
+    
     SuccessCtrl *vc=[[SuccessCtrl alloc] initWithNibName:@"SuccessCtrl" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
 }

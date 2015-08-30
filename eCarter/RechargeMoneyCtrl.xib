@@ -7,7 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RechargeMoneyCtrl">
             <connections>
+                <outlet property="btnAli" destination="OZB-ZZ-HgV" id="M59-se-VIs"/>
+                <outlet property="btnWx" destination="sns-qi-Bk8" id="4Oj-l9-ADB"/>
                 <outlet property="lbl_balance" destination="Xud-iz-XKw" id="T7T-bP-pb3"/>
+                <outlet property="txt_amount" destination="k8F-DS-1Gi" id="8tc-uD-xo5"/>
                 <outlet property="view" destination="T5i-fR-xsN" id="KIP-kt-AFZ"/>
             </connections>
         </placeholder>
@@ -59,16 +62,6 @@
                             <color key="textColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入提现金额" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k8F-DS-1Gi">
-                            <rect key="frame" x="90" y="96" width="150" height="30"/>
-                            <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="inH-9K-P4b"/>
-                            </constraints>
-                            <color key="textColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZB-ZZ-HgV">
                             <rect key="frame" x="280" y="0.0" width="30" height="44"/>
                             <constraints>
@@ -103,6 +96,39 @@
                                 <constraint firstAttribute="height" constant="1" id="OAF-6D-dMn"/>
                             </constraints>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOH-WE-8f7">
+                            <rect key="frame" x="10" y="-6" width="310" height="42"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="42" id="AsU-3l-hdX"/>
+                            </constraints>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="ali:" destination="-1" eventType="touchUpInside" id="AxA-Ro-RBX"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ern-Xp-gJ7">
+                            <rect key="frame" x="8" y="51" width="312" height="38"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="38" id="qav-Eb-SkT"/>
+                            </constraints>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="wx:" destination="-1" eventType="touchUpInside" id="cb7-QY-1vd"/>
+                            </connections>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入充值金额" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k8F-DS-1Gi">
+                            <rect key="frame" x="90" y="97" width="150" height="30"/>
+                            <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="inH-9K-P4b"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                        </textField>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -113,14 +139,20 @@
                         <constraint firstItem="Y9D-7I-FDj" firstAttribute="top" secondItem="gSh-Pq-FxK" secondAttribute="top" id="ImN-g9-qHP"/>
                         <constraint firstAttribute="trailing" secondItem="Xqi-lt-EQI" secondAttribute="trailing" id="WcH-bw-fSm"/>
                         <constraint firstAttribute="trailing" secondItem="sns-qi-Bk8" secondAttribute="trailing" constant="10" id="Xov-xh-2qu"/>
+                        <constraint firstAttribute="trailing" secondItem="ern-Xp-gJ7" secondAttribute="trailing" id="eCB-PS-NTE"/>
                         <constraint firstItem="pmU-CC-ROT" firstAttribute="leading" secondItem="gSh-Pq-FxK" secondAttribute="leading" id="eUU-SW-1Us"/>
                         <constraint firstItem="Xqi-lt-EQI" firstAttribute="top" secondItem="gSh-Pq-FxK" secondAttribute="top" constant="88" id="gda-o1-x0G"/>
+                        <constraint firstItem="ern-Xp-gJ7" firstAttribute="top" secondItem="gSh-Pq-FxK" secondAttribute="top" constant="51" id="hkv-9G-id4"/>
                         <constraint firstItem="4hV-Le-cXq" firstAttribute="leading" secondItem="gSh-Pq-FxK" secondAttribute="leading" constant="10" id="iC6-P5-mGH"/>
+                        <constraint firstItem="IOH-WE-8f7" firstAttribute="leading" secondItem="gSh-Pq-FxK" secondAttribute="leading" constant="10" id="jbY-iw-qz2"/>
                         <constraint firstAttribute="trailing" secondItem="k8F-DS-1Gi" secondAttribute="trailing" constant="80" id="lE2-Ya-I79"/>
                         <constraint firstItem="k8F-DS-1Gi" firstAttribute="leading" secondItem="gSh-Pq-FxK" secondAttribute="leading" constant="90" id="pHi-Lh-LKH"/>
                         <constraint firstAttribute="trailing" secondItem="pmU-CC-ROT" secondAttribute="trailing" id="qEi-La-CBi"/>
+                        <constraint firstItem="IOH-WE-8f7" firstAttribute="top" secondItem="gSh-Pq-FxK" secondAttribute="top" constant="-6" id="qoc-tP-FZ2"/>
                         <constraint firstItem="sns-qi-Bk8" firstAttribute="top" secondItem="pmU-CC-ROT" secondAttribute="top" id="quV-2q-nPn"/>
                         <constraint firstItem="pmU-CC-ROT" firstAttribute="top" secondItem="gSh-Pq-FxK" secondAttribute="top" constant="44" id="sOI-ip-BTN"/>
+                        <constraint firstAttribute="trailing" secondItem="IOH-WE-8f7" secondAttribute="trailing" id="tLW-kS-Ima"/>
+                        <constraint firstItem="ern-Xp-gJ7" firstAttribute="leading" secondItem="gSh-Pq-FxK" secondAttribute="leading" constant="8" id="tfq-ap-LuG"/>
                         <constraint firstItem="Xqi-lt-EQI" firstAttribute="top" secondItem="k8F-DS-1Gi" secondAttribute="top" constant="-8" id="uoP-Oh-jWl"/>
                         <constraint firstItem="Xqi-lt-EQI" firstAttribute="top" secondItem="x5Z-SI-KMr" secondAttribute="top" id="wbw-7t-Iq6"/>
                         <constraint firstItem="4hV-Le-cXq" firstAttribute="top" secondItem="pmU-CC-ROT" secondAttribute="top" id="x2J-w7-hD8"/>
