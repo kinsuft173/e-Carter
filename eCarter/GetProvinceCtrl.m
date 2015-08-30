@@ -106,9 +106,21 @@ heightForHeaderInSection:(NSInteger)section
     
     self.province=cell.lbl_province.text;
     
+    NSMutableArray *array=[[NSMutableArray alloc]init];
+    
+    for (int i=0; i<self.arrayOfCity.count; i++) {
+        if ([[self.arrayOfCity objectAtIndex:i] hasPrefix:cell.lbl_province.text]) {
+            [array addObject:[self.arrayOfCity objectAtIndex:i]];
+        }
+    }
+    
+    
+    
+    
     GetCityCtrl *vc=[[GetCityCtrl alloc]initWithNibName:@"GetCityCtrl" bundle:nil];
-    vc.arrayOfCity=self.arrayOfCity;
+    vc.arrayOfCity=array;
     vc.arrayOfRegion=self.arrayOfRegion;
+    //vc.delegate=self;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

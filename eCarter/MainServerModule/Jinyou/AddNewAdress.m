@@ -15,6 +15,7 @@
 #import "UserDataManager.h"
 #import "GetProvinceCtrl.h"
 
+
 @interface AddNewAdress ()<UITextViewDelegate,NSXMLParserDelegate>
 @property (nonatomic, strong) NSMutableArray *arrayProvince;
 @property (nonatomic, strong) NSMutableArray *arrayCity;
@@ -66,11 +67,33 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+    self.lbl_AdressOfSelect.text=@"请选择城市";
+    
+     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(getAdress:) name:@"selectAdress" object:nil];
+
+}
+
+-(void)getAdress:(NSNotification*)notify
+{
+    NSString *string= notify.object;
+    self.lbl_AdressOfSelect.text=string;
 }
 
 -(void)back
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)pickCity:(NSString*)string
+{
+    NSLog(@"选择了1");
+    self.lbl_AdressOfSelect.text=string;
+}
+
+-(void)pickAdress:(NSString*)string
+{
+    NSLog(@"选择了2");
+    self.lbl_AdressOfSelect.text=string;
 }
 
 - (IBAction)goSelectAdress:(UIButton *)sender {
@@ -88,7 +111,7 @@
     
     if ([HKMapManager shareMgr].address) {
         
-        self.lbl_AdressOfSelect.text = [HKMapManager shareMgr].address;
+        //self.lbl_AdressOfSelect.text = [HKMapManager shareMgr].address;
     }
 
 }
