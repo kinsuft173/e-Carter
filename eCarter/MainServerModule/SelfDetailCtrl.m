@@ -43,7 +43,7 @@
     
     [HKCommen addHeadTitle:@"商家详情" whichNavigation:self.navigationItem];
     
-    //[self addRefresh];
+    [self addRefresh];
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
     [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
@@ -566,11 +566,11 @@
         
         if (dicTmep) {
             
-            [[NetworkManager shareMgr] server_payNotifytWithDic:[NSDictionary dictionaryWithObjectsAndKeys:dicTmep[@"orderId"],@"id", nil] completeHandle:^(NSDictionary *dic) {
-                
-                [HKCommen addAlertViewWithTitel:@"当前测试模式下，已经对该订单进行了支付操作"];
-                
-            } ];
+//            [[NetworkManager shareMgr] server_payNotifytWithDic:[NSDictionary dictionaryWithObjectsAndKeys:dicTmep[@"orderId"],@"id", nil] completeHandle:^(NSDictionary *dic) {
+//                
+//                [HKCommen addAlertViewWithTitel:@"当前测试模式下，已经对该订单进行了支付操作"];
+//                
+//            } ];
             
             PaymentCtrl *vc=[[PaymentCtrl alloc] initWithNibName:@"PaymentCtrl" bundle:nil];
             vc.dicPreParams = dicTmep;

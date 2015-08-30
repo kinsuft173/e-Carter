@@ -78,4 +78,10 @@
 //支付回调
 - (void)server_payNotifytWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 
+//微信正常的获取preID
+- (void)server_getOrderPreId:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+
+//天气
+- (void)server_fetchWeatherWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+
 @end

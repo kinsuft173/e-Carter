@@ -158,7 +158,7 @@
         
     }else if (indexPath.row == 2){
     
-        [self sendWinxinPay];
+        [self StartWxPayment];
     
     }
 }
@@ -173,9 +173,9 @@
     /*============================================================================*/
     /*=======================需要填写商户app申请的===================================*/
     /*============================================================================*/
-    NSString *partner = @"2088612117404563";
-    NSString *seller = @"info@kswiki.com";
-    NSString *privateKey = @"MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAJoDAQHVkOxP0sscLyWTL8IlOKWMq75+lvIXmJTGZJ3NsoMV2lNMX7vklOazvlPrZN7BZHkHkYIzjwxNWE1u+QS+i6vCslzmnRMoO/hFiZ7fHPkyifklXfmb/efhc2p06w3nzwtoVceASInTh6iHibGMaCjifpKlV6sl17lvoT79AgMBAAECgYB1v7ozZs8ofVcShvfc6I1pCAApQkXEnRBXA4dap9whcjT7V+fWK9w90WOuhtoLWzuBu6ZPimPLghPqOfA7M48ay9gv7HMhVt9dWVIgf0DmmtNeCEEu0S5ex9x82d2t36PRbcAtBVTBQK4OJKSQ3V1sAxylZS6TZ1CgcSTksyHdgQJBAMiWSwPjRlWE6c0VHyb/J0F1zAtS3zdCHrDDoK+54D3wNIvrkIvG9p+YwL3MUETnQIXxKBBuAfz9imBLDhQoQ1ECQQDEjtvH9Y0RnfWWInnBNa0cN64CIwwkypGHkmr3ghi2hDqo/4kZJL8hnhVHiubzErars8ThdCPIJCK0QNRk3t3tAkAG4WDhWUJoXI7Ighj3dXkbPbcqDEWr15DF72/rlyyh80NaKVJj+Qcsoki6Oe/m7SfBcGw3ZA6dZvUAKJLrDhaBAkAn+q61YzqIRMq4+NYu+E33mVOpV5uWuCUVoDBlm26PYSHVUfR+yrydh9voK1aCRmIlVnFLMiY9BSyR4UXSJoqZAkAhBxGmwYu4dI1sbMbkFeFShNNLpFUoic1xo5kFQLlWCNkcRue9zxQQp2jQTbLjSnibclptWxxk/53+ZuSUVZE6";
+    NSString *partner = @"2088021153079020";
+    NSString *seller = @"3193673297@qq.com";
+    NSString *privateKey = @"MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAPJxlSGDdjWHgivmq+NIE9p08klG+2H0NQX3bbaUyGx2WUhd2Z7dY8XkH+YJf56B/InhC19QdZTfzwWjr4zoVN0JLGvviPpDxW+ps+V9nV2Xq4m/Jy+pmCz/JV0m0cqeMCSbUjtN1E17JaDqCqLRNlDcYUW4htijIGBFV0iSmN2bAgMBAAECgYEA6CBQBRJ1b7MasyXclXRBbfxirj5EGflTey734MR7UT3PJjaVUkHucV6GHB4kDoOuY+UQmmXS7oOLF38taeBYvpv7AIC88wau3BnmBMREmk9bragNoxjPXUUE/Zv9RE4pA1ZsSHIcmQL3g+TjfgIUKXJF7b7AND7klrzQ+XEbyAECQQD/0cUaI27nbqTEewCQzeee+AgXPpPw+uxuJfJCBgPDghtJZfqCDNVjPedDY8UtbAXTolTlOAVYQySD7+8L1oSbAkEA8p1lOzTdcrBO/yDpD5CWrOgRDd/IdWKf//Fr1hSkGLhgbzerQMSAqaqhbnvFamcjqYaOwqNUnB1Dc9K8ybIbAQJAS6MJJOZPFyxWmSVJEIdgsVbihYTiFwEJwLOFglHm8PpZ+QSm4abLvNEDvKAWH4zt2BoKAc/jfKo1dLEPO6/MewJAXEdPfLCD1h6HPXToEHp/RO7TpcJLPZKwpqnNyVR6gciHLWYwJedXxLDYy+wZz3nBT7aVUCTNhr9+q2wpUFIFAQJAGNbGJ/vHqoUo1YzT6MDE3ldKqZ463ak+fjF3sl6Ie3K4FTyb61Bcw3rUIF3sxy/h6uBiTp/tm01uuV3b5ZIsPA==";
     /*============================================================================*/
     /*============================================================================*/
     /*============================================================================*/
@@ -201,10 +201,10 @@
     Order *order = [[Order alloc] init];
     order.partner = partner;
     order.seller = seller;
-    order.tradeNO =  @"000000000000001";//[self generateTradeNO];//[NSString stringWithFormat:@"%@",[self.orderResult objectForKey:@"id"]];
+    order.tradeNO =  self.dicPreParams[@"orderId"];//@"000000000000001";//[self generateTradeNO];//[NSString stringWithFormat:@"%@",[self.orderResult objectForKey:@"id"]];
     
     
-    order.productName = [self generateTradeNO];
+    order.productName =  @"E车夫服务";///[self generateTradeNO];
 
     order.productDescription = @"test";
     
@@ -217,6 +217,8 @@
     order.inputCharset = @"utf-8";
     order.itBPay = @"30m";
     order.showUrl = @"m.alipay.com";
+    
+    order.notifyURL = [NSString stringWithFormat:@"%@/order/notify/alipay/%@",SERVER,self.dicPreParams[@"orderId"]];
     
     //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
     NSString *appScheme = @"eCarter";
@@ -248,39 +250,41 @@
             }
             else {
                 
-                NSString *mStr = [resultDic objectForKey:@"memo"];
+//                NSString *mStr = [resultDic objectForKey:@"memo"];
+//                
+//                if (mStr != nil && ![mStr isEqualToString:@""]) {
+////                    [CTCommon addAlertWithTitle:[resultDic objectForKey:@"memo"]];
+//                }
+//                
+//                NSMutableDictionary* dic = [[NSMutableDictionary alloc] init];
+//                
+//                [dic setObject:[self.dicPreParams objectForKey:@"orderId"] forKey:@"orderId"];
+//                [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
+//                [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
+//                [dic setObject:@"2" forKey:@"payStyle"];
+//                
+//                [dic setObject:@"0.01" forKey:@"amount"];
+//                [dic setObject:@"1" forKey:@"couponId"];
+//                [dic setObject:@"0.01" forKey:@"couponAmount"];
+//                [dic setObject:@"0.01" forKey:@"payAmount"];
+//                
+//                [[NetworkManager shareMgr] server_saveOrderPayWithDic:dic completeHandle:^(NSDictionary *response) {
+//                    
+//                    NSDictionary* dicTmep = [response objectForKey:@"data"];
+//                    NSLog(@"保存订单：%@",dicTmep);
+//                    
+//                    if (dicTmep) {
+//                        
+//                        
+//                
+//                        
+//                    }
+//                    
+//                
+//                    
+//                }];
                 
-                if (mStr != nil && ![mStr isEqualToString:@""]) {
-//                    [CTCommon addAlertWithTitle:[resultDic objectForKey:@"memo"]];
-                }
-                
-                NSMutableDictionary* dic = [[NSMutableDictionary alloc] init];
-                
-                [dic setObject:[self.dicPreParams objectForKey:@"orderId"] forKey:@"orderId"];
-                [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
-                [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
-                [dic setObject:@"2" forKey:@"payStyle"];
-                
-                [dic setObject:@"0.01" forKey:@"amount"];
-                [dic setObject:@"1" forKey:@"couponId"];
-                [dic setObject:@"0.01" forKey:@"couponAmount"];
-                [dic setObject:@"0.01" forKey:@"payAmount"];
-                
-                [[NetworkManager shareMgr] server_saveOrderPayWithDic:dic completeHandle:^(NSDictionary *response) {
-                    
-                    NSDictionary* dicTmep = [response objectForKey:@"data"];
-                    NSLog(@"保存订单：%@",dicTmep);
-                    
-                    if (dicTmep) {
-                        
-                        
-                
-                        
-                    }
-                    
-                
-                    
-                }];
+                [HKCommen addAlertViewWithTitel:@"支付失败"];
                 
             }
             
@@ -311,110 +315,7 @@
 }
 
 
-#pragma mark - 微信支付
 
-//============================================================
-// V3&V4支付流程实现
-// 注意:参数配置请查看服务器端Demo
-// 更新时间：2015年3月3日
-// 负责人：李启波（marcyli）
-//============================================================
-- (void)sendWinxinPay
-{
-    //从服务器获取支付参数，服务端自定义处理逻辑和格式
-    //订单标题
-    NSString *ORDER_NAME    = @"Ios服务器端签名支付 测试";
-    //订单金额，单位（元）
-    NSString *ORDER_PRICE   = @"0.01";
-    
-    //根据服务器端编码确定是否转码
-    NSStringEncoding enc;
-    //if UTF8编码
-    //enc = NSUTF8StringEncoding;
-    //if GBK编码
-    enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-    NSString *urlString = [NSString stringWithFormat:@"%@?plat=ios&order_no=%@&product_name=%@&order_price=%@",
-                           SP_URL,
-                           [[NSString stringWithFormat:@"%ld",time(0)] stringByAddingPercentEscapesUsingEncoding:enc],
-                           [ORDER_NAME stringByAddingPercentEscapesUsingEncoding:enc],
-                           ORDER_PRICE];
-    
-    //解析服务端返回json数据
-    NSError *error;
-    //加载一个NSURL对象
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-    //将请求的url数据放到NSData对象中
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    if ( response != nil) {
-        NSMutableDictionary *dict = NULL;
-        //IOS5自带解析类NSJSONSerialization从response中解析出数据放到字典中
-        dict = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
-        
-        NSLog(@"url:%@",urlString);
-        if(dict != nil){
-            NSMutableString *retcode = [dict objectForKey:@"retcode"];
-            if (retcode.intValue == 0){
-                NSMutableString *stamp  = [dict objectForKey:@"timestamp"];
-                
-                //调起微信支付
-                PayReq* req             = [[PayReq alloc] init];
-                req.openID              = [dict objectForKey:@"appid"];
-                req.partnerId           = [dict objectForKey:@"partnerid"];
-                req.prepayId            = [dict objectForKey:@"prepayid"];
-                req.nonceStr            = [dict objectForKey:@"noncestr"];
-                req.timeStamp           = stamp.intValue;
-                req.package             = [dict objectForKey:@"package"];
-                req.sign                = [dict objectForKey:@"sign"];
-                [WXApi sendReq:req];
-                //日志输出
-                NSLog(@"appid=%@\npartid=%@\nprepayid=%@\nnoncestr=%@\ntimestamp=%ld\npackage=%@\nsign=%@",req.openID,req.partnerId,req.prepayId,req.nonceStr,(long)req.timeStamp,req.package,req.sign );
-            }else{
-//                [self alert:@"提示信息" msg:[dict objectForKey:@"retmsg"]];
-            }
-        }else{
-//            [self alert:@"提示信息" msg:@"服务器返回错误，未获取到json对象"];
-        }
-    }else{
-//        [self alert:@"提示信息" msg:@"服务器返回错误"];
-    }
-}
-
-
--(void) onReq:(BaseReq*)req
-{
-    if([req isKindOfClass:[GetMessageFromWXReq class]])
-    {
-        // 微信请求App提供内容， 需要app提供内容后使用sendRsp返回
-        NSString *strTitle = [NSString stringWithFormat:@"微信请求App提供内容"];
-        NSString *strMsg = @"微信请求App提供内容，App要调用sendResp:GetMessageFromWXResp返回给微信";
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        alert.tag = 1000;
-        [alert show];
-    }
-    else if([req isKindOfClass:[ShowMessageFromWXReq class]])
-    {
-        ShowMessageFromWXReq* temp = (ShowMessageFromWXReq*)req;
-        WXMediaMessage *msg = temp.message;
-        
-        //显示微信传过来的内容
-        WXAppExtendObject *obj = msg.mediaObject;
-        
-        NSString *strTitle = [NSString stringWithFormat:@"微信请求App显示内容"];
-        NSString *strMsg = [NSString stringWithFormat:@"标题：%@ \n内容：%@ \n附带信息：%@ \n缩略图:%lu bytes\n\n", msg.title, msg.description, obj.extInfo, msg.thumbData.length];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-    }
-    else if([req isKindOfClass:[LaunchFromWXReq class]])
-    {
-        //从微信启动App
-        NSString *strTitle = [NSString stringWithFormat:@"从微信启动"];
-        NSString *strMsg = @"这是从微信启动的消息";
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-    }
-}
 
 
 
@@ -425,5 +326,67 @@
     
     [alter show];
 }
+
+
+
+
+
+#pragma mark - 微信支付
+
+//============================================================
+// V3&V4支付流程实现
+// 注意:参数配置请查看 https://pay.weixin.qq.com/wiki/doc/api/app.php?chapter=9_12&index=2
+// 更新时间：2015年8月18日
+// 负责人：HUKUN
+//============================================================
+- (void)StartWxPayment
+{
+    
+    MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"正在加载";
+    
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        
+        NSDictionary* dic; /// = [[NetworkManager shareMgr] serve :param];
+        
+        NSLog(@"dic counsel_order_id=  %@",dic);
+        
+        self.paymentRequest.wxPayParames.prepayid = [dic[@"payment"] objectForKey:@"prepay_id"];//[@"prepay_id"];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            
+            [hud setHidden:YES];
+            [self payWexin];
+            
+        });
+    });
+    
+}
+
+- (void)payWexin
+{
+    PayReq* req             = [[PayReq alloc] init];
+    
+    //test数据
+    //self.paymentRequest.wxPayParames.timestamp = @"1439974597";
+    //self.paymentRequest.wxPayParames.prepayid = @"wx20150819164931377b75bdb00179201367";
+    //self.paymentRequest.wxPayParames.noncestr = @"9f655cc8884fda7ad6d8a6fb15cc001e";
+    
+    req.openID              = self.paymentRequest.wxPayParames.appId;
+    req.partnerId           = self.paymentRequest.wxPayParames.partnerid;
+    req.prepayId            = self.paymentRequest.wxPayParames.prepayid;
+    req.nonceStr            = self.paymentRequest.wxPayParames.noncestr;
+    req.timeStamp           = self.paymentRequest.wxPayParames.timestamp.integerValue;
+    req.package             = self.paymentRequest.wxPayParames.package;
+    
+    req.sign                = self.paymentRequest.wxPayParames.sign;
+    
+    
+    NSLog(@"appid=%@\npartid=%@\nprepayid=%@\nnoncestr=%@\ntimestamp=%ld\npackage=%@\nsign=%@",req.openID,req.partnerId,req.prepayId,req.nonceStr,(long)req.timeStamp,req.package,req.sign );
+    [WXApi sendReq:req];
+}
+
 
 @end

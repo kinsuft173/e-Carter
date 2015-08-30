@@ -10,4 +10,9 @@
 
 @interface WeatherInfoCell : UITableViewCell
 
+@property (nonatomic, strong) IBOutlet UIImageView* imgChuqing;
+@property (nonatomic, strong) IBOutlet UIImageView* imgWeather;
+@property (nonatomic, strong) IBOutlet UILabel* lbl_temperature;
+@property (nonatomic, strong) IBOutlet UILabel* lbl_weather;
+
 @end

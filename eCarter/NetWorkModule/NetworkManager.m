@@ -1709,6 +1709,33 @@
     
 }
 
+#pragma mark - 天气页面
+
+- (void)server_fetchWeatherWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    [manager GET:[NSString stringWithFormat:@"%@%@",SERVER_CAR,APP_WEATHER_URL] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        
+        NSLog(@"JSON: %@", responseObject);
+        
+        completeHandle(responseObject);
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+    }];
+
+
+
+
+}
+
 //支付回调
 - (void)server_payNotifytWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {
@@ -1932,6 +1959,58 @@
 
     
     return nil;
+}
+
+
+- (void)server_getOrderPreId:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    NSString* strInterface;
+    
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = ECATER_QUERY_USER_COUPON;
+        
+    }
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (self.isTestMode) {
+            
+            NSDictionary *dictionary = [FakeDataMgr shareMgr].responseLogin;
+            
+            if (completeHandle) {
+                
+                completeHandle(dictionary);
+                
+            }
+            
+        }else{
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+        
+    }];
+
+
+
 }
 
 

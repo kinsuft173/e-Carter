@@ -10,6 +10,8 @@
 #import "BalanceMoneyCell.h"
 #import "HKCommen.h"
 #import "BalanceMoneyCtrl.h"
+#import "PaymentRequest.h"
+#import "PaymentConfig.h"
 
 @interface PaymentCtrl : UIViewController
 
@@ -21,5 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *myTable;
 
 @property (nonatomic, strong) NSDictionary* dicPreParams;
+
+@property (nonatomic, strong) PaymentRequest* paymentRequest;
 
 @end

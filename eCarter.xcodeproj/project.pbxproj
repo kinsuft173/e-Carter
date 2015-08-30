@@ -457,6 +457,7 @@
 		DEFDF59D1B5BCCFC00298366 /* AdvertisementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFDF59B1B5BCCFC00298366 /* AdvertisementCell.m */; };
 		DEFDF59E1B5BCCFC00298366 /* AdvertisementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEFDF59C1B5BCCFC00298366 /* AdvertisementCell.xib */; };
 		DEFDF5A21B5BCF5E00298366 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFDF5A11B5BCF5E00298366 /* NetworkManager.m */; };
+		DEFF6A711B9181E6002C2FBB /* PaymentRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFF6A701B9181E6002C2FBB /* PaymentRequest.m */; };
 		E954E0EB1B759B5500627977 /* SvGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = E954E0EA1B759B5500627977 /* SvGridView.m */; };
 		E96A2DEA1B77AE8400DC9B05 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = E96A2DD21B77AE8400DC9B05 /* NSObject+SBJson.m */; };
 		E96A2DEB1B77AE8400DC9B05 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E96A2DD51B77AE8400DC9B05 /* SBJsonParser.m */; };
@@ -1270,6 +1271,9 @@
 		DEFDF5A01B5BCF5E00298366 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		DEFDF5A11B5BCF5E00298366 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		DEFDF5A31B5BCF7500298366 /* NewworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewworkConfig.h; sourceTree = "<group>"; };
+		DEFF6A6F1B9181E6002C2FBB /* PaymentRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentRequest.h; sourceTree = "<group>"; };
+		DEFF6A701B9181E6002C2FBB /* PaymentRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentRequest.m; sourceTree = "<group>"; };
+		DEFF6A721B918217002C2FBB /* PaymentConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentConfig.h; sourceTree = "<group>"; };
 		E954E0E91B759B5500627977 /* SvGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SvGridView.h; sourceTree = "<group>"; };
 		E954E0EA1B759B5500627977 /* SvGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SvGridView.m; sourceTree = "<group>"; };
 		E96A2DD11B77AE8400DC9B05 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
@@ -2374,6 +2378,9 @@
 		DEE87CD41B48EA0C00D3EDAB /* lijingyou */ = {
 			isa = PBXGroup;
 			children = (
+				DEFF6A721B918217002C2FBB /* PaymentConfig.h */,
+				DEFF6A6F1B9181E6002C2FBB /* PaymentRequest.h */,
+				DEFF6A701B9181E6002C2FBB /* PaymentRequest.m */,
 				E9F9CE321B74D8C0007781AC /* image */,
 				E96A2DD01B77AE8400DC9B05 /* Classes */,
 				E954E0E91B759B5500627977 /* SvGridView.h */,
@@ -3708,6 +3715,7 @@
 				DE9D12C71B52BE0000046407 /* RSADataVerifier.m in Sources */,
 				E9CB14041B6DCFE200A46117 /* CommentCtrl.m in Sources */,
 				E96A2DF41B77AE8400DC9B05 /* SBJsonUTF8Stream.m in Sources */,
+				DEFF6A711B9181E6002C2FBB /* PaymentRequest.m in Sources */,
 				E9F9CE3A1B74D8C0007781AC /* HYActivityView.m in Sources */,
 				DE9D12D61B52DBE900046407 /* WXUtil.mm in Sources */,
 				E99318981B8A1BC700B56AE9 /* NSString+Password.m in Sources */,

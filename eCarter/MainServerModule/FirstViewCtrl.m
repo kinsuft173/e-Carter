@@ -33,6 +33,9 @@
 //广告部分数据
 @property (strong,nonatomic)NSMutableArray *array_advertisement;
 
+//天气数据
+@property (strong,nonatomic)NSDictionary *dic_weather;
+
 @property (nonatomic, strong) IBOutlet UITableView* tableView;
 @property (nonatomic, strong) IBOutlet UILabel* viewForCustomTitel;
 @property (nonatomic, strong) IBOutlet UILabel* lblCity;
@@ -137,7 +140,24 @@
         self.array_advertisement = [responseBanner objectForKey:@"data"];
         
         [self.tableView reloadData];
+        
     }];
+    
+    NSMutableDictionary *dicWeather=[[NSMutableDictionary alloc]init];
+    [dicWeather setObject:@"25760ee0793948ce91483dcf412e916e" forKey:@"key"];
+    [dicWeather setObject:[UserDataManager shareManager].city forKey:@"cityname"];
+    
+    [[NetworkManager shareMgr] server_fetchWeatherWithDic:dicWeather completeHandle:^(NSDictionary *responseBanner) {
+        
+        NSLog(@"天气数据：%@",responseBanner);
+        self.dic_weather = [[responseBanner objectForKey:@"result"] objectForKey:@"today"] ;
+        
+        [self.tableView reloadData];
+        
+    }];
+    
+//    [NetworkManager shareMgr] server_fetW
+    
 }
 
 
@@ -219,6 +239,8 @@
         
         }
         
+        cell.lbl_weather.text =  self.dic_weather[@"weather"];
+        cell.lbl_temperature.text = [NSString stringWithFormat:@"%@℃",self.dic_weather[@"temperature"]];
         
         return cell;
         
@@ -556,6 +578,8 @@
     [UserDataManager shareManager].cityId = dic[@"cityId"];
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSDictionary dictionaryWithDictionary:dic] forKey:@"cityObject"];
+    
+    [self getModel];
 }
 
 

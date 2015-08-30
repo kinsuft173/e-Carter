@@ -40,7 +40,7 @@
     self.navigationItem.rightBarButtonItem=item;
     
     
-    //[self addRefresh];
+    [self addRefresh];
     
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
@@ -95,9 +95,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.arrayModel.count==0) {
-        return 1;
-    }
+//    if (self.arrayModel.count==0) {
+//        return 1;
+//    }
     return self.arrayModel.count;
 }
 

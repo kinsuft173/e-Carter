@@ -13,6 +13,8 @@
 
 @interface SelectStoreTimeCtrl ()
 
+@property (nonatomic, strong) NSArray* arrayOfRegion;
+
 @end
 
 @implementation SelectStoreTimeCtrl

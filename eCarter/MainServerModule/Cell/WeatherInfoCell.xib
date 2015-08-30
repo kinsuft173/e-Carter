@@ -87,6 +87,12 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="imgChuqing" destination="geT-Bx-afr" id="PlO-ku-2Rh"/>
+                <outlet property="imgWeather" destination="XLu-zJ-ieD" id="RQU-4y-c8Z"/>
+                <outlet property="lbl_temperature" destination="BLH-du-w8I" id="D4e-63-ZV3"/>
+                <outlet property="lbl_weather" destination="sIa-7S-aRH" id="7ku-bc-RhE"/>
+            </connections>
             <point key="canvasLocation" x="238" y="189"/>
         </tableViewCell>
     </objects>

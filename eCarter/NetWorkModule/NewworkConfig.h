@@ -84,8 +84,14 @@ typedef void (^ErrorHandle)(NSError*);
 //广告部分
 #define APP_AD_URL @"advertisement/index"
 
+//天气
+#define APP_WEATHER_URL @"/weather"
+
 //支付回调
 #define PAY_ALI_NOTIFY @"/order/notify/alipay/"
+#define PAY_WX_ORDER_PRE @"/order/prepay/"
+
+//订单微信获取pre地址
 
 
 //#define ECATER_INFO_INTERFACE @""
