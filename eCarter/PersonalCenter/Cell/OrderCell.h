@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnGoCommentPage;
 @property (assign) NSUInteger *row;
 
+@property (weak, nonatomic) IBOutlet UIButton *btn_goProgress;
 @property (weak,nonatomic) id<getHighPicture> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *lblServiceCompany;
 @property (weak, nonatomic) IBOutlet UILabel *orderId;

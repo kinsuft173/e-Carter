@@ -17,6 +17,14 @@
 @property (strong,nonatomic)NSArray *array_Star;
 @property (assign) CGFloat whichValue;
 
+@property (weak, nonatomic) IBOutlet UIButton *btn_image1;
+@property (weak, nonatomic) IBOutlet UIButton *btn_image2;
+@property (weak, nonatomic) IBOutlet UIButton *btn_image3;
+@property (weak, nonatomic) IBOutlet UIButton *btn_image4;
+@property (weak, nonatomic) IBOutlet UIButton *btn_image5;
+
+
+
 
 @property (weak, nonatomic) IBOutlet UIImageView *img_star1;
 @property (weak, nonatomic) IBOutlet UIImageView *img_star2;

@@ -485,6 +485,8 @@
 		E98B3A881B6DEA4900980C16 /* MoneyReturnProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E98B3A871B6DEA4900980C16 /* MoneyReturnProgressView.xib */; };
 		E98B89521B8FD5C500270E7D /* SelectStoreTimeCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E98B89501B8FD5C500270E7D /* SelectStoreTimeCtrl.m */; };
 		E98B89531B8FD5C500270E7D /* SelectStoreTimeCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = E98B89511B8FD5C500270E7D /* SelectStoreTimeCtrl.xib */; };
+		E98EBA481B9345BC00ED55BB /* OrderProgressCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E98EBA461B9345BC00ED55BB /* OrderProgressCtrl.m */; };
+		E98EBA491B9345BC00ED55BB /* OrderProgressCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = E98EBA471B9345BC00ED55BB /* OrderProgressCtrl.xib */; };
 		E993182F1B8A152E00B56AE9 /* UIView+PBExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = E99318101B8A152E00B56AE9 /* UIView+PBExtend.m */; };
 		E99318301B8A152E00B56AE9 /* PBConst.m in Sources */ = {isa = PBXBuildFile; fileRef = E99318131B8A152E00B56AE9 /* PBConst.m */; };
 		E99318311B8A152E00B56AE9 /* PhotoBroswerLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E99318161B8A152E00B56AE9 /* PhotoBroswerLayout.m */; };
@@ -1318,6 +1320,9 @@
 		E98B894F1B8FD5C500270E7D /* SelectStoreTimeCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectStoreTimeCtrl.h; sourceTree = "<group>"; };
 		E98B89501B8FD5C500270E7D /* SelectStoreTimeCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectStoreTimeCtrl.m; sourceTree = "<group>"; };
 		E98B89511B8FD5C500270E7D /* SelectStoreTimeCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectStoreTimeCtrl.xib; sourceTree = "<group>"; };
+		E98EBA451B9345BC00ED55BB /* OrderProgressCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Order\U0010ProgressCtrl.h"; sourceTree = "<group>"; };
+		E98EBA461B9345BC00ED55BB /* OrderProgressCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Order\U0010ProgressCtrl.m"; sourceTree = "<group>"; };
+		E98EBA471B9345BC00ED55BB /* OrderProgressCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Order\U0010ProgressCtrl.xib"; sourceTree = "<group>"; };
 		E993180F1B8A152E00B56AE9 /* UIView+PBExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PBExtend.h"; sourceTree = "<group>"; };
 		E99318101B8A152E00B56AE9 /* UIView+PBExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PBExtend.m"; sourceTree = "<group>"; };
 		E99318121B8A152E00B56AE9 /* PBConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBConst.h; sourceTree = "<group>"; };
@@ -2305,6 +2310,9 @@
 		DEE719AC1B3ED12D003221A8 /* PersonalCenter */ = {
 			isa = PBXGroup;
 			children = (
+				E98EBA451B9345BC00ED55BB /* OrderProgressCtrl.h */,
+				E98EBA461B9345BC00ED55BB /* OrderProgressCtrl.m */,
+				E98EBA471B9345BC00ED55BB /* OrderProgressCtrl.xib */,
 				E9CB14001B6DCF8900A46117 /* Order */,
 				DEE719B21B3ED446003221A8 /* Cell */,
 				E9CB14011B6DCFE200A46117 /* CommentCtrl.h */,
@@ -3311,6 +3319,7 @@
 				DEFDF59E1B5BCCFC00298366 /* AdvertisementCell.xib in Resources */,
 				DED7F5841B4760DB0005019C /* ip_add@3x.png in Resources */,
 				DED7F57E1B4760DB0005019C /* icon_unRight@3x.png in Resources */,
+				E98EBA491B9345BC00ED55BB /* OrderProgressCtrl.xib in Resources */,
 				DEE87D241B48EC5100D3EDAB /* CallingCell.xib in Resources */,
 				DEFB2B6C1B44360B00C74FC0 /* mine_Ordermanagement@3x.png in Resources */,
 				DED7F5851B4760DB0005019C /* nav_back@2x.png in Resources */,
@@ -3680,6 +3689,7 @@
 				DEE87CEB1B48EA2000D3EDAB /* AddNewCarCtrl.m in Sources */,
 				DE9D12BF1B52BE0000046407 /* Order.m in Sources */,
 				DEE48BA41B39A56600458D6F /* CouponSlectedCell.m in Sources */,
+				E98EBA481B9345BC00ED55BB /* OrderProgressCtrl.m in Sources */,
 				DECA17261B614BD400FD3418 /* CouponDetail.m in Sources */,
 				DE237F091B404F600027767B /* AddAdressCell.m in Sources */,
 				E96A2DEF1B77AE8400DC9B05 /* SBJsonStreamParserState.m in Sources */,

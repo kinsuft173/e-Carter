@@ -16,6 +16,7 @@
 #import "OrderDetail.h"
 #import "UserDataManager.h"
 #import "PhotoBroswerVC.h"
+#import "OrderProgressCtrl.h"
 
 @interface MyOrderCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -429,6 +430,15 @@
     
 }
 
+-(void)goProgressView
+{
+    OrderProgressCtrl *vc=[[OrderProgressCtrl alloc]initWithNibName:@"OrderProgressCtrl" bundle:nil];
+    [vc.myView setFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width)];
+   
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -547,11 +557,9 @@
                 
                 cell.delegate=self;
             }
-            
-            
-            
-            
         }
+        
+        [cell.btn_goProgress addTarget:self action:@selector(goProgressView) forControlEvents:UIControlEventTouchUpInside];
         
         cell.row=indexPath.row;
         
@@ -618,7 +626,9 @@
             
             cell.btnGoCommentPage.hidden=NO;
             [cell.btnGoCommentPage setTitle:@"待评价" forState:UIControlStateNormal];
-            [cell.btnGoCommentPage addTarget:self action:@selector(goCommentPage) forControlEvents:UIControlEventTouchUpInside];
+            
+            [cell.btnGoCommentPage setTag:[[dict objectForKey:@"id"] intValue]];
+            [cell.btnGoCommentPage addTarget:self action:@selector(goCommentPage:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if (state==8)
         {
@@ -655,6 +665,15 @@
                 cell.lblStatusOfOrder.text=@"商家审批通过";
             }
         }
+        
+        /*可以删掉，测试*/
+        cell.lblStatusOfOrder.text=@"已完成";
+        
+        cell.btnGoCommentPage.hidden=NO;
+        [cell.btnGoCommentPage setTitle:@"待评价" forState:UIControlStateNormal];
+        
+        [cell.btnGoCommentPage setTag:[[dict objectForKey:@"id"] intValue]];
+        [cell.btnGoCommentPage addTarget:self action:@selector(goCommentPage:) forControlEvents:UIControlEventTouchUpInside];
         
         return cell;
     }
@@ -753,9 +772,10 @@
 -(void)doNothing
 {}
 
--(void)goCommentPage
+-(void)goCommentPage:(UIButton*)button
 {
     CommentCtrl *vc=[[CommentCtrl alloc]initWithNibName:@"CommentCtrl" bundle:nil];
+    vc.orderId= [NSString stringWithFormat:@"%ld",button.tag];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
