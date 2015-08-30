@@ -2310,9 +2310,6 @@
 		DEE719AC1B3ED12D003221A8 /* PersonalCenter */ = {
 			isa = PBXGroup;
 			children = (
-				E98EBA451B9345BC00ED55BB /* OrderProgressCtrl.h */,
-				E98EBA461B9345BC00ED55BB /* OrderProgressCtrl.m */,
-				E98EBA471B9345BC00ED55BB /* OrderProgressCtrl.xib */,
 				E9CB14001B6DCF8900A46117 /* Order */,
 				DEE719B21B3ED446003221A8 /* Cell */,
 				E9CB14011B6DCFE200A46117 /* CommentCtrl.h */,
@@ -2324,6 +2321,9 @@
 				E98B3A841B6DEA3000980C16 /* MoneyReturnProgressView.h */,
 				E98B3A851B6DEA3000980C16 /* MoneyReturnProgressView.m */,
 				E98B3A871B6DEA4900980C16 /* MoneyReturnProgressView.xib */,
+				E98EBA451B9345BC00ED55BB /* OrderProgressCtrl.h */,
+				E98EBA461B9345BC00ED55BB /* OrderProgressCtrl.m */,
+				E98EBA471B9345BC00ED55BB /* OrderProgressCtrl.xib */,
 			);
 			name = PersonalCenter;
 			sourceTree = "<group>";

@@ -129,7 +129,8 @@
     [dic setValue:self.userLoginInfo.user.phone forKey:@"phone"];
     [dic setValue:self.userLoginInfo.sessionId forKey:@"sessionId"];
     [dic setValue:@"1" forKey:@"pageNum"];
-    [dic setValue:@"10" forKey:@"pageSize"];
+    [dic setValue:@"100" forKey:@"pageSize"];
+    [dic setValue:@"2" forKey:@"state"];
     
     NSLog(@"上传字典:%@",dic);
     
@@ -385,48 +386,53 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.arrayOfShow.count+1;
+    return self.arrayOfShow.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
+   
         
-        return 5;
-        
-    }
     
-    
-    
-    else{
         
-        NSUInteger row=indexPath.row-1;
+        NSDictionary *dict=[self.arrayOfShow objectAtIndex:indexPath.row];
         
-        NSDictionary *dict=[self.arrayOfShow objectAtIndex:row];
+        NSMutableArray *arrayOfReturn=[[NSMutableArray alloc]init];
+        NSMutableArray *arrayOfGet=[[NSMutableArray alloc]init];
+        
         
         NSArray *orderImageList=[dict objectForKey:@"orderImageList"];
         
         for (int i=0; i<orderImageList.count; i++) {
-            [self.networkImages addObject:[[orderImageList objectAtIndex:i] objectForKey:@"imageUrl"]];
+            [arrayOfGet addObject:[[orderImageList objectAtIndex:i] objectForKey:@"imageUrl"]];
         }
         
         
         NSArray *returnImageList=[dict objectForKey:@"returnImageList"];
         for (int i=0; i<returnImageList.count; i++) {
-            [self.networkImages addObject:[[returnImageList objectAtIndex:i] objectForKey:@"imageUrl"]];
+            [arrayOfReturn addObject:[[returnImageList objectAtIndex:i] objectForKey:@"imageUrl"]];
         }
         
-        if (self.networkImages.count==0) {
+        if (arrayOfGet.count==0 && arrayOfReturn.count==0) {
             return 284;
         }
+        else if (arrayOfGet.count>0 && arrayOfReturn.count==0)
+        {
+            return 412;
+        }
+        else if (arrayOfGet.count==0 && arrayOfReturn.count>0)
+        {
+            return 412;
+        }
+        
         else
         {
-            return 394;
+            return 554;
         }
         
         
         
-    }
+    
     
 }
 
@@ -443,9 +449,10 @@
 {
     
     static NSString* cellId1 = @"OrderCell";
-    static NSString* cellHolderId = @"PlaceHolderCell";
+    //static NSString* cellHolderId = @"PlaceHolderCell";
     //    static NSString* cellHolderId = @"PlaceHolderCell";
     
+    /*
     if (indexPath.row == 0) {
         
         PlaceHolderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellHolderId];
@@ -463,7 +470,7 @@
         return cell;
         
         
-    }
+    }*/
     /*
      else if(indexPath.row%2 == 0){
      
@@ -511,15 +518,40 @@
      
      }
      */
-    else{
+    
+        
+    
+        
+        NSDictionary *dict=[self.arrayOfShow objectAtIndex:indexPath.row];
         
         
+        NSMutableArray *arrayOfReturn=[[NSMutableArray alloc]init];
+        NSMutableArray *arrayOfGet=[[NSMutableArray alloc]init];
         
+        
+        NSArray *orderImageList=[dict objectForKey:@"orderImageList"];
+    
+        
+        for (int i=0; i<orderImageList.count; i++) {
+            [arrayOfGet addObject:[[orderImageList objectAtIndex:i] objectForKey:@"imageUrl"]];
+        }
+        
+        
+        NSArray *returnImageList=[dict objectForKey:@"returnImageList"];
+    
+        for (int i=0; i<returnImageList.count; i++) {
+            [arrayOfReturn addObject:[[returnImageList objectAtIndex:i] objectForKey:@"imageUrl"]];
+        }
+    
+    NSLog(@"数组1：%@",arrayOfGet);
+    NSLog(@"数组2：%@",arrayOfReturn);
+    
         OrderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
         
         if (!cell) {
             
-            if (self.networkImages.count==0) {
+            if (arrayOfGet.count==0 && arrayOfReturn.count==0) {
+                
                 cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
                 
                 UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
@@ -536,14 +568,60 @@
                 [cell.viewMask1 addSubview:viewDivide3];
                 
             }
-            else
+            else if(arrayOfGet.count>0 && arrayOfReturn.count==0)
             {
+                NSLog(@"测试1");
                 cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:1];
                 
                 UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
                 UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 , SCREEN_WIDTH - 10, 0.5)];
                 UIView* viewDivide3 = [[UIView alloc] initWithFrame:CGRectMake(0, 230, SCREEN_WIDTH, 0.5)];
-                UIView* viewDivide4 = [[UIView alloc] initWithFrame:CGRectMake(0, 340, SCREEN_WIDTH, 0.5)];
+                UIView* viewDivide4 = [[UIView alloc] initWithFrame:CGRectMake(0, 358, SCREEN_WIDTH, 0.5)];
+                
+                viewDivide1.backgroundColor = [HKCommen getColor:@"ccccccc"];
+                viewDivide2.backgroundColor = [HKCommen getColor:@"e0e0e0"];
+                viewDivide3.backgroundColor = [HKCommen getColor:@"ccccccc"];
+                viewDivide4.backgroundColor = [HKCommen getColor:@"ccccccc"];
+                
+                [cell.viewMask1 addSubview:viewDivide1];
+                [cell.viewMask1 addSubview:viewDivide2];
+                [cell.viewMask1 addSubview:viewDivide3];
+                [cell.viewMask1 addSubview:viewDivide4];
+                
+                cell.delegate=self;
+            }
+            else if(arrayOfGet.count==0 && arrayOfReturn.count>0)
+            {
+                NSLog(@"测试2");
+                cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:1];
+                
+                UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
+                UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 , SCREEN_WIDTH - 10, 0.5)];
+                UIView* viewDivide3 = [[UIView alloc] initWithFrame:CGRectMake(0, 230, SCREEN_WIDTH, 0.5)];
+                UIView* viewDivide4 = [[UIView alloc] initWithFrame:CGRectMake(0, 358, SCREEN_WIDTH, 0.5)];
+                
+                viewDivide1.backgroundColor = [HKCommen getColor:@"ccccccc"];
+                viewDivide2.backgroundColor = [HKCommen getColor:@"e0e0e0"];
+                viewDivide3.backgroundColor = [HKCommen getColor:@"ccccccc"];
+                viewDivide4.backgroundColor = [HKCommen getColor:@"ccccccc"];
+                
+                [cell.viewMask1 addSubview:viewDivide1];
+                [cell.viewMask1 addSubview:viewDivide2];
+                [cell.viewMask1 addSubview:viewDivide3];
+                [cell.viewMask1 addSubview:viewDivide4];
+                
+                cell.delegate=self;
+            }
+            
+            else if(arrayOfGet.count>0 && arrayOfReturn.count>0)
+            {
+                NSLog(@"测试cell");
+                cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:2];
+                
+                UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
+                UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 , SCREEN_WIDTH - 10, 0.5)];
+                UIView* viewDivide3 = [[UIView alloc] initWithFrame:CGRectMake(0, 230, SCREEN_WIDTH, 0.5)];
+                UIView* viewDivide4 = [[UIView alloc] initWithFrame:CGRectMake(0, 358, SCREEN_WIDTH, 0.5)];
                 
                 viewDivide1.backgroundColor = [HKCommen getColor:@"ccccccc"];
                 viewDivide2.backgroundColor = [HKCommen getColor:@"e0e0e0"];
@@ -571,24 +649,11 @@
         
         
         
-        NSUInteger row=indexPath.row-1;
+      
         
         
-        NSLog(@"序号：%@",[self.arrayOfShow objectAtIndex:row]);
-        
-        NSDictionary *dict=[self.arrayOfShow objectAtIndex:row];
-        
-        NSArray *orderImageList=[dict objectForKey:@"orderImageList"];
-        
-        for (int i=0; i<orderImageList.count; i++) {
-            [self.networkImages addObject:[[orderImageList objectAtIndex:i] objectForKey:@"imageUrl"]];
-        }
         
         
-        NSArray *returnImageList=[dict objectForKey:@"returnImageList"];
-        for (int i=0; i<returnImageList.count; i++) {
-            [self.networkImages addObject:[[returnImageList objectAtIndex:i] objectForKey:@"imageUrl"]];
-        }
         
         /*
          [cell.btn_image1 addTarget:self action:@selector(selectPhoto:) forControlEvents:UIControlEventTouchUpInside];
@@ -601,6 +666,7 @@
          [cell.btn_image3 setTag:2];
          */
         
+        NSLog(@"序号：%@",dict);
         int state= [[dict objectForKey:@"state"] intValue];
         
         cell.lblServiceCompany.text=[dict objectForKey:@"storeName"];
@@ -666,7 +732,7 @@
             }
         }
         
-        /*可以删掉，测试*/
+        /*可以删掉，测试
         cell.lblStatusOfOrder.text=@"已完成";
         
         cell.btnGoCommentPage.hidden=NO;
@@ -674,9 +740,10 @@
         
         [cell.btnGoCommentPage setTag:[[dict objectForKey:@"id"] intValue]];
         [cell.btnGoCommentPage addTarget:self action:@selector(goCommentPage:) forControlEvents:UIControlEventTouchUpInside];
+         */
         
         return cell;
-    }
+    
 }
 
 

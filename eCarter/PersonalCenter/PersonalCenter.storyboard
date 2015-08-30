@@ -313,7 +313,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6zf-rS-vkw">
-                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <rect key="frame" x="0.0" y="113" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="r1F-86-Khd" id="09u-0H-pIa"/>
@@ -332,13 +332,13 @@
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="cMM-EK-fWd" secondAttribute="trailing" constant="-16" id="0Lq-Ej-Rxt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6zf-rS-vkw" secondAttribute="trailing" constant="-16" id="2qC-fE-brp"/>
-                            <constraint firstItem="6zf-rS-vkw" firstAttribute="top" secondItem="dIP-UD-jz6" secondAttribute="bottom" constant="44" id="Ml2-pZ-VGk"/>
+                            <constraint firstItem="6zf-rS-vkw" firstAttribute="top" secondItem="dIP-UD-jz6" secondAttribute="bottom" constant="49" id="Ml2-pZ-VGk"/>
                             <constraint firstItem="6zf-rS-vkw" firstAttribute="leading" secondItem="ycr-AP-uTA" secondAttribute="leadingMargin" constant="-16" id="Qny-QK-jGq"/>
                             <constraint firstItem="cMM-EK-fWd" firstAttribute="leading" secondItem="ycr-AP-uTA" secondAttribute="leadingMargin" constant="-16" id="X3a-lP-Wm5"/>
                             <constraint firstItem="6zf-rS-vkw" firstAttribute="top" secondItem="cMM-EK-fWd" secondAttribute="bottom" id="b4E-Xy-eix"/>
                             <constraint firstItem="cMM-EK-fWd" firstAttribute="top" secondItem="dIP-UD-jz6" secondAttribute="bottom" id="gwe-X4-bQj"/>
                             <constraint firstItem="6zf-rS-vkw" firstAttribute="top" secondItem="dIP-UD-jz6" secondAttribute="bottom" id="mN2-lm-fp8"/>
-                            <constraint firstItem="ba4-Ky-ii7" firstAttribute="top" secondItem="6zf-rS-vkw" secondAttribute="bottom" id="ziF-ba-Meq"/>
+                            <constraint firstItem="ba4-Ky-ii7" firstAttribute="top" secondItem="6zf-rS-vkw" secondAttribute="bottom" constant="-5" id="ziF-ba-Meq"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
