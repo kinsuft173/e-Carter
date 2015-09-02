@@ -45,6 +45,7 @@
 
 @property (nonatomic,strong)NSMutableArray *arrayOfShow;
 
+
 @end
 
 @implementation MyOrderCtrl
@@ -65,6 +66,7 @@
     self.arrayOfCancel=[[NSMutableArray alloc]init];
     
     self.arrayOfShow=[[NSMutableArray alloc]init];
+
     
     /*
      [self.networkImages addObject:@"http://img5.imgtn.bdimg.com/it/u=2291374817,432518394&fm=21&gp=0.jpg"];
@@ -178,28 +180,33 @@
     
 }
 
-- (void)getModel:(NSArray *)state
+- (void)cancelOrderModel:(NSString*)orderId TableRow:(NSUInteger)row
 {
     self.userLoginInfo= [UserDataManager shareManager].userLoginInfo;
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
-
+    [dic setValue:orderId forKey:@"orderId"];
     [dic setValue:self.userLoginInfo.user.phone forKey:@"phone"];
     [dic setValue:self.userLoginInfo.sessionId forKey:@"sessionId"];
-    [dic setValue:@"1" forKey:@"pageNum"];
-    [dic setValue:@"10" forKey:@"pageSize"];
-    [dic setValue:@[@1, @2, @4] forKey:@"state"];
     
-    [[NetworkManager shareMgr] server_queryOrderListWithDic:dic completeHandle:^(NSDictionary *response) {
+    [[NetworkManager shareMgr] server_cancelOrderWithDic:dic completeHandle:^(NSDictionary *response) {
         
-        self.arrayOfOrder= [response objectForKey:@"data"];
+     
         
-        NSLog(@"订单结果：%@",response);
-        for (int i=0; i<self.arrayOfTables.count; i++) {
-            UITableView *table=[self.arrayOfTables objectAtIndex:i];
-            [table  reloadData];
+        if ([[response objectForKey:@"message"] isEqualToString:@"OK"]) {
+            [HKCommen addAlertViewWithTitel:@"退款申请成功"];
+            
+            UITableView *table=[self.arrayOfTables objectAtIndex:0];
+            OrderCell *cell=(OrderCell*)[table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
+            cell.lblStatusOfOrder.text=@"退款中";
+        }
+        else
+        {
+            [HKCommen addAlertViewWithTitel:@"退款失败"];
         }
     }];
+    
+    //[self getModel];
     
 }
 
@@ -612,13 +619,32 @@
         [cell.image2 setImage:[UIImage imageNamed:@"bg1"]];
         [cell.image3 setImage:[UIImage imageNamed:@"bg2"]];
         
-        if (state==5)
+       if (state==1)
+        {
+            cell.lblStatusOfOrder.text=@"待受理";
+            
+            cell.btnGoCommentPage.hidden=NO;
+            
+            [cell.btnGoCommentPage setTag:indexPath.row];
+            [cell.btnGoCommentPage setTitle:@"取消订单" forState:UIControlStateNormal];
+            [cell.btnGoCommentPage addTarget:self action:@selector(CancelOrder:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        else if (state==5)
         {
             cell.lblStatusOfOrder.text=@"已完成";
             
             cell.btnGoCommentPage.hidden=NO;
             [cell.btnGoCommentPage setTitle:@"待评价" forState:UIControlStateNormal];
             [cell.btnGoCommentPage addTarget:self action:@selector(goCommentPage) forControlEvents:UIControlEventTouchUpInside];
+        }
+        else if (state==6)
+        {
+            
+            cell.lblStatusOfOrder.text=@"提交退款申请";
+            
+            cell.btnGoCommentPage.hidden=NO;
+            [cell.btnGoCommentPage setTitle:@"退款中" forState:UIControlStateNormal];
+            
         }
         else if (state==8)
         {
@@ -659,6 +685,37 @@
         return cell;
     }
 }
+
+-(void)CancelOrder:(UIButton*)button
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"取消订单" message:@"是否取消订单？" preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:
+                               ^(UIAlertAction *action) {
+                                   NSUInteger row=button.tag;
+                                   
+                                   UITableView *table=[self.arrayOfTables objectAtIndex:0];
+                                   OrderCell *cell=(OrderCell*)[table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
+                                   
+                                   
+                                   
+                                   [self cancelOrderModel:cell.orderId.text TableRow:row];
+                               }
+                               ];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:okAction];
+    [alertController addAction:cancelAction];
+    
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+    
+    
+}
+
 
 
 /*

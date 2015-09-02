@@ -50,9 +50,9 @@
 - (void)server_updateOrderStatusWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 - (void)server_EditUserInfo:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 - (void)server_fetchAdvertisementDetails:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
-
+- (void)server_cancelOrderWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 - (void)server_queryCarDetails:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
-
+- (void)server_deleteCarWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 - (void)server_queryCarLists:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 - (void)server_submitOrderReviewsWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 - (void)server_queryUserAccountWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;

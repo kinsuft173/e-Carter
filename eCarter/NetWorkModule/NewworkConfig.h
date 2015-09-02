@@ -48,6 +48,7 @@ typedef void (^ErrorHandle)(NSError*);
 
 
 #define ECATER_QUERY_ORDER_LIST_INTERFACE @"/ecar/mobile/queryOrderList"
+#define ECATER_QUERY_CANCEL_ORDER_INTERFACE @"/ecar/mobile/cancelOrder"
 #define ECATER_QUERY_ODERD_ETAIL_INTERFACE @"/ecar/mobile/queryOrderDetail"
 #define ECATER_QUERY_ODER_LOG_INTERFACE @"/ecar/mobile/tranRecord"
 #define ECATER_UPDATE_ORDER_STATUS_INTERFACE @"/ecar/mobile/updateOrderStatus"
@@ -62,6 +63,7 @@ typedef void (^ErrorHandle)(NSError*);
 #define ECATER_QUERY_CAR_BRAND_INTERFACE @"/ecar/mobile/queryCarBrand"
 #define ECATER_QUERY_CAR_SERIES_INTERFACE @"/ecar/mobile/queryCarSeries"
 #define ECATER_QUERY_CAR_LISTS_INTERFACE @"/ecar/mobile/queryCustomerCar"
+#define ECATER_QUERY_DELETE_CAR_INTERFACE @"/ecar/mobile/delCar"
 #define ECATER_EDIT_USERINFO_INTERFACE @"/ecar/mobile/editUserInfo"
 
 #define ECATER_QUERY_CAR_LISTS @"/lifeservice/car/GetSeries"

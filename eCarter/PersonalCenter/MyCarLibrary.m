@@ -72,6 +72,39 @@
     
 }
 
+
+- (void)CancelCar:(NSString*)carId
+{
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
+    [dic setObject:carId forKey:@"carId"];
+    
+    NSLog(@"删除字典：%@",dic);
+    
+    [[NetworkManager shareMgr] server_deleteCarWithDic:dic completeHandle:^(NSDictionary *responseBanner) {
+        
+        
+        
+        if ([[responseBanner objectForKey:@"message"] isEqualToString:@"OK"]) {
+            [HKCommen addAlertViewWithTitel:@"删除成功"];
+            [self getModel];
+        }
+        else
+        {
+            [HKCommen addAlertViewWithTitel:@"删除失败"];
+        }
+        
+        
+        
+        
+    }];
+    
+    
+    
+}
+
 -(void)back
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -176,8 +209,10 @@
             
         }
         
+        
+        
         NSUInteger row=(indexPath.row-1)/2;
-        NSLog(@"队列字典：%@",[self.arrayOfCar objectAtIndex:row]);
+        
         Car *car=[Car objectWithKeyValues:[self.arrayOfCar objectAtIndex:row]];
         cell.lbl_brand.text=car.brand;
         cell.lbl_colorOfCar.text=car.color;
@@ -190,10 +225,37 @@
         cell.lbl_seriesOfCar.text=car.model;
         
         
+        
+        [cell.btn_DeleteCar setTag:car.id];
+        [cell.btn_DeleteCar addTarget:self action:@selector(DeleteCar:) forControlEvents:UIControlEventTouchUpInside];
+        
+        
         return cell;
     
     }
     return nil;
+}
+
+-(void)DeleteCar:(UIButton*)button
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"删除车辆" message:@"是否删除该车辆？" preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:
+                               ^(UIAlertAction *action) {
+                                   [self CancelCar:[NSString stringWithFormat:@"%ld",button.tag]];
+                               }
+                               ];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:okAction];
+    [alertController addAction:cancelAction];
+    
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

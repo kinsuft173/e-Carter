@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_year;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_volume;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_engine;
+@property (weak, nonatomic) IBOutlet UIButton *btn_DeleteCar;
 
 
 @end

@@ -221,9 +221,21 @@
                             <constraint firstAttribute="height" constant="120" id="pHw-wi-Awo"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZPe-ra-NmM">
+                        <rect key="frame" x="224" y="0.0" width="95" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="48" id="s1L-um-C1s"/>
+                            <constraint firstAttribute="width" constant="95" id="s6z-XW-Jkh"/>
+                        </constraints>
+                        <state key="normal" title="删除车辆">
+                            <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Egj-Ze-LTT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="020-wH-eAY"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="ZPe-ra-NmM" secondAttribute="trailing" constant="-7" id="2Kr-Mm-gc6"/>
                     <constraint firstItem="iTy-yg-tUx" firstAttribute="leading" secondItem="H1O-Nc-YAy" secondAttribute="leading" constant="-13" id="5BM-Pv-x9o"/>
                     <constraint firstAttribute="trailingMargin" secondItem="D1X-2r-ZgT" secondAttribute="trailing" constant="-16" id="5oA-4l-N80"/>
                     <constraint firstItem="4dc-Z0-DVs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="59" id="64o-tJ-koG"/>
@@ -249,6 +261,7 @@
                     <constraint firstItem="vTF-E5-Z7w" firstAttribute="leading" secondItem="iTy-yg-tUx" secondAttribute="leading" constant="13" id="ST3-Vl-qaw"/>
                     <constraint firstItem="MIH-Tk-bWW" firstAttribute="top" secondItem="h5J-na-Ms7" secondAttribute="top" id="UBN-hj-LfA"/>
                     <constraint firstItem="ODF-GA-dAp" firstAttribute="leading" secondItem="iTy-yg-tUx" secondAttribute="leading" constant="75" id="Ucg-ey-WYC"/>
+                    <constraint firstItem="ZPe-ra-NmM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="UtD-0A-XUo"/>
                     <constraint firstItem="zay-oE-jga" firstAttribute="top" secondItem="5ch-Kt-FmZ" secondAttribute="top" id="Ya3-eT-oTD"/>
                     <constraint firstItem="D1X-2r-ZgT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="39" id="ZPw-Rp-K1h"/>
                     <constraint firstItem="Egj-Ze-LTT" firstAttribute="centerY" secondItem="MIH-Tk-bWW" secondAttribute="centerY" constant="14.5" id="ZkI-LN-LWr"/>
@@ -274,6 +287,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btn_DeleteCar" destination="ZPe-ra-NmM" id="GSS-i3-l72"/>
                 <outlet property="lbl_brand" destination="ODF-GA-dAp" id="22Z-ck-KdM"/>
                 <outlet property="lbl_colorOfCar" destination="N7a-CM-xbp" id="9QE-fA-6Lp"/>
                 <outlet property="lbl_engine" destination="QzT-yH-xi8" id="MAq-Ju-3px"/>
@@ -284,7 +298,7 @@
                 <outlet property="lbl_volume" destination="W6B-sU-G9M" id="XEX-sZ-Xue"/>
                 <outlet property="lbl_year" destination="zay-oE-jga" id="9c3-Gn-UMe"/>
             </connections>
-            <point key="canvasLocation" x="324.5" y="198"/>
+            <point key="canvasLocation" x="324" y="198"/>
         </tableViewCell>
     </objects>
 </document>
