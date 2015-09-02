@@ -19,6 +19,12 @@
 
 -(void)initUI
 {
+    [self.btn_image1 setTag:1];
+    [self.btn_image2 setTag:2];
+    [self.btn_image3 setTag:3];
+    [self.btn_image4 setTag:4];
+    [self.btn_image5 setTag:5];
+    
     self.array_Star=[NSArray arrayWithObjects:self.img_star1,self.img_star2,self.img_star3,self.img_star4,self.img_star5, nil];
     
     [self setStarForValue:self.whichValue];

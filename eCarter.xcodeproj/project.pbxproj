@@ -387,8 +387,6 @@
 		DEE87CEF1B48EA2000D3EDAB /* JYCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE87CDF1B48EA2000D3EDAB /* JYCommon.m */; };
 		DEE87CF01B48EA2000D3EDAB /* PaymentCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE87CE11B48EA2000D3EDAB /* PaymentCtrl.m */; };
 		DEE87CF11B48EA2000D3EDAB /* PaymentCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE87CE21B48EA2000D3EDAB /* PaymentCtrl.xib */; };
-		DEE87CF21B48EA2000D3EDAB /* starView.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE87CE41B48EA2000D3EDAB /* starView.m */; };
-		DEE87CF31B48EA2000D3EDAB /* starView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE87CE51B48EA2000D3EDAB /* starView.xib */; };
 		DEE87CF41B48EA2000D3EDAB /* SuccessCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE87CE71B48EA2000D3EDAB /* SuccessCtrl.m */; };
 		DEE87CF51B48EA2000D3EDAB /* SuccessCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE87CE81B48EA2000D3EDAB /* SuccessCtrl.xib */; };
 		DEE87CF71B48EB8500D3EDAB /* CarNumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE87CF61B48EB8500D3EDAB /* CarNumCell.m */; };
@@ -529,6 +527,10 @@
 		E99318AB1B8A1BC700B56AE9 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E993188A1B8A1BC700B56AE9 /* SVProgressHUD.bundle */; };
 		E99318AC1B8A1BC700B56AE9 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E993188C1B8A1BC700B56AE9 /* SVProgressHUD.m */; };
 		E99318AD1B8A1BC700B56AE9 /* LFRoundProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E993188F1B8A1BC700B56AE9 /* LFRoundProgressView.m */; };
+		E99A1C621B97AA9500ABAE9A /* CommentCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E99A1C601B97AA9500ABAE9A /* CommentCtrl.m */; };
+		E99A1C631B97AA9500ABAE9A /* CommentCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99A1C611B97AA9500ABAE9A /* CommentCtrl.xib */; };
+		E99A1C671B97AB1700ABAE9A /* starView.m in Sources */ = {isa = PBXBuildFile; fileRef = E99A1C651B97AB1700ABAE9A /* starView.m */; };
+		E99A1C681B97AB1700ABAE9A /* starView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99A1C661B97AB1700ABAE9A /* starView.xib */; };
 		E9A4F3D41B8E347000C6F600 /* GetProvinceCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A4F3D21B8E347000C6F600 /* GetProvinceCtrl.m */; };
 		E9A4F3D51B8E347000C6F600 /* GetProvinceCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A4F3D31B8E347000C6F600 /* GetProvinceCtrl.xib */; };
 		E9A4F3D91B8E360700C6F600 /* GetCityCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A4F3D71B8E360700C6F600 /* GetCityCtrl.m */; };
@@ -536,8 +538,6 @@
 		E9A4F3DE1B8E362900C6F600 /* GetRegionCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A4F3DC1B8E362900C6F600 /* GetRegionCtrl.m */; };
 		E9A4F3DF1B8E362900C6F600 /* GetRegionCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A4F3DD1B8E362900C6F600 /* GetRegionCtrl.xib */; };
 		E9A4F3E11B8E390C00C6F600 /* location.xml in Resources */ = {isa = PBXBuildFile; fileRef = E9A4F3E01B8E390C00C6F600 /* location.xml */; };
-		E9CB14041B6DCFE200A46117 /* CommentCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9CB14021B6DCFE200A46117 /* CommentCtrl.m */; };
-		E9CB14051B6DCFE200A46117 /* CommentCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9CB14031B6DCFE200A46117 /* CommentCtrl.xib */; };
 		E9EB56921B836DF500E0FCBF /* SelectProvinceCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB56901B836DF500E0FCBF /* SelectProvinceCtrl.m */; };
 		E9EB56931B836DF500E0FCBF /* SelectProvinceCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9EB56911B836DF500E0FCBF /* SelectProvinceCtrl.xib */; };
 		E9EB56971B836F6300E0FCBF /* ProvinceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB56951B836F6300E0FCBF /* ProvinceCell.m */; };
@@ -1175,9 +1175,6 @@
 		DEE87CE01B48EA2000D3EDAB /* PaymentCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaymentCtrl.h; path = MainServerModule/Jinyou/PaymentCtrl.h; sourceTree = "<group>"; };
 		DEE87CE11B48EA2000D3EDAB /* PaymentCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaymentCtrl.m; path = MainServerModule/Jinyou/PaymentCtrl.m; sourceTree = "<group>"; };
 		DEE87CE21B48EA2000D3EDAB /* PaymentCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PaymentCtrl.xib; path = MainServerModule/Jinyou/PaymentCtrl.xib; sourceTree = "<group>"; };
-		DEE87CE31B48EA2000D3EDAB /* starView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = starView.h; path = MainServerModule/Jinyou/starView.h; sourceTree = "<group>"; };
-		DEE87CE41B48EA2000D3EDAB /* starView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = starView.m; path = MainServerModule/Jinyou/starView.m; sourceTree = "<group>"; };
-		DEE87CE51B48EA2000D3EDAB /* starView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = starView.xib; path = MainServerModule/Jinyou/starView.xib; sourceTree = "<group>"; };
 		DEE87CE61B48EA2000D3EDAB /* SuccessCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuccessCtrl.h; path = MainServerModule/Jinyou/SuccessCtrl.h; sourceTree = "<group>"; };
 		DEE87CE71B48EA2000D3EDAB /* SuccessCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SuccessCtrl.m; path = MainServerModule/Jinyou/SuccessCtrl.m; sourceTree = "<group>"; };
 		DEE87CE81B48EA2000D3EDAB /* SuccessCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SuccessCtrl.xib; path = MainServerModule/Jinyou/SuccessCtrl.xib; sourceTree = "<group>"; };
@@ -1401,6 +1398,12 @@
 		E993188C1B8A1BC700B56AE9 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		E993188E1B8A1BC700B56AE9 /* LFRoundProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFRoundProgressView.h; sourceTree = "<group>"; };
 		E993188F1B8A1BC700B56AE9 /* LFRoundProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFRoundProgressView.m; sourceTree = "<group>"; };
+		E99A1C5F1B97AA9500ABAE9A /* CommentCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCtrl.h; sourceTree = "<group>"; };
+		E99A1C601B97AA9500ABAE9A /* CommentCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCtrl.m; sourceTree = "<group>"; };
+		E99A1C611B97AA9500ABAE9A /* CommentCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCtrl.xib; sourceTree = "<group>"; };
+		E99A1C641B97AB1700ABAE9A /* starView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = starView.h; sourceTree = "<group>"; };
+		E99A1C651B97AB1700ABAE9A /* starView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = starView.m; sourceTree = "<group>"; };
+		E99A1C661B97AB1700ABAE9A /* starView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = starView.xib; sourceTree = "<group>"; };
 		E9A4F3D11B8E347000C6F600 /* GetProvinceCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetProvinceCtrl.h; sourceTree = "<group>"; };
 		E9A4F3D21B8E347000C6F600 /* GetProvinceCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetProvinceCtrl.m; sourceTree = "<group>"; };
 		E9A4F3D31B8E347000C6F600 /* GetProvinceCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetProvinceCtrl.xib; sourceTree = "<group>"; };
@@ -1411,9 +1414,6 @@
 		E9A4F3DC1B8E362900C6F600 /* GetRegionCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetRegionCtrl.m; sourceTree = "<group>"; };
 		E9A4F3DD1B8E362900C6F600 /* GetRegionCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetRegionCtrl.xib; sourceTree = "<group>"; };
 		E9A4F3E01B8E390C00C6F600 /* location.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = location.xml; sourceTree = "<group>"; };
-		E9CB14011B6DCFE200A46117 /* CommentCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCtrl.h; sourceTree = "<group>"; };
-		E9CB14021B6DCFE200A46117 /* CommentCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCtrl.m; sourceTree = "<group>"; };
-		E9CB14031B6DCFE200A46117 /* CommentCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCtrl.xib; sourceTree = "<group>"; };
 		E9EB568F1B836DF500E0FCBF /* SelectProvinceCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectProvinceCtrl.h; sourceTree = "<group>"; };
 		E9EB56901B836DF500E0FCBF /* SelectProvinceCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectProvinceCtrl.m; sourceTree = "<group>"; };
 		E9EB56911B836DF500E0FCBF /* SelectProvinceCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectProvinceCtrl.xib; sourceTree = "<group>"; };
@@ -2286,11 +2286,11 @@
 		DEE719AC1B3ED12D003221A8 /* PersonalCenter */ = {
 			isa = PBXGroup;
 			children = (
+				E99A1C5F1B97AA9500ABAE9A /* CommentCtrl.h */,
+				E99A1C601B97AA9500ABAE9A /* CommentCtrl.m */,
+				E99A1C611B97AA9500ABAE9A /* CommentCtrl.xib */,
 				E9CB14001B6DCF8900A46117 /* Order */,
 				DEE719B21B3ED446003221A8 /* Cell */,
-				E9CB14011B6DCFE200A46117 /* CommentCtrl.h */,
-				E9CB14021B6DCFE200A46117 /* CommentCtrl.m */,
-				E9CB14031B6DCFE200A46117 /* CommentCtrl.xib */,
 				E98B3A7F1B6DE9F400980C16 /* MoneyReturnDetailCtrl.h */,
 				E98B3A801B6DE9F400980C16 /* MoneyReturnDetailCtrl.m */,
 				E98B3A811B6DE9F400980C16 /* MoneyReturnDetailCtrl.xib */,
@@ -2415,14 +2415,14 @@
 				DEE87CDB1B48EA2000D3EDAB /* BalanceMoneyCtrl.h */,
 				DEE87CDC1B48EA2000D3EDAB /* BalanceMoneyCtrl.m */,
 				DEE87CDD1B48EA2000D3EDAB /* BalanceMoneyCtrl.xib */,
+				E99A1C641B97AB1700ABAE9A /* starView.h */,
+				E99A1C651B97AB1700ABAE9A /* starView.m */,
+				E99A1C661B97AB1700ABAE9A /* starView.xib */,
 				DEE87CDE1B48EA2000D3EDAB /* JYCommon.h */,
 				DEE87CDF1B48EA2000D3EDAB /* JYCommon.m */,
 				DEE87CE01B48EA2000D3EDAB /* PaymentCtrl.h */,
 				DEE87CE11B48EA2000D3EDAB /* PaymentCtrl.m */,
 				DEE87CE21B48EA2000D3EDAB /* PaymentCtrl.xib */,
-				DEE87CE31B48EA2000D3EDAB /* starView.h */,
-				DEE87CE41B48EA2000D3EDAB /* starView.m */,
-				DEE87CE51B48EA2000D3EDAB /* starView.xib */,
 				DEE87CE61B48EA2000D3EDAB /* SuccessCtrl.h */,
 				DEE87CE71B48EA2000D3EDAB /* SuccessCtrl.m */,
 				DEE87CE81B48EA2000D3EDAB /* SuccessCtrl.xib */,
@@ -3268,6 +3268,7 @@
 				DEE337261B4C40D900357253 /* mine_icon_woman@2x.png in Resources */,
 				E99318A81B8A1BC700B56AE9 /* CoreSVP.bundle in Resources */,
 				DED7F5951B4761060005019C /* Coupons_but_more@3x.png in Resources */,
+				E99A1C631B97AA9500ABAE9A /* CommentCtrl.xib in Resources */,
 				E98B3A831B6DE9F400980C16 /* MoneyReturnDetailCtrl.xib in Resources */,
 				DED7F5501B4760DB0005019C /* btn_pay_det@2x.png in Resources */,
 				E9F9D0461B74F32C007781AC /* Share_sina@3x.png in Resources */,
@@ -3314,7 +3315,6 @@
 				DEE3373D1B4C40D900357253 /* share_pengyouquan@3x.png in Resources */,
 				DEE337121B4C40D900357253 /* Other@3x.png in Resources */,
 				DE237EF81B4047830027767B /* CarInfoCell.xib in Resources */,
-				E9CB14051B6DCFE200A46117 /* CommentCtrl.xib in Resources */,
 				E9F9D0481B74F32C007781AC /* share_WeChat@3x.png in Resources */,
 				DEE337241B4C40D900357253 /* mine_icon_man@2x.png in Resources */,
 				DED7F57B1B4760DB0005019C /* icon_time@2x.png in Resources */,
@@ -3398,6 +3398,7 @@
 				DEEDABE61B63E9D500247916 /* info.json in Resources */,
 				DED7F5731B4760DB0005019C /* icon_Location@2x.png in Resources */,
 				E9EB56931B836DF500E0FCBF /* SelectProvinceCtrl.xib in Resources */,
+				E99A1C681B97AB1700ABAE9A /* starView.xib in Resources */,
 				DEE337331B4C40D900357253 /* mine_phone@3x.png in Resources */,
 				DED7F57C1B4760DB0005019C /* icon_time@3x.png in Resources */,
 				DED7F56D1B4760DB0005019C /* icon_Distance_blue@2x.png in Resources */,
@@ -3417,7 +3418,6 @@
 				DE237F121B4056260027767B /* CustomTradeCell.xib in Resources */,
 				DED7F5551B4760DB0005019C /* but_bg_woyaoqiang@3x.png in Resources */,
 				DE0C3ED41B92E57A006D2840 /* loading-ios@3x.png in Resources */,
-				DEE87CF31B48EA2000D3EDAB /* starView.xib in Resources */,
 				DEE3370E1B4C40D900357253 /* Grey@3x.png in Resources */,
 				DED7F5591B4760DB0005019C /* but_dial@3x.png in Resources */,
 				DEFB2B681B44360B00C74FC0 /* Default_picture.png in Resources */,
@@ -3577,6 +3577,7 @@
 				DE9D120E1B50ECEC00046407 /* LineDashPolyline.m in Sources */,
 				DE9D120C1B50ECEC00046407 /* CustomOverlayRenderer.m in Sources */,
 				E99318931B8A1BC700B56AE9 /* CALayer+Transition.m in Sources */,
+				E99A1C621B97AA9500ABAE9A /* CommentCtrl.m in Sources */,
 				DEE719CE1B3EF5BF003221A8 /* OrderCell.m in Sources */,
 				DEE337AA1B4DF68C00357253 /* SettingCell.m in Sources */,
 				DEE87CD21B48E7A500D3EDAB /* ServiceCommentinfoCell.m in Sources */,
@@ -3588,6 +3589,7 @@
 				DE9D12C31B52BE0000046407 /* MD5DataSigner.m in Sources */,
 				DE9D120D1B50ECEC00046407 /* GeocodeAnnotation.m in Sources */,
 				E99318AC1B8A1BC700B56AE9 /* SVProgressHUD.m in Sources */,
+				E99A1C671B97AB1700ABAE9A /* starView.m in Sources */,
 				DEE4CA591B3C7F8A0009B73C /* WeixinPayCell.m in Sources */,
 				E9A4F3D41B8E347000C6F600 /* GetProvinceCtrl.m in Sources */,
 				DE9D12151B50ECEC00046407 /* ReGeocodeAnnotation.m in Sources */,
@@ -3673,7 +3675,6 @@
 				E99318AA1B8A1BC700B56AE9 /* SVIndefiniteAnimatedView.m in Sources */,
 				E993189A1B8A1BC700B56AE9 /* UIDevice+Extend.m in Sources */,
 				DE9D12061B50ECEC00046407 /* AnimatedAnnotation.m in Sources */,
-				DEE87CF21B48EA2000D3EDAB /* starView.m in Sources */,
 				DEE87D081B48EC0500D3EDAB /* CarDetailCell.m in Sources */,
 				E99318921B8A1BC700B56AE9 /* CALayer+Anim.m in Sources */,
 				E993189F1B8A1BC700B56AE9 /* UIImage+FixOrientation.m in Sources */,
@@ -3689,7 +3690,6 @@
 				DEE719C51B3EEA45003221A8 /* MyOrderCtrl.m in Sources */,
 				DEE52EC81B38F5C400C90BA3 /* EventInfoCell.m in Sources */,
 				DE9D12C71B52BE0000046407 /* RSADataVerifier.m in Sources */,
-				E9CB14041B6DCFE200A46117 /* CommentCtrl.m in Sources */,
 				E96A2DF41B77AE8400DC9B05 /* SBJsonUTF8Stream.m in Sources */,
 				DEFF6A711B9181E6002C2FBB /* PaymentRequest.m in Sources */,
 				E9F9CE3A1B74D8C0007781AC /* HYActivityView.m in Sources */,

@@ -635,7 +635,8 @@
             
             cell.btnGoCommentPage.hidden=NO;
             [cell.btnGoCommentPage setTitle:@"待评价" forState:UIControlStateNormal];
-            [cell.btnGoCommentPage addTarget:self action:@selector(goCommentPage) forControlEvents:UIControlEventTouchUpInside];
+            [cell.btnGoCommentPage setTag:[[dict objectForKey:@"id"] intValue]];
+            [cell.btnGoCommentPage addTarget:self action:@selector(goCommentPage:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if (state==6)
         {
@@ -681,6 +682,10 @@
                 cell.lblStatusOfOrder.text=@"商家审批通过";
             }
         }
+        cell.btnGoCommentPage.hidden=NO;
+        [cell.btnGoCommentPage setTitle:@"待评价" forState:UIControlStateNormal];
+        [cell.btnGoCommentPage setTag:[[dict objectForKey:@"id"] intValue]];
+        [cell.btnGoCommentPage addTarget:self action:@selector(goCommentPage:) forControlEvents:UIControlEventTouchUpInside];
         
         return cell;
     }
@@ -810,9 +815,12 @@
 -(void)doNothing
 {}
 
--(void)goCommentPage
+
+
+-(void)goCommentPage:(UIButton*)button
 {
     CommentCtrl *vc=[[CommentCtrl alloc]initWithNibName:@"CommentCtrl" bundle:nil];
+    vc.orderId= [NSString stringWithFormat:@"%ld",button.tag];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
