@@ -682,10 +682,6 @@
                 cell.lblStatusOfOrder.text=@"商家审批通过";
             }
         }
-        cell.btnGoCommentPage.hidden=NO;
-        [cell.btnGoCommentPage setTitle:@"待评价" forState:UIControlStateNormal];
-        [cell.btnGoCommentPage setTag:[[dict objectForKey:@"id"] intValue]];
-        [cell.btnGoCommentPage addTarget:self action:@selector(goCommentPage:) forControlEvents:UIControlEventTouchUpInside];
         
         return cell;
     }
