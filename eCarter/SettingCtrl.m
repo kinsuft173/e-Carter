@@ -7,9 +7,11 @@
 //
 
 #import "SettingCtrl.h"
+#import <ShareSDK/ShareSDK.h>
+#import "HYActivityView.h"
 
 @interface SettingCtrl ()
-
+@property (nonatomic, strong) HYActivityView *activityView;
 @end
 
 @implementation SettingCtrl
@@ -140,6 +142,163 @@
         AboutUsCtrl *vc=[[AboutUsCtrl alloc] initWithNibName:@"AboutUsCtrl" bundle:nil];
         [self.navigationController pushViewController:vc animated:YES];
     }
+    else if (indexPath.row==2)
+    {
+        [self share];
+    }
+}
+
+
+-(void)share
+{
+    
+     if (!self.activityView) {
+     self.activityView = [[HYActivityView alloc]initWithTitle:@"分享到" referView:self.view];
+     
+     //横屏会变成一行6个, 竖屏无法一行同时显示6个, 会自动使用默认一行4个的设置.
+     self.activityView.numberOfButtonPerLine = 6;
+     
+     ButtonView *bv = [[ButtonView alloc]initWithText:@"QQ好友" image:[UIImage imageNamed:@"Share_qq"] handler:^(ButtonView *buttonView){
+     NSLog(@"点击QQ");
+     [self shareQQ];
+     }];
+     [self.activityView addButtonView:bv];
+     
+     bv = [[ButtonView alloc]initWithText:@"微信好友" image:[UIImage imageNamed:@"share_WeChat"] handler:^(ButtonView *buttonView){
+     NSLog(@"点击微信");
+     [self shareWeixinFriend];
+     }];
+     [self.activityView addButtonView:bv];
+     
+     bv = [[ButtonView alloc]initWithText:@"朋友圈" image:[UIImage imageNamed:@"share_pengyouquan"] handler:^(ButtonView *buttonView){
+     NSLog(@"点击微信朋友圈");
+     [self shareWeixinCircle];
+     }];
+     [self.activityView addButtonView:bv];
+     
+     bv = [[ButtonView alloc]initWithText:@"新浪微博" image:[UIImage imageNamed:@"Share_sina"] handler:^(ButtonView *buttonView){
+     NSLog(@"点击新浪微博");
+     [self shareSina];
+     }];
+     [self.activityView addButtonView:bv];
+     
+     }
+     
+     [self.activityView show];
+     
+}
+
+
+-(void)shareQQ
+{
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"res3" ofType:@"jpg"];
+    //构造分享内容
+    id<ISSContent> publishContent = [ShareSDK content:@"分享"
+                                       defaultContent:@""
+                                                image:[ShareSDK imageWithPath:imagePath]
+                                                title:@"ShareSDK"
+                                                  url:@"http://www.mob.com"
+                                          description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
+                                            mediaType:SSPublishContentMediaTypeNews];
+    
+    [ShareSDK clientShareContent:publishContent //内容对象
+                            type:ShareTypeQQ //平台类型
+                   statusBarTips:YES
+                          result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {//返回事件
+                              
+                              if (state == SSPublishContentStateSuccess)
+                              {
+                                  NSLog(NSLocalizedString(@"TEXT_SHARE_SUC", @"分享成功!"));
+                              }
+                              else if (state == SSPublishContentStateFail)
+                              {
+                                  NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"分享失败!"), [error errorCode], [error errorDescription]);
+                              }
+                          }];
+}
+
+-(void)shareSina
+{
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"res3" ofType:@"jpg"];
+    //构造分享内容
+    id<ISSContent> publishContent = [ShareSDK content:@"分享"
+                                       defaultContent:@""
+                                                image:[ShareSDK imageWithPath:imagePath]
+                                                title:@"ShareSDK"
+                                                  url:@"http://www.mob.com"
+                                          description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
+                                            mediaType:SSPublishContentMediaTypeNews];
+    
+    [ShareSDK clientShareContent:publishContent //内容对象
+                            type:ShareTypeSinaWeibo //平台类型
+                   statusBarTips:YES
+                          result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {//返回事件
+                              
+                              if (state == SSPublishContentStateSuccess)
+                              {
+                                  NSLog(NSLocalizedString(@"TEXT_SHARE_SUC", @"分享成功!"));
+                              }
+                              else if (state == SSPublishContentStateFail)
+                              {
+                                  NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"分享失败!"), [error errorCode], [error errorDescription]);
+                              }
+                          }];
+}
+
+-(void)shareWeixinFriend
+{
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"res3" ofType:@"jpg"];
+    //构造分享内容
+    id<ISSContent> publishContent = [ShareSDK content:@"分享"
+                                       defaultContent:@""
+                                                image:[ShareSDK imageWithPath:imagePath]
+                                                title:@"ShareSDK"
+                                                  url:@"http://www.mob.com"
+                                          description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
+                                            mediaType:SSPublishContentMediaTypeNews];
+    
+    [ShareSDK clientShareContent:publishContent //内容对象
+                            type:ShareTypeWeixiSession //平台类型
+                   statusBarTips:YES
+                          result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {//返回事件
+                              
+                              if (state == SSPublishContentStateSuccess)
+                              {
+                                  NSLog(NSLocalizedString(@"TEXT_SHARE_SUC", @"分享成功!"));
+                              }
+                              else if (state == SSPublishContentStateFail)
+                              {
+                                  NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"分享失败!"), [error errorCode], [error errorDescription]);
+                              }
+                          }];
+}
+
+-(void)shareWeixinCircle
+{
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"res3" ofType:@"jpg"];
+    //构造分享内容
+    id<ISSContent> publishContent = [ShareSDK content:@"分享"
+                                       defaultContent:@""
+                                                image:[ShareSDK imageWithPath:imagePath]
+                                                title:@"ShareSDK"
+                                                  url:@"http://www.mob.com"
+                                          description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
+                                            mediaType:SSPublishContentMediaTypeNews];
+    
+    [ShareSDK clientShareContent:publishContent //内容对象
+                            type:ShareTypeWeixiTimeline //平台类型
+                   statusBarTips:YES
+                          result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {//返回事件
+                              
+                              if (state == SSPublishContentStateSuccess)
+                              {
+                                  NSLog(NSLocalizedString(@"TEXT_SHARE_SUC", @"分享成功!"));
+                              }
+                              else if (state == SSPublishContentStateFail)
+                              {
+                                  NSLog(NSLocalizedString(@"TEXT_SHARE_FAI", @"分享失败!"), [error errorCode], [error errorDescription]);
+                              }
+                          }];
 }
 
 @end
