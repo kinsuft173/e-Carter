@@ -85,6 +85,14 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
+
+}
+
 - (void)getModel
 {
     
@@ -204,7 +212,13 @@
             [cell.imgHead sd_setImageWithURL:[NSURL URLWithString:[UserDataManager shareManager].userLoginInfo.user.avatarUrl]
                             placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
             
-            cell.lblName.text = [UserDataManager shareManager].userLoginInfo.user.nickname;
+            if ([UserDataManager shareManager].userLoginInfo.user.nickname.length >0) {
+                
+                cell.lblName.text = [NSString stringWithFormat:@"%@先生",[[UserDataManager shareManager].userLoginInfo.user.nickname substringToIndex:1]];
+                
+            }
+            
+
             
             cell.lblPhoneNumber.text = [UserDataManager shareManager].userLoginInfo.user.phone;
             

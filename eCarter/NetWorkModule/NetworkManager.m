@@ -1515,7 +1515,7 @@
         strInterface = ECATER_EDIT_USERINFO_INTERFACE;
         
     }
-    
+
     [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (self.isTestMode) {
@@ -1548,6 +1548,11 @@
         
     }];
     
+    
+//    NSString* url = [NSString stringWithFormat:@"%@%@",SERVER,strInterface];
+//    
+//    [self server_BasePost:dic url:url];
+//     completeHandle(nil);
 }
 
 

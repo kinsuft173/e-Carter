@@ -117,8 +117,9 @@
 -(void)loginOut
 {
     [[NSUserDefaults standardUserDefaults] setObject:@"no" forKey:@"checkUser"];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    
+    [self.navigationController popToRootViewControllerAnimated:NO];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"goLogin" object:nil];
     return;
     
     //傻屌 面对对象是啥？

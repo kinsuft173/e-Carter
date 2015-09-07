@@ -23,6 +23,7 @@
     // Do any additional setup after loading the view from its nib.
     
     [HKCommen addHeadTitle:@"个人信息" whichNavigation:self.navigationItem];
+    
     self.judgeSex=YES;
     
     self.lbl_mobile.text=[UserDataManager shareManager].userLoginInfo.user.phone;
@@ -109,8 +110,10 @@
     
    
     [dic setValue:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
+    
     [dic setValue:self.txt_name.text forKey:@"name"];
     [dic setValue:sex forKey:@"sex"];
+    [dic setValue:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
     
     NSLog(@"账户字典：%@",dic);
     
@@ -123,6 +126,11 @@
            // NSLog(@"修改成功");
             
             [HKCommen addAlertViewWithTitel:@"修改成功"];
+            
+            [UserDataManager shareManager].userLoginInfo.user.nickname = self.txt_name.text;
+            
+            [[UserDataManager shareManager] writeUserData];
+            
             [self.navigationController popViewControllerAnimated:YES];
         }
         else

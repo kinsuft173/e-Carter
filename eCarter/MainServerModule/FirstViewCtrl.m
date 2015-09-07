@@ -76,6 +76,8 @@
     
     [self getModel];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goPersonalCenter:) name:@"goLogin" object:nil];
+    
     
     
 //    [self scrollViewSetImages];
@@ -291,9 +293,9 @@
 {
     if (indexPath.section == 2) {
         
-        [self performSegueWithIdentifier:@"goSelfGet" sender:nil];
+        //[self performSegueWithIdentifier:@"goSelfGet" sender:nil];
         
-        /*
+        
         NSString *check=[[NSUserDefaults standardUserDefaults] objectForKey:@"checkUser"];
         
         if ([check isEqualToString:@"yes"]) {
@@ -303,7 +305,7 @@
         }else{
             [HKCommen addAlertViewWithTitel:@"尚未登陆"];
         }
-        */
+        
         
     }else if (indexPath.section == 3){
 
