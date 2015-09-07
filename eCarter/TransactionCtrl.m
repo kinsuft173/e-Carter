@@ -16,6 +16,7 @@
 @property (nonatomic,strong)NSTimer *count_Timer;
 @property (assign)NSUInteger numCount;
 @property (assign) NSUInteger countEveryTime;
+@property (nonatomic,strong)NSString *code;
 @end
 
 @implementation TransactionCtrl
@@ -185,6 +186,11 @@
 
 -(void)sendCode
 {
+    if ([self.txt_phone.text isEqualToString:@""]) {
+        [HKCommen addAlertViewWithTitel:@"请输入手机号"];
+        return;
+    }
+    
     self.numCount=10;
     self.count_Timer=[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(CountTime) userInfo:nil repeats:YES];
     [self.btn_sendCode setBackgroundColor:[UIColor lightGrayColor]];
@@ -197,12 +203,13 @@
     
     [[NetworkManager shareMgr] server_genCodeWithDic:dic completeHandle:^(NSDictionary *response) {
         
-        NSLog(@"订单字典：%@",response);
+        
         NSData *doubi = response;
         
-        NSString *shabi =  [[NSString alloc]initWithData:doubi encoding:NSUTF8StringEncoding];
+        self.code =  [[NSString alloc]initWithData:doubi encoding:NSUTF8StringEncoding];
         
-        self.txt_code.text = shabi;
+        NSLog(@"验证码字典：%@",self.code);
+        self.txt_code.text = self.code;
     }];
     
     
@@ -261,7 +268,7 @@
     else
     {
      */
-        NSLog(@"goPersonalCenter");
+    
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
@@ -302,6 +309,11 @@
 
 - (void)goSetPassword
 {
+    if (![self.txt_code.text isEqualToString:self.code]) {
+        [HKCommen addAlertViewWithTitel:@"验证码错误"];
+        return;
+    }
+    
     SetTransactionPassworsCtrl *vc=[[SetTransactionPassworsCtrl alloc] initWithNibName:@"SetTransactionPassworsCtrl" bundle:nil];
     vc.judgeLoginOrPassword=@"password";
     [self.navigationController pushViewController:vc animated:YES];

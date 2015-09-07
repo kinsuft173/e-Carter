@@ -150,8 +150,6 @@
 
 + (void)addAlertViewWithTitel:(NSString*)titel
 {
-    NSLog(@"titel = %@",titel);
-    
    
     iToastSettings *theSettings = [iToastSettings getSharedSettings];
     

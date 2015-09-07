@@ -12,6 +12,8 @@
 #import "HKMapManager.h"
 #import "SBJsonParser.h"
 
+
+
 @interface NetworkManager ()
 
 @property BOOL isTestMode;
@@ -128,6 +130,45 @@
     }];
     
 }
+
+- (void)server_setConsumePasswordWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    //test
+    //NSDictionary *parameters = @{@"username": @"18672354399",@"password_hash":@"$2y$13$eD.OPcraVj8wMrADnMTPpeJVDzQTncvRClQcRDt2a0gRPRW4ZKWbC"};
+    
+    NSString* strInterface;
+    
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = ECATER_USER_CONSUME_PASSWORD_INTERFACE;
+        
+    }
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+        
+    }];
+    
+}
+
 
 - (void)server_loginWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {

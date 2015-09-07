@@ -7,9 +7,14 @@
 //
 
 #import "SetTransactionPassworsCtrl.h"
+#import "MBProgressHUD.h"
+#import "UserDataManager.h"
+#import "UserLoginInfo.h"
+#import "NetworkManager.h"
+#import "HKCommen.h"
 
 @interface SetTransactionPassworsCtrl ()
-
+@property (nonatomic,strong)NSMutableDictionary *dict;
 @end
 
 @implementation SetTransactionPassworsCtrl
@@ -24,6 +29,8 @@
     {
         [self initPassword];
     }
+    
+    [self.btn_commit addTarget:self action:@selector(commit) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
@@ -112,6 +119,55 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)commit
+{
+    if ([self.txt_confirmPassword.text isEqualToString:@""]) {
+        [HKCommen addAlertViewWithTitel:@"请输入密码"];
+        return;
+    }
+    
+    if (![self.txt_enterPassword.text isEqualToString:self.txt_confirmPassword.text]) {
+        [HKCommen addAlertViewWithTitel:@"密码前后输入不一致"];
+        return;
+    }
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"正在加载...";
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    
+        [dic setObject:self.txt_enterPassword.text forKey:@"password"];
+    
+    
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
+    
+    NSLog(@"交易密码字典：%@",dic);
+    
+    [[NetworkManager shareMgr] server_setConsumePasswordWithDic:dic completeHandle:^(NSDictionary *response) {
+        
+        NSLog(@"数据:%@",response);
+        
+        NSString* messege = [response objectForKey:@"message"];
+        
+        
+        if ([messege isEqualToString:@"OK"]) {
+            
+            [HKCommen addAlertViewWithTitel:@"修改成功"];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+        }
+        else
+        {
+            [HKCommen addAlertViewWithTitel:@"修改失败"];
+        }
+        
+        hud.hidden = YES;
+        
+    }];
 }
 
 /*

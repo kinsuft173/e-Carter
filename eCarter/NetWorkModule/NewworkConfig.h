@@ -76,6 +76,7 @@ typedef void (^ErrorHandle)(NSError*);
 
 #define ECATER_POINT_TRANSACTION_INTERFACE @"/ecar/mobile/queryPointTransaction"
 
+#define ECATER_USER_CONSUME_PASSWORD_INTERFACE @"/ecar/mobile/setUserPassword"
 #define ECATER_QUERY_USER_COUPON @"/ecar/mobile/queryUserCoupon"
 
 #define ECATER_QUERY_ADVERTISEMENT @"/api/user/info"
