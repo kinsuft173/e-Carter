@@ -117,6 +117,8 @@
     
 }
 
+
+
 -(void)back
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -199,6 +201,8 @@
             UITableView *table=[self.arrayOfTables objectAtIndex:0];
             OrderCell *cell=(OrderCell*)[table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
             cell.lblStatusOfOrder.text=@"退款中";
+            
+            [self getModel];
         }
         else
         {

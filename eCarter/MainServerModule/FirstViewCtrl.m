@@ -18,6 +18,7 @@
 #import "SetTransactionPassworsCtrl.h"
 #import "TransactionCtrl.h"
 #import "EventBanerCtrl.h"
+#import "PersonalCenterCtrl.h"
 
 
 
@@ -76,7 +77,7 @@
     [self getModel];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goPersonalCenter:) name:@"goLogin" object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goPersonalCenteWithNotify) name:@"goMyOrder" object:nil];
     
     
 //    [self scrollViewSetImages];
@@ -350,6 +351,28 @@
     }
     
     
+}
+
+- (void)goPersonalCenteWithNotify
+{
+    NSString *check=[[NSUserDefaults standardUserDefaults] objectForKey:@"checkUser"];
+    
+    if ([check isEqualToString:@"yes"]) {
+        UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"PersonalCenter" bundle:nil];
+        PersonalCenterCtrl* vc = [storyBoard instantiateViewControllerWithIdentifier:@"PersonalCenter"];
+        [self.navigationController pushViewController:vc animated:NO];
+        vc.fromMyOrder2 = 1;
+        
+        //[[NSNotificationCenter defaultCenter] postNotificationName:@"goMyOrder2" object:nil];
+    }
+    else
+    {
+        TransactionCtrl *vc=[[TransactionCtrl alloc] initWithNibName:@"TransactionCtrl" bundle:nil];
+        vc.judgeLoginOrPassword=@"login";
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+
+
 }
 
 

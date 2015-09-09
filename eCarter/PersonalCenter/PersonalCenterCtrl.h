@@ -13,4 +13,5 @@
 
 @interface PersonalCenterCtrl : UIViewController
 @property (strong,nonatomic) NSString *loginCome;
+@property NSInteger fromMyOrder2;
 @end

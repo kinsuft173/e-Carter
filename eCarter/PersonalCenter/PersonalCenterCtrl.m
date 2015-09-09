@@ -53,6 +53,31 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+    
+  //  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goMyOrder2) name:@"goMyOrder2" object:nil];
+}
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (self.fromMyOrder2 == 1) {
+        
+        self.fromMyOrder2 = 0;
+        
+        [self goMyOrder2];
+        
+        
+    }
+    
+    
+}
+
+- (void)goMyOrder2
+{
+
+    [self performSegueWithIdentifier:@"goMyOrder" sender:nil];
 }
 
 -(void)back

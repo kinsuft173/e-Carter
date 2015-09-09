@@ -78,6 +78,12 @@
     {
         [self initPassword];
     }
+    
+    if ([UserDataManager shareManager].userLoginInfo.user.phone) {
+        
+        self.txt_phone.text = [UserDataManager shareManager].userLoginInfo.user.phone;
+        
+    }
 }
 
 -(void)back

@@ -157,7 +157,11 @@
         if ([messege isEqualToString:@"OK"]) {
             
             [HKCommen addAlertViewWithTitel:@"修改成功"];
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+            NSArray* array = [self.navigationController childViewControllers];
+            
+            
+            [self.navigationController popToViewController:[array objectAtIndex:array.count -3] animated:YES];
             
         }
         else
