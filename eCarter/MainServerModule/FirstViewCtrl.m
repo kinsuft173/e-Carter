@@ -42,7 +42,8 @@
 @property (nonatomic, strong) IBOutlet UIButton* btnCitySlected;
 @property (nonatomic, strong) NSArray* arrayCity;
 
-
+@property (nonatomic,strong)NSMutableArray *arrayOfWeather;
+@property (nonatomic,strong)NSMutableArray *arrayOfWeatherData;
 @end
 
 @implementation FirstViewCtrl
@@ -123,6 +124,10 @@
 
     self.tableView.backgroundColor = [HKCommen getColor:@"f1f1f1"];
     self.view.backgroundColor = [HKCommen getColor:@"ededed"];
+    
+    self.arrayOfWeather=[[NSMutableArray alloc]initWithObjects:@"sunny",@"cloudy",@"cloudy",@"light-rain",@"thunder-rain",@"hail",@"sleet",@"light-rain",@"moderate-rain",@"heavy-rain",@"overcast",@"overcast",@"overcast",@"light-snow",@"snow",@"snow",@"snow",@"snowstorm",@"foggy",@"ice-rain",@"sandstorm",@"moderate",@"moderate",@"heavy-rain",@"overcast",@"overcast",@"snow",@"snow",@"snowstorm",@"sand",@"sand",@"tornado",@"foggy", nil];
+    
+    self.arrayOfWeatherData=[[NSMutableArray alloc]initWithObjects:@"晴",@"多云",@"阴",@"阵雨",@"雷阵雨",@"雷阵雨伴有冰雹",@"雨夹雪",@"小雨",@"中雨",@"大雨",@"暴雨",@"大暴雨",@"特大暴雨",@"阵雪",@"小雪",@"中雪",@"大雪",@"暴雪",@"雾",@"冻雨",@"沙尘暴",@"小雨-中雨",@"中雨-大雨",@"大雨-暴雨",@"暴雨-大暴雨",@"大暴雨-特大暴雨",@"小雪-中雪",@"中雪-大雪",@"大雪-暴雪",@"浮尘",@"扬沙",@"强沙尘暴",@"霾", nil];
 }
 
 - (void)getModel
@@ -143,7 +148,7 @@
     }];
     
     NSMutableDictionary *dicWeather=[[NSMutableDictionary alloc]init];
-    [dicWeather setObject:@"25760ee0793948ce91483dcf412e916e" forKey:@"key"];
+    [dicWeather setObject:@"b1eafb160cd446e7ba507cce535db63b" forKey:@"key"];
     [dicWeather setObject:[UserDataManager shareManager].city forKey:@"cityname"];
     
     [[NetworkManager shareMgr] server_fetchWeatherWithDic:dicWeather completeHandle:^(NSDictionary *responseBanner) {
@@ -245,8 +250,31 @@
         
         }
         
-        cell.lbl_weather.text =  self.dic_weather[@"weather"];
+        NSString *weather=self.dic_weather[@"weather"];
+        
+        cell.lbl_weather.text = weather;
         cell.lbl_temperature.text = [NSString stringWithFormat:@"%@℃",self.dic_weather[@"temperature"]];
+        
+        
+        int index=100;
+        
+        for (int i=0; i<self.arrayOfWeatherData.count; i++) {
+            if ([weather isEqualToString:[self.arrayOfWeatherData objectAtIndex:i]]) {
+                index=i;
+            }
+        }
+        
+        if (index!=100) {
+            [cell.imgWeather setImage:[UIImage imageNamed:[self.arrayOfWeather objectAtIndex:index]]];
+        }
+        
+        if (index<=1) {
+            [cell.imgChuqing setImage:[UIImage imageNamed:@"icon_Right"]];
+        }
+        else
+        {
+        [cell.imgChuqing setImage:[UIImage imageNamed:@"icon_unRight"]];
+        }
         
         return cell;
         
