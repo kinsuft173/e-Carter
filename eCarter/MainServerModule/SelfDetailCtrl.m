@@ -912,7 +912,7 @@
     
     }
 
-    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.shopDetail.serviceItemList.count +2 inSection:3]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.shopDetail.serviceItemList.count +3 inSection:3]] withRowAnimation:UITableViewRowAnimationAutomatic];
 
 }
 

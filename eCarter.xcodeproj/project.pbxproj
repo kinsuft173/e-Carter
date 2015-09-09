@@ -46,6 +46,50 @@
 		DE237F1D1B405BD40027767B /* MyScoreMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE237F1B1B405BD40027767B /* MyScoreMainCell.xib */; };
 		DE237F211B405BF20027767B /* MyScoreNomalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE237F1F1B405BF20027767B /* MyScoreNomalCell.m */; };
 		DE237F221B405BF20027767B /* MyScoreNomalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE237F201B405BF20027767B /* MyScoreNomalCell.xib */; };
+		DE31D66C1BA09232003DD3EA /* cloudy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6401BA09232003DD3EA /* cloudy@2x.png */; };
+		DE31D66D1BA09232003DD3EA /* cloudy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6411BA09232003DD3EA /* cloudy@3x.png */; };
+		DE31D66E1BA09232003DD3EA /* fierce-wind@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6421BA09232003DD3EA /* fierce-wind@2x.png */; };
+		DE31D66F1BA09232003DD3EA /* fierce-wind@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6431BA09232003DD3EA /* fierce-wind@3x.png */; };
+		DE31D6701BA09232003DD3EA /* foggy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6441BA09232003DD3EA /* foggy@2x.png */; };
+		DE31D6711BA09232003DD3EA /* foggy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6451BA09232003DD3EA /* foggy@3x.png */; };
+		DE31D6721BA09232003DD3EA /* hail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6461BA09232003DD3EA /* hail@2x.png */; };
+		DE31D6731BA09232003DD3EA /* hail@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6471BA09232003DD3EA /* hail@3x.png */; };
+		DE31D6741BA09232003DD3EA /* heavy-rain@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6481BA09232003DD3EA /* heavy-rain@2x.png */; };
+		DE31D6751BA09232003DD3EA /* heavy-rain@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6491BA09232003DD3EA /* heavy-rain@3x.png */; };
+		DE31D6761BA09232003DD3EA /* ice-rain@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D64A1BA09232003DD3EA /* ice-rain@2x.png */; };
+		DE31D6771BA09232003DD3EA /* ice-rain@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D64B1BA09232003DD3EA /* ice-rain@3x.png */; };
+		DE31D6781BA09232003DD3EA /* light-rain@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D64C1BA09232003DD3EA /* light-rain@2x.png */; };
+		DE31D6791BA09232003DD3EA /* light-rain@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D64D1BA09232003DD3EA /* light-rain@3x.png */; };
+		DE31D67A1BA09232003DD3EA /* light-snow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D64E1BA09232003DD3EA /* light-snow@2x.png */; };
+		DE31D67B1BA09232003DD3EA /* light-snow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D64F1BA09232003DD3EA /* light-snow@3x.png */; };
+		DE31D67C1BA09232003DD3EA /* moderate-rain@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6501BA09232003DD3EA /* moderate-rain@2x.png */; };
+		DE31D67D1BA09232003DD3EA /* moderate-rain@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6511BA09232003DD3EA /* moderate-rain@3x.png */; };
+		DE31D67E1BA09232003DD3EA /* night-cloudy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6521BA09232003DD3EA /* night-cloudy@2x.png */; };
+		DE31D67F1BA09232003DD3EA /* night-cloudy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6531BA09232003DD3EA /* night-cloudy@3x.png */; };
+		DE31D6801BA09232003DD3EA /* overcast@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6541BA09232003DD3EA /* overcast@2x.png */; };
+		DE31D6811BA09232003DD3EA /* overcast@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6551BA09232003DD3EA /* overcast@3x.png */; };
+		DE31D6821BA09232003DD3EA /* sand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6561BA09232003DD3EA /* sand@2x.png */; };
+		DE31D6831BA09232003DD3EA /* sand@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6571BA09232003DD3EA /* sand@3x.png */; };
+		DE31D6841BA09232003DD3EA /* sandstorm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6581BA09232003DD3EA /* sandstorm@2x.png */; };
+		DE31D6851BA09232003DD3EA /* sandstorm@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6591BA09232003DD3EA /* sandstorm@3x.png */; };
+		DE31D6861BA09232003DD3EA /* sleet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D65A1BA09232003DD3EA /* sleet@2x.png */; };
+		DE31D6871BA09232003DD3EA /* sleet@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D65B1BA09232003DD3EA /* sleet@3x.png */; };
+		DE31D6881BA09232003DD3EA /* snow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D65C1BA09232003DD3EA /* snow@2x.png */; };
+		DE31D6891BA09232003DD3EA /* snow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D65D1BA09232003DD3EA /* snow@3x.png */; };
+		DE31D68A1BA09232003DD3EA /* snowstorm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D65E1BA09232003DD3EA /* snowstorm@2x.png */; };
+		DE31D68B1BA09232003DD3EA /* snowstorm@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D65F1BA09232003DD3EA /* snowstorm@3x.png */; };
+		DE31D68C1BA09232003DD3EA /* sunny@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6601BA09232003DD3EA /* sunny@2x.png */; };
+		DE31D68D1BA09232003DD3EA /* sunny@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6611BA09232003DD3EA /* sunny@3x.png */; };
+		DE31D68E1BA09232003DD3EA /* thunder-rain@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6621BA09232003DD3EA /* thunder-rain@2x.png */; };
+		DE31D68F1BA09232003DD3EA /* thunder-rain@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6631BA09232003DD3EA /* thunder-rain@3x.png */; };
+		DE31D6901BA09232003DD3EA /* tornado@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6641BA09232003DD3EA /* tornado@2x.png */; };
+		DE31D6911BA09232003DD3EA /* tornado@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6651BA09232003DD3EA /* tornado@3x.png */; };
+		DE31D6921BA09232003DD3EA /* wind@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6661BA09232003DD3EA /* wind@2x.png */; };
+		DE31D6931BA09232003DD3EA /* wind@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6671BA09232003DD3EA /* wind@3x.png */; };
+		DE31D6941BA09232003DD3EA /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6681BA09232003DD3EA /* delete@2x.png */; };
+		DE31D6951BA09232003DD3EA /* delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6691BA09232003DD3EA /* delete@3x.png */; };
+		DE31D6961BA09232003DD3EA /* ecarer_pay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D66A1BA09232003DD3EA /* ecarer_pay@2x.png */; };
+		DE31D6971BA09232003DD3EA /* ecarer_pay@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D66B1BA09232003DD3EA /* ecarer_pay@3x.png */; };
 		DE9D12061B50ECEC00046407 /* AnimatedAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9D11E71B50ECEC00046407 /* AnimatedAnnotation.m */; };
 		DE9D12071B50ECEC00046407 /* AnimatedAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9D11E91B50ECEC00046407 /* AnimatedAnnotationView.m */; };
 		DE9D12081B50ECEC00046407 /* BusStopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9D11EB1B50ECEC00046407 /* BusStopAnnotation.m */; };
@@ -647,6 +691,50 @@
 		DE237F1E1B405BF20027767B /* MyScoreNomalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyScoreNomalCell.h; path = PersonalCenter/Cell/MyScoreNomalCell.h; sourceTree = "<group>"; };
 		DE237F1F1B405BF20027767B /* MyScoreNomalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyScoreNomalCell.m; path = PersonalCenter/Cell/MyScoreNomalCell.m; sourceTree = "<group>"; };
 		DE237F201B405BF20027767B /* MyScoreNomalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyScoreNomalCell.xib; path = PersonalCenter/Cell/MyScoreNomalCell.xib; sourceTree = "<group>"; };
+		DE31D6401BA09232003DD3EA /* cloudy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloudy@2x.png"; sourceTree = "<group>"; };
+		DE31D6411BA09232003DD3EA /* cloudy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloudy@3x.png"; sourceTree = "<group>"; };
+		DE31D6421BA09232003DD3EA /* fierce-wind@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fierce-wind@2x.png"; sourceTree = "<group>"; };
+		DE31D6431BA09232003DD3EA /* fierce-wind@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fierce-wind@3x.png"; sourceTree = "<group>"; };
+		DE31D6441BA09232003DD3EA /* foggy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "foggy@2x.png"; sourceTree = "<group>"; };
+		DE31D6451BA09232003DD3EA /* foggy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "foggy@3x.png"; sourceTree = "<group>"; };
+		DE31D6461BA09232003DD3EA /* hail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hail@2x.png"; sourceTree = "<group>"; };
+		DE31D6471BA09232003DD3EA /* hail@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hail@3x.png"; sourceTree = "<group>"; };
+		DE31D6481BA09232003DD3EA /* heavy-rain@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heavy-rain@2x.png"; sourceTree = "<group>"; };
+		DE31D6491BA09232003DD3EA /* heavy-rain@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heavy-rain@3x.png"; sourceTree = "<group>"; };
+		DE31D64A1BA09232003DD3EA /* ice-rain@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ice-rain@2x.png"; sourceTree = "<group>"; };
+		DE31D64B1BA09232003DD3EA /* ice-rain@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ice-rain@3x.png"; sourceTree = "<group>"; };
+		DE31D64C1BA09232003DD3EA /* light-rain@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-rain@2x.png"; sourceTree = "<group>"; };
+		DE31D64D1BA09232003DD3EA /* light-rain@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-rain@3x.png"; sourceTree = "<group>"; };
+		DE31D64E1BA09232003DD3EA /* light-snow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-snow@2x.png"; sourceTree = "<group>"; };
+		DE31D64F1BA09232003DD3EA /* light-snow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-snow@3x.png"; sourceTree = "<group>"; };
+		DE31D6501BA09232003DD3EA /* moderate-rain@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moderate-rain@2x.png"; sourceTree = "<group>"; };
+		DE31D6511BA09232003DD3EA /* moderate-rain@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moderate-rain@3x.png"; sourceTree = "<group>"; };
+		DE31D6521BA09232003DD3EA /* night-cloudy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "night-cloudy@2x.png"; sourceTree = "<group>"; };
+		DE31D6531BA09232003DD3EA /* night-cloudy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "night-cloudy@3x.png"; sourceTree = "<group>"; };
+		DE31D6541BA09232003DD3EA /* overcast@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overcast@2x.png"; sourceTree = "<group>"; };
+		DE31D6551BA09232003DD3EA /* overcast@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overcast@3x.png"; sourceTree = "<group>"; };
+		DE31D6561BA09232003DD3EA /* sand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sand@2x.png"; sourceTree = "<group>"; };
+		DE31D6571BA09232003DD3EA /* sand@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sand@3x.png"; sourceTree = "<group>"; };
+		DE31D6581BA09232003DD3EA /* sandstorm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sandstorm@2x.png"; sourceTree = "<group>"; };
+		DE31D6591BA09232003DD3EA /* sandstorm@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sandstorm@3x.png"; sourceTree = "<group>"; };
+		DE31D65A1BA09232003DD3EA /* sleet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sleet@2x.png"; sourceTree = "<group>"; };
+		DE31D65B1BA09232003DD3EA /* sleet@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sleet@3x.png"; sourceTree = "<group>"; };
+		DE31D65C1BA09232003DD3EA /* snow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "snow@2x.png"; sourceTree = "<group>"; };
+		DE31D65D1BA09232003DD3EA /* snow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "snow@3x.png"; sourceTree = "<group>"; };
+		DE31D65E1BA09232003DD3EA /* snowstorm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "snowstorm@2x.png"; sourceTree = "<group>"; };
+		DE31D65F1BA09232003DD3EA /* snowstorm@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "snowstorm@3x.png"; sourceTree = "<group>"; };
+		DE31D6601BA09232003DD3EA /* sunny@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sunny@2x.png"; sourceTree = "<group>"; };
+		DE31D6611BA09232003DD3EA /* sunny@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sunny@3x.png"; sourceTree = "<group>"; };
+		DE31D6621BA09232003DD3EA /* thunder-rain@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thunder-rain@2x.png"; sourceTree = "<group>"; };
+		DE31D6631BA09232003DD3EA /* thunder-rain@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thunder-rain@3x.png"; sourceTree = "<group>"; };
+		DE31D6641BA09232003DD3EA /* tornado@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tornado@2x.png"; sourceTree = "<group>"; };
+		DE31D6651BA09232003DD3EA /* tornado@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tornado@3x.png"; sourceTree = "<group>"; };
+		DE31D6661BA09232003DD3EA /* wind@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wind@2x.png"; sourceTree = "<group>"; };
+		DE31D6671BA09232003DD3EA /* wind@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wind@3x.png"; sourceTree = "<group>"; };
+		DE31D6681BA09232003DD3EA /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
+		DE31D6691BA09232003DD3EA /* delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@3x.png"; sourceTree = "<group>"; };
+		DE31D66A1BA09232003DD3EA /* ecarer_pay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ecarer_pay@2x.png"; sourceTree = "<group>"; };
+		DE31D66B1BA09232003DD3EA /* ecarer_pay@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ecarer_pay@3x.png"; sourceTree = "<group>"; };
 		DE9D11E61B50ECEC00046407 /* AnimatedAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedAnnotation.h; sourceTree = "<group>"; };
 		DE9D11E71B50ECEC00046407 /* AnimatedAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedAnnotation.m; sourceTree = "<group>"; };
 		DE9D11E81B50ECEC00046407 /* AnimatedAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedAnnotationView.h; sourceTree = "<group>"; };
@@ -1545,6 +1633,11 @@
 		DE0638751B6E721000EFB576 /* 图片管理 */ = {
 			isa = PBXGroup;
 			children = (
+				DE31D63F1BA09232003DD3EA /* 天气UI */,
+				DE31D6681BA09232003DD3EA /* delete@2x.png */,
+				DE31D6691BA09232003DD3EA /* delete@3x.png */,
+				DE31D66A1BA09232003DD3EA /* ecarer_pay@2x.png */,
+				DE31D66B1BA09232003DD3EA /* ecarer_pay@3x.png */,
 				DE0638761B6E721000EFB576 /* 引导图 */,
 			);
 			path = "图片管理";
@@ -1569,6 +1662,53 @@
 				DE0C3EDB1B93656C006D2840 /* WXApiObject.h */,
 			);
 			path = WxPayLib;
+			sourceTree = "<group>";
+		};
+		DE31D63F1BA09232003DD3EA /* 天气UI */ = {
+			isa = PBXGroup;
+			children = (
+				DE31D6401BA09232003DD3EA /* cloudy@2x.png */,
+				DE31D6411BA09232003DD3EA /* cloudy@3x.png */,
+				DE31D6421BA09232003DD3EA /* fierce-wind@2x.png */,
+				DE31D6431BA09232003DD3EA /* fierce-wind@3x.png */,
+				DE31D6441BA09232003DD3EA /* foggy@2x.png */,
+				DE31D6451BA09232003DD3EA /* foggy@3x.png */,
+				DE31D6461BA09232003DD3EA /* hail@2x.png */,
+				DE31D6471BA09232003DD3EA /* hail@3x.png */,
+				DE31D6481BA09232003DD3EA /* heavy-rain@2x.png */,
+				DE31D6491BA09232003DD3EA /* heavy-rain@3x.png */,
+				DE31D64A1BA09232003DD3EA /* ice-rain@2x.png */,
+				DE31D64B1BA09232003DD3EA /* ice-rain@3x.png */,
+				DE31D64C1BA09232003DD3EA /* light-rain@2x.png */,
+				DE31D64D1BA09232003DD3EA /* light-rain@3x.png */,
+				DE31D64E1BA09232003DD3EA /* light-snow@2x.png */,
+				DE31D64F1BA09232003DD3EA /* light-snow@3x.png */,
+				DE31D6501BA09232003DD3EA /* moderate-rain@2x.png */,
+				DE31D6511BA09232003DD3EA /* moderate-rain@3x.png */,
+				DE31D6521BA09232003DD3EA /* night-cloudy@2x.png */,
+				DE31D6531BA09232003DD3EA /* night-cloudy@3x.png */,
+				DE31D6541BA09232003DD3EA /* overcast@2x.png */,
+				DE31D6551BA09232003DD3EA /* overcast@3x.png */,
+				DE31D6561BA09232003DD3EA /* sand@2x.png */,
+				DE31D6571BA09232003DD3EA /* sand@3x.png */,
+				DE31D6581BA09232003DD3EA /* sandstorm@2x.png */,
+				DE31D6591BA09232003DD3EA /* sandstorm@3x.png */,
+				DE31D65A1BA09232003DD3EA /* sleet@2x.png */,
+				DE31D65B1BA09232003DD3EA /* sleet@3x.png */,
+				DE31D65C1BA09232003DD3EA /* snow@2x.png */,
+				DE31D65D1BA09232003DD3EA /* snow@3x.png */,
+				DE31D65E1BA09232003DD3EA /* snowstorm@2x.png */,
+				DE31D65F1BA09232003DD3EA /* snowstorm@3x.png */,
+				DE31D6601BA09232003DD3EA /* sunny@2x.png */,
+				DE31D6611BA09232003DD3EA /* sunny@3x.png */,
+				DE31D6621BA09232003DD3EA /* thunder-rain@2x.png */,
+				DE31D6631BA09232003DD3EA /* thunder-rain@3x.png */,
+				DE31D6641BA09232003DD3EA /* tornado@2x.png */,
+				DE31D6651BA09232003DD3EA /* tornado@3x.png */,
+				DE31D6661BA09232003DD3EA /* wind@2x.png */,
+				DE31D6671BA09232003DD3EA /* wind@3x.png */,
+			);
+			path = "天气UI";
 			sourceTree = "<group>";
 		};
 		DE9D11E51B50ECEC00046407 /* Models */ = {
@@ -3237,27 +3377,33 @@
 				DEE87D281B48EC5100D3EDAB /* OrderManagerCell.xib in Resources */,
 				DED7F5811B4760DB0005019C /* img_default@2x.png in Resources */,
 				DED7F57F1B4760DB0005019C /* icon_WeChatpay@2x.png in Resources */,
+				DE31D66C1BA09232003DD3EA /* cloudy@2x.png in Resources */,
 				DEE337371B4C40D900357253 /* my-points_bg@3x.png in Resources */,
+				DE31D68D1BA09232003DD3EA /* sunny@3x.png in Resources */,
 				DED7F55F1B4760DB0005019C /* Evaluation_0.5@2x.png in Resources */,
 				DE0C3EE11B93C76F006D2840 /* HomeTypeSelectedCtrl.xib in Resources */,
 				DEEDABE91B63E9D500247916 /* queryCarSeries.json in Resources */,
 				DE237EED1B3FA8F70027767B /* MyCountNomalCell.xib in Resources */,
 				DEE337251B4C40D900357253 /* mine_icon_man@3x.png in Resources */,
 				DED7F5701B4760DB0005019C /* icon_Distance@3x.png in Resources */,
+				DE31D6891BA09232003DD3EA /* snow@3x.png in Resources */,
 				DEE337061B4C40D900357253 /* Black@3x.png in Resources */,
 				DEE48B8B1B3964E400458D6F /* TellCell.xib in Resources */,
 				DED7F5781B4760DB0005019C /* icon_Right@3x.png in Resources */,
 				E9A4F3DA1B8E360700C6F600 /* GetCityCtrl.xib in Resources */,
+				DE31D6731BA09232003DD3EA /* hail@3x.png in Resources */,
 				DEE3370C1B4C40D900357253 /* Champagne_gold@3x.png in Resources */,
 				E9EB56981B836F6300E0FCBF /* ProvinceCell.xib in Resources */,
 				DEE52ED61B38FB4800C90BA3 /* CouponExtraInfoCell.xib in Resources */,
 				DED7F5511B4760DB0005019C /* btn_pay_det@3x.png in Resources */,
+				DE31D66F1BA09232003DD3EA /* fierce-wind@3x.png in Resources */,
 				DEE3371F1B4C40D900357253 /* login_phone@2x.png in Resources */,
 				DEE87D0A1B48EC0500D3EDAB /* CarNumCell.xib in Resources */,
 				DEE719B71B3ED50D003221A8 /* PersonInfoCell.xib in Resources */,
 				DEE87D091B48EC0500D3EDAB /* CarDetailCell.xib in Resources */,
 				DEE337041B4C40D900357253 /* but_delete@3x.png in Resources */,
 				DEE3374E1B4C417F00357253 /* PointOfMeCtrl.xib in Resources */,
+				DE31D6751BA09232003DD3EA /* heavy-rain@3x.png in Resources */,
 				DE237EFD1B4047B60027767B /* AddCarCell.xib in Resources */,
 				DED7F5791B4760DB0005019C /* icon_Success@2x.png in Resources */,
 				DED7F5641B4760DB0005019C /* Evaluation_1@3x.png in Resources */,
@@ -3265,6 +3411,7 @@
 				DED7F56C1B4760DB0005019C /* icon_alipay_@3x.png in Resources */,
 				DEE337A21B4DF68C00357253 /* GetRealMoneyCtrl.xib in Resources */,
 				DED7F5521B4760DB0005019C /* but_add@2x.png in Resources */,
+				DE31D68F1BA09232003DD3EA /* thunder-rain@3x.png in Resources */,
 				DEE48B861B3964B400458D6F /* ServerListCell.xib in Resources */,
 				DEE337A91B4DF68C00357253 /* ReChargeSuccessCtrl.xib in Resources */,
 				DED7F57D1B4760DB0005019C /* icon_unRight@2x.png in Resources */,
@@ -3274,6 +3421,7 @@
 				DEE87D221B48EC5100D3EDAB /* ButtonCell.xib in Resources */,
 				DEE48BA01B39A4BF00458D6F /* TimeCell.xib in Resources */,
 				DEE337311B4C40D900357253 /* mine_On-Sale@3x.png in Resources */,
+				DE31D6971BA09232003DD3EA /* ecarer_pay@3x.png in Resources */,
 				DEE337AF1B4DF68C00357253 /* SetTransactionPassworsCtrl.xib in Resources */,
 				E9F9D02C1B74E7CF007781AC /* ShareSDKLocalizable.strings in Resources */,
 				DED7F54C1B4760DB0005019C /* bg_yingye@3x.png in Resources */,
@@ -3299,6 +3447,7 @@
 				DEE3372E1B4C40D900357253 /* mine_mycar@2x.png in Resources */,
 				DE9D12321B50FC2D00046407 /* startPoint@2x.png in Resources */,
 				DE06387C1B6E721000EFB576 /* defoult_2.png in Resources */,
+				DE31D6961BA09232003DD3EA /* ecarer_pay@2x.png in Resources */,
 				DED7F58A1B4760DB0005019C /* pay_password@3x.png in Resources */,
 				DED7F5831B4760DB0005019C /* ip_add@2x.png in Resources */,
 				DEFB2B6A1B44360B00C74FC0 /* mine_Commission@3x.png in Resources */,
@@ -3314,12 +3463,17 @@
 				DEE336B51B4C282B00357253 /* HKMapCtrl.xib in Resources */,
 				DEFB2B6E1B44360B00C74FC0 /* mine_Remind@3x.png in Resources */,
 				DED7F5621B4760DB0005019C /* Evaluation_0@3x.png in Resources */,
+				DE31D68C1BA09232003DD3EA /* sunny@2x.png in Resources */,
+				DE31D67B1BA09232003DD3EA /* light-snow@3x.png in Resources */,
 				DEE337191B4C40D900357253 /* login_Account@2x.png in Resources */,
 				DED2EAE81B35D3A5006FE893 /* LaunchScreen.xib in Resources */,
 				DE237F051B404E8A0027767B /* AdressCell.xib in Resources */,
 				E9F9D0361B74E7CF007781AC /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				DE06386F1B6DFB2D00EFB576 /* loading-ios@2x.png in Resources */,
+				DE31D67C1BA09232003DD3EA /* moderate-rain@2x.png in Resources */,
+				DE31D6831BA09232003DD3EA /* sand@3x.png in Resources */,
 				DEE337291B4C40D900357253 /* mine_Integral@3x.png in Resources */,
+				DE31D6781BA09232003DD3EA /* light-rain@2x.png in Resources */,
 				DEE337081B4C40D900357253 /* blue@3x.png in Resources */,
 				DEEC3DDC1B5C2832005CE84E /* CityCell.xib in Resources */,
 				DEE337A01B4DF68C00357253 /* AboutUsCtrl.xib in Resources */,
@@ -3335,6 +3489,7 @@
 				DED7F5971B4761060005019C /* Coupons_buts_top@2x.png in Resources */,
 				DEE3373D1B4C40D900357253 /* share_pengyouquan@3x.png in Resources */,
 				DEE337121B4C40D900357253 /* Other@3x.png in Resources */,
+				DE31D68E1BA09232003DD3EA /* thunder-rain@2x.png in Resources */,
 				DE237EF81B4047830027767B /* CarInfoCell.xib in Resources */,
 				E9F9D0481B74F32C007781AC /* share_WeChat@3x.png in Resources */,
 				DEE337241B4C40D900357253 /* mine_icon_man@2x.png in Resources */,
@@ -3345,14 +3500,19 @@
 				DEE093031B3B29A500243475 /* PhoneInfoCell.xib in Resources */,
 				DEE337411B4C40D900357253 /* Share_sina@3x.png in Resources */,
 				DEE0930D1B3B2A0000243475 /* CarAndAdressCell.xib in Resources */,
+				DE31D6911BA09232003DD3EA /* tornado@3x.png in Resources */,
+				DE31D68B1BA09232003DD3EA /* snowstorm@3x.png in Resources */,
+				DE31D6931BA09232003DD3EA /* wind@3x.png in Resources */,
 				DEE48BAF1B39AA9E00458D6F /* TotalCountCell.xib in Resources */,
 				DEE87CF51B48EA2000D3EDAB /* SuccessCtrl.xib in Resources */,
 				DED7F5661B4760DB0005019C /* home_btn_daodianfuwu@3x.png in Resources */,
 				DEE337171B4C40D900357253 /* White@2x.png in Resources */,
+				DE31D66D1BA09232003DD3EA /* cloudy@3x.png in Resources */,
 				DED7F57A1B4760DB0005019C /* icon_Success@3x.png in Resources */,
 				DED7F5741B4760DB0005019C /* icon_Location@3x.png in Resources */,
 				DEE336BA1B4C340400357253 /* location_yes@2x.png in Resources */,
 				DED7F5461B4760DB0005019C /* Address_btn_map@2x.png in Resources */,
+				DE31D6701BA09232003DD3EA /* foggy@2x.png in Resources */,
 				DEE4CA5A1B3C7F8A0009B73C /* WeixinPayCell.xib in Resources */,
 				DEFB2B5D1B4435BE00C74FC0 /* mgDriverStoryboard.storyboard in Resources */,
 				DED7F5711B4760DB0005019C /* icon_Failure@2x.png in Resources */,
@@ -3366,10 +3526,15 @@
 				DEE87D2A1B48EC5100D3EDAB /* OrderProgressCell.xib in Resources */,
 				DE06387B1B6E721000EFB576 /* defoult_1.png in Resources */,
 				DEEDABEB1B63E9D500247916 /* queryOrderDetail.json in Resources */,
+				DE31D6941BA09232003DD3EA /* delete@2x.png in Resources */,
 				DEE337391B4C40D900357253 /* Process_History@3x.png in Resources */,
 				DEE337351B4C40D900357253 /* mine_Trade-record@3x.png in Resources */,
 				DEFB2B6B1B44360B00C74FC0 /* mine_Ordermanagement@2x.png in Resources */,
+				DE31D6851BA09232003DD3EA /* sandstorm@3x.png in Resources */,
 				DED7F5671B4760DB0005019C /* home_btn_Location@2x.png in Resources */,
+				DE31D68A1BA09232003DD3EA /* snowstorm@2x.png in Resources */,
+				DE31D6741BA09232003DD3EA /* heavy-rain@2x.png in Resources */,
+				DE31D6881BA09232003DD3EA /* snow@2x.png in Resources */,
 				DEE337221B4C40D900357253 /* mine_Address@3x.png in Resources */,
 				DED7F5821B4760DB0005019C /* img_default@3x.png in Resources */,
 				DEE4CA501B3C7F570009B73C /* AliPayCell.xib in Resources */,
@@ -3377,6 +3542,7 @@
 				DEE3371E1B4C40D900357253 /* login_passwore@3x.png in Resources */,
 				DEE87CD31B48E7A500D3EDAB /* ServiceCommentinfoCell.xib in Resources */,
 				DEE87D0E1B48EC0500D3EDAB /* SelectCarCell.xib in Resources */,
+				DE31D6901BA09232003DD3EA /* tornado@2x.png in Resources */,
 				DEE337231B4C40D900357253 /* mine_Default-Avatar.png in Resources */,
 				E993183C1B8A152E00B56AE9 /* PhotoBroswerVC.xib in Resources */,
 				DEE3371D1B4C40D900357253 /* login_password@2x.png in Resources */,
@@ -3406,12 +3572,15 @@
 				DEE3371B1B4C40D900357253 /* login_code.png in Resources */,
 				DE9D12301B50FC2D00046407 /* endPoint@2x.png in Resources */,
 				DEE87CEC1B48EA2000D3EDAB /* AddNewCarCtrl.xib in Resources */,
+				DE31D6761BA09232003DD3EA /* ice-rain@2x.png in Resources */,
 				DE9D12251B50F11E00046407 /* car.png in Resources */,
+				DE31D6951BA09232003DD3EA /* delete@3x.png in Resources */,
 				DED7F54E1B4760DB0005019C /* btn_pay_Cancel.png@2x.png in Resources */,
 				DEE337521B4C417F00357253 /* SeriesCarCell.xib in Resources */,
 				DED7F54A1B4760DB0005019C /* address_btn_PD-White@3x.png in Resources */,
 				DEEDABED1B63E9D500247916 /* queryOrderLog.json in Resources */,
 				DEE337111B4C40D900357253 /* Other@2x.png in Resources */,
+				DE31D6711BA09232003DD3EA /* foggy@3x.png in Resources */,
 				DE9D12261B50F11E00046407 /* car@2x.png in Resources */,
 				DEE3371A1B4C40D900357253 /* login_Account@3x.png in Resources */,
 				DEE337201B4C40D900357253 /* login_phone@3x.png in Resources */,
@@ -3422,6 +3591,7 @@
 				E99A1C681B97AB1700ABAE9A /* starView.xib in Resources */,
 				DEE337331B4C40D900357253 /* mine_phone@3x.png in Resources */,
 				DED7F57C1B4760DB0005019C /* icon_time@3x.png in Resources */,
+				DE31D6721BA09232003DD3EA /* hail@2x.png in Resources */,
 				DED7F56D1B4760DB0005019C /* icon_Distance_blue@2x.png in Resources */,
 				DED7F56B1B4760DB0005019C /* icon_alipay_@2x.png in Resources */,
 				DED2EB081B35DBB9006FE893 /* bg3.png in Resources */,
@@ -3431,6 +3601,7 @@
 				DEE3373F1B4C40D900357253 /* Share_qq@3x.png in Resources */,
 				DEE337381B4C40D900357253 /* Process_History@2x.png in Resources */,
 				DEE337321B4C40D900357253 /* mine_phone@2x.png in Resources */,
+				DE31D67F1BA09232003DD3EA /* night-cloudy@3x.png in Resources */,
 				DED7F55B1B4760DB0005019C /* but_Navigation@3x.png in Resources */,
 				DEE48BA51B39A56600458D6F /* CouponSlectedCell.xib in Resources */,
 				DED7F56E1B4760DB0005019C /* icon_Distance_blue@3x.png in Resources */,
@@ -3443,7 +3614,9 @@
 				DEE3370E1B4C40D900357253 /* Grey@3x.png in Resources */,
 				DED7F5591B4760DB0005019C /* but_dial@3x.png in Resources */,
 				DEFB2B681B44360B00C74FC0 /* Default_picture.png in Resources */,
+				DE31D67E1BA09232003DD3EA /* night-cloudy@2x.png in Resources */,
 				DE9D12241B50F11E00046407 /* bus@2x.png in Resources */,
+				DE31D6921BA09232003DD3EA /* wind@2x.png in Resources */,
 				DEEDABEA1B63E9D500247916 /* queryCoupon.json in Resources */,
 				DE237F0A1B404F600027767B /* AddAdressCell.xib in Resources */,
 				DEE3BE4B1B365A0200DCE7EC /* SelfGetCarIndicatorCell.xib in Resources */,
@@ -3453,6 +3626,7 @@
 				DED2EAE51B35D3A5006FE893 /* Images.xcassets in Resources */,
 				DEEDABF21B63E9D500247916 /* queryUserAccount.json in Resources */,
 				DEFDF5951B59690200298366 /* KeyConfig.plist in Resources */,
+				DE31D6801BA09232003DD3EA /* overcast@2x.png in Resources */,
 				DEEDABE71B63E9D500247916 /* login.json in Resources */,
 				DEE3372D1B4C40D900357253 /* mine_My-order@3x.png in Resources */,
 				DEE87CEE1B48EA2000D3EDAB /* BalanceMoneyCtrl.xib in Resources */,
@@ -3461,6 +3635,7 @@
 				DEE093121B3B2CEF00243475 /* NextStepCell.xib in Resources */,
 				DEE4CA551B3C7F6C0009B73C /* CountPayCell.xib in Resources */,
 				DEE52EDE1B39119500C90BA3 /* ShopCell.xib in Resources */,
+				DE31D6861BA09232003DD3EA /* sleet@2x.png in Resources */,
 				E9F9D0441B74F32C007781AC /* Share_qq@3x.png in Resources */,
 				DED7F5571B4760DB0005019C /* but_checked@3x.png in Resources */,
 				DED7F55C1B4760DB0005019C /* but_Unchecked@2x.png in Resources */,
@@ -3475,15 +3650,19 @@
 				DEE337131B4C40D900357253 /* red@2x.png in Resources */,
 				DEE3370B1B4C40D900357253 /* Champagne_gold@2x.png in Resources */,
 				DEE3373B1B4C40D900357253 /* Process_now@3x.png in Resources */,
+				DE31D67D1BA09232003DD3EA /* moderate-rain@3x.png in Resources */,
 				DE06387E1B6E721000EFB576 /* defoult_4.png in Resources */,
 				DED7F56F1B4760DB0005019C /* icon_Distance@2x.png in Resources */,
+				DE31D6791BA09232003DD3EA /* light-rain@3x.png in Resources */,
 				DEEDABF51B63E9D500247916 /* queryUserRecharge.json in Resources */,
 				DEE48BB41B39AAD200458D6F /* PaymentCell.xib in Resources */,
 				E99318331B8A152E00B56AE9 /* PB.bundle in Resources */,
 				DED7F5801B4760DB0005019C /* icon_WeChatpay@3x.png in Resources */,
+				DE31D6771BA09232003DD3EA /* ice-rain@3x.png in Resources */,
 				DED7F5861B4760DB0005019C /* nav_back@3x.png in Resources */,
 				E9F9D0471B74F32C007781AC /* share_WeChat@2x.png in Resources */,
 				DEE3370D1B4C40D900357253 /* Grey@2x.png in Resources */,
+				DE31D6871BA09232003DD3EA /* sleet@3x.png in Resources */,
 				DE9D12BB1B52BE0000046407 /* AlipaySDK.bundle in Resources */,
 				DED7F5881B4760DB0005019C /* nav_But_mine@2x.png in Resources */,
 				DEE3371C1B4C40D900357253 /* login_code@3x.png in Resources */,
@@ -3493,9 +3672,11 @@
 				DEE337271B4C40D900357253 /* mine_icon_woman@3x.png in Resources */,
 				DED7F5691B4760DB0005019C /* home_btn_shangmenquche@2x.png in Resources */,
 				DEE337071B4C40D900357253 /* blue@2x.png in Resources */,
+				DE31D6811BA09232003DD3EA /* overcast@3x.png in Resources */,
 				DED7F54B1B4760DB0005019C /* address_btn_PDWhite@2x.png in Resources */,
 				DED7F5991B4761060005019C /* Coupons_Details@3x.png in Resources */,
 				DEEC3DDF1B5C2832005CE84E /* LocalCell.xib in Resources */,
+				DE31D6841BA09232003DD3EA /* sandstorm@2x.png in Resources */,
 				DEEDABEC1B63E9D500247916 /* queryOrderList.json in Resources */,
 				E9F9D0311B74E7CF007781AC /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				DEE48B901B3964FB00458D6F /* MapCell.xib in Resources */,
@@ -3506,7 +3687,9 @@
 				DEE48BAA1B39A81600458D6F /* DiscountScoreCell.xib in Resources */,
 				DEE3370A1B4C40D900357253 /* Brown@3x.png in Resources */,
 				DED7F5561B4760DB0005019C /* but_checked@2x.png in Resources */,
+				DE31D67A1BA09232003DD3EA /* light-snow@2x.png in Resources */,
 				DEE337281B4C40D900357253 /* mine_Integral@2x.png in Resources */,
+				DE31D66E1BA09232003DD3EA /* fierce-wind@2x.png in Resources */,
 				DED7F5651B4760DB0005019C /* home_btn_daodianfuwu@2x.png in Resources */,
 				E9F9D0431B74F32C007781AC /* Share_qq@2x.png in Resources */,
 				DED7F5681B4760DB0005019C /* home_btn_Location@2x@3x.png in Resources */,
@@ -3529,6 +3712,7 @@
 				DEE87D2C1B48EC5100D3EDAB /* OrderSuccessCell.xib in Resources */,
 				DED7F5871B4760DB0005019C /* nav_But_mine@3x.png in Resources */,
 				DEE337361B4C40D900357253 /* my-points_bg@2x.png in Resources */,
+				DE31D6821BA09232003DD3EA /* sand@2x.png in Resources */,
 				DEE337141B4C40D900357253 /* red@3x.png in Resources */,
 				DEE3373A1B4C40D900357253 /* Process_now@2x.png in Resources */,
 				E9A4F3D51B8E347000C6F600 /* GetProvinceCtrl.xib in Resources */,
@@ -3985,7 +4169,7 @@
 					"$(PROJECT_DIR)/eCarter/ThirdLib/thirdLib/WxPayLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e0cc6f37-cf95-48e7-a53c-b546adcd9618";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -4033,7 +4217,7 @@
 					"$(PROJECT_DIR)/eCarter/ThirdLib/thirdLib/WxPayLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e0cc6f37-cf95-48e7-a53c-b546adcd9618";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

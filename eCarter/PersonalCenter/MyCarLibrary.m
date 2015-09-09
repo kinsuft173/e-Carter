@@ -220,7 +220,7 @@
         cell.lbl_brand.text=car.brand;
         cell.lbl_colorOfCar.text=car.color;
         cell.lbl_engine.text=car.engineNo;
-        cell.lbl_nameOfCar.text=car.brand;
+        cell.lbl_nameOfCar.text=[NSString stringWithFormat:@"爱车%ld号",row+1];
         cell.lbl_numOfCar.text=car.no;
         cell.lbl_numOfFrame.text=car.frameNo;
         cell.lbl_year.text=car.year;
