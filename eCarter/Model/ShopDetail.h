@@ -22,6 +22,8 @@
 
 @property (nonatomic, copy) NSString *id;
 
+@property (nonatomic, copy) NSString *serviceCharge;
+
 @property (nonatomic, copy) NSString *endBusinessTime;
 
 @property (nonatomic, copy) NSString *storeScore;

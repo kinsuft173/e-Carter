@@ -108,7 +108,7 @@ heightForHeaderInSection:(NSInteger)section
     NSMutableArray *array=[[NSMutableArray alloc]init];
     
     for (int i=0; i<self.arrayOfRegion.count; i++) {
-        if ([[self.arrayOfRegion objectAtIndex:i] rangeOfString:cell.lbl_province.text].length > 0) {
+        if ([[self.arrayOfRegion objectAtIndex:i] rangeOfString:cell.lbl_province.text].length > 0 ) {
             
             NSString* str = [self.arrayOfRegion objectAtIndex:i];
             
@@ -116,7 +116,11 @@ heightForHeaderInSection:(NSInteger)section
             
             NSString* disctrict = [str substringFromIndex:range.location +range.length];
             
-            [array addObject:disctrict];
+            if (![disctrict isEqualToString:@""]) {
+                [array addObject:disctrict];
+            }
+            
+//            [array addObject:disctrict];
         }
     }
     
@@ -129,7 +133,15 @@ heightForHeaderInSection:(NSInteger)section
 //                                              animated:YES];
         
         
-        [HKCommen addAlertViewWithTitel:@"没有县级区域可以选择了"];
+//        [HKCommen addAlertViewWithTitel:@"没有县级区域可以选择了"];
+           [HKMapManager shareMgr].city = cell.lbl_province.text;
+        [HKMapManager shareMgr].place = @" ";
+        
+        NSArray* arrayVC = self.navigationController.childViewControllers;
+        
+        UIViewController* vc = [arrayVC objectAtIndex:arrayVC.count -3];
+        
+        [self.navigationController popToViewController:vc animated:YES];
         
     }
     else

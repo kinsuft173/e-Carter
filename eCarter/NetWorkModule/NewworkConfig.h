@@ -59,7 +59,7 @@ typedef void (^ErrorHandle)(NSError*);
 #define ECATER_QUERY_USER_CAR_INTERFACE @"/ecar/mobile/queryCustomerCar"
 #define ECATER_ADD_CAR_INTERFACE @"/ecar/mobile/addCar"
 
-#define ECARTER_DELETE_ADRRESS @"/ecar/mobile/delCar"
+#define ECARTER_DELETE_ADRRESS @"/ecar/mobile/delUserAddress"
 #define ECATER_QUERY_USER_POINT @"/ecar/mobile/queryPoint"
 
 
@@ -81,6 +81,7 @@ typedef void (^ErrorHandle)(NSError*);
 
 #define ECATER_USER_CONSUME_PASSWORD_INTERFACE @"/ecar/mobile/setUserPassword"
 #define ECATER_QUERY_USER_COUPON @"/ecar/mobile/queryUserAndStoreCoupon"
+#define ECATER_QUERY_USER_COUPON_NOT @"/ecar/mobile/queryUserCoupon"
 
 #define ECATER_QUERY_ADVERTISEMENT @"/api/user/info"
 #define ECATER_DETAILS_ADVERTISEMENT @"/api/advert/info"

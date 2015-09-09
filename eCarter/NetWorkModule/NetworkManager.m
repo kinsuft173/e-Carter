@@ -2186,6 +2186,56 @@
 }
 
 
+- (void)server_fetchQueryUserCouponNotList:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    NSString* strInterface;
+    
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = ECATER_QUERY_USER_COUPON_NOT;
+        
+    }
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (self.isTestMode) {
+            
+            NSDictionary *dictionary = [FakeDataMgr shareMgr].responseLogin;
+            
+            if (completeHandle) {
+                
+                completeHandle(dictionary);
+                
+            }
+            
+        }else{
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        
+        
+    }];
+    
+}
+
+
 
 - (NSDictionary*)server_BasePost:(NSMutableDictionary*)dic url:(NSString*)ctUrl
 {

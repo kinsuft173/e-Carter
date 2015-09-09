@@ -248,7 +248,7 @@
         
     }else if (section == 3){
         
-        return self.shopDetail.serviceItemList.count + 4;
+        return self.shopDetail.serviceItemList.count + 5;
         
     }else if (section == 4){
         
@@ -274,11 +274,11 @@
         
     }else if(indexPath.section == 3){
         
-        if (indexPath.row == self.shopDetail.serviceItemList.count + 3) {
+        if (indexPath.row == self.shopDetail.serviceItemList.count + 4) {
             
             return 84;
             
-        }else if (indexPath.row <self.shopDetail.serviceItemList.count){
+        }else if (indexPath.row <self.shopDetail.serviceItemList.count + 1){
             
             return 34;
         
@@ -450,6 +450,41 @@
         
     }else if (indexPath.section == 3 && indexPath.row == self.shopDetail.serviceItemList.count) {
         
+        ServerListCell* cell ;//= [tableView dequeueReusableCellWithIdentifier:cellId4];
+        
+        if (!cell) {
+            
+            cell = [[[NSBundle mainBundle] loadNibNamed:cellId4 owner:self options:nil] objectAtIndex:0];
+            
+            if (indexPath.row == 0) {
+                
+                UIView* divideView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.5)];
+                
+                divideView.backgroundColor = [HKCommen getColor:@"cccccc"];
+                
+                [cell.contentView addSubview:divideView];
+                
+            }
+            
+            
+        }
+        
+        
+        cell.lblServerPrice.text = [NSString stringWithFormat:@"¥%@",self.shopDetail.serviceCharge];
+        cell.lblSeverName.text = @"服务费";
+        
+
+            
+        cell.img_Button.image = [UIImage imageNamed:@"but_checked"];
+            
+  
+            
+       // }
+        
+        return cell;
+        
+    }else if (indexPath.section == 3 && indexPath.row == self.shopDetail.serviceItemList.count + 1) {
+        
         CouponSlectedCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId5];
         
         if (!cell) {
@@ -471,7 +506,7 @@
         
         return cell;
         
-    }else if (indexPath.section == 3 && indexPath.row == self.shopDetail.serviceItemList.count +1) {
+    }else if (indexPath.section == 3 && indexPath.row == self.shopDetail.serviceItemList.count +2) {
         
         DiscountScoreCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId6];
         
@@ -489,7 +524,7 @@
         if ([self.stringOfCount integerValue] != 0) {
             
             cell.lblDiscount.text = [NSString stringWithFormat:@"可用积分%@分",self.stringOfCount];
-            cell.lblRMBDiscount.text = [NSString stringWithFormat:@"-%.1f",[self.stringOfCount integerValue]/100.0];
+            cell.lblRMBDiscount.text = [NSString stringWithFormat:@"%.1f",-[self.stringOfCount integerValue]/100.0];
             
         }else{
         
@@ -501,7 +536,7 @@
         
         return cell;
         
-    }else if (indexPath.section == 3 && indexPath.row == self.shopDetail.serviceItemList.count +2) {
+    }else if (indexPath.section == 3 && indexPath.row == self.shopDetail.serviceItemList.count +3) {
         
         TotalCountCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId7];
         
@@ -540,11 +575,15 @@
             money -= self.stringOfCount.floatValue/100.0;
             
         }
+
+        money += self.shopDetail.serviceCharge.floatValue;
         
         if (money < 0) {
             
             money = 0.01;
         }
+        
+
         
         self.stringOfTotal = [NSString stringWithFormat:@"%.2f",money];
         
@@ -552,7 +591,7 @@
 
         return cell;
         
-    }else if (indexPath.section == 3 && indexPath.row == self.shopDetail.serviceItemList.count + 3) {
+    }else if (indexPath.section == 3 && indexPath.row == self.shopDetail.serviceItemList.count + 4) {
         
         PaymentCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId8];
         
@@ -648,8 +687,32 @@
     [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
     [dic setObject:self.shopDetail.id forKey:@"storeId"];
     
-    [dic setObject:[NSNumber numberWithInteger:self.userCar.id] forKey:@"carId"];
-    [dic setObject:self.userCar.no forKey:@"carnum"];
+//    [dic setObject:[NSNumber numberWithInteger:self.userCar.id] forKey:@"carId"];
+//    [dic setObject:self.userCar.no forKey:@"carnum"];
+//    
+//    //获得carId
+    Car* firstCar = [Car objectWithKeyValues:[self.userCar objectAtIndex:0]];
+    
+    NSString* carId= [NSString stringWithFormat:@"%ld",(long)firstCar.id];
+    
+    NSString* carnumId = [NSString stringWithFormat:@"%@",firstCar.no];
+    
+    for (int i = 1; i < self.userCar.count; i ++) {
+        
+    Car* firstCar = [Car objectWithKeyValues:[self.userCar objectAtIndex:i]];
+        
+        NSString* carIdTemp= [NSString stringWithFormat:@",%ld",(long)firstCar.id];
+        
+        NSString* carnumIdTemp = [NSString stringWithFormat:@",%@",firstCar.no];
+        
+        carId = [carId stringByAppendingString:carIdTemp];
+        
+        carnumId = [carnumId stringByAppendingString:carnumIdTemp];
+        
+    }
+    
+    [dic setObject:carId forKey:@"carId"];
+    [dic setObject:carnumId forKey:@"carnum"];
     
     NSString* str = @"";
     
@@ -723,6 +786,16 @@
             
         }
         
+        
+    }
+    
+    if (self.coupon && self.isUseDiscount == YES) {
+        
+        [HKCommen addAlertViewWithTitel:@"优惠券和积分不能同时使用"];
+        
+         hud.hidden = YES;
+        
+        return;
         
     }
     
@@ -851,6 +924,7 @@
         
         SelectStoreTimeCtrl *vc=[[SelectStoreTimeCtrl alloc]initWithNibName:@"SelectStoreTimeCtrl" bundle:nil];
         vc.delegate=self;
+        vc.shopDetail = self.shopDetail;
         
         
         
@@ -877,7 +951,7 @@
         [self.tableView reloadData];
         
     }
-    else  if (indexPath.section == 3 && indexPath.row  == self.shopDetail.serviceItemList.count )
+    else  if (indexPath.section == 3 && indexPath.row  == self.shopDetail.serviceItemList.count + 1 )
     {
         UIStoryboard *story=[UIStoryboard storyboardWithName:@"PersonalCenter" bundle:nil];
         MyCouponCtrl *vc=[story instantiateViewControllerWithIdentifier:@"MyCouponCtrl"];

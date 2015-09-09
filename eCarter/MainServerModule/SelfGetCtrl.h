@@ -13,7 +13,7 @@
 
 @interface SelfGetCtrl : UIViewController
 @property (strong,nonatomic) NSString *city;
-@property (strong,nonatomic) Car* userCar;
+@property (strong,nonatomic) NSArray* userCar;
 @property (strong,nonatomic) UserAddress* userAddress;
 
 @end

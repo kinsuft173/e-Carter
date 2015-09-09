@@ -23,9 +23,10 @@
 @property (nonatomic, strong) IBOutlet UITableView* tableView;
 
 @property (nonatomic, strong) NSMutableArray* arrayCars;
+@property (nonatomic, strong) NSMutableArray* arrayCarIndex;
 @property (nonatomic, strong) NSMutableArray* arrayAdresses;
 
-@property (nonatomic, strong) NSIndexPath* indexPathCar;
+//@property (nonatomic, strong) NSIndexPath* indexPathCar;
 @property (nonatomic, strong) NSIndexPath* indexPathAddress;
 
 @end
@@ -111,6 +112,17 @@
             
         }
         
+        if (self.arrayCars.count > 0) {
+            
+            self.arrayCarIndex = [[NSMutableArray alloc] init];
+            
+            for (int i = 0 ; i < self.arrayCars.count; i ++) {
+                
+                [self.arrayCarIndex addObject:@0];
+                
+            }
+        }
+        
         hud.hidden = YES;
         
         [self.tableView reloadData];
@@ -145,7 +157,19 @@
         
         NSLog(@"vc.userAdreess = %@ /n====>%@",vc.userAddress.address,[self.arrayAdresses objectAtIndex:(self.indexPathAddress.row - 1)]);
         
-        vc.userCar = [Car objectWithKeyValues:[self.arrayCars  objectAtIndex:self.indexPathCar.row - 1]];
+        NSMutableArray* arrayCars = [[NSMutableArray alloc] init];
+        
+        for (int i = 0 ; i < self.arrayCarIndex.count ; i ++) {
+            
+            if ([[self.arrayCarIndex objectAtIndex:i] integerValue] == 1) {
+                
+                [arrayCars addObject:[self.arrayCars objectAtIndex:i]];
+                
+            }
+            
+        }
+        
+        vc.userCar =  arrayCars;//[Car objectWithKeyValues:[self.arrayCars  objectAtIndex:self.indexPathCar.row - 1]];
     }
 }
 
@@ -281,23 +305,46 @@
                 cell.lblContent.text = [NSString  stringWithFormat:@"%@  %@  %@",[dic objectForKey:@"no"],[dic objectForKey:@"color"],[dic objectForKey:@"brand"] ];
             }
             
-
             
-            if (self.indexPathCar.row == indexPath.row && self.indexPathCar.section == indexPath.section) {
+            
+            if ([[self.arrayCarIndex objectAtIndex:indexPath.row - 1] integerValue] == 1) {
                 
                 cell.img_btn.image = [UIImage imageNamed:@"but_checked"];
+                
             }else{
             
-                cell.img_btn.image = [UIImage imageNamed:@"but_Unchecked"];
-            
+               cell.img_btn.image = [UIImage imageNamed:@"but_Unchecked"];
             }
+            
+//            if (self.indexPathCar.row == indexPath.row && self.indexPathCar.section == indexPath.section) {
+//                
+//                cell.img_btn.image = [UIImage imageNamed:@"but_checked"];
+//            }else{
+//            
+//                cell.img_btn.image = [UIImage imageNamed:@"but_Unchecked"];
+//            
+//            }
             
         }else{
             
             NSDictionary* dic = [self.arrayAdresses objectAtIndex:indexPath.row - 1];
             
             if ([[dic class] isSubclassOfClass:[NSDictionary class]]) {
-                cell.lblContent.text = [NSString  stringWithFormat:@"家庭地址：%@%@%@",[dic objectForKey:@"city"],[dic objectForKey:@"area"],[dic objectForKey:@"address"],[dic objectForKey:@"address"] ];
+                
+                NSString* strType;
+                
+                if ([[dic objectForKey:@"type"] integerValue] == 1) {
+                    
+                    strType = @"家庭地址";
+                }else if ([[dic objectForKey:@"type"] integerValue] == 2){
+                 strType = @"工作地址";
+                
+                }else{
+                
+                  strType = @"其他地址";
+                }
+                
+                cell.lblContent.text = [NSString  stringWithFormat:@"%@：%@%@%@",strType,[dic objectForKey:@"city"],[dic objectForKey:@"area"],[dic objectForKey:@"address"],[dic objectForKey:@"address"] ];
             }
             
             if (self.indexPathAddress.row == indexPath.row && self.indexPathAddress.section == indexPath.section) {
@@ -345,7 +392,16 @@
             [self.navigationController pushViewController:vc animated:YES];
         }else{
         
-            self.indexPathCar = indexPath;
+           // self.indexPathCar = indexPath;
+            
+            if ([[self.arrayCarIndex objectAtIndex:indexPath.row -1] integerValue] == 0) {
+                
+                [self.arrayCarIndex replaceObjectAtIndex:indexPath.row -1 withObject:@1];
+                
+            }else{
+            
+                [self.arrayCarIndex replaceObjectAtIndex:indexPath.row -1  withObject:@0];
+            }
             
             [self.tableView reloadData];
         
@@ -385,7 +441,19 @@
         
     }
     
-    if (self.indexPathCar.row == 0) {
+    BOOL ishasCar = NO;
+    
+    for (int i = 0; i < self.arrayCarIndex.count; i ++) {
+        
+        if ([[self.arrayCarIndex objectAtIndex:i] integerValue] == 1) {
+            
+            
+            ishasCar = YES;
+        }
+        
+    }
+    
+    if (!ishasCar) {
         
         [HKCommen addAlertViewWithTitel:@"请选择车辆"];
         

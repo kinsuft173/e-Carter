@@ -73,6 +73,8 @@
     
     if ([self.judgeLoginOrPassword isEqualToString:@"login"]) {
         [self initLogin];
+        
+        [self.btn_goNext setTitle:@"登陆" forState:UIControlStateNormal];
     }
     else if ([self.judgeLoginOrPassword isEqualToString:@"password"])
     {

@@ -170,7 +170,22 @@
         }
         
         UserAddress *userAddress =  [UserAddress objectWithKeyValues:[self.arrayOfAdress objectAtIndex:indexPath.row]];//[self.arrayOfAdress objectAtIndex:indexPath.row];
-        cell.lblAdressTitel.text= @"家庭地址:";//userAddress.type;
+        
+        
+        NSString* strType;
+        
+        if ([userAddress.type integerValue] == 1) {
+            
+            strType = @"家庭地址:";
+        }else if ([userAddress.type integerValue] == 2){
+            strType = @"工作地址:";
+            
+        }else{
+            
+            strType = @"其他地址:";
+        }
+        
+        cell.lblAdressTitel.text= strType;//userAddress.type;
         cell.lblAdressContent.text= [NSString stringWithFormat:@"%@%@%@",userAddress.city,userAddress.area,userAddress.address];
         
         
@@ -224,9 +239,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         hud.labelText = @"正在加载...";
         
         NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
-        [dic setValue:[[self.arrayOfAdress objectAtIndex:indexPath.row] objectForKey:@"id"] forKey:@"carId"];
-        [dic setValue:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
-        [dic setValue:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
+        [dic setValue:[[self.arrayOfAdress objectAtIndex:indexPath.row] objectForKey:@"id"] forKey:@"id"];
+//        [dic setValue:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
+//        [dic setValue:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
         
         [[NetworkManager shareMgr] server_cancelAddressWithDic:dic completeHandle:^(NSDictionary *response) {
             
@@ -238,7 +253,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                 [self.arrayOfAdress removeObjectAtIndex:indexPath.row];
                 [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
                 
-//                [self getModel];
+//              [self getModel];
                 hud.hidden = YES;
             }
             else

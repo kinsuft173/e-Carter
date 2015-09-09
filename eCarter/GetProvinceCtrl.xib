@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0n4-25-t9O">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="bt5-Fz-9tO"/>
@@ -27,12 +27,24 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="0n4-25-t9O" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1Ug-Bj-ZLH"/>
                 <constraint firstAttribute="trailing" secondItem="0n4-25-t9O" secondAttribute="trailing" constant="-280" id="6XW-3N-Uy7"/>
                 <constraint firstItem="0n4-25-t9O" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ehy-pc-auT"/>
                 <constraint firstAttribute="bottom" secondItem="0n4-25-t9O" secondAttribute="bottom" constant="-32" id="g63-2h-C14"/>
                 <constraint firstItem="0n4-25-t9O" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mgt-fN-o6U"/>
+                <constraint firstAttribute="bottom" secondItem="0n4-25-t9O" secondAttribute="bottom" id="qUh-et-Gvk"/>
+                <constraint firstAttribute="trailing" secondItem="0n4-25-t9O" secondAttribute="trailing" id="tzM-Zz-zz6"/>
+                <constraint firstItem="0n4-25-t9O" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wNq-M0-Fpg"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="6XW-3N-Uy7"/>
+                    <exclude reference="Ehy-pc-auT"/>
+                    <exclude reference="g63-2h-C14"/>
+                    <exclude reference="mgt-fN-o6U"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>

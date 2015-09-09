@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShopDetail.h"
 
 @protocol selectTime <NSObject>
 
@@ -18,5 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *myTable;
 @property (strong,nonatomic) NSMutableArray *arrayTime;
 @property (weak,nonatomic) id<selectTime> delegate;
+
+@property (nonatomic, strong) ShopDetail* shopDetail;
 
 @end

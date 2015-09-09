@@ -101,4 +101,7 @@
 //删除地址
 - (void)server_cancelAddressWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 
+//youhuiquan
+- (void)server_fetchQueryUserCouponNotList:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+
 @end

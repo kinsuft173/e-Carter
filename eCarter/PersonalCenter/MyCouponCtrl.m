@@ -108,11 +108,26 @@
         
         [dic setObject:self.shopDetail.id forKey:@"storeId"];
         
-    }
+        [[NetworkManager shareMgr] server_fetchQueryUserCouponList:dic completeHandle:^(NSDictionary *responseBanner) {
+            
+            NSLog(@"字典：%@",responseBanner);
+            self.arrayOfCoupon = [responseBanner objectForKey:@"data"];
+            
+            if (self.arrayOfCoupon.count!=0) {
+                
+                for (int i=0; i<self.arrayOfCoupon.count; i++) {
+                    [self.arrayIndex addObject:@0];
+                }
+            }
+            
+            [self.tableView reloadData];
+        }];
+        
+    }else{
     
     NSLog(@"优惠劵字典:%@",dic);
     
-    [[NetworkManager shareMgr] server_fetchQueryUserCouponList:dic completeHandle:^(NSDictionary *responseBanner) {
+    [[NetworkManager shareMgr] server_fetchQueryUserCouponNotList:dic completeHandle:^(NSDictionary *responseBanner) {
         
         NSLog(@"字典：%@",responseBanner);
         self.arrayOfCoupon = [responseBanner objectForKey:@"data"];
@@ -126,6 +141,8 @@
         
         [self.tableView reloadData];
     }];
+        
+    }
 }
 
 /*

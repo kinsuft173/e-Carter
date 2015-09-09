@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) NSArray* arrayOfRegion;
 
+
 @end
 
 @implementation SelectStoreTimeCtrl
@@ -68,9 +69,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.arrayTime.count==0) {
-        return 2;
-    }
+//    if (self.arrayTime.count==0) {
+//        return 2;
+//    }
     return self.arrayTime.count;
 }
 
@@ -98,6 +99,17 @@
     
     
     cell.lbl_province.text=[NSString stringWithFormat:@"%@ %@至%@",[dic objectForKey:@"servicedate"],[dic objectForKey:@"timeStart"],[dic objectForKey:@"timeEnd"]];
+    
+    if ([self isExceedNow:dic]) {
+        
+        cell.lbl_province.textColor = [UIColor blackColor];
+        
+    }else{
+    
+        cell.lbl_province.textColor = [HKCommen getColor:@"aaaaaa"];
+    
+    }
+    
     return cell;
     
 }
@@ -112,6 +124,17 @@ heightForHeaderInSection:(NSInteger)section
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary *dic=[self.arrayTime objectAtIndex:indexPath.row];
+    
+    if (![self isExceedNow:dic]) {
+        
+        [HKCommen addAlertViewWithTitel:@"无法选择该时间段"];
+        
+        return;
+        
+    }
+    
+    
     ProvinceCell *cell=(ProvinceCell *)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section]];
     
     // self.province=cell.lbl_province.text;
@@ -128,7 +151,7 @@ heightForHeaderInSection:(NSInteger)section
 -(void)getModel
 {
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
-    [dic setObject:@"1" forKey:@"storeId"];
+    [dic setObject:self.shopDetail.id forKey:@"storeId"];
     
     [[NetworkManager shareMgr] server_queryStoreServiceTimeWithDic:dic completeHandle:^(NSDictionary *response) {
         
@@ -148,5 +171,35 @@ heightForHeaderInSection:(NSInteger)section
     // Pass the selected object to the new view controller.
 }
 */
+
+- (BOOL)isExceedNow:(NSDictionary*)dic
+{
+    if (![[dic class] isSubclassOfClass:[NSDictionary class]]) {
+        
+        return NO;
+        
+    }
+    
+    if ([dic objectForKey:@"servicedate"] == nil || [dic objectForKey:@"timeStart"] == nil) {
+        
+        return NO;
+        
+    }
+    
+    NSString* str = [NSString stringWithFormat:@"%@%@",dic[@"servicedate"],dic[@"timeStart"]];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setDateFormat:@"yyyy-MM-ddHH:mm"];
+    
+    NSDate* data1 = [dateFormatter dateFromString:str];
+    
+ //   NSData* data2 = [NSData data];
+    
+    NSTimeInterval num = [data1 timeIntervalSinceNow];
+    
+    return num>0?YES:NO;
+
+}
 
 @end

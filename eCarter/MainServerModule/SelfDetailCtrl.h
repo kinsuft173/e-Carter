@@ -13,7 +13,8 @@
 @interface SelfDetailCtrl : UIViewController
 
 @property (nonatomic,strong) NSNumber* preDataShopId;
-@property (strong,nonatomic) Car* userCar;
+@property (strong,nonatomic) NSArray* userCar;
 @property (strong,nonatomic) UserAddress* userAddress;
+
 
 @end
