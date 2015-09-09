@@ -15,13 +15,15 @@
 #import "UserLoginInfo.h"
 #import "NetworkManager.h"
 #import "UserAddress.h"
+#import "MBProgressHUD.h"
 
-@interface MyAdressCtrl ()
+@interface MyAdressCtrl ()<UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray* arrayModel;
 @property (nonatomic, strong) IBOutlet UITableView* tableView;
 @property (nonatomic,strong) UserLoginInfo *userInfo;
-@property (nonatomic,strong) NSArray *arrayOfAdress;
+@property (nonatomic,strong) NSMutableArray *arrayOfAdress;
+
 
 @end
 
@@ -31,13 +33,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSDictionary* dic1 = [NSDictionary dictionaryWithObjectsAndKeys:@"广州市天河区黄村高德汇11号",@"家庭地址",nil];
-    NSDictionary* dic2 = [NSDictionary dictionaryWithObjectsAndKeys:@"广州市天河区黄村高德汇11号",@"家庭地址",nil];
-    NSDictionary* dic3 = [NSDictionary dictionaryWithObjectsAndKeys:@"广州市天河区黄村高德汇11号",@"家庭地址",nil];
-    
+//    NSDictionary* dic1 = [NSDictionary dictionaryWithObjectsAndKeys:@"广州市天河区黄村高德汇11号",@"家庭地址",nil];
+//    NSDictionary* dic2 = [NSDictionary dictionaryWithObjectsAndKeys:@"广州市天河区黄村高德汇11号",@"家庭地址",nil];
+//    NSDictionary* dic3 = [NSDictionary dictionaryWithObjectsAndKeys:@"广州市天河区黄村高德汇11号",@"家庭地址",nil];
+     self.arrayModel =  [[NSMutableArray alloc] init];
     [self getModel];
     
-    self.arrayModel = [NSMutableArray arrayWithObjects:dic1,dic2,dic3, nil];
+    //[NSMutableArray arrayWithObjects:dic1,dic2,dic3, nil];
     
     [HKCommen setExtraCellLineHidden:self.tableView];
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -46,7 +48,8 @@
     [leftButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton ];
     
-    
+    //设置编辑模式
+    //self.tableView.editing = YES;
     
     if(([[[UIDevice currentDevice] systemVersion] floatValue]>=7.0?20:0)){
         UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
@@ -78,7 +81,7 @@
         
         if ([[[response objectForKey:@"data"] class] isSubclassOfClass:[NSArray class]]) {
             
-            self.arrayOfAdress = [response objectForKey:@"data"];
+            self.arrayOfAdress = [NSMutableArray arrayWithArray:[response objectForKey:@"data"]] ;
             
         }else{
             
@@ -186,6 +189,8 @@
             
         }
         
+      //  cell.showingDeleteConfirmation = NO；
+        
         return cell;
         
     }
@@ -197,5 +202,58 @@
     [self.navigationController pushViewController:vc animated:YES];
     
 }
+
+
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"hehe");
+    
+    if (indexPath.section == 1) {
+        
+        return;
+        
+    }
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //[_objects removeObjectAtIndex:indexPath.row];
+
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeIndeterminate;
+        hud.labelText = @"正在加载...";
+        
+        NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+        [dic setValue:[[self.arrayOfAdress objectAtIndex:indexPath.row] objectForKey:@"id"] forKey:@"carId"];
+        [dic setValue:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
+        [dic setValue:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
+        
+        [[NetworkManager shareMgr] server_cancelAddressWithDic:dic completeHandle:^(NSDictionary *response) {
+            
+            
+            
+            if ([[response objectForKey:@"message"] isEqualToString:@"OK"]) {
+                [HKCommen addAlertViewWithTitel:@"删除地址成功"];
+                
+                [self.arrayOfAdress removeObjectAtIndex:indexPath.row];
+                [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                
+//                [self getModel];
+                hud.hidden = YES;
+            }
+            else
+            {
+                [HKCommen addAlertViewWithTitel:@"删除地址失败"];
+                
+                hud.hidden = YES;
+            }
+        }];
+        
+        
+    } else {
+        NSLog(@"Unhandled editing style! %d", editingStyle);
+    }
+}
+
 
 @end

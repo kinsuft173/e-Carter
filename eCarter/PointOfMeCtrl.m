@@ -73,13 +73,13 @@
     }];
     
     NSMutableDictionary *dicAccount=[[NSMutableDictionary alloc]init];
-    [dicAccount setValue:self.userInfo.user.uid forKey:@"userId"];
-    [dicAccount setValue:@"2" forKey:@"accountType"];
+    [dicAccount setObject:self.userInfo.user.phone forKey:@"phone"];
+    [dicAccount setObject:self.userInfo.sessionId forKey:@"sessionId"];
 
-    [[NetworkManager shareMgr] server_queryUserAccountWithDic:dicAccount completeHandle:^(NSDictionary *response) {
+    [[NetworkManager shareMgr] server_queryUserPointWithDic:dicAccount completeHandle:^(NSDictionary *response) {
         
-        NSLog(@"字典：%@",response);
-        self.lbl_myCount.text=[NSString stringWithFormat:@"%@",[response objectForKey:@"data"]];
+        NSLog(@"server_queryUserPointWithDic：%@",response);
+        self.lbl_myCount.text= [NSString stringWithFormat:@"%@",[[response objectForKey:@"data"] objectForKey:@"point"]];
         
     }];
 }

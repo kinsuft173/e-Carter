@@ -29,6 +29,16 @@
     self.lbl_mobile.text=[UserDataManager shareManager].userLoginInfo.user.phone;
     self.txt_name.placeholder = [UserDataManager shareManager].userLoginInfo.user.nickname;
     
+    if ([[UserDataManager shareManager].userLoginInfo.user.sex isEqualToString:@"男"]) {
+        
+        [self selectBOT:nil];
+        
+    }else{
+    
+        [self selectGIRL:nil];
+    
+    }
+    
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
     [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
@@ -103,15 +113,24 @@
     sex=@"女";
     }
     
-    if ([self.txt_name.text isEqualToString:@""]) {
-        [HKCommen addAlertViewWithTitel:@"请输入姓名"];
-        return;
-    }
+//    if ([self.txt_name.text isEqualToString:@""]) {
+//        [HKCommen addAlertViewWithTitel:@"请输入姓名"];
+//        return;
+//    }
     
    
     [dic setValue:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
     
-    [dic setValue:self.txt_name.text forKey:@"name"];
+    if (![self.txt_name.text isEqualToString:@""]) {
+        
+        [dic setValue:self.txt_name.text forKey:@"name"];
+        
+    }else{
+    
+        [dic setValue:[UserDataManager shareManager].userLoginInfo.user.nickname forKey:@"name"];
+    }
+    
+
     [dic setValue:sex forKey:@"sex"];
     [dic setValue:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
     
@@ -127,7 +146,8 @@
             
             [HKCommen addAlertViewWithTitel:@"修改成功"];
             
-            [UserDataManager shareManager].userLoginInfo.user.nickname = self.txt_name.text;
+            [UserDataManager shareManager].userLoginInfo.user.nickname = [dic objectForKey:@"name"];
+            [UserDataManager shareManager].userLoginInfo.user.sex = sex;
             
             [[UserDataManager shareManager] writeUserData];
             

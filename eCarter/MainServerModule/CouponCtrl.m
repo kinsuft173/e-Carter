@@ -13,11 +13,12 @@
 #import "UserLoginInfo.h"
 #import "UserDataManager.h"
 #import "HKCommen.h"
+#import "ConsulationManager.h"
 
 @interface CouponCtrl()
 
 @property (nonatomic, strong) IBOutlet UITableView* tableView;
-@property (nonatomic, strong) NSArray* arrayOfCheap;
+@property (nonatomic, strong) NSMutableArray* arrayOfCheap;
 @property (nonatomic, strong) NSMutableArray* arrayIndex;
 @property (nonatomic,strong) UserLoginInfo *userInfo;
 
@@ -75,7 +76,41 @@
     [[NetworkManager shareMgr] server_fetchAllCheapTickets:dic completeHandle:^(NSDictionary *responseBanner) {
         
         NSLog(@"获得的字典：%@",responseBanner);
-        self.arrayOfCheap = [responseBanner objectForKey:@"data"];
+     
+        
+        NSArray* arrayResult  = [responseBanner objectForKey:@"data"];
+        self.arrayOfCheap = [[NSMutableArray alloc] init];
+        
+
+        
+       NSLog(@"当前本地数据为%@",[ConsulationManager shareMgr].setModel);
+        
+        for (int i = 0; i < arrayResult.count; i ++) {
+            
+            NSDictionary* dic = [arrayResult objectAtIndex:i];
+            
+            NSString* str =  [dic  objectForKey:@"id"];
+            
+            BOOL isNewConsult = YES;
+            
+            for (NSString* consultId in [ConsulationManager shareMgr].setModel) {
+                
+                if ([[NSString stringWithFormat:@"%@",consultId] isEqualToString:[NSString stringWithFormat:@"%@",str]]) {
+                    
+                    
+                    isNewConsult = NO;
+                }
+                
+            }
+            
+            
+            if (isNewConsult == YES) {
+                
+                [self.arrayOfCheap addObject:[arrayResult objectAtIndex:i]];
+                
+            }
+            
+        }
         
         if (self.arrayOfCheap.count!=0) {
             
@@ -83,6 +118,8 @@
                 [self.arrayIndex addObject:@0];
             }
         }
+        
+           NSLog(@"当前本地数据为%@",self.arrayOfCheap);
         
         [self.tableView reloadData];
     }];
@@ -145,12 +182,10 @@
         cell.lbl_company.text=[dic objectForKey:@"storeName"];
         cell.lbl_price.text=[dic objectForKey:@"price"];
         
-
-        
-        //[cell.btn_getTicket setTag:[[dic objectForKey:@"couponId"] intValue]];
         
        cell.couponId= [dic objectForKey:@"couponcode"];
         cell.storeId=[dic objectForKey:@"id"];
+        cell.heheId =  cell.storeId;
         
         cell.delegate=self;
         
@@ -180,7 +215,7 @@
     return nil;
 }
 
--(void)getTicket:(NSString *)couponCode StoreNum:(NSString*)storeId
+-(void)getTicket:(NSString *)couponCode StoreNum:(NSString*)storeId id:(NSString *)heheID
 {
     if ([[UserDataManager shareManager].userLoginInfo.user.phone isEqualToString:@""]) {
         NSLog(@"用户没登陆");
@@ -207,6 +242,8 @@
         }else if ([[response objectForKey:@"status"] integerValue]== 2){
         
             [HKCommen addAlertViewWithTitel:@"抢优惠券成功"];
+            
+            [[ConsulationManager shareMgr] addHandledConsulation:heheID];
             
         }else if ([[response objectForKey:@"status"] integerValue]== 3){
             

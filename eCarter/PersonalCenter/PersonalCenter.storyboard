@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -48,8 +48,8 @@
                         <constraints>
                             <constraint firstItem="f32-gc-kcZ" firstAttribute="top" secondItem="8m4-AK-aDS" secondAttribute="bottom" id="2Am-tH-ScV"/>
                             <constraint firstItem="8m4-AK-aDS" firstAttribute="top" secondItem="74O-BT-fTp" secondAttribute="bottom" id="4Jg-Ik-dUj"/>
-                            <constraint firstItem="8m4-AK-aDS" firstAttribute="leading" secondItem="mdb-x6-zu5" secondAttribute="leadingMargin" constant="-16" id="ORh-EQ-VbM"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8m4-AK-aDS" secondAttribute="trailing" constant="-16" id="SH4-p7-GAS"/>
+                            <constraint firstItem="8m4-AK-aDS" firstAttribute="leading" secondItem="mdb-x6-zu5" secondAttribute="leading" id="ORh-EQ-VbM"/>
+                            <constraint firstAttribute="trailing" secondItem="8m4-AK-aDS" secondAttribute="trailing" id="SH4-p7-GAS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="个人中心" id="weL-gB-Uz9">
@@ -101,8 +101,8 @@
                         <constraints>
                             <constraint firstItem="Te4-Ey-ZT5" firstAttribute="top" secondItem="hvx-Rv-iLS" secondAttribute="bottom" id="1Ri-mj-eZq"/>
                             <constraint firstItem="hvx-Rv-iLS" firstAttribute="top" secondItem="vSQ-O0-K1R" secondAttribute="bottom" id="cbC-BT-oAZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hvx-Rv-iLS" secondAttribute="trailing" constant="-16" id="lRe-G2-STH"/>
-                            <constraint firstItem="hvx-Rv-iLS" firstAttribute="leading" secondItem="sO8-pG-gJ3" secondAttribute="leadingMargin" constant="-16" id="xef-q5-dPf"/>
+                            <constraint firstAttribute="trailing" secondItem="hvx-Rv-iLS" secondAttribute="trailing" id="lRe-G2-STH"/>
+                            <constraint firstItem="hvx-Rv-iLS" firstAttribute="leading" secondItem="sO8-pG-gJ3" secondAttribute="leading" id="xef-q5-dPf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="我的交易" id="tGB-Co-C4E"/>
@@ -138,9 +138,9 @@
                         <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="46A-ng-7dL" firstAttribute="top" secondItem="idg-Jo-H5r" secondAttribute="bottom" id="A8j-VA-bkT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="46A-ng-7dL" secondAttribute="trailing" constant="-16" id="HFK-yU-5hW"/>
+                            <constraint firstAttribute="trailing" secondItem="46A-ng-7dL" secondAttribute="trailing" id="HFK-yU-5hW"/>
                             <constraint firstItem="SFM-u8-vSP" firstAttribute="top" secondItem="46A-ng-7dL" secondAttribute="bottom" id="OdO-sf-J1o"/>
-                            <constraint firstItem="46A-ng-7dL" firstAttribute="leading" secondItem="TSs-2m-Spn" secondAttribute="leadingMargin" constant="-16" id="cKX-TO-tqj"/>
+                            <constraint firstItem="46A-ng-7dL" firstAttribute="leading" secondItem="TSs-2m-Spn" secondAttribute="leading" id="cKX-TO-tqj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="我的地址" id="SnL-rw-wOD"/>
@@ -177,8 +177,8 @@
                         <constraints>
                             <constraint firstItem="qjI-e6-LDm" firstAttribute="top" secondItem="gzp-7s-9Vv" secondAttribute="bottom" id="9Am-XS-UcJ"/>
                             <constraint firstItem="1jp-3y-lkh" firstAttribute="top" secondItem="qjI-e6-LDm" secondAttribute="bottom" id="E2y-Dc-q09"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qjI-e6-LDm" secondAttribute="trailing" constant="-16" id="EGc-4x-ZGM"/>
-                            <constraint firstItem="qjI-e6-LDm" firstAttribute="leading" secondItem="hgC-PO-imO" secondAttribute="leadingMargin" constant="-16" id="Err-jS-7Ha"/>
+                            <constraint firstAttribute="trailing" secondItem="qjI-e6-LDm" secondAttribute="trailing" id="EGc-4x-ZGM"/>
+                            <constraint firstItem="qjI-e6-LDm" firstAttribute="leading" secondItem="hgC-PO-imO" secondAttribute="leading" id="Err-jS-7Ha"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="我的账户" id="qbm-be-r5x"/>
@@ -214,8 +214,8 @@
                         <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="EY8-zb-trW" firstAttribute="top" secondItem="gF7-X4-uex" secondAttribute="bottom" id="5Rj-Mw-XHP"/>
-                            <constraint firstItem="EY8-zb-trW" firstAttribute="leading" secondItem="aeU-YT-dPw" secondAttribute="leadingMargin" constant="-16" id="6U7-XE-jl6"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="EY8-zb-trW" secondAttribute="trailing" constant="-16" id="buR-gN-fDK"/>
+                            <constraint firstItem="EY8-zb-trW" firstAttribute="leading" secondItem="aeU-YT-dPw" secondAttribute="leading" id="6U7-XE-jl6"/>
+                            <constraint firstAttribute="trailing" secondItem="EY8-zb-trW" secondAttribute="trailing" id="buR-gN-fDK"/>
                             <constraint firstItem="h7x-EI-37M" firstAttribute="top" secondItem="EY8-zb-trW" secondAttribute="bottom" id="hjd-Av-33a"/>
                         </constraints>
                     </view>
@@ -251,10 +251,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="31K-U6-2lh" firstAttribute="leading" secondItem="xSo-3A-DW3" secondAttribute="leadingMargin" constant="-16" id="F8I-t7-BlI"/>
+                            <constraint firstItem="31K-U6-2lh" firstAttribute="leading" secondItem="xSo-3A-DW3" secondAttribute="leading" id="F8I-t7-BlI"/>
                             <constraint firstItem="Ad8-Co-tr4" firstAttribute="top" secondItem="31K-U6-2lh" secondAttribute="bottom" id="fb1-Xp-js5"/>
                             <constraint firstItem="31K-U6-2lh" firstAttribute="top" secondItem="4IR-4Q-ZYI" secondAttribute="bottom" id="l9w-x0-cbW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="31K-U6-2lh" secondAttribute="trailing" constant="-16" id="y7N-wg-RR9"/>
+                            <constraint firstAttribute="trailing" secondItem="31K-U6-2lh" secondAttribute="trailing" id="y7N-wg-RR9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="我的积分" id="qm8-zc-8Ma"/>
@@ -285,9 +285,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="TPj-Xg-D5A" secondAttribute="trailing" constant="-16" id="EDD-tl-LpK"/>
+                            <constraint firstAttribute="trailing" secondItem="TPj-Xg-D5A" secondAttribute="trailing" id="EDD-tl-LpK"/>
                             <constraint firstItem="qDc-gs-ScG" firstAttribute="top" secondItem="TPj-Xg-D5A" secondAttribute="bottom" id="IYa-Vk-ViM"/>
-                            <constraint firstItem="TPj-Xg-D5A" firstAttribute="leading" secondItem="Mb0-MS-3zk" secondAttribute="leadingMargin" constant="-16" id="iBc-tX-Gdd"/>
+                            <constraint firstItem="TPj-Xg-D5A" firstAttribute="leading" secondItem="Mb0-MS-3zk" secondAttribute="leading" id="iBc-tX-Gdd"/>
                             <constraint firstItem="TPj-Xg-D5A" firstAttribute="top" secondItem="Owo-GH-X92" secondAttribute="bottom" id="yXz-Zf-NiV"/>
                         </constraints>
                     </view>
@@ -331,9 +331,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="cMM-EK-fWd" secondAttribute="trailing" constant="-16" id="0Lq-Ej-Rxt"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="6zf-rS-vkw" secondAttribute="trailing" constant="-16" id="2qC-fE-brp"/>
+                            <constraint firstAttribute="trailing" secondItem="6zf-rS-vkw" secondAttribute="trailing" id="2qC-fE-brp"/>
                             <constraint firstItem="6zf-rS-vkw" firstAttribute="top" secondItem="dIP-UD-jz6" secondAttribute="bottom" constant="44" id="Ml2-pZ-VGk"/>
-                            <constraint firstItem="6zf-rS-vkw" firstAttribute="leading" secondItem="ycr-AP-uTA" secondAttribute="leadingMargin" constant="-16" id="Qny-QK-jGq"/>
+                            <constraint firstItem="6zf-rS-vkw" firstAttribute="leading" secondItem="ycr-AP-uTA" secondAttribute="leading" id="Qny-QK-jGq"/>
                             <constraint firstItem="cMM-EK-fWd" firstAttribute="leading" secondItem="ycr-AP-uTA" secondAttribute="leadingMargin" constant="-16" id="X3a-lP-Wm5"/>
                             <constraint firstItem="6zf-rS-vkw" firstAttribute="top" secondItem="cMM-EK-fWd" secondAttribute="bottom" id="b4E-Xy-eix"/>
                             <constraint firstItem="cMM-EK-fWd" firstAttribute="top" secondItem="dIP-UD-jz6" secondAttribute="bottom" id="gwe-X4-bQj"/>

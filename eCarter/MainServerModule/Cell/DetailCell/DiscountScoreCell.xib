@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -56,7 +56,9 @@
                 <constraints>
                     <constraint firstItem="E5w-gb-8c3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="255" id="1Bj-W2-qDQ"/>
                     <constraint firstItem="FT4-cD-eRq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="36T-cU-0nf"/>
+                    <constraint firstItem="E5w-gb-8c3" firstAttribute="leading" secondItem="5Uo-hv-50m" secondAttribute="trailing" constant="12" id="5dD-B1-xHD"/>
                     <constraint firstItem="5Uo-hv-50m" firstAttribute="top" secondItem="FT4-cD-eRq" secondAttribute="bottom" constant="-44" id="7Rt-MX-Qm9"/>
+                    <constraint firstItem="E5w-gb-8c3" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Ff0-fz-ftH"/>
                     <constraint firstItem="sMh-pM-4jz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="JXx-gP-xI9"/>
                     <constraint firstItem="5Uo-hv-50m" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="QZS-yb-3Hy"/>
                     <constraint firstItem="5Uo-hv-50m" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="202" id="Rwl-Bz-Eky"/>
@@ -73,6 +75,8 @@
                         <exclude reference="36T-cU-0nf"/>
                         <exclude reference="rCI-Go-00W"/>
                         <exclude reference="Rwl-Bz-Eky"/>
+                        <exclude reference="gHe-Sw-hAg"/>
+                        <exclude reference="1Bj-W2-qDQ"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>

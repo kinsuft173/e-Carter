@@ -30,6 +30,8 @@
 
 @property (nonatomic, copy) NSString *nickname;
 
+@property (nonatomic, copy) NSString *sex;
+
 @property (nonatomic, copy) NSString *avatarUrl;
 
 @property (nonatomic, copy) NSString *bUserId;

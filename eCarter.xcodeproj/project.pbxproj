@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5B4A59FE5E3923AFF3BA7FAB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA8F7F1A0C3E67F78D061FC8 /* libPods.a */; };
+		B944BFB71B9FFC0200D66D42 /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B944BFB41B9FFC0200D66D42 /* SIAlertView.bundle */; };
+		B944BFB81B9FFC0200D66D42 /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B944BFB61B9FFC0200D66D42 /* SIAlertView.m */; };
+		B944BFBB1BA021BD00D66D42 /* ConsulationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B944BFBA1BA021BD00D66D42 /* ConsulationManager.m */; };
 		DE06386C1B6D19C900EFB576 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = DE06386B1B6D19C900EFB576 /* iToast.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DE06386F1B6DFB2D00EFB576 /* loading-ios@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE06386E1B6DFB2D00EFB576 /* loading-ios@2x.png */; };
 		DE06387B1B6E721000EFB576 /* defoult_1.png in Resources */ = {isa = PBXBuildFile; fileRef = DE0638771B6E721000EFB576 /* defoult_1.png */; };
@@ -583,6 +586,11 @@
 /* Begin PBXFileReference section */
 		89320E9E3422FB0DACAE4240 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A81116FB39819334A18ABA35 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B944BFB41B9FFC0200D66D42 /* SIAlertView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SIAlertView.bundle; sourceTree = "<group>"; };
+		B944BFB51B9FFC0200D66D42 /* SIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAlertView.h; sourceTree = "<group>"; };
+		B944BFB61B9FFC0200D66D42 /* SIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIAlertView.m; sourceTree = "<group>"; };
+		B944BFB91BA021BD00D66D42 /* ConsulationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsulationManager.h; sourceTree = "<group>"; };
+		B944BFBA1BA021BD00D66D42 /* ConsulationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsulationManager.m; sourceTree = "<group>"; };
 		DA8F7F1A0C3E67F78D061FC8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE06386A1B6D19C900EFB576 /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
 		DE06386B1B6D19C900EFB576 /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
@@ -1515,6 +1523,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B944BFB31B9FFC0200D66D42 /* SAAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				B944BFB41B9FFC0200D66D42 /* SIAlertView.bundle */,
+				B944BFB51B9FFC0200D66D42 /* SIAlertView.h */,
+				B944BFB61B9FFC0200D66D42 /* SIAlertView.m */,
+			);
+			path = SAAlertView;
+			sourceTree = "<group>";
+		};
 		DE0638691B6D19C900EFB576 /* iTostView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1626,6 +1644,7 @@
 		DE9D12331B514AC100046407 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				B944BFB31B9FFC0200D66D42 /* SAAlertView */,
 				E993183D1B8A1BC700B56AE9 /* thirdLib */,
 				E993180C1B8A152E00B56AE9 /* CorePhotoBroswerVC */,
 				E9F9D0081B74E7CF007781AC /* ShareSDK */,
@@ -1779,6 +1798,8 @@
 		DECA171D1B61381200FD3418 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B944BFB91BA021BD00D66D42 /* ConsulationManager.h */,
+				B944BFBA1BA021BD00D66D42 /* ConsulationManager.m */,
 				DECA17211B614B4700FD3418 /* Coupon.h */,
 				DECA17221B614B4700FD3418 /* Coupon.m */,
 				DECA17241B614BD400FD3418 /* CouponDetail.h */,
@@ -3418,6 +3439,7 @@
 				DE237F121B4056260027767B /* CustomTradeCell.xib in Resources */,
 				DED7F5551B4760DB0005019C /* but_bg_woyaoqiang@3x.png in Resources */,
 				DE0C3ED41B92E57A006D2840 /* loading-ios@3x.png in Resources */,
+				B944BFB71B9FFC0200D66D42 /* SIAlertView.bundle in Resources */,
 				DEE3370E1B4C40D900357253 /* Grey@3x.png in Resources */,
 				DED7F5591B4760DB0005019C /* but_dial@3x.png in Resources */,
 				DEFB2B681B44360B00C74FC0 /* Default_picture.png in Resources */,
@@ -3609,6 +3631,7 @@
 				DE237EFC1B4047B60027767B /* AddCarCell.m in Sources */,
 				DE9D12131B50ECEC00046407 /* MANaviRoute.m in Sources */,
 				DECA173E1B61534B00FD3418 /* UserRecharge.m in Sources */,
+				B944BFBB1BA021BD00D66D42 /* ConsulationManager.m in Sources */,
 				DECA174A1B61548400FD3418 /* CarSeries.m in Sources */,
 				DEE52ECC1B38F9C200C90BA3 /* CouponCtrl.m in Sources */,
 				DE9D12071B50ECEC00046407 /* AnimatedAnnotationView.m in Sources */,
@@ -3705,6 +3728,7 @@
 				DE9D12111B50ECEC00046407 /* MANaviAnnotationView.m in Sources */,
 				DE237F041B404E8A0027767B /* AdressCell.m in Sources */,
 				E99318391B8A152E00B56AE9 /* PhotoItemView.m in Sources */,
+				B944BFB81B9FFC0200D66D42 /* SIAlertView.m in Sources */,
 				E96A2DEE1B77AE8400DC9B05 /* SBJsonStreamParserAdapter.m in Sources */,
 				DEEC3DE21B5C2832005CE84E /* UserDataManager.m in Sources */,
 				DEE337AC1B4DF68C00357253 /* SettingCtrl.m in Sources */,
@@ -3961,7 +3985,7 @@
 					"$(PROJECT_DIR)/eCarter/ThirdLib/thirdLib/WxPayLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e0cc6f37-cf95-48e7-a53c-b546adcd9618";
 			};
 			name = Debug;
 		};
@@ -4009,7 +4033,7 @@
 					"$(PROJECT_DIR)/eCarter/ThirdLib/thirdLib/WxPayLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e0cc6f37-cf95-48e7-a53c-b546adcd9618";
 			};
 			name = Release;
 		};

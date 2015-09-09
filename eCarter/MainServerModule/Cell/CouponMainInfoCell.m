@@ -12,15 +12,19 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
     if ([self.contentView respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)]) {
-        self.contentView.preservesSuperviewLayoutMargins = NO;
+        
+            
+            self.contentView.preservesSuperviewLayoutMargins = NO;
+    
     }
     
 }
 
 - (IBAction)getMyTicket:(UIButton *)sender {
     
-    [self.delegate getTicket:self.couponId StoreNum:self.storeId];
+    [self.delegate getTicket:self.couponId StoreNum:self.storeId id:self.heheId];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
