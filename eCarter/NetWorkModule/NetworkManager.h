@@ -59,6 +59,7 @@
 - (void)server_queryUserRechargeWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 - (void)server_submitRechargeInfoWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 - (void)server_queryUserCarWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+- (void)server_queryUserPointWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 - (void)server_addCarWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 
 //车系
@@ -96,5 +97,8 @@
 
 //获得商家评论
 - (void)server_queryStoreCommemtWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+
+//删除地址
+- (void)server_cancelAddressWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 
 @end

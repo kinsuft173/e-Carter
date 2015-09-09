@@ -178,15 +178,16 @@
     
     
     NSMutableDictionary *dicNew=[[NSMutableDictionary alloc]init];
-    [dicNew setValue:[UserDataManager shareManager].userLoginInfo.user.uid forKey:@"userId"];
-    [dicNew setValue:@"1" forKey:@"accountType"];
+    
+    [dicNew setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
+    [dicNew setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
     
     
-    [[NetworkManager shareMgr] server_queryUserAccountWithDic:dicNew completeHandle:^(NSDictionary *response) {
+    [[NetworkManager shareMgr] server_queryUserPointWithDic:dicNew completeHandle:^(NSDictionary *response) {
         
         NSLog(@"字典：%@",response);
         
-        self.stringOfCount= [response objectForKey:@"data"];
+        self.stringOfCount= [NSString stringWithFormat:@"%@",[[response objectForKey:@"data"] objectForKey:@"point"]];
         
         
         [self.tableView  reloadData];
@@ -488,7 +489,7 @@
         if ([self.stringOfCount integerValue] != 0) {
             
             cell.lblDiscount.text = [NSString stringWithFormat:@"可用积分%@分",self.stringOfCount];
-            cell.lblRMBDiscount.text = [NSString stringWithFormat:@"-%.1f元",[self.stringOfCount integerValue]/100.0];
+            cell.lblRMBDiscount.text = [NSString stringWithFormat:@"-%.1f",[self.stringOfCount integerValue]/100.0];
             
         }else{
         

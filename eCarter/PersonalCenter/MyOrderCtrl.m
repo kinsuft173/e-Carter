@@ -16,6 +16,7 @@
 #import "OrderDetail.h"
 #import "UserDataManager.h"
 #import "PhotoBroswerVC.h"
+#import "SIAlertView.h"
 
 @interface MyOrderCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -117,8 +118,6 @@
     
 }
 
-
-
 -(void)back
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -200,8 +199,11 @@
             
             UITableView *table=[self.arrayOfTables objectAtIndex:0];
             OrderCell *cell=(OrderCell*)[table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
-            cell.lblStatusOfOrder.text=@"退款中";
-            
+//            cell.lblStatusOfOrder.text=@"退款中";
+            cell.lblStatusOfOrder.text=@"提交退款申请";
+            [cell.btnGoCommentPage setTitle:@"退款中" forState:UIControlStateNormal];
+            [cell.btnGoCommentPage removeTarget:self action:@selector(CancelOrder:) forControlEvents:UIControlEventTouchUpInside];
+//            cell.btnGoCommentPage removeTarget: action:<#(SEL)#> forControlEvents:<#(UIControlEvents)#>
             [self getModel];
         }
         else
@@ -572,7 +574,10 @@
         
         
         
-        
+        //清除重用的事件
+        [cell.btnGoCommentPage removeTarget:self action:@selector(CancelOrder:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.btnGoCommentPage removeTarget:self action:@selector(goCommentPage:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.btnGoCommentPage removeTarget:self action:@selector(goMoneyReturnPage) forControlEvents:UIControlEventTouchUpInside];
         
         NSUInteger row=indexPath.row-1;
         
@@ -693,30 +698,68 @@
 
 -(void)CancelOrder:(UIButton*)button
 {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"取消订单" message:@"是否取消订单？" preferredStyle:UIAlertControllerStyleAlert];
+//    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"取消订单" message:@"是否取消订单？" preferredStyle:UIAlertControllerStyleAlert];
+//    
+//    
+//    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:
+//                               ^(UIAlertAction *action) {
+//                                   NSUInteger row=button.tag;
+//                                   
+//                                   UITableView *table=[self.arrayOfTables objectAtIndex:0];
+//                                   OrderCell *cell=(OrderCell*)[table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
+//                                   
+//                                   
+//                                   
+//                                   [self cancelOrderModel:cell.orderId.text TableRow:row];
+//                               }
+//                               ];
+//    
+//    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:nil];
+//    
+//    [alertController addAction:okAction];
+//    [alertController addAction:cancelAction];
+//    
+//    
+//    [self presentViewController:alertController animated:YES completion:nil];
     
     
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:
-                               ^(UIAlertAction *action) {
-                                   NSUInteger row=button.tag;
-                                   
-                                   UITableView *table=[self.arrayOfTables objectAtIndex:0];
-                                   OrderCell *cell=(OrderCell*)[table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
-                                   
-                                   
-                                   
-                                   [self cancelOrderModel:cell.orderId.text TableRow:row];
-                               }
-                               ];
     
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:nil];
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:nil andMessage:@"是否取消订单？"];
+    [alertView addButtonWithTitle:@"确认"
+                             type:SIAlertViewButtonTypeCancel
+                          handler:^(SIAlertView *alertView) {
+                              
+                              NSUInteger row=button.tag;
+                              
+                              UITableView *table=[self.arrayOfTables objectAtIndex:0];
+                              OrderCell *cell=(OrderCell*)[table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
+                              
+                              
+                              
+                              [self cancelOrderModel:cell.orderId.text TableRow:row];
+                          }];
+    [alertView addButtonWithTitle:@"取消"
+                             type:SIAlertViewButtonTypeDefault
+                          handler:^(SIAlertView *alertView) {
+                              
+                          }];
+    alertView.transitionStyle = SIAlertViewTransitionStyleDropDown;
+    alertView.backgroundStyle = SIAlertViewBackgroundStyleSolid;
     
-    [alertController addAction:okAction];
-    [alertController addAction:cancelAction];
+    alertView.willShowHandler = ^(SIAlertView *alertView) {
+        NSLog(@"%@, willShowHandler3", alertView);
+    };
+    alertView.didShowHandler = ^(SIAlertView *alertView) {
+        NSLog(@"%@, didShowHandler3", alertView);
+    };
+    alertView.willDismissHandler = ^(SIAlertView *alertView) {
+        NSLog(@"%@, willDismissHandler3", alertView);
+    };
+    alertView.didDismissHandler = ^(SIAlertView *alertView) {
+        NSLog(@"%@, didDismissHandler3", alertView);
+    };
     
-    
-    [self presentViewController:alertController animated:YES completion:nil];
-    
+    [alertView show];
     
     
 }

@@ -918,6 +918,55 @@
 }
 
 
+- (void)server_cancelAddressWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    NSString* strInterface;
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = ECARTER_DELETE_ADRRESS;
+        
+    }
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (self.isTestMode) {
+            
+            NSDictionary *dictionary = [FakeDataMgr shareMgr].responseQueryOrderList;
+            
+            if (completeHandle) {
+                
+                completeHandle(dictionary);
+                
+            }
+            
+        }else{
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+                completeHandle(nil);
+        
+        NSLog(@"Error: %@", error);
+        
+        
+    }];
+    
+}
+
+
 - (void)server_queryOrderDetailWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -1331,6 +1380,64 @@
         
     }];
     
+}
+
+
+- (void)server_queryUserPointWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    //test
+    //NSDictionary *parameters = @{@"username": @"18672354399",@"password_hash":@"$2y$13$eD.OPcraVj8wMrADnMTPpeJVDzQTncvRClQcRDt2a0gRPRW4ZKWbC"};
+    
+    NSString* strInterface;
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = ECATER_QUERY_USER_POINT;
+        
+    }
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        
+        NSLog(@"server_queryUserPointWithDic=>%@",responseObject);
+        
+        if (self.isTestMode) {
+            
+            NSDictionary *dictionary = [FakeDataMgr shareMgr].responseQueryUserCar;
+            
+            if (completeHandle) {
+                
+                completeHandle(dictionary);
+                
+            }
+            
+        }else{
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        //ErrorHandle(error);
+        completeHandle(nil);
+        
+        NSLog(@"Error: %@", error);
+        
+        
+    }];
+
+
+
 }
 
 - (void)server_addCarWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle

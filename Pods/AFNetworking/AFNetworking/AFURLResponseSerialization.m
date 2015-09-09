@@ -111,22 +111,22 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
     NSError *validationError = nil;
 
     if (response && [response isKindOfClass:[NSHTTPURLResponse class]]) {
-        if (self.acceptableContentTypes && ![self.acceptableContentTypes containsObject:[response MIMEType]]) {
-            if ([data length] > 0 && [response URL]) {
-                NSMutableDictionary *mutableUserInfo = [@{
-                                                          NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedStringFromTable(@"Request failed: unacceptable content-type: %@", @"AFNetworking", nil), [response MIMEType]],
-                                                          NSURLErrorFailingURLErrorKey:[response URL],
-                                                          AFNetworkingOperationFailingURLResponseErrorKey: response,
-                                                        } mutableCopy];
-                if (data) {
-                    mutableUserInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] = data;
-                }
-
-                validationError = AFErrorWithUnderlyingError([NSError errorWithDomain:AFURLResponseSerializationErrorDomain code:NSURLErrorCannotDecodeContentData userInfo:mutableUserInfo], validationError);
-            }
-
-            responseIsValid = NO;
-        }
+//        if (self.acceptableContentTypes && ![self.acceptableContentTypes containsObject:[response MIMEType]]) {
+//            if ([data length] > 0 && [response URL]) {
+//                NSMutableDictionary *mutableUserInfo = [@{
+//                                                          NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedStringFromTable(@"Request failed: unacceptable content-type: %@", @"AFNetworking", nil), [response MIMEType]],
+//                                                          NSURLErrorFailingURLErrorKey:[response URL],
+//                                                          AFNetworkingOperationFailingURLResponseErrorKey: response,
+//                                                        } mutableCopy];
+//                if (data) {
+//                    mutableUserInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] = data;
+//                }
+//
+//                validationError = AFErrorWithUnderlyingError([NSError errorWithDomain:AFURLResponseSerializationErrorDomain code:NSURLErrorCannotDecodeContentData userInfo:mutableUserInfo], validationError);
+//            }
+//
+//            responseIsValid = NO;
+//        }
 
         if (self.acceptableStatusCodes && ![self.acceptableStatusCodes containsIndex:(NSUInteger)response.statusCode] && [response URL]) {
             NSMutableDictionary *mutableUserInfo = [@{
@@ -219,7 +219,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
         return nil;
     }
 
-    self.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain",nil];
+    self.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",nil];
 
     return self;
 }

@@ -10,7 +10,7 @@
 
 @protocol addTicket <NSObject>
 
--(void)getTicket:(NSString *)couponCode StoreNum:(NSString*)storeId;
+-(void)getTicket:(NSString *)couponCode StoreNum:(NSString*)storeId id:(NSString*)heheID;
 
 @end
 
@@ -33,6 +33,6 @@
 
 @property (strong,nonatomic) NSString *couponId;
 @property (strong,nonatomic) NSString *storeId;
-
+@property (strong,nonatomic) NSString *heheId;
 @property (weak, nonatomic) id<addTicket> delegate;
 @end

@@ -239,7 +239,15 @@
             
             if ([UserDataManager shareManager].userLoginInfo.user.nickname.length >0) {
                 
-                cell.lblName.text = [NSString stringWithFormat:@"%@先生",[[UserDataManager shareManager].userLoginInfo.user.nickname substringToIndex:1]];
+                if ([[UserDataManager shareManager].userLoginInfo.user.sex isEqualToString:@"男"]) {
+                    cell.lblName.text = [NSString stringWithFormat:@"%@先生",[[UserDataManager shareManager].userLoginInfo.user.nickname substringToIndex:1]];
+                }else{
+                
+                    cell.lblName.text = [NSString stringWithFormat:@"%@女士",[[UserDataManager shareManager].userLoginInfo.user.nickname substringToIndex:1]];
+                
+                }
+                
+
                 
             }
             

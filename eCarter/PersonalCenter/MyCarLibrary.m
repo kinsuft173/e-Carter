@@ -15,6 +15,7 @@
 #import "Car.h"
 #import "UserDataManager.h"
 #import "UserLoginInfo.h"
+#import "SIAlertView.h"
 
 @interface MyCarLibrary ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong,nonatomic)NSArray *arrayOfCar;
@@ -46,6 +47,8 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getModel) name:@"changeCarOrAddress" object:nil];
 }
 
 - (void)getModel
@@ -238,24 +241,58 @@
 
 -(void)DeleteCar:(UIButton*)button
 {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"删除车辆" message:@"是否删除该车辆？" preferredStyle:UIAlertControllerStyleAlert];
+//    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"删除车辆" message:@"是否删除该车辆？" preferredStyle:UIAlertControllerStyleAlert];
+//    
+//    
+//    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:
+//                               ^(UIAlertAction *action) {
+//                                   [self CancelCar:[NSString stringWithFormat:@"%ld",button.tag]];
+//                               }
+//                               ];
+//    
+//    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:nil];
+//    
+//    [alertController addAction:okAction];
+//    [alertController addAction:cancelAction];
+//    
+//    
+//    [self presentViewController:alertController animated:YES completion:nil];
     
     
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:
-                               ^(UIAlertAction *action) {
-                                   [self CancelCar:[NSString stringWithFormat:@"%ld",button.tag]];
-                               }
-                               ];
     
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:nil];
+    SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:nil andMessage:@"是否删除该车辆？"];
+    [alertView addButtonWithTitle:@"确认"
+                             type:SIAlertViewButtonTypeCancel
+                          handler:^(SIAlertView *alertView) {
+                              
+                          [self CancelCar:[NSString stringWithFormat:@"%ld",button.tag]];
+                          }];
+    [alertView addButtonWithTitle:@"取消"
+                             type:SIAlertViewButtonTypeDefault
+                          handler:^(SIAlertView *alertView) {
+                              
+                          }];
+    alertView.transitionStyle = SIAlertViewTransitionStyleDropDown;
+    alertView.backgroundStyle = SIAlertViewBackgroundStyleSolid;
     
-    [alertController addAction:okAction];
-    [alertController addAction:cancelAction];
+    alertView.willShowHandler = ^(SIAlertView *alertView) {
+        NSLog(@"%@, willShowHandler3", alertView);
+    };
+    alertView.didShowHandler = ^(SIAlertView *alertView) {
+        NSLog(@"%@, didShowHandler3", alertView);
+    };
+    alertView.willDismissHandler = ^(SIAlertView *alertView) {
+        NSLog(@"%@, willDismissHandler3", alertView);
+    };
+    alertView.didDismissHandler = ^(SIAlertView *alertView) {
+        NSLog(@"%@, didDismissHandler3", alertView);
+    };
     
+    [alertView show];
     
-    [self presentViewController:alertController animated:YES completion:nil];
-    
-    
+
+
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
