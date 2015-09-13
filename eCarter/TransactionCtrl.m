@@ -307,6 +307,8 @@
                 
                 [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"checkUser"];
                 
+                [[ConsulationManager shareMgr] getMycounPonModel];
+                
             }
             
             hud.hidden = YES;

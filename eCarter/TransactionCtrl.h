@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SetTransactionPassworsCtrl.h"
 #import "HKCommen.h"
+#import "ConsulationManager.h"
 
 @interface TransactionCtrl : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *txt_phone;

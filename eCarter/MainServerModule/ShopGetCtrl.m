@@ -79,9 +79,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.arrayModel.count==0) {
-        return 2;
-    }
+
     return self.arrayModel.count;
 }
 
@@ -114,17 +112,12 @@
         
         cell.lbl_Evaluation.text = [NSString stringWithFormat:@"(%.1f)",[shop.storeScore floatValue]];
         
-        [cell initWithDict:[shop.storeScore floatValue]];
+        [cell.star setStarForValue:[shop.storeScore floatValue]];
         
-        [cell.img_Service sd_setImageWithURL:[NSURL URLWithString:shop.storeImg]
-                     placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
         
-//        cell.img_Service.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:shop.storeImg]]];
         
-//        NSString* encodedString = [shop.storeImg stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//        
-//        [cell.img_Service sd_setImageWithURL: [NSURL URLWithString:encodedString]
-//                            placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
+        [cell.img_Service sd_setImageWithURL: [NSURL URLWithString:shop.storeImg]
+                            placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
         
         return cell;
     

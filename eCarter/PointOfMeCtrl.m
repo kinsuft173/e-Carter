@@ -79,8 +79,36 @@
     [[NetworkManager shareMgr] server_queryUserPointWithDic:dicAccount completeHandle:^(NSDictionary *response) {
         
         NSLog(@"server_queryUserPointWithDic：%@",response);
-        self.lbl_myCount.text= [NSString stringWithFormat:@"%@",[[response objectForKey:@"data"] objectForKey:@"point"]];
+        self.lbl_myCount.text=  [NSString stringWithFormat:@"%@",[[response objectForKey:@"data"] objectForKey:@"point"]];
         
+        NSInteger count = self.lbl_myCount.text.integerValue;
+        
+        if (count >= 1000) {
+            
+            self.lbl_myCount.text = [NSString stringWithFormat:@"%d千%d",count/1000,(count%1000)/100];
+            
+            if ((count%1000)/100 == 0) {
+                self.lbl_myCount.text = [NSString stringWithFormat:@"%d千",count/1000];
+            }
+            
+        }
+        
+        if (count >= 10000) {
+            
+            self.lbl_myCount.text = [NSString stringWithFormat:@"%d万%d",count/10000,(count%10000)/1000];
+            
+            if ((count%10000)/1000 == 0) {
+                self.lbl_myCount.text = [NSString stringWithFormat:@"%d万",count/10000];
+            }
+            
+        }
+        
+        
+        if (count >= 100000) {
+            
+            self.lbl_myCount.text = [NSString stringWithFormat:@"%d万",count/10000];
+            
+        }
     }];
 }
 

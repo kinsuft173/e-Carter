@@ -36,6 +36,15 @@
     self.place=@"天河区";
     self.type = @"1";
     
+    if (self.preUserAdress) {
+        
+        [HKMapManager shareMgr].province = self.preUserAdress.province;
+        [HKMapManager shareMgr].city = self.preUserAdress.city;
+        [HKMapManager shareMgr].place = self.preUserAdress.area;
+        [HKMapManager shareMgr].adressType = self.preUserAdress.type;
+        
+    }
+    
     self.arrayProvince=[[NSMutableArray alloc]init];
     self.arrayCity=[[NSMutableArray alloc]init];
     self.arrayRegion=[[NSMutableArray alloc]init];
@@ -205,24 +214,53 @@
     [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
     [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
     
-    [[NetworkManager shareMgr] server_addUserAddressWithDic:dic completeHandle:^(NSDictionary *response) {
+    
+    if (self.preUserAdress) {
         
-        
-
-        NSString* messege = [response objectForKey:@"message"];
-
-        
-        if ([messege isEqualToString:@"OK"]) {
+        [dic setObject:self.preUserAdress.id forKey:@"id"];
+     
+        [[NetworkManager shareMgr] server_editUserAddressWithDic:dic completeHandle:^(NSDictionary *response) {
             
-
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"changeCarOrAddress" object:nil];
-            [self.navigationController popViewControllerAnimated:YES];
             
-        }
+            
+            NSString* messege = [response objectForKey:@"message"];
+            
+            
+            if ([messege isEqualToString:@"OK"]) {
+                
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"changeCarOrAddress" object:nil];
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            }
+            
+            hud.hidden = YES;
+            
+        }];
         
-        hud.hidden = YES;
         
-    }];
+    }else{
+    
+        [[NetworkManager shareMgr] server_addUserAddressWithDic:dic completeHandle:^(NSDictionary *response) {
+            
+            
+            
+            NSString* messege = [response objectForKey:@"message"];
+            
+            
+            if ([messege isEqualToString:@"OK"]) {
+                
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"changeCarOrAddress" object:nil];
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            }
+            
+            hud.hidden = YES;
+            
+        }];
+        
+    }
     
 
 }

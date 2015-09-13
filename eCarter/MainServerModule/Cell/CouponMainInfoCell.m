@@ -24,7 +24,7 @@
 
 - (IBAction)getMyTicket:(UIButton *)sender {
     
-    [self.delegate getTicket:self.couponId StoreNum:self.storeId id:self.heheId];
+    [self.delegate getTicket:self.couponId StoreNum:self.storeId id:self.heheId btnTag:self.tag];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

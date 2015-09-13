@@ -76,6 +76,7 @@ typedef void (^ErrorHandle)(NSError*);
 
 #define ECATER_QUERY_USER_ADDRESS_INTERFACE @"/ecar/mobile/queryUserAddress"
 #define ECATER_ADD_USER_ADDRESS_INTERFACE @"/ecar/mobile/addUserAddress"
+#define ECATER_EDITE_USER_ADDRESS_INTERFACE @"/ecar/mobile/updateUserAddress"
 
 #define ECATER_POINT_TRANSACTION_INTERFACE @"/ecar/mobile/queryPointTransaction"
 

@@ -7,6 +7,8 @@
 //
 
 #import "ConsulationManager.h"
+#import "NetworkManager.h"
+#import "UserDataManager.h"
 
 @interface ConsulationManager()
 
@@ -55,6 +57,39 @@
         [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"setModel"];
 
     }
+
+}
+
+- (void)getMycounPonModel
+{
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
+    
+    [[NetworkManager shareMgr] server_fetchQueryUserCouponNotList:dic completeHandle:^(NSDictionary *responseBanner) {
+        
+  
+           NSArray* arrayCounpon =  [responseBanner objectForKey:@"data"];
+        
+        
+        for (int i = 0; i < arrayCounpon.count; i ++) {
+            
+            NSDictionary* dic = [arrayCounpon objectAtIndex:i];
+            
+            NSLog(@"将要处理的优惠券模型=%@",dic);
+            
+            
+            [self addHandledConsulation:dic[@"title"]];
+            
+        }
+        
+    
+    }];
+        
+
+
+
 
 }
 

@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "HKCommen.h"
+#import "UserAddress.h"
 
 @interface AboutUsCtrl : UIViewController
+
 @property (weak, nonatomic) IBOutlet UITextView *lbl_introduce;
 
 @end

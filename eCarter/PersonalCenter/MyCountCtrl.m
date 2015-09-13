@@ -57,7 +57,6 @@
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
     [dic setValue:self.userData.user.uid forKey:@"userId"];
-//    [dic setValue:@"1" forKey:@"accountType"];
     
     NSLog(@"账户字典：%@",dic);
     
@@ -67,19 +66,6 @@
         
         self.stringOfCount=[NSString stringWithFormat:@"%@元",[response objectForKey:@"data"]];
   
-        /*
-         NSArray* arrayTemp = [response objectForKey:@"data"];
-         
-         if (arrayTemp.count != 0) {
-         
-         self.arrayAllOrder = arrayTemp;
-         
-         for (int i = 0 ; i < arrayTemp.count; i ++) {
-         
-         
-         }
-         }
-         */
         
         [self.myTable  reloadData];
         

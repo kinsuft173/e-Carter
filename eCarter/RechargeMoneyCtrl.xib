@@ -193,7 +193,7 @@
                         <constraint firstItem="Xud-iz-XKw" firstAttribute="top" secondItem="rJo-mq-seb" secondAttribute="top" id="rzK-j2-BZA"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优惠价：¥9.5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ma-2C-5h4">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优惠价：¥9.5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ma-2C-5h4">
                     <rect key="frame" x="190" y="268" width="120" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="7ne-kH-XHk"/>

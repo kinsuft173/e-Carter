@@ -8,6 +8,12 @@
 
 #import "Coupon.h"
 
-@implementation Coupon
+@implementation CouponAll
+
+@end
+@implementation CouponMyAll
+
+@end
+@implementation CouponMyToShop
 
 @end

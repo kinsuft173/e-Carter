@@ -37,13 +37,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLm-aJ-uxv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLm-aJ-uxv">
                                 <rect key="frame" x="47" y="35" width="55" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="ELp-Xq-fIA"/>
                                     <constraint firstAttribute="width" constant="55" id="MhW-WM-Zxc"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -68,7 +68,7 @@
                                     <constraint firstAttribute="width" constant="50" id="Rl3-bK-ZpK"/>
                                     <constraint firstAttribute="height" constant="50" id="eBf-K8-Oxp"/>
                                 </constraints>
-                                <state key="normal" image="Coupons_buts_top.png">
+                                <state key="normal" image="Coupons_but_more.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -161,13 +161,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTr-xy-vCw">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GTr-xy-vCw">
                                 <rect key="frame" x="47" y="35" width="55" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="3Nj-fv-nJR"/>
                                     <constraint firstAttribute="width" constant="55" id="ca6-DX-lsN"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -177,7 +177,7 @@
                                     <constraint firstAttribute="width" constant="32" id="XCd-QJ-5XQ"/>
                                     <constraint firstAttribute="height" constant="32" id="hvj-Sp-kaZ"/>
                                 </constraints>
-                                <state key="normal" image="Coupons_buts_top.png">
+                                <state key="normal" image="Coupons_but_more.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -293,13 +293,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toY-JJ-pLG">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toY-JJ-pLG">
                                 <rect key="frame" x="47" y="35" width="55" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="OOj-Sa-HR3"/>
                                     <constraint firstAttribute="width" constant="55" id="m8J-oE-kIf"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -404,7 +404,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Coupons_buts_top.png" width="32" height="32"/>
+        <image name="Coupons_but_more.png" width="32" height="32"/>
         <image name="Coupons_line.png" width="1" height="1"/>
         <image name="but_Unchecked.png" width="22" height="22"/>
         <image name="but_bg_woyaoqiang.png" width="80" height="30"/>

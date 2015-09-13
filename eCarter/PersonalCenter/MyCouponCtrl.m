@@ -219,9 +219,11 @@
             }
         
             [cell.btnExpand addTarget:self action:@selector(expandEventHandle:) forControlEvents:UIControlEventTouchUpInside];
-            cell.btnExpand.tag = indexPath.section;
+
             
         }
+        
+        cell.btnExpand.tag = indexPath.section;
         
         if (self.isCardSelected == YES) {
             
@@ -229,11 +231,11 @@
             
         }
         
-        Coupon *coupon=[Coupon objectWithKeyValues:[self.arrayOfCoupon objectAtIndex:indexPath.section]];
+        CouponMyAll*coupon =[CouponMyAll objectWithKeyValues:[self.arrayOfCoupon objectAtIndex:indexPath.section]];
         
         NSLog(@"测试字典:%@",[self.arrayOfCoupon objectAtIndex:indexPath.row]);
-        //cell.lbl_shop.text=coupon.remark;
-        cell.lbl_value.text=coupon.price;
+        cell.lbl_shop.text=coupon.title;
+        cell.lbl_value.text= [NSString stringWithFormat:@"%d",coupon.price];
 
         
        NSString *startMonth= [coupon.startTimeString substringWithRange:NSMakeRange(5, 2)];
@@ -244,13 +246,14 @@
         
         cell.lbl_endTime.text=[NSString stringWithFormat:@"期限%@.%@-%@.%@",startMonth,startDay,endMonth,endDay];
  
-        cell.lbl_ticketNo.text=[NSString stringWithFormat:@"编号：%@",coupon.id];
+        cell.lbl_ticketNo.text=[NSString stringWithFormat:@"编号：%@",coupon.code];
         
         if (self.isCardSelected) {
-//            cell.selectedBackgroundView=[[UIView alloc]initWithFrame:cell.frame];
-//            cell.selectedBackgroundView.backgroundColor=[UIColor colorWithRed:104.0/255.0 green:190.0/255.0 blue:239.0/255.0 alpha:1.0];
+            
             
             cell.btnCheck.tag = indexPath.section;
+            
+            cell.lbl_shop.text = self.shopDetail.storeName;
             
             if(indexPath.section == self.indexCheck){
             
@@ -280,7 +283,7 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:cellId2 owner:self options:nil] objectAtIndex:0];
         }
         
-        Coupon *coupon=[Coupon objectWithKeyValues:[self.arrayOfCoupon objectAtIndex:indexPath.section]];
+        CouponMyAll *coupon=[CouponMyAll objectWithKeyValues:[self.arrayOfCoupon objectAtIndex:indexPath.section]];
         
         cell.lbl_couponDetail.text=coupon.remark;
         
@@ -337,6 +340,7 @@
         [btn setImage:[UIImage imageNamed:@"Coupons_but_more.png"] forState:UIControlStateNormal];
     }
     
+
     
     [self. tableView endUpdates];
     

@@ -53,12 +53,6 @@
     // Configure the view for the selected state
 }
 
--(void)initWithDict:(CGFloat)value
-{
-    self.star.whichValue=value;
-    
-
-}
 
 - (void)layoutSubviews
 {

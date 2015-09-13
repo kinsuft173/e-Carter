@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MAMapKit/MAMapKit.h>
 #import <AMapSearchKit/AMapSearchAPI.h>
+#import "UserAddress.h"
 
 @interface AddNewAdress : UIViewController
 
@@ -23,5 +24,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_placeHolder;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_homeType;
 @property(nonatomic, strong) AMapReGeocode *regeocode;
+@property (nonatomic, strong) UserAddress* preUserAdress;
 
 @end

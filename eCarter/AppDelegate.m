@@ -19,6 +19,9 @@
 #import "WeiboSDK.h"
 #import <AlipaySDK/AlipaySDK.h>
 
+#import "UserDataManager.h"
+#import "ConsulationManager.h"
+
 @interface AppDelegate ()
 
 @end
@@ -50,7 +53,20 @@
     
     [self configShareSDK];
     
+    [self getCounpon];
+    
     return YES;
+}
+
+- (void)getCounpon
+{
+    if ([[UserDataManager shareManager].userLoginInfo.user.phone isEqualToString:@""]) {
+        NSLog(@"用户没登陆");
+        return;
+    }
+    
+    [[ConsulationManager shareMgr] getMycounPonModel];
+
 }
 
 -(void)configShareSDK
@@ -68,10 +84,11 @@
      连接微信应用以使用相关功能，此应用需要引用WeChatConnection.framework和微信官方SDK
      http://open.weixin.qq.com上注册应用，并将相关信息填写以下字段
      **/
-        [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885" wechatCls:[WXApi class]];
-    [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885"
-                           appSecret:@"64020361b8ec4c99936c0e3999a9f249"
-                           wechatCls:[WXApi class]];
+        [ShareSDK connectWeChatWithAppId:@"wx14658f9874c6c7af" wechatCls:[WXApi class]];
+//
+//    [ShareSDK connectWeChatWithAppId:@"wx14658f9874c6c7af"
+//                           appSecret:@"64020361b8ec4c99936c0e3999a9f249"
+//                           wechatCls:[WXApi class]];
     /**
      连接QQ应用以使用相关功能，此应用需要引用QQConnection.framework和QQApi.framework库
      http://mobile.qq.com/api/上注册应用，并将相关信息填写到以下字段

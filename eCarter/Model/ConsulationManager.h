@@ -13,6 +13,7 @@
 + (ConsulationManager*)shareMgr;
 
 - (void)addHandledConsulation:(NSString*)consulationId;
+- (void)getMycounPonModel;
 
 @property (nonatomic, strong) NSMutableSet* setModel;
 

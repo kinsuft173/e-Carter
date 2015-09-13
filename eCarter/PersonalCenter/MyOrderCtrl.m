@@ -17,6 +17,7 @@
 #import "UserDataManager.h"
 #import "PhotoBroswerVC.h"
 #import "SIAlertView.h"
+#import "OrderSingle.h"
 
 @interface MyOrderCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -65,27 +66,8 @@
     self.arrayOfServicing=[[NSMutableArray alloc]init];
     self.arrayOfComplete=[[NSMutableArray alloc]init];
     self.arrayOfCancel=[[NSMutableArray alloc]init];
-    
-    self.arrayOfShow=[[NSMutableArray alloc]init];
 
-    
-    /*
-     [self.networkImages addObject:@"http://img5.imgtn.bdimg.com/it/u=2291374817,432518394&fm=21&gp=0.jpg"];
-     [self.networkImages addObject:@"http://img5.imgtn.bdimg.com/it/u=2291374817,432518394&fm=21&gp=0.jpg"];
-     [self.networkImages addObject:@"http://img5.imgtn.bdimg.com/it/u=2291374817,432518394&fm=21&gp=0.jpg"];
-     */
-    
-    self.images=[[NSMutableArray alloc]init];
-    UIImage *image1=[UIImage imageNamed:@"bg0"];
-    UIImage *image2=[UIImage imageNamed:@"bg1"];
-    UIImage *image3=[UIImage imageNamed:@"bg2"];
-    UIImage *image4=[UIImage imageNamed:@"bg3"];
-    [self.images addObject:image1];
-    [self.images addObject:image2];
-    [self.images addObject:image3];
-    [self.images addObject:image4];
-    
-  
+    self.arrayOfShow=[[NSMutableArray alloc]init];
 
     
     [self getModel];
@@ -137,46 +119,54 @@
     
     [[NetworkManager shareMgr] server_queryOrderListWithDic:dic completeHandle:^(NSDictionary *response) {
         
-        self.arrayOfOrder= [response objectForKey:@"data"];
-        
-        self.arrayOfShow=self.arrayOfOrder;
-        
-        NSLog(@"订单结果：%@",response);
-        
-        for (int i=0; i<self.arrayOfOrder.count; i++) {
+        if ([response objectForKey:@"data"]) {
             
-           int state= [[[self.arrayOfOrder objectAtIndex:i] objectForKey:@"state"] intValue];
+            self.arrayOfOrder= [response objectForKey:@"data"];
             
-            if (state==1) {
-                [self.arrayOfWaiting addObject:[self.arrayOfOrder objectAtIndex:i]];
+            self.arrayOfShow=self.arrayOfOrder;
+            
+            NSLog(@"订单结果：%@",response);
+            
+            for (int i=0; i<self.arrayOfOrder.count; i++) {
+                
+                int state= [[[self.arrayOfOrder objectAtIndex:i] objectForKey:@"state"] intValue];
+                
+                if (state==1) {
+                    [self.arrayOfWaiting addObject:[self.arrayOfOrder objectAtIndex:i]];
+                }
+                else if (state==2)
+                {
+                    [self.arrayOfWaiting addObject:[self.arrayOfOrder objectAtIndex:i]];
+                }
+                else if (state==3)
+                {
+                    [self.arrayOfServicing addObject:[self.arrayOfOrder objectAtIndex:i]];
+                }
+                else if (state==4)
+                {
+                    [self.arrayOfWaiting addObject:[self.arrayOfOrder objectAtIndex:i]];
+                }
+                else if (state==5)
+                {
+                    [self.arrayOfComplete addObject:[self.arrayOfOrder objectAtIndex:i]];
+                }
+                
+                else if (state==6||state == 7 || state == 8)
+                {
+                    [self.arrayOfCancel addObject:[self.arrayOfOrder objectAtIndex:i]];
+                }
             }
-            else if (state==2)
-            {
-            [self.arrayOfWaiting addObject:[self.arrayOfOrder objectAtIndex:i]];
+            
+            for (int i=0; i<self.arrayOfTables.count; i++) {
+                UITableView *table=[self.arrayOfTables objectAtIndex:i];
+                [table  reloadData];
             }
-            else if (state==3)
-            {
-                [self.arrayOfServicing addObject:[self.arrayOfOrder objectAtIndex:i]];
-            }
-            else if (state==4)
-            {
-                [self.arrayOfWaiting addObject:[self.arrayOfOrder objectAtIndex:i]];
-            }
-            else if (state==5)
-            {
-                [self.arrayOfComplete addObject:[self.arrayOfOrder objectAtIndex:i]];
-            }
-        
-            else if (state==8)
-            {
-                [self.arrayOfCancel addObject:[self.arrayOfOrder objectAtIndex:i]];
-            }
+            
+            
+            
         }
         
-        for (int i=0; i<self.arrayOfTables.count; i++) {
-            UITableView *table=[self.arrayOfTables objectAtIndex:i];
-            [table  reloadData];
-        }
+
     }];
     
 }
@@ -199,11 +189,11 @@
             
             UITableView *table=[self.arrayOfTables objectAtIndex:0];
             OrderCell *cell=(OrderCell*)[table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
-//            cell.lblStatusOfOrder.text=@"退款中";
+
             cell.lblStatusOfOrder.text=@"提交退款申请";
             [cell.btnGoCommentPage setTitle:@"退款中" forState:UIControlStateNormal];
             [cell.btnGoCommentPage removeTarget:self action:@selector(CancelOrder:) forControlEvents:UIControlEventTouchUpInside];
-//            cell.btnGoCommentPage removeTarget: action:<#(SEL)#> forControlEvents:<#(UIControlEvents)#>
+
             [self getModel];
         }
         else
@@ -212,11 +202,9 @@
         }
     }];
     
-    //[self getModel];
+
     
 }
-
-
 
 
 - (void)didReceiveMemoryWarning {
@@ -290,6 +278,8 @@
         [btn addTarget:self action:@selector(jumpToTable:) forControlEvents:UIControlEventTouchUpInside];
         
         [self.selectView addSubview:btn];
+        
+   
     }
     
     UIView* divideView = [[UIView alloc] initWithFrame:CGRectMake(0, 43, SCREEN_WIDTH, 1)];
@@ -392,43 +382,45 @@
 #pragma  mark - tableView DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.arrayOfShow.count+1;
+    if (section == 0) {
+        
+        return 1;
+        
+    }
+    
+
+
+    
+    NSArray* arrayModels = [NSArray arrayWithObjects:self.arrayOfOrder,self.arrayOfWaiting ,self.arrayOfServicing,self.arrayOfComplete, self.arrayOfCancel,nil];
+    
+    NSArray* arrayModel = [arrayModels objectAtIndex:tableView.tag];
+
+    return arrayModel.count ;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0) {
         
         return 5;
         
-    }
-    
-    
-    
-    else{
+    }else{
         
-        NSUInteger row=indexPath.row-1;
+        NSArray* arrayModels = [NSArray arrayWithObjects:self.arrayOfOrder,self.arrayOfWaiting ,self.arrayOfServicing,self.arrayOfComplete, self.arrayOfCancel,nil];
         
-        NSDictionary *dict=[self.arrayOfShow objectAtIndex:row];
+        NSArray* arrayModel = [arrayModels objectAtIndex:tableView.tag];
         
-        NSArray *orderImageList=[dict objectForKey:@"orderImageList"];
+        NSDictionary *dict = [arrayModel objectAtIndex:indexPath.row];
         
-        for (int i=0; i<orderImageList.count; i++) {
-            [self.networkImages addObject:[[orderImageList objectAtIndex:i] objectForKey:@"imageUrl"]];
-        }
+        OrderSingle* order = [OrderSingle objectWithKeyValues:dict];
         
         
-        NSArray *returnImageList=[dict objectForKey:@"returnImageList"];
-        for (int i=0; i<returnImageList.count; i++) {
-            [self.networkImages addObject:[[returnImageList objectAtIndex:i] objectForKey:@"imageUrl"]];
-        }
-        
-        if (self.networkImages.count==0) {
+        if (order.orderImageList.count==0) {
             return 284;
         }
         else
@@ -446,10 +438,11 @@
 {
     
     static NSString* cellId1 = @"OrderCell";
+     static NSString* cellId2 = @"OrderCell2";
     static NSString* cellHolderId = @"PlaceHolderCell";
     //    static NSString* cellHolderId = @"PlaceHolderCell";
     
-    if (indexPath.row == 0) {
+    if (indexPath.section == 0) {
         
         PlaceHolderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellHolderId];
         
@@ -466,63 +459,31 @@
         return cell;
         
         
-    }
-    /*
-     else if(indexPath.row%2 == 0){
-     
-     OrderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
-     
-     if (!cell) {
-     
-     cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
-     
-     UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
-     UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 , SCREEN_WIDTH - 10, 0.5)];
-     UIView* viewDivide3 = [[UIView alloc] initWithFrame:CGRectMake(0, 230, SCREEN_WIDTH, 0.5)];
-     
-     viewDivide1.backgroundColor = [HKCommen getColor:@"ccccccc"];
-     viewDivide2.backgroundColor = [HKCommen getColor:@"e0e0e0"];
-     viewDivide3.backgroundColor = [HKCommen getColor:@"ccccccc"];
-     
-     
-     [cell.viewMask1 addSubview:viewDivide1];
-     [cell.viewMask1 addSubview:viewDivide2];
-     [cell.viewMask1 addSubview:viewDivide3];
-     }
-     NSLog(@"每行1的字典：%@",[self.arrayOfOrder objectAtIndex:indexPath.row*0.5]);
-     
-     
-     cell.judgeWhichStatus=0;
-     if (cell.judgeWhichStatus==0) {
-     
-     cell.btnGoCommentPage.hidden=NO;
-     [cell.btnGoCommentPage setTitle:@"待评价" forState:UIControlStateNormal];
-     [cell.btnGoCommentPage addTarget:self action:@selector(goCommentPage) forControlEvents:UIControlEventTouchUpInside];
-     }
-     else if (cell.judgeWhichStatus==1)
-     {
-     cell.btnGoCommentPage.hidden=NO;
-     [cell.btnGoCommentPage setTitle:@"退款详情" forState:UIControlStateNormal];
-     [cell.btnGoCommentPage addTarget:self action:@selector(goMoneyReturnPage) forControlEvents:UIControlEventTouchUpInside];
-     }
-     else
-     {
-     cell.btnGoCommentPage.hidden=YES;
-     }
-     
-     return cell;
-     
-     }
-     */
-    else{
+    }else{
         
+        NSArray* arrayModels = [NSArray arrayWithObjects:self.arrayOfOrder,self.arrayOfWaiting ,self.arrayOfServicing,self.arrayOfComplete, self.arrayOfCancel,nil];
         
+        NSArray* arrayModel = [arrayModels objectAtIndex:tableView.tag];
         
-        OrderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
+        NSDictionary *dict = [arrayModel objectAtIndex:indexPath.row];
+        
+        OrderSingle* order = [OrderSingle objectWithKeyValues:dict];
+        
+        OrderCell* cell;
+        
+        if (order.orderImageList.count  == 0) {
+            
+            cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
+            
+        }else{
+        
+            cell = [tableView dequeueReusableCellWithIdentifier:cellId2];
+            
+        }
         
         if (!cell) {
             
-            if (self.networkImages.count==0) {
+            if (order.orderImageList.count  == 0) {
                 cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
                 
                 UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
@@ -566,6 +527,9 @@
             
         }
         
+        
+        
+        
         cell.row=indexPath.row;
         
         [cell.btn_image1 setTag:0];
@@ -579,43 +543,23 @@
         [cell.btnGoCommentPage removeTarget:self action:@selector(goCommentPage:) forControlEvents:UIControlEventTouchUpInside];
         [cell.btnGoCommentPage removeTarget:self action:@selector(goMoneyReturnPage) forControlEvents:UIControlEventTouchUpInside];
         
-        NSUInteger row=indexPath.row-1;
+        NSUInteger row=indexPath.row;
         
         
         NSLog(@"序号：%@",[self.arrayOfShow objectAtIndex:row]);
         
-        NSDictionary *dict=[self.arrayOfShow objectAtIndex:row];
+
         
-        NSArray *orderImageList=[dict objectForKey:@"orderImageList"];
-        
-        for (int i=0; i<orderImageList.count; i++) {
-            [self.networkImages addObject:[[orderImageList objectAtIndex:i] objectForKey:@"imageUrl"]];
-        }
-        
-        
-        NSArray *returnImageList=[dict objectForKey:@"returnImageList"];
-        for (int i=0; i<returnImageList.count; i++) {
-            [self.networkImages addObject:[[returnImageList objectAtIndex:i] objectForKey:@"imageUrl"]];
-        }
-        
-        /*
-         [cell.btn_image1 addTarget:self action:@selector(selectPhoto:) forControlEvents:UIControlEventTouchUpInside];
-         [cell.btn_image1 setTag:0];
-         
-         [cell.btn_image2 addTarget:self action:@selector(selectPhoto:) forControlEvents:UIControlEventTouchUpInside];
-         [cell.btn_image2 setTag:1];
-         
-         [cell.btn_image3 addTarget:self action:@selector(selectPhoto:) forControlEvents:UIControlEventTouchUpInside];
-         [cell.btn_image3 setTag:2];
-         */
         
         int state= [[dict objectForKey:@"state"] intValue];
+        
+        float realPay = [[dict objectForKey:@"pay"] floatValue] - [[dict objectForKey:@"pointCost"] floatValue];
         
         cell.lblServiceCompany.text=[dict objectForKey:@"storeName"];
         cell.orderId.text=[NSString stringWithFormat:@"%@",[dict objectForKey:@"id"]];
         cell.lblGetOrder.text=[dict objectForKey:@"orderTime"];
         cell.lblMobile.text=[dict objectForKey:@"phone"];
-        cell.price.text=[NSString stringWithFormat:@"￥%@",[dict objectForKey:@"itemsCost"]];
+        cell.price.text=[dict objectForKey:@"amount"];
         cell.lblServiceContent.text=[dict objectForKey:@"items"];
         cell.lblCarNum.text=[dict objectForKey:@"carnum"];
         
@@ -624,9 +568,66 @@
         cell.lblPayment.text=[NSString stringWithFormat:@"实付款:￥%@",[dict objectForKey:@"pay"]];
         
         
-        [cell.image1 setImage:[UIImage imageNamed:@"bg0"]];
-        [cell.image2 setImage:[UIImage imageNamed:@"bg1"]];
-        [cell.image3 setImage:[UIImage imageNamed:@"bg2"]];
+//        [cell.image1 setImage:[UIImage imageNamed:@"bg0"]];
+//        [cell.image2 setImage:[UIImage imageNamed:@"bg1"]];
+//        [cell.image3 setImage:[UIImage imageNamed:@"bg2"]];
+        
+        if (order.orderImageList.count != 0) {
+            
+            
+            NSArray* arrayImageViews = [NSArray arrayWithObjects:cell.image1,cell.image2,cell.image3, nil];
+            
+            
+            int num = order.orderImageList.count>=3?3:order.orderImageList.count;
+            
+            cell.arrayImageViews = [[NSMutableArray alloc] init];
+            
+            for (int i = 0; i < num; i++) {
+                
+
+                UIImageView* imageView = [arrayImageViews objectAtIndex:i];
+                Orderimagelist* imageList = [order.orderImageList objectAtIndex:i];
+                
+                [imageView sd_setImageWithURL:[NSURL URLWithString:imageList.imageUrl]
+                               placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
+                
+                
+                [cell.arrayImageViews addObject:imageView];
+               
+                
+            }
+            
+            for (int i = 3; i < order.orderImageList.count; i ++) {
+                
+                Orderimagelist* imageList = [order.orderImageList objectAtIndex:i];
+                
+                UIImageView* imgView = [[UIImageView alloc] initWithFrame:CGRectMake(1000, 140, 90, 90)];
+                
+                [imgView sd_setImageWithURL:[NSURL URLWithString:imageList.imageUrl]
+                             placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
+                
+                [cell.arrayImageViews addObject:imgView];
+                
+                [cell.contentView addSubview:imgView];
+                
+                
+            }
+            
+            cell.btnGoImages.tag = (indexPath.row +1)*10 + tableView.tag;
+            [cell.btnGoImages addTarget:self action:@selector(goTapAction:) forControlEvents:UIControlEventTouchUpInside];
+            
+//            for (int i = num; i < 3; i ++) {
+//                
+//                UIImageView* imageView = [arrayImageViews objectAtIndex:i];
+//                
+//                imageView.image = nil;
+//            }
+            
+
+            
+        }
+        
+
         
        if (state==1)
         {
@@ -664,8 +665,16 @@
             [cell.btnGoCommentPage setTitle:@"退款详情" forState:UIControlStateNormal];
             [cell.btnGoCommentPage addTarget:self action:@selector(goMoneyReturnPage) forControlEvents:UIControlEventTouchUpInside];
         }
-        else
-        {
+        else if (state==7){
+        
+            cell.lblStatusOfOrder.text=@"商家审批通过";
+            
+            cell.btnGoCommentPage.hidden=NO;
+            [cell.btnGoCommentPage setTitle:@"退款详情" forState:UIControlStateNormal];
+            [cell.btnGoCommentPage addTarget:self action:@selector(goMoneyReturnPage) forControlEvents:UIControlEventTouchUpInside];
+        
+        }
+        else{
             cell.btnGoCommentPage.hidden=YES;
             
             //1、待受理  2、待接车 3、服务中 4、待还车  5、已完成 6、提交退款申请 7、商家审批通过 8、退款成功
@@ -862,6 +871,7 @@
 
 -(void)goCommentPage:(UIButton*)button
 {
+    NSLog(@"heh");
     CommentCtrl *vc=[[CommentCtrl alloc]initWithNibName:@"CommentCtrl" bundle:nil];
     vc.orderId= [NSString stringWithFormat:@"%ld",button.tag];
     [self.navigationController pushViewController:vc animated:YES];
@@ -871,6 +881,63 @@
 {
     MoneyReturnDetailCtrl *vc=[[MoneyReturnDetailCtrl alloc]initWithNibName:@"MoneyReturnDetailCtrl" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)goTapAction:(UIButton*)btn
+{
+    NSLog(@"sdad");
+    
+    NSInteger tag = btn.tag;
+    
+    int tableNum = tag%10;
+    
+    int row = (tag/10) - 1;
+    
+    NSArray* arrayModels = [NSArray arrayWithObjects:self.arrayOfOrder,self.arrayOfWaiting ,self.arrayOfServicing,self.arrayOfComplete, self.arrayOfCancel,nil];
+    
+    NSArray* arrayModel = [arrayModels objectAtIndex:tableNum];
+    
+    NSDictionary *dict = [arrayModel objectAtIndex:row];
+    
+    OrderSingle* order = [OrderSingle objectWithKeyValues:dict];
+    
+    UITableView* tableView = [self.arrayOfTables objectAtIndex:tableNum];
+    
+    OrderCell* cell = (OrderCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:1]];
+    
+    __weak OrderCell* weakCell = cell;
+    
+    [PhotoBroswerVC show:self type:PhotoBroswerVCTypeZoom index:0 photoModelBlock:^NSArray *{
+        
+        
+        NSMutableArray *localImages = [[NSMutableArray alloc] init];
+        
+        for (int i = 0; i < weakCell.arrayImageViews.count; i ++) {
+            
+            UIImageView* imgView = [weakCell.arrayImageViews objectAtIndex:i];
+
+            [localImages addObject:imgView.image];
+        }
+        
+
+        NSMutableArray *modelsM = [NSMutableArray arrayWithCapacity:localImages.count];
+        for (NSUInteger i = 0; i< localImages.count; i++) {
+            
+            PhotoModel *pbModel=[[PhotoModel alloc] init];
+            pbModel.mid = i + 1;
+            pbModel.image = localImages[i];
+            
+            pbModel.sourceImageView = weakCell.image1;
+            
+            [modelsM addObject:pbModel];
+        }
+        
+        return modelsM;
+    }];
+    
+    
+
+
 }
 
 

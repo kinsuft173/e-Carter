@@ -34,28 +34,38 @@
 -(void)setStarForValue:(CGFloat)value
 {
 
-    int whichStar=(int)value;
+    
+    if (self.array_Star.count == 0) {
+        
+        [self initUI];
+    }
+    self.whichValue = value;
 
     for (int i=0; i<self.array_Star.count; i++) {
         UIImageView *imageView=[self.array_Star objectAtIndex:i];
         
-        if (i<whichStar) {
+        if (i<=(value-1)) {
             [imageView setImage:[UIImage imageNamed:star_1]];
         }
-        else
+        else if((value - 1 + 0.5 ) >= i)
         {
+            imageView.image=[UIImage imageNamed:star_half];
+            
+        }else{
+        
         imageView.image=[UIImage imageNamed:star_0];
+        
         }
         
         
        
     }
     
-    if (value>whichStar) {
-        UIImageView *imageView=[self.array_Star objectAtIndex:whichStar];
-        
-        [imageView setImage:[UIImage imageNamed:star_half]];
-    }
+//    if (value>value) {
+//        UIImageView *imageView=[self.array_Star objectAtIndex:(int)value];
+//        
+//        [imageView setImage:[UIImage imageNamed:star_half]];
+//    }
 }
 
           

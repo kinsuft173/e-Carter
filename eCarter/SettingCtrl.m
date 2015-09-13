@@ -118,6 +118,8 @@
 
 -(void)loginOut
 {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setModel"];
+    [ConsulationManager shareMgr].setModel = nil;
     [[NSUserDefaults standardUserDefaults] setObject:@"no" forKey:@"checkUser"];
     [self.navigationController popToRootViewControllerAnimated:NO];
 

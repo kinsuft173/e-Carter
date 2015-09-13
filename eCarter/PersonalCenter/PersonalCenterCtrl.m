@@ -66,7 +66,7 @@
         
         self.fromMyOrder2 = 0;
         
-        [self goMyOrder2];
+        [self performSelector:@selector(goMyOrder2) withObject:nil afterDelay:0.2];
         
         
     }
@@ -76,7 +76,7 @@
 
 - (void)goMyOrder2
 {
-
+    
     [self performSegueWithIdentifier:@"goMyOrder" sender:nil];
 }
 

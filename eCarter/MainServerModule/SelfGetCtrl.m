@@ -130,10 +130,9 @@
         
         cell.lbl_Evaluation.text = [NSString stringWithFormat:@"(%.1f)",[shop.storeScore floatValue]];
         
-        [cell initWithDict:[shop.storeScore floatValue]];
+        [cell.star setStarForValue:[shop.storeScore floatValue]];
         
         
-//        NSString* encodedString = [shop.storeImg stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
         [cell.img_Service sd_setImageWithURL: [NSURL URLWithString:shop.storeImg]
                             placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];

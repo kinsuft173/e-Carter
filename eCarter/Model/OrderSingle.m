@@ -12,12 +12,24 @@
 
 
 + (NSDictionary *)objectClassInArray{
-    return @{@"orderImageList":[OrderSingleImageList class]};
+    return @{@"returnImageList" : [Returnimagelist class], @"orderImageList" : [Orderimagelist class]};
 }
+@end
+
+
+
+
+
+
+
+
+@implementation Returnimagelist
 
 @end
 
 
-@implementation OrderSingleImageList
+@implementation Orderimagelist
 
 @end
+
+

@@ -89,7 +89,7 @@
             
             NSDictionary* dic = [arrayResult objectAtIndex:i];
             
-            NSString* str =  [dic  objectForKey:@"id"];
+            NSString* str =  [dic  objectForKey:@"storeName"];
             
             BOOL isNewConsult = YES;
             
@@ -175,7 +175,10 @@
             
         }
         
-           cell.btnExpand.tag = indexPath.section;
+        cell.tag = indexPath.section;
+        
+        
+        cell.btnExpand.tag = indexPath.section;
         
        NSDictionary *dic= [self.arrayOfCheap objectAtIndex:indexPath.section];
 
@@ -185,7 +188,7 @@
         
        cell.couponId= [dic objectForKey:@"couponcode"];
         cell.storeId=[dic objectForKey:@"id"];
-        cell.heheId =  cell.storeId;
+        cell.heheId = [dic objectForKey:@"storeName"];;
         
         cell.delegate=self;
         
@@ -215,8 +218,10 @@
     return nil;
 }
 
--(void)getTicket:(NSString *)couponCode StoreNum:(NSString*)storeId id:(NSString *)heheID
+-(void)getTicket:(NSString *)couponCode StoreNum:(NSString*)storeId id:(NSString *)heheID  btnTag:(NSInteger)tag
 {
+    
+    
     if ([[UserDataManager shareManager].userLoginInfo.user.phone isEqualToString:@""]) {
         NSLog(@"用户没登陆");
         return;
@@ -242,6 +247,24 @@
         }else if ([[response objectForKey:@"status"] integerValue]== 2){
         
             [HKCommen addAlertViewWithTitel:@"抢优惠券成功"];
+            
+
+            
+
+            
+            [self.arrayIndex removeObjectAtIndex:tag];
+            [self.arrayOfCheap removeObjectAtIndex:tag];
+            
+            
+            [self.tableView beginUpdates];
+            
+            
+            NSIndexSet* indexSet = [NSIndexSet indexSetWithIndex:tag];
+            
+            [self.tableView deleteSections:indexSet  withRowAnimation:UITableViewRowAnimationAutomatic];
+
+            [self.tableView endUpdates];
+
             
             [[ConsulationManager shareMgr] addHandledConsulation:heheID];
             

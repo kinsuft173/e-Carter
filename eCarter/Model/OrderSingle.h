@@ -8,45 +8,63 @@
 
 #import <Foundation/Foundation.h>
 
-@class OrderSingleImageList;
+
+@class Returnimagelist,Orderimagelist;
 @interface OrderSingle : NSObject
 
 
-@property (nonatomic, copy) NSString *id;
+@property (nonatomic, copy) NSString *carnum;
 
-@property (nonatomic, copy) NSString *orderAmount;
+@property (nonatomic, copy) NSString *amount;
 
-@property (nonatomic, copy) NSString *orderTime;
+@property (nonatomic, copy) NSString *pay;
 
-@property (nonatomic, copy) NSString *storeId;
+@property (nonatomic, copy) NSString *items;
 
-@property (nonatomic, copy) NSString *orderLogTime;
-
-@property (nonatomic, copy) NSString *orderCode;
-
-@property (nonatomic, copy) NSString *mobile;
-
-@property (nonatomic, copy) NSString *orderLogName;
-
-@property (nonatomic, copy) NSString *orderLogId;
-
-@property (nonatomic, copy) NSString *userId;
-
-@property (nonatomic, strong) NSArray *orderImageList;
-
-@property (nonatomic, copy) NSString *orderStatus;
+@property (nonatomic, copy) NSString *paytype;
 
 @property (nonatomic, copy) NSString *storeName;
 
-@property (nonatomic, copy) NSString *services;
+@property (nonatomic, copy) NSString *pickerId;
 
-@property (nonatomic, copy) NSString *plateNumber;
+@property (nonatomic, copy) NSString *pointCost;
 
-@property (nonatomic, copy) NSString *updateTime;
+@property (nonatomic, copy) NSString *customId;
+
+@property (nonatomic, copy) NSString *latitude;
+
+@property (nonatomic, copy) NSString *appointment;
+
+@property (nonatomic, copy) NSString *point;
+
+@property (nonatomic, copy) NSString *state;
+
+@property (nonatomic, copy) NSString *storeId;
+
+@property (nonatomic, copy) NSString *id;
+
+@property (nonatomic, copy) NSString *orderCode;
+
+@property (nonatomic, copy) NSString *longitude;
+
+@property (nonatomic, copy) NSString *itemsCost;
+
+@property (nonatomic, strong) NSArray *orderImageList;
+
+@property (nonatomic, copy) NSString *phone;
+
+@property (nonatomic, copy) NSString *orderTime;
+
+@property (nonatomic, strong) NSArray *returnImageList;
+
+@property (nonatomic, copy) NSString *address;
+
+@property (nonatomic, copy) NSString *serviceCost;
+
 
 @end
 
-@interface OrderSingleImageList : NSObject
+@interface Returnimagelist : NSObject
 
 @property (nonatomic, copy) NSString *id;
 
@@ -54,5 +72,15 @@
 
 @property (nonatomic, copy) NSString *imageUrl;
 
+@end
+
+@interface Orderimagelist : NSObject
+
+@property (nonatomic, copy) NSString *id;
+
+@property (nonatomic, copy) NSString *orderId;
+
+@property (nonatomic, copy) NSString *imageUrl;
 
 @end
+

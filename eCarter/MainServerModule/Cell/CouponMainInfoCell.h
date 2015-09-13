@@ -10,7 +10,7 @@
 
 @protocol addTicket <NSObject>
 
--(void)getTicket:(NSString *)couponCode StoreNum:(NSString*)storeId id:(NSString*)heheID;
+-(void)getTicket:(NSString *)couponCode StoreNum:(NSString*)storeId id:(NSString*)heheID btnTag:(NSInteger)tag;
 
 @end
 

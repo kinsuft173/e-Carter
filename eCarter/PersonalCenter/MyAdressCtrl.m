@@ -177,7 +177,9 @@
         if ([userAddress.type integerValue] == 1) {
             
             strType = @"家庭地址:";
+            
         }else if ([userAddress.type integerValue] == 2){
+            
             strType = @"工作地址:";
             
         }else{
@@ -209,6 +211,22 @@
         return cell;
         
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        
+        UserAddress *userAddress =  [UserAddress objectWithKeyValues:[self.arrayOfAdress objectAtIndex:indexPath.row]];//[self.arrayOfAdress objectAtIndex:indexPath.row];
+        
+        AddNewAdress *vc=[[AddNewAdress alloc] initWithNibName:@"AddNewAdress" bundle:nil];
+        vc.preUserAdress = userAddress;
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }
+
+
 }
 
 -(void)EditMyAdress

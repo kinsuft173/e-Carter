@@ -34,7 +34,7 @@
 @property (nonatomic, strong) NSMutableArray* arraySelectedSevice;
 @property (nonatomic, strong) NSMutableArray* arrayComment;
 
-@property (nonatomic, strong) Coupon* coupon;
+@property (nonatomic, strong) CouponMyToShop* coupon;
 
 @property (strong,nonatomic) NSString *stringOfCount;
 
@@ -495,7 +495,7 @@
         
         if (self.coupon.price) {
             
-            cell.lbl_price.text = [NSString stringWithFormat:@"%@元优惠劵",self.coupon.price];
+            cell.lbl_price.text = [NSString stringWithFormat:@"%d元优惠劵",self.coupon.price];
             
         }else{
             
@@ -566,7 +566,7 @@
         
         if (self.coupon.price) {
             
-            money -= self.coupon.price.floatValue;
+            money -= self.coupon.price;
             
         }
         
@@ -816,10 +816,12 @@
         }
     }
     
+        money += self.shopDetail.serviceCharge.floatValue;
+    
     NSLog(@"str = %@",str);
     [dic setObject:str forKey:@"serviceItemId"];
     [dic setObject:strItemNames forKey:@"serviceItemName"];
-    [dic setObject:self.stringOfTotal forKey:@"serviceCost"];
+    [dic setObject:[NSString stringWithFormat:@"%@",self.shopDetail.serviceCharge] forKey:@"serviceCost"];
     [dic setObject:[NSString stringWithFormat:@"%.2f",money] forKey:@"amount"];
     
     [dic setObject:self.stringOfTotal forKey:@"pay"];
@@ -850,16 +852,16 @@
     [dic setObject:strHour forKey:@"serviceTime"];
     [dic setObject:[NSString stringWithFormat:@"%@%@%@",self.userAddress.city,self.userAddress.area,self.userAddress.address ]forKey:@"userAddress"];
     
-//    if (self.isUseDiscount) {
-//        
-//        [dic setObject:self.stringOfCount forKey:@"point"];
-//        
-//    }
+    if (self.isUseDiscount) {
+        
+        [dic setObject:self.stringOfCount forKey:@"point"];
+        
+    }
     
     if (self.coupon) {
         
         
-        [dic setObject:self.coupon.id forKey:@"couponRecordId"];
+        [dic setObject:[NSString stringWithFormat:@"%d",self.coupon.id] forKey:@"couponRecordId"];
     }
     
     NSLog(@"dic = %@",dic);
@@ -968,7 +970,7 @@
     NSLog(@"获得的优惠劵字典：%@",dic);
   //  CouponSlectedCell* cell = (CouponSlectedCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.shopDetail.serviceItemList.count inSection:3]];
     
-    self.coupon = [Coupon objectWithKeyValues:[NSDictionary dictionaryWithDictionary:dic]];
+    self.coupon = [CouponMyToShop objectWithKeyValues:[NSDictionary dictionaryWithDictionary:dic]];
     
     //if ([[cell class] isSubclassOfClass:[CouponSlectedCell class]]) {
     

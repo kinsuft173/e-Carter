@@ -73,6 +73,8 @@
             
             self.BalanceMoney = [response[@"data"] floatValue];
             
+            [self.myTable reloadData];
+            
         }
         
 
