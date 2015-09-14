@@ -49,7 +49,7 @@
 
 @property (nonatomic,strong)NSMutableArray *arrayOfShow;
 @property     NSInteger index;
-
+@property     BOOL isAnimations;
 @end
 
 @implementation MyOrderCtrl
@@ -75,11 +75,19 @@
     [self getModel];
     [self initScrollTables:5];
     
+    UIPanGestureRecognizer* swipeGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight:)];
+//    swipeGes.direction = UISwipeGestureRecognizerDirectionLeft;
+//    swipeGes.numberOfTouchesRequired = 1;
     
+    [self.view addGestureRecognizer:swipeGes];
     
+    UIPanGestureRecognizer* swipeGes1 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeft:)];
+//    swipeGes1.direction = UISwipeGestureRecognizerDirectionRight;
+//    swipeGes1.numberOfTouchesRequired = 1;
     
+    [self.view addGestureRecognizer:swipeGes1];
     
-//    
+//
 //    UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
 //    [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
 //    [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
@@ -101,6 +109,81 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableMy) name:@"reloadOrder" object:nil];
 }
+
+- (void)swipeLeft:(UIPanGestureRecognizer*)ges
+{
+    CGPoint point = [ges translationInView:self.view];
+    NSLog(@"%f,%f",point.x,point.y);
+    
+    if (point.x > 50) {
+        
+        if (self.isAnimations == NO) {
+            
+            if (self.index == 0) {
+                
+                return;
+                
+            }else{
+                
+                UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
+                
+                btn.tag = self.index - 1;
+                
+                [self jumpToTable:btn];
+                
+            }
+            
+            
+        }
+        
+
+        
+        
+    }else if (point.x < -50){
+        
+        
+        if (self.isAnimations == NO) {
+            
+            if (self.index == 4) {
+                
+                return;
+                
+            }else{
+                
+                UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
+                
+                btn.tag = self.index + 1;
+                
+                [self jumpToTable:btn];
+                
+            }
+            
+        }
+        
+    }
+
+
+}
+
+
+- (void)swipeRight:(UIPanGestureRecognizer*)ges
+{
+    if (self.index == 4) {
+        
+        return;
+        
+    }else{
+        
+        UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        btn.tag = self.index + 1;
+        
+        [self jumpToTable:btn];
+        
+    }
+    
+}
+
 
 - (void)reloadTableMy
 {
@@ -288,6 +371,7 @@
         
         [self.selectView addSubview:btn];
         
+        
    
     }
     
@@ -374,13 +458,25 @@
         
     }
     
-    [UIView beginAnimations:@"slider" context:nil];
-    [UIView setAnimationDuration:0.5];
+//    [UIView beginAnimations:@"slider" context:nil];
+//    [UIView setAnimationDuration:0.5];
     
-    self.slideView.frame = CGRectMake(btn.tag*(SCREEN_WIDTH/5), 42, SCREEN_WIDTH/5, 2);
+//    self.slideView.frame = CGRectMake(btn.tag*(SCREEN_WIDTH/5), 42, SCREEN_WIDTH/5, 2);
     
     
     [UIView commitAnimations];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        self.isAnimations = YES;
+    self.slideView.frame = CGRectMake(btn.tag*(SCREEN_WIDTH/5), 42, SCREEN_WIDTH/5, 2);
+        
+        
+    } completion:^(BOOL finished) {
+        
+        self.isAnimations = NO;
+        
+    }];
     
     //    [self.scrollView scrollRectToVisible:CGRectMake(index*SCREEN_WIDTH, 0, SCREEN_WIDTH, self.scrollView.frame.size.height) animated:YES];
 }
@@ -479,11 +575,11 @@
         
         if (order.orderImageList.count  == 0) {
             
-            cell = [tableView dequeueReusableCellWithIdentifier:@"xxxx"];
+            cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
             
         }else{
         
-            cell = [tableView dequeueReusableCellWithIdentifier:@"xxxxxxxx"];
+            cell = [tableView dequeueReusableCellWithIdentifier:cellId2];
             
         }
         

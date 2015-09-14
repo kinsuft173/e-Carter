@@ -110,7 +110,9 @@ typedef void (^ErrorHandle)(NSError*);
 //余额支付
 #define ETREA_PAY_WX_ORDER_PRE @"/order/notify/deposit/"
 //订单微信获取pre地址
+//版本管理
 
+#define VERSION_LAST @"/ecar/mobile/latestVersion"
 
 //#define ECATER_INFO_INTERFACE @""
 //#define ECATER_INFO_INTERFACE @""

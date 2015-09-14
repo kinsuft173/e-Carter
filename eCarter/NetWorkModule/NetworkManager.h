@@ -110,4 +110,7 @@
 
 - (void)server_aliRechargeNotify:(NSString*)orderId withDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 - (void)server_wxRechargeNotify:(NSString*)orderId withDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+
+//更新版本
+- (void)server_fetchVersionWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 @end

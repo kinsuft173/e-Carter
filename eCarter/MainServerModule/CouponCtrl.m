@@ -22,6 +22,8 @@
 @property (nonatomic, strong) NSMutableArray* arrayIndex;
 @property (nonatomic,strong) UserLoginInfo *userInfo;
 
+@property NSInteger pageNum;
+
 @end
 
 @implementation CouponCtrl
@@ -68,7 +70,9 @@
 - (void)getModel
 {
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
-    [dic setObject:@"1" forKey:@"pageNum"];
+    
+    self.pageNum = 1;
+    [dic setObject:[NSString stringWithFormat:@"%d",self.pageNum] forKey:@"pageNum"];
     [dic setObject:@"20" forKey:@"pageSize"];
     
     NSLog(@"上传字典：%@",dic);
@@ -210,6 +214,24 @@
 
         cell.lbl_couponDetail.text=[dic objectForKey:@"remark"];
         
+        
+        NSString* startTime = dic[@"startTime"];
+        NSString* endTime = dic[@"endTime"];
+        
+        if (startTime.length == 10) {
+            
+            startTime  = [startTime stringByReplacingOccurrencesOfString:@"-" withString:@"."];
+            
+        }
+        
+        if (endTime.length == 10) {
+            
+            endTime  = [endTime stringByReplacingOccurrencesOfString:@"-" withString:@"."];
+            
+        }
+        
+        cell.lbl_userDate.text  = [NSString stringWithFormat:@"使用期限 ：%@-%@",startTime,endTime];
+        
         return cell;
         
     }
@@ -299,7 +321,7 @@
         
 //        [btn setTitle:@"收起" forState:UIControlStateNormal];
         
-        [btn setImage:[UIImage imageNamed:@"Coupons_but_more.png"] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:@"Coupons_buts_top.png"] forState:UIControlStateNormal];
     }else{
     
         NSIndexPath* indexPath = [NSIndexPath indexPathForRow:1 inSection:index];
@@ -309,7 +331,7 @@
         [self.tableView deleteRowsAtIndexPaths:array withRowAnimation:UITableViewRowAnimationAutomatic];
         
 //        [btn setTitle:@"展开" forState:UIControlStateNormal];
-        [btn setImage:[UIImage imageNamed:@"Coupons_buts_top.png"] forState:UIControlStateNormal];
+        [btn setImage:[UIImage imageNamed:@"Coupons_but_more.png"] forState:UIControlStateNormal];
     }
     
     

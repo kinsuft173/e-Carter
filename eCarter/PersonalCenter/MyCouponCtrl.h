@@ -11,7 +11,7 @@
 
 @protocol selectCard <NSObject>
 
--(void)saveMoney:(NSMutableDictionary*)dic;
+-(void)saveMoney:(NSMutableDictionary*)dic withIndex:(NSInteger)indexCheck;
 
 @end
 
@@ -23,6 +23,6 @@
 @property (nonatomic, weak) id<selectCard> delegate;
 
 @property (nonatomic, strong) ShopDetail* shopDetail;
-
+@property  NSInteger indexCheck;
 
 @end

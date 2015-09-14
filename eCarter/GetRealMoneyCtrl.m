@@ -76,11 +76,18 @@
     hud.labelText = @"正在加载";
     
     NSLog(@"uid = %@",[UserDataManager shareManager].userLoginInfo.user.uid); //self.txt_amount.text
-    NSDictionary* dicNew = [NSDictionary dictionaryWithObjectsAndKeys:self.txt_amount.text,@"amounts" ,self.txt_zhanhao.text,@"items",[UserDataManager shareManager].userLoginInfo.user.phone,@"phone",[UserDataManager shareManager].userLoginInfo.sessionId,@"sessionId",nil];
     
-    NSLog(@"dicNew = %@",dicNew);
+    NSMutableDictionary* dicNewFull = [[NSMutableDictionary alloc] init];
+    //
+    [dicNewFull setObject:self.txt_amount.text forKey:@"amounts"];
+    [dicNewFull setObject:self.txt_zhanhao.text forKey:@"items"];
+     [dicNewFull setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
+      [dicNewFull setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
+//    NSDictionary* dicNew = [NSDictionary dictionaryWithObjectsAndKeys:self.txt_amount.text,@"amounts" ,self.txt_zhanhao.text,@"items",[UserDataManager shareManager].userLoginInfo.user.phone,@"phone",[UserDataManager shareManager].userLoginInfo.sessionId,@"sessionId",nil];
+//    
+    NSLog(@"dicNewFull = %@",dicNewFull);
     
-    [[NetworkManager shareMgr] server_userAccountWithdrawCash:dicNew completeHandle:^(NSDictionary *responese) {
+    [[NetworkManager shareMgr] server_userAccountWithdrawCash:dicNewFull completeHandle:^(NSDictionary *responese) {
         
         if (responese == nil) {
             
@@ -95,12 +102,13 @@
             
             ReChargeSuccessCtrl *vc=[[ReChargeSuccessCtrl alloc] initWithNibName:@"ReChargeSuccessCtrl" bundle:nil];
             vc.judgeRefillOrGetReal=@"getReal";
+//            vc.amout = self.txt_amount.text;
             [self.navigationController pushViewController:vc animated:YES];
             
-        }else{
+        }else if([responese objectForKey:@"message"]){
         
         
-            [HKCommen addAlertViewWithTitel:@"提现失败"];
+            [HKCommen addAlertViewWithTitel:[responese objectForKey:@"message"]];
         
         }
         

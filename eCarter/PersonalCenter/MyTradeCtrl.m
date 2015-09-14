@@ -13,12 +13,13 @@
 #import "NetworkManager.h"
 #import "UserDataManager.h"
 #import "UserLoginInfo.h"
+#import <MJRefresh.h>
 
 @interface MyTradeCtrl ()
 
 @property (nonatomic, strong) IBOutlet UITableView* tableView;
 @property (nonatomic,strong) UserLoginInfo *userInfo;
-@property (nonatomic,strong)NSArray *arrayOfTrade;
+@property (nonatomic,strong)NSMutableArray *arrayOfTrade;
 @end
 
 @implementation MyTradeCtrl
@@ -60,16 +61,72 @@
     [dic setObject:@"1" forKey:@"pageNum"];
     [dic setObject:@"10" forKey:@"pageSize"];
     
-    NSLog(@"交易字典：%@",dic);
+ 
     
     [[NetworkManager shareMgr] server_queryOrderLogWithDic:dic completeHandle:^(NSDictionary *responseBanner) {
         
-        NSLog(@"字典:%@",responseBanner);
+    
         
-        self.arrayOfTrade = [responseBanner objectForKey:@"data"];
+        if ([responseBanner objectForKey:@"data"]) {
+            
+            self.arrayOfTrade = [NSMutableArray arrayWithArray:[responseBanner objectForKey:@"data"]] ;
+            
+            [self.tableView reloadData];
+            
+        }
         
-        [self.tableView reloadData];
+
     }];
+    
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        
+        
+        if (self.arrayOfTrade.count%10 != 0) {
+            
+            return ;
+        }
+        
+        
+        NSDictionary* dicComment = [NSDictionary dictionaryWithObjectsAndKeys:self.userInfo.user.phone,@"phone",self.userInfo.sessionId,@"sessionId",[NSString stringWithFormat:@"%d",(self.arrayOfTrade.count/10 + 1)],@"pageNum",@"10",@"pageSize", nil];
+        
+        
+        [[NetworkManager shareMgr] server_queryOrderLogWithDic:dicComment completeHandle:^(NSDictionary *response) {
+            
+            if ([[response objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
+                
+                if ([[response objectForKey:@"data"] count] != 0) {
+                    
+                    
+                    if (self.arrayOfTrade.count == 0) {
+                        
+                        
+                        self.arrayOfTrade = [[NSMutableArray alloc] init];
+                        
+                        [self.arrayOfTrade  addObjectsFromArray:[response objectForKey:@"data"]];
+                        
+                        
+                    }else{
+                    
+                        [self.arrayOfTrade  addObjectsFromArray:[response objectForKey:@"data"]];
+
+                    
+                    }
+                }
+                
+                
+                
+            }
+            
+            
+            [self.tableView.footer endRefreshing];
+            
+            [self.tableView reloadData];
+            
+        }];
+        
+    }];
+
+    
 }
 
 -(void)back
@@ -110,50 +167,79 @@
     
     int type=[[dic objectForKey:@"type"] intValue];
     
-    if(type  == 1 || type == 2 || type == 4){
-        return 167;
+    if(type  == 1 || type == 2){
+        
+        return 147;
+        
+    }else if( type == 4){
+        
+        return 97;
     }
     else if (type==3)
     {
         return 97;
-    }else
-    {
-        return 5;
     }
+        
+        
+        return 0;
     
     
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    static NSString* cellId1 = @"CustomTradeCell";
-    static NSString* cellId2 = @"PlaceHolderCell";
+       static NSString* cellId = @"CustomTradeCell";
+    static NSString* cellId1 = @"CustomTradeCell1";
+    static NSString* cellId2 = @"CustomTradeCell2";
+    static NSString* cellId3 = @"CustomTradeCell3";
+     static NSString* cellId4 = @"CustomTradeCell4";
+//    static NSString* cellId2 = @"PlaceHolderCell";
     //    static NSString* cellHolderId = @"PlaceHolderCell";
     
+    if (self.arrayOfTrade.count == 0) {
+        
+ 
+            
+            PlaceHolderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId2];
+            
+            if (!cell) {
+                
+                cell = [[[NSBundle mainBundle] loadNibNamed:cellId2 owner:self options:nil] objectAtIndex:0];
+                cell.contentView.backgroundColor = [HKCommen  getColor:@"aaaaaa" WithAlpha:0.2];
+                
+                cell.lblText.text = @"尚无交易数据";
+            }
+            
+            return cell;
+            
     
-    NSLog(@"获得的字典%@",[self.arrayOfTrade objectAtIndex:indexPath.row]);
+        
+    }
+    
+    
     NSDictionary *dic=[self.arrayOfTrade objectAtIndex:indexPath.row];
+    
+    NSLog(@"交易数据第%d条记录为%@",indexPath.row,dic);
     
     int type=[[dic objectForKey:@"type"] intValue];
     
-    if(type  == 1 || type == 2 || type == 4){
+    if(type  == 1){
         
         CustomTradeCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
         
         if (!cell) {
             
-            cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
+            cell = [[[NSBundle mainBundle] loadNibNamed:cellId owner:self options:nil] objectAtIndex:0];
             
         }
-        
-        cell.lbl_money.text=[NSString stringWithFormat:@"￥%@",[dic objectForKey:@"amount"]];
+    
+        cell.lbl_money.text=[NSString stringWithFormat:@"￥%@", dic[@"amount"]];
         
         int paytype=[[dic objectForKey:@"paytype"] intValue];
         if (paytype==1) {
             cell.lbl_wayOfPay.text=@"支付宝";
         }
-        else if (paytype==1) {
+        else if (paytype==2) {
             cell.lbl_wayOfPay.text=@"微信";
         }
         else
@@ -167,23 +253,53 @@
         cell.lbl_merchant.text=[dic objectForKey:@"storeName"];
         return cell;
         
-    }else if(type==3){
+    } else if(type  == 2){
         
-        CustomTradeCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
+        CustomTradeCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId3];
         
         if (!cell) {
             
-            cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:1];
+            cell = [[[NSBundle mainBundle] loadNibNamed:cellId owner:self options:nil] objectAtIndex:2];
             
         }
         
-        cell.lbl_money.text=[NSString stringWithFormat:@"￥%@",[dic objectForKey:@"amount"]];
+        cell.lbl_money.text=[NSString stringWithFormat:@"￥%@", dic[@"amount"]];
         
         int paytype=[[dic objectForKey:@"paytype"] intValue];
         if (paytype==1) {
             cell.lbl_wayOfPay.text=@"支付宝";
         }
-        else if (paytype==1) {
+        else if (paytype==2) {
+            cell.lbl_wayOfPay.text=@"微信";
+        }
+        else
+        {
+            cell.lbl_wayOfPay.text=@"余额";
+        }
+        
+        cell.lbl_content.text=[dic objectForKey:@"items"];
+        
+        cell.lbl_time.text=[dic objectForKey:@"time"];
+        cell.lbl_merchant.text=[dic objectForKey:@"storeName"];
+        return cell;
+        
+    }else if(type==3){
+        
+        CustomTradeCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId2];
+        
+        if (!cell) {
+            
+            cell = [[[NSBundle mainBundle] loadNibNamed:cellId owner:self options:nil] objectAtIndex:1];
+            
+        }
+        
+        cell.lbl_money.text=[NSString stringWithFormat:@"￥%@", dic[@"amount"]];
+        
+        int paytype=[[dic objectForKey:@"paytype"] intValue];
+        if (paytype==1) {
+            cell.lbl_wayOfPay.text=@"支付宝";
+        }
+        else if (paytype==2) {
             cell.lbl_wayOfPay.text=@"微信";
         }
         else
@@ -196,21 +312,39 @@
         
         return cell;
         
-    }else{
+    }else if(type  == 4){
         
-        PlaceHolderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId2];
+        CustomTradeCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId4];
         
         if (!cell) {
             
-            cell = [[[NSBundle mainBundle] loadNibNamed:cellId2 owner:self options:nil] objectAtIndex:0];
-            cell.contentView.backgroundColor = [HKCommen  getColor:@"aaaaaa" WithAlpha:0.2];
+            cell = [[[NSBundle mainBundle] loadNibNamed:cellId owner:self options:nil] objectAtIndex:3];
+            
         }
         
+        cell.lbl_money.text=[NSString stringWithFormat:@"￥%@", dic[@"amount"]];
+        
+        int paytype=[[dic objectForKey:@"paytype"] intValue];
+        if (paytype==1) {
+            cell.lbl_wayOfPay.text=@"支付宝";
+        }
+        else if (paytype==2) {
+            cell.lbl_wayOfPay.text=@"微信";
+        }
+        else
+        {
+            cell.lbl_wayOfPay.text=@"余额";
+        }
+        
+        cell.lbl_content.text=[dic objectForKey:@"items"];
+        
+        cell.lbl_time.text=[dic objectForKey:@"time"];
+        cell.lbl_merchant.text=[dic objectForKey:@"storeName"];
         return cell;
         
     }
     
-    //    return nil;
+        return nil;
 }
 
 

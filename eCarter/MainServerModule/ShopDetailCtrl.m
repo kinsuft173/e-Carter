@@ -130,10 +130,15 @@
     [self.tableView.header beginRefreshing];
     
     
-    self.tableView.footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         
         
-        NSDictionary* dicComment = [NSDictionary dictionaryWithObjectsAndKeys:self.preDataShopId,@"storeId",[NSString stringWithFormat:@"%d",(self.arrayComment.count + 1)],@"pageNum",@"100",@"pageSize", nil];
+        if (self.arrayComment.count%10 != 0) {
+            [self.tableView.footer endRefreshing];
+            return ;
+        }
+        
+        NSDictionary* dicComment = [NSDictionary dictionaryWithObjectsAndKeys:self.preDataShopId,@"storeId",[NSString stringWithFormat:@"%d",(self.arrayComment.count/10 + 1)],@"pageNum",@"10",@"pageSize", nil];
         
         
         [[NetworkManager shareMgr] server_queryStoreCommemtWithDic:dicComment completeHandle:^(NSDictionary *response) {
@@ -147,6 +152,9 @@
                         self.arrayComment = [[NSMutableArray alloc] init];
                         
                         [self.arrayComment  addObjectsFromArray:[response objectForKey:@"data"]];
+                    }else{
+                    [self.arrayComment  addObjectsFromArray:[response objectForKey:@"data"]];
+                    
                     }
                 }
                 

@@ -12,6 +12,7 @@
 #import "HKMapManager.h"
 #import "SBJsonParser.h"
 #import "ConsulationManager.h"
+#import "XMLReader.h"
 
 
 
@@ -163,6 +164,12 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
+        
+        
+        if (completeHandle) {
+            
+            completeHandle(nil);
+        }
         NSLog(@"Error: %@", error);
         
         
@@ -1061,7 +1068,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         //ErrorHandle(error);
-        
+        completeHandle(nil);
         NSLog(@"Error: %@", error);
         
         
@@ -2077,6 +2084,61 @@
     
 }
 
+
+#pragma mark - 获得最新版本
+
+- (void)server_fetchVersionWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    NSDictionary* dicMore = [NSDictionary dictionaryWithObjectsAndKeys:@"1",@"device",@"v0.1",@"version", nil];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+//    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,VERSION_LAST] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        
+//        
+//        NSLog(@"JSON: %@", responseObject);
+//        
+//        if (completeHandle) {
+//            
+//            completeHandle(responseObject);
+//        }
+//        
+//        
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        
+//        if (completeHandle) {
+//            
+//            completeHandle(nil);
+//        }
+//        NSLog(@"Error: %@", error);
+//        
+//    }];
+    
+    NSString* strUrl = [NSString stringWithFormat:@"%@%@",SERVER,VERSION_LAST];
+    
+    NSMutableDictionary* dicNew =  [self server_BasePost:[[NSMutableDictionary alloc] init]  url:strUrl];
+    
+    NSLog(@"dicNew = %@",dicNew);
+    
+    if (dicNew) {
+        
+                if (completeHandle) {
+        
+                    completeHandle(dicNew);
+                }
+    }else{
+    
+        if (completeHandle) {
+            
+            completeHandle(nil);
+        }
+    
+    
+    }
+    
+}
+
 #pragma mark - 天气页面
 
 - (void)server_fetchWeatherWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
@@ -2216,6 +2278,7 @@
     }
     
     [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
         
         if (self.isTestMode) {
             
@@ -2373,8 +2436,17 @@
         
         NSLog(@"myString = %@",myString);
         
-
-
+        // parse
+        SBJsonParser *parser = [[SBJsonParser alloc] init];
+        
+        // parse the JSON string into an object - assuming json_string is a NSString of JSON data
+//        NSDictionary *object = [parser objectWithString:myString];
+        NSError *parseError = nil;
+        NSDictionary *xmlDictionary = [XMLReader dictionaryForXMLString:myString error:&parseError];
+        // 打印 NSDictionary
+        NSLog(@"%@", xmlDictionary);
+        
+        return [NSMutableDictionary dictionaryWithDictionary:xmlDictionary];
     }
 
     

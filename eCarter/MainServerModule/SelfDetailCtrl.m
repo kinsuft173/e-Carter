@@ -43,6 +43,10 @@
 @property (strong,nonatomic) NSString *stringOfTotal;
 @property (strong,nonatomic) NSString *stringOfTimel;
 
+
+//优惠券页面的index 表示选择了第几张优惠券 初始化-1
+@property NSInteger indexCheck;
+
 @end
 
 @implementation SelfDetailCtrl
@@ -56,6 +60,8 @@
     [HKCommen addHeadTitle:@"商家详情" whichNavigation:self.navigationItem];
     
     [self addRefresh];
+    
+    
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
     [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
@@ -74,6 +80,8 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+    
+    self.indexCheck = -1;
 }
 
 -(void)back
@@ -144,6 +152,11 @@
     }];
     
     self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        
+        if (self.arrayComment.count%10 != 0) {
+               [self.tableView.footer endRefreshing];
+            return ;
+        }
         
         
         NSDictionary* dicComment = [NSDictionary dictionaryWithObjectsAndKeys:self.preDataShopId,@"storeId",[NSString stringWithFormat:@"%d",(self.arrayComment.count/10 +1)],@"pageNum",@"10",@"pageSize", nil];
@@ -774,7 +787,7 @@
     
     for (int i = 0 ; i < self.arraySelectedSevice.count; i ++) {
         
-        if (strItemNames && [[self.arraySelectedSevice objectAtIndex:i] isEqualToString:@"1"]) {
+        if ([strItemNames isEqualToString:@""]&& [[self.arraySelectedSevice objectAtIndex:i] isEqualToString:@"1"]) {
             
             
             Serviceitemlist* list = [self.shopDetail.serviceItemList objectAtIndex:i];//[Serviceitemlist objectWithKeyValues:[self.shopDetail.serviceItemList objectAtIndex:i]];
@@ -897,6 +910,12 @@
             
             [self.navigationController pushViewController:vc animated:YES];
             
+        }else{
+        
+        
+            [HKCommen addAlertViewWithTitel:@"创建订单失败,请重试"];
+            
+        
         }
         
         hud.hidden = YES;
@@ -967,23 +986,28 @@
        
         vc.shopDetail = self.shopDetail;
         vc.isCardSelected=YES;
+        vc.indexCheck = self.indexCheck;
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
--(void)saveMoney:(NSMutableDictionary*)dic
+-(void)saveMoney:(NSMutableDictionary*)dic withIndex:(NSInteger)indexCheck
 {
     NSLog(@"获得的优惠劵字典：%@",dic);
   //  CouponSlectedCell* cell = (CouponSlectedCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:self.shopDetail.serviceItemList.count inSection:3]];
     
-    self.coupon = [CouponMyToShop objectWithKeyValues:[NSDictionary dictionaryWithDictionary:dic]];
     
-    //if ([[cell class] isSubclassOfClass:[CouponSlectedCell class]]) {
-    
-//        cell.lbl_price.text=[NSString stringWithFormat:@"%@元优惠劵",[dic objectForKey:@"price"]];
-
+    if (indexCheck == -1) {
         
-    //}
+        self.coupon = nil;
+        
+    }else{
+        self.coupon = [CouponMyToShop objectWithKeyValues:[NSDictionary dictionaryWithDictionary:dic]];
+    
+    }
+
+    
+    self.indexCheck = indexCheck;
     
     [self.tableView reloadData];
     

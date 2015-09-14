@@ -24,6 +24,7 @@
 		DE0C3EDC1B93656C006D2840 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0C3ED91B93656C006D2840 /* libWeChatSDK.a */; };
 		DE0C3EE01B93C76F006D2840 /* HomeTypeSelectedCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0C3EDE1B93C76F006D2840 /* HomeTypeSelectedCtrl.m */; };
 		DE0C3EE11B93C76F006D2840 /* HomeTypeSelectedCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE0C3EDF1B93C76F006D2840 /* HomeTypeSelectedCtrl.xib */; };
+		DE20392C1BA7631700C1A9DD /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = DE20392B1BA7631700C1A9DD /* XMLReader.m */; };
 		DE237EE71B3FA8AA0027767B /* MyCountMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE237EE51B3FA8AA0027767B /* MyCountMoneyCell.m */; };
 		DE237EE81B3FA8AA0027767B /* MyCountMoneyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE237EE61B3FA8AA0027767B /* MyCountMoneyCell.xib */; };
 		DE237EEC1B3FA8F70027767B /* MyCountNomalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DE237EEA1B3FA8F70027767B /* MyCountNomalCell.m */; };
@@ -657,6 +658,8 @@
 		DE0C3EDD1B93C76F006D2840 /* HomeTypeSelectedCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTypeSelectedCtrl.h; sourceTree = "<group>"; };
 		DE0C3EDE1B93C76F006D2840 /* HomeTypeSelectedCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTypeSelectedCtrl.m; sourceTree = "<group>"; };
 		DE0C3EDF1B93C76F006D2840 /* HomeTypeSelectedCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTypeSelectedCtrl.xib; sourceTree = "<group>"; };
+		DE20392A1BA7631700C1A9DD /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
+		DE20392B1BA7631700C1A9DD /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		DE237EE41B3FA8AA0027767B /* MyCountMoneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCountMoneyCell.h; path = PersonalCenter/Cell/MyCountMoneyCell.h; sourceTree = "<group>"; };
 		DE237EE51B3FA8AA0027767B /* MyCountMoneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCountMoneyCell.m; path = PersonalCenter/Cell/MyCountMoneyCell.m; sourceTree = "<group>"; };
 		DE237EE61B3FA8AA0027767B /* MyCountMoneyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyCountMoneyCell.xib; path = PersonalCenter/Cell/MyCountMoneyCell.xib; sourceTree = "<group>"; };
@@ -2648,6 +2651,8 @@
 		DEEDABD21B63E9D500247916 /* TempJsonFile */ = {
 			isa = PBXGroup;
 			children = (
+				DE20392A1BA7631700C1A9DD /* XMLReader.h */,
+				DE20392B1BA7631700C1A9DD /* XMLReader.m */,
 				DEEDABD31B63E9D500247916 /* allCouponList.json */,
 				DEEDABD41B63E9D500247916 /* info.json */,
 				DEEDABD51B63E9D500247916 /* login.json */,
@@ -3990,6 +3995,7 @@
 				DEE4CA5E1B3C7FAB0009B73C /* TotolPayCell.m in Sources */,
 				DE9D12C41B52BE0000046407 /* NSDataEx.m in Sources */,
 				DECA17291B614C1800FD3418 /* Shop.m in Sources */,
+				DE20392C1BA7631700C1A9DD /* XMLReader.m in Sources */,
 				DE0C3EE01B93C76F006D2840 /* HomeTypeSelectedCtrl.m in Sources */,
 				DEE48B8A1B3964E400458D6F /* TellCell.m in Sources */,
 				DE9D12C11B52BE0000046407 /* DataSigner.m in Sources */,

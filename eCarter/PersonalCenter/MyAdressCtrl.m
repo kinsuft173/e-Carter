@@ -191,6 +191,12 @@
         cell.lblAdressContent.text= [NSString stringWithFormat:@"%@%@%@",userAddress.city,userAddress.area,userAddress.address];
         
         
+        if ([userAddress.province containsString:@"天津"] || [userAddress.province containsString:@"北京"] ||[userAddress.province containsString:@"上海"] || [userAddress.province containsString:@"重庆"]) {
+            
+            
+            cell.lblAdressContent.text= [NSString stringWithFormat:@"%@%@%@",userAddress.province,userAddress.city,userAddress.address];
+            
+        }
         
         return cell;
         

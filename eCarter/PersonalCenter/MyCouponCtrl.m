@@ -23,7 +23,6 @@
 @property (nonatomic, strong) NSMutableArray* arrayIndex;
 @property (nonatomic,strong) UserLoginInfo *userInfo;
 
-@property  NSInteger indexCheck;
 
 @end
 
@@ -37,7 +36,6 @@
     self.dictOfCard=[[NSMutableDictionary alloc]init];
     self.arrayOfCard=[[NSMutableArray alloc]init];
     
-    self.indexCheck = -1;
     
     [self getModel];
     
@@ -81,8 +79,12 @@
         
         if (self.indexCheck != -1) {
             
-            [self.delegate saveMoney:[self.arrayOfCoupon objectAtIndex:self.indexCheck]];
+            [self.delegate saveMoney:[self.arrayOfCoupon objectAtIndex:self.indexCheck] withIndex:self.indexCheck];
             
+        }else{
+        
+             [self.delegate saveMoney:nil withIndex:self.indexCheck];
+        
         }
     
     }
@@ -107,6 +109,8 @@
     if (self.isCardSelected == YES) {
         
         [dic setObject:self.shopDetail.id forKey:@"storeId"];
+        
+         NSLog(@"开始查询用户的优惠券");
         
         [[NetworkManager shareMgr] server_fetchQueryUserCouponList:dic completeHandle:^(NSDictionary *responseBanner) {
             

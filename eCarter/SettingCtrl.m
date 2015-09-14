@@ -9,6 +9,8 @@
 #import "SettingCtrl.h"
 #import <ShareSDK/ShareSDK.h>
 #import "HYActivityView.h"
+#import "NetworkManager.h"
+#import "SIAlertView.h"
 
 @interface SettingCtrl ()
 @property (nonatomic, strong) HYActivityView *activityView;
@@ -148,7 +150,76 @@
     else if (indexPath.row==2)
     {
         [self share];
+        
+    }else if (indexPath.row==3)
+    {
+        [self updateVersion];
     }
+}
+
+- (void)updateVersion
+{
+    [[NetworkManager shareMgr] server_fetchVersionWithDic:nil completeHandle:^(NSDictionary *response) {
+        
+        
+        if ([response objectForKey:@"data"]) {
+            
+            if ([[[response objectForKey:@"data"] objectForKey:@"version"] isEqualToString:@"v0.12"]) {
+                
+                 [HKCommen addAlertViewWithTitel:@"已是最新版本"];
+                
+            }else{
+            
+                NSString* messege = [NSString stringWithFormat:@"更新内容描述:/n%@",[[response objectForKey:@"data"] objectForKey:@"version"]];
+            
+                SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@%@",@"已经有新版本,是否升级?",[[response objectForKey:@"data"] objectForKey:@"version"]] andMessage:messege];
+                [alertView addButtonWithTitle:@"确认"
+                                         type:SIAlertViewButtonTypeCancel
+                                      handler:^(SIAlertView *alertView) {
+                                         // [self.navigationController popToRootViewControllerAnimated:YES];
+                                          NSString* url = [[response objectForKey:@"data"] objectForKey:@"url"];
+                                             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+                                      }];
+                [alertView addButtonWithTitle:@"取消"
+                                         type:SIAlertViewButtonTypeDefault
+                                      handler:^(SIAlertView *alertView) {
+                                          
+                                      }];
+                alertView.transitionStyle = SIAlertViewTransitionStyleDropDown;
+                alertView.backgroundStyle = SIAlertViewBackgroundStyleSolid;
+                
+                alertView.willShowHandler = ^(SIAlertView *alertView) {
+                    NSLog(@"%@, willShowHandler3", alertView);
+                };
+                alertView.didShowHandler = ^(SIAlertView *alertView) {
+                    NSLog(@"%@, didShowHandler3", alertView);
+                };
+                alertView.willDismissHandler = ^(SIAlertView *alertView) {
+                    NSLog(@"%@, willDismissHandler3", alertView);
+                };
+                alertView.didDismissHandler = ^(SIAlertView *alertView) {
+                    NSLog(@"%@, didDismissHandler3", alertView);
+                };
+                
+                [alertView show];
+                
+
+            
+            }
+            
+            
+            
+        }else{
+        
+        
+            [HKCommen addAlertViewWithTitel:@"获取版本信息失败"];
+        
+        }
+        
+        
+    }];
+
+
 }
 
 
