@@ -14,6 +14,7 @@
 #import "NetworkManager.h"
 #import "UserDataManager.h"
 #import "FirstViewCtrl.h"
+#import "MyOrderCtrl.h"
 
 @interface PersonalCenterCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -345,8 +346,10 @@
     
     if (indexPath.section == 1 && indexPath.row == 1 ) {
         
-        [self performSegueWithIdentifier:@"goMyOrder" sender:nil];
+       // [self performSegueWithIdentifier:@"goMyOrder" sender:nil];
+        MyOrderCtrl* vc = [[UIStoryboard storyboardWithName:@"PersonalCenter" bundle:nil] instantiateViewControllerWithIdentifier:@"goMyOrder"];
         
+        [self.navigationController pushViewController:vc animated:YES];
         
     }else if (indexPath.section == 1 && indexPath.row == 2){
         

@@ -644,7 +644,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         //ErrorHandle(error);
-        
+           completeHandle(nil);
         NSLog(@"Error: %@", error);
         
         

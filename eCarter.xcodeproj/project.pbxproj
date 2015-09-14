@@ -11,6 +11,8 @@
 		B944BFB71B9FFC0200D66D42 /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B944BFB41B9FFC0200D66D42 /* SIAlertView.bundle */; };
 		B944BFB81B9FFC0200D66D42 /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B944BFB61B9FFC0200D66D42 /* SIAlertView.m */; };
 		B944BFBB1BA021BD00D66D42 /* ConsulationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B944BFBA1BA021BD00D66D42 /* ConsulationManager.m */; };
+		B9D2B4C91BA6A05B0090A306 /* NewCommentCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2B4C71BA6A05B0090A306 /* NewCommentCtrl.m */; };
+		B9D2B4CA1BA6A05B0090A306 /* NewCommentCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9D2B4C81BA6A05B0090A306 /* NewCommentCtrl.xib */; };
 		DE06386C1B6D19C900EFB576 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = DE06386B1B6D19C900EFB576 /* iToast.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DE06386F1B6DFB2D00EFB576 /* loading-ios@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE06386E1B6DFB2D00EFB576 /* loading-ios@2x.png */; };
 		DE06387B1B6E721000EFB576 /* defoult_1.png in Resources */ = {isa = PBXBuildFile; fileRef = DE0638771B6E721000EFB576 /* defoult_1.png */; };
@@ -635,6 +637,9 @@
 		B944BFB61B9FFC0200D66D42 /* SIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIAlertView.m; sourceTree = "<group>"; };
 		B944BFB91BA021BD00D66D42 /* ConsulationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsulationManager.h; sourceTree = "<group>"; };
 		B944BFBA1BA021BD00D66D42 /* ConsulationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsulationManager.m; sourceTree = "<group>"; };
+		B9D2B4C61BA6A05B0090A306 /* NewCommentCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCommentCtrl.h; sourceTree = "<group>"; };
+		B9D2B4C71BA6A05B0090A306 /* NewCommentCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCommentCtrl.m; sourceTree = "<group>"; };
+		B9D2B4C81BA6A05B0090A306 /* NewCommentCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewCommentCtrl.xib; sourceTree = "<group>"; };
 		DA8F7F1A0C3E67F78D061FC8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE06386A1B6D19C900EFB576 /* iToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iToast.h; sourceTree = "<group>"; };
 		DE06386B1B6D19C900EFB576 /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
@@ -2458,6 +2463,9 @@
 				E98B3A841B6DEA3000980C16 /* MoneyReturnProgressView.h */,
 				E98B3A851B6DEA3000980C16 /* MoneyReturnProgressView.m */,
 				E98B3A871B6DEA4900980C16 /* MoneyReturnProgressView.xib */,
+				B9D2B4C61BA6A05B0090A306 /* NewCommentCtrl.h */,
+				B9D2B4C71BA6A05B0090A306 /* NewCommentCtrl.m */,
+				B9D2B4C81BA6A05B0090A306 /* NewCommentCtrl.xib */,
 			);
 			name = PersonalCenter;
 			sourceTree = "<group>";
@@ -3650,6 +3658,7 @@
 				DEE337131B4C40D900357253 /* red@2x.png in Resources */,
 				DEE3370B1B4C40D900357253 /* Champagne_gold@2x.png in Resources */,
 				DEE3373B1B4C40D900357253 /* Process_now@3x.png in Resources */,
+				B9D2B4CA1BA6A05B0090A306 /* NewCommentCtrl.xib in Resources */,
 				DE31D67D1BA09232003DD3EA /* moderate-rain@3x.png in Resources */,
 				DE06387E1B6E721000EFB576 /* defoult_4.png in Resources */,
 				DED7F56F1B4760DB0005019C /* icon_Distance@2x.png in Resources */,
@@ -3967,6 +3976,7 @@
 				DECA172C1B614C5B00FD3418 /* ShopDetail.m in Sources */,
 				DE9D12141B50ECEC00046407 /* POIAnnotation.m in Sources */,
 				DEE337A81B4DF68C00357253 /* ReChargeSuccessCtrl.m in Sources */,
+				B9D2B4C91BA6A05B0090A306 /* NewCommentCtrl.m in Sources */,
 				DEEDABD11B63DEC200247916 /* FakeDataMgr.m in Sources */,
 				E993183B1B8A152E00B56AE9 /* PhotoBroswerVC.m in Sources */,
 				E99318311B8A152E00B56AE9 /* PhotoBroswerLayout.m in Sources */,

@@ -75,8 +75,10 @@
     MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"正在加载";
     
-    NSLog(@"uid = %@",[UserDataManager shareManager].userLoginInfo.user.uid);
-    NSDictionary* dicNew = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",self.txt_amount.text,@"amounts" ,self.txt_zhanhao.text,@"items",[UserDataManager shareManager].userLoginInfo.user.phone,@"phone",[UserDataManager shareManager].userLoginInfo.sessionId,@"sessionId",nil];
+    NSLog(@"uid = %@",[UserDataManager shareManager].userLoginInfo.user.uid); //self.txt_amount.text
+    NSDictionary* dicNew = [NSDictionary dictionaryWithObjectsAndKeys:self.txt_amount.text,@"amounts" ,self.txt_zhanhao.text,@"items",[UserDataManager shareManager].userLoginInfo.user.phone,@"phone",[UserDataManager shareManager].userLoginInfo.sessionId,@"sessionId",nil];
+    
+    NSLog(@"dicNew = %@",dicNew);
     
     [[NetworkManager shareMgr] server_userAccountWithdrawCash:dicNew completeHandle:^(NSDictionary *responese) {
         

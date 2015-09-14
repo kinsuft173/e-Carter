@@ -121,7 +121,7 @@
         }];
         
         
-        NSDictionary* dicComment = [NSDictionary dictionaryWithObjectsAndKeys:self.preDataShopId,@"storeId",@"1",@"pageNum",@"100",@"pageSize", nil];
+        NSDictionary* dicComment = [NSDictionary dictionaryWithObjectsAndKeys:self.preDataShopId,@"storeId",@"1",@"pageNum",@"10",@"pageSize", nil];
     
         
         [[NetworkManager shareMgr] server_queryStoreCommemtWithDic:dicComment completeHandle:^(NSDictionary *response) {
@@ -143,10 +143,10 @@
         
     }];
     
-    self.tableView.footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         
         
-        NSDictionary* dicComment = [NSDictionary dictionaryWithObjectsAndKeys:self.preDataShopId,@"storeId",[NSString stringWithFormat:@"%d",(self.arrayComment.count + 1)],@"pageNum",@"100",@"pageSize", nil];
+        NSDictionary* dicComment = [NSDictionary dictionaryWithObjectsAndKeys:self.preDataShopId,@"storeId",[NSString stringWithFormat:@"%d",(self.arrayComment.count/10 +1)],@"pageNum",@"10",@"pageSize", nil];
         
         
         [[NetworkManager shareMgr] server_queryStoreCommemtWithDic:dicComment completeHandle:^(NSDictionary *response) {
@@ -154,15 +154,21 @@
             if ([[response objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
                 
                 if ([[response objectForKey:@"data"] count] != 0) {
+                    
                     if (self.arrayComment.count == 0) {
                         
                         
                         self.arrayComment = [[NSMutableArray alloc] init];
                         
-                        [self.arrayComment  addObjectsFromArray:[response objectForKey:@"data"]];
+  
                     }
+                    
+                [self.arrayComment  addObjectsFromArray:[response objectForKey:@"data"]];
                 }
                 
+            }else{
+            
+            
             }
             
             

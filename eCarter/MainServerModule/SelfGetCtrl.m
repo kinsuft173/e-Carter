@@ -186,6 +186,9 @@
         
     }];
     
+    
+    
+    
     // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadMoreData方法）
     //    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingBlock:^{
     //

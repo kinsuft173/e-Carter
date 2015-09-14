@@ -13,8 +13,10 @@
 + (ConsulationManager*)shareMgr;
 
 - (void)addHandledConsulation:(NSString*)consulationId;
+- (void)addHandledComment:(NSString*)consulationId;
 - (void)getMycounPonModel;
+- (BOOL)isCommented:(NSString*)consulationId;
 
 @property (nonatomic, strong) NSMutableSet* setModel;
-
+@property (nonatomic, strong) NSMutableSet* setComment;
 @end

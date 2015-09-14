@@ -11,11 +11,13 @@
 #import "starView.h"
 #import "NetworkManager.h"
 #import "HKCommen.h"
+#import "ConsulationManager.h"
 
 @interface CommentCtrl ()<UITextViewDelegate>
 @property (strong,nonatomic)starView *starQuality;
 @property (strong,nonatomic)starView *starAttitude;
 @property (strong,nonatomic)starView *starEffiency;
+@property (strong,nonatomic)UINavigationBar *myNav;
 @end
 
 @implementation CommentCtrl
@@ -27,6 +29,7 @@
     [HKCommen addHeadTitle:@"发布评论" whichNavigation:self.navigationItem];
     
     self.txt_comment.delegate=self;
+    
     
     self.valueAttitude=@"";
     self.valueEfficiency=@"";
@@ -158,6 +161,11 @@
             [self.starEffiency setStarForValue:0.0];
             [self.starAttitude setStarForValue:0.0];
             [self.starQuality setStarForValue:0.0];
+            
+            [[ConsulationManager shareMgr] addHandledComment:self.orderId];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+
         }
         else
         {
@@ -171,6 +179,7 @@
 -(void)back
 {
     [self.navigationController popViewControllerAnimated:YES];
+
 }
 
 - (void)addGesturesTap

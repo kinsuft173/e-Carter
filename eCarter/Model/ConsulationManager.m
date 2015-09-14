@@ -39,6 +39,19 @@
         
         }
         
+        NSData* data1 = [[NSUserDefaults standardUserDefaults] objectForKey:@"setComment"];
+        
+        instance.setComment =  [NSKeyedUnarchiver unarchiveObjectWithData:data1];
+        if (instance.setComment == nil) {
+            
+            
+            instance.setComment = [[NSMutableSet alloc] init];
+        }else{
+            
+            instance.setComment = [NSMutableSet setWithSet:instance.setModel];
+            
+        }
+        
     });
     
     return instance;
@@ -58,6 +71,34 @@
 
     }
 
+}
+
+- (BOOL)isCommented:(NSString*)consulationId
+{
+    if ([self.setComment containsObject:consulationId]) {
+        
+        return YES;
+        
+    }
+
+    return NO;
+
+}
+
+- (void)addHandledComment:(NSString*)consulationId
+{
+    if (consulationId) {
+        
+        [self.setComment addObject:consulationId];
+        
+        NSSet* setTemp = [NSSet setWithSet:self.setComment];
+        
+        NSData* data = [NSKeyedArchiver archivedDataWithRootObject:setTemp];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"setComment"];
+        
+    }
+    
 }
 
 - (void)getMycounPonModel

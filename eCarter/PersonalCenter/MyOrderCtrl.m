@@ -18,6 +18,8 @@
 #import "PhotoBroswerVC.h"
 #import "SIAlertView.h"
 #import "OrderSingle.h"
+#import "ConsulationManager.h"
+#import "NewCommentCtrl.h"
 
 @interface MyOrderCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -77,27 +79,33 @@
     
     
     
+//    
+//    UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
+//    [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
+//    [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
+//    [leftButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton ];
+//    
+//    
+//    
+//    if(([[[UIDevice currentDevice] systemVersion] floatValue]>=7.0?20:0)){
+//        UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+//                                           initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+//                                           target:nil action:nil];
+//        negativeSpacer.width = -17;
+//        self.navigationItem.leftBarButtonItems = @[negativeSpacer, leftItem];
+//    }else
+//    {
+//        self.navigationItem.leftBarButtonItem=leftItem;
+//    }
     
-    UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
-    [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
-    [leftButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton ];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTableMy) name:@"reloadOrder" object:nil];
+}
+
+- (void)reloadTableMy
+{
     
-    
-    
-    if(([[[UIDevice currentDevice] systemVersion] floatValue]>=7.0?20:0)){
-        UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
-                                           initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
-                                           target:nil action:nil];
-        negativeSpacer.width = -17;
-        self.navigationItem.leftBarButtonItems = @[negativeSpacer, leftItem];
-    }else
-    {
-        self.navigationItem.leftBarButtonItem=leftItem;
-    }
-    
-    
+
 }
 
 -(void)back
@@ -107,12 +115,13 @@
 
 - (void)getModel
 {
+    
     self.userLoginInfo= [UserDataManager shareManager].userLoginInfo;
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
     [dic setValue:self.userLoginInfo.user.phone forKey:@"phone"];
     [dic setValue:self.userLoginInfo.sessionId forKey:@"sessionId"];
-    [dic setValue:@"1" forKey:@"pageNum"];
+    [dic setValue:[NSString stringWithFormat:@"%d",self.arrayAllOrder.count/10 + 1] forKey:@"pageNum"];
     [dic setValue:@"10" forKey:@"pageSize"];
     
     NSLog(@"上传字典:%@",dic);
@@ -187,8 +196,8 @@
         if ([[response objectForKey:@"message"] isEqualToString:@"OK"]) {
             [HKCommen addAlertViewWithTitel:@"退款申请成功"];
             
-            UITableView *table=[self.arrayOfTables objectAtIndex:0];
-            OrderCell *cell=(OrderCell*)[table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
+            UITableView *table=[self.arrayOfTables objectAtIndex:self.index];
+            OrderCell *cell=(OrderCell*)[table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:1]];
 
             cell.lblStatusOfOrder.text=@"提交退款申请";
             [cell.btnGoCommentPage setTitle:@"退款中" forState:UIControlStateNormal];
@@ -392,10 +401,7 @@
         return 1;
         
     }
-    
 
-
-    
     NSArray* arrayModels = [NSArray arrayWithObjects:self.arrayOfOrder,self.arrayOfWaiting ,self.arrayOfServicing,self.arrayOfComplete, self.arrayOfCancel,nil];
     
     NSArray* arrayModel = [arrayModels objectAtIndex:tableView.tag];
@@ -438,7 +444,7 @@
 {
     
     static NSString* cellId1 = @"OrderCell";
-     static NSString* cellId2 = @"OrderCell2";
+    static NSString* cellId2 = @"OrderCell2";
     static NSString* cellHolderId = @"PlaceHolderCell";
     //    static NSString* cellHolderId = @"PlaceHolderCell";
     
@@ -473,11 +479,11 @@
         
         if (order.orderImageList.count  == 0) {
             
-            cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"xxxx"];
             
         }else{
         
-            cell = [tableView dequeueReusableCellWithIdentifier:cellId2];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"xxxxxxxx"];
             
         }
         
@@ -539,9 +545,9 @@
         
         
         //清除重用的事件
-        [cell.btnGoCommentPage removeTarget:self action:@selector(CancelOrder:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.btnGoCommentPage removeTarget:self action:@selector(goCommentPage:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.btnGoCommentPage removeTarget:self action:@selector(goMoneyReturnPage) forControlEvents:UIControlEventTouchUpInside];
+//        [cell.btnGoCommentPage removeTarget:self action:@selector(CancelOrder:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell.btnGoCommentPage removeTarget:self action:@selector(goCommentPage:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell.btnGoCommentPage removeTarget:self action:@selector(goMoneyReturnPage) forControlEvents:UIControlEventTouchUpInside];
         
         NSUInteger row=indexPath.row;
         
@@ -627,7 +633,7 @@
             
         }
         
-
+        
         
        if (state==1)
         {
@@ -646,7 +652,16 @@
             cell.btnGoCommentPage.hidden=NO;
             [cell.btnGoCommentPage setTitle:@"待评价" forState:UIControlStateNormal];
             [cell.btnGoCommentPage setTag:[[dict objectForKey:@"id"] intValue]];
+            
+            if ([[ConsulationManager shareMgr] isCommented:order.id]) {
+                
+                [cell.btnGoCommentPage setTitle:@"已评价" forState:UIControlStateNormal];
+                
+            }else{
+            
             [cell.btnGoCommentPage addTarget:self action:@selector(goCommentPage:) forControlEvents:UIControlEventTouchUpInside];
+                
+            }
         }
         else if (state==6)
         {
@@ -700,6 +715,8 @@
                 cell.lblStatusOfOrder.text=@"商家审批通过";
             }
         }
+        
+        cell.btnGoCommentPage.tag = (indexPath.row +1)*10 + tableView.tag;
         
         return cell;
     }
@@ -795,7 +812,7 @@
     
     
     UITableView *table=[self.arrayOfTables objectAtIndex:0];
-    OrderCell *cell=(OrderCell*)[table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
+    OrderCell *cell=(OrderCell*)[table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:1]];
     
     
     __weak typeof(self) weakSelf=self;
@@ -882,12 +899,45 @@
 
 
 
--(void)goCommentPage:(UIButton*)button
+-(void)goCommentPage:(UIButton*)btn
 {
+    NSInteger tag = btn.tag;
+    
+    int tableNum = tag%10;
+    
+    int row = (tag/10) - 1;
+    
+    NSArray* arrayModels = [NSArray arrayWithObjects:self.arrayOfOrder,self.arrayOfWaiting ,self.arrayOfServicing,self.arrayOfComplete, self.arrayOfCancel,nil];
+    
+    NSArray* arrayModel = [arrayModels objectAtIndex:tableNum];
+    
+    NSDictionary *dict = [arrayModel objectAtIndex:row];
+    
+    OrderSingle* order = [OrderSingle objectWithKeyValues:dict];
+    
     NSLog(@"heh");
-    CommentCtrl *vc=[[CommentCtrl alloc]initWithNibName:@"CommentCtrl" bundle:nil];
-    vc.orderId= [NSString stringWithFormat:@"%ld",button.tag];
+    
+    //[self performSegueWithIdentifier:@"go2" sender:order.id];
+     CommentCtrl *vc= [[CommentCtrl alloc]initWithNibName:@"CommentCtrl" bundle:nil];
+    vc.orderId=  order.id;
+
     [self.navigationController pushViewController:vc animated:YES];
+
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"go2"]) {
+        
+//        CommentCtrl* vc = segue.destinationViewController;
+//        
+//        NSString* str = sender;
+//        
+//        vc.orderId=  str;
+        
+        
+    }
+
 }
 
 -(void)goMoneyReturnPage

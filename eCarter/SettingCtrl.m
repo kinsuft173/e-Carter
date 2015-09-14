@@ -199,7 +199,7 @@
     id<ISSContent> publishContent = [ShareSDK content:@"分享"
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
-                                                title:@"ShareSDK"
+                                                title:@"E车夫"
                                                   url:@"http://www.mob.com"
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
@@ -227,7 +227,7 @@
     id<ISSContent> publishContent = [ShareSDK content:@"分享"
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
-                                                title:@"ShareSDK"
+                                                title:@"E车夫"
                                                   url:@"http://www.mob.com"
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
@@ -255,7 +255,7 @@
     id<ISSContent> publishContent = [ShareSDK content:@"分享"
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
-                                                title:@"ShareSDK"
+                                                title:@"E车夫"
                                                   url:@"http://www.mob.com"
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
