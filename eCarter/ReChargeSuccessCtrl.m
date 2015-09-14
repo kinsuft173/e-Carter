@@ -49,7 +49,7 @@
         
         [HKCommen addHeadTitle:@"充值成功" whichNavigation:self.navigationItem];
         self.lbl_hint.text=@"充值成功";
-        self.lbl_detail.text=@"成功充值50.0元到我的账户";
+        self.lbl_detail.text=  [NSString stringWithFormat:@"成功充值%@元到我的账户",self.amout];//@"成功充值%@元到我的账户";
     }
     else if ([self.judgeRefillOrGetReal isEqualToString:@"getReal"])
     {

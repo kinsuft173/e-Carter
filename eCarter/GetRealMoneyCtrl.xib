@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GetRealMoneyCtrl">
             <connections>
                 <outlet property="lbl_balance" destination="WUp-5d-GaN" id="b7k-Hy-t7H"/>
+                <outlet property="txt_zhanhao" destination="Yru-IZ-g58" id="Wce-3t-Jfp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -102,6 +103,15 @@
                                 <constraint firstAttribute="height" constant="1" id="E8p-To-2OK"/>
                             </constraints>
                         </view>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入支付宝账号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yru-IZ-g58">
+                            <rect key="frame" x="90" y="6" width="150" height="30"/>
+                            <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="ujD-oU-Pbh"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -109,6 +119,7 @@
                         <constraint firstItem="Xlm-tP-jtf" firstAttribute="top" secondItem="owl-hV-jjV" secondAttribute="top" constant="44" id="66I-EM-pID"/>
                         <constraint firstAttribute="trailing" secondItem="TMh-7G-LFQ" secondAttribute="trailing" constant="10" id="CUv-RS-bTL"/>
                         <constraint firstItem="CRP-77-xUB" firstAttribute="top" secondItem="b6C-F1-De9" secondAttribute="top" constant="-8" id="IbA-qc-tN7"/>
+                        <constraint firstAttribute="trailing" secondItem="Yru-IZ-g58" secondAttribute="trailing" constant="80" id="KaR-OD-Jqs"/>
                         <constraint firstAttribute="trailing" secondItem="bT1-3l-7tO" secondAttribute="trailing" constant="10" id="OSS-8N-k48"/>
                         <constraint firstItem="Sdq-n8-6Gt" firstAttribute="top" secondItem="Xlm-tP-jtf" secondAttribute="top" id="PAc-My-77S"/>
                         <constraint firstItem="CRP-77-xUB" firstAttribute="top" secondItem="owl-hV-jjV" secondAttribute="top" constant="88" id="Pmm-0h-dYH"/>
@@ -118,9 +129,11 @@
                         <constraint firstAttribute="height" constant="132" id="Us8-pM-j1t"/>
                         <constraint firstItem="b6C-F1-De9" firstAttribute="leading" secondItem="owl-hV-jjV" secondAttribute="leading" constant="90" id="ZYk-i0-Lmn"/>
                         <constraint firstAttribute="trailing" secondItem="CRP-77-xUB" secondAttribute="trailing" id="Zqt-Ns-yFa"/>
+                        <constraint firstItem="Yru-IZ-g58" firstAttribute="leading" secondItem="owl-hV-jjV" secondAttribute="leading" constant="90" id="ceM-b3-EyU"/>
                         <constraint firstItem="Sdq-n8-6Gt" firstAttribute="leading" secondItem="owl-hV-jjV" secondAttribute="leading" constant="10" id="eOf-kn-Mbz"/>
                         <constraint firstItem="gvk-K1-D7H" firstAttribute="top" secondItem="owl-hV-jjV" secondAttribute="top" id="eTX-nq-fh0"/>
                         <constraint firstItem="TMh-7G-LFQ" firstAttribute="top" secondItem="owl-hV-jjV" secondAttribute="top" id="hwx-GA-LDN"/>
+                        <constraint firstItem="Yru-IZ-g58" firstAttribute="top" secondItem="owl-hV-jjV" secondAttribute="top" constant="6" id="ppe-5z-g8v"/>
                         <constraint firstAttribute="trailing" secondItem="Xlm-tP-jtf" secondAttribute="trailing" id="qJg-8v-Lmb"/>
                         <constraint firstAttribute="trailing" secondItem="b6C-F1-De9" secondAttribute="trailing" constant="80" id="sRH-g2-OHE"/>
                         <constraint firstItem="bT1-3l-7tO" firstAttribute="top" secondItem="Xlm-tP-jtf" secondAttribute="top" id="vuY-CC-yLR"/>

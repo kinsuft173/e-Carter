@@ -64,9 +64,19 @@
         
     }
     
+    if ([self.txt_zhanhao.text isEqualToString:@"请输入支付宝账号"] || [self.txt_zhanhao.text  isEqualToString:@""]) {
+        
+        [HKCommen addAlertViewWithTitel:@"请输入支付宝账号"];
+        
+        return;
+        
+    }
+    
     MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"正在加载";
-    NSDictionary* dicNew = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",@"0.01",@"amount" ,nil];
+    
+    NSLog(@"uid = %@",[UserDataManager shareManager].userLoginInfo.user.uid);
+    NSDictionary* dicNew = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",self.txt_amount.text,@"amounts" ,self.txt_zhanhao.text,@"items",[UserDataManager shareManager].userLoginInfo.user.phone,@"phone",[UserDataManager shareManager].userLoginInfo.sessionId,@"sessionId",nil];
     
     [[NetworkManager shareMgr] server_userAccountWithdrawCash:dicNew completeHandle:^(NSDictionary *responese) {
         

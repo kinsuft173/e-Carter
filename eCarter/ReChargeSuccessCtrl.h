@@ -15,4 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_hint;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_detail;
 
+@property (nonatomic, strong) NSString* amout;
+
 @end

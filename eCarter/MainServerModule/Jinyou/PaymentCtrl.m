@@ -41,6 +41,7 @@
     
     AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
     appDelegate.payCtrl  = self;
+    appDelegate.reCtrl = nil;
     
     self.howMuch= [NSString stringWithFormat:@"%.2f元",[self.strTotalMount floatValue]];
     self.arrayOfPayment=[NSArray arrayWithObjects:@"支付宝付款",@"微信付款", nil];

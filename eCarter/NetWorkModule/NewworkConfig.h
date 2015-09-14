@@ -98,12 +98,12 @@ typedef void (^ErrorHandle)(NSError*);
 //支付回调
 #define PAY_ALI_NOTIFY @"/order/notify/alipay/"
 #define PAY_WX_NOTIFY @"/order/notify/wechat/"
-#define PAY_Recharge_WX_NOTIFY @"/recharge/notify/wechat"
-
+#define PAY_Recharge_WX_NOTIFY @"/recharge/notify/wechat/"
+#define PAY_Recharge_Ali_NOTIFY @"/recharge/notify/alipay/"
 //获得微信preID
 #define PAY_WX_ORDER_PRE @"/order/prepay/"
  #define PAY_WX_RECHARGE_ORDER_PRE @"/recharge/prepay/wechat"
-
+ #define PAY_WX_RECHARGE_ORDER_Trade @"/recharge/prepay/alipay"
 //提现
  #define PAY_TIXIAN @"/ecar/mobile/userAccountWithdrawCash"
 

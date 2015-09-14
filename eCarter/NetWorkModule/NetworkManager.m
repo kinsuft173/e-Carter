@@ -2485,6 +2485,58 @@
     
 }
 
+
+- (void)server_getRechangeTradeId:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    NSString* strInterface;
+    
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = PAY_WX_RECHARGE_ORDER_Trade;
+        
+    }
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (self.isTestMode) {
+            
+            NSDictionary *dictionary = [FakeDataMgr shareMgr].responseLogin;
+            
+            if (completeHandle) {
+                
+                completeHandle(dictionary);
+                
+            }
+            
+        }else{
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        completeHandle(nil);
+        
+    }];
+    
+    
+    
+}
+
 //提现
 
 - (void)server_userAccountWithdrawCash:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
@@ -2638,7 +2690,7 @@
     
 }
 
-- (void)server_wxRechargeNotify:(NSString*)orderId completeHandle:(CompleteHandle)completeHandle
+- (void)server_wxRechargeNotify:(NSString*)orderId withDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -2656,7 +2708,7 @@
         
     }
     
-    [manager POST:[NSString stringWithFormat:@"%@%@%@",SERVER,strInterface,orderId] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:[NSString stringWithFormat:@"%@%@%@",SERVER,strInterface,orderId] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (self.isTestMode) {
             
@@ -2685,6 +2737,56 @@
     }];
 
 
+}
+
+
+- (void)server_aliRechargeNotify:(NSString*)orderId withDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    NSString* strInterface;
+    
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = PAY_Recharge_Ali_NOTIFY;
+        
+    }
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@%@",SERVER,strInterface,orderId] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (self.isTestMode) {
+            
+            NSDictionary *dictionary = [FakeDataMgr shareMgr].responseLogin;
+            
+            if (completeHandle) {
+                
+                completeHandle(dictionary);
+                
+            }
+            
+        }else{
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        completeHandle(nil);
+        
+    }];
+    
+    
 }
 
 

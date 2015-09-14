@@ -14,5 +14,5 @@
 @property (strong,nonatomic) NSString *balance;
 
 @property (weak, nonatomic) IBOutlet UITextField *txt_amount;
-
+@property (weak, nonatomic) IBOutlet UITextField *txt_zhanhao;
 @end

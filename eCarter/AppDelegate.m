@@ -182,7 +182,15 @@
     
     if ([url.host isEqualToString:@"pay"]) {
         
-        return  [WXApi handleOpenURL:url delegate:self.payCtrl];
+        UIViewController* vc = self.payCtrl;
+        
+        if (!self.payCtrl) {
+            
+            vc = self.reCtrl;
+            
+        }
+        
+        return  [WXApi handleOpenURL:url delegate:vc];
         
     }
     

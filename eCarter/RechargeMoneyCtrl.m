@@ -41,6 +41,10 @@
     // Do any additional setup after loading the view from its nib.
 
     [HKCommen addHeadTitle:@"充值" whichNavigation:self.navigationItem];
+    
+    AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+    appDelegate.payCtrl  = nil;
+    appDelegate.reCtrl = self;
 
     self.lbl_balance.text=self.balance;
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -85,7 +89,37 @@
     
     if (self.isWx == NO) {
         
-        [self payAliAction];
+        MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"正在加载";
+        
+        
+        NSDictionary* dicNew = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",@"0.01",@"amount" ,nil];
+        
+        
+        
+        [[NetworkManager shareMgr] server_getRechangePreId:dicNew completeHandle:^(NSDictionary *responese) {
+            
+            if (responese == nil) {
+                
+                
+                hud.hidden = YES;
+            }
+            
+            
+            hud.hidden = YES;
+            
+            NSDictionary* dic = [responese objectForKey:@"data"];
+            
+            
+            self.tranId = [NSString stringWithFormat:@"%@",[responese objectForKey:@"tranId"]] ;
+            
+            NSLog(@"dicNew = %@",dicNew);
+            NSLog(@"tranId = %@",self.tranId);
+            [self payAliAction];
+            
+        }];
+        
+
         
     }else{
     
@@ -186,7 +220,7 @@
     Order *order = [[Order alloc] init];
     order.partner = partner;
     order.seller = seller;
-    order.tradeNO = [self generateTradeNO];//[NSString stringWithFormat:@"%@",[self.orderResult objectForKey:@"id"]];
+    order.tradeNO = self.tranId;//[self generateTradeNO];//[NSString stringWithFormat:@"%@",[self.orderResult objectForKey:@"id"]];
     
     
     order.productName =  @"E车夫服务";///[self generateTradeNO];
@@ -194,7 +228,7 @@
     order.productDescription = @"test";
     
     
-    order.amount = [NSString stringWithFormat:@"0.01"];
+    order.amount = @"0.01";//self.txt_amount.text;//[NSString stringWithFormat:self.txt_amount.text];
     
     
     order.service = @"mobile.securitypay.pay";
@@ -202,7 +236,7 @@
     order.inputCharset = @"utf-8";
     order.itBPay = @"30m";
     order.showUrl = @"m.alipay.com";
-    order.notifyURL = [NSString stringWithFormat:@"%@/recharge/notify/alipay/%@",SERVER,order.tradeNO];
+    order.notifyURL = [NSString stringWithFormat:@"%@/recharge/notify/alipay/%@",SERVER,self.tranId];
     
     //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
     NSString *appScheme = @"eCarter";
@@ -228,7 +262,16 @@
             
             if (resultStatus.integerValue == 9000) {
                 
+//                [[NetworkManager shareMgr] server_aliRechargeNotify:self.tranId withDic:[NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",self.txt_amount.text,@"amount" ,nil] completeHandle:^(NSDictionary *response) {
+//                    
+//                    //                [self paySucceed];
+//                    
+//                    NSLog(@"支付宝充值支付的回调,%@",response);
+//                    
+//                }];
+                
                 [self paySucceed];
+                
                 
             }
             else {
@@ -270,6 +313,8 @@
 
     ReChargeSuccessCtrl *vc=[[ReChargeSuccessCtrl alloc] initWithNibName:@"ReChargeSuccessCtrl" bundle:nil];
     vc.judgeRefillOrGetReal=@"refill";
+    
+    vc.amout = self.txt_amount.text;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -311,6 +356,8 @@
     
     NSDictionary* dicNew = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",@"0.01",@"amount" ,nil];
     
+
+    
     [[NetworkManager shareMgr] server_getRechangePreId:dicNew completeHandle:^(NSDictionary *responese) {
         
         if (responese == nil) {
@@ -326,6 +373,9 @@
         
         
         self.tranId = [NSString stringWithFormat:@"%@",[responese objectForKey:@"tranId"]] ;
+        
+            NSLog(@"dicNew = %@",dicNew);
+        NSLog(@"tranId = %@",self.tranId);
         [self payWexin:dic];
         
     }];
@@ -374,15 +424,19 @@
         
         if (response.errCode == WXSuccess) {
             
-            [[NetworkManager shareMgr] server_wxRechargeNotify:self.tranId completeHandle:^(NSDictionary *response) {
-                
-                //                [self paySucceed];
-                
-            }];
+//            [[NetworkManager shareMgr] server_wxRechargeNotify:self.tranId withDic:[NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",self.txt_amount.text,@"amount" ,nil] completeHandle:^(NSDictionary *response) {
+//                
+//      
+//                
+//                NSLog(@"微信充值支付的回调,%@",response);
+//                
+//            }];
             
             [self paySucceed];
             
         }else{
+            
+            NSLog(@"response = %d",response.errCode);
             
             
             [HKCommen addAlertViewWithTitel:@"微信支付失败"];

@@ -106,5 +106,8 @@
 
 //youhuiquan
 - (void)server_fetchQueryUserCouponNotList:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+- (void)server_aliRechargeNotify:(NSString*)orderId completeHandle:(CompleteHandle)completeHandle;
 
+- (void)server_aliRechargeNotify:(NSString*)orderId withDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+- (void)server_wxRechargeNotify:(NSString*)orderId withDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 @end

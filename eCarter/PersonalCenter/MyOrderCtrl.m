@@ -46,7 +46,7 @@
 @property (nonatomic,strong)NSMutableArray *arrayOfCancel;
 
 @property (nonatomic,strong)NSMutableArray *arrayOfShow;
-
+@property     NSInteger index;
 
 @end
 
@@ -298,7 +298,7 @@
 
 - (void)jumpToTable:(UIButton*)btn
 {
-    NSInteger index = btn.tag;
+    self. index = btn.tag;
     
     for (UITableView* table in [self.view  subviews]) {
         
@@ -307,28 +307,28 @@
             continue;
         }
         
-        if (table.tag == index) {
+        if (table.tag == self. index) {
             
-            if (index==0) {
+            if (self. index==0) {
                 self.arrayOfShow=self.arrayOfOrder;
                 [table reloadData];
             }
-            else if (index==1)
+            else if (self. index==1)
             {
                 self.arrayOfShow=self.arrayOfWaiting;
                 [table reloadData];
             }
-            else if (index==2)
+            else if (self. index==2)
             {
                 self.arrayOfShow=self.arrayOfServicing;
                 [table reloadData];
             }
-            else if (index==3)
+            else if (self. index==3)
             {
                 self.arrayOfShow=self.arrayOfComplete;
                 [table reloadData];
             }
-            else if (index==4)
+            else if (self. index==4)
             {
                 self.arrayOfShow=self.arrayOfCancel;
                 [table reloadData];
@@ -352,7 +352,7 @@
         }
         
         
-        if (btn.tag == index) {
+        if (btn.tag == self. index) {
             
             [btn setTitleColor:[HKCommen getColor:@"68beef"] forState:UIControlStateNormal];
             
@@ -705,7 +705,7 @@
     }
 }
 
--(void)CancelOrder:(UIButton*)button
+-(void)CancelOrder:(UIButton*)btn
 {
 //    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"取消订单" message:@"是否取消订单？" preferredStyle:UIAlertControllerStyleAlert];
 //    
@@ -738,10 +738,23 @@
                              type:SIAlertViewButtonTypeCancel
                           handler:^(SIAlertView *alertView) {
                               
-                              NSUInteger row=button.tag;
                               
-                              UITableView *table=[self.arrayOfTables objectAtIndex:0];
-                              OrderCell *cell=(OrderCell*)[table cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
+                              NSInteger tag = btn.tag;
+                              
+                              int tableNum = tag%10;
+                              
+                              int row = (tag/10) - 1;
+                              
+                              NSArray* arrayModels = [NSArray arrayWithObjects:self.arrayOfOrder,self.arrayOfWaiting ,self.arrayOfServicing,self.arrayOfComplete, self.arrayOfCancel,nil];
+                              
+                              NSArray* arrayModel = [arrayModels objectAtIndex:tableNum];
+                              
+                              NSDictionary *dict = [arrayModel objectAtIndex:row];
+                              
+                              
+                              UITableView* tableView = [self.arrayOfTables objectAtIndex:tableNum];
+                              
+                              OrderCell* cell = (OrderCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:1]];
                               
                               
                               
