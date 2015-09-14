@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #define star_1 @"Evaluation_1"
 #define star_0 @"Evaluation_0"
-#define star_half @"Evaluation_0.5"
+#define star_half @"Evaluation_2"
 
 
 @interface starView : UIView
