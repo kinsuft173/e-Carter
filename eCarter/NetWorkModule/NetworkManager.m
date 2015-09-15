@@ -2440,13 +2440,13 @@
         SBJsonParser *parser = [[SBJsonParser alloc] init];
         
         // parse the JSON string into an object - assuming json_string is a NSString of JSON data
-//        NSDictionary *object = [parser objectWithString:myString];
-        NSError *parseError = nil;
-        NSDictionary *xmlDictionary = [XMLReader dictionaryForXMLString:myString error:&parseError];
+        NSDictionary *object = [parser objectWithString:myString];
+//        NSError *parseError = nil;
+//        NSDictionary *xmlDictionary = [XMLReader dictionaryForXMLString:myString error:&parseError];
         // 打印 NSDictionary
-        NSLog(@"%@", xmlDictionary);
+//        NSLog(@"%@", xmlDictionary);
         
-        return [NSMutableDictionary dictionaryWithDictionary:xmlDictionary];
+        return [NSMutableDictionary dictionaryWithDictionary:object];
     }
 
     

@@ -164,7 +164,7 @@
         
         if ([response objectForKey:@"data"]) {
             
-            if ([[[response objectForKey:@"data"] objectForKey:@"version"] isEqualToString:@"v0.12"]) {
+            if ([[[response objectForKey:@"data"] objectForKey:@"version"] isEqualToString:@"v0.1"]) {
                 
                  [HKCommen addAlertViewWithTitel:@"已是最新版本"];
                 
