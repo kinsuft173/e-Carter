@@ -328,6 +328,9 @@
         }else{
             
             NSDictionary* dic = [self.arrayAdresses objectAtIndex:indexPath.row - 1];
+            UserAddress *userAddress =  [UserAddress objectWithKeyValues:dic];//[self.arrayOfAdress objectAtIndex:indexPath.row];
+            
+            
             
             if ([[dic class] isSubclassOfClass:[NSDictionary class]]) {
                 
@@ -344,7 +347,15 @@
                   strType = @"其他地址";
                 }
                 
-                cell.lblContent.text = [NSString  stringWithFormat:@"%@：%@%@%@",strType,[dic objectForKey:@"city"],[dic objectForKey:@"area"],[dic objectForKey:@"address"],[dic objectForKey:@"address"] ];
+                cell.lblContent.text = [NSString  stringWithFormat:@"%@：%@%@%@",strType,[dic objectForKey:@"city"],[dic objectForKey:@"area"],[dic objectForKey:@"address"]];
+                
+        if ([userAddress.province rangeOfString:@"天津"].length>0 || [userAddress.province rangeOfString:@"北京"].length>0 ||[userAddress.province rangeOfString:@"上海"].length>0 || [userAddress.province rangeOfString:@"重庆"].length>0) {
+                    
+                    
+                    cell.lblContent.text= [NSString stringWithFormat:@"%@：%@%@%@",strType,userAddress.province,userAddress.city,userAddress.address];
+                    
+                }
+                
             }
             
             if (self.indexPathAddress.row == indexPath.row && self.indexPathAddress.section == indexPath.section) {

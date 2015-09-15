@@ -10,7 +10,7 @@
 #define GSAPP_NewworkConfig_h
 
 
-#define SERVER     @"http://119.29.0.81:8087/ecf/app"
+#define SERVER     @"http://120.25.66.131/app"//@"http://119.29.0.81:8087/ecf/app"
 
 #define SERVER_CAR     @"http://apis.haoservice.com"
 
@@ -29,6 +29,7 @@ typedef void (^ErrorHandle)(NSError*);
 //用户部分
 #define ECATER_LOGIN_INTERFACE @"/ecar/mobile/code/login"
 #define ECATER_GENCODE_INTERFACE @"/ecar/mobile/genCode"
+#define ECATER_GENCODE_TRADE_INTERFACE @"/ecar/mobile/genPasswordCode"
 #define ECATER_REGISTER_INTERFACE @"/ecar/mobile/register"
 #define ECATER_LOGOUT_INTERFACE @"/ecar/mobile/logout"
 
@@ -50,7 +51,7 @@ typedef void (^ErrorHandle)(NSError*);
 #define ECATER_QUERY_ORDER_LIST_INTERFACE @"/ecar/mobile/queryOrderList"
 #define ECATER_QUERY_CANCEL_ORDER_INTERFACE @"/ecar/mobile/cancelOrder"
 #define ECATER_QUERY_ODERD_ETAIL_INTERFACE @"/ecar/mobile/queryOrderDetail"
-#define ECATER_QUERY_ODER_LOG_INTERFACE @"/ecar/mobile/tranRecord"
+#define ECATER_QUERY_ODER_LOG_INTERFACE  @"/ecar/mobile/tranRecord"  //@"/ecar/mobile/queryUserRecharge"//
 #define ECATER_UPDATE_ORDER_STATUS_INTERFACE @"/ecar/mobile/updateOrderStatus"
 #define ECATER_SUBMIT_ODERRE_VIEW_INTERFACE @"/ecar/mobile/submitOrderReviews"
 #define ECATER_USER_ACCOUNT_INTERFACE @"/ecar/mobile/queryUserAccount"
@@ -58,6 +59,7 @@ typedef void (^ErrorHandle)(NSError*);
 #define ECATER_SUBMIT_RECHARGEINO_INTERFACE @"/ecar/mobile/submitRechargeInfo"
 #define ECATER_QUERY_USER_CAR_INTERFACE @"/ecar/mobile/queryCustomerCar"
 #define ECATER_ADD_CAR_INTERFACE @"/ecar/mobile/addCar"
+#define ECATER_UPDATE_CAR_INTERFACE @"/ecar/mobile/updateCar"
 
 #define ECARTER_DELETE_ADRRESS @"/ecar/mobile/delUserAddress"
 #define ECATER_QUERY_USER_POINT @"/ecar/mobile/queryPoint"
@@ -80,7 +82,7 @@ typedef void (^ErrorHandle)(NSError*);
 
 #define ECATER_POINT_TRANSACTION_INTERFACE @"/ecar/mobile/queryPointTransaction"
 
-#define ECATER_USER_CONSUME_PASSWORD_INTERFACE @"/ecar/mobile/setUserPassword"
+#define ECATER_USER_CONSUME_PASSWORD_INTERFACE @"/ecar/mobile/setUserPasword"
 #define ECATER_QUERY_USER_COUPON @"/ecar/mobile/queryUserAndStoreCoupon"
 #define ECATER_QUERY_USER_COUPON_NOT @"/ecar/mobile/queryUserCoupon"
 
@@ -116,6 +118,8 @@ typedef void (^ErrorHandle)(NSError*);
 
 //#define ECATER_INFO_INTERFACE @""
 //#define ECATER_INFO_INTERFACE @""
+
+#define LOG_OUT @"/ecar/mobile/logout"
 
 
 #endif

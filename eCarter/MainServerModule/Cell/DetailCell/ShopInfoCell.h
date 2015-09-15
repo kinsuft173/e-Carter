@@ -21,5 +21,5 @@
 @property (strong, nonatomic) IBOutlet UILabel* lblAddress;
 @property (strong, nonatomic) IBOutlet UILabel* lblServerItems;
 
-
+@property (strong, nonatomic) IBOutlet UIButton* lblServing;
 @end

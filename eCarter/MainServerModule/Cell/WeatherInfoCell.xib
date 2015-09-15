@@ -21,7 +21,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNb-pe-ixO">
                                 <rect key="frame" x="10" y="12" width="300" height="78"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XLu-zJ-ieD">
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunny.png" translatesAutoresizingMaskIntoConstraints="NO" id="XLu-zJ-ieD">
                                         <rect key="frame" x="18" y="21" width="36" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="gG0-Ar-p2a"/>
@@ -98,5 +98,6 @@
     </objects>
     <resources>
         <image name="icon_unRight.png" width="21" height="21"/>
+        <image name="sunny.png" width="50" height="45"/>
     </resources>
 </document>

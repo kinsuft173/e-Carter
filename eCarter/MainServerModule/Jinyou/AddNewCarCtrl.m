@@ -21,6 +21,8 @@
 
 @interface AddNewCarCtrl ()<UITableViewDataSource,UITableViewDelegate,carSelect>
 
+@property BOOL isFirstLoad;
+
 @end
 
 @implementation AddNewCarCtrl
@@ -229,6 +231,53 @@ heightForHeaderInSection:(NSInteger)section
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (self.preCar) {
+        
+        if (self.isFirstLoad == YES) {
+            
+            return;
+            
+        }else{
+            
+            CarNumCell* cellCarNo = (CarNumCell*)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+            
+            cellCarNo.lblCarNo.text = [self.preCar.no substringToIndex:1];
+            
+            cellCarNo.textFiledCarNo.text = [self.preCar.no substringFromIndex:1];
+            
+            //车系
+            
+            SelectCarCell* cellSelectCar1 = (SelectCarCell*)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+            
+            cellSelectCar1.lbl_KindOfCar.text = self.preCar.brand;
+            
+            //排量
+            
+            SelectCarCell* cellSelectCar2 = (SelectCarCell*)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:1]];
+            
+            cellSelectCar2.lbl_KindOfCar.text = self.preCar.model;
+            
+            //颜色
+            
+            SelectCarCell* cellSelectCar3 = (SelectCarCell*)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:1]];
+            
+            cellSelectCar3.lbl_KindOfCar.text = self.preCar.color;
+            
+                    
+            self.isFirstLoad = YES;
+        
+        }
+        
+
+    }
+    
+
+}
+
 
 - (void)goCommit:(UIButton*)sender
 {
@@ -324,24 +373,53 @@ heightForHeaderInSection:(NSInteger)section
     [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
     [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
     
-    [[NetworkManager shareMgr] server_addCarWithDic:dic completeHandle:^(NSDictionary *response) {
+    if (self.preCar) {
         
+        [dic setObject:[NSString stringWithFormat:@"%d",self.preCar.id] forKey:@"id"];
         
-        
-        NSString* messege = [response objectForKey:@"message"];
-        
-        
-        if ([messege isEqualToString:@"OK"]) {
+        [[NetworkManager shareMgr] server_editCarWithDic:dic completeHandle:^(NSDictionary *response) {
             
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"changeCarOrAddress" object:nil];
-            [self.navigationController popViewControllerAnimated:YES];
             
-        }
+            NSString* messege = [response objectForKey:@"message"];
+            
+            
+            if ([messege isEqualToString:@"OK"]) {
+                
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"changeCarOrAddress" object:nil];
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            }
+            
+            hud.hidden = YES;
+            
+            
+        }];
         
-        hud.hidden = YES;
+    }else{
         
-    }];
+        [[NetworkManager shareMgr] server_addCarWithDic:dic completeHandle:^(NSDictionary *response) {
+            
+            
+            
+            NSString* messege = [response objectForKey:@"message"];
+            
+            
+            if ([messege isEqualToString:@"OK"]) {
+                
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"changeCarOrAddress" object:nil];
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            }
+            
+            hud.hidden = YES;
+        
+            
+        }];
+        
+    }
     
 }
 

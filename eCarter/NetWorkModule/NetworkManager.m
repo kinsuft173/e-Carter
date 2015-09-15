@@ -133,6 +133,49 @@
     
 }
 
+- (void)server_genTradeCodeWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer=[AFHTTPResponseSerializer serializer];
+    
+    //test
+    //NSDictionary *parameters = @{@"username": @"18672354399",@"password_hash":@"$2y$13$eD.OPcraVj8wMrADnMTPpeJVDzQTncvRClQcRDt2a0gRPRW4ZKWbC"};
+    
+    NSString* strInterface;
+    
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = ECATER_GENCODE_TRADE_INTERFACE;
+        
+    }
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (completeHandle) {
+            
+            
+            completeHandle(responseObject);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        //ErrorHandle(error);
+        
+        NSLog(@"错误: %@", error);
+        
+    }];
+    
+}
+
+
+
 - (void)server_setConsumePasswordWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -1225,6 +1268,8 @@
         
         //ErrorHandle(error);
         
+        completeHandle(nil);
+        
         NSLog(@"Error: %@", error);
         
         
@@ -1464,6 +1509,122 @@
     }else{
         
         strInterface = ECATER_ADD_CAR_INTERFACE;
+        
+    }
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (self.isTestMode) {
+            
+            NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"",@"message",[NSNumber numberWithInt:200000],@"status", nil];
+            
+            if (completeHandle) {
+                
+                completeHandle(dictionary);
+                
+            }
+            
+        }else{
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        //ErrorHandle(error);
+        
+        if (completeHandle) {
+            
+            completeHandle(nil);
+        }
+        
+        NSLog(@"Error: %@", error);
+        
+        
+    }];
+    
+}
+
+
+
+- (void)server_logOutWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    //test
+    //NSDictionary *parameters = @{@"username": @"18672354399",@"password_hash":@"$2y$13$eD.OPcraVj8wMrADnMTPpeJVDzQTncvRClQcRDt2a0gRPRW4ZKWbC"};
+    
+    NSString* strInterface;
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = LOG_OUT;
+        
+    }
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (self.isTestMode) {
+            
+            NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"",@"message",[NSNumber numberWithInt:200000],@"status", nil];
+            
+            if (completeHandle) {
+                
+                completeHandle(dictionary);
+                
+            }
+            
+        }else{
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        //ErrorHandle(error);
+        
+        if (completeHandle) {
+            
+            completeHandle(nil);
+        }
+        
+        NSLog(@"Error: %@", error);
+        
+        
+    }];
+    
+}
+
+
+
+- (void)server_editCarWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    //test
+    //NSDictionary *parameters = @{@"username": @"18672354399",@"password_hash":@"$2y$13$eD.OPcraVj8wMrADnMTPpeJVDzQTncvRClQcRDt2a0gRPRW4ZKWbC"};
+    
+    NSString* strInterface;
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = ECATER_UPDATE_CAR_INTERFACE;
         
     }
     
@@ -2094,49 +2255,49 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     
-//    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,VERSION_LAST] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        
-//        
-//        NSLog(@"JSON: %@", responseObject);
-//        
-//        if (completeHandle) {
-//            
-//            completeHandle(responseObject);
-//        }
-//        
-//        
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        
-//        if (completeHandle) {
-//            
-//            completeHandle(nil);
-//        }
-//        NSLog(@"Error: %@", error);
-//        
-//    }];
-    
-    NSString* strUrl = [NSString stringWithFormat:@"%@%@",SERVER,VERSION_LAST];
-    
-    NSMutableDictionary* dicNew =  [self server_BasePost:[[NSMutableDictionary alloc] init]  url:strUrl];
-    
-    NSLog(@"dicNew = %@",dicNew);
-    
-    if (dicNew) {
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,VERSION_LAST] parameters:dicMore success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-                if (completeHandle) {
         
-                    completeHandle(dicNew);
-                }
-    }else{
-    
+        NSLog(@"JSON: %@", responseObject);
+        
+        if (completeHandle) {
+            
+            completeHandle(responseObject);
+        }
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
         if (completeHandle) {
             
             completeHandle(nil);
         }
+        NSLog(@"Error: %@", error);
+        
+    }];
     
+    NSString* strUrl = [NSString stringWithFormat:@"%@%@",SERVER,VERSION_LAST];
     
-    }
-    
+//    NSMutableDictionary* dicNew =  [self server_BasePost:[[NSMutableDictionary alloc] init]  url:strUrl];
+//    
+//    NSLog(@"dicNew = %@",dicNew);
+//    
+//    if (dicNew) {
+//        
+//                if (completeHandle) {
+//        
+//                    completeHandle(dicNew);
+//                }
+//    }else{
+//    
+//        if (completeHandle) {
+//            
+//            completeHandle(nil);
+//        }
+//    
+//    
+//    }
+//    
 }
 
 #pragma mark - 天气页面

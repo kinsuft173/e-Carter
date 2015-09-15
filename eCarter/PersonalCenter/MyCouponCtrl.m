@@ -371,6 +371,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    if (!self.isCardSelected) {
+        
+        return;
+        
+    }
+    
     if (indexPath.section == self.indexCheck) {
         
         self.indexCheck = -1;
@@ -382,6 +388,8 @@
         self.indexCheck = indexPath.section;
         
         [self.tableView reloadData];
+        
+        [self back];
         
     }
 }

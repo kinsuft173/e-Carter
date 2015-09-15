@@ -113,4 +113,13 @@
 
 //更新版本
 - (void)server_fetchVersionWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+
+//更新车辆
+- (void)server_editCarWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+
+//退出登录
+- (void)server_logOutWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+
+//交易验证码
+- (void)server_genTradeCodeWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 @end

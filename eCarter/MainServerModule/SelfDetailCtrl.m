@@ -377,6 +377,24 @@
         cell.lblTimeStartAndEnd.text = [NSString stringWithFormat:@"营业时间:%@ - %@",self.shopDetail.startBusinessTime,self.shopDetail.endBusinessTime];
         [cell.star setStarForValue:[self.shopDetail.storeScore floatValue]];
         
+        NSDate* date = [NSDate date];
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+         formatter.dateFormat = @"HHmm";
+        NSString *time = [formatter stringFromDate:date];
+        
+        
+        if (time.integerValue > [self.shopDetail.startBusinessTime stringByReplacingOccurrencesOfString:@":" withString:@""].integerValue && time.integerValue < [self.shopDetail.endBusinessTime stringByReplacingOccurrencesOfString:@":" withString:@""].integerValue) {
+            
+            [cell.lblServing setTitle:@"营业中" forState:UIControlStateNormal];
+            
+        }else{
+        
+            [cell.lblServing setTitle:@"打烊了" forState:UIControlStateNormal];
+        
+        }
+        
+        
         NSString* strServerItems = @"";
         for (int i = 0; i < self.shopDetail.serviceItemList.count; i++ ) {
             

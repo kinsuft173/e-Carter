@@ -28,7 +28,23 @@
     item.titleView=title;
 }
 
-
++ (BOOL)isTime1:(NSString*)time1 BigThanTime2:(NSString*)time2
+{
+    
+    int hour1 = [time1 substringToIndex:2].intValue;
+    int min1 = [time1 substringFromIndex:3].intValue;
+    
+    int hour2 = [time2 substringToIndex:2].intValue;
+    int min2 = [time2  substringFromIndex:3].intValue;
+    
+    if (hour1 > hour2 || (hour1 == hour2 && min1 > min2 )) {
+        
+        return YES;
+    }
+    
+    
+    return NO;
+}
 
 
 

@@ -213,7 +213,6 @@
         }
         
         
-        
         NSUInteger row=(indexPath.row-1)/2;
         
         Car *car=[Car objectWithKeyValues:[self.arrayOfCar objectAtIndex:row]];
@@ -259,7 +258,6 @@
 //    [self presentViewController:alertController animated:YES completion:nil];
     
     
-    
     SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:nil andMessage:@"是否删除该车辆？"];
     [alertView addButtonWithTitle:@"确认"
                              type:SIAlertViewButtonTypeCancel
@@ -290,9 +288,6 @@
     
     [alertView show];
     
-
-
-
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -302,7 +297,19 @@
             AddNewCarCtrl *vc=[[AddNewCarCtrl alloc] initWithNibName:@"AddNewCarCtrl" bundle:nil];
             [self.navigationController pushViewController:vc animated:YES];
         }
+
+    else{
+    
+        Car *car=[Car objectWithKeyValues:[self.arrayOfCar objectAtIndex:(int)(indexPath.row/2)]];
+    
+        AddNewCarCtrl *vc=[[AddNewCarCtrl alloc] initWithNibName:@"AddNewCarCtrl" bundle:nil];
+        vc.preCar = car;
+        [self.navigationController pushViewController:vc animated:YES];
+    
     }
+    
+    
+}
 
 
 @end

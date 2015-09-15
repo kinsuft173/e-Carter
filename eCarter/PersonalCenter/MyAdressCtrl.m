@@ -190,8 +190,8 @@
         cell.lblAdressTitel.text= strType;//userAddress.type;
         cell.lblAdressContent.text= [NSString stringWithFormat:@"%@%@%@",userAddress.city,userAddress.area,userAddress.address];
         
-        
-        if ([userAddress.province containsString:@"天津"] || [userAddress.province containsString:@"北京"] ||[userAddress.province containsString:@"上海"] || [userAddress.province containsString:@"重庆"]) {
+       
+        if ([userAddress.province rangeOfString:@"天津"].length>0 || [userAddress.province rangeOfString:@"北京"].length>0 ||[userAddress.province rangeOfString:@"上海"].length>0 || [userAddress.province rangeOfString:@"重庆"].length>0) {
             
             
             cell.lblAdressContent.text= [NSString stringWithFormat:@"%@%@%@",userAddress.province,userAddress.city,userAddress.address];

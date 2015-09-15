@@ -11,6 +11,7 @@
 #import "HYActivityView.h"
 #import "NetworkManager.h"
 #import "SIAlertView.h"
+#import "UserDataManager.h"
 
 @interface SettingCtrl ()
 @property (nonatomic, strong) HYActivityView *activityView;
@@ -120,12 +121,20 @@
 
 -(void)loginOut
 {
+    NSMutableDictionary* dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.phone,@"phone", nil];
+    [[NetworkManager shareMgr] server_logOutWithDic:dic completeHandle:^(NSDictionary *response) {
+        
+        NSLog(@"退出登录response = %@",response);
+        
+    }];
+    
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setModel"];
     [ConsulationManager shareMgr].setModel = nil;
     [[NSUserDefaults standardUserDefaults] setObject:@"no" forKey:@"checkUser"];
     [self.navigationController popToRootViewControllerAnimated:NO];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:@"goLogin" object:nil];
+    
     return;
     
     //傻屌 面对对象是啥？
@@ -164,15 +173,15 @@
         
         if ([response objectForKey:@"data"]) {
             
-            if ([[[response objectForKey:@"data"] objectForKey:@"version"] isEqualToString:@"v0.1"]) {
+            if ([[[response objectForKey:@"data"] objectForKey:@"version"] isEqualToString:@"v0.2"]) {
                 
                  [HKCommen addAlertViewWithTitel:@"已是最新版本"];
                 
             }else{
             
-                NSString* messege = [NSString stringWithFormat:@"更新内容描述:/n%@",[[response objectForKey:@"data"] objectForKey:@"version"]];
+                NSString* messege = [NSString stringWithFormat:@"更新内容描述:\n%@",[[response objectForKey:@"data"] objectForKey:@"version"]];
             
-                SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%@%@",@"已经有新版本,是否升级?",[[response objectForKey:@"data"] objectForKey:@"version"]] andMessage:messege];
+                SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"已经有新版本%@,是否升级?",[[response objectForKey:@"data"] objectForKey:@"version"]] andMessage:messege];
                 [alertView addButtonWithTitle:@"确认"
                                          type:SIAlertViewButtonTypeCancel
                                       handler:^(SIAlertView *alertView) {

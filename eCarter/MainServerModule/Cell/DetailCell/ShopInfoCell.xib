@@ -151,6 +151,7 @@
                 <outlet property="lblAddress" destination="V6v-Bz-93m" id="Ki0-Br-tCh"/>
                 <outlet property="lblDistance" destination="tRx-it-Ctl" id="HEu-ai-m6v"/>
                 <outlet property="lblServerItems" destination="QTP-ge-Gua" id="S3n-69-5O5"/>
+                <outlet property="lblServing" destination="ht2-P2-cIq" id="MBv-SA-JkZ"/>
                 <outlet property="lblStoreName" destination="R2O-Pg-jzL" id="Hsc-lb-C5M"/>
                 <outlet property="lblStoreScore" destination="fwu-E9-Hpc" id="mKb-2a-umw"/>
                 <outlet property="lblTimeStartAndEnd" destination="l1F-M4-y5F" id="y8T-gW-qCL"/>

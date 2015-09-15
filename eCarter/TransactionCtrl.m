@@ -199,7 +199,7 @@
         return;
     }
     
-    self.numCount=10;
+    self.numCount=60;
     self.count_Timer=[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(CountTime) userInfo:nil repeats:YES];
     [self.btn_sendCode setBackgroundColor:[UIColor lightGrayColor]];
     [self.btn_sendCode setTitle:@"" forState:UIControlStateNormal];
@@ -209,16 +209,37 @@
     [dic setObject:self.txt_phone.text forKey:@"phone"];
     
     
-    [[NetworkManager shareMgr] server_genCodeWithDic:dic completeHandle:^(NSDictionary *response) {
+    if ([self.judgeLoginOrPassword isEqualToString:@"password"])
+    {
+        
+        [[NetworkManager shareMgr] server_genTradeCodeWithDic:dic completeHandle:^(NSDictionary *response) {
+            
+            
+            NSData *doubi = response;
+            
+            self.code =  [[NSString alloc]initWithData:doubi encoding:NSUTF8StringEncoding];
+            
+            NSLog(@"验证码字典：%@",self.code);
+           // self.txt_code.text = self.code;
+        }];
         
         
-        NSData *doubi = response;
-        
-        self.code =  [[NSString alloc]initWithData:doubi encoding:NSUTF8StringEncoding];
-        
-        NSLog(@"验证码字典：%@",self.code);
-        self.txt_code.text = self.code;
-    }];
+    }else{
+    
+        [[NetworkManager shareMgr] server_genCodeWithDic:dic completeHandle:^(NSDictionary *response) {
+            
+            
+            NSData *doubi = response;
+            
+            self.code =  [[NSString alloc]initWithData:doubi encoding:NSUTF8StringEncoding];
+            
+            NSLog(@"验证码字典：%@",self.code);
+           // self.txt_code.text = self.code;
+        }];
+    
+    }
+    
+
     
     
     /*

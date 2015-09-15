@@ -66,6 +66,15 @@
         self.navigationItem.leftBarButtonItem=leftItem;
     }
     
+    [self getModel];
+    
+   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getModel) name:@"money" object:nil];
+
+
+}
+
+- (void)getModel
+{
     NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId", nil];
     
     [[NetworkManager shareMgr] server_queryUserAccountWithDic:dic completeHandle:^(NSDictionary *response) {
@@ -78,9 +87,8 @@
             
         }
         
-
+        
     }];
-
 
 }
 

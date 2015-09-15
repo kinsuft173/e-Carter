@@ -151,7 +151,7 @@
     }];
     
     NSMutableDictionary *dicWeather=[[NSMutableDictionary alloc]init];
-    [dicWeather setObject:@"b1eafb160cd446e7ba507cce535db63b" forKey:@"key"];
+    [dicWeather setObject:@"4e0670a39b0b460eaaf7ea415d87e5e6" forKey:@"key"];
     [dicWeather setObject:[UserDataManager shareManager].city forKey:@"cityname"];
     
     [[NetworkManager shareMgr] server_fetchWeatherWithDic:dicWeather completeHandle:^(NSDictionary *responseBanner) {
@@ -255,6 +255,7 @@
         
         NSString *weather=self.dic_weather[@"weather"];
         
+        
         cell.lbl_weather.text = weather;
         cell.lbl_temperature.text = [NSString stringWithFormat:@"%@℃",self.dic_weather[@"temperature"]];
         
@@ -276,7 +277,7 @@
         }
         else
         {
-        [cell.imgChuqing setImage:[UIImage imageNamed:@"icon_unRight"]];
+            [cell.imgChuqing setImage:[UIImage imageNamed:@"icon_unRight"]];
         }
         
         return cell;

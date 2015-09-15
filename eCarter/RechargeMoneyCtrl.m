@@ -45,13 +45,26 @@
     AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
     appDelegate.payCtrl  = nil;
     appDelegate.reCtrl = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getModel) name:@"money" object:nil];
 
-    self.lbl_balance.text=self.balance;
+    if (self.balance) {
+        
+        self.lbl_balance.text = self.balance;
+    }
+    
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
     [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
     [leftButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton ];
+    
+    if (self.balance == nil) {
+        
+        [self getModel];
+        
+        
+    }
     
     
     
@@ -65,6 +78,39 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+}
+
+
+- (void)getModel
+{
+;
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setValue:[UserDataManager shareManager].userLoginInfo.user.uid forKey:@"customerId"];
+    //    [dic setValue:@"1" forKey:@"accountType"];
+    
+    NSLog(@"账户字典：%@",dic);
+    
+    [[NetworkManager shareMgr] server_queryUserAccountWithDic:dic completeHandle:^(NSDictionary *response) {
+        
+        if (response) {
+            
+            NSLog(@"账户信息：%@",response);
+            
+            self.balance = [NSString stringWithFormat:@"%@",[response objectForKey:@"data"]] ;
+//
+            self.lbl_balance.text = self.balance;
+            
+        }else{
+        
+            [HKCommen addAlertViewWithTitel:@"获取账户信息失败"];
+        
+        }
+        
+        
+    }];
+
+
 }
 
 -(void)back
@@ -262,13 +308,13 @@
             
             if (resultStatus.integerValue == 9000) {
                 
-//                [[NetworkManager shareMgr] server_aliRechargeNotify:self.tranId withDic:[NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",self.txt_amount.text,@"amount" ,nil] completeHandle:^(NSDictionary *response) {
-//                    
-//                    //                [self paySucceed];
-//                    
-//                    NSLog(@"支付宝充值支付的回调,%@",response);
-//                    
-//                }];
+                [[NetworkManager shareMgr] server_aliRechargeNotify:self.tranId withDic:[NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",self.txt_amount.text,@"amount" ,nil] completeHandle:^(NSDictionary *response) {
+                    
+                    //                [self paySucceed];
+                    
+                    NSLog(@"支付宝充值支付的回调,%@",response);
+                    
+                }];
                 
                 [self paySucceed];
                 
@@ -310,7 +356,9 @@
 
 - (void)paySucceed
 {
-
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"money" object:nil];
+    
     ReChargeSuccessCtrl *vc=[[ReChargeSuccessCtrl alloc] initWithNibName:@"ReChargeSuccessCtrl" bundle:nil];
     vc.judgeRefillOrGetReal=@"refill";
     
@@ -424,13 +472,13 @@
         
         if (response.errCode == WXSuccess) {
             
-//            [[NetworkManager shareMgr] server_wxRechargeNotify:self.tranId withDic:[NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",self.txt_amount.text,@"amount" ,nil] completeHandle:^(NSDictionary *response) {
-//                
-//      
-//                
-//                NSLog(@"微信充值支付的回调,%@",response);
-//                
-//            }];
+            [[NetworkManager shareMgr] server_wxRechargeNotify:self.tranId withDic:[NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",self.txt_amount.text,@"amount" ,nil] completeHandle:^(NSDictionary *response) {
+                
+      
+                
+                NSLog(@"微信充值支付的回调,%@",response);
+                
+            }];
             
             [self paySucceed];
             

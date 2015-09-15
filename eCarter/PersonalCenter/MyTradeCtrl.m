@@ -83,6 +83,7 @@
         
         if (self.arrayOfTrade.count%10 != 0) {
             
+            [self.tableView.footer endRefreshing];
             return ;
         }
         

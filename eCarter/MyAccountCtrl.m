@@ -69,6 +69,8 @@
     
     
     [self setLine];
+    
+    
 }
 
 - (IBAction)selectBOT:(UIButton *)sender {

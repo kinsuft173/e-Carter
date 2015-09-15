@@ -9,6 +9,8 @@
 #import "BalanceMoneyCtrl.h"
 #import "NetworkManager.h"
 #import "UserDataManager.h"
+#import "SIAlertView.h"
+#import "RechargeMoneyCtrl.h"
 
 @interface BalanceMoneyCtrl ()
 
@@ -71,7 +73,40 @@
     
     if (self.BalanceMoney < self.strTotalMount.floatValue) {
         
-        [HKCommen addAlertViewWithTitel:@"余额不足"];
+        SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:nil andMessage:@"余额不足,是否去充值？"];
+        [alertView addButtonWithTitle:@"确认"
+                                 type:SIAlertViewButtonTypeCancel
+                              handler:^(SIAlertView *alertView) {
+                                 
+                                  RechargeMoneyCtrl *chargeCtrl=[[RechargeMoneyCtrl alloc] initWithNibName:@"RechargeMoneyCtrl" bundle:nil];
+                                 // chargeCtrl.balance=self.stringOfCount;
+                                  [self.navigationController pushViewController:chargeCtrl animated:YES];
+                                  
+                                 
+                              }];
+        [alertView addButtonWithTitle:@"取消"
+                                 type:SIAlertViewButtonTypeDefault
+                              handler:^(SIAlertView *alertView) {
+                                  
+                              }];
+        alertView.transitionStyle = SIAlertViewTransitionStyleDropDown;
+        alertView.backgroundStyle = SIAlertViewBackgroundStyleSolid;
+        
+        alertView.willShowHandler = ^(SIAlertView *alertView) {
+            NSLog(@"%@, willShowHandler3", alertView);
+        };
+        alertView.didShowHandler = ^(SIAlertView *alertView) {
+            NSLog(@"%@, didShowHandler3", alertView);
+        };
+        alertView.willDismissHandler = ^(SIAlertView *alertView) {
+            NSLog(@"%@, willDismissHandler3", alertView);
+        };
+        alertView.didDismissHandler = ^(SIAlertView *alertView) {
+            NSLog(@"%@, didDismissHandler3", alertView);
+        };
+        
+        [alertView show];
+
         
         return;
         

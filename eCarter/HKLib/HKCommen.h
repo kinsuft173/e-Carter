@@ -47,4 +47,6 @@
 //提醒
 + (void)addAlertViewWithTitel:(NSString*)titel;
 
++ (BOOL)isTime1:(NSString*)time1 BigThanTime2:(NSString*)time2;
+
 @end

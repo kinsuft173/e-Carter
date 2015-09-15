@@ -49,6 +49,8 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+    
+   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getModel) name:@"money" object:nil];    
 }
 
 - (void)getModel
@@ -56,13 +58,14 @@
     self.userData= [UserDataManager shareManager].userLoginInfo;
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
-    [dic setValue:self.userData.user.uid forKey:@"userId"];
+    [dic setValue:self.userData.user.uid forKey:@"customerId"];
+//    [dic setValue:@"1" forKey:@"accountType"];
     
     NSLog(@"账户字典：%@",dic);
     
     [[NetworkManager shareMgr] server_queryUserAccountWithDic:dic completeHandle:^(NSDictionary *response) {
         
-        NSLog(@"字典：%@",response);
+        NSLog(@"账户信息：%@",response);
         
         self.stringOfCount=[NSString stringWithFormat:@"%@元",[response objectForKey:@"data"]];
   
