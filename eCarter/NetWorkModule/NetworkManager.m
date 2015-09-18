@@ -1223,6 +1223,7 @@
 }
 
 - (void)server_queryUserAccountWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
@@ -2463,7 +2464,11 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 
         NSLog(@"Error: %@", error);
-        
+        if (completeHandle) {
+            
+            completeHandle(nil);
+        }
+
         
     }];
     
@@ -2514,7 +2519,10 @@
         
         NSLog(@"Error: %@", error);
         
-        
+        if (completeHandle) {
+            
+            completeHandle(nil);
+        }
         
         
     }];
@@ -2824,7 +2832,7 @@
 }
 
 
-- (void)server_etraPayWithOrderId:(NSString*)orderId completeHandle:(CompleteHandle)completeHandle
+- (void)server_etraPayWithOrderId:(NSString*)orderId withPassword:(NSString*)psd  completeHandle:(CompleteHandle)completeHandle
 {
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -2843,7 +2851,57 @@
         
     }
     
-    [manager POST:[NSString stringWithFormat:@"%@%@%@",SERVER,strInterface,orderId] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:orderId,@"orderId",psd,@"password", nil];
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@%@",SERVER,strInterface,orderId] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (self.isTestMode) {
+            
+            NSDictionary *dictionary = [FakeDataMgr shareMgr].responseLogin;
+            
+            if (completeHandle) {
+                
+                completeHandle(dictionary);
+                
+            }
+            
+        }else{
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Error: %@", error);
+        completeHandle(nil);
+        
+    }];
+
+}
+
+- (void)server_fetchSystemParamsWithcompleteHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    NSString* strInterface;
+    
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = RECHARGE_GET_SYSTEMPARAMS;
+        
+    }
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (self.isTestMode) {
             

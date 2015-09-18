@@ -218,6 +218,10 @@
                  
              }
              
+             self.strProvince = placemark.administrativeArea;
+             
+            NSLog(@"省份信息%@",self.strProvince);
+             
              self.strCity = city;
              
          }

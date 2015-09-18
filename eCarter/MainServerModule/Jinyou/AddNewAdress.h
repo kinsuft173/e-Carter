@@ -16,6 +16,7 @@
 @property (strong,nonatomic)NSString *province;
 @property (strong,nonatomic)NSString *city;
 @property (strong,nonatomic)NSString *place;
+@property (strong,nonatomic)NSString *details;
 @property (strong,nonatomic)NSString *type;
 
 @property (weak, nonatomic) IBOutlet UILabel *lbl_Alert;

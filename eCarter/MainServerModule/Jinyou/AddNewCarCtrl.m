@@ -17,11 +17,17 @@
 #import "UserDataManager.h"
 #import "NetworkManager.h"
 #import "SelectProvinceCtrl.h"
+#import "HKMapManager.h"
 
 
 @interface AddNewCarCtrl ()<UITableViewDataSource,UITableViewDelegate,carSelect>
 
 @property BOOL isFirstLoad;
+
+@property (nonatomic, strong) NSArray* arrayOfProvince;
+@property (nonatomic, strong) NSArray* arrayOfProvinceFullName;
+
+@property int  index;
 
 @end
 
@@ -31,9 +37,36 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [HKCommen addHeadTitle:@"新增车辆" whichNavigation:self.navigationItem];
+    self.arrayOfProvince=[NSArray arrayWithObjects:@"京",@"津",@"冀",@"晋",@"蒙",@"辽",@"吉",@"黑",@"沪",@"苏",@"浙",@"皖",@"闽",@"赣",@"鲁",@"豫",@"鄂",@"湘",@"粤",@"桂",@"琼",@"渝",@"川",@"黔",@"滇",@"藏",@"陕",@"甘",@"青",@"宁",@"新",@"港",@"澳",@"台", nil];
+    
+    self.arrayOfProvinceFullName=[NSArray arrayWithObjects:@"北京市",@"天津市",@"河北省",@"山西省",@"内蒙古自治区",@"辽宁省",@"吉林省",@"黑龙江省",@"上海市",@"江苏省",@"浙江省",@"安徽省",@"福建省",@"江西省",@"山东省",@"河南省",@"湖北省",@"湖南省",@"广东省",@"广西壮族自治区",@"海南省",@"重庆市",@"四川省",@"贵州省",@"云南省",@"西藏自治区",@"陕西省",@"甘肃省",@"青海省",@"宁夏回族自治区",@"新疆维吾尔自治区",@"香港特别行政区",@"澳门特别行政区",@"台湾省", nil];
+    
+    self.index = 0;
+    
+    for (int i = 0; i < self.arrayOfProvinceFullName.count; i ++) {
+        
+        NSString* str = [self.arrayOfProvinceFullName objectAtIndex:i];
+        
+        if ([str isEqualToString:[HKMapManager shareMgr].strProvince]) {
+            
+            _index = i;
+            
+            break;
+            
+        }
+        
+    }
+    
+    NSString* strTitel = @"新增车辆";
+    
+    if (self.preCar) {
+        
+        strTitel = @"编辑车辆";
+    }
+    
+    [HKCommen addHeadTitle:strTitel whichNavigation:self.navigationItem];
     [HKCommen setExtraCellLineHidden:self.myTable];
-    self.arrayOfCar=[NSArray arrayWithObjects:@"请选择品牌／车系",@"选择车款／排量系",@"请选择颜色", nil];
+    self.arrayOfCar=[NSArray arrayWithObjects:@"请选择品牌／车系",@"请选择年款／排量",@"请选择颜色", nil];
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
     [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
@@ -120,6 +153,7 @@
         if (!cell) {
             
             cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
+            
             
         }
         [cell.btn_selectProvince addTarget:self action:@selector(goSelectProvince) forControlEvents:UIControlEventTouchUpInside];
@@ -235,6 +269,17 @@ heightForHeaderInSection:(NSInteger)section
 {
     [super viewDidAppear:animated];
     
+    if(self.index > -1){
+        
+        CarNumCell* cellCarNo = (CarNumCell*)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        
+        cellCarNo.lblCarNo.text = [self.arrayOfProvince objectAtIndex:self.index];
+        
+        self.index = -2;
+        
+    }
+    
+    
     if (self.preCar) {
         
         if (self.isFirstLoad == YES) {
@@ -267,13 +312,20 @@ heightForHeaderInSection:(NSInteger)section
             
             cellSelectCar3.lbl_KindOfCar.text = self.preCar.color;
             
-                    
+            
+           //发动机号
+            CarDetailCell* cellCarDetail = (CarDetailCell*)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
+            
+            cellCarDetail.textFiledFadongji.text = self.preCar.engineNo;
+            cellCarDetail.textFiledChejia.text = self.preCar.frameNo;
+            
             self.isFirstLoad = YES;
         
         }
         
 
     }
+    
     
 
 }
@@ -335,9 +387,32 @@ heightForHeaderInSection:(NSInteger)section
         [HKCommen addAlertViewWithTitel:@"请选择颜色"];
         
         return;
+        
     }
     
-//    }else if (![HKCommen validateSixNumber:strFadongji]){
+    if (!([strFadongji isEqualToString:@""] || [strFadongji isEqualToString:@"发动机后六位"] || strFadongji == nil )) {
+        
+        if (![HKCommen validateSixNumber:strFadongji]) {
+            
+            [HKCommen addAlertViewWithTitel:@"格式不正确,请输入发动机号后六位"];
+
+            
+        }
+        
+    }
+    
+    if (!([strChejia isEqualToString:@""] || [strChejia isEqualToString:@"车架号的后六位"] || strChejia == nil )) {
+        
+        if (![HKCommen validateSixNumber:strFadongji]) {
+            
+            [HKCommen addAlertViewWithTitel:@"格式不正确,请输入车架号的后六位"];
+            
+            
+        }
+        
+    }
+    
+//    else if (![HKCommen validateSixNumber:strFadongji]){
 //    
 //        [HKCommen addAlertViewWithTitel:@"请输入发动机号后六位"];
 //        
@@ -352,7 +427,7 @@ heightForHeaderInSection:(NSInteger)section
 //        
 //        
 //    }
-    
+
     
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -364,10 +439,21 @@ heightForHeaderInSection:(NSInteger)section
     [dic setObject:[NSString stringWithFormat:@"%@%@",cellCarNo.lblCarNo.text,cellCarNo.textFiledCarNo.text] forKey:@"no"];
     [dic setObject:strSelectCar1 forKey:@"brand"];
     [dic setObject:strSelectCar2 forKey:@"model"];
-    [dic setObject:@"2014" forKey:@"year"];
+    [dic setObject:@" " forKey:@"year"];
      [dic setObject:strSelectCar3 forKey:@"color"];
      [dic setObject:strSelectCar2 forKey:@"volume"];
     
+    if (!([strFadongji isEqualToString:@""] || [strFadongji isEqualToString:@"发动机后六位"] || strFadongji == nil )) {
+        
+        [dic setObject:strFadongji forKey:@"engineNo"];
+        
+    }
+    
+    if (!([strChejia isEqualToString:@""] || [strChejia isEqualToString:@"车架号的后六位"] || strChejia == nil )) {
+        
+
+        [dic setObject:strChejia forKey:@"frameNo"];
+    }
 
     
     [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
@@ -458,6 +544,7 @@ heightForHeaderInSection:(NSInteger)section
     if ([dic objectForKey:@"name"]) {
         
         cellSelectCar1.lbl_KindOfCar.text = [dic objectForKey:@"name"];
+        cellSelectCar2.lbl_KindOfCar.text = [self.arrayOfCar objectAtIndex:1];
         
         NSLog(@"收到的ID是:%@",[dic objectForKey:@"Id"]);
         self.carId=[dic objectForKey:@"Id"];

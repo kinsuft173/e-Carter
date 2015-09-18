@@ -505,6 +505,8 @@ const NSString *NavigationViewControllerDestinationTitle = @"终点";
     [HKMapManager shareMgr].address = response.regeocode.formattedAddress;
     
     [HKMapManager shareMgr].regeocode = response.regeocode;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReGeocode" object:[HKMapManager shareMgr].address];
    
     
 }
@@ -545,8 +547,14 @@ const NSString *NavigationViewControllerDestinationTitle = @"终点";
     {
         AMapReGeocodeSearchRequest *request = [[AMapReGeocodeSearchRequest alloc] init];
         
-        request.location = [AMapGeoPoint locationWithLatitude:_currentLocation.coordinate.latitude longitude:_currentLocation.coordinate.longitude];
+        if (_destinationPoint) {
+            
+            request.location = [AMapGeoPoint locationWithLatitude: _destinationPoint.coordinate.latitude longitude: _destinationPoint.coordinate.longitude];
+           
+        }else{
         
+            request.location = [AMapGeoPoint locationWithLatitude:_currentLocation.coordinate.latitude longitude:_currentLocation.coordinate.longitude];
+        }
         
         [_search AMapReGoecodeSearch:request];
     }

@@ -204,8 +204,8 @@
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
     [dic setValue:self.userLoginInfo.user.phone forKey:@"phone"];
     [dic setValue:self.userLoginInfo.sessionId forKey:@"sessionId"];
-    [dic setValue:[NSString stringWithFormat:@"%d",self.arrayAllOrder.count/10 + 1] forKey:@"pageNum"];
-    [dic setValue:@"10" forKey:@"pageSize"];
+    [dic setValue:[NSString stringWithFormat:@"%d",self.arrayAllOrder.count/20 + 1] forKey:@"pageNum"];
+    [dic setValue:@"20" forKey:@"pageSize"];
     
     NSLog(@"上传字典:%@",dic);
     
@@ -665,7 +665,10 @@
         cell.lblServiceContent.text=[dict objectForKey:@"items"];
         cell.lblCarNum.text=[dict objectForKey:@"carnum"];
         
-        cell.lblCheap.text=[NSString stringWithFormat:@"优惠劵:￥%@",[dict objectForKey:@"pointCost"]];
+        
+        NSString* price = [NSString stringWithFormat:@"已优惠:￥%.2f",([[dict objectForKey:@"amount"] floatValue] - [[dict objectForKey:@"pay"] floatValue])];
+        
+        cell.lblCheap.text= price;//[NSString stringWithFormat:@"优惠:￥%@",[dict objectForKey:@"pointCost"]];
         
         cell.lblPayment.text=[NSString stringWithFormat:@"实付款:￥%@",[dict objectForKey:@"pay"]];
         

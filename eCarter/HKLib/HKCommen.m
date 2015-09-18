@@ -136,12 +136,12 @@
 
 +(BOOL) validateSixNumber:(NSString*)carNo
 {
-//    NSString *carRegex = @"^\\d{n}$";
-//    NSPredicate *carTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",carRegex];
-//    NSLog(@"carTest is %@",carTest);
-//    return [carTest evaluateWithObject:carNo];
+    NSString *carRegex = @"^\\d{6}$";
+    NSPredicate *carTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",carRegex];
+    NSLog(@"carTest is %@",carTest);
+    return [carTest evaluateWithObject:carNo];
     
-    return YES;
+//    return YES;
 }
 
 

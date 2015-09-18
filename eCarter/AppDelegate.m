@@ -61,11 +61,18 @@
 - (void)getCounpon
 {
     if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"checkUser"] isEqualToString:@"yes"]) {
+        
         NSLog(@"用户没登陆");
         return;
+        
+    }else{
+    
+    
+        [[ConsulationManager shareMgr] getMycounPonModel];   
+    
     }
     
-    [[ConsulationManager shareMgr] getMycounPonModel];
+ 
 
 }
 

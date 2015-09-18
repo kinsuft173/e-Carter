@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -60,6 +60,50 @@
                 <outlet property="lblText" destination="x0M-t6-a0e" id="JRI-DV-Yhj"/>
             </connections>
             <point key="canvasLocation" x="332.5" y="297"/>
+        </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="284" id="68y-gW-rNC" customClass="PlaceHolderCell">
+            <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="68y-gW-rNC" id="a3U-ZM-Jw1">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无数据" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndz-Hp-Gpo">
+                        <rect key="frame" x="0.0" y="14" width="320" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="HUw-c9-D4x"/>
+                            <constraint firstAttribute="height" constant="15" id="f01-11-9MM"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="HUw-c9-D4x"/>
+                            </mask>
+                        </variation>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Ndz-Hp-Gpo" firstAttribute="trailing" secondItem="a3U-ZM-Jw1" secondAttribute="trailingMargin" constant="1" id="Dng-n8-iPA"/>
+                    <constraint firstItem="Ndz-Hp-Gpo" firstAttribute="leading" secondItem="a3U-ZM-Jw1" secondAttribute="leadingMargin" constant="-1" id="SQu-Pt-nkk"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Ndz-Hp-Gpo" secondAttribute="bottom" constant="6" id="Vwh-3e-eH8"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Ndz-Hp-Gpo" secondAttribute="trailing" constant="7" id="b2q-FA-pf1"/>
+                    <constraint firstItem="Ndz-Hp-Gpo" firstAttribute="top" secondItem="a3U-ZM-Jw1" secondAttribute="topMargin" constant="6" id="fM1-N5-S6p"/>
+                    <constraint firstItem="Ndz-Hp-Gpo" firstAttribute="leading" secondItem="a3U-ZM-Jw1" secondAttribute="leadingMargin" constant="-8" id="yt0-HO-Fji"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="Dng-n8-iPA"/>
+                        <exclude reference="SQu-Pt-nkk"/>
+                        <exclude reference="Vwh-3e-eH8"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lblText" destination="Ndz-Hp-Gpo" id="MAE-E4-lh4"/>
+            </connections>
+            <point key="canvasLocation" x="469.5" y="644"/>
         </tableViewCell>
     </objects>
 </document>

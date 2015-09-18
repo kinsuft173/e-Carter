@@ -42,6 +42,7 @@
         [HKMapManager shareMgr].city = self.preUserAdress.city;
         [HKMapManager shareMgr].place = self.preUserAdress.area;
         [HKMapManager shareMgr].adressType = self.preUserAdress.type;
+        [HKMapManager shareMgr].detail = self.preUserAdress.address;
         
     }
     
@@ -80,8 +81,9 @@
     }
     self.lbl_AdressOfSelect.text=@"请选择城市";
     
-//     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(getAdress:) name:@"selectAdress" object:nil];
-
+     [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(fetchAddress) name:@"ReGeocode" object:nil];
+    
+    
 }
 
 -(void)getAdress:(NSNotification*)notify
@@ -122,6 +124,14 @@
 {
     [super viewWillAppear:animated];
     
+
+    [self fetchAddress];
+
+}
+
+- (void)fetchAddress
+{
+
     if ([HKMapManager shareMgr].address) {
         
         self.lbl_AdressOfSelect.text =  [NSString stringWithFormat:@"%@%@%@",[HKMapManager shareMgr].regeocode.addressComponent.province,[HKMapManager shareMgr].regeocode.addressComponent.city,[HKMapManager shareMgr].regeocode.addressComponent.district];//[HKMapManager shareMgr].address;
@@ -142,12 +152,17 @@
         self.province = [HKMapManager shareMgr].province;
         self.city = [HKMapManager shareMgr].city;
         self.place = [HKMapManager shareMgr].place;
+    
         
         self.lbl_AdressOfSelect.text =  [NSString stringWithFormat:@"%@%@%@",self.province,self.city ,self.place];
+        self.txt_AdressDetail.text = [HKMapManager shareMgr].detail;
+        
+        self.lbl_placeHolder.text = @"";
         
         [HKMapManager shareMgr].province = nil;
         [HKMapManager shareMgr].city = nil;
         [HKMapManager shareMgr].place = nil;
+        [HKMapManager shareMgr].detail = nil;
     }
     
     if ([[HKMapManager shareMgr].adressType isEqualToString:@"1"]) {
@@ -166,7 +181,6 @@
         self.lbl_homeType.text = @"其他地址";
         
     }
-
 
 }
 

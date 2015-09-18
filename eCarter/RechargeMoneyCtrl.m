@@ -21,16 +21,20 @@
 
 #import "PaymentRequest.h"
 
-@interface RechargeMoneyCtrl ()
+@interface RechargeMoneyCtrl ()<UITextFieldDelegate>
 
 @property BOOL isWx;
 
 @property (nonatomic, strong) IBOutlet UIButton* btnWx;
 @property (nonatomic, strong) IBOutlet UIButton* btnAli;
+@property (nonatomic, strong) IBOutlet UILabel* lbl_discount;
 
 @property NSString* tranId;
 
 @property (nonatomic, strong) PaymentRequest* paymentRequest;
+
+@property CGFloat integralDiscount;
+@property CGFloat rechargeCoupon;
 
 @end
 
@@ -45,6 +49,9 @@
     AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
     appDelegate.payCtrl  = nil;
     appDelegate.reCtrl = self;
+    
+    self.integralDiscount = 1.0;
+    self.rechargeCoupon = 1.0;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getModel) name:@"money" object:nil];
 
@@ -78,6 +85,70 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+    
+    [self fetchDiscount];
+    
+//    [self.lbl_discount addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
+    
+    [self.txt_amount addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
+    
+}
+
+//-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+//{
+//    if([keyPath isEqualToString:@"text"])
+//    {
+//        NSLog(@"KVOP");
+//    
+//        self.lbl_discount.text = [NSString stringWithFormat:@"优惠价：¥%.2f",[self.txt_amount.text floatValue]*self.integralDiscount];
+//    
+//    }
+//}
+
+- (void)textFieldChanged:(id)sender
+{
+    self.lbl_discount.text = [NSString stringWithFormat:@"优惠价：¥%.2f",[self.txt_amount.text floatValue]*self.integralDiscount];
+
+
+}
+
+- (void)fetchDiscount
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"正在加载...";
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setValue:[UserDataManager shareManager].userLoginInfo.user.uid forKey:@"customerId"];
+    //    [dic setValue:@"1" forKey:@"accountType"];
+    
+    NSLog(@"账户字典：%@",dic);
+    
+    [[NetworkManager shareMgr] server_fetchSystemParamsWithcompleteHandle:^(NSDictionary *response) {
+        
+        if (response) {
+            
+            NSLog(@"系统信息：%@",response);
+            
+            NSDictionary* dic = [response objectForKey:@"data"] ;
+           
+            NSNumber* number1 = dic[@"integralDiscount"];
+            NSNumber* number2 = dic[@"rechargeCoupon"];
+            
+            self.integralDiscount = number1.floatValue;
+            self.rechargeCoupon = number2.floatValue;
+            
+            
+            
+        }else{
+            
+            [HKCommen addAlertViewWithTitel:@"获取账户信息失败"];
+            
+        }
+        
+        hud.hidden = YES;
+    }];
+
 }
 
 
@@ -139,7 +210,7 @@
         hud.labelText = @"正在加载";
         
         
-        NSDictionary* dicNew = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",@"0.01",@"amount" ,nil];
+        NSDictionary* dicNew = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",self.txt_amount.text,@"amount" ,nil];
         
         
         
@@ -273,8 +344,8 @@
     
     order.productDescription = @"test";
     
-    
-    order.amount = @"0.01";//self.txt_amount.text;//[NSString stringWithFormat:self.txt_amount.text];
+         NSString* price = [NSString stringWithFormat:@"%.2f",[self.txt_amount.text floatValue]*self.integralDiscount];
+    order.amount = price;//self.txt_amount.text;//[NSString stringWithFormat:self.txt_amount.text];
     
     
     order.service = @"mobile.securitypay.pay";
@@ -402,7 +473,9 @@
     //        });
     //    });
     
-    NSDictionary* dicNew = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",@"0.01",@"amount" ,nil];
+            NSString* price = [NSString stringWithFormat:@"%.2f",[self.txt_amount.text floatValue]*self.integralDiscount];
+    
+    NSDictionary* dicNew = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",price,@"amount" ,nil];
     
 
     
@@ -493,6 +566,14 @@
         
     }
 }
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+
+
+}
+
+
 
 
 

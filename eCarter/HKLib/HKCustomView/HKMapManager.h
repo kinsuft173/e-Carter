@@ -15,12 +15,14 @@
 @property (nonatomic, strong) NSString* address;
 @property (nonatomic, strong) CLLocation* currentLocation;
 @property (nonatomic, strong) NSString* strCity;
+@property (nonatomic, strong) NSString* strProvince;
 @property (nonatomic, strong) NSString* userCurrentLongitude;
 @property (nonatomic, strong) NSString* userCurrentLatitude;
 
 @property (strong,nonatomic)NSString *province;
 @property (strong,nonatomic)NSString *city;
 @property (strong,nonatomic)NSString *place;
+@property (strong,nonatomic)NSString *detail;
 @property (strong,nonatomic)NSString *adressType;
 
 @property(nonatomic, strong) AMapReGeocode *regeocode;

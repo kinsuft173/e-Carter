@@ -108,7 +108,7 @@
         
         cell.lbl_Adress.text =  shop.storeName;
         
-        cell.lbl_Distance.text=  [NSString stringWithFormat:@"%.1fkm",[shop.distance floatValue]];
+        cell.lbl_Distance.text=  [NSString stringWithFormat:@"%.1fkm",[shop.distance floatValue]/1000.0];
         
         cell.lbl_Evaluation.text = [NSString stringWithFormat:@"(%.1f)",[shop.storeScore floatValue]];
         

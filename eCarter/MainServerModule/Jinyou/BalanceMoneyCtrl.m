@@ -11,8 +11,9 @@
 #import "UserDataManager.h"
 #import "SIAlertView.h"
 #import "RechargeMoneyCtrl.h"
+#import "ZCTradeView.h"
 
-@interface BalanceMoneyCtrl ()
+@interface BalanceMoneyCtrl ()<ZCTradeViewDelegate>
 
 @end
 
@@ -113,23 +114,49 @@
     }
     
     
-   // NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId", nil];
     
-    [[NetworkManager shareMgr] server_etraPayWithOrderId:[self.dicPreParams objectForKey:@"orderId"] completeHandle:^(NSDictionary *response) {
+    
+     ZCTradeView* zcView =  [[ZCTradeView alloc] init];
+    
+      zcView.delegate = self;
+    
+    [zcView show];
+  
+    
+}
+
+
+-(void)finish:(NSString *)pwd
+{
+    
+    
+    [[NetworkManager shareMgr] server_etraPayWithOrderId:[self.dicPreParams objectForKey:@"orderId"] withPassword:pwd completeHandle:^(NSDictionary *response) {
         
-        NSLog(@"response = %@");
+        NSLog(@"response = %@",response);
         
-        if (response[@"data"]) {
+        if ([[response objectForKey:@"status"] integerValue] == 2000000) {
             
-            self.BalanceMoney = [response[@"data"] floatValue];
+            if (response[@"data"]) {
+                
+                self.BalanceMoney = [response[@"data"] floatValue];
+                
+            }
             
+            SuccessCtrl *vc=[[SuccessCtrl alloc] initWithNibName:@"SuccessCtrl" bundle:nil];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        }else{
+        
+            [HKCommen addAlertViewWithTitel:@"余额支付失败"];
+        
         }
+        
+
         
         
     }];
     
-    SuccessCtrl *vc=[[SuccessCtrl alloc] initWithNibName:@"SuccessCtrl" bundle:nil];
-    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
 

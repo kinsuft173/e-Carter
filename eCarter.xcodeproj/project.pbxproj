@@ -93,6 +93,14 @@
 		DE31D6951BA09232003DD3EA /* delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D6691BA09232003DD3EA /* delete@3x.png */; };
 		DE31D6961BA09232003DD3EA /* ecarer_pay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D66A1BA09232003DD3EA /* ecarer_pay@2x.png */; };
 		DE31D6971BA09232003DD3EA /* ecarer_pay@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DE31D66B1BA09232003DD3EA /* ecarer_pay@3x.png */; };
+		DE74833E1BAAF4DE00C6E093 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = DE74832F1BAAF4DE00C6E093 /* NSString+Extension.m */; };
+		DE74833F1BAAF4DE00C6E093 /* trade.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DE7483311BAAF4DE00C6E093 /* trade.bundle */; };
+		DE7483401BAAF4DE00C6E093 /* UIAlertView+Quick.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7483331BAAF4DE00C6E093 /* UIAlertView+Quick.m */; };
+		DE7483411BAAF4DE00C6E093 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7483351BAAF4DE00C6E093 /* UIView+Extension.m */; };
+		DE7483421BAAF4DE00C6E093 /* ZCAudioTool.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7483371BAAF4DE00C6E093 /* ZCAudioTool.m */; };
+		DE7483431BAAF4DE00C6E093 /* ZCTradeInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7483391BAAF4DE00C6E093 /* ZCTradeInputView.m */; };
+		DE7483441BAAF4DE00C6E093 /* ZCTradeKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = DE74833B1BAAF4DE00C6E093 /* ZCTradeKeyboard.m */; };
+		DE7483451BAAF4DE00C6E093 /* ZCTradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE74833D1BAAF4DE00C6E093 /* ZCTradeView.m */; };
 		DE9D12061B50ECEC00046407 /* AnimatedAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9D11E71B50ECEC00046407 /* AnimatedAnnotation.m */; };
 		DE9D12071B50ECEC00046407 /* AnimatedAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9D11E91B50ECEC00046407 /* AnimatedAnnotationView.m */; };
 		DE9D12081B50ECEC00046407 /* BusStopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9D11EB1B50ECEC00046407 /* BusStopAnnotation.m */; };
@@ -345,7 +353,7 @@
 		DEE337A01B4DF68C00357253 /* AboutUsCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE337851B4DF68C00357253 /* AboutUsCtrl.xib */; };
 		DEE337A11B4DF68C00357253 /* GetRealMoneyCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE337871B4DF68C00357253 /* GetRealMoneyCtrl.m */; };
 		DEE337A21B4DF68C00357253 /* GetRealMoneyCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE337881B4DF68C00357253 /* GetRealMoneyCtrl.xib */; };
-		DEE337A31B4DF68C00357253 /* image_aboutUs.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE337891B4DF68C00357253 /* image_aboutUs.png */; };
+		DEE337A31B4DF68C00357253 /* image_aboutUs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEE337891B4DF68C00357253 /* image_aboutUs@2x.png */; };
 		DEE337A41B4DF68C00357253 /* MyAccountCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE3378B1B4DF68C00357253 /* MyAccountCtrl.m */; };
 		DEE337A51B4DF68C00357253 /* MyAccountCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE3378C1B4DF68C00357253 /* MyAccountCtrl.xib */; };
 		DEE337A61B4DF68C00357253 /* RechargeMoneyCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE3378E1B4DF68C00357253 /* RechargeMoneyCtrl.m */; };
@@ -743,6 +751,22 @@
 		DE31D6691BA09232003DD3EA /* delete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@3x.png"; sourceTree = "<group>"; };
 		DE31D66A1BA09232003DD3EA /* ecarer_pay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ecarer_pay@2x.png"; sourceTree = "<group>"; };
 		DE31D66B1BA09232003DD3EA /* ecarer_pay@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ecarer_pay@3x.png"; sourceTree = "<group>"; };
+		DE74832E1BAAF4DE00C6E093 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		DE74832F1BAAF4DE00C6E093 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		DE7483301BAAF4DE00C6E093 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		DE7483311BAAF4DE00C6E093 /* trade.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = trade.bundle; sourceTree = "<group>"; };
+		DE7483321BAAF4DE00C6E093 /* UIAlertView+Quick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Quick.h"; sourceTree = "<group>"; };
+		DE7483331BAAF4DE00C6E093 /* UIAlertView+Quick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Quick.m"; sourceTree = "<group>"; };
+		DE7483341BAAF4DE00C6E093 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		DE7483351BAAF4DE00C6E093 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		DE7483361BAAF4DE00C6E093 /* ZCAudioTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCAudioTool.h; sourceTree = "<group>"; };
+		DE7483371BAAF4DE00C6E093 /* ZCAudioTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCAudioTool.m; sourceTree = "<group>"; };
+		DE7483381BAAF4DE00C6E093 /* ZCTradeInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTradeInputView.h; sourceTree = "<group>"; };
+		DE7483391BAAF4DE00C6E093 /* ZCTradeInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTradeInputView.m; sourceTree = "<group>"; };
+		DE74833A1BAAF4DE00C6E093 /* ZCTradeKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTradeKeyboard.h; sourceTree = "<group>"; };
+		DE74833B1BAAF4DE00C6E093 /* ZCTradeKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTradeKeyboard.m; sourceTree = "<group>"; };
+		DE74833C1BAAF4DE00C6E093 /* ZCTradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTradeView.h; sourceTree = "<group>"; };
+		DE74833D1BAAF4DE00C6E093 /* ZCTradeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTradeView.m; sourceTree = "<group>"; };
 		DE9D11E61B50ECEC00046407 /* AnimatedAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedAnnotation.h; sourceTree = "<group>"; };
 		DE9D11E71B50ECEC00046407 /* AnimatedAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedAnnotation.m; sourceTree = "<group>"; };
 		DE9D11E81B50ECEC00046407 /* AnimatedAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedAnnotationView.h; sourceTree = "<group>"; };
@@ -1136,7 +1160,7 @@
 		DEE337861B4DF68C00357253 /* GetRealMoneyCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetRealMoneyCtrl.h; sourceTree = "<group>"; };
 		DEE337871B4DF68C00357253 /* GetRealMoneyCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetRealMoneyCtrl.m; sourceTree = "<group>"; };
 		DEE337881B4DF68C00357253 /* GetRealMoneyCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetRealMoneyCtrl.xib; sourceTree = "<group>"; };
-		DEE337891B4DF68C00357253 /* image_aboutUs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_aboutUs.png; sourceTree = "<group>"; };
+		DEE337891B4DF68C00357253 /* image_aboutUs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_aboutUs@2x.png"; sourceTree = "<group>"; };
 		DEE3378A1B4DF68C00357253 /* MyAccountCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountCtrl.h; sourceTree = "<group>"; };
 		DEE3378B1B4DF68C00357253 /* MyAccountCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountCtrl.m; sourceTree = "<group>"; };
 		DEE3378C1B4DF68C00357253 /* MyAccountCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyAccountCtrl.xib; sourceTree = "<group>"; };
@@ -1719,6 +1743,29 @@
 			path = "天气UI";
 			sourceTree = "<group>";
 		};
+		DE74832D1BAAF4DE00C6E093 /* ZCTradeView */ = {
+			isa = PBXGroup;
+			children = (
+				DE74832E1BAAF4DE00C6E093 /* NSString+Extension.h */,
+				DE74832F1BAAF4DE00C6E093 /* NSString+Extension.m */,
+				DE7483301BAAF4DE00C6E093 /* Singleton.h */,
+				DE7483311BAAF4DE00C6E093 /* trade.bundle */,
+				DE7483321BAAF4DE00C6E093 /* UIAlertView+Quick.h */,
+				DE7483331BAAF4DE00C6E093 /* UIAlertView+Quick.m */,
+				DE7483341BAAF4DE00C6E093 /* UIView+Extension.h */,
+				DE7483351BAAF4DE00C6E093 /* UIView+Extension.m */,
+				DE7483361BAAF4DE00C6E093 /* ZCAudioTool.h */,
+				DE7483371BAAF4DE00C6E093 /* ZCAudioTool.m */,
+				DE7483381BAAF4DE00C6E093 /* ZCTradeInputView.h */,
+				DE7483391BAAF4DE00C6E093 /* ZCTradeInputView.m */,
+				DE74833A1BAAF4DE00C6E093 /* ZCTradeKeyboard.h */,
+				DE74833B1BAAF4DE00C6E093 /* ZCTradeKeyboard.m */,
+				DE74833C1BAAF4DE00C6E093 /* ZCTradeView.h */,
+				DE74833D1BAAF4DE00C6E093 /* ZCTradeView.m */,
+			);
+			path = ZCTradeView;
+			sourceTree = "<group>";
+		};
 		DE9D11E51B50ECEC00046407 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1792,6 +1839,7 @@
 		DE9D12331B514AC100046407 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				DE74832D1BAAF4DE00C6E093 /* ZCTradeView */,
 				B944BFB31B9FFC0200D66D42 /* SAAlertView */,
 				E993183D1B8A1BC700B56AE9 /* thirdLib */,
 				E993180C1B8A152E00B56AE9 /* CorePhotoBroswerVC */,
@@ -2550,7 +2598,7 @@
 				DEE337861B4DF68C00357253 /* GetRealMoneyCtrl.h */,
 				DEE337871B4DF68C00357253 /* GetRealMoneyCtrl.m */,
 				DEE337881B4DF68C00357253 /* GetRealMoneyCtrl.xib */,
-				DEE337891B4DF68C00357253 /* image_aboutUs.png */,
+				DEE337891B4DF68C00357253 /* image_aboutUs@2x.png */,
 				DEE3378A1B4DF68C00357253 /* MyAccountCtrl.h */,
 				DEE3378B1B4DF68C00357253 /* MyAccountCtrl.m */,
 				DEE3378C1B4DF68C00357253 /* MyAccountCtrl.xib */,
@@ -3496,7 +3544,7 @@
 				DEE337421B4C40D900357253 /* share_WeChat@2x.png in Resources */,
 				DED7F55A1B4760DB0005019C /* but_Navigation@2x.png in Resources */,
 				DEE337101B4C40D900357253 /* Navy_Blue@3x.png in Resources */,
-				DEE337A31B4DF68C00357253 /* image_aboutUs.png in Resources */,
+				DEE337A31B4DF68C00357253 /* image_aboutUs@2x.png in Resources */,
 				DEE719BC1B3ED54E003221A8 /* PersonNormalCell.xib in Resources */,
 				DEE337AB1B4DF68C00357253 /* SettingCell.xib in Resources */,
 				DED7F5971B4761060005019C /* Coupons_buts_top@2x.png in Resources */,
@@ -3579,6 +3627,7 @@
 				DE237EE81B3FA8AA0027767B /* MyCountMoneyCell.xib in Resources */,
 				DE06387D1B6E721000EFB576 /* defoult_3.png in Resources */,
 				E9F9D0451B74F32C007781AC /* Share_sina@2x.png in Resources */,
+				DE74833F1BAAF4DE00C6E093 /* trade.bundle in Resources */,
 				DED7F5581B4760DB0005019C /* but_dial@2x.png in Resources */,
 				DED7F5631B4760DB0005019C /* Evaluation_1@2x.png in Resources */,
 				E9F9D0411B74F32C007781AC /* share_pengyouquan@2x.png in Resources */,
@@ -3904,7 +3953,9 @@
 				DEE87D251B48EC5100D3EDAB /* DeductMoneyCell.m in Sources */,
 				DEE87D2B1B48EC5100D3EDAB /* OrderSuccessCell.m in Sources */,
 				DE9D120B1B50ECEC00046407 /* CustomOverlay.m in Sources */,
+				DE7483401BAAF4DE00C6E093 /* UIAlertView+Quick.m in Sources */,
 				DEE48B761B39643800458D6F /* BannerCell.m in Sources */,
+				DE74833E1BAAF4DE00C6E093 /* NSString+Extension.m in Sources */,
 				DEE337A41B4DF68C00357253 /* MyAccountCtrl.m in Sources */,
 				DE9D12121B50ECEC00046407 /* MANaviPolyline.m in Sources */,
 				DE237F0D1B4055FB0027767B /* MyTradeCtrl.m in Sources */,
@@ -3915,6 +3966,7 @@
 				DEFF6A711B9181E6002C2FBB /* PaymentRequest.m in Sources */,
 				E9F9CE3A1B74D8C0007781AC /* HYActivityView.m in Sources */,
 				E99318981B8A1BC700B56AE9 /* NSString+Password.m in Sources */,
+				DE7483421BAAF4DE00C6E093 /* ZCAudioTool.m in Sources */,
 				DEEC3DE01B5C2832005CE84E /* SelectCityCtrl.m in Sources */,
 				E99318901B8A1BC700B56AE9 /* NSString+File.m in Sources */,
 				E993189B1B8A1BC700B56AE9 /* UIFont+Extend.m in Sources */,
@@ -3936,6 +3988,8 @@
 				DE9D12191B50EDE600046407 /* CommonUtility.m in Sources */,
 				DEE3BE451B3656CB00DCE7EC /* WeatherInfoCell.m in Sources */,
 				DED2EADD1B35D3A5006FE893 /* AppDelegate.m in Sources */,
+				DE7483441BAAF4DE00C6E093 /* ZCTradeKeyboard.m in Sources */,
+				DE7483451BAAF4DE00C6E093 /* ZCTradeView.m in Sources */,
 				DEE52ED91B390AF400C90BA3 /* ShopGetCtrl.m in Sources */,
 				DEE719B61B3ED50D003221A8 /* PersonInfoCell.m in Sources */,
 				DEFB2B771B44361700C74FC0 /* mainListCell.m in Sources */,
@@ -3944,6 +3998,7 @@
 				DE06386C1B6D19C900EFB576 /* iToast.m in Sources */,
 				DEAAA7201B80AD5800829FB7 /* MBProgressHUD.m in Sources */,
 				DEE52ED01B38FAEB00C90BA3 /* CouponMainInfoCell.m in Sources */,
+				DE7483411BAAF4DE00C6E093 /* UIView+Extension.m in Sources */,
 				DEE48B9F1B39A4BF00458D6F /* TimeCell.m in Sources */,
 				DEE48BB31B39AAD200458D6F /* PaymentCell.m in Sources */,
 				DE237EEC1B3FA8F70027767B /* MyCountNomalCell.m in Sources */,
@@ -3983,6 +4038,7 @@
 				DEE337A81B4DF68C00357253 /* ReChargeSuccessCtrl.m in Sources */,
 				B9D2B4C91BA6A05B0090A306 /* NewCommentCtrl.m in Sources */,
 				DEEDABD11B63DEC200247916 /* FakeDataMgr.m in Sources */,
+				DE7483431BAAF4DE00C6E093 /* ZCTradeInputView.m in Sources */,
 				E993183B1B8A152E00B56AE9 /* PhotoBroswerVC.m in Sources */,
 				E99318311B8A152E00B56AE9 /* PhotoBroswerLayout.m in Sources */,
 				DEE87CED1B48EA2000D3EDAB /* BalanceMoneyCtrl.m in Sources */,
@@ -4185,7 +4241,7 @@
 					"$(PROJECT_DIR)/eCarter/ThirdLib/thirdLib/WxPayLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e623b3f2-1b90-4368-a689-fc89f8bd4022";
+				PROVISIONING_PROFILE = "0f8c8bcb-32e7-464a-a5d8-dffd8ebe9499";
 			};
 			name = Debug;
 		};
@@ -4233,7 +4289,7 @@
 					"$(PROJECT_DIR)/eCarter/ThirdLib/thirdLib/WxPayLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e623b3f2-1b90-4368-a689-fc89f8bd4022";
+				PROVISIONING_PROFILE = "0f8c8bcb-32e7-464a-a5d8-dffd8ebe9499";
 			};
 			name = Release;
 		};

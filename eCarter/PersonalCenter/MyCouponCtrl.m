@@ -14,6 +14,7 @@
 #import "UserDataManager.h"
 #import "UserLoginInfo.h"
 #import "Coupon.h"
+#import "PlaceHolderCell.h"
 
 
 @interface MyCouponCtrl ()<UITableViewDelegate>
@@ -100,6 +101,11 @@
 
 - (void)getModel
 {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"正在加载...";
+    
+    
    self.userInfo= [UserDataManager shareManager].userLoginInfo;
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
@@ -125,7 +131,11 @@
             }
             
             [self.tableView reloadData];
+            
+            hud.hidden = YES;
         }];
+        
+        
         
     }else{
     
@@ -144,6 +154,8 @@
         }
         
         [self.tableView reloadData];
+        
+        hud.hidden = YES;
     }];
         
     }
@@ -163,7 +175,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (self.arrayOfCoupon.count==0) {
-        return 0;
+        return 1;
     }
     
     return self.arrayOfCoupon.count;
@@ -171,6 +183,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (self.arrayOfCoupon.count == 0) {
+        
+        return 1;
+        
+    }
+    
+    
     if (self.isCardSelected) {
         return 1;
     }
@@ -194,6 +213,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.arrayOfCoupon.count == 0) {
+        
+        return 44;
+        
+    }
+    
     return 107;
     
 }
@@ -203,6 +228,30 @@
     
     static NSString* cellId1 = @"CouponMainInfoCell";
     static NSString* cellId2 = @"CouponExtraInfoCell";
+//        static NSString* cellHolderId = @"PlaceHolderCell";    
+    static NSString* cellHolderId = @"PlaceHolderCell";
+    //    static NSString* cellHolderId = @"PlaceHolderCell";
+    
+    if (indexPath.section == 0 && self.arrayOfCoupon.count == 0) {
+        
+        PlaceHolderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellHolderId];
+        
+        if (!cell) {
+            
+            NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:cellHolderId owner:self options:nil];
+            
+            cell = [topLevelObjects objectAtIndex:1];
+            
+          //  cell.contentView.backgroundColor = [HKCommen  getColor:@"aaaaaa" WithAlpha:0.2];
+            
+        }
+        
+        cell.lblText.text = @"暂无优惠券可用";
+        
+        return cell;
+        
+        
+    }
     
     if (indexPath.row == 0) {
         
@@ -370,6 +419,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    if (self.arrayOfCoupon.count == 0) {
+        
+        
+        return;
+        
+    }
     
     if (!self.isCardSelected) {
         

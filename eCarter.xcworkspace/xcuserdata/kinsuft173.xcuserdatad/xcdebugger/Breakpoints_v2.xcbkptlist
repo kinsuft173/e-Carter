@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eCarter/HKLib/HKCustomView/HKMapManager.h"
-            timestampString = "462670299.34022"
+            timestampString = "464201186.323156"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "-openAMAPWihStartCoordinate:AndEndCoordinate:"
             landmarkType = "4">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eCarter/MainServerModule/Jinyou/AddNewCarCtrl.m"
-            timestampString = "464021645.154024"
+            timestampString = "464200249.463824"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "-pickCarProvince:"
             landmarkType = "5">
          </BreakpointContent>

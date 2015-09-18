@@ -318,13 +318,16 @@
                 [UserDataManager shareManager].userLoginInfo = [UserLoginInfo objectWithKeyValues:dicTmep];
                 [UserDataManager shareManager].userLoginInfo.user = [User objectWithKeyValues:dicTmep];
                 
-                UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"PersonalCenter" bundle:nil];
-                PersonalCenterCtrl* vc = [storyBoard instantiateViewControllerWithIdentifier:@"PersonalCenter"];
-                vc.loginCome=@"yes";
+//                UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"PersonalCenter" bundle:nil];
+//                PersonalCenterCtrl* vc = [storyBoard instantiateViewControllerWithIdentifier:@"PersonalCenter"];
+//                vc.loginCome=@"yes";
                 
                 [[UserDataManager shareManager] writeUserData];
                 
-                [self.navigationController pushViewController:vc animated:YES];
+//                [self.navigationController pushViewController:vc animated:YES];
+                
+                //修改为pop回去
+                [self.navigationController popToRootViewControllerAnimated:YES];
                 
                 [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"checkUser"];
                 

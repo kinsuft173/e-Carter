@@ -82,7 +82,7 @@ typedef void (^ErrorHandle)(NSError*);
 
 #define ECATER_POINT_TRANSACTION_INTERFACE @"/ecar/mobile/queryPointTransaction"
 
-#define ECATER_USER_CONSUME_PASSWORD_INTERFACE @"/ecar/mobile/setUserPasword"
+#define ECATER_USER_CONSUME_PASSWORD_INTERFACE @"/ecar/mobile/setUserPassword"
 #define ECATER_QUERY_USER_COUPON @"/ecar/mobile/queryUserAndStoreCoupon"
 #define ECATER_QUERY_USER_COUPON_NOT @"/ecar/mobile/queryUserCoupon"
 
@@ -120,6 +120,8 @@ typedef void (^ErrorHandle)(NSError*);
 //#define ECATER_INFO_INTERFACE @""
 
 #define LOG_OUT @"/ecar/mobile/logout"
+
+#define RECHARGE_GET_SYSTEMPARAMS @"/ecar/mobile/getSysparam"
 
 
 #endif

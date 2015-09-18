@@ -18,6 +18,8 @@
 
 @implementation ConsulationManager
 
+@synthesize setModel = _setModel;
+
 + (ConsulationManager*)shareMgr
 {
     static ConsulationManager* instance = nil;
@@ -56,6 +58,19 @@
     
     return instance;
 }
+
+- (NSSet*)modelSet
+{
+    if (_setModel == nil) {
+        
+        
+        _setModel = [[NSMutableSet alloc] init];
+    }
+
+    return _setModel;
+}
+
+
 
 - (void)addHandledConsulation:(NSString*)consulationId
 {
@@ -110,20 +125,35 @@
     
     [[NetworkManager shareMgr] server_fetchQueryUserCouponNotList:dic completeHandle:^(NSDictionary *responseBanner) {
         
-  
-           NSArray* arrayCounpon =  [responseBanner objectForKey:@"data"];
         
+        NSLog(@"获取的优惠券数据= %@",responseBanner);
         
-        for (int i = 0; i < arrayCounpon.count; i ++) {
+        if ([[responseBanner objectForKey:@"status"] integerValue] == 5000103) {
             
-            NSDictionary* dic = [arrayCounpon objectAtIndex:i];
-            
-            NSLog(@"将要处理的优惠券模型=%@",dic);
-            
-            
-            [self addHandledConsulation:dic[@"title"]];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"setModel"];
+            [ConsulationManager shareMgr].setModel = nil;
+            [[NSUserDefaults standardUserDefaults] setObject:@"no" forKey:@"checkUser"];
             
         }
+        
+        if ([[responseBanner objectForKey:@"status"] integerValue] == 2000000) {
+            
+            NSArray* arrayCounpon =  [responseBanner objectForKey:@"data"];
+            
+            
+            for (int i = 0; i < arrayCounpon.count; i ++) {
+                
+                NSDictionary* dic = [arrayCounpon objectAtIndex:i];
+                
+                NSLog(@"将要处理的优惠券模型=%@",dic);
+                
+                
+                [self addHandledConsulation:dic[@"title"]];
+                
+            }
+        }
+        
+
         
     
     }];

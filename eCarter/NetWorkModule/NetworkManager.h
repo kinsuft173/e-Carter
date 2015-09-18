@@ -86,7 +86,6 @@
 
 //微信正常的获取preID
 - (void)server_getOrderPreId:(NSString*)orderId completeHandle:(CompleteHandle)completeHandle;
-- (void)server_etraPayWithOrderId:(NSString*)orderId completeHandle:(CompleteHandle)completeHandle;
 - (void)server_getRechangePreId:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 
 //提现
@@ -122,4 +121,10 @@
 
 //交易验证码
 - (void)server_genTradeCodeWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+
+//越饿支付
+- (void)server_etraPayWithOrderId:(NSString*)orderId withPassword:(NSString*)psd  completeHandle:(CompleteHandle)completeHandle;
+
+//系统参数
+- (void)server_fetchSystemParamsWithcompleteHandle:(CompleteHandle)completeHandle;
 @end
