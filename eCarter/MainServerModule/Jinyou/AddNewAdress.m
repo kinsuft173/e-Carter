@@ -210,9 +210,7 @@
 
 -(void)save
 {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"正在加载...";
+
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
     
@@ -221,9 +219,22 @@
     [dic setObject:self.city forKey:@"city"];
     [dic setObject:self.place forKey:@"area"];
     
-    if (self.txt_AdressDetail.text) {
+    if (self.txt_AdressDetail.text && (![self.txt_AdressDetail.text isEqualToString:@""])) {
+        
         [dic setObject:self.txt_AdressDetail.text forKey:@"detail"];
+        
+    }else{
+    
+        [HKCommen addAlertViewWithTitel:@"请输入详细地址"];
+        
+        
+        return;
+    
     }
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"正在加载...";
 
     [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
     [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];

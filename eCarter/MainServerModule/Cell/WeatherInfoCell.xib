@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -55,6 +55,13 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buyi.png" translatesAutoresizingMaskIntoConstraints="NO" id="5U2-Sv-1Mz">
+                                        <rect key="frame" x="254" y="10" width="36" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="ATc-Oc-IT5"/>
+                                            <constraint firstAttribute="width" constant="36" id="ygu-JW-1cK"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.50980392156862742" green="0.63921568627450975" blue="0.83529411764705885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -64,8 +71,10 @@
                                     <constraint firstAttribute="trailing" secondItem="geT-Bx-afr" secondAttribute="trailing" constant="10" id="NP0-ov-aHz"/>
                                     <constraint firstItem="sIa-7S-aRH" firstAttribute="top" secondItem="JNb-pe-ixO" secondAttribute="top" constant="19" id="Vou-lY-BC6"/>
                                     <constraint firstItem="geT-Bx-afr" firstAttribute="top" secondItem="JNb-pe-ixO" secondAttribute="top" constant="10" id="YJn-da-MEY"/>
+                                    <constraint firstAttribute="trailing" secondItem="5U2-Sv-1Mz" secondAttribute="trailing" constant="10" id="fR8-ZY-eQw"/>
                                     <constraint firstItem="XLu-zJ-ieD" firstAttribute="top" secondItem="JNb-pe-ixO" secondAttribute="top" constant="21" id="mtt-s5-zTo"/>
                                     <constraint firstItem="sIa-7S-aRH" firstAttribute="leading" secondItem="JNb-pe-ixO" secondAttribute="leading" constant="74" id="sxn-C1-bOH"/>
+                                    <constraint firstItem="5U2-Sv-1Mz" firstAttribute="top" secondItem="JNb-pe-ixO" secondAttribute="top" constant="10" id="zUX-AH-FsX"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -89,6 +98,7 @@
             <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
                 <outlet property="imgChuqing" destination="geT-Bx-afr" id="PlO-ku-2Rh"/>
+                <outlet property="imgNoYi" destination="5U2-Sv-1Mz" id="26M-eN-4LC"/>
                 <outlet property="imgWeather" destination="XLu-zJ-ieD" id="RQU-4y-c8Z"/>
                 <outlet property="lbl_temperature" destination="BLH-du-w8I" id="D4e-63-ZV3"/>
                 <outlet property="lbl_weather" destination="sIa-7S-aRH" id="7ku-bc-RhE"/>
@@ -97,6 +107,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="buyi.png" width="36" height="21"/>
         <image name="icon_unRight.png" width="21" height="21"/>
         <image name="sunny.png" width="50" height="45"/>
     </resources>

@@ -67,7 +67,7 @@
         
         NSLog(@"账户信息：%@",response);
         
-        self.stringOfCount=[NSString stringWithFormat:@"%@元",[response objectForKey:@"data"]];
+        self.stringOfCount=[NSString stringWithFormat:@"%.2f元",[[response objectForKey:@"data"] floatValue]];
   
         
         [self.myTable  reloadData];

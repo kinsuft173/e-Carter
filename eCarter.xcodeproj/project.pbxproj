@@ -528,6 +528,8 @@
 		E96A2DF31B77AE8400DC9B05 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = E96A2DE51B77AE8400DC9B05 /* SBJsonTokeniser.m */; };
 		E96A2DF41B77AE8400DC9B05 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = E96A2DE71B77AE8400DC9B05 /* SBJsonUTF8Stream.m */; };
 		E96A2DF51B77AE8400DC9B05 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = E96A2DE91B77AE8400DC9B05 /* SBJsonWriter.m */; };
+		E96BE9511BAD650C006A8331 /* buyi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E96BE94F1BAD650C006A8331 /* buyi@2x.png */; };
+		E96BE9521BAD650C006A8331 /* buyi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E96BE9501BAD650C006A8331 /* buyi@3x.png */; };
 		E9713BBB1B70F7C500CFECD0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9713BBA1B70F7C500CFECD0 /* QuartzCore.framework */; };
 		E9713BBD1B70F7E300CFECD0 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E9713BBC1B70F7E300CFECD0 /* libicucore.dylib */; };
 		E9713BBF1B70F7ED00CFECD0 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E9713BBE1B70F7ED00CFECD0 /* libz.1.2.5.dylib */; };
@@ -1425,6 +1427,8 @@
 		E96A2DE71B77AE8400DC9B05 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
 		E96A2DE81B77AE8400DC9B05 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		E96A2DE91B77AE8400DC9B05 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		E96BE94F1BAD650C006A8331 /* buyi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buyi@2x.png"; sourceTree = "<group>"; };
+		E96BE9501BAD650C006A8331 /* buyi@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buyi@3x.png"; sourceTree = "<group>"; };
 		E9713BBA1B70F7C500CFECD0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E9713BBC1B70F7E300CFECD0 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		E9713BBE1B70F7ED00CFECD0 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
@@ -1665,6 +1669,8 @@
 		DE0638751B6E721000EFB576 /* 图片管理 */ = {
 			isa = PBXGroup;
 			children = (
+				E96BE94F1BAD650C006A8331 /* buyi@2x.png */,
+				E96BE9501BAD650C006A8331 /* buyi@3x.png */,
 				DE31D63F1BA09232003DD3EA /* 天气UI */,
 				DE31D6681BA09232003DD3EA /* delete@2x.png */,
 				DE31D6691BA09232003DD3EA /* delete@3x.png */,
@@ -3551,6 +3557,7 @@
 				DEE3373D1B4C40D900357253 /* share_pengyouquan@3x.png in Resources */,
 				DEE337121B4C40D900357253 /* Other@3x.png in Resources */,
 				DE31D68E1BA09232003DD3EA /* thunder-rain@2x.png in Resources */,
+				E96BE9511BAD650C006A8331 /* buyi@2x.png in Resources */,
 				DE237EF81B4047830027767B /* CarInfoCell.xib in Resources */,
 				E9F9D0481B74F32C007781AC /* share_WeChat@3x.png in Resources */,
 				DEE337241B4C40D900357253 /* mine_icon_man@2x.png in Resources */,
@@ -3628,6 +3635,7 @@
 				DE06387D1B6E721000EFB576 /* defoult_3.png in Resources */,
 				E9F9D0451B74F32C007781AC /* Share_sina@2x.png in Resources */,
 				DE74833F1BAAF4DE00C6E093 /* trade.bundle in Resources */,
+				E96BE9521BAD650C006A8331 /* buyi@3x.png in Resources */,
 				DED7F5581B4760DB0005019C /* but_dial@2x.png in Resources */,
 				DED7F5631B4760DB0005019C /* Evaluation_1@2x.png in Resources */,
 				E9F9D0411B74F32C007781AC /* share_pengyouquan@2x.png in Resources */,
@@ -4241,7 +4249,7 @@
 					"$(PROJECT_DIR)/eCarter/ThirdLib/thirdLib/WxPayLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0f8c8bcb-32e7-464a-a5d8-dffd8ebe9499";
+				PROVISIONING_PROFILE = "9fc095d8-914e-43d1-84dd-abe5fe5234bd";
 			};
 			name = Debug;
 		};
@@ -4289,7 +4297,7 @@
 					"$(PROJECT_DIR)/eCarter/ThirdLib/thirdLib/WxPayLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0f8c8bcb-32e7-464a-a5d8-dffd8ebe9499";
+				PROVISIONING_PROFILE = "9fc095d8-914e-43d1-84dd-abe5fe5234bd";
 			};
 			name = Release;
 		};

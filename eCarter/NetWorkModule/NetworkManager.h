@@ -127,4 +127,14 @@
 
 //系统参数
 - (void)server_fetchSystemParamsWithcompleteHandle:(CompleteHandle)completeHandle;
+
+//实际可以提现的余额
+- (void)server_queryUserAccountExactlyMontWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+
+//交易记录
+- (void)server_queryOrderLogDetailWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+
+//用户是否有交易密码
+- (void)server_userHasPsdWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
+
 @end

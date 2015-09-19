@@ -396,7 +396,7 @@ heightForHeaderInSection:(NSInteger)section
             
             [HKCommen addAlertViewWithTitel:@"格式不正确,请输入发动机号后六位"];
 
-            
+            return;
         }
         
     }
@@ -407,7 +407,7 @@ heightForHeaderInSection:(NSInteger)section
             
             [HKCommen addAlertViewWithTitel:@"格式不正确,请输入车架号的后六位"];
             
-            
+            return;
         }
         
     }

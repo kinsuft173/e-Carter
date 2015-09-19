@@ -558,6 +558,8 @@
         
     }
     
+    NSLog(@"提交参数为",dicParams);
+    
     [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dicParams success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         if (self.isTestMode) {
@@ -1278,6 +1280,121 @@
     
 }
 
+
+- (void)server_queryOrderLogDetailWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    //test
+    //NSDictionary *parameters = @{@"username": @"18672354399",@"password_hash":@"$2y$13$eD.OPcraVj8wMrADnMTPpeJVDzQTncvRClQcRDt2a0gRPRW4ZKWbC"};
+    
+    NSString* strInterface;
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = ORDER_LOG;
+        
+    }
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"用户账户数据:%@",responseObject);
+        
+        if (self.isTestMode) {
+            
+            NSDictionary *dictionary = [FakeDataMgr shareMgr].responseQueryUserAccount;
+            
+            if (completeHandle) {
+                
+                completeHandle(dictionary);
+                
+            }
+            
+        }else{
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        //ErrorHandle(error);
+        
+        completeHandle(nil);
+        
+        NSLog(@"Error: %@", error);
+        
+        
+    }];
+    
+}
+
+
+
+- (void)server_queryUserAccountExactlyMontWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    //test
+    //NSDictionary *parameters = @{@"username": @"18672354399",@"password_hash":@"$2y$13$eD.OPcraVj8wMrADnMTPpeJVDzQTncvRClQcRDt2a0gRPRW4ZKWbC"};
+    
+    NSString* strInterface;
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = ECATER_USER_ACCOUNT_EXEACT_INTERFACE;
+        
+    }
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"用户账户数据:%@",responseObject);
+        
+        if (self.isTestMode) {
+            
+            NSDictionary *dictionary = [FakeDataMgr shareMgr].responseQueryUserAccount;
+            
+            if (completeHandle) {
+                
+                completeHandle(dictionary);
+                
+            }
+            
+        }else{
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        //ErrorHandle(error);
+        
+        completeHandle(nil);
+        
+        NSLog(@"Error: %@", error);
+        
+        
+    }];
+    
+}
+
 - (void)server_queryUserRechargeWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -1665,6 +1782,63 @@
     }];
     
 }
+
+
+- (void)server_userHasPsdWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
+{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+   
+    NSString* strInterface;
+    
+    if (self.isTestMode) {
+        
+        strInterface = ECATER_TEST_INTERFACE;
+        
+    }else{
+        
+        strInterface = USER_HASPSD;
+        
+    }
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        if (self.isTestMode) {
+            
+            NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"",@"message",[NSNumber numberWithInt:200000],@"status", nil];
+            
+            if (completeHandle) {
+                
+                completeHandle(dictionary);
+                
+            }
+            
+        }else{
+            
+            if (completeHandle) {
+                
+                completeHandle(responseObject);
+            }
+            
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        //ErrorHandle(error);
+        
+        if (completeHandle) {
+            
+            completeHandle(nil);
+        }
+        
+        NSLog(@"Error: %@", error);
+        
+        
+    }];
+    
+}
+
+
 
 
 - (void)server_queryCarBrandWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle

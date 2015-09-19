@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OrderSingle.h"
 
 @interface MoneyReturnDetailCtrl : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *viewForReturnDetail;
 @property (weak, nonatomic) IBOutlet UIScrollView *myScroll;
+
+@property (nonatomic, strong) OrderSingle* order;
 
 @end

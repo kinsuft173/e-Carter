@@ -38,6 +38,15 @@
         
         [viewLong setBackgroundColor:[UIColor colorWithRed:79.0/255.0 green:169.0/255.0 blue:220.0/255.0 alpha:1.0]];
         [viewCircle setImage:[UIImage imageNamed:@"Process_now"]];
+        
+        if (self.arrayModel.count > i) {
+            
+            NSDictionary* dic = [self.arrayModel objectAtIndex:i];
+            
+            brief.text = dic[@"name"];
+            detail.text = [NSString stringWithFormat:@"%@ 已受理",dic[@"createTime"]];
+            
+        }
 
     }
     
@@ -49,6 +58,11 @@
         
         [viewLong setBackgroundColor:[UIColor colorWithRed:220.0/255.0 green:220.0/255.0 blue:220.0/255.0 alpha:1.0]];
         [viewCircle setImage:[UIImage imageNamed:@"Process_History"]];
+        
+        viewLong.hidden = YES;
+        viewCircle.hidden = YES;
+        brief.hidden = YES;
+        detail.hidden = YES;
 
     }
     

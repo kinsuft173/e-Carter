@@ -9,9 +9,14 @@
 #import "MoneyReturnDetailCtrl.h"
 #import "MoneyReturnProgressView.h"
 #import "HKCommen.h"
+#import "UserDataManager.h"
+#import "NetworkManager.h"
 
 @interface MoneyReturnDetailCtrl ()
 @property (strong,nonatomic) MoneyReturnProgressView *progressView;
+@property (strong,nonatomic) IBOutlet UILabel* lblDescripTotal;
+@property (strong,nonatomic) IBOutlet UILabel* lblDescripDetail;
+
 @end
 
 @implementation MoneyReturnDetailCtrl
@@ -22,12 +27,14 @@
     
     [self.myScroll setContentSize:CGSizeMake(0, 700)];
     
-    [HKCommen addHeadTitle:@"退款详情" whichNavigation:self.navigationItem];
+    [HKCommen addHeadTitle:@"退款详情" whichNavigation:self.
+     navigationItem];
+    self.lblDescripTotal.text = [NSString stringWithFormat:@"退款金额：￥%.2f",self.order.pay.floatValue];
+    self.lblDescripDetail.text = [NSString stringWithFormat:@"%.2f元已成功退至您的账户余额",self.order.pay.floatValue];
+    [self getModel];
     
-    self.progressView=[[NSBundle mainBundle]loadNibNamed:@"MoneyReturnProgressView" owner:self options:nil][0];
-    [self.progressView setFrame:CGRectMake(0, 45, [UIScreen mainScreen].bounds.size.width, 400)];
-    self.progressView.stageForMoneyReturn=2.0;
-    [self.viewForReturnDetail addSubview:self.progressView];
+ 
+    
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
     [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
@@ -46,6 +53,50 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+}
+
+- (void)getModel
+{
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setValue:self.order.id forKey:@"orderId"];
+    //    [dic setValue:@"1" forKey:@"accountType"];
+    
+    NSLog(@"账户字典：%@",dic);
+    
+    [[NetworkManager shareMgr] server_queryOrderLogDetailWithDic:dic completeHandle:^(NSDictionary *response) {
+        
+        if (response) {
+            
+            NSLog(@"交易记录：%@",response);
+            
+            NSArray* array = [response objectForKey:@"data"];
+            
+            if (array.count != 0) {
+                self.progressView=[[NSBundle mainBundle]loadNibNamed:@"MoneyReturnProgressView" owner:self options:nil][0];
+                [self.progressView setFrame:CGRectMake(0, 45, [UIScreen mainScreen].bounds.size.width, 400)];
+                
+                
+
+                self.progressView.stageForMoneyReturn= array.count + 0.1;
+                self.progressView.arrayModel = array;
+                
+                
+                
+                
+                
+                [self.viewForReturnDetail addSubview:self.progressView];
+                
+            }
+            
+            
+
+        }
+        
+        
+    }];
+
+
 }
 
 -(void)back

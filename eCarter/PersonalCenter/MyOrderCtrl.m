@@ -20,6 +20,8 @@
 #import "OrderSingle.h"
 #import "ConsulationManager.h"
 #import "NewCommentCtrl.h"
+//#import "Shop.h"
+#import "ShopDetailCtrl.h"
 
 @interface MyOrderCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -601,6 +603,8 @@
                 [cell.viewMask1 addSubview:viewDivide2];
                 [cell.viewMask1 addSubview:viewDivide3];
                 
+
+                
             }
             else
             {
@@ -624,7 +628,7 @@
                 cell.delegate=self;
             }
             
-            
+                [cell.btnGoShop addTarget:self action:@selector(goShop:) forControlEvents:UIControlEventTouchUpInside];
             
             
         }
@@ -641,9 +645,11 @@
         
         
         //清除重用的事件
-//        [cell.btnGoCommentPage removeTarget:self action:@selector(CancelOrder:) forControlEvents:UIControlEventTouchUpInside];
-//        [cell.btnGoCommentPage removeTarget:self action:@selector(goCommentPage:) forControlEvents:UIControlEventTouchUpInside];
-//        [cell.btnGoCommentPage removeTarget:self action:@selector(goMoneyReturnPage) forControlEvents:UIControlEventTouchUpInside];
+        [cell.btnGoCommentPage removeTarget:self action:@selector(CancelOrder:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.btnGoCommentPage removeTarget:self action:@selector(goCommentPage:) forControlEvents:UIControlEventTouchUpInside];
+        [cell.btnGoCommentPage removeTarget:self action:@selector(goMoneyReturnPage:) forControlEvents:UIControlEventTouchUpInside];
+        
+
         
         NSUInteger row=indexPath.row;
         
@@ -661,7 +667,7 @@
         cell.orderId.text=[NSString stringWithFormat:@"%@",[dict objectForKey:@"id"]];
         cell.lblGetOrder.text=[dict objectForKey:@"orderTime"];
         cell.lblMobile.text=[dict objectForKey:@"phone"];
-        cell.price.text=[dict objectForKey:@"amount"];
+        cell.price.text=[NSString stringWithFormat:@"￥%.2f",[[dict objectForKey:@"amount"] floatValue]] ;
         cell.lblServiceContent.text=[dict objectForKey:@"items"];
         cell.lblCarNum.text=[dict objectForKey:@"carnum"];
         
@@ -676,6 +682,8 @@
 //        [cell.image1 setImage:[UIImage imageNamed:@"bg0"]];
 //        [cell.image2 setImage:[UIImage imageNamed:@"bg1"]];
 //        [cell.image3 setImage:[UIImage imageNamed:@"bg2"]];
+        cell.btnGoShop.tag = (indexPath.row +1)*10 + tableView.tag;
+        
         
         if (order.orderImageList.count != 0) {
             
@@ -719,6 +727,9 @@
             }
             
             cell.btnGoImages.tag = (indexPath.row +1)*10 + tableView.tag;
+            
+            cell.btnGoShop.tag = (indexPath.row +1)*10 + tableView.tag;
+            
             [cell.btnGoImages addTarget:self action:@selector(goTapAction:) forControlEvents:UIControlEventTouchUpInside];
             
 //            for (int i = num; i < 3; i ++) {
@@ -777,7 +788,7 @@
             
             cell.btnGoCommentPage.hidden=NO;
             [cell.btnGoCommentPage setTitle:@"退款详情" forState:UIControlStateNormal];
-            [cell.btnGoCommentPage addTarget:self action:@selector(goMoneyReturnPage) forControlEvents:UIControlEventTouchUpInside];
+            [cell.btnGoCommentPage addTarget:self action:@selector(goMoneyReturnPage:) forControlEvents:UIControlEventTouchUpInside];
         }
         else if (state==7){
         
@@ -821,11 +832,39 @@
     }
 }
 
+- (void)goShop:(UIButton*)btn
+{
+    NSInteger tag = btn.tag;
+    
+    int tableNum = tag%10;
+    
+    int row = (tag/10) - 1;
+    
+    NSArray* arrayModels = [NSArray arrayWithObjects:self.arrayOfOrder,self.arrayOfWaiting ,self.arrayOfServicing,self.arrayOfComplete, self.arrayOfCancel,nil];
+    
+    NSArray* arrayModel = [arrayModels objectAtIndex:tableNum];
+    
+    NSDictionary *dict = [arrayModel objectAtIndex:row];
+    OrderSingle* order = [OrderSingle objectWithKeyValues:dict];
+    
+//    ShopDetailCtrl
+    UIStoryboard* storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    ShopDetailCtrl* dlg = [storyBoard instantiateViewControllerWithIdentifier:@"ShopDetailCtrl"];
+    
+    dlg.preDataShopId =  [NSNumber numberWithInteger:order.storeId.integerValue];
+    
+    [self.navigationController pushViewController:dlg animated:YES];
+    
+     
+
+}
+
 -(void)CancelOrder:(UIButton*)btn
 {
 //    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"取消订单" message:@"是否取消订单？" preferredStyle:UIAlertControllerStyleAlert];
-//    
-//    
+//
+//
 //    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:
 //                               ^(UIAlertAction *action) {
 //                                   NSUInteger row=button.tag;
@@ -1039,9 +1078,26 @@
 
 }
 
--(void)goMoneyReturnPage
+-(void)goMoneyReturnPage:(UIButton*)btn
 {
-    MoneyReturnDetailCtrl *vc=[[MoneyReturnDetailCtrl alloc]initWithNibName:@"MoneyReturnDetailCtrl" bundle:nil];
+    NSInteger tag = btn.tag;
+    
+    int tableNum = tag%10;
+    
+    int row = (tag/10) - 1;
+    
+    NSArray* arrayModels = [NSArray arrayWithObjects:self.arrayOfOrder,self.arrayOfWaiting ,self.arrayOfServicing,self.arrayOfComplete, self.arrayOfCancel,nil];
+    
+    NSArray* arrayModel = [arrayModels objectAtIndex:tableNum];
+    
+    NSDictionary *dict = [arrayModel objectAtIndex:row];
+    OrderSingle* order = [OrderSingle objectWithKeyValues:dict];
+    
+    
+    MoneyReturnDetailCtrl *vc=[[MoneyReturnDetailCtrl alloc]
+                               initWithNibName:@"MoneyReturnDetailCtrl" bundle:nil];
+    
+    vc.order = order;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

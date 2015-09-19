@@ -23,7 +23,7 @@
     
     [HKCommen addHeadTitle:@"提现" whichNavigation:self.navigationItem];
     
-    self.lbl_balance.text=self.balance;
+    //self.lbl_balance.text=self.balance;
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton setFrame:CGRectMake(0, 0, 40, 40)];
     [leftButton setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
@@ -42,6 +42,43 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+    
+    [self getModel]; 
+    
+}
+
+- (void)getModel
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"正在加载...";
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setValue:[UserDataManager shareManager].userLoginInfo.user.uid forKey:@"customerId"];
+    //    [dic setValue:@"1" forKey:@"accountType"];
+    
+    NSLog(@"账户字典：%@",dic);
+    
+    [[NetworkManager shareMgr] server_queryUserAccountExactlyMontWithDic:dic completeHandle:^(NSDictionary *response) {
+        
+        if (response) {
+            
+            NSLog(@"可用信息：%@",response);
+            
+            self.balance = [NSString stringWithFormat:@"%.2f",[[response objectForKey:@"data"] floatValue]] ;
+            //
+            self.lbl_balance.text = self.balance;
+            
+        }else{
+            
+            [HKCommen addAlertViewWithTitel:@"获取可用信息失败"];
+            
+        }
+        
+        hud.hidden = YES;
+        
+        
+    }];
 }
 
 -(void)back
@@ -62,6 +99,15 @@
         
         return;
         
+    }else{
+    
+        if ([self.txt_amount.text floatValue] > self.lbl_balance.text.floatValue) {
+            
+            [HKCommen addAlertViewWithTitel:@"提现额度超过可提现额度"];
+            
+            return;
+        }
+    
     }
     
     if ([self.txt_zhanhao.text isEqualToString:@"请输入支付宝账号"] || [self.txt_zhanhao.text  isEqualToString:@""]) {

@@ -135,8 +135,8 @@
             NSNumber* number1 = dic[@"integralDiscount"];
             NSNumber* number2 = dic[@"rechargeCoupon"];
             
-            self.integralDiscount = number1.floatValue;
-            self.rechargeCoupon = number2.floatValue;
+            self.integralDiscount =  number2.integerValue/100.0;
+            self.rechargeCoupon = number1.floatValue;
             
             
             
@@ -168,7 +168,7 @@
             
             NSLog(@"账户信息：%@",response);
             
-            self.balance = [NSString stringWithFormat:@"%@",[response objectForKey:@"data"]] ;
+            self.balance = [NSString stringWithFormat:@"%.2f",[[response objectForKey:@"data"] floatValue]] ;
 //
             self.lbl_balance.text = self.balance;
             
@@ -210,7 +210,7 @@
         hud.labelText = @"正在加载";
         
         
-        NSDictionary* dicNew = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",self.txt_amount.text,@"amount" ,nil];
+        NSDictionary* dicNew = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",[NSString stringWithFormat:@"%.2f",self.txt_amount.text.floatValue*self.integralDiscount],@"amount" ,nil];
         
         
         
@@ -379,7 +379,7 @@
             
             if (resultStatus.integerValue == 9000) {
                 
-                [[NetworkManager shareMgr] server_aliRechargeNotify:self.tranId withDic:[NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",self.txt_amount.text,@"amount" ,nil] completeHandle:^(NSDictionary *response) {
+                [[NetworkManager shareMgr] server_aliRechargeNotify:self.tranId withDic:[NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",[NSString stringWithFormat:@"%.2f",self.txt_amount.text.floatValue*self.integralDiscount],@"amount" ,nil] completeHandle:^(NSDictionary *response) {
                     
                     //                [self paySucceed];
                     
@@ -473,7 +473,7 @@
     //        });
     //    });
     
-            NSString* price = [NSString stringWithFormat:@"%.2f",[self.txt_amount.text floatValue]*self.integralDiscount];
+            NSString* price = [NSString stringWithFormat:@"%.2f",self.txt_amount.text.floatValue*self.integralDiscount];
     
     NSDictionary* dicNew = [NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",price,@"amount" ,nil];
     
@@ -545,7 +545,7 @@
         
         if (response.errCode == WXSuccess) {
             
-            [[NetworkManager shareMgr] server_wxRechargeNotify:self.tranId withDic:[NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",self.txt_amount.text,@"amount" ,nil] completeHandle:^(NSDictionary *response) {
+            [[NetworkManager shareMgr] server_wxRechargeNotify:self.tranId withDic:[NSDictionary dictionaryWithObjectsAndKeys:[UserDataManager shareManager].userLoginInfo.user.uid,@"customerId",[NSString stringWithFormat:@"%.2f",self.txt_amount.text.floatValue*self.integralDiscount],@"amount" ,nil] completeHandle:^(NSDictionary *response) {
                 
       
                 

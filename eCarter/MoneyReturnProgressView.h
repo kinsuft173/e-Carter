@@ -43,4 +43,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_DetailFour;
 
 
+@property (nonatomic, strong) NSArray* arrayModel;
+
 @end

@@ -16,6 +16,7 @@
 
 #import "WXApiObject.h"
 #import "WXApi.h"
+#import "TransactionCtrl.h"
 //APP端签名相关头文件
 
 //服务端签名只需要用到下面一个头文件
@@ -195,8 +196,51 @@
         vc.BalanceMoney = self.BalanceMoney;
         vc.dicPreParams = self.dicPreParams;
         
+
         
-        [self.navigationController pushViewController:vc animated:YES];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeIndeterminate;
+        hud.labelText = @"正在加载...";
+        
+        NSMutableDictionary* dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
+        [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
+        [[NetworkManager shareMgr] server_userHasPsdWithDic:dic completeHandle:^(NSDictionary *response) {
+            
+            NSLog(@"交易密码获取;%@",response);
+            
+            if (response == nil) {
+                
+                hud.hidden = YES;
+                [HKCommen addAlertViewWithTitel:@"网络连接问题，请重试"];
+                
+                return ;
+            }
+            
+            
+            NSString* messege = [response objectForKey:@"message"];
+            
+            
+            if (!([messege integerValue] == 1 ) ) {
+                
+                
+                TransactionCtrl *vc=[[TransactionCtrl alloc] initWithNibName:@"TransactionCtrl" bundle:nil];
+                vc.judgeLoginOrPassword=@"password";
+                [self.navigationController pushViewController:vc animated:YES];
+                
+                hud.hidden = YES;
+                return;
+                
+            }else{
+            
+                hud.hidden = YES;
+                
+                [self.navigationController pushViewController:vc animated:YES];
+            
+            }
+        }];
+        
+
         
     }else if(indexPath.row == 1){
     

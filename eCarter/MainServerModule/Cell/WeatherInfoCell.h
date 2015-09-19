@@ -15,4 +15,6 @@
 @property (nonatomic, strong) IBOutlet UILabel* lbl_temperature;
 @property (nonatomic, strong) IBOutlet UILabel* lbl_weather;
 
+@property (nonatomic, strong) IBOutlet UIImageView* imgNoYi;
+
 @end

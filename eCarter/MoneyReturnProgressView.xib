@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -52,9 +52,9 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提交申请" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Db0-mZ-nt9">
-                    <rect key="frame" x="90" y="16" width="137" height="15"/>
+                    <rect key="frame" x="90" y="16" width="235" height="15"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="137" id="WPH-JG-7LJ"/>
+                        <constraint firstAttribute="width" constant="235" id="WPH-JG-7LJ"/>
                         <constraint firstAttribute="height" constant="15" id="agQ-gZ-O1e"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -62,19 +62,19 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-05-25 14:35:25 已受理" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCR-9m-ZEu">
-                    <rect key="frame" x="90" y="41" width="223" height="14"/>
+                    <rect key="frame" x="90" y="41" width="277" height="14"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="14" id="D40-jc-giw"/>
-                        <constraint firstAttribute="width" constant="223" id="eZT-io-N7T"/>
+                        <constraint firstAttribute="width" constant="277" id="eZT-io-N7T"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.56470588235294117" green="0.56470588235294117" blue="0.56470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提交申请" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzv-XH-a7v">
-                    <rect key="frame" x="90" y="96" width="137" height="15"/>
+                    <rect key="frame" x="90" y="96" width="235" height="15"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="137" id="OZg-gU-g5b"/>
+                        <constraint firstAttribute="width" constant="235" id="OZg-gU-g5b"/>
                         <constraint firstAttribute="height" constant="15" id="xVn-kd-OvJ"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -82,19 +82,19 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-05-25 14:35:25 已受理" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mlT-co-Fbl">
-                    <rect key="frame" x="90" y="122" width="223" height="14"/>
+                    <rect key="frame" x="90" y="122" width="277" height="14"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="14" id="eBS-a7-Z8a"/>
-                        <constraint firstAttribute="width" constant="223" id="r9W-Zj-sXX"/>
+                        <constraint firstAttribute="width" constant="277" id="r9W-Zj-sXX"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.56470588239999997" green="0.56470588239999997" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提交申请" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNV-xu-nah">
-                    <rect key="frame" x="90" y="175" width="137" height="15"/>
+                    <rect key="frame" x="90" y="175" width="235" height="15"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="137" id="Mu4-ni-i3l"/>
+                        <constraint firstAttribute="width" constant="235" id="Mu4-ni-i3l"/>
                         <constraint firstAttribute="height" constant="15" id="dy7-HF-nmf"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -102,9 +102,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-05-25 14:35:25 已受理" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLe-2H-DTb">
-                    <rect key="frame" x="90" y="201" width="223" height="14"/>
+                    <rect key="frame" x="90" y="201" width="277" height="14"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="223" id="aNN-fh-8OU"/>
+                        <constraint firstAttribute="width" constant="277" id="aNN-fh-8OU"/>
                         <constraint firstAttribute="height" constant="14" id="nkN-E2-KzT"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -112,19 +112,19 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提交申请" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeN-Tg-fzq">
-                    <rect key="frame" x="90" y="255" width="137" height="15"/>
+                    <rect key="frame" x="90" y="255" width="235" height="15"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="15" id="h24-jK-UdH"/>
-                        <constraint firstAttribute="width" constant="137" id="nT8-gh-mcz"/>
+                        <constraint firstAttribute="width" constant="235" id="nT8-gh-mcz"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-05-25 14:35:25 已受理" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ro5-xG-oVr">
-                    <rect key="frame" x="90" y="281" width="223" height="14"/>
+                    <rect key="frame" x="90" y="281" width="277" height="14"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="223" id="YRc-yA-zZM"/>
+                        <constraint firstAttribute="width" constant="277" id="YRc-yA-zZM"/>
                         <constraint firstAttribute="height" constant="14" id="eKV-4N-j82"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -165,32 +165,32 @@
                 <constraint firstAttribute="centerX" secondItem="cVY-cZ-CdW" secondAttribute="centerX" constant="142.5" id="3QF-46-71p"/>
                 <constraint firstItem="soL-w9-ygn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="188" id="6Oz-nG-acI"/>
                 <constraint firstItem="Db0-mZ-nt9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="6Xq-BZ-knG"/>
-                <constraint firstAttribute="centerX" secondItem="zzv-XH-a7v" secondAttribute="centerX" constant="29" id="70g-7l-5xk"/>
+                <constraint firstAttribute="centerX" secondItem="zzv-XH-a7v" secondAttribute="centerX" constant="-20" id="70g-7l-5xk"/>
                 <constraint firstItem="VN8-Zj-UoH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="42" id="9Uz-Vh-Kvp"/>
                 <constraint firstItem="hcq-Qe-to9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="9Xr-QJ-zHl"/>
                 <constraint firstItem="zNV-xu-nah" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="175" id="9yb-x0-jsv"/>
                 <constraint firstItem="9L3-01-Bmj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="106" id="DCu-WG-1g8"/>
                 <constraint firstAttribute="centerX" secondItem="1nu-6j-Ghh" secondAttribute="centerX" constant="142" id="Dp3-NF-imn"/>
-                <constraint firstAttribute="centerX" secondItem="ro5-xG-oVr" secondAttribute="centerX" constant="-14" id="EM0-tf-d30"/>
-                <constraint firstAttribute="centerX" secondItem="qeN-Tg-fzq" secondAttribute="centerX" constant="29" id="IOh-41-qlT"/>
+                <constraint firstAttribute="centerX" secondItem="ro5-xG-oVr" secondAttribute="centerX" constant="-41" id="EM0-tf-d30"/>
+                <constraint firstAttribute="centerX" secondItem="qeN-Tg-fzq" secondAttribute="centerX" constant="-20" id="IOh-41-qlT"/>
                 <constraint firstAttribute="centerX" secondItem="9L3-01-Bmj" secondAttribute="centerX" constant="142.5" id="Itb-iq-STB"/>
-                <constraint firstAttribute="centerX" secondItem="OCR-9m-ZEu" secondAttribute="centerX" constant="-14" id="JVH-71-lq5"/>
+                <constraint firstAttribute="centerX" secondItem="OCR-9m-ZEu" secondAttribute="centerX" constant="-41" id="JVH-71-lq5"/>
                 <constraint firstAttribute="centerX" secondItem="hcq-Qe-to9" secondAttribute="centerX" constant="142" id="Ljq-Ec-inZ"/>
                 <constraint firstItem="ro5-xG-oVr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="281" id="O3d-aR-pea"/>
-                <constraint firstAttribute="centerX" secondItem="Db0-mZ-nt9" secondAttribute="centerX" constant="29" id="Od4-xh-wD0"/>
+                <constraint firstAttribute="centerX" secondItem="Db0-mZ-nt9" secondAttribute="centerX" constant="-20" id="Od4-xh-wD0"/>
                 <constraint firstItem="NNg-X8-gB6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="122" id="PWg-je-xGc"/>
                 <constraint firstAttribute="centerX" secondItem="NNg-X8-gB6" secondAttribute="centerX" constant="142" id="TdM-9G-zES"/>
                 <constraint firstItem="3RZ-XY-1K6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="203" id="TeV-cM-dVh"/>
                 <constraint firstItem="OCR-9m-ZEu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="41" id="Y3N-ix-zFL"/>
                 <constraint firstItem="qeN-Tg-fzq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="255" id="YoW-wl-Xrn"/>
                 <constraint firstItem="cVY-cZ-CdW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="268" id="aUm-J3-ugH"/>
-                <constraint firstAttribute="centerX" secondItem="mlT-co-Fbl" secondAttribute="centerX" constant="-14" id="dSp-gm-XKp"/>
+                <constraint firstAttribute="centerX" secondItem="mlT-co-Fbl" secondAttribute="centerX" constant="-41" id="dSp-gm-XKp"/>
                 <constraint firstAttribute="centerX" secondItem="VN8-Zj-UoH" secondAttribute="centerX" constant="142" id="dz8-gc-0fp"/>
                 <constraint firstAttribute="centerX" secondItem="8kl-Ys-LiF" secondAttribute="centerX" constant="142.5" id="jHJ-V5-Yhb"/>
-                <constraint firstAttribute="centerX" secondItem="SLe-2H-DTb" secondAttribute="centerX" constant="-14" id="mbk-gu-sZ5"/>
+                <constraint firstAttribute="centerX" secondItem="SLe-2H-DTb" secondAttribute="centerX" constant="-41" id="mbk-gu-sZ5"/>
                 <constraint firstItem="zzv-XH-a7v" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="96" id="qzt-sT-0Du"/>
                 <constraint firstAttribute="centerX" secondItem="soL-w9-ygn" secondAttribute="centerX" constant="142.5" id="siT-Zk-QK1"/>
-                <constraint firstAttribute="centerX" secondItem="zNV-xu-nah" secondAttribute="centerX" constant="29" id="t6V-AG-4u0"/>
+                <constraint firstAttribute="centerX" secondItem="zNV-xu-nah" secondAttribute="centerX" constant="-20" id="t6V-AG-4u0"/>
                 <constraint firstItem="SLe-2H-DTb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="201" id="v4g-xQ-NJd"/>
                 <constraint firstAttribute="centerX" secondItem="3RZ-XY-1K6" secondAttribute="centerX" constant="142" id="wYh-md-dL7"/>
                 <constraint firstItem="mlT-co-Fbl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="122" id="xiI-ku-wiZ"/>
@@ -217,7 +217,7 @@
                 <outlet property="viewStageThree_Long" destination="NNg-X8-gB6" id="DRs-O5-FTh"/>
                 <outlet property="viewStageTwo_Long" destination="VN8-Zj-UoH" id="Hd5-tG-o67"/>
             </connections>
-            <point key="canvasLocation" x="199" y="181"/>
+            <point key="canvasLocation" x="198.5" y="181"/>
         </view>
     </objects>
     <resources>

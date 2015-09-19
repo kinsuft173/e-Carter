@@ -40,7 +40,12 @@
 
 -(void)back
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    NSArray* array = self.navigationController.childViewControllers;
+    
+    UIViewController* vc = [array objectAtIndex:1];
+    
+    
+    [self.navigationController popToViewController:vc animated:YES];
 }
 
 -(void)initUI

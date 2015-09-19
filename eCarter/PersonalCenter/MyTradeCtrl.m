@@ -234,7 +234,17 @@
             
         }
     
-        cell.lbl_money.text=[NSString stringWithFormat:@"￥%@", dic[@"amount"]];
+        cell.lbl_money.text=[NSString stringWithFormat:@"-￥%.2f",[dic[@"amount"] floatValue]];
+        
+        NSMutableAttributedString* str = [[NSMutableAttributedString alloc] initWithString:cell.lbl_money.text];
+        
+        
+        UIFont *font = [UIFont systemFontOfSize:20];
+        [str addAttribute:NSFontAttributeName
+                    value:font
+                    range:NSMakeRange(0, 1)];
+        
+        cell.lbl_money.attributedText = str;
         
         int paytype=[[dic objectForKey:@"paytype"] intValue];
         if (paytype==1) {
@@ -264,7 +274,17 @@
             
         }
         
-        cell.lbl_money.text=[NSString stringWithFormat:@"￥%@", dic[@"amount"]];
+        cell.lbl_money.text=[NSString stringWithFormat:@"+￥%.2f",[dic[@"amount"] floatValue]];
+        
+        NSMutableAttributedString* str = [[NSMutableAttributedString alloc] initWithString:cell.lbl_money.text];
+        
+        
+        UIFont *font = [UIFont systemFontOfSize:20];
+        [str addAttribute:NSFontAttributeName
+                    value:font
+                    range:NSMakeRange(0, 1)];
+        
+        cell.lbl_money.attributedText = str;
         
         int paytype=[[dic objectForKey:@"paytype"] intValue];
         if (paytype==1) {
@@ -294,7 +314,17 @@
             
         }
         
-        cell.lbl_money.text=[NSString stringWithFormat:@"￥%@", dic[@"amount"]];
+        cell.lbl_money.text=[NSString stringWithFormat:@"-￥%.2f", [dic[@"amount"] floatValue]];
+        
+        NSMutableAttributedString* str = [[NSMutableAttributedString alloc] initWithString:cell.lbl_money.text];
+        
+        
+        UIFont *font = [UIFont systemFontOfSize:20];
+        [str addAttribute:NSFontAttributeName
+                    value:font
+                    range:NSMakeRange(0, 1)];
+        
+        cell.lbl_money.attributedText = str;
         
         int paytype=[[dic objectForKey:@"paytype"] intValue];
         if (paytype==1) {
@@ -323,7 +353,18 @@
             
         }
         
-        cell.lbl_money.text=[NSString stringWithFormat:@"￥%@", dic[@"amount"]];
+        cell.lbl_money.text=[NSString stringWithFormat:@"+￥%.2f", [dic[@"amount"] floatValue]];
+        
+        NSMutableAttributedString* str = [[NSMutableAttributedString alloc] initWithString:cell.lbl_money.text];
+        
+        
+         UIFont *font = [UIFont systemFontOfSize:20];
+        [str addAttribute:NSFontAttributeName
+                            value:font
+                            range:NSMakeRange(0, 1)];
+        
+        cell.lbl_money.attributedText = str;
+        
         
         int paytype=[[dic objectForKey:@"paytype"] intValue];
         if (paytype==1) {

@@ -45,6 +45,7 @@
 
 @property (nonatomic, strong) NSMutableArray* arrayImageViews;
 @property (weak, nonatomic) IBOutlet UIButton *btnGoImages;
+@property  (weak, nonatomic) IBOutlet UIButton *btnGoShop;
 //@property (weak, nonatomic) IBOutlet UIButton *btnGoShop;
 
 @end

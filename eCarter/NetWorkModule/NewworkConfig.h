@@ -55,6 +55,8 @@ typedef void (^ErrorHandle)(NSError*);
 #define ECATER_UPDATE_ORDER_STATUS_INTERFACE @"/ecar/mobile/updateOrderStatus"
 #define ECATER_SUBMIT_ODERRE_VIEW_INTERFACE @"/ecar/mobile/submitOrderReviews"
 #define ECATER_USER_ACCOUNT_INTERFACE @"/ecar/mobile/queryUserAccount"
+#define ECATER_USER_ACCOUNT_EXEACT_INTERFACE @"/ecar/mobile/drawCash"
+
 #define ECATER_QUERY_USERRECHARGE_INTERFACE @"/ecar/mobile/queryUserRecharge"
 #define ECATER_SUBMIT_RECHARGEINO_INTERFACE @"/ecar/mobile/submitRechargeInfo"
 #define ECATER_QUERY_USER_CAR_INTERFACE @"/ecar/mobile/queryCustomerCar"
@@ -123,5 +125,7 @@ typedef void (^ErrorHandle)(NSError*);
 
 #define RECHARGE_GET_SYSTEMPARAMS @"/ecar/mobile/getSysparam"
 
+#define ORDER_LOG @"/ecar/mobile/queryOrderLog"
+#define USER_HASPSD @"/ecar/mobile/checkPassword"
 
 #endif

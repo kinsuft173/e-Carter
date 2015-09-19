@@ -274,10 +274,13 @@
         
         if (index<=1) {
             [cell.imgChuqing setImage:[UIImage imageNamed:@"icon_Right"]];
+            cell.imgNoYi.hidden = YES;
         }
         else
         {
             [cell.imgChuqing setImage:[UIImage imageNamed:@"icon_unRight"]];
+            cell.imgChuqing.hidden = YES;
+            cell.imgNoYi.hidden = NO;
         }
         
         return cell;
