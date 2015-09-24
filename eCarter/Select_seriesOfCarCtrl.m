@@ -61,9 +61,18 @@
         [[NetworkManager shareMgr] server_queryCarLists:dic completeHandle:^(NSDictionary *response) {
             
             NSLog(@"获得字典：%@",response);
-            self.arrayOfCarBrand = [response objectForKey:@"result"];
+            if ([[response objectForKey:@"error_code"] integerValue] == 10012) {
+                
+                
+                
+            }else{
             
-            [self.myTable reloadData];
+                self.arrayOfCarBrand = [response objectForKey:@"result"];
+                
+                [self.myTable reloadData];
+            }
+            
+
             
         }];
         
@@ -79,6 +88,13 @@
         
         [[NetworkManager shareMgr] server_queryCarDetails:dic completeHandle:^(NSDictionary *response) {
             
+            
+            if ([[response objectForKey:@"error_code"] integerValue] == 10012) {
+                
+                
+                
+            }else{
+            
             NSLog(@"未初始化的字典:%@",[response objectForKey:@"result"]);
             
             self.arrayOfYear=[[response objectForKey:@"result"] objectForKey:@"List"];
@@ -86,6 +102,8 @@
             NSLog(@"获得年款字典：%@",[[self.arrayOfYear objectAtIndex:0] objectForKey:@"List"]);
             
             [self.myTable reloadData];
+                
+            }
             
         }];
     }else if ([self.JudgeWhereFrom isEqualToString:@"color"])

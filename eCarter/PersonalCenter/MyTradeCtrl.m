@@ -174,16 +174,14 @@
         
     }else if( type == 4){
         
-        return 97;
+        return 127;
     }
     else if (type==3)
     {
         return 97;
     }
-        
-        
-        return 0;
     
+    return 0;
     
 }
 

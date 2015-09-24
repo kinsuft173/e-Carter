@@ -14,6 +14,7 @@
 #import "UserDataManager.h"
 #import "HKCommen.h"
 #import "ConsulationManager.h"
+#import "PlaceHolderCell.h"
 
 @interface CouponCtrl()
 
@@ -133,12 +134,23 @@
 #pragma tableView DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    if (self.arrayOfCheap.count  == 0) {
+        
+        return 1;
+        
+    }
+    
     return self.arrayOfCheap.count;
     
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (self.arrayOfCheap.count  == 0) {
+        
+        return 1;
+        
+    }
   
     NSNumber* isExpand = [self.arrayIndex objectAtIndex:section];
     
@@ -165,7 +177,30 @@
     
     static NSString* cellId1 = @"CouponMainInfoCell";
     static NSString* cellId2 = @"CouponExtraInfoCell";
+    static NSString* cellHolderId = @"PlaceHolderCell";
     
+    //    static NSString* cellHolderId = @"PlaceHolderCell";
+    
+    if (indexPath.section == 0 && self.arrayOfCheap.count == 0) {
+        
+        PlaceHolderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellHolderId];
+        
+        if (!cell) {
+            
+            NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:cellHolderId owner:self options:nil];
+            
+            cell = [topLevelObjects objectAtIndex:1];
+            
+            //  cell.contentView.backgroundColor = [HKCommen  getColor:@"aaaaaa" WithAlpha:0.2];
+            
+        }
+        
+        cell.lblText.text = @"暂无可领取的优惠券";
+        
+        return cell;
+        
+        
+    }
     if (indexPath.row == 0) {
         
         CouponMainInfoCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
