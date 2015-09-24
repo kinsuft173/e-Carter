@@ -879,9 +879,9 @@
     
     rang1.location = 11;
     
-    rang1.length = 11;
+    //rang1.length = 11;
     
-    strHour = [strTemp substringWithRange:rang1];
+    strHour = [strTemp substringFromIndex:11];
     
     
     [dic setObject:strDate forKey:@"serviceDate"];

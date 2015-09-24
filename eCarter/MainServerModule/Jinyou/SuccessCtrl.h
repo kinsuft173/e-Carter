@@ -11,5 +11,6 @@
 
 @interface SuccessCtrl : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *lbl_Information;
+@property (weak, nonatomic) NSString *strName;
 
 @end

@@ -149,8 +149,8 @@
         
         NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1",@"style", nil];
         
-        [dic setObject:@"113.3380580000" forKey:@"dimensions_x"];
-        [dic setObject:@"23.3380580000" forKey:@"dimensions_y"];
+//        [dic setObject:@"113.3380580000" forKey:@"dimensions_x"];
+//        [dic setObject:@"23.3380580000" forKey:@"dimensions_y"];
         
         [[NetworkManager shareMgr] server_queryStoreListWithDic:dic completeHandle:^(NSDictionary *response) {
             

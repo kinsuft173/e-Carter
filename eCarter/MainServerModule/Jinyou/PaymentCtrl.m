@@ -576,6 +576,7 @@
 - (void)paySucceed
 {
     SuccessCtrl *vc=[[SuccessCtrl alloc] initWithNibName:@"SuccessCtrl" bundle:nil];
+    vc.strName = self.strShopName;
     [self.navigationController pushViewController:vc animated:YES];
 
 }

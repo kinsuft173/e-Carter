@@ -126,7 +126,7 @@
 }
 
 
--(void)finish:(NSString *)pwd
+-(NSString*)finish:(NSString *)pwd
 {
     
     
@@ -143,6 +143,7 @@
             }
             
             SuccessCtrl *vc=[[SuccessCtrl alloc] initWithNibName:@"SuccessCtrl" bundle:nil];
+                vc.strName = self.strShopName;
             [self.navigationController pushViewController:vc animated:YES];
             
         }else{
@@ -156,7 +157,7 @@
         
     }];
     
-
+    return nil;
 }
 
 

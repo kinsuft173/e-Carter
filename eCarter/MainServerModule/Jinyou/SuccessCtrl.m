@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.lbl_Information.text=@"您已预约成功，广州赏下汽车服务中心很高兴为您服务，稍后会有接车员与您联系，请您保持手机畅通。";
+    self.lbl_Information.text= [NSString stringWithFormat:@"您已预约成功，%@很高兴为您服务，稍后会有接车员与您联系，请您保持手机畅通。",self.strName];
     
     [HKCommen addHeadTitle:@"预约成功" whichNavigation:self.navigationItem];
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
