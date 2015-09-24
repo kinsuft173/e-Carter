@@ -111,16 +111,21 @@
         
         return;
         
+        
+    }else{
+    
+        [self finish:self.strPsd];
+    
     }
     
     
     
     
-     ZCTradeView* zcView =  [[ZCTradeView alloc] init];
-    
-      zcView.delegate = self;
-    
-    [zcView show];
+//     ZCTradeView* zcView =  [[ZCTradeView alloc] init];
+//    
+//      zcView.delegate = self;
+//    
+//    [zcView show];
   
     
 }

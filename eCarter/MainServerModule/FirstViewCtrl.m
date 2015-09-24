@@ -459,16 +459,28 @@
 //
 //    }
     
-   NSDictionary* dic  =  [self.array_advertisement objectAtIndex:row];
+    NSString *check=[[NSUserDefaults standardUserDefaults] objectForKey:@"checkUser"];
     
-    if ([[dic objectForKey:@"state"] integerValue] == 1) {
+    if ([check isEqualToString:@"yes"]) {
         
-         [self performSegueWithIdentifier:@"goGuanggao" sender:nil];
+        NSDictionary* dic  =  [self.array_advertisement objectAtIndex:row];
         
-    }else if ([[dic objectForKey:@"state"] integerValue] == 2){
-    
-        [self performSegueWithIdentifier:@"goCoupon" sender:nil];
+        if ([[dic objectForKey:@"state"] integerValue] == 1) {
+            
+            [self performSegueWithIdentifier:@"goGuanggao" sender:nil];
+            
+        }else if ([[dic objectForKey:@"state"] integerValue] == 2){
+            
+            [self performSegueWithIdentifier:@"goCoupon" sender:nil];
+        }
+        
+        
+    }else{
+        
+        [HKCommen addAlertViewWithTitel:@"尚未登陆"];
     }
+    
+    
 
 
 }

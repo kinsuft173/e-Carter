@@ -213,19 +213,8 @@
         
     }];
     
-    
-    
-    
-    
-    
-    
-    
     [self.tableView.header beginRefreshing];
-    
-    
-    
-    
-    
+
 }
 
 

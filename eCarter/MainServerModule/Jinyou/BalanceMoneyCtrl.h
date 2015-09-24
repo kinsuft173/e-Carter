@@ -24,6 +24,8 @@
 @property (nonatomic, strong) NSString* strSeviceItem;
 @property (nonatomic, strong) NSDictionary* dicPreParams;
 
+@property (nonatomic, strong) NSString* strPsd;
+
 @property CGFloat BalanceMoney;
 
 @end

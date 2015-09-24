@@ -26,6 +26,8 @@
 
 #import "AppDelegate.h"
 #import "SuccessCtrl.h"
+#import "ZCTradeView.h"
+#import "SIAlertView.h"
 
 
 @interface PaymentCtrl ()<UITableViewDataSource,UITableViewDelegate>
@@ -188,13 +190,6 @@
 {
     if (indexPath.row==0) {
         
-        BalanceMoneyCtrl *vc=[[BalanceMoneyCtrl alloc] initWithNibName:@"BalanceMoneyCtrl" bundle:nil];
-        
-        vc.strTotalMount = self.strTotalMount;
-        vc.strShopName = self.strShopName;
-        vc.strSeviceItem = self.strSeviceItem;
-        vc.BalanceMoney = self.BalanceMoney;
-        vc.dicPreParams = self.dicPreParams;
         
 
         
@@ -208,6 +203,8 @@
         [[NetworkManager shareMgr] server_userHasPsdWithDic:dic completeHandle:^(NSDictionary *response) {
             
             NSLog(@"交易密码获取;%@",response);
+            
+            hud.hidden = YES;
             
             if (response == nil) {
                 
@@ -224,18 +221,58 @@
             if (!([messege integerValue] == 1 ) ) {
                 
                 
-                TransactionCtrl *vc=[[TransactionCtrl alloc] initWithNibName:@"TransactionCtrl" bundle:nil];
-                vc.judgeLoginOrPassword=@"password";
-                [self.navigationController pushViewController:vc animated:YES];
                 
-                hud.hidden = YES;
+                
+                SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:nil andMessage:@"您尚未设置交易密码,无法支付,是否去设置交易密码？"];
+                [alertView addButtonWithTitle:@"否"
+                                         type:SIAlertViewButtonTypeCancel
+                                      handler:^(SIAlertView *alertView) {
+
+                                          
+                                          
+                                      }];
+                [alertView addButtonWithTitle:@"去设置"
+                                         type:SIAlertViewButtonTypeDefault
+                                      handler:^(SIAlertView *alertView) {
+                                          
+                                          TransactionCtrl *vc=[[TransactionCtrl alloc] initWithNibName:@"TransactionCtrl" bundle:nil];
+                                          vc.judgeLoginOrPassword=@"password";
+                                          [self.navigationController pushViewController:vc animated:YES];
+                                          
+                                      }];
+                alertView.transitionStyle = SIAlertViewTransitionStyleDropDown;
+                alertView.backgroundStyle = SIAlertViewBackgroundStyleSolid;
+                
+                alertView.willShowHandler = ^(SIAlertView *alertView) {
+                    NSLog(@"%@, willShowHandler3", alertView);
+                };
+                alertView.didShowHandler = ^(SIAlertView *alertView) {
+                    NSLog(@"%@, didShowHandler3", alertView);
+                };
+                alertView.willDismissHandler = ^(SIAlertView *alertView) {
+                    NSLog(@"%@, willDismissHandler3", alertView);
+                };
+                alertView.didDismissHandler = ^(SIAlertView *alertView) {
+                    NSLog(@"%@, didDismissHandler3", alertView);
+                };
+                
+                [alertView show];
+                
+                
+                
+                
                 return;
                 
             }else{
             
                 hud.hidden = YES;
                 
-                [self.navigationController pushViewController:vc animated:YES];
+                ZCTradeView* zcView =  [[ZCTradeView alloc] init];
+                
+                zcView.delegate = self;
+                
+                [zcView show];
+                
             
             }
         }];
@@ -579,6 +616,27 @@
     [self.navigationController pushViewController:vc animated:YES];
 
 }
+
+
+#pragma mark-交易密码完成
+
+-(void)finish:(NSString *)pwd
+{
+    
+    BalanceMoneyCtrl *vc=[[BalanceMoneyCtrl alloc] initWithNibName:@"BalanceMoneyCtrl" bundle:nil];
+    
+    vc.strTotalMount = self.strTotalMount;
+    vc.strShopName = self.strShopName;
+    vc.strSeviceItem = self.strSeviceItem;
+    vc.BalanceMoney = self.BalanceMoney;
+    vc.dicPreParams = self.dicPreParams;
+    
+    vc.strPsd = pwd;
+    
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 
 
