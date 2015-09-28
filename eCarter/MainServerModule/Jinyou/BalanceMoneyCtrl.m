@@ -28,7 +28,7 @@
     self.dict=[[NSMutableDictionary alloc] init];
     [self.dict setObject:self.strShopName forKey:@"company"];
     [self.dict setObject:[NSString stringWithFormat:@"%.2f元",[self.strTotalMount floatValue]] forKey:@"money"];
-    [self.dict setObject:@"E车夫" forKey:@"receiver"];
+    [self.dict setObject:@"e车夫" forKey:@"receiver"];
     [self.dict setObject:self.strSeviceItem forKey:@"service"];
     
     [self initUI];

@@ -320,6 +320,8 @@ heightForHeaderInSection:(NSInteger)section
             cellCarDetail.textFiledChejia.text = self.preCar.frameNo;
             
             self.isFirstLoad = YES;
+            
+            self.carYear  = self.preCar.year;
         
         }
         
@@ -403,7 +405,7 @@ heightForHeaderInSection:(NSInteger)section
     
     if (!([strChejia isEqualToString:@""] || [strChejia isEqualToString:@"车架号的后六位"] || strChejia == nil )) {
         
-        if (![HKCommen validateSixNumber:strFadongji]) {
+        if (![HKCommen validateSixNumber:strChejia]) {
             
             [HKCommen addAlertViewWithTitel:@"格式不正确,请输入车架号的后六位"];
             
@@ -439,7 +441,7 @@ heightForHeaderInSection:(NSInteger)section
     [dic setObject:[NSString stringWithFormat:@"%@%@",cellCarNo.lblCarNo.text,cellCarNo.textFiledCarNo.text] forKey:@"no"];
     [dic setObject:strSelectCar1 forKey:@"brand"];
     [dic setObject:strSelectCar2 forKey:@"model"];
-    [dic setObject:@" " forKey:@"year"];
+    [dic setObject:self.carYear forKey:@"year"];
      [dic setObject:strSelectCar3 forKey:@"color"];
      [dic setObject:strSelectCar2 forKey:@"volume"];
     
@@ -552,12 +554,22 @@ heightForHeaderInSection:(NSInteger)section
     }else if ([dic objectForKey:@"series"]) {
         
         cellSelectCar2.lbl_KindOfCar.text = [dic objectForKey:@"series"];
+        self.carYear = [dic objectForKey:@"year"];
+    
         
     }else if ([dic objectForKey:@"color"]) {
         
         cellSelectCar3.lbl_KindOfCar.text = [dic objectForKey:@"color"];
         
+    }else if([dic objectForKey:@"车系"]){
         
+        NSLog(@"dic = %@",dic);
+    
+        cellSelectCar1.lbl_KindOfCar.text = [[dic objectForKey:@"车系"] objectForKey:@"N"];
+        cellSelectCar2.lbl_KindOfCar.text = [self.arrayOfCar objectAtIndex:1];
+       self.carId =  [[dic objectForKey:@"车系"] objectForKey:@"I"];
+        
+        NSLog(@"self.carId  = %@",self.carId );
     }
 
 

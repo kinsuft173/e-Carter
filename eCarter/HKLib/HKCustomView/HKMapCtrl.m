@@ -196,6 +196,12 @@ const NSString *NavigationViewControllerDestinationTitle = @"终点";
 //    self.navigationItem.titleView = self.viewForTitel;
     
     [HKCommen addHeadTitle:@"地图选址" whichNavigation:self.navigationItem];
+    
+    if (self.strType == 1) {
+        
+        [HKCommen addHeadTitle:@"选择定位地点" whichNavigation:self.navigationItem];
+        
+    }
 
 
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -228,12 +234,25 @@ const NSString *NavigationViewControllerDestinationTitle = @"终点";
 
 - (void)goCommit
 {
+    if (self.strType == 1) {
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"mapRefresh" object:nil];
+        
+    }
+
+    
     [self.navigationController popViewControllerAnimated:YES];
 
 }
 
 -(void)back
 {
+    if (self.strType == 1) {
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"mapRefresh" object:nil];
+        
+    }
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -568,6 +587,8 @@ const NSString *NavigationViewControllerDestinationTitle = @"终点";
         CLLocationCoordinate2D coordinate = [_mapView convertPoint:[gesture locationInView:_mapView]
                                               toCoordinateFromView:_mapView];
         
+        
+  
         NSLog(@"坐标＝%f,%f",coordinate.latitude,coordinate.longitude);
         
         // 添加标注
@@ -586,7 +607,17 @@ const NSString *NavigationViewControllerDestinationTitle = @"终点";
         _destinationPoint.title = @"Destination";
         
         
+        
+        if (self.strType!=1) {
+            
         [self reGeoAction];
+            
+        }else{
+        
+            [HKMapManager shareMgr].userCurrentLongitude = [NSString stringWithFormat:@"%f",coordinate.latitude];;
+            [HKMapManager shareMgr].userCurrentLatitude = [NSString stringWithFormat:@"%f",coordinate.longitude];
+        }
+
         
         [_mapView addAnnotation:_destinationPoint];
     }

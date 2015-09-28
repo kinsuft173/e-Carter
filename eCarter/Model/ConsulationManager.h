@@ -12,7 +12,7 @@
 
 + (ConsulationManager*)shareMgr;
 
-- (void)addHandledConsulation:(NSString*)consulationId;
+//- (void)addHandledConsulation:(NSString*)consulationId;
 - (void)addHandledComment:(NSString*)consulationId;
 - (void)getMycounPonModel;
 - (BOOL)isCommented:(NSString*)consulationId;

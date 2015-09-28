@@ -14,6 +14,9 @@
 #import "NetworkManager.h"
 #import "Shop.h"
 #import "ShopDetailCtrl.h"
+#import "HKMapManager.h"
+#import "HKMapCtrl.h"
+#import "HKCommen.h"
 
 @interface ShopGetCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -49,6 +52,15 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goHeadRefresh) name:@"mapRefresh" object:nil];
+}
+
+- (void)goHeadRefresh
+{
+    
+    [self.tableView.header beginRefreshing];
+    
 }
 
 -(void)back
@@ -108,7 +120,7 @@
         
         cell.lbl_Adress.text =  shop.storeName;
         
-        cell.lbl_Distance.text=  [NSString stringWithFormat:@"%.1fkm",[shop.distance floatValue]/1000.0];
+        cell.lbl_Distance.text=  [NSString stringWithFormat:@"%.1fkm",[shop.distance floatValue]];
         
         cell.lbl_Evaluation.text = [NSString stringWithFormat:@"(%.1f)",[shop.storeScore floatValue]];
         
@@ -132,6 +144,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Shop* shop = [Shop objectWithKeyValues:[self.arrayModel  objectAtIndex:indexPath.row]];
+    
+    if ([shop.distance floatValue] > [shop.serviceScope floatValue]) {
+        
+        [HKCommen addAlertViewWithTitel:@"不在商家的服务范围,请选择其他商家"];
+        
+        return;
+        
+    }
     
     [self performSegueWithIdentifier:@"goShopDetails" sender:[NSNumber numberWithInteger:[shop.id integerValue]]];
     
@@ -201,6 +221,21 @@
     
     [self.tableView.header beginRefreshing];
     
+}
+
+- (IBAction)goMap:(id)sender
+{
+    [HKCommen addAlertViewWithTitel:@"更新定位信息"];
+    
+    [[HKMapManager shareMgr] locate];
+    
+    HKMapCtrl* vc  = [[HKMapCtrl alloc]  initWithNibName:@"HKMapCtrl" bundle:nil];
+    
+    vc.strType = 1;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+
+
 }
 
 

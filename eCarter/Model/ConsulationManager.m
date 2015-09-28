@@ -148,7 +148,7 @@
                 NSLog(@"将要处理的优惠券模型=%@",dic);
                 
                 
-                [self addHandledConsulation:dic[@"title"]];
+//                [self addHandledConsulation:dic[@"title"]];
                 
             }
         }

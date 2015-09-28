@@ -27,4 +27,7 @@
 @property (nonatomic, strong) NSString* preBrand;
 @property (nonatomic, strong) id<carSelect> delegate;
 
+@property (nonatomic,strong)NSArray *arrayOfSerie;
+@property (nonatomic, strong) NSString* preHu;
+
 @end

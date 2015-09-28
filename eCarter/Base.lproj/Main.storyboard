@@ -135,7 +135,13 @@
                             <constraint firstAttribute="trailing" secondItem="Fgf-E0-vXk" secondAttribute="trailing" id="yP6-Fp-VUg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="到店服务" id="Mal-6e-S79"/>
+                    <navigationItem key="navigationItem" title="到店服务" id="Mal-6e-S79">
+                        <barButtonItem key="rightBarButtonItem" image="but_Navigation.png" id="DIt-s3-ZN6">
+                            <connections>
+                                <action selector="goMap:" destination="4H2-jO-VxI" id="UxG-T8-9b2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Fgf-E0-vXk" id="rew-WY-Dxf"/>
                         <segue destination="w0E-iG-jYS" kind="push" identifier="goShopDetails" id="1kh-qc-LOr"/>
@@ -143,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zuw-4Z-Qas" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="932" y="1195"/>
+            <point key="canvasLocation" x="746" y="1242"/>
         </scene>
         <!--上门取车-->
         <scene sceneID="65q-EU-PoY">
@@ -174,7 +180,13 @@
                             <constraint firstAttribute="trailing" secondItem="FNK-wN-BQf" secondAttribute="trailing" id="gW5-x5-rFZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="上门取车" id="pZ9-wm-0Ep"/>
+                    <navigationItem key="navigationItem" title="上门取车" id="pZ9-wm-0Ep">
+                        <barButtonItem key="rightBarButtonItem" image="but_Navigation.png" id="hXk-f5-uYt">
+                            <connections>
+                                <action selector="goMap:" destination="pWq-22-rXA" id="tHH-Q2-xeQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="FNK-wN-BQf" id="ExN-Xv-TLW"/>
                         <segue destination="GsF-pJ-wey" kind="push" identifier="goShopDetails" id="k08-UF-9dt"/>
@@ -182,7 +194,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zkD-li-xE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="630" y="2379"/>
+            <point key="canvasLocation" x="-154" y="2815"/>
         </scene>
         <!--Shop Detail Ctrl-->
         <scene sceneID="oK9-0Z-flt">
@@ -614,6 +626,7 @@
     <resources>
         <image name="address_btn_PDWhite.png" width="16" height="16"/>
         <image name="bg0.png" width="1080" height="496"/>
+        <image name="but_Navigation.png" width="32" height="32"/>
         <image name="nav_But_mine.png" width="32" height="32"/>
     </resources>
 </document>

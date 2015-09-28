@@ -158,6 +158,7 @@
 		DE9D12C71B52BE0000046407 /* RSADataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = DE9D12BA1B52BE0000046407 /* RSADataVerifier.m */; };
 		DE9D12D81B52DEC100046407 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DE9D12D71B52DEC100046407 /* libsqlite3.0.dylib */; };
 		DEAAA7201B80AD5800829FB7 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAAA71F1B80AD5800829FB7 /* MBProgressHUD.m */; };
+		DEAFB0F81BB4620500D4A0BC /* CarSeri.m in Sources */ = {isa = PBXBuildFile; fileRef = DEAFB0F71BB4620500D4A0BC /* CarSeri.m */; };
 		DECA17231B614B4700FD3418 /* Coupon.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA17221B614B4700FD3418 /* Coupon.m */; };
 		DECA17261B614BD400FD3418 /* CouponDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA17251B614BD400FD3418 /* CouponDetail.m */; };
 		DECA17291B614C1800FD3418 /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = DECA17281B614C1800FD3418 /* Shop.m */; };
@@ -930,6 +931,8 @@
 		DE9D12D71B52DEC100046407 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		DEAAA71E1B80AD5800829FB7 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		DEAAA71F1B80AD5800829FB7 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		DEAFB0F61BB4620500D4A0BC /* CarSeri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarSeri.h; sourceTree = "<group>"; };
+		DEAFB0F71BB4620500D4A0BC /* CarSeri.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarSeri.m; sourceTree = "<group>"; };
 		DECA17211B614B4700FD3418 /* Coupon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coupon.h; sourceTree = "<group>"; };
 		DECA17221B614B4700FD3418 /* Coupon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coupon.m; sourceTree = "<group>"; };
 		DECA17241B614BD400FD3418 /* CouponDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CouponDetail.h; sourceTree = "<group>"; };
@@ -2038,6 +2041,8 @@
 				DECA175B1B61638800FD3418 /* AdvertisementForEcart.m */,
 				DE0C3ED51B93267D006D2840 /* CommentModel.h */,
 				DE0C3ED61B93267D006D2840 /* CommentModel.m */,
+				DEAFB0F61BB4620500D4A0BC /* CarSeri.h */,
+				DEAFB0F71BB4620500D4A0BC /* CarSeri.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3875,6 +3880,7 @@
 				DEE719AF1B3ED21D003221A8 /* PersonalCenterCtrl.m in Sources */,
 				DEEC3DDB1B5C2832005CE84E /* CityCell.m in Sources */,
 				DEE87D0D1B48EC0500D3EDAB /* SelectCarCell.m in Sources */,
+				DEAFB0F81BB4620500D4A0BC /* CarSeri.m in Sources */,
 				DECA175C1B61638800FD3418 /* AdvertisementForEcart.m in Sources */,
 				E99318971B8A1BC700B56AE9 /* NSString+Extend.m in Sources */,
 				DE237F211B405BF20027767B /* MyScoreNomalCell.m in Sources */,

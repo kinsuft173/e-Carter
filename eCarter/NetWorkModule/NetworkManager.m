@@ -558,7 +558,7 @@
         
     }
     
-    NSLog(@"提交参数为",dicParams);
+    NSLog(@"提交参数为%@",dicParams);
     
     [manager POST:[NSString stringWithFormat:@"%@%@",SERVER,strInterface] parameters:dicParams success:^(AFHTTPRequestOperation *operation, id responseObject) {
         

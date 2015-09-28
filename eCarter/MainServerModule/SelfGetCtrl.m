@@ -12,7 +12,9 @@
 #import "Shop.h"
 #import "NetworkManager.h"
 #import "SelfDetailCtrl.h"
-
+#import "HKMapManager.h"
+#import "HKMapCtrl.h"
+#import "HKCommen.h"
 
 
 @interface SelfGetCtrl ()<UITableViewDataSource,UITableViewDelegate>
@@ -30,14 +32,14 @@
     
     [HKCommen addHeadTitle:@"上门服务" whichNavigation:self.navigationItem];
 
-    
-    UIButton *rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    rightButton.titleLabel.font=[UIFont systemFontOfSize:15.0];
-    [rightButton setFrame:CGRectMake(0, 0, 50, 100)];
-    [rightButton setTitle:self.city forState:UIControlStateNormal];
-    [rightButton addTarget:self action:@selector(doNothing) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:rightButton ];
-    self.navigationItem.rightBarButtonItem=item;
+//    
+//    UIButton *rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
+//    rightButton.titleLabel.font=[UIFont systemFontOfSize:15.0];
+//    [rightButton setFrame:CGRectMake(0, 0, 50, 100)];
+//    [rightButton setTitle:self.city forState:UIControlStateNormal];
+//    [rightButton addTarget:self action:@selector(doNothing) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:rightButton ];
+//    self.navigationItem.rightBarButtonItem=item;
     
     
     [self addRefresh];
@@ -60,6 +62,15 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goHeadRefresh) name:@"mapRefresh" object:nil];
+}
+
+- (void)goHeadRefresh
+{
+
+    [self.tableView.header beginRefreshing];
+
 }
 
 -(void)back
@@ -126,7 +137,7 @@
         
         cell.lbl_Adress.text =  shop.storeName;
         
-        cell.lbl_Distance.text=  [NSString stringWithFormat:@"%.1fkm",[shop.distance floatValue]/1000.0];
+        cell.lbl_Distance.text=  [NSString stringWithFormat:@"%.1fkm",[shop.distance floatValue]];
         
         cell.lbl_Evaluation.text = [NSString stringWithFormat:@"(%.1f)",[shop.storeScore floatValue]];
         
@@ -216,6 +227,21 @@
     //    self.tableView.footer = footer;
     
     [self.tableView.header beginRefreshing];
+    
+}
+
+- (IBAction)goMap:(id)sender
+{
+    [HKCommen addAlertViewWithTitel:@"更新定位信息"];
+    
+    [[HKMapManager shareMgr] locate];
+    
+    HKMapCtrl* vc  = [[HKMapCtrl alloc]  initWithNibName:@"HKMapCtrl" bundle:nil];
+    
+    vc.strType = 1;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
     
 }
 

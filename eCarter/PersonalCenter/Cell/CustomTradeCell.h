@@ -15,5 +15,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_time;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_merchant;
 
-
+@property (weak, nonatomic) IBOutlet UILabel *lbl_discount;
 @end

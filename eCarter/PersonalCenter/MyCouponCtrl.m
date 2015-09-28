@@ -20,7 +20,7 @@
 @interface MyCouponCtrl ()<UITableViewDelegate>
 
 
-@property (nonatomic, strong) NSArray* arrayOfCoupon;
+@property (nonatomic, strong) NSMutableArray* arrayOfCoupon;
 @property (nonatomic, strong) NSMutableArray* arrayIndex;
 @property (nonatomic,strong) UserLoginInfo *userInfo;
 
@@ -80,6 +80,8 @@
         
         if (self.indexCheck != -1) {
             
+            
+            
             [self.delegate saveMoney:[self.arrayOfCoupon objectAtIndex:self.indexCheck] withIndex:self.indexCheck];
             
         }else{
@@ -121,7 +123,43 @@
         [[NetworkManager shareMgr] server_fetchQueryUserCouponList:dic completeHandle:^(NSDictionary *responseBanner) {
             
             NSLog(@"字典：%@",responseBanner);
-            self.arrayOfCoupon = [responseBanner objectForKey:@"data"];
+            
+            NSArray* arrayTemp = [responseBanner objectForKey:@"data"];
+            
+            self.arrayOfCoupon = [[NSMutableArray alloc] init];
+//            [self.arrayOfCoupon addObjectsFromArray:arrayTemp];
+            for (int i = 0; i < arrayTemp.count; i ++) {
+                
+                CouponMyAll *coupon=[CouponMyAll objectWithKeyValues:[arrayTemp objectAtIndex:i]];
+                
+                if (([coupon.state rangeOfString:@"未使用"].length > 0 )) {
+                    
+                     //有效期设定
+                    //定义fmt
+                    NSDateFormatter *fmt=[[NSDateFormatter alloc] init];
+                    
+                    //设置格式:去除时分秒
+                    fmt.dateFormat=@"yyyy-MM-dd";
+                    
+                    //得到字符串格式的时间
+                    //NSString *dateString= //[fmt stringFromDate:self];
+                    
+                    //再转为date
+                    NSDate *dateStart=[fmt dateFromString:coupon.startTimeString];
+                     NSDate *dateEnd=[fmt dateFromString:coupon.endTimeString];
+                    
+                    if ([[NSDate date] timeIntervalSinceDate:dateStart] > 0 && [[NSDate date] timeIntervalSinceDate:dateEnd] < 0) {
+                        
+                        [self.arrayOfCoupon addObject:[arrayTemp objectAtIndex:i]];
+                        
+                    }
+              
+                    
+//                    [self.arrayOfCoupon addObject:[arrayTemp objectAtIndex:i]];
+                    
+                }
+                
+            }
             
             if (self.arrayOfCoupon.count!=0) {
                 
@@ -432,6 +470,23 @@
         return;
         
     }
+    
+//    if (self.arrayOfCoupon) {
+  //      CouponMyAll *coupon=[CouponMyAll objectWithKeyValues:[self.arrayOfCoupon objectAtIndex:indexPath.section]];
+        
+//        cell.lbl_couponDetail.text=coupon.remark;
+//    }
+//    if (!([coupon.state rangeOfString:@"未使用"].length > 0 )) {
+//        
+//        [HKCommen addAlertViewWithTitel:@"该优惠券无法使用"];
+//        
+//        return;
+//        
+//    }
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:coupon.state message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+//    [alert show];
+//    return;
+
     
     if (indexPath.section == self.indexCheck) {
         

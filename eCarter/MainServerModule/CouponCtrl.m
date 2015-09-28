@@ -75,7 +75,10 @@
     self.pageNum = 1;
     [dic setObject:[NSString stringWithFormat:@"%d",self.pageNum] forKey:@"pageNum"];
     [dic setObject:@"20" forKey:@"pageSize"];
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
     
+//    ,@"phone", [UserDataManager shareManager].userLoginInfo.sessionId,@"sessionId"
     NSLog(@"上传字典：%@",dic);
     
     [[NetworkManager shareMgr] server_fetchAllCheapTickets:dic completeHandle:^(NSDictionary *responseBanner) {
@@ -86,36 +89,16 @@
         NSArray* arrayResult  = [responseBanner objectForKey:@"data"];
         self.arrayOfCheap = [[NSMutableArray alloc] init];
         
+        if (arrayResult.count != 0) {
+            
+            [self.arrayOfCheap addObjectsFromArray:arrayResult];
+        }
+
 
         
        NSLog(@"当前本地数据为%@",[ConsulationManager shareMgr].setModel);
         
-        for (int i = 0; i < arrayResult.count; i ++) {
-            
-            NSDictionary* dic = [arrayResult objectAtIndex:i];
-            
-            NSString* str =  [dic  objectForKey:@"storeName"];
-            
-            BOOL isNewConsult = YES;
-            
-            for (NSString* consultId in [ConsulationManager shareMgr].setModel) {
-                
-                if ([[NSString stringWithFormat:@"%@",consultId] isEqualToString:[NSString stringWithFormat:@"%@",str]]) {
-                    
-                    
-                    isNewConsult = NO;
-                }
-                
-            }
-            
-            
-            if (isNewConsult == YES) {
-                
-                [self.arrayOfCheap addObject:[arrayResult objectAtIndex:i]];
-                
-            }
-            
-        }
+
         
         if (self.arrayOfCheap.count!=0) {
             
@@ -127,7 +110,76 @@
            NSLog(@"当前本地数据为%@",self.arrayOfCheap);
         
         [self.tableView reloadData];
+        
+        
+        if (self.arrayOfCheap.count == 20) {
+            
+            [self addFootRe];
+            
+        }
+        
     }];
+    
+}
+
+- (void)addFootRe
+{
+
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        
+        if (self.arrayOfCheap.count%20 != 0) {
+            [self.tableView.footer endRefreshing];
+            return ;
+        }
+        
+        NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+        
+        self.pageNum++;
+        [dic setObject:[NSString stringWithFormat:@"%d",self.pageNum] forKey:@"pageNum"];
+        [dic setObject:@"20" forKey:@"pageSize"];
+        [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
+        [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
+        
+        
+        [[NetworkManager shareMgr] server_fetchAllCheapTickets:dic completeHandle:^(NSDictionary *response) {
+            
+            if ([[response objectForKey:@"data"] isKindOfClass:[NSArray class]]) {
+                
+                if ([[response objectForKey:@"data"] count] != 0) {
+                    
+                    if (self.arrayOfCheap.count == 0) {
+                        
+                        
+                        
+                    }else{
+                        [self.arrayOfCheap  addObjectsFromArray:[response objectForKey:@"data"]];
+                        
+                    }
+                }
+                
+                self.arrayIndex=[[NSMutableArray alloc] init];
+                
+                if (self.arrayOfCheap.count!=0) {
+                    
+                    for (int i=0; i<self.arrayOfCheap.count; i++) {
+                        [self.arrayIndex addObject:@0];
+                    }
+                }
+                
+                
+                
+            }
+            
+            
+            [self.tableView.footer endRefreshing];
+            
+            [self.tableView reloadData];
+            
+        }];
+        
+    }];
+    
+
 }
 
 
@@ -306,24 +358,24 @@
             [HKCommen addAlertViewWithTitel:@"抢优惠券成功"];
             
 
-            
+            [self getModel];
 
             
-            [self.arrayIndex removeObjectAtIndex:tag];
-            [self.arrayOfCheap removeObjectAtIndex:tag];
-            
-            
-            [self.tableView beginUpdates];
-            
-            
-            NSIndexSet* indexSet = [NSIndexSet indexSetWithIndex:tag];
-            
-            [self.tableView deleteSections:indexSet  withRowAnimation:UITableViewRowAnimationAutomatic];
-
-            [self.tableView endUpdates];
-
-            
-            [[ConsulationManager shareMgr] addHandledConsulation:heheID];
+//            [self.arrayIndex removeObjectAtIndex:tag];
+//            [self.arrayOfCheap removeObjectAtIndex:tag];
+//            
+//            
+//            [self.tableView beginUpdates];
+//            
+//            
+//            NSIndexSet* indexSet = [NSIndexSet indexSetWithIndex:tag];
+//            
+//            [self.tableView deleteSections:indexSet  withRowAnimation:UITableViewRowAnimationAutomatic];
+//
+//            [self.tableView endUpdates];
+//
+//            
+//            [[ConsulationManager shareMgr] addHandledConsulation:heheID];
             
         }else if ([[response objectForKey:@"status"] integerValue]== 3){
             

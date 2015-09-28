@@ -182,8 +182,8 @@
     
     self.currentLocation = currentLocation;
     
-    self.userCurrentLatitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.latitude];
-    self.userCurrentLongitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.longitude];
+   self.userCurrentLongitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.latitude];
+    self.userCurrentLatitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.longitude];
     
     // 获取当前所在的城市名
     

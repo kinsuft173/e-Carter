@@ -621,7 +621,7 @@
 
 #pragma mark-交易密码完成
 
--(void)finish:(NSString *)pwd
+-(NSString*)finish:(NSString *)pwd
 {
     
     BalanceMoneyCtrl *vc=[[BalanceMoneyCtrl alloc] initWithNibName:@"BalanceMoneyCtrl" bundle:nil];
@@ -636,6 +636,8 @@
     
     
     [self.navigationController pushViewController:vc animated:YES];
+    
+    return nil;
 }
 
 

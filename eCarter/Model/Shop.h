@@ -21,5 +21,9 @@
 
 @property (nonatomic, copy) NSString *distance;
 
+@property (nonatomic, copy) NSString *serviceScope;
+
+
+
 
 @end

@@ -34,5 +34,6 @@
                       AndEndCoordinate:(CLLocationCoordinate2D)endCoordinate;
 
 
+- (void)locate;
 
 @end

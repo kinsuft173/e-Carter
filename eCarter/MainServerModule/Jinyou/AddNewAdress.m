@@ -136,7 +136,9 @@
         
         self.lbl_AdressOfSelect.text =  [NSString stringWithFormat:@"%@%@%@",[HKMapManager shareMgr].regeocode.addressComponent.province,[HKMapManager shareMgr].regeocode.addressComponent.city,[HKMapManager shareMgr].regeocode.addressComponent.district];//[HKMapManager shareMgr].address;
         
-        self.txt_AdressDetail.text = [NSString stringWithFormat:@"%@",[HKMapManager shareMgr].regeocode.addressComponent.township];
+        NSString* strDetail = [[HKMapManager shareMgr].regeocode.formattedAddress  substringFromIndex:self.lbl_AdressOfSelect.text.length];
+        
+        self.txt_AdressDetail.text =strDetail;// [NSString stringWithFormat:@"%@%@%@%@%@",[HKMapManager shareMgr].regeocode.addressComponent.township,[HKMapManager shareMgr].regeocode.addressComponent.neighborhood,[HKMapManager shareMgr].regeocode.addressComponent.building,[HKMapManager shareMgr].regeocode.addressComponent.streetNumber.street,[HKMapManager shareMgr].regeocode.addressComponent.streetNumber.number];
         self.lbl_placeHolder.text = @"";
         
         self.province = [HKMapManager shareMgr].regeocode.addressComponent.province;

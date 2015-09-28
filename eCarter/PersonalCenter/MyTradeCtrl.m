@@ -352,6 +352,7 @@
         }
         
         cell.lbl_money.text=[NSString stringWithFormat:@"+￥%.2f", [dic[@"amount"] floatValue]];
+    
         
         NSMutableAttributedString* str = [[NSMutableAttributedString alloc] initWithString:cell.lbl_money.text];
         
@@ -377,9 +378,17 @@
         }
         
         cell.lbl_content.text=[dic objectForKey:@"items"];
-        
         cell.lbl_time.text=[dic objectForKey:@"time"];
         cell.lbl_merchant.text=[dic objectForKey:@"storeName"];
+        
+        if ([[[dic objectForKey:@"discount"] class] isSubclassOfClass:[NSNull class]]) {
+           
+            cell.lbl_discount.text = @"";// [dic objectForKey:@"discount"];
+            
+        }else{
+            cell.lbl_discount.text = [dic objectForKey:@"discount"];
+        }
+        
         return cell;
         
     }
