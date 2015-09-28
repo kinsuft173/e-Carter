@@ -18,6 +18,9 @@
 #import "HKMapCtrl.h"
 #import "HKCommen.h"
 
+#import "SelectCityCtrl.h"
+#import "UserDataManager.h"
+
 @interface ShopGetCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray* arrayModel;
@@ -225,17 +228,45 @@
 
 - (IBAction)goMap:(id)sender
 {
-    [HKCommen addAlertViewWithTitel:@"更新定位信息"];
+//    [HKCommen addAlertViewWithTitel:@"更新定位信息"];
+//    
+//    [[HKMapManager shareMgr] locate];
+//    
+//    HKMapCtrl* vc  = [[HKMapCtrl alloc]  initWithNibName:@"HKMapCtrl" bundle:nil];
+//    
+//    vc.strType = 1;
+//    
+//    [self.navigationController pushViewController:vc animated:YES];
+
+    [self selectCity:nil];
     
-    [[HKMapManager shareMgr] locate];
+}
+
+- (IBAction)selectCity:(id)sender
+{
+    SelectCityCtrl* vc = [[SelectCityCtrl alloc] initWithNibName:@"SelectCityCtrl" bundle:nil];
     
-    HKMapCtrl* vc  = [[HKMapCtrl alloc]  initWithNibName:@"HKMapCtrl" bundle:nil];
-    
-    vc.strType = 1;
+    vc.hidesBottomBarWhenPushed = YES;
+    vc.delegate = self;
     
     [self.navigationController pushViewController:vc animated:YES];
+    
+}
 
+#pragma mark - 点击城市处理
 
+- (void)handleCitySelectedWithDic:(NSDictionary *)dic
+{
+    NSLog(@"cityDic = %@",dic);
+    [UserDataManager shareManager].city = dic[@"cityName"];
+    // self.lblCity.text = dic[@"cityName"];
+    [UserDataManager shareManager].cityId = dic[@"cityId"];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDictionary dictionaryWithDictionary:dic] forKey:@"cityObject"];
+    
+    [self.tableView.header beginRefreshing];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"zhenligezha" object:nil];
 }
 
 

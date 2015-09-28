@@ -79,10 +79,20 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goPersonalCenter:) name:@"goLogin" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goPersonalCenteWithNotify) name:@"goMyOrder" object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(heihei) name:@"zhenligezha" object:nil];
     
 //    [self scrollViewSetImages];
     
+}
+
+- (void)heihei
+{
+
+    self.lblCity.text = [UserDataManager shareManager].city;
+
+    
+    [self getModel];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -275,6 +285,7 @@
         if (index<=1) {
             [cell.imgChuqing setImage:[UIImage imageNamed:@"icon_Right"]];
             cell.imgNoYi.hidden = YES;
+             cell.imgChuqing.hidden = NO;
         }
         else
         {

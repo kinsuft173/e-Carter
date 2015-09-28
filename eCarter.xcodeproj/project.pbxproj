@@ -4219,6 +4219,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/eCarter/ThirdLib",
@@ -4255,7 +4256,7 @@
 					"$(PROJECT_DIR)/eCarter/ThirdLib/thirdLib/WxPayLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0f8c8bcb-32e7-464a-a5d8-dffd8ebe9499";
+				PROVISIONING_PROFILE = "bd7e784e-5fb3-4e2e-90a9-159e3d808913";
 			};
 			name = Debug;
 		};
@@ -4267,6 +4268,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/eCarter/ThirdLib",
@@ -4303,7 +4305,7 @@
 					"$(PROJECT_DIR)/eCarter/ThirdLib/thirdLib/WxPayLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0f8c8bcb-32e7-464a-a5d8-dffd8ebe9499";
+				PROVISIONING_PROFILE = "bd7e784e-5fb3-4e2e-90a9-159e3d808913";
 			};
 			name = Release;
 		};

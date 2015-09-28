@@ -225,9 +225,11 @@
             return;
             
         }else{
+            
+//            NSLog(@" 将要传出 %d的数据%@",,[self.arrayModel objectAtIndex:indexPath.row]);
         
-        [self.navigationController popViewControllerAnimated:YES];
-        [self.delegate handleCitySelectedWithDic:[self.arrayModel objectAtIndex:indexPath.row]];
+            [self.navigationController popViewControllerAnimated:YES];
+            [self.delegate handleCitySelectedWithDic:[self.arrayModel objectAtIndex:index]];
         }
         
         return;
