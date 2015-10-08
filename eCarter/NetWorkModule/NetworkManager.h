@@ -140,4 +140,7 @@
 //验证地址是否有效
 - (BOOL)server_addressVerify:(NSDictionary*)dic;
 
+//提交地址
+- (void)server_addressSend:(NSDictionary*)dic;
+
 @end

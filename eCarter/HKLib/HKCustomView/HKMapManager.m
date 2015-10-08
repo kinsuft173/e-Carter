@@ -19,6 +19,9 @@
 @property (nonatomic, strong) AMapSearchAPI *search;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
+@property (nonatomic, strong) NSString* preUserCurrentLongitude;
+@property (nonatomic, strong) NSString* preUserCurrentLatitude;
+
 @end
 
 @implementation HKMapManager
@@ -185,6 +188,9 @@
    self.userCurrentLongitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.latitude];
     self.userCurrentLatitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.longitude];
     
+    self.preUserCurrentLongitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.latitude];
+    self.preUserCurrentLatitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.longitude];
+    
     // 获取当前所在的城市名
     
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
@@ -264,6 +270,13 @@
         
     }
     
+}
+
+- (void)recover
+{
+    self.userCurrentLatitude = self.preUserCurrentLatitude;
+    self.userCurrentLongitude = self.preUserCurrentLongitude;
+
 }
 
 

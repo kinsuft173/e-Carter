@@ -36,4 +36,6 @@
 
 - (void)locate;
 
+- (void)recover;
+
 @end

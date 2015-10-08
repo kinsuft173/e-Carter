@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -136,20 +137,29 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="到店服务" id="Mal-6e-S79">
-                        <barButtonItem key="rightBarButtonItem" image="but_Navigation.png" id="DIt-s3-ZN6">
-                            <connections>
-                                <action selector="goMap:" destination="4H2-jO-VxI" id="UxG-T8-9b2"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="广州" id="xS1-Fg-0Ki">
+                                <connections>
+                                    <action selector="goMap:" destination="4H2-jO-VxI" id="EnX-nJ-3tr"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="but_Navigation.png" id="DIt-s3-ZN6">
+                                <inset key="imageInsets" minX="15" minY="0.0" maxX="-15" maxY="0.0"/>
+                                <connections>
+                                    <action selector="goMap:" destination="4H2-jO-VxI" id="UxG-T8-9b2"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="itemAddress" destination="xS1-Fg-0Ki" id="hcQ-YB-nhk"/>
                         <outlet property="tableView" destination="Fgf-E0-vXk" id="rew-WY-Dxf"/>
                         <segue destination="w0E-iG-jYS" kind="push" identifier="goShopDetails" id="1kh-qc-LOr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zuw-4Z-Qas" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="746" y="1242"/>
+            <point key="canvasLocation" x="383" y="1269"/>
         </scene>
         <!--上门取车-->
         <scene sceneID="65q-EU-PoY">
@@ -180,13 +190,7 @@
                             <constraint firstAttribute="trailing" secondItem="FNK-wN-BQf" secondAttribute="trailing" id="gW5-x5-rFZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="上门取车" id="pZ9-wm-0Ep">
-                        <barButtonItem key="rightBarButtonItem" image="but_Navigation.png" id="hXk-f5-uYt">
-                            <connections>
-                                <action selector="goMap:" destination="pWq-22-rXA" id="tHH-Q2-xeQ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="上门取车" id="pZ9-wm-0Ep"/>
                     <connections>
                         <outlet property="tableView" destination="FNK-wN-BQf" id="ExN-Xv-TLW"/>
                         <segue destination="GsF-pJ-wey" kind="push" identifier="goShopDetails" id="k08-UF-9dt"/>
@@ -194,7 +198,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zkD-li-xE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-154" y="2815"/>
+            <point key="canvasLocation" x="168" y="2986"/>
         </scene>
         <!--Shop Detail Ctrl-->
         <scene sceneID="oK9-0Z-flt">
@@ -310,7 +314,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LSC-Ul-Bbi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-125" y="2379"/>
+            <point key="canvasLocation" x="100" y="2222"/>
         </scene>
         <!--Pament Way Slected Ctrl-->
         <scene sceneID="Vmx-df-nKe">

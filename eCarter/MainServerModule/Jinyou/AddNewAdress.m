@@ -391,6 +391,12 @@
     NSLog(@"dicVirify = %@",dicVirify);
     
     if (![[NetworkManager shareMgr] server_addressVerify:dicVirify]) {
+        
+        NSString* address = [NSString stringWithFormat:@"%@%@%@%@",self.province ,self.city,self.place,self.txt_AdressDetail.text];
+        
+        NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:address,@"address", nil];
+        
+        [[NetworkManager shareMgr] server_addressSend:dic];
     
         hud.hidden = YES;
         

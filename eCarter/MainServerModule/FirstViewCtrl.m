@@ -19,6 +19,7 @@
 #import "TransactionCtrl.h"
 #import "EventBanerCtrl.h"
 #import "PersonalCenterCtrl.h"
+#import "Weather.h"
 
 
 
@@ -161,22 +162,30 @@
     }];
     
     NSMutableDictionary *dicWeather=[[NSMutableDictionary alloc]init];
-    [dicWeather setObject:@"4e0670a39b0b460eaaf7ea415d87e5e6" forKey:@"key"];
+//    [dicWeather setObject:@"4e0670a39b0b460eaaf7ea415d87e5e6" forKey:@"key"];
     [dicWeather setObject:[UserDataManager shareManager].city forKey:@"cityname"];
     
     [[NetworkManager shareMgr] server_fetchWeatherWithDic:dicWeather completeHandle:^(NSDictionary *responseBanner) {
         
         NSLog(@"天气数据：%@",responseBanner);
     
-        if (![[[responseBanner objectForKey:@"result"] class] isSubclassOfClass:[NSNull class]]) {
-
-            self.dic_weather = [[responseBanner objectForKey:@"result"] objectForKey:@"today"] ;
+//        if (![[[responseBanner objectForKey:@"result"] class] isSubclassOfClass:[NSNull class]]) {
+//
+//            self.dic_weather = [[responseBanner objectForKey:@"result"] objectForKey:@"today"] ;
+//            
+//        }
+        
+        if (responseBanner) {
+            
+            self.dic_weather = [responseBanner objectForKey:@"data"];
+            
+            
+            
+            [self.tableView reloadData];
             
         }
         
 
-        
-        [self.tableView reloadData];
         
     }];
     
@@ -263,36 +272,57 @@
         
         }
         
-        NSString *weather=self.dic_weather[@"weather"];
+        Weather* currentWeather = [Weather objectWithKeyValues:self.dic_weather];
+        
+      //  NSString *weather=self.dic_weather[@"weather"];
         
         
-        cell.lbl_weather.text = weather;
-        cell.lbl_temperature.text = [NSString stringWithFormat:@"%@℃",self.dic_weather[@"temperature"]];
+        cell.lbl_weather.text = currentWeather.weather;
+        cell.lbl_temperature.text =  currentWeather.temperature;//[NSString stringWithFormat:@"%@℃",self.dic_weather[@"temperature"]];
         
         
-        int index=100;
+//        int index=100;
+//        
+//        for (int i=0; i<self.arrayOfWeatherData.count; i++) {
+//            if ([weather isEqualToString:[self.arrayOfWeatherData objectAtIndex:i]]) {
+//                index=i;
+//            }
+//        }
+//        
+//        if (index!=100) {
+//            [cell.imgWeather setImage:[UIImage imageNamed:[self.arrayOfWeather objectAtIndex:index]]];
+//        }
+//        
+//        if (index<=1) {
+//            [cell.imgChuqing setImage:[UIImage imageNamed:@"icon_Right"]];
+//            cell.imgNoYi.hidden = YES;
+//             cell.imgChuqing.hidden = NO;
+//        }
+//        else
+//        {
+//            [cell.imgChuqing setImage:[UIImage imageNamed:@"icon_unRight"]];
+//            cell.imgChuqing.hidden = YES;
+//            cell.imgNoYi.hidden = NO;
+//        }
         
-        for (int i=0; i<self.arrayOfWeatherData.count; i++) {
-            if ([weather isEqualToString:[self.arrayOfWeatherData objectAtIndex:i]]) {
-                index=i;
-            }
+        if ([currentWeather.zs isEqualToString:@"宜"]) {
+            
+                        [cell.imgChuqing setImage:[UIImage imageNamed:@"icon_Right"]];
+                        cell.imgNoYi.hidden = YES;
+                         cell.imgChuqing.hidden = NO;
+            
+        }else{
+        
+                        [cell.imgChuqing setImage:[UIImage imageNamed:@"icon_unRight"]];
+                        cell.imgChuqing.hidden = YES;
+                        cell.imgNoYi.hidden = NO;
+        
         }
         
-        if (index!=100) {
-            [cell.imgWeather setImage:[UIImage imageNamed:[self.arrayOfWeather objectAtIndex:index]]];
-        }
+        cell.imgWeather.contentMode = UIViewContentModeScaleAspectFill;
         
-        if (index<=1) {
-            [cell.imgChuqing setImage:[UIImage imageNamed:@"icon_Right"]];
-            cell.imgNoYi.hidden = YES;
-             cell.imgChuqing.hidden = NO;
-        }
-        else
-        {
-            [cell.imgChuqing setImage:[UIImage imageNamed:@"icon_unRight"]];
-            cell.imgChuqing.hidden = YES;
-            cell.imgNoYi.hidden = NO;
-        }
+        [cell.imgWeather sd_setImageWithURL:[NSURL URLWithString:currentWeather.pictureUrl]
+                     placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
         
         return cell;
         

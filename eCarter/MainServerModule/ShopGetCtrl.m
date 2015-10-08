@@ -21,10 +21,13 @@
 #import "SelectCityCtrl.h"
 #import "UserDataManager.h"
 
+#import "PlaceHolderCell.h"
+
 @interface ShopGetCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray* arrayModel;
 @property (nonatomic, strong) IBOutlet UITableView* tableView;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem* itemAddress;
 
 @end
 
@@ -35,6 +38,8 @@
     // Do any additional setup after loading the view.
     
 //    self.arrayModels = [[NSMutableArray alloc] initWithObjects:@"1",@"2", nil];
+    
+    [[HKMapManager shareMgr] recover];
     
     [self addRefresh];
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -56,8 +61,23 @@
         self.navigationItem.leftBarButtonItem=leftItem;
     }
     
+    self.itemAddress.title = [UserDataManager shareManager].city;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goHeadRefresh) name:@"mapRefresh" object:nil];
+    
+    
+    
+    //    [self scrollViewSetImages];
+    
 }
+
+- (void)heihei
+{
+    self.itemAddress.title = [UserDataManager shareManager].city;
+
+}
+
+
 
 - (void)goHeadRefresh
 {
@@ -94,12 +114,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (self.arrayModel.count==0) {
+        return 1;
+    }
 
     return self.arrayModel.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.arrayModel.count==0) {
+        return 44;
+    }
     return 127;
     
 }
@@ -108,6 +134,29 @@
 {
     
     static NSString* cellId1 = @"ShopCell";
+    
+    static NSString* cellHolderId = @"PlaceHolderCell";
+    //    static NSString* cellHolderId = @"PlaceHolderCell";
+    
+    if (indexPath.section == 0 && self.arrayModel.count == 0) {
+        
+        PlaceHolderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellHolderId];
+        
+        if (!cell) {
+            
+            NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:cellHolderId owner:self options:nil];
+            
+            cell = [topLevelObjects objectAtIndex:1];
+            
+            cell.contentView.backgroundColor = self.tableView.backgroundColor;// [HKCommen  getColor:@"aaaaaa" WithAlpha:0.2];
+            
+        }
+        
+        cell.lblText.text = @"附近暂无任何商家";
+        
+        return cell;
+        
+    }
     
     if (indexPath.section == 0) {
         
@@ -146,6 +195,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.arrayModel.count==0) {
+        return ;
+    }
+    
     Shop* shop = [Shop objectWithKeyValues:[self.arrayModel  objectAtIndex:indexPath.row]];
     
     if ([shop.distance floatValue] > [shop.serviceScope floatValue]) {
@@ -183,7 +236,24 @@
                 
                 self.arrayModel = [[NSMutableArray alloc] init];
                 
-                [self.arrayModel addObjectsFromArray:tempArray];
+                for (int i = 0; i < tempArray.count; i ++) {
+                    
+                    Shop* shop = [Shop objectWithKeyValues:[tempArray objectAtIndex:i]];
+                    
+                    if ([shop.distance floatValue] > [shop.serviceScope floatValue]) {
+                        
+                        
+                        
+                    }else{
+                        
+                        [self.arrayModel addObject:[tempArray objectAtIndex:i]];
+                        
+                        
+                    }
+                    
+                }
+                
+                //                [self.arrayModel addObjectsFromArray:tempArray];
                 
             }
             
@@ -228,17 +298,17 @@
 
 - (IBAction)goMap:(id)sender
 {
-    [HKCommen addAlertViewWithTitel:@"更新定位信息"];
-    
-    [[HKMapManager shareMgr] locate];
-    
-    HKMapCtrl* vc  = [[HKMapCtrl alloc]  initWithNibName:@"HKMapCtrl" bundle:nil];
-    
-    vc.strType = 1;
-    
-    [self.navigationController pushViewController:vc animated:YES];
+//    [HKCommen addAlertViewWithTitel:@"更新定位信息"];
+//    
+//    [[HKMapManager shareMgr] locate];
+//    
+//    HKMapCtrl* vc  = [[HKMapCtrl alloc]  initWithNibName:@"HKMapCtrl" bundle:nil];
+//    
+//    vc.strType = 1;
+//    
+//    [self.navigationController pushViewController:vc animated:YES];
 
-//    [self selectCity:nil];
+    [self selectCity:nil];
     
 }
 
@@ -261,6 +331,8 @@
     [UserDataManager shareManager].city = dic[@"cityName"];
     // self.lblCity.text = dic[@"cityName"];
     [UserDataManager shareManager].cityId = dic[@"cityId"];
+    
+    self.itemAddress.title =   [UserDataManager shareManager].city;
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSDictionary dictionaryWithDictionary:dic] forKey:@"cityObject"];
     

@@ -422,6 +422,7 @@
 		DEE52ED91B390AF400C90BA3 /* ShopGetCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE52ED81B390AF400C90BA3 /* ShopGetCtrl.m */; };
 		DEE52EDD1B39119500C90BA3 /* ShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE52EDB1B39119500C90BA3 /* ShopCell.m */; };
 		DEE52EDE1B39119500C90BA3 /* ShopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE52EDC1B39119500C90BA3 /* ShopCell.xib */; };
+		DEE5C3CA1BC6F74100F65682 /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE5C3C91BC6F74100F65682 /* Weather.m */; settings = {ASSET_TAGS = (); }; };
 		DEE719AF1B3ED21D003221A8 /* PersonalCenterCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE719AE1B3ED21D003221A8 /* PersonalCenterCtrl.m */; };
 		DEE719B11B3ED2E2003221A8 /* PersonalCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEE719B01B3ED2E2003221A8 /* PersonalCenter.storyboard */; };
 		DEE719B61B3ED50D003221A8 /* PersonInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE719B41B3ED50D003221A8 /* PersonInfoCell.m */; };
@@ -1269,6 +1270,8 @@
 		DEE52EDA1B39119500C90BA3 /* ShopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShopCell.h; path = MainServerModule/Cell/ShopCell.h; sourceTree = "<group>"; };
 		DEE52EDB1B39119500C90BA3 /* ShopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShopCell.m; path = MainServerModule/Cell/ShopCell.m; sourceTree = "<group>"; };
 		DEE52EDC1B39119500C90BA3 /* ShopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShopCell.xib; path = MainServerModule/Cell/ShopCell.xib; sourceTree = "<group>"; };
+		DEE5C3C81BC6F74100F65682 /* Weather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weather.h; sourceTree = "<group>"; };
+		DEE5C3C91BC6F74100F65682 /* Weather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weather.m; sourceTree = "<group>"; };
 		DEE719AD1B3ED21D003221A8 /* PersonalCenterCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonalCenterCtrl.h; path = PersonalCenter/PersonalCenterCtrl.h; sourceTree = "<group>"; };
 		DEE719AE1B3ED21D003221A8 /* PersonalCenterCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonalCenterCtrl.m; path = PersonalCenter/PersonalCenterCtrl.m; sourceTree = "<group>"; };
 		DEE719B01B3ED2E2003221A8 /* PersonalCenter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = PersonalCenter.storyboard; path = PersonalCenter/PersonalCenter.storyboard; sourceTree = "<group>"; };
@@ -2041,6 +2044,8 @@
 				DE0C3ED61B93267D006D2840 /* CommentModel.m */,
 				DEAFB0F61BB4620500D4A0BC /* CarSeri.h */,
 				DEAFB0F71BB4620500D4A0BC /* CarSeri.m */,
+				DEE5C3C81BC6F74100F65682 /* Weather.h */,
+				DEE5C3C91BC6F74100F65682 /* Weather.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4040,6 +4045,7 @@
 				DEE87D271B48EC5100D3EDAB /* OrderManagerCell.m in Sources */,
 				E99318A41B8A1BC700B56AE9 /* UIImage+ReMake.m in Sources */,
 				DEE87CF71B48EB8500D3EDAB /* CarNumCell.m in Sources */,
+				DEE5C3CA1BC6F74100F65682 /* Weather.m in Sources */,
 				E9EB56921B836DF500E0FCBF /* SelectProvinceCtrl.m in Sources */,
 				DE9D12C51B52BE0000046407 /* openssl_wrapper.m in Sources */,
 				DECA17561B61574500FD3418 /* UserLoginInfo.m in Sources */,
@@ -4252,7 +4258,7 @@
 					"$(PROJECT_DIR)/eCarter/ThirdLib/thirdLib/WxPayLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bd7e784e-5fb3-4e2e-90a9-159e3d808913";
+				PROVISIONING_PROFILE = "0f8c8bcb-32e7-464a-a5d8-dffd8ebe9499";
 			};
 			name = Debug;
 		};
@@ -4301,7 +4307,7 @@
 					"$(PROJECT_DIR)/eCarter/ThirdLib/thirdLib/WxPayLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "bd7e784e-5fb3-4e2e-90a9-159e3d808913";
+				PROVISIONING_PROFILE = "0f8c8bcb-32e7-464a-a5d8-dffd8ebe9499";
 			};
 			name = Release;
 		};

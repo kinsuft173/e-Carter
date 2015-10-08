@@ -2483,7 +2483,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     
-    [manager GET:[NSString stringWithFormat:@"%@%@",SERVER_CAR,APP_WEATHER_URL] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:[NSString stringWithFormat:@"%@%@",SERVER,@"/ecar/mobile/getWeather"] parameters:dic success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         
         NSLog(@"JSON: %@", responseObject);
@@ -2493,7 +2493,7 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        NSLog(@"Error: %@", error);
+        completeHandle(nil);
         
     }];
 
@@ -2547,6 +2547,17 @@
     
     }
 
+}
+
+- (void)server_addressSend:(NSDictionary*)dic
+{
+    NSString* url = [NSString stringWithFormat:@"%@%@",SERVER,SEND_ADRESS];
+    
+    NSMutableDictionary* dicParams = [NSMutableDictionary dictionaryWithDictionary:dic];
+    
+    [self  server_BasePost:dicParams url:url];
+
+    
 }
 
 - (void)server_fetchAdvertisementDetails:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle

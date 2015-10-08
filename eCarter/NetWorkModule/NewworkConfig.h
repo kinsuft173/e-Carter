@@ -130,4 +130,6 @@ typedef void (^ErrorHandle)(NSError*);
 
 #define ADDRESS_VERIFY @"/ecar/mobile/checkUserAddress"
 
+#define SEND_ADRESS @"/ecar/mobile/addWarnUserAddress"
+
 #endif
