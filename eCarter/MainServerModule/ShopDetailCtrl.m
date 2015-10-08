@@ -328,7 +328,7 @@
         }
         
         cell.lblServerItems.text = strServerItems;
-        
+        cell.lblServerItems.text = self.shopDetail.serviceContent;
         
         
         NSDate* date = [NSDate date];
@@ -441,6 +441,13 @@
         
         cell.lblContent.text = comment.commentContent;
         cell.lblPhone.text = comment.userPhone;
+        
+        if (cell.lblPhone.text.length > 7) {
+            
+            cell.lblPhone.text = [cell.lblPhone.text  stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+            
+        }
+        
         cell.lblServerItems.text = comment.serviceItem;
         cell.lblTime.text = comment.createTime;
         [cell.star setStarForValue:comment.storeScore.floatValue];

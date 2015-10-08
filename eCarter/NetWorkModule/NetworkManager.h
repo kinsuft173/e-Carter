@@ -137,4 +137,7 @@
 //用户是否有交易密码
 - (void)server_userHasPsdWithDic:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle;
 
+//验证地址是否有效
+- (BOOL)server_addressVerify:(NSDictionary*)dic;
+
 @end

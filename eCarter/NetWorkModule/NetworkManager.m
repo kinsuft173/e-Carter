@@ -2529,6 +2529,26 @@
 //    completeHandle(nil);
 }
 
+- (BOOL)server_addressVerify:(NSDictionary*)dic
+{
+    NSString* url = [NSString stringWithFormat:@"%@%@",SERVER,ADDRESS_VERIFY];
+    
+    NSMutableDictionary* dicParams = [NSMutableDictionary dictionaryWithDictionary:dic];
+    
+    NSDictionary* result =  [self  server_BasePost:dicParams url:url];
+    
+    if ([[result objectForKey:@"data"] isEqualToString:@"true"]) {
+        
+        return YES;
+        
+    }else{
+    
+        return NO;
+    
+    }
+
+}
+
 - (void)server_fetchAdvertisementDetails:(NSDictionary*)dic completeHandle:(CompleteHandle)completeHandle
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

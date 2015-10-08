@@ -128,4 +128,6 @@ typedef void (^ErrorHandle)(NSError*);
 #define ORDER_LOG @"/ecar/mobile/queryOrderLog"
 #define USER_HASPSD @"/ecar/mobile/checkPassword"
 
+#define ADDRESS_VERIFY @"/ecar/mobile/checkUserAddress"
+
 #endif

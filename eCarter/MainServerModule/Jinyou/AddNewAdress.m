@@ -15,15 +15,24 @@
 #import "UserDataManager.h"
 #import "GetProvinceCtrl.h"
 #import "HomeTypeSelectedCtrl.h"
+#import <MAMapKit/MAMapKit.h>
+#import <AMapSearchKit/AMapSearchAPI.h>
 
-
+#define MapKey @"97661ae00266c9ff0aa32c7178c64457"
 
 @interface AddNewAdress ()<UITextViewDelegate,NSXMLParserDelegate>
+{
+    AMapSearchAPI *_search;
+}
+
 @property (nonatomic, strong) NSMutableArray *arrayProvince;
 @property (nonatomic, strong) NSMutableArray *arrayCity;
 @property (nonatomic, strong) NSMutableArray *arrayRegion;
 
 @property (nonatomic, strong) NSXMLParser *xmlParser;
+
+@property (nonatomic, strong) NSString* latitude;
+@property (nonatomic, strong) NSString* longtitude;
 @end
 
 @implementation AddNewAdress
@@ -192,11 +201,11 @@
     
     UIButton *rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
     rightButton.titleLabel.font=[UIFont systemFontOfSize:15.0];
-    [rightButton setFrame:CGRectMake(0, 0, 30, 50)];
+    [rightButton setFrame:CGRectMake(0, 0, 30, 45)];
     [rightButton setTitle:@"保存" forState:UIControlStateNormal];
     [rightButton addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
     
-    //rightButton.backgroundColor = [UIColor redColor];
+//    rightButton.backgroundColor = [UIColor redColor];
     UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:rightButton ];
     self.navigationItem.rightBarButtonItem=item;
     
@@ -257,6 +266,11 @@
     
     }
     
+    
+    NSString* strAddress = [NSString stringWithFormat:@"%@%@%@%@",self.province,self.city,self.place,self.txt_AdressDetail.text];
+    [self checkAdress:strAddress];
+    return;
+    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"正在加载...";
@@ -312,6 +326,129 @@
         
     }
     
+
+}
+
+- (void)realSave
+{
+    
+    
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    
+    
+    if (!self.province) {
+        
+        [HKCommen addAlertViewWithTitel:@"请选择省份"];
+        
+        return;
+    }
+    
+    if (!self.city) {
+        
+        [HKCommen addAlertViewWithTitel:@"请选择城市"];
+        
+        return;
+    }
+    
+    if (!self.place) {
+        
+        [HKCommen addAlertViewWithTitel:@"请选择区域"];
+        
+        return;
+    }
+    
+    
+    [dic setObject:self.type forKey:@"type"];
+    [dic setObject:self.province forKey:@"province"];
+    [dic setObject:self.city forKey:@"city"];
+    [dic setObject:self.place forKey:@"area"];
+    
+    if (self.txt_AdressDetail.text && (![self.txt_AdressDetail.text isEqualToString:@""])) {
+        
+        [dic setObject:self.txt_AdressDetail.text forKey:@"detail"];
+        
+    }else{
+        
+        [HKCommen addAlertViewWithTitel:@"请输入详细地址"];
+        
+        
+        return;
+        
+    }
+    
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"正在加载...";
+    
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.user.phone forKey:@"phone"];
+    [dic setObject:[UserDataManager shareManager].userLoginInfo.sessionId forKey:@"sessionId"];
+    [dic setObject:self.latitude forKey:@"latitude"];
+    [dic setObject:self.longtitude forKey:@"longitude"];
+    
+    NSDictionary* dicVirify = [NSDictionary dictionaryWithObjectsAndKeys:self.longtitude,@"dimensions_x",self.latitude,@"dimensions_y", nil];
+    
+    NSLog(@"dicVirify = %@",dicVirify);
+    
+    if (![[NetworkManager shareMgr] server_addressVerify:dicVirify]) {
+    
+        hud.hidden = YES;
+        
+        [HKCommen addAlertViewWithTitel:@"您选择的位置暂未提供服务，已反馈给商家，敬请期待"];
+        
+        return;
+        
+    };
+    
+    
+    
+    if (self.preUserAdress) {
+        
+        [dic setObject:self.preUserAdress.id forKey:@"id"];
+        
+        [[NetworkManager shareMgr] server_editUserAddressWithDic:dic completeHandle:^(NSDictionary *response) {
+            
+            
+            
+            NSString* messege = [response objectForKey:@"message"];
+            
+            
+            if ([messege isEqualToString:@"OK"]) {
+                
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"changeCarOrAddress" object:nil];
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            }
+            
+            hud.hidden = YES;
+            
+        }];
+        
+        
+    }else{
+        
+        [[NetworkManager shareMgr] server_addUserAddressWithDic:dic completeHandle:^(NSDictionary *response) {
+            
+            
+            
+            NSString* messege = [response objectForKey:@"message"];
+            
+            
+            if ([messege isEqualToString:@"OK"]) {
+                
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"changeCarOrAddress" object:nil];
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            }
+            
+            hud.hidden = YES;
+            
+        }];
+        
+    }
+
 
 }
 
@@ -396,6 +533,64 @@
     
     [self.navigationController pushViewController:vc animated:YES];
 
+}
+
+-(void)checkAdress:(NSString*)address
+{
+    //配置用户Key
+   // [AMapSearchServices sharedServices].apiKey = @"用户Key";
+    
+    //初始化检索对象
+    _search = [[AMapSearchAPI alloc] initWithSearchKey:MapKey Delegate:self];;
+    _search.delegate = self;
+    
+    //构造AMapGeocodeSearchRequest对象，address为必选项，city为可选项
+    AMapGeocodeSearchRequest *geo = [[AMapGeocodeSearchRequest alloc] init];
+    geo.address = address;
+    
+    //发起正向地理编码
+    NSLog(@"开始搜索地址");
+    [_search AMapGeocodeSearch: geo];
+}
+
+#pragma mark - AMapSearchDelegate
+
+- (void)searchRequest:(id)request didFailWithError:(NSError *)error
+{
+    //self.hud.hidden = YES;
+    
+    [HKCommen addAlertViewWithTitel:@"获取当前地址失败"];
+    
+    NSLog(@"request :%@, error :%@", request, error);
+}
+
+//实现正向地理编码的回调函数
+- (void)onGeocodeSearchDone:(AMapGeocodeSearchRequest *)request response:(AMapGeocodeSearchResponse *)response
+{
+    NSLog(@"搜索结果回调%@",response);
+    
+    if(response.geocodes.count == 0)
+    {
+        
+        [HKCommen addAlertViewWithTitel:@"未能获取到填写地址对应的地理坐标"];
+        return ;
+    }
+    
+    //通过AMapGeocodeSearchResponse对象处理搜索结果
+    NSString *strCount = [NSString stringWithFormat:@"count: %d", response.count];
+    NSString *strGeocodes = @"";
+    for (AMapTip *p in response.geocodes) {
+        strGeocodes = [NSString stringWithFormat:@"%@\ngeocode: %@", strGeocodes, p.description];
+    }
+    NSString *result = [NSString stringWithFormat:@"%@ \n %@", strCount, strGeocodes];
+    NSLog(@"Geocode: %@", result);
+    
+    AMapGeocode* firstMap = response.geocodes[0];
+    
+    self.longtitude = [NSString stringWithFormat:@"%f",firstMap.location.longitude];
+    self.latitude = [NSString stringWithFormat:@"%f",firstMap.location.latitude];
+    
+    [self realSave];
 }
 
 

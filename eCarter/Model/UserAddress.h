@@ -27,5 +27,7 @@
 
 @property (nonatomic, copy) NSString *province;
 
+@property (nonatomic, copy) NSString *latitude;
+@property (nonatomic, copy) NSString *longitude;
 
 @end

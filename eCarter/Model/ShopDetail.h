@@ -34,6 +34,8 @@
 
 @property (nonatomic, copy) NSString *startBusinessTime;
 
+@property (nonatomic, copy) NSString *serviceContent;
+
 //@property (nonatomic, strong) Storeinfo *storeInfo;
 
 @property (nonatomic, strong) NSArray *serviceItemList;

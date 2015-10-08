@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -273,7 +273,7 @@
             </objects>
             <point key="canvasLocation" x="1178" y="1904"/>
         </scene>
-        <!--上门服务-->
+        <!--上门取车-->
         <scene sceneID="P0M-sB-doc">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="TGw-vO-2mS" customClass="SelectCarAndAressCtrl" sceneMemberID="viewController">
@@ -302,7 +302,7 @@
                             <constraint firstItem="1UD-of-Rtb" firstAttribute="leading" secondItem="PIZ-hX-fNK" secondAttribute="leading" id="twJ-hH-c97"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="上门服务" id="T0G-m4-CKK"/>
+                    <navigationItem key="navigationItem" title="上门取车" id="T0G-m4-CKK"/>
                     <connections>
                         <outlet property="tableView" destination="1UD-of-Rtb" id="7e9-sK-pyI"/>
                         <segue destination="pWq-22-rXA" kind="push" identifier="goSelfList" id="BzV-9m-X9Y"/>

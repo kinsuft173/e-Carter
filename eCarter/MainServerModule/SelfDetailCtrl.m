@@ -403,6 +403,7 @@
         }
         
         cell.lblServerItems.text = strServerItems;
+        cell.lblServerItems.text = self.shopDetail.serviceContent;
         
         return cell;
         
@@ -650,6 +651,12 @@
         cell.lblServerItems.text = comment.serviceItem;
         cell.lblTime.text = comment.createTime;
         [cell.star setStarForValue:comment.storeScore.floatValue];
+        
+        if (cell.lblPhone.text.length > 7) {
+            
+            cell.lblPhone.text = [cell.lblPhone.text  stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+            
+        }
         
         return cell;
         

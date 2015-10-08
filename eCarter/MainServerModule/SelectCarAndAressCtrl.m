@@ -43,7 +43,7 @@
 //    self.tableView.backgroundColor = [UIColor colorWithRed:0xaa/256.0 green:0xaa/256.0 blue:0xaa/256.0 alpha:0.2];
     [HKCommen setExtraCellLineHidden:self.tableView];
     
-    [HKCommen addHeadTitle:@"上门服务" whichNavigation:self.navigationItem];
+    [HKCommen addHeadTitle:@"上门取车" whichNavigation:self.navigationItem];
     
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         [self.tableView setLayoutMargins: UIEdgeInsetsZero];
@@ -87,6 +87,8 @@
     [[NetworkManager shareMgr] server_queryUserAddressWithDic:dic completeHandle:^(NSDictionary *response) {
         
         NSArray* tempArray = [response objectForKey:@"data"];
+        
+        NSLog(@"地址信息 = %@",tempArray);
         
         if (tempArray.count != 0) {
             

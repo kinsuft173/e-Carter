@@ -32,7 +32,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [HKCommen addHeadTitle:@"上门服务" whichNavigation:self.navigationItem];
+    [HKCommen addHeadTitle:@"上门取车" whichNavigation:self.navigationItem];
 
 //    
 //    UIButton *rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -42,7 +42,8 @@
 //    [rightButton addTarget:self action:@selector(doNothing) forControlEvents:UIControlEventTouchUpInside];
 //    UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithCustomView:rightButton ];
 //    self.navigationItem.rightBarButtonItem=item;
-    
+    [HKMapManager shareMgr].userCurrentLatitude = self.userAddress.longitude;
+    [HKMapManager shareMgr].userCurrentLongitude = self.userAddress.latitude;
     
     [self addRefresh];
     
@@ -64,6 +65,8 @@
     {
         self.navigationItem.leftBarButtonItem=leftItem;
     }
+    
+
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goHeadRefresh) name:@"mapRefresh" object:nil];
 }
@@ -242,16 +245,16 @@
 
 - (IBAction)goMap:(id)sender
 {
-//    [HKCommen addAlertViewWithTitel:@"更新定位信息"];
-//    
-//    [[HKMapManager shareMgr] locate];
-//    
-//    HKMapCtrl* vc  = [[HKMapCtrl alloc]  initWithNibName:@"HKMapCtrl" bundle:nil];
-//    
-//    vc.strType = 1;
-//    
-//    [self.navigationController pushViewController:vc animated:YES];
-    [self selectCity:nil];
+    [HKCommen addAlertViewWithTitel:@"更新定位信息"];
+    
+    [[HKMapManager shareMgr] locate];
+    
+    HKMapCtrl* vc  = [[HKMapCtrl alloc]  initWithNibName:@"HKMapCtrl" bundle:nil];
+    
+    vc.strType = 1;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+//    [self selectCity:nil];
     
 }
 

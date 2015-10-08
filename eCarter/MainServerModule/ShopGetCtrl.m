@@ -228,17 +228,17 @@
 
 - (IBAction)goMap:(id)sender
 {
-//    [HKCommen addAlertViewWithTitel:@"更新定位信息"];
-//    
-//    [[HKMapManager shareMgr] locate];
-//    
-//    HKMapCtrl* vc  = [[HKMapCtrl alloc]  initWithNibName:@"HKMapCtrl" bundle:nil];
-//    
-//    vc.strType = 1;
-//    
-//    [self.navigationController pushViewController:vc animated:YES];
+    [HKCommen addAlertViewWithTitel:@"更新定位信息"];
+    
+    [[HKMapManager shareMgr] locate];
+    
+    HKMapCtrl* vc  = [[HKMapCtrl alloc]  initWithNibName:@"HKMapCtrl" bundle:nil];
+    
+    vc.strType = 1;
+    
+    [self.navigationController pushViewController:vc animated:YES];
 
-    [self selectCity:nil];
+//    [self selectCity:nil];
     
 }
 

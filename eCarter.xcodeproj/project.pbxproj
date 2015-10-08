@@ -4252,7 +4252,7 @@
 					"$(PROJECT_DIR)/eCarter/ThirdLib/thirdLib/WxPayLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e623b3f2-1b90-4368-a689-fc89f8bd4022";
+				PROVISIONING_PROFILE = "bd7e784e-5fb3-4e2e-90a9-159e3d808913";
 			};
 			name = Debug;
 		};
@@ -4301,7 +4301,7 @@
 					"$(PROJECT_DIR)/eCarter/ThirdLib/thirdLib/WxPayLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e623b3f2-1b90-4368-a689-fc89f8bd4022";
+				PROVISIONING_PROFILE = "bd7e784e-5fb3-4e2e-90a9-159e3d808913";
 			};
 			name = Release;
 		};
