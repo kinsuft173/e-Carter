@@ -290,6 +290,10 @@ heightForHeaderInSection:(NSInteger)section
             
             CarNumCell* cellCarNo = (CarNumCell*)[self.myTable cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
             
+            self.carBrand = self.preCar.brand;
+            self.carModel = self.preCar.model;
+//            self.carYear = self.preCar.year;
+            
             cellCarNo.lblCarNo.text = [self.preCar.no substringToIndex:1];
             
             cellCarNo.textFiledCarNo.text = [self.preCar.no substringFromIndex:1];
@@ -439,8 +443,8 @@ heightForHeaderInSection:(NSInteger)section
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
     
     [dic setObject:[NSString stringWithFormat:@"%@%@",cellCarNo.lblCarNo.text,cellCarNo.textFiledCarNo.text] forKey:@"no"];
-    [dic setObject:strSelectCar1 forKey:@"brand"];
-    [dic setObject:strSelectCar2 forKey:@"model"];
+    [dic setObject:self.carBrand forKey:@"brand"];
+    [dic setObject:self.carModel forKey:@"model"];
     [dic setObject:self.carYear forKey:@"year"];
      [dic setObject:strSelectCar3 forKey:@"color"];
      [dic setObject:strSelectCar2 forKey:@"volume"];
@@ -566,7 +570,13 @@ heightForHeaderInSection:(NSInteger)section
         NSLog(@"dic = %@",dic);
     
         cellSelectCar1.lbl_KindOfCar.text = [[dic objectForKey:@"车系"] objectForKey:@"N"];
+        
         cellSelectCar2.lbl_KindOfCar.text = [self.arrayOfCar objectAtIndex:1];
+        
+        
+        self.carBrand = [dic objectForKey:@"品牌"];
+        self.carModel = cellSelectCar1.lbl_KindOfCar.text ;
+        
        self.carId =  [[dic objectForKey:@"车系"] objectForKey:@"I"];
         
         NSLog(@"self.carId  = %@",self.carId );

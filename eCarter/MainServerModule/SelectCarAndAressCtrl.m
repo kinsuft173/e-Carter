@@ -304,7 +304,7 @@
             NSDictionary* dic = [self.arrayCars objectAtIndex:indexPath.row - 1];
             
             if ([[dic class] isSubclassOfClass:[NSDictionary class]]) {
-                cell.lblContent.text = [NSString  stringWithFormat:@"%@  %@  %@",[dic objectForKey:@"no"],[dic objectForKey:@"color"],[dic objectForKey:@"brand"] ];
+                cell.lblContent.text = [NSString  stringWithFormat:@"%@  %@  %@ %@",[dic objectForKey:@"no"],[dic objectForKey:@"color"],[dic objectForKey:@"brand"] ,[dic objectForKey:@"model"]];
             }
             
             

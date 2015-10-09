@@ -322,7 +322,7 @@
         cell.imgWeather.contentMode = UIViewContentModeScaleAspectFill;
         
         [cell.imgWeather sd_setImageWithURL:[NSURL URLWithString:currentWeather.pictureUrl]
-                     placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
+                     placeholderImage:nil options:SDWebImageContinueInBackground];
         
         return cell;
         

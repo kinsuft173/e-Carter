@@ -19,4 +19,7 @@
 
 @property (nonatomic, strong) Car* preCar;
 @property (nonatomic, strong) NSString* carYear;
+@property (nonatomic, strong) NSString* carBrand;
+@property (nonatomic, strong) NSString* carModel;
+
 @end
