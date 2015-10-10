@@ -13,5 +13,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl_totalPoint;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_time;
 @property (weak, nonatomic) IBOutlet UILabel *lbl_type;
-
+@property (weak, nonatomic) IBOutlet UILabel *lbl_TitelUse;
 @end

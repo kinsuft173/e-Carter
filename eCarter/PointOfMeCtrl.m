@@ -156,6 +156,16 @@
     cell.lbl_time.text=myPoint.createTime;
     cell.lbl_type.text=myPoint.Description;
     
+    if ([myPoint.point floatValue] < 0) {
+        
+        cell.lbl_TitelUse.text  = @"用处";
+        
+    }else{
+    
+    
+        cell.lbl_TitelUse.text = @"获得方式";
+    }
+    
     return cell;
     
 }

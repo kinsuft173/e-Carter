@@ -14,5 +14,5 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *myScroll;
 
 @property (nonatomic, strong) OrderSingle* order;
-
+@property (nonatomic, strong) NSString* strType;
 @end

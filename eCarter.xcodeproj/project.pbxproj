@@ -11,6 +11,9 @@
 		B944BFB71B9FFC0200D66D42 /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B944BFB41B9FFC0200D66D42 /* SIAlertView.bundle */; };
 		B944BFB81B9FFC0200D66D42 /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B944BFB61B9FFC0200D66D42 /* SIAlertView.m */; };
 		B944BFBB1BA021BD00D66D42 /* ConsulationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B944BFBA1BA021BD00D66D42 /* ConsulationManager.m */; };
+		B9C664721BC8A45A00D3EA92 /* OrderDetailsCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C664701BC8A45A00D3EA92 /* OrderDetailsCtrl.m */; settings = {ASSET_TAGS = (); }; };
+		B9C664731BC8A45A00D3EA92 /* OrderDetailsCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C664711BC8A45A00D3EA92 /* OrderDetailsCtrl.xib */; settings = {ASSET_TAGS = (); }; };
+		B9C664751BC8B2B800D3EA92 /* MoneyReturnDetailCtrl1.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C664741BC8B2B800D3EA92 /* MoneyReturnDetailCtrl1.xib */; settings = {ASSET_TAGS = (); }; };
 		B9D2B4C91BA6A05B0090A306 /* NewCommentCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2B4C71BA6A05B0090A306 /* NewCommentCtrl.m */; };
 		B9D2B4CA1BA6A05B0090A306 /* NewCommentCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9D2B4C81BA6A05B0090A306 /* NewCommentCtrl.xib */; };
 		DE06386C1B6D19C900EFB576 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = DE06386B1B6D19C900EFB576 /* iToast.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -649,6 +652,10 @@
 		B944BFB61B9FFC0200D66D42 /* SIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIAlertView.m; sourceTree = "<group>"; };
 		B944BFB91BA021BD00D66D42 /* ConsulationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsulationManager.h; sourceTree = "<group>"; };
 		B944BFBA1BA021BD00D66D42 /* ConsulationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsulationManager.m; sourceTree = "<group>"; };
+		B9C6646F1BC8A45A00D3EA92 /* OrderDetailsCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailsCtrl.h; sourceTree = "<group>"; };
+		B9C664701BC8A45A00D3EA92 /* OrderDetailsCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailsCtrl.m; sourceTree = "<group>"; };
+		B9C664711BC8A45A00D3EA92 /* OrderDetailsCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailsCtrl.xib; sourceTree = "<group>"; };
+		B9C664741BC8B2B800D3EA92 /* MoneyReturnDetailCtrl1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoneyReturnDetailCtrl1.xib; sourceTree = "<group>"; };
 		B9D2B4C61BA6A05B0090A306 /* NewCommentCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCommentCtrl.h; sourceTree = "<group>"; };
 		B9D2B4C71BA6A05B0090A306 /* NewCommentCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCommentCtrl.m; sourceTree = "<group>"; };
 		B9D2B4C81BA6A05B0090A306 /* NewCommentCtrl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewCommentCtrl.xib; sourceTree = "<group>"; };
@@ -2525,12 +2532,16 @@
 				E98B3A7F1B6DE9F400980C16 /* MoneyReturnDetailCtrl.h */,
 				E98B3A801B6DE9F400980C16 /* MoneyReturnDetailCtrl.m */,
 				E98B3A811B6DE9F400980C16 /* MoneyReturnDetailCtrl.xib */,
+				B9C664741BC8B2B800D3EA92 /* MoneyReturnDetailCtrl1.xib */,
 				E98B3A841B6DEA3000980C16 /* MoneyReturnProgressView.h */,
 				E98B3A851B6DEA3000980C16 /* MoneyReturnProgressView.m */,
 				E98B3A871B6DEA4900980C16 /* MoneyReturnProgressView.xib */,
 				B9D2B4C61BA6A05B0090A306 /* NewCommentCtrl.h */,
 				B9D2B4C71BA6A05B0090A306 /* NewCommentCtrl.m */,
 				B9D2B4C81BA6A05B0090A306 /* NewCommentCtrl.xib */,
+				B9C6646F1BC8A45A00D3EA92 /* OrderDetailsCtrl.h */,
+				B9C664701BC8A45A00D3EA92 /* OrderDetailsCtrl.m */,
+				B9C664711BC8A45A00D3EA92 /* OrderDetailsCtrl.xib */,
 			);
 			name = PersonalCenter;
 			sourceTree = "<group>";
@@ -3414,6 +3425,11 @@
 					DED2EAD31B35D3A5006FE893 = {
 						CreatedOnToolsVersion = 6.3;
 						DevelopmentTeam = 754U9WT89R;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					DED2EAEC1B35D3A5006FE893 = {
 						CreatedOnToolsVersion = 6.3;
@@ -3481,6 +3497,7 @@
 				DE237EFD1B4047B60027767B /* AddCarCell.xib in Resources */,
 				DED7F5791B4760DB0005019C /* icon_Success@2x.png in Resources */,
 				DED7F5641B4760DB0005019C /* Evaluation_1@3x.png in Resources */,
+				B9C664751BC8B2B800D3EA92 /* MoneyReturnDetailCtrl1.xib in Resources */,
 				DEE3BE461B3656CB00DCE7EC /* WeatherInfoCell.xib in Resources */,
 				DED7F56C1B4760DB0005019C /* icon_alipay_@3x.png in Resources */,
 				DEE337A21B4DF68C00357253 /* GetRealMoneyCtrl.xib in Resources */,
@@ -3543,6 +3560,7 @@
 				DED2EAE81B35D3A5006FE893 /* LaunchScreen.xib in Resources */,
 				DE237F051B404E8A0027767B /* AdressCell.xib in Resources */,
 				E9F9D0361B74E7CF007781AC /* ShareSDKFlatShareViewUI.bundle in Resources */,
+				B9C664731BC8A45A00D3EA92 /* OrderDetailsCtrl.xib in Resources */,
 				DE06386F1B6DFB2D00EFB576 /* loading-ios@2x.png in Resources */,
 				DE31D67C1BA09232003DD3EA /* moderate-rain@2x.png in Resources */,
 				DE31D6831BA09232003DD3EA /* sand@3x.png in Resources */,
@@ -3928,6 +3946,7 @@
 				DE237F1C1B405BD40027767B /* MyScoreMainCell.m in Sources */,
 				DEE336BD1B4C3DE200357253 /* HKMapManager.m in Sources */,
 				DEE48B9B1B399CB100458D6F /* SelfDetailCtrl.m in Sources */,
+				B9C664721BC8A45A00D3EA92 /* OrderDetailsCtrl.m in Sources */,
 				E99318A31B8A1BC700B56AE9 /* UIWindow+Launch.m in Sources */,
 				DECA17381B6150EF00FD3418 /* LogForOrder.m in Sources */,
 				DEE3BE4F1B365A3A00DCE7EC /* ShopGetCarIndicatorCell.m in Sources */,

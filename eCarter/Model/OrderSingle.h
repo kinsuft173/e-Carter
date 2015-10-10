@@ -15,6 +15,8 @@
 
 @property (nonatomic, copy) NSString *carnum;
 
+@property (nonatomic, copy) NSString *commentState;
+
 @property (nonatomic, copy) NSString *amount;
 
 @property (nonatomic, copy) NSString *pay;

@@ -26,9 +26,20 @@
     // Do any additional setup after loading the view from its nib.
     
     [self.myScroll setContentSize:CGSizeMake(0, 700)];
+
+    if ([self.strType isEqualToString:@"订单详情"]) {
+        
+        [HKCommen addHeadTitle:@"订单详情" whichNavigation:self.
+         navigationItem];
+        
+    }else{
     
-    [HKCommen addHeadTitle:@"退款详情" whichNavigation:self.
-     navigationItem];
+        [HKCommen addHeadTitle:@"退款详情" whichNavigation:self.
+         navigationItem];
+        
+    }
+
+    
     self.lblDescripTotal.text = [NSString stringWithFormat:@"退款金额：￥%.2f",self.order.pay.floatValue];
     self.lblDescripDetail.text = [NSString stringWithFormat:@"%.2f元已成功退至您的账户余额",self.order.pay.floatValue];
     [self getModel];
@@ -73,18 +84,27 @@
             NSArray* array = [response objectForKey:@"data"];
             
             if (array.count != 0) {
+                
                 self.progressView=[[NSBundle mainBundle]loadNibNamed:@"MoneyReturnProgressView" owner:self options:nil][0];
-                [self.progressView setFrame:CGRectMake(0, 45, [UIScreen mainScreen].bounds.size.width, 400)];
+                
+             
+                
+                if ([self.strType isEqualToString:@"订单详情"]) {
+                    
+                     [self.progressView setFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 400)];
+                    
+                       self.progressView.backgroundColor = [UIColor clearColor];
+                    
+                }else{
+                
+                    [self.progressView setFrame:CGRectMake(0, 45, [UIScreen mainScreen].bounds.size.width, 400)];
+                    
+                }
                 
                 
-
                 self.progressView.stageForMoneyReturn= array.count + 0.1;
                 self.progressView.arrayModel = array;
-                
-                
-                
-                
-                
+        
                 [self.viewForReturnDetail addSubview:self.progressView];
                 
             }

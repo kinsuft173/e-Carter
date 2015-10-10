@@ -22,6 +22,7 @@
 #import "NewCommentCtrl.h"
 //#import "Shop.h"
 #import "ShopDetailCtrl.h"
+#import "OrderDetailsCtrl.h"
 
 @interface MyOrderCtrl ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -50,6 +51,9 @@
 @property (nonatomic,strong)NSMutableArray *arrayOfCancel;
 
 @property (nonatomic,strong)NSMutableArray *arrayOfShow;
+
+@property (nonatomic, weak) NSIndexPath* preIndexPath;
+
 @property     NSInteger index;
 @property     BOOL isAnimations;
 @end
@@ -74,7 +78,7 @@
     self.arrayOfShow=[[NSMutableArray alloc]init];
 
     
-    [self getModel];
+    [self getModel:@"1"];
     [self initScrollTables:5];
     
     UIPanGestureRecognizer* swipeGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight:)];
@@ -189,8 +193,7 @@
 
 - (void)reloadTableMy
 {
-    
-
+      [self getModel:@"1"];
 }
 
 -(void)back
@@ -198,15 +201,15 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)getModel
+- (void)getModel:(NSString*)strPageNumber
 {
-    
+    //[NSString stringWithFormat:@"%d",self.arrayAllOrder.count/20 + 1]
     self.userLoginInfo= [UserDataManager shareManager].userLoginInfo;
     
     NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
     [dic setValue:self.userLoginInfo.user.phone forKey:@"phone"];
     [dic setValue:self.userLoginInfo.sessionId forKey:@"sessionId"];
-    [dic setValue:[NSString stringWithFormat:@"%d",self.arrayAllOrder.count/20 + 1] forKey:@"pageNum"];
+    [dic setValue:strPageNumber forKey:@"pageNum"];
     [dic setValue:@"20" forKey:@"pageSize"];
     
     NSLog(@"上传字典:%@",dic);
@@ -266,6 +269,7 @@
 }
 
 
+
 - (void)cancelOrderModel:(NSString*)orderId TableRow:(NSUInteger)row
 {
     self.userLoginInfo= [UserDataManager shareManager].userLoginInfo;
@@ -277,8 +281,7 @@
     
     [[NetworkManager shareMgr] server_cancelOrderWithDic:dic completeHandle:^(NSDictionary *response) {
         
-     
-        
+    
         if ([[response objectForKey:@"message"] isEqualToString:@"OK"]) {
             [HKCommen addAlertViewWithTitel:@"退款申请成功"];
             
@@ -289,7 +292,7 @@
             [cell.btnGoCommentPage setTitle:@"退款中" forState:UIControlStateNormal];
             [cell.btnGoCommentPage removeTarget:self action:@selector(CancelOrder:) forControlEvents:UIControlEventTouchUpInside];
 
-            [self getModel];
+            [self getModel:@"1"];
         }
         else
         {
@@ -630,7 +633,7 @@
             }
             
                 [cell.btnGoShop addTarget:self action:@selector(goShop:) forControlEvents:UIControlEventTouchUpInside];
-            
+                    [cell.btnGoOrderDetails addTarget:self action:@selector(goOrderDetailsPage:) forControlEvents:UIControlEventTouchUpInside];
             
         }
         
@@ -649,8 +652,8 @@
         [cell.btnGoCommentPage removeTarget:self action:@selector(CancelOrder:) forControlEvents:UIControlEventTouchUpInside];
         [cell.btnGoCommentPage removeTarget:self action:@selector(goCommentPage:) forControlEvents:UIControlEventTouchUpInside];
         [cell.btnGoCommentPage removeTarget:self action:@selector(goMoneyReturnPage:) forControlEvents:UIControlEventTouchUpInside];
-        
-
+//           [cell.btnGoOrderDetails removeTarget:self action:@selector(goOrderDetailsPage:) forControlEvents:UIControlEventTouchUpInside];
+          cell.btnGoOrderDetails.tag = (indexPath.row +1)*10 + tableView.tag;
         
         NSUInteger row=indexPath.row;
         
@@ -665,7 +668,7 @@
         float realPay = [[dict objectForKey:@"pay"] floatValue] - [[dict objectForKey:@"pointCost"] floatValue];
         
         cell.lblServiceCompany.text=[dict objectForKey:@"storeName"];
-        cell.orderId.text=[NSString stringWithFormat:@"%@",[dict objectForKey:@"id"]];
+        cell.orderId.text=[NSString stringWithFormat:@"%@",[dict objectForKey:@"orderCode"]];
         cell.lblGetOrder.text=[dict objectForKey:@"orderTime"];
         cell.lblMobile.text=[dict objectForKey:@"phone"];
         cell.price.text=[NSString stringWithFormat:@"￥%.2f",[[dict objectForKey:@"amount"] floatValue]] ;
@@ -740,8 +743,6 @@
 //                imageView.image = nil;
 //            }
             
-
-            
         }
         
         
@@ -764,7 +765,7 @@
             [cell.btnGoCommentPage setTitle:@"待评价" forState:UIControlStateNormal];
             [cell.btnGoCommentPage setTag:[[dict objectForKey:@"id"] intValue]];
             
-            if ([[ConsulationManager shareMgr] isCommented:order.id]) {
+            if ([order.commentState isEqualToString:@"1"]) {
                 
                 [cell.btnGoCommentPage setTitle:@"已评价" forState:UIControlStateNormal];
                 
@@ -907,14 +908,14 @@
                               
                               NSDictionary *dict = [arrayModel objectAtIndex:row];
                               
-                              
+                                    OrderSingle* order = [OrderSingle objectWithKeyValues:dict];
                               UITableView* tableView = [self.arrayOfTables objectAtIndex:tableNum];
                               
                               OrderCell* cell = (OrderCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:1]];
                               
                               
                               
-                              [self cancelOrderModel:cell.orderId.text TableRow:row];
+                              [self cancelOrderModel:order.id TableRow:row];
                           }];
     [alertView addButtonWithTitle:@"取消"
                              type:SIAlertViewButtonTypeDefault
@@ -1059,6 +1060,8 @@
     //[self performSegueWithIdentifier:@"go2" sender:order.id];
      CommentCtrl *vc= [[CommentCtrl alloc]initWithNibName:@"CommentCtrl" bundle:nil];
     vc.orderId=  order.id;
+    
+    self.preIndexPath = [NSIndexPath indexPathForRow:row inSection:1];
 
     [self.navigationController pushViewController:vc animated:YES];
 
@@ -1076,6 +1079,33 @@
         
         
     }
+
+}
+
+- (void)goOrderDetailsPage:(UIButton*)btn
+{
+    NSInteger tag = btn.tag;
+    
+    int tableNum = tag%10;
+    
+    int row = (tag/10) - 1;
+    
+    NSArray* arrayModels = [NSArray arrayWithObjects:self.arrayOfOrder,self.arrayOfWaiting ,self.arrayOfServicing,self.arrayOfComplete, self.arrayOfCancel,nil];
+    
+    NSArray* arrayModel = [arrayModels objectAtIndex:tableNum];
+    
+    NSDictionary *dict = [arrayModel objectAtIndex:row];
+    OrderSingle* order = [OrderSingle objectWithKeyValues:dict];
+    
+    
+    MoneyReturnDetailCtrl *vc=[[MoneyReturnDetailCtrl alloc]
+                               initWithNibName:@"MoneyReturnDetailCtrl1" bundle:nil];
+    
+    vc.order = order;
+     vc.strType  = @"订单详情";
+    
+    [self.navigationController pushViewController:vc animated:YES];
+
 
 }
 
@@ -1099,6 +1129,7 @@
                                initWithNibName:@"MoneyReturnDetailCtrl" bundle:nil];
     
     vc.order = order;
+   
     [self.navigationController pushViewController:vc animated:YES];
 }
 

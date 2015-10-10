@@ -19,6 +19,8 @@
 
 @property (nonatomic, strong) IBOutlet UIView* viewMask1;
 @property (weak, nonatomic) IBOutlet UIButton *btnGoCommentPage;
+@property (weak, nonatomic) IBOutlet UIButton *btnGoOrderDetails;
+
 @property (assign) NSUInteger *row;
 
 @property (weak,nonatomic) id<getHighPicture> delegate;

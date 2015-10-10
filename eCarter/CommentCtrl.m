@@ -162,7 +162,9 @@
             [self.starAttitude setStarForValue:0.0];
             [self.starQuality setStarForValue:0.0];
             
-            [[ConsulationManager shareMgr] addHandledComment:self.orderId];
+           // [[ConsulationManager shareMgr] addHandledComment:self.orderId];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadOrder" object:nil];
             
             [self.navigationController popViewControllerAnimated:YES];
 
