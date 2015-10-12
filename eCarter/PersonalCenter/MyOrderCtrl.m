@@ -529,11 +529,11 @@
         
         
         if (order.orderImageList.count==0) {
-            return 284;
+            return 305;
         }
         else
         {
-            return 394;
+            return 415;
         }
         
         
@@ -595,8 +595,8 @@
                 cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
                 
                 UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
-                UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 , SCREEN_WIDTH - 10, 0.5)];
-                UIView* viewDivide3 = [[UIView alloc] initWithFrame:CGRectMake(0, 230, SCREEN_WIDTH, 0.5)];
+                UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 + 18, SCREEN_WIDTH - 10, 0.5)];
+                UIView* viewDivide3 = [[UIView alloc] initWithFrame:CGRectMake(0, 230 + 18, SCREEN_WIDTH, 0.5)];
                 
                 viewDivide1.backgroundColor = [HKCommen getColor:@"ccccccc"];
                 viewDivide2.backgroundColor = [HKCommen getColor:@"e0e0e0"];
@@ -615,9 +615,9 @@
                 cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:1];
                 
                 UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
-                UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 , SCREEN_WIDTH - 10, 0.5)];
-                UIView* viewDivide3 = [[UIView alloc] initWithFrame:CGRectMake(0, 230, SCREEN_WIDTH, 0.5)];
-                UIView* viewDivide4 = [[UIView alloc] initWithFrame:CGRectMake(0, 340, SCREEN_WIDTH, 0.5)];
+                UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 + 18 , SCREEN_WIDTH - 10, 0.5)];
+                UIView* viewDivide3 = [[UIView alloc] initWithFrame:CGRectMake(0, 230 + 18, SCREEN_WIDTH, 0.5)];
+                UIView* viewDivide4 = [[UIView alloc] initWithFrame:CGRectMake(0, 340 + 18, SCREEN_WIDTH, 0.5)];
                 
                 viewDivide1.backgroundColor = [HKCommen getColor:@"ccccccc"];
                 viewDivide2.backgroundColor = [HKCommen getColor:@"e0e0e0"];
@@ -682,10 +682,6 @@
         
         cell.lblPayment.text=[NSString stringWithFormat:@"实付款:￥%@",[dict objectForKey:@"pay"]];
         
-        
-//        [cell.image1 setImage:[UIImage imageNamed:@"bg0"]];
-//        [cell.image2 setImage:[UIImage imageNamed:@"bg1"]];
-//        [cell.image3 setImage:[UIImage imageNamed:@"bg2"]];
         cell.btnGoShop.tag = (indexPath.row +1)*10 + tableView.tag;
         
         
@@ -718,7 +714,7 @@
                 
                 Orderimagelist* imageList = [order.orderImageList objectAtIndex:i];
                 
-                UIImageView* imgView = [[UIImageView alloc] initWithFrame:CGRectMake(1000, 140, 90, 90)];
+                UIImageView* imgView = [[UIImageView alloc] initWithFrame:CGRectMake(1000, 256, 90, 90)];
                 
                 [imgView sd_setImageWithURL:[NSURL URLWithString:imageList.imageUrl]
                              placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
@@ -730,18 +726,22 @@
                 
             }
             
-            cell.btnGoImages.tag = (indexPath.row +1)*10 + tableView.tag;
             
             cell.btnGoShop.tag = (indexPath.row +1)*10 + tableView.tag;
             
+            cell.btnGoImages = [UIButton buttonWithType:UIButtonTypeCustom];
+            cell.btnGoImages.tag = (indexPath.row +1)*10 + tableView.tag;
+            
+            [cell.viewMask1 addSubview:cell.btnGoImages];
+            
+            cell.btnGoImages.frame = CGRectMake(0, 258, SCREEN_WIDTH, 90);
+            
             [cell.btnGoImages addTarget:self action:@selector(goTapAction:) forControlEvents:UIControlEventTouchUpInside];
             
-//            for (int i = num; i < 3; i ++) {
-//                
-//                UIImageView* imageView = [arrayImageViews objectAtIndex:i];
-//                
-//                imageView.image = nil;
-//            }
+          
+
+            
+            
             
         }
         

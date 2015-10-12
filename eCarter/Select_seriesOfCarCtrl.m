@@ -15,7 +15,10 @@
 
 @interface Select_seriesOfCarCtrl ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic,strong)NSMutableArray *arrayOfCarBrand;
+@property (nonatomic,strong)NSMutableDictionary *dicLatterList;
+@property (nonatomic,strong)NSMutableArray *arrayLatterList;
 @property (nonatomic,strong)NSMutableArray *arrayOfYear;
+@property (nonatomic,strong)NSMutableArray *arrayOfLatter;
 //@property (nonatomic,strong)NSArray *arrayOfSerie;
 @end
 
@@ -71,11 +74,42 @@
             
                 NSArray* arrayTemp = [response objectForKey:@"result"];
                 
+                self.dicLatterList = [[NSMutableDictionary alloc] init];
+                
+
+                
                 self.arrayOfCarBrand = [[NSMutableArray alloc] init];
+                self.arrayLatterList = [[NSMutableArray alloc] init];
+                self.arrayOfLatter = [[NSMutableArray alloc] init];
                 
                 for ( int i = 0 ; i < arrayTemp.count; i ++) {
                     
+                    NSArray* arrayKeys = self.dicLatterList.allKeys;
+                    
                     NSDictionary* dicList  = [arrayTemp objectAtIndex:i];
+                    
+                    NSMutableArray* array;
+                    NSMutableArray* array1;
+                    
+                    if (arrayKeys.count == 0 || (![arrayKeys containsObject:[dicList objectForKey:@"L"]])) {
+                        
+                        array = [[NSMutableArray alloc] init];
+                        array1 = [[NSMutableArray alloc] init];
+                        
+                       [self.dicLatterList setObject:array forKey:[dicList objectForKey:@"L"]];
+                        
+                        [self.arrayOfLatter addObject:[dicList objectForKey:@"L"]];
+                        
+                        
+                        
+                    }else{
+                    
+                        array = [self.dicLatterList objectForKey:[dicList objectForKey:@"L"]];
+                        
+                        
+                    
+                    }
+
                     
                     NSArray* arrayRealList = dicList[@"List"];
                     
@@ -84,14 +118,61 @@
                         NSDictionary* dic = [arrayRealList objectAtIndex:i];
                         
                         
-                        [self.arrayOfCarBrand addObject:dic];
+                        [array addObject:dic];
+                        
+                        
+                        
+                    }
+                    
+//                    int num = -1;
+//                    
+//                    for (int j = 0; j < self.arrayOfLatter.count; j ++) {
+//                        
+//                        if ([[dicList objectForKey:@"L"] isEqualToString:[self.arrayOfLatter objectAtIndex:j] ]) {
+//                            num = j;
+//                            
+//                        }
+//                        
+//                        
+//                    }
+//                    
+//                    if (num >= 0) {
+//                        
+//                        if () {
+//                            <#statements#>
+//                        }
+                    
+                        
+                      //  [self.arrayLatterList replaceObjectAtIndex:num withObject:array];
+                    
+
+                    
                         
                     }
                     
                 }
+            
+                     NSArray* arrayKey = @[@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z"];
+            
+                self.arrayLatterList = [[NSMutableArray alloc] init];
+            
+            for (int i = 0; i < arrayKey.count; i ++) {
+                
+                NSArray* array = [self.dicLatterList objectForKey:[arrayKey objectAtIndex:i]];
+                
+                if (array.count != 0) {
+                    [self.arrayLatterList addObject:array];
+                }
+                
+//                [self.arrayLatterList addObject:array];
+                
+                
+            }
+                
+                NSLog(@"self.arrayList = %@",self.dicLatterList);
                 
                 [self.myTable reloadData];
-            }
+            
             
 
             
@@ -192,7 +273,10 @@
     }
     
     if([self.JudgeWhereFrom isEqualToString:@"name"]){
-        return self.arrayOfCarBrand.count;
+        
+        
+              // NSArray* array = [self.dicLatterList objectForKey:[[self.dicLatterList allKeys] objectAtIndex:section]];
+        return self.arrayLatterList.count;
     }
     else
     {
@@ -211,7 +295,9 @@
     
     if([self.JudgeWhereFrom isEqualToString:@"name"]){
         
-        return 1;
+        NSArray* array = [self.arrayLatterList objectAtIndex:section];
+        
+        return array.count;
     }
     
     if([self.JudgeWhereFrom isEqualToString:@"series"]){
@@ -275,8 +361,9 @@
         
     }else  if([self.JudgeWhereFrom isEqualToString:@"name"]){
     
-        
-        NSDictionary* dic = [self.arrayOfCarBrand objectAtIndex:indexPath.section];
+        NSArray* array = [self.arrayLatterList objectAtIndex:indexPath.section];
+
+        NSDictionary* dic = [array objectAtIndex:indexPath.row];
         
         cell.lbl_seriesOfCar.text = dic[@"N"];
     
@@ -318,11 +405,17 @@
         
         Select_seriesOfCarCtrl *vc=[[Select_seriesOfCarCtrl alloc] initWithNibName:@"Select_seriesOfCarCtrl" bundle:nil];
 //        vc.carId=self.carId;
-        vc.arrayOfSerie = [[self.arrayOfCarBrand objectAtIndex:indexPath.section] objectForKey:@"List"];
+        
+        NSArray* array = [self.arrayLatterList objectAtIndex:indexPath.section];//[self.dicLatterList objectForKey:[[self.dicLatterList allKeys] objectAtIndex:indexPath.section]];
+        
+        NSDictionary* dic = [array objectAtIndex:indexPath.row];
+        
+        
+        vc.arrayOfSerie = [dic objectForKey:@"List"];
         vc.JudgeWhereFrom=@"车系";
         
         vc.delegate = self.delegate;
-        vc.preHu = [[self.arrayOfCarBrand objectAtIndex:indexPath.section] objectForKey:@"N"];
+        vc.preHu = [dic objectForKey:@"N"];
         
         [self.navigationController pushViewController:vc animated:YES];
         return;
@@ -381,6 +474,24 @@
     [view addSubview:lblYear];
     
     return view;
+        
+        
+    }else  if([self.JudgeWhereFrom isEqualToString:@"name"]){
+    
+    
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
+        view.backgroundColor = [HKCommen getColor:@"aaaaaa"];
+        
+        UILabel* lblYear = [[UILabel alloc] initWithFrame:CGRectMake(15,5, 200, 20)];
+        
+        lblYear.textColor = [UIColor whiteColor];
+        lblYear.text = [NSString stringWithFormat:@"%@",[self.arrayOfLatter objectAtIndex:section]];
+        
+        [view addSubview:lblYear];
+        
+        return view;
+    
+    
     }
     
     return nil;
@@ -393,8 +504,10 @@
     {
         return 30;
 
-    }
+    }else  if([self.JudgeWhereFrom isEqualToString:@"name"]){
 
+        return 30;
+    }
     return 0;
 }
 

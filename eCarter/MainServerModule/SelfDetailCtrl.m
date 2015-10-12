@@ -584,7 +584,7 @@
                 
                 Serviceitemlist* list = [self.shopDetail.serviceItemList objectAtIndex:i];//[Serviceitemlist objectWithKeyValues:[self.shopDetail.serviceItemList objectAtIndex:i]];
                 
-                money  += list.amount.floatValue;
+                money  += list.amount.floatValue*(self.userCar.count);
                 
                 //strItemNames = list.serviceItemName; //[strItemNames stringByAppendingString:list.serviceItemName];
                 
@@ -603,7 +603,7 @@
             
         }
 
-        money += self.shopDetail.serviceCharge.floatValue;
+        money += self.shopDetail.serviceCharge.floatValue*(self.userCar.count);
         
         if (money < 0) {
             
