@@ -49,4 +49,6 @@
 
 + (BOOL)isTime1:(NSString*)time1 BigThanTime2:(NSString*)time2;
 
++ (CGFloat)compulateTheHightOfLabelWithWidth:(CGFloat)width WithContent:(NSString*)string WithFontSize:(NSInteger)size;
+
 @end
