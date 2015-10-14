@@ -268,6 +268,29 @@
         }
     }
     
+    if (indexPath.section == 1) {
+        
+        
+        NSDictionary* dic = [self.arrayCars objectAtIndex:indexPath.row - 1];
+        
+        if ([[dic class] isSubclassOfClass:[NSDictionary class]]) {
+             NSString* strContent = [NSString  stringWithFormat:@"%@  %@  %@ %@",[dic objectForKey:@"no"],[dic objectForKey:@"color"],[dic objectForKey:@"brand"] ,[dic objectForKey:@"model"]];
+            
+               CGFloat heght = [HKCommen compulateTheHightOfLabelWithWidth:SCREEN_WIDTH - 40 - 27  WithContent:strContent WithFontSize:15]+ 21;
+            
+            if (heght > 56) {
+                
+                heght = 64;
+                
+            }else{
+                
+                
+                heght = 44;
+            }
+            
+            return heght;        }
+    }
+    
         return 44;
     
     
@@ -304,6 +327,9 @@
         if (!cell) {
             
             cell = [[[NSBundle mainBundle] loadNibNamed:cellId2 owner:self options:nil] objectAtIndex:0];
+            
+            
+            
             
         }
         
@@ -396,10 +422,34 @@
                         
                     }
                     
+                  }
+                
+                }else{
+                
+                
+                    NSDictionary* dic = [self.arrayCars objectAtIndex:indexPath.row - 1];
+                    
+                    if ([[dic class] isSubclassOfClass:[NSDictionary class]]) {
+                        NSString* strContent = [NSString  stringWithFormat:@"%@  %@  %@ %@",[dic objectForKey:@"no"],[dic objectForKey:@"color"],[dic objectForKey:@"brand"] ,[dic objectForKey:@"model"]];
+                        
+                        CGFloat heght = [HKCommen compulateTheHightOfLabelWithWidth:SCREEN_WIDTH - 40 - 27  WithContent:strContent WithFontSize:15]+ 21;
+                        
+                        if (heght > 56) {
+                            
+                           cell = [[[NSBundle mainBundle] loadNibNamed:cellId3 owner:self options:nil] objectAtIndex:1];
+                            
+                        }else{
+                            
+                            
+                           cell = [[[NSBundle mainBundle] loadNibNamed:cellId3 owner:self options:nil] objectAtIndex:0];
+                            
+                        }
+                
+                
+                    }
+                
+                
                 }
-                
-                
-            }
             
         }
         
@@ -410,10 +460,18 @@
             NSDictionary* dic = [self.arrayCars objectAtIndex:indexPath.row - 1];
             
             if ([[dic class] isSubclassOfClass:[NSDictionary class]]) {
+                
                 cell.lblContent.text = [NSString  stringWithFormat:@"%@  %@  %@ %@",[dic objectForKey:@"no"],[dic objectForKey:@"color"],[dic objectForKey:@"brand"] ,[dic objectForKey:@"model"]];
+                
+                NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString: cell.lblContent.text];
+                NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+                
+                [paragraphStyle setLineSpacing:3];//调整行间距
+                [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [ cell.lblContent.text length])];
+                
+                cell.lblContent.attributedText = attributedString;
+                
             }
-            
-            
             
             if ([[self.arrayCarIndex objectAtIndex:indexPath.row - 1] integerValue] == 1) {
                 
@@ -423,27 +481,12 @@
             
                cell.img_btn.image = [UIImage imageNamed:@"but_Unchecked"];
             }
-            
-//            if (self.indexPathCar.row == indexPath.row && self.indexPathCar.section == indexPath.section) {
-//                
-//                cell.img_btn.image = [UIImage imageNamed:@"but_checked"];
-//            }else{
-//            
-//                cell.img_btn.image = [UIImage imageNamed:@"but_Unchecked"];
-//            
-//            }
+
             
         }else{
             
-
-                
-                
-            
-            
-            
             NSDictionary* dic = [self.arrayAdresses objectAtIndex:indexPath.row - 1];
             UserAddress *userAddress =  [UserAddress objectWithKeyValues:dic];//[self.arrayOfAdress objectAtIndex:indexPath.row];
-            
             
             
             if ([[dic class] isSubclassOfClass:[NSDictionary class]]) {
@@ -463,12 +506,20 @@
                 
                 cell.lblContent.text = [NSString  stringWithFormat:@"%@：%@%@%@",strType,[dic objectForKey:@"city"],[dic objectForKey:@"area"],[dic objectForKey:@"address"]];
                 
-        if ([userAddress.province rangeOfString:@"天津"].length>0 || [userAddress.province rangeOfString:@"北京"].length>0 ||[userAddress.province rangeOfString:@"上海"].length>0 || [userAddress.province rangeOfString:@"重庆"].length>0) {
+                if ([userAddress.province rangeOfString:@"天津"].length>0 || [userAddress.province rangeOfString:@"北京"].length>0 ||[userAddress.province rangeOfString:@"上海"].length>0 || [userAddress.province rangeOfString:@"重庆"].length>0) {
                     
                     
                     cell.lblContent.text= [NSString stringWithFormat:@"%@：%@%@%@",strType,userAddress.province,userAddress.city,userAddress.address];
                     
                 }
+                
+                NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString: cell.lblContent.text];
+                NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+
+                [paragraphStyle setLineSpacing:3];//调整行间距
+                
+                   [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [ cell.lblContent.text length])];
+                 cell.lblContent.attributedText = attributedString;
                 
             }
             

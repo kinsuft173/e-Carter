@@ -10,6 +10,7 @@
 #import "NetworkManager.h"
 #import "HKCommen.h"
 #import "ProvinceCell.h"
+#import "PlaceHolderCell.h"
 
 @interface SelectStoreTimeCtrl ()
 
@@ -85,6 +86,31 @@
 {
     NSString* cellId = @"ProvinceCell";
     
+    static NSString* cellHolderId = @"PlaceHolderCell";
+    
+    //    static NSString* cellHolderId = @"PlaceHolderCell";
+    
+    if (indexPath.section == 0 && self.arrayTime.count == 0) {
+        
+        PlaceHolderCell* cell = [tableView dequeueReusableCellWithIdentifier:cellHolderId];
+        
+        if (!cell) {
+            
+            NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:cellHolderId owner:self options:nil];
+            
+            cell = [topLevelObjects objectAtIndex:1];
+            
+            //  cell.contentView.backgroundColor = [HKCommen  getColor:@"aaaaaa" WithAlpha:0.2];
+            
+        }
+        
+        cell.lblText.text = @"暂无可选时间段";
+        
+        return cell;
+        
+        
+    }
+    
     
     ProvinceCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     
@@ -155,7 +181,25 @@ heightForHeaderInSection:(NSInteger)section
     
     [[NetworkManager shareMgr] server_queryStoreServiceTimeWithDic:dic completeHandle:^(NSDictionary *response) {
         
-        self.arrayTime=[response objectForKey:@"data"];
+       NSArray* array =[response objectForKey:@"data"];
+        
+        self.arrayTime = [[NSMutableArray alloc] init];
+        
+        for (int i = 0; i <array.count  ; i ++) {
+            
+            NSDictionary* dic = [array objectAtIndex:i];
+            
+            if ([self isExceedNow:dic]) {
+                
+                [self.arrayTime addObject:dic];
+                
+            }else{
+                
+//                cell.lbl_province.textColor = [HKCommen getColor:@"aaaaaa"];
+                
+            }
+            
+        }
         
         [self.myTable reloadData];
     }];

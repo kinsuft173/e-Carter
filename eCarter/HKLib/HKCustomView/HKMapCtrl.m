@@ -77,6 +77,9 @@ const NSString *NavigationViewControllerDestinationTitle = @"终点";
     [self initControls];
     [self initAttributes];
     
+    [self performSelector:@selector(addDefaultAnnotations) withObject:nil afterDelay:2];
+//    [self addDefaultAnnotations];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -87,32 +90,67 @@ const NSString *NavigationViewControllerDestinationTitle = @"终点";
 - (void)addDefaultAnnotations
 {
     
-    CLLocationCoordinate2D point ;
-    point.latitude = 23.134412;
-    point.longitude = 113.401149;
-    self.startCoordinate = point ;
+//    CLLocationCoordinate2D point ;
+//    point.latitude = 23.134412;
+//    point.longitude = 113.401149;
+//    self.startCoordinate = point ;
+//    
+//    CLLocationCoordinate2D pointD ;
+//    pointD.latitude =   23.137888;
+//    pointD.longitude = 113.329231;
+//    self.destinationCoordinate = pointD ;
+//    
+//    
+//    
+//    MAPointAnnotation *destinationAnnotation = [[MAPointAnnotation alloc] init];
+//    destinationAnnotation.coordinate = self.destinationCoordinate;
+//    destinationAnnotation.title      = (NSString*)NavigationViewControllerDestinationTitle;
+//    destinationAnnotation.subtitle   = [NSString stringWithFormat:@"{%f, %f}", self.destinationCoordinate.latitude, self.destinationCoordinate.longitude];
+//    
+//    MAPointAnnotation *startAnnotation = [[MAPointAnnotation alloc] init];
+//    startAnnotation.coordinate = self.startCoordinate;
+//    startAnnotation.title      = (NSString*)NavigationViewControllerStartTitle;
+//    startAnnotation.subtitle   = [NSString stringWithFormat:@"{%f, %f}", self.startCoordinate.latitude, self.startCoordinate.longitude];
+//    
+//
+//   
+//    [self.mapView addAnnotation:startAnnotation];
+//    [self.mapView addAnnotation:destinationAnnotation];
     
-    CLLocationCoordinate2D pointD ;
-    pointD.latitude =   23.137888;
-    pointD.longitude = 113.329231;
-    self.destinationCoordinate = pointD ;
+    CLLocationCoordinate2D coordinate = self.mapView.userLocation.location.coordinate;
+    
+    
+    NSLog(@"坐标＝%f,%f",coordinate.latitude,coordinate.longitude);
+    
+    // 添加标注
+    if (_destinationPoint != nil)
+    {
+        // 清理
+        [_mapView removeAnnotation:_destinationPoint];
+        _destinationPoint = nil;
+        
+        [_mapView removeOverlays:_pathPolylines];
+        _pathPolylines = nil;
+    }
+    
+    _destinationPoint = [[MAPointAnnotation alloc] init];
+    _destinationPoint.coordinate = coordinate;
+    _destinationPoint.title = @"Destination";
     
     
     
-    MAPointAnnotation *destinationAnnotation = [[MAPointAnnotation alloc] init];
-    destinationAnnotation.coordinate = self.destinationCoordinate;
-    destinationAnnotation.title      = (NSString*)NavigationViewControllerDestinationTitle;
-    destinationAnnotation.subtitle   = [NSString stringWithFormat:@"{%f, %f}", self.destinationCoordinate.latitude, self.destinationCoordinate.longitude];
+    if (self.strType!=1) {
+        
+        [self reGeoAction];
+        
+    }else{
+        
+        [HKMapManager shareMgr].userCurrentLongitude = [NSString stringWithFormat:@"%f",coordinate.latitude];;
+        [HKMapManager shareMgr].userCurrentLatitude = [NSString stringWithFormat:@"%f",coordinate.longitude];
+    }
     
-    MAPointAnnotation *startAnnotation = [[MAPointAnnotation alloc] init];
-    startAnnotation.coordinate = self.startCoordinate;
-    startAnnotation.title      = (NSString*)NavigationViewControllerStartTitle;
-    startAnnotation.subtitle   = [NSString stringWithFormat:@"{%f, %f}", self.startCoordinate.latitude, self.startCoordinate.longitude];
     
-
-   
-    [self.mapView addAnnotation:startAnnotation];
-    [self.mapView addAnnotation:destinationAnnotation];
+    [_mapView addAnnotation:_destinationPoint];
 
 }
 
@@ -519,6 +557,7 @@ const NSString *NavigationViewControllerDestinationTitle = @"终点";
     _mapView.userLocation.title = title;
     _mapView.userLocation.subtitle = response.regeocode.formattedAddress;
     
+    [HKCommen addAlertViewWithTitel:response.regeocode.formattedAddress];
  
         
     [HKMapManager shareMgr].address = response.regeocode.formattedAddress;

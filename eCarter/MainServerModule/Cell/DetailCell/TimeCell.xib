@@ -15,8 +15,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfb-M3-uaq">
-                        <rect key="frame" x="60" y="0.0" width="227" height="44"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfb-M3-uaq">
+                        <rect key="frame" x="105" y="0.0" width="182" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="bd0-i9-UZS"/>
                             <constraint firstAttribute="width" constant="227" id="pui-Ie-JF1"/>
@@ -24,6 +24,11 @@
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="pui-Ie-JF1"/>
+                            </mask>
+                        </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="上门取车时间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbz-vL-wpc">
                         <rect key="frame" x="10" y="14" width="203" height="18"/>
@@ -37,11 +42,18 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="bfb-M3-uaq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="97" id="0p6-sj-Gfh"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="bfb-M3-uaq" secondAttribute="trailing" constant="-8" id="7hm-5V-Vdo"/>
                     <constraint firstItem="gbz-vL-wpc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="9eY-Xg-XtW"/>
                     <constraint firstItem="gbz-vL-wpc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="IZ5-fR-TLp"/>
                     <constraint firstItem="bfb-M3-uaq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="52" id="VgA-dH-sVp"/>
                     <constraint firstItem="bfb-M3-uaq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="j0Z-3H-bb2"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="VgA-dH-sVp"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="lbl_Time" destination="bfb-M3-uaq" id="0zq-jU-9LX"/>

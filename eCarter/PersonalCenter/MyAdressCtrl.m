@@ -306,6 +306,15 @@
             
         }
         
+        
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString: cell.lblAdressContent.text];
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        
+        [paragraphStyle setLineSpacing:3];//调整行间距
+        [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [ cell.lblAdressContent.text length])];
+        
+        cell.lblAdressContent.attributedText = attributedString;
+        
         return cell;
         
         

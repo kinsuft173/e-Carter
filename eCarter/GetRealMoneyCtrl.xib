@@ -113,8 +113,8 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温馨提示：目前暂不支持提现到微信账户" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxZ-nn-8Rl">
-                            <rect key="frame" x="7" y="38" width="306" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="温馨提示：目前暂不支持提现到微信账户" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxZ-nn-8Rl">
+                            <rect key="frame" x="10" y="38" width="306" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="9Kb-OC-WSr"/>
                             </constraints>
@@ -129,12 +129,12 @@
                         <constraint firstItem="b6C-F1-De9" firstAttribute="top" secondItem="Yru-IZ-g58" secondAttribute="bottom" constant="36" id="4Da-VQ-LaR"/>
                         <constraint firstItem="Xlm-tP-jtf" firstAttribute="top" secondItem="owl-hV-jjV" secondAttribute="top" constant="64" id="66I-EM-pID"/>
                         <constraint firstAttribute="trailing" secondItem="TMh-7G-LFQ" secondAttribute="trailing" constant="10" id="CUv-RS-bTL"/>
-                        <constraint firstAttribute="trailing" secondItem="gxZ-nn-8Rl" secondAttribute="trailing" constant="7" id="EhC-Ad-gwu"/>
+                        <constraint firstAttribute="trailing" secondItem="gxZ-nn-8Rl" secondAttribute="trailing" constant="4" id="EhC-Ad-gwu"/>
                         <constraint firstItem="gxZ-nn-8Rl" firstAttribute="top" secondItem="owl-hV-jjV" secondAttribute="top" constant="38" id="ICL-7F-cJz"/>
                         <constraint firstItem="CRP-77-xUB" firstAttribute="top" secondItem="b6C-F1-De9" secondAttribute="top" constant="-8" id="IbA-qc-tN7"/>
                         <constraint firstAttribute="trailing" secondItem="Yru-IZ-g58" secondAttribute="trailing" constant="80" id="KaR-OD-Jqs"/>
                         <constraint firstAttribute="trailing" secondItem="bT1-3l-7tO" secondAttribute="trailing" constant="10" id="OSS-8N-k48"/>
-                        <constraint firstItem="gxZ-nn-8Rl" firstAttribute="leading" secondItem="owl-hV-jjV" secondAttribute="leading" constant="7" id="Oio-pl-pk1"/>
+                        <constraint firstItem="gxZ-nn-8Rl" firstAttribute="leading" secondItem="owl-hV-jjV" secondAttribute="leading" constant="10" id="Oio-pl-pk1"/>
                         <constraint firstItem="Sdq-n8-6Gt" firstAttribute="top" secondItem="Xlm-tP-jtf" secondAttribute="top" constant="-20" id="PAc-My-77S"/>
                         <constraint firstItem="LSW-S4-7Ob" firstAttribute="top" secondItem="gvk-K1-D7H" secondAttribute="bottom" constant="20" id="PaG-kt-Tf7"/>
                         <constraint firstItem="CRP-77-xUB" firstAttribute="top" secondItem="owl-hV-jjV" secondAttribute="top" constant="88" id="Pmm-0h-dYH"/>

@@ -46,8 +46,18 @@
 @property (weak, nonatomic) IBOutlet UIImageView *image3;
 
 @property (nonatomic, strong) NSMutableArray* arrayImageViews;
+@property (nonatomic, strong) NSMutableArray* arrayImageReturnViews;
+
 @property (weak, nonatomic) IBOutlet UIButton *btnGoImages;
 @property  (weak, nonatomic) IBOutlet UIButton *btnGoShop;
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageReturn1;
+@property (weak, nonatomic) IBOutlet UIImageView *imageReturn2;
+@property (weak, nonatomic) IBOutlet UIImageView *imageReturn3;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnGoReturnImages;
+
 //@property (weak, nonatomic) IBOutlet UIButton *btnGoShop;
 
 @end

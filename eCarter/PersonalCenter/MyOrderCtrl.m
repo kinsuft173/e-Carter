@@ -531,9 +531,14 @@
         if (order.orderImageList.count==0) {
             return 305;
         }
-        else
+        else  if (order.returnImageList.count==0)
         {
             return 415;
+            
+        }else{
+        
+            return 525;
+        
         }
         
         
@@ -547,6 +552,7 @@
     
     static NSString* cellId1 = @"OrderCell";
     static NSString* cellId2 = @"OrderCell2";
+        static NSString* cellId3 = @"OrderCell3";
     static NSString* cellHolderId = @"PlaceHolderCell";
     //    static NSString* cellHolderId = @"PlaceHolderCell";
     
@@ -583,10 +589,14 @@
             
             cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
             
-        }else{
+        }else if(order.returnImageList.count == 0){
         
             cell = [tableView dequeueReusableCellWithIdentifier:cellId2];
             
+        }else{
+        
+            cell = [tableView dequeueReusableCellWithIdentifier:cellId3];
+        
         }
         
         if (!cell) {
@@ -610,7 +620,7 @@
 
                 
             }
-            else
+            else  if (order.returnImageList.count  == 0)
             {
                 cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:1];
                 
@@ -630,6 +640,30 @@
                 [cell.viewMask1 addSubview:viewDivide4];
                 
                 cell.delegate=self;
+                
+            }else
+            {
+                cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:2];
+                
+                UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
+                UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 + 18 , SCREEN_WIDTH - 10, 0.5)];
+                UIView* viewDivide3 = [[UIView alloc] initWithFrame:CGRectMake(0, 230 + 18, SCREEN_WIDTH, 0.5)];
+                UIView* viewDivide4 = [[UIView alloc] initWithFrame:CGRectMake(0, 340 + 18, SCREEN_WIDTH, 0.5)];
+                  UIView* viewDivide5 = [[UIView alloc] initWithFrame:CGRectMake(0, 450 + 18, SCREEN_WIDTH, 0.5)];
+                
+                viewDivide1.backgroundColor = [HKCommen getColor:@"ccccccc"];
+                viewDivide2.backgroundColor = [HKCommen getColor:@"e0e0e0"];
+                viewDivide3.backgroundColor = [HKCommen getColor:@"ccccccc"];
+                viewDivide4.backgroundColor = [HKCommen getColor:@"ccccccc"];
+                 viewDivide5.backgroundColor = [HKCommen getColor:@"ccccccc"];
+                
+                [cell.viewMask1 addSubview:viewDivide1];
+                [cell.viewMask1 addSubview:viewDivide2];
+                [cell.viewMask1 addSubview:viewDivide3];
+                [cell.viewMask1 addSubview:viewDivide4];
+                [cell.viewMask1 addSubview:viewDivide5];
+                
+                cell.delegate=self;
             }
             
                 [cell.btnGoShop addTarget:self action:@selector(goShop:) forControlEvents:UIControlEventTouchUpInside];
@@ -640,7 +674,7 @@
         
         
         
-        cell.row=indexPath.row;
+        cell.row = indexPath.row;
         
         [cell.btn_image1 setTag:0];
         [cell.btn_image2 setTag:1];
@@ -738,13 +772,66 @@
             
             [cell.btnGoImages addTarget:self action:@selector(goTapAction:) forControlEvents:UIControlEventTouchUpInside];
             
-          
-
-            
             
             
         }
         
+        
+        
+        if(order.returnImageList.count != 0){
+            
+            NSArray* arrayImageViews = [NSArray arrayWithObjects:cell.imageReturn1,cell.imageReturn2,cell.imageReturn3, nil];
+            
+            
+            int num = order.returnImageList.count>=3?3:order.returnImageList.count;
+            
+            cell.arrayImageReturnViews = [[NSMutableArray alloc] init];
+            
+            for (int i = 0; i < num; i++) {
+                
+                
+                UIImageView* imageView = [arrayImageViews objectAtIndex:i];
+                Orderimagelist* imageList = [order.returnImageList objectAtIndex:i];
+                
+                [imageView sd_setImageWithURL:[NSURL URLWithString:imageList.imageUrl]
+                             placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
+                
+                
+                [cell.arrayImageReturnViews addObject:imageView];
+                
+                
+            }
+            
+            for (int i = 3; i < order.returnImageList.count; i ++) {
+                
+                Orderimagelist* imageList = [order.returnImageList objectAtIndex:i];
+                
+                UIImageView* imgView = [[UIImageView alloc] initWithFrame:CGRectMake(1000, 256, 90, 90)];
+                
+                [imgView sd_setImageWithURL:[NSURL URLWithString:imageList.imageUrl]
+                           placeholderImage:[UIImage imageNamed:PlaceHolderImage] options:SDWebImageContinueInBackground];
+                
+                [cell.arrayImageReturnViews addObject:imgView];
+                
+                [cell.contentView addSubview:imgView];
+                
+                
+            }
+            
+            
+
+            cell.btnGoReturnImages = [UIButton buttonWithType:UIButtonTypeCustom];
+            cell.btnGoReturnImages.tag = (indexPath.row +1)*10 + tableView.tag;
+            
+            [cell.viewMask1 addSubview:cell.btnGoReturnImages];
+            
+            cell.btnGoReturnImages.frame = CGRectMake(0, 258 + 110, SCREEN_WIDTH, 90);
+            
+            [cell.btnGoReturnImages addTarget:self action:@selector(goTapAction1:) forControlEvents:UIControlEventTouchUpInside];
+            
+            
+            
+        }
         
         
        if (state==1)
@@ -1189,6 +1276,64 @@
 
 
 }
+
+- (void)goTapAction1:(UIButton*)btn
+{
+    NSLog(@"sdad");
+    
+    NSInteger tag = btn.tag;
+    
+    int tableNum = tag%10;
+    
+    int row = (tag/10) - 1;
+    
+    NSArray* arrayModels = [NSArray arrayWithObjects:self.arrayOfOrder,self.arrayOfWaiting ,self.arrayOfServicing,self.arrayOfComplete, self.arrayOfCancel,nil];
+    
+    NSArray* arrayModel = [arrayModels objectAtIndex:tableNum];
+    
+    NSDictionary *dict = [arrayModel objectAtIndex:row];
+    
+    OrderSingle* order = [OrderSingle objectWithKeyValues:dict];
+    
+    UITableView* tableView = [self.arrayOfTables objectAtIndex:tableNum];
+    
+    OrderCell* cell = (OrderCell*)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:1]];
+    
+    __weak OrderCell* weakCell = cell;
+    
+    [PhotoBroswerVC show:self type:PhotoBroswerVCTypeZoom index:0 photoModelBlock:^NSArray *{
+        
+        
+        NSMutableArray *localImages = [[NSMutableArray alloc] init];
+        
+        for (int i = 0; i < weakCell.arrayImageReturnViews.count; i ++) {
+            
+            UIImageView* imgView = [weakCell.arrayImageReturnViews objectAtIndex:i];
+            
+            [localImages addObject:imgView.image];
+        }
+        
+        
+        NSMutableArray *modelsM = [NSMutableArray arrayWithCapacity:localImages.count];
+        for (NSUInteger i = 0; i< localImages.count; i++) {
+            
+            PhotoModel *pbModel=[[PhotoModel alloc] init];
+            pbModel.mid = i + 1;
+            pbModel.image = localImages[i];
+            
+            pbModel.sourceImageView = weakCell.imageReturn1;
+            
+            [modelsM addObject:pbModel];
+        }
+        
+        return modelsM;
+    }];
+    
+    
+    
+    
+}
+
 
 
 @end

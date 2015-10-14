@@ -23,7 +23,7 @@
     UIView *underView=[[UIView alloc]initWithFrame:CGRectMake(40, self.frame.size.height - SINGLE_LINE_ADJUST_OFFSET, [UIScreen mainScreen].bounds.size.width - 40,SINGLE_LINE_WIDTH)];
     underView.backgroundColor=[UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0];
     
-    [self.contentView addSubview:headView];
+//    [self.contentView addSubview:headView];
     [self.contentView addSubview:underView];
 }
 

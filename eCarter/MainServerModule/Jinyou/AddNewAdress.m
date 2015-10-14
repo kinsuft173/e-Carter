@@ -33,6 +33,7 @@
 
 @property (nonatomic, strong) NSString* latitude;
 @property (nonatomic, strong) NSString* longtitude;
+@property (nonatomic, weak) IBOutlet UITableView* tableView;
 @end
 
 @implementation AddNewAdress
@@ -40,9 +41,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-//    self.province=@"广东省";
-//    self.city=@"广州市";
-//    self.place=@"天河区";
+    //    self.province=@"广东省";
+    //    self.city=@"广州市";
+    //    self.place=@"天河区";
     self.type = @"1";
     
     if (self.preUserAdress) {
