@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -25,7 +25,7 @@
                         <color key="textColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天河区" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHS-NI-JwR">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天河区" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHS-NI-JwR">
                         <rect key="frame" x="105" y="0.0" width="210" height="44"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.37647058823529411" green="0.37647058823529411" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
@@ -55,6 +55,55 @@
                 <outlet property="lblAdressContent" destination="bHS-NI-JwR" id="gYx-Lp-uLW"/>
                 <outlet property="lblAdressTitel" destination="lVJ-H2-agw" id="XVY-gW-gVJ"/>
             </connections>
+        </tableViewCell>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AdressCell" id="BcP-fK-zeS" customClass="AdressCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BcP-fK-zeS" id="ng1-Tl-zHP">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="家庭地址" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yje-oW-dx0">
+                        <rect key="frame" x="10" y="0.0" width="68" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="BJZ-T4-vit"/>
+                            <constraint firstAttribute="width" constant="68" id="Koi-kw-hBH"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.18823529410000001" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="广东省广州市天河区客运中路大黄村站192号" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WrF-gR-Adz">
+                        <rect key="frame" x="105" y="-7" width="210" height="71"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.37647058820000001" green="0.37647058820000001" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mJV-0Q-zJ8">
+                        <rect key="frame" x="0.0" y="64" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.85882352939999995" green="0.85882352939999995" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="4l1-Zf-BvQ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="mJV-0Q-zJ8" secondAttribute="trailing" constant="-8" id="6ED-Y8-tc1"/>
+                    <constraint firstItem="Yje-oW-dx0" firstAttribute="leading" secondItem="ng1-Tl-zHP" secondAttribute="leadingMargin" constant="2" id="8Ng-Ad-ilB"/>
+                    <constraint firstItem="mJV-0Q-zJ8" firstAttribute="leading" secondItem="ng1-Tl-zHP" secondAttribute="leadingMargin" constant="-8" id="FOH-N1-Ntr"/>
+                    <constraint firstItem="WrF-gR-Adz" firstAttribute="leading" secondItem="ng1-Tl-zHP" secondAttribute="leadingMargin" constant="97" id="Iy8-zU-tT3"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="WrF-gR-Adz" secondAttribute="trailing" constant="-3" id="No1-cx-Arx"/>
+                    <constraint firstItem="WrF-gR-Adz" firstAttribute="top" secondItem="ng1-Tl-zHP" secondAttribute="topMargin" constant="-15" id="UwJ-ko-WZ9"/>
+                    <constraint firstItem="Yje-oW-dx0" firstAttribute="top" secondItem="ng1-Tl-zHP" secondAttribute="topMargin" constant="-8" id="e00-Vg-txc"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="WrF-gR-Adz" secondAttribute="bottom" constant="-9" id="j3r-sy-igR"/>
+                    <constraint firstItem="mJV-0Q-zJ8" firstAttribute="top" secondItem="ng1-Tl-zHP" secondAttribute="topMargin" constant="56" id="v7u-Tw-hu0"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lblAdressContent" destination="WrF-gR-Adz" id="JSZ-gV-qZ5"/>
+                <outlet property="lblAdressTitel" destination="Yje-oW-dx0" id="86j-in-cWX"/>
+            </connections>
+            <point key="canvasLocation" x="465" y="401"/>
         </tableViewCell>
     </objects>
 </document>

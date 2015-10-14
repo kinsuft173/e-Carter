@@ -25,10 +25,10 @@
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbz-vL-wpc">
-                        <rect key="frame" x="10" y="14" width="34" height="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="上门取车时间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbz-vL-wpc">
+                        <rect key="frame" x="10" y="14" width="203" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="34" id="KkD-88-p2S"/>
+                            <constraint firstAttribute="width" constant="203" id="KkD-88-p2S"/>
                             <constraint firstAttribute="height" constant="15" id="fKj-Z3-oGk"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>

@@ -80,17 +80,17 @@
         return 20;
     }
     
-
-        
-        UILabel* lblCaculate = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, 1)];
-        
-        lblCaculate.text = string;
-        lblCaculate.font = [UIFont systemFontOfSize:size];
-        [lblCaculate setNumberOfLines:0];
-        
-        [lblCaculate sizeToFit];
-        
-        return lblCaculate.frame.size.height;
+    UILabel* lblCaculate = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, 20)];
+    
+    lblCaculate.text = string;
+    //lblCaculate.font = [UIFont systemFontOfSize:size];
+    [lblCaculate setNumberOfLines:0];
+    
+    //    [lblCaculate sizeToFit];
+    
+    CGSize s = [string sizeWithFont:[UIFont systemFontOfSize:size] constrainedToSize:CGSizeMake(width, 20000) lineBreakMode:NSLineBreakByTruncatingTail];
+    
+    return s.height;
 
     
     

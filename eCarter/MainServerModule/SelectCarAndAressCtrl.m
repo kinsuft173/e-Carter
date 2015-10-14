@@ -246,10 +246,24 @@
                 
                 strContent= [NSString stringWithFormat:@"%@：%@%@%@",strType,userAddress.province,userAddress.city,userAddress.address];
                 
+            
             }
             
+            CGFloat heght = [HKCommen compulateTheHightOfLabelWithWidth:SCREEN_WIDTH - 40 - 27  WithContent:strContent WithFontSize:15]+ 21;
             
-            return [HKCommen compulateTheHightOfLabelWithWidth:SCREEN_WIDTH - 40 - 27  WithContent:strContent WithFontSize:15]+ 25;
+            NSLog(@"heght = %.2f",heght);
+            
+            if (heght > 56) {
+                
+                heght = 64;
+                
+            }else{
+            
+            
+                heght = 44;
+            }
+            
+            return heght;
             
         }
     }
@@ -324,13 +338,68 @@
         
     }else{
     
-        CarAndAdressCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId3];
+        CarAndAdressCell* cell;// = [tableView dequeueReusableCellWithIdentifier:cellId3];
         
 
         
         if (!cell) {
             
             cell = [[[NSBundle mainBundle] loadNibNamed:cellId3 owner:self options:nil] objectAtIndex:0];
+            
+            if (indexPath.section == 2) {
+                
+                NSDictionary* dic = [self.arrayAdresses objectAtIndex:indexPath.row - 1];
+                UserAddress *userAddress =  [UserAddress objectWithKeyValues:dic];//[self.arrayOfAdress objectAtIndex:indexPath.row];
+                
+                
+                
+                if ([[dic class] isSubclassOfClass:[NSDictionary class]]) {
+                    
+                    NSString* strType;
+                    NSString* strContent;
+                    
+                    
+                    
+                    if ([[dic objectForKey:@"type"] integerValue] == 1) {
+                        
+                        strType = @"家庭地址";
+                    }else if ([[dic objectForKey:@"type"] integerValue] == 2){
+                        strType = @"工作地址";
+                        
+                    }else{
+                        
+                        strType = @"其他地址";
+                    }
+                    strContent = [NSString  stringWithFormat:@"%@：%@%@%@",strType,[dic objectForKey:@"city"],[dic objectForKey:@"area"],[dic objectForKey:@"address"]];
+                    
+                    
+                    if ([userAddress.province rangeOfString:@"天津"].length>0 || [userAddress.province rangeOfString:@"北京"].length>0 ||[userAddress.province rangeOfString:@"上海"].length>0 || [userAddress.province rangeOfString:@"重庆"].length>0) {
+                        
+                        
+                        strContent= [NSString stringWithFormat:@"%@：%@%@%@",strType,userAddress.province,userAddress.city,userAddress.address];
+                        
+                        
+                    }
+                    
+                    CGFloat heght = [HKCommen compulateTheHightOfLabelWithWidth:SCREEN_WIDTH - 40 - 27  WithContent:strContent WithFontSize:15]+ 21;
+                    
+                    NSLog(@"heght = %.2f",heght);
+                    
+                    if (heght > 56) {
+                        
+                        cell = [[[NSBundle mainBundle] loadNibNamed:cellId3 owner:self options:nil] objectAtIndex:1];
+                        
+                        
+                    }else{
+                        
+                        
+                        
+                    }
+                    
+                }
+                
+                
+            }
             
         }
         
@@ -365,6 +434,12 @@
 //            }
             
         }else{
+            
+
+                
+                
+            
+            
             
             NSDictionary* dic = [self.arrayAdresses objectAtIndex:indexPath.row - 1];
             UserAddress *userAddress =  [UserAddress objectWithKeyValues:dic];//[self.arrayOfAdress objectAtIndex:indexPath.row];

@@ -142,6 +142,59 @@
 {
     if (indexPath.section == 0) {
         
+        NSDictionary* dic = [self.arrayOfAdress objectAtIndex:indexPath.row ];
+        UserAddress *userAddress =  [UserAddress objectWithKeyValues:dic];//[self.arrayOfAdress objectAtIndex:indexPath.row];
+        
+        
+        
+        if ([[dic class] isSubclassOfClass:[NSDictionary class]]) {
+            
+            NSString* strType;
+            NSString* strContent;
+            
+            
+            
+            if ([[dic objectForKey:@"type"] integerValue] == 1) {
+                
+                strType = @"家庭地址";
+            }else if ([[dic objectForKey:@"type"] integerValue] == 2){
+                strType = @"工作地址";
+                
+            }else{
+                
+                strType = @"其他地址";
+            }
+            
+            strContent = [NSString stringWithFormat:@"%@%@%@",userAddress.city,userAddress.area,userAddress.address];
+            
+            
+            if ([userAddress.province rangeOfString:@"天津"].length>0 || [userAddress.province rangeOfString:@"北京"].length>0 ||[userAddress.province rangeOfString:@"上海"].length>0 || [userAddress.province rangeOfString:@"重庆"].length>0) {
+                
+                
+                strContent= [NSString stringWithFormat:@"%@%@%@",userAddress.province,userAddress.city,userAddress.address];
+                
+                
+            }
+            
+            CGFloat heght = [HKCommen compulateTheHightOfLabelWithWidth:SCREEN_WIDTH - 105 WithContent:strContent WithFontSize:15]+ 21;
+            
+            NSLog(@"heght = %.2f",heght);
+            
+            
+            if (heght > 56) {
+                
+                return 64;
+                
+            }else{
+                
+                return 44;
+                
+            }
+            
+        }
+        
+        
+        
         return 44;
         
     }else{
@@ -161,11 +214,66 @@
     
     if(indexPath.section == 0){
         
-        AdressCell* cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
+        AdressCell* cell;// = [tableView dequeueReusableCellWithIdentifier:cellId1];
         
         if (!cell) {
             
             cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:0];
+            
+            
+            
+            NSDictionary* dic = [self.arrayOfAdress objectAtIndex:indexPath.row ];
+            UserAddress *userAddress =  [UserAddress objectWithKeyValues:dic];//[self.arrayOfAdress objectAtIndex:indexPath.row];
+            
+            
+            
+            if ([[dic class] isSubclassOfClass:[NSDictionary class]]) {
+                
+                NSString* strType;
+                NSString* strContent;
+                
+                
+                
+                if ([[dic objectForKey:@"type"] integerValue] == 1) {
+                    
+                    strType = @"家庭地址";
+                }else if ([[dic objectForKey:@"type"] integerValue] == 2){
+                    strType = @"工作地址";
+                    
+                }else{
+                    
+                    strType = @"其他地址";
+                }
+                
+                strContent = [NSString stringWithFormat:@"%@%@%@",userAddress.city,userAddress.area,userAddress.address];
+                
+                
+                if ([userAddress.province rangeOfString:@"天津"].length>0 || [userAddress.province rangeOfString:@"北京"].length>0 ||[userAddress.province rangeOfString:@"上海"].length>0 || [userAddress.province rangeOfString:@"重庆"].length>0) {
+                    
+                    
+                    strContent= [NSString stringWithFormat:@"%@%@%@",userAddress.province,userAddress.city,userAddress.address];
+                    
+                    
+                }
+                
+                CGFloat heght = [HKCommen compulateTheHightOfLabelWithWidth:SCREEN_WIDTH - 105 WithContent:strContent WithFontSize:15]+ 21;
+                
+                NSLog(@"heght = %.2f",heght);
+                
+                if (heght > 56) {
+                    
+                     cell = [[[NSBundle mainBundle] loadNibNamed:cellId1 owner:self options:nil] objectAtIndex:1];
+                    
+                }else{
+                    
+               
+                    
+                }
+                
+            }
+            
+            
+            
             
         }
         
