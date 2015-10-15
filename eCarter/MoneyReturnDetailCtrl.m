@@ -81,7 +81,24 @@
             
             NSLog(@"交易记录：%@",response);
             
-            NSArray* array = [response objectForKey:@"data"];
+            NSMutableArray* array = [response objectForKey:@"data"];
+            
+            if (array.count == 0) {
+                
+                array = [[NSMutableArray alloc] init];
+                
+                
+                NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:@"下单时间",@"name",self.order.orderTime,@"createTime", nil];
+                
+                [array addObject:dic];
+            }else{
+            
+                array = [[NSMutableArray alloc] initWithArray:array];
+            
+                NSDictionary* dic = [NSDictionary dictionaryWithObjectsAndKeys:@"下单时间",@"name",self.order.orderTime,@"createTime", nil];
+                
+                [array addObject:dic];
+            }
             
             if (array.count != 0) {
                 

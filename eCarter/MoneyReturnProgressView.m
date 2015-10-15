@@ -17,20 +17,20 @@
 
 -(void)initUI
 {
-    self.arrayLongView=[NSArray arrayWithObjects:self.viewStageOne_Long,self.viewStageTwo_Long,self.viewStageThree_Long,self.viewStageFour_Long,self.viewStageFive_Long, nil];
+    self.arrayLongView=[NSArray arrayWithObjects:self.viewStageOne_Long,self.viewStageTwo_Long,self.viewStageThree_Long,self.viewStageFour_Long,self.viewStageFive_Long,self.viewStageSix_Long, nil];
     
-    self.arrayCircle=[NSArray arrayWithObjects:self.circleStageOne,self.circleStageTwo,self.circleStageThree,self.circleStageFour, nil];
+    self.arrayCircle=[NSArray arrayWithObjects:self.circleStageOne,self.circleStageTwo,self.circleStageThree,self.circleStageFour,self.circleStageFive, nil];
     
-    self.arrayBrief=[NSArray arrayWithObjects:self.lbl_BriefOne,self.lbl_BriefTwo,self.lbl_BriefThree,self.lbl_BriefFour, nil];
+    self.arrayBrief=[NSArray arrayWithObjects:self.lbl_BriefOne,self.lbl_BriefTwo,self.lbl_BriefThree,self.lbl_BriefFour, self.lbl_BriefFive, nil];
     
-    self.arrayDetail=[NSArray arrayWithObjects:self.lbl_DetailOne,self.lbl_DetailTwo,self.lbl_DetailThree,self.lbl_DetailFour, nil];
+    self.arrayDetail=[NSArray arrayWithObjects:self.lbl_DetailOne,self.lbl_DetailTwo,self.lbl_DetailThree,self.lbl_DetailFour, self.lbl_DetailFive, nil];
     
     [self setProgressOfMoneyReturn:self.stageForMoneyReturn];
 }
 
 -(void)setProgressOfMoneyReturn:(NSUInteger)stage
 {
-    for (int i=0; i<4; i++) {
+    for (int i=0; i<5; i++) {
         UIView *viewLong=[self.arrayLongView objectAtIndex:i];
         UIImageView *viewCircle=[self.arrayCircle objectAtIndex:i];
         UILabel *brief=[self.arrayBrief objectAtIndex:i];
@@ -50,7 +50,7 @@
 
     }
     
-    for (int i=(int)stage; i<4; i++) {
+    for (int i=(int)stage; i<5; i++) {
         UIView *viewLong=[self.arrayLongView objectAtIndex:i];
         UIImageView *viewCircle=[self.arrayCircle objectAtIndex:i];
         UILabel *brief=[self.arrayBrief objectAtIndex:i];
@@ -66,12 +66,12 @@
 
     }
     
-    if (stage==4) {
-        [self.viewStageFive_Long setBackgroundColor:[UIColor colorWithRed:79.0/255.0 green:169.0/255.0 blue:220.0/255.0 alpha:1.0]];
+    if (stage==5) {
+        [self.viewStageSix_Long setBackgroundColor:[UIColor colorWithRed:79.0/255.0 green:169.0/255.0 blue:220.0/255.0 alpha:1.0]];
     }
     else
     {
-    [self.viewStageFive_Long setBackgroundColor:[UIColor colorWithRed:220.0/255.0 green:220.0/255.0 blue:220.0/255.0 alpha:1.0]];
+    [self.viewStageSix_Long setBackgroundColor:[UIColor colorWithRed:220.0/255.0 green:220.0/255.0 blue:220.0/255.0 alpha:1.0]];
     }
 }
 

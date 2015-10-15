@@ -23,7 +23,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbC-tg-e9f">
-                            <rect key="frame" x="0.0" y="56" width="320" height="400"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jeM-O7-tIQ">
                                     <rect key="frame" x="0.0" y="44" width="320" height="1"/>
@@ -75,9 +75,9 @@
                     <constraints>
                         <constraint firstItem="1Fg-rZ-WE3" firstAttribute="top" secondItem="jr4-SB-6ph" secondAttribute="top" id="81l-lb-3ZO"/>
                         <constraint firstAttribute="centerX" secondItem="1Fg-rZ-WE3" secondAttribute="centerX" id="NuI-on-MVr"/>
-                        <constraint firstItem="vbC-tg-e9f" firstAttribute="top" secondItem="jr4-SB-6ph" secondAttribute="top" constant="56" id="Oy9-YN-TYE"/>
+                        <constraint firstItem="vbC-tg-e9f" firstAttribute="top" secondItem="jr4-SB-6ph" secondAttribute="top" id="Oy9-YN-TYE"/>
                         <constraint firstAttribute="centerX" secondItem="vbC-tg-e9f" secondAttribute="centerX" id="RA0-BK-7CA"/>
-                        <constraint firstAttribute="bottom" secondItem="vbC-tg-e9f" secondAttribute="bottom" constant="112" id="T78-eT-8t5"/>
+                        <constraint firstAttribute="bottom" secondItem="vbC-tg-e9f" secondAttribute="bottom" constant="168" id="T78-eT-8t5"/>
                         <constraint firstItem="vbC-tg-e9f" firstAttribute="leading" secondItem="jr4-SB-6ph" secondAttribute="leading" id="ZNF-xo-3Na"/>
                         <constraint firstItem="1Fg-rZ-WE3" firstAttribute="leading" secondItem="jr4-SB-6ph" secondAttribute="leading" id="dZ0-Oe-wFe"/>
                         <constraint firstAttribute="trailing" secondItem="vbC-tg-e9f" secondAttribute="trailing" id="h9x-pl-GnS"/>

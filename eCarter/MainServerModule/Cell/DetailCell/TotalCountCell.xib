@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -15,8 +15,24 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥180.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBy-d9-yUY">
+                        <rect key="frame" x="240" y="14" width="64" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="TUb-uz-JWZ"/>
+                            <constraint firstAttribute="width" constant="64" id="gNA-1e-x6l"/>
+                            <constraint firstAttribute="width" constant="56" id="pXF-70-vDG"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="1" green="0.2528960858" blue="0.303433387" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="pXF-70-vDG"/>
+                            </mask>
+                        </variation>
+                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="实应付款" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAo-bv-53K">
-                        <rect key="frame" x="182" y="14" width="68" height="15"/>
+                        <rect key="frame" x="172" y="14" width="68" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="68" id="S76-fD-yNU"/>
                             <constraint firstAttribute="height" constant="15" id="k70-JK-uOs"/>
@@ -25,23 +41,19 @@
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥180.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBy-d9-yUY">
-                        <rect key="frame" x="248" y="14" width="56" height="15"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="15" id="TUb-uz-JWZ"/>
-                            <constraint firstAttribute="width" constant="56" id="pXF-70-vDG"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="1" green="0.2528960858" blue="0.303433387" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="LBy-d9-yUY" firstAttribute="leading" secondItem="dAo-bv-53K" secondAttribute="trailing" id="EGk-fa-Qtr"/>
                     <constraint firstItem="dAo-bv-53K" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="HlM-Jx-8jE"/>
                     <constraint firstAttribute="trailingMargin" secondItem="LBy-d9-yUY" secondAttribute="trailing" constant="8" id="L4i-cp-Rh0"/>
                     <constraint firstItem="LBy-d9-yUY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="6" id="dgd-wC-twn"/>
                     <constraint firstAttribute="trailingMargin" secondItem="dAo-bv-53K" secondAttribute="trailing" constant="62" id="k7J-L4-5fR"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="k7J-L4-5fR"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>

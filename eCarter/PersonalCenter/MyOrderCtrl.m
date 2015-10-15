@@ -533,11 +533,11 @@
         }
         else  if (order.returnImageList.count==0)
         {
-            return 415;
+            return 415 + 30;
             
         }else{
         
-            return 525;
+            return 525 + 60;
         
         }
         
@@ -627,7 +627,7 @@
                 UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
                 UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 + 18 , SCREEN_WIDTH - 10, 0.5)];
                 UIView* viewDivide3 = [[UIView alloc] initWithFrame:CGRectMake(0, 230 + 18, SCREEN_WIDTH, 0.5)];
-                UIView* viewDivide4 = [[UIView alloc] initWithFrame:CGRectMake(0, 340 + 18, SCREEN_WIDTH, 0.5)];
+                UIView* viewDivide4 = [[UIView alloc] initWithFrame:CGRectMake(0, 340 + 30 + 18, SCREEN_WIDTH, 0.5)];
                 
                 viewDivide1.backgroundColor = [HKCommen getColor:@"ccccccc"];
                 viewDivide2.backgroundColor = [HKCommen getColor:@"e0e0e0"];
@@ -648,8 +648,8 @@
                 UIView* viewDivide1 = [[UIView alloc] initWithFrame:CGRectMake(0, 35 , SCREEN_WIDTH, 0.5)];
                 UIView* viewDivide2 = [[UIView alloc] initWithFrame:CGRectMake(10, 170 + 18 , SCREEN_WIDTH - 10, 0.5)];
                 UIView* viewDivide3 = [[UIView alloc] initWithFrame:CGRectMake(0, 230 + 18, SCREEN_WIDTH, 0.5)];
-                UIView* viewDivide4 = [[UIView alloc] initWithFrame:CGRectMake(0, 340 + 18, SCREEN_WIDTH, 0.5)];
-                  UIView* viewDivide5 = [[UIView alloc] initWithFrame:CGRectMake(0, 450 + 18, SCREEN_WIDTH, 0.5)];
+                UIView* viewDivide4 = [[UIView alloc] initWithFrame:CGRectMake(0, 340 + 30 + 18, SCREEN_WIDTH, 0.5)];
+                  UIView* viewDivide5 = [[UIView alloc] initWithFrame:CGRectMake(0, 450 + 60 + 18, SCREEN_WIDTH, 0.5)];
                 
                 viewDivide1.backgroundColor = [HKCommen getColor:@"ccccccc"];
                 viewDivide2.backgroundColor = [HKCommen getColor:@"e0e0e0"];
@@ -768,7 +768,7 @@
             
             [cell.viewMask1 addSubview:cell.btnGoImages];
             
-            cell.btnGoImages.frame = CGRectMake(0, 258, SCREEN_WIDTH, 90);
+            cell.btnGoImages.frame = CGRectMake(0, 258 + 30, SCREEN_WIDTH, 90);
             
             [cell.btnGoImages addTarget:self action:@selector(goTapAction:) forControlEvents:UIControlEventTouchUpInside];
             
@@ -825,7 +825,7 @@
             
             [cell.viewMask1 addSubview:cell.btnGoReturnImages];
             
-            cell.btnGoReturnImages.frame = CGRectMake(0, 258 + 110, SCREEN_WIDTH, 90);
+            cell.btnGoReturnImages.frame = CGRectMake(0, 258 + 110 + 60, SCREEN_WIDTH, 90);
             
             [cell.btnGoReturnImages addTarget:self action:@selector(goTapAction1:) forControlEvents:UIControlEventTouchUpInside];
             

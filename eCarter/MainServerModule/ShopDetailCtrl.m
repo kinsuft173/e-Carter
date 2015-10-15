@@ -448,7 +448,7 @@
             
         }
         
-        cell.lblServerItems.text = comment.serviceItem;
+        cell.lblServerItems.text = [NSString stringWithFormat:@"服务类型: %@",comment.serviceItem];
         cell.lblTime.text = comment.createTime;
         [cell.star setStarForValue:comment.storeScore.floatValue];
         

@@ -176,7 +176,7 @@
                 
             }
             
-            CGFloat heght = [HKCommen compulateTheHightOfLabelWithWidth:SCREEN_WIDTH - 105 WithContent:strContent WithFontSize:15]+ 21;
+            CGFloat heght = [HKCommen compulateTheHightOfLabelWithWidth:SCREEN_WIDTH - 115 WithContent:strContent WithFontSize:15]+ 21;
             
             NSLog(@"heght = %.2f",heght);
             
@@ -256,7 +256,7 @@
                     
                 }
                 
-                CGFloat heght = [HKCommen compulateTheHightOfLabelWithWidth:SCREEN_WIDTH - 105 WithContent:strContent WithFontSize:15]+ 21;
+                CGFloat heght = [HKCommen compulateTheHightOfLabelWithWidth:SCREEN_WIDTH - 115 WithContent:strContent WithFontSize:15]+ 21;
                 
                 NSLog(@"heght = %.2f",heght);
                 

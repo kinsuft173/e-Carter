@@ -648,7 +648,7 @@
         
         cell.lblContent.text = comment.commentContent;
         cell.lblPhone.text = comment.userPhone;
-        cell.lblServerItems.text = comment.serviceItem;
+        cell.lblServerItems.text = [NSString stringWithFormat:@"服务类型: %@",comment.serviceItem];
         cell.lblTime.text = comment.createTime;
         [cell.star setStarForValue:comment.storeScore.floatValue];
         
@@ -854,8 +854,8 @@
     NSLog(@"str = %@",str);
     [dic setObject:str forKey:@"serviceItemId"];
     [dic setObject:strItemNames forKey:@"serviceItemName"];
-    [dic setObject:[NSString stringWithFormat:@"%@",self.shopDetail.serviceCharge] forKey:@"serviceCost"];
-    [dic setObject:[NSString stringWithFormat:@"%.2f",money] forKey:@"amount"];
+    [dic setObject:[NSString stringWithFormat:@"%.2f",self.shopDetail.serviceCharge.floatValue *(self.userCar.count)] forKey:@"serviceCost"];
+    [dic setObject:[NSString stringWithFormat:@"%.2f",money*(self.userCar.count)] forKey:@"amount"];
     
     [dic setObject:self.stringOfTotal forKey:@"pay"];
     

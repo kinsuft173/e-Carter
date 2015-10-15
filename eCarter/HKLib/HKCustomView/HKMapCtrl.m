@@ -31,6 +31,7 @@ const NSString *NavigationViewControllerDestinationTitle = @"终点";
 @property (nonatomic, strong) MAPointAnnotation *destinationPoint;
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGesture;
 @property (nonatomic, strong) NSArray *pathPolylines;
+@property (nonatomic, strong) AMapReGeocodeSearchResponse* response;
 
 
 @property (nonatomic, strong) IBOutlet UIView* viewForTitel;
@@ -277,6 +278,12 @@ const NSString *NavigationViewControllerDestinationTitle = @"终点";
         [[NSNotificationCenter defaultCenter] postNotificationName:@"mapRefresh" object:nil];
         
     }
+    
+    [HKMapManager shareMgr].address = self.response.regeocode.formattedAddress;
+    
+    [HKMapManager shareMgr].regeocode =  self.response.regeocode;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReGeocode" object:[HKMapManager shareMgr].address];
 
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -558,13 +565,15 @@ const NSString *NavigationViewControllerDestinationTitle = @"终点";
     _mapView.userLocation.subtitle = response.regeocode.formattedAddress;
     
     [HKCommen addAlertViewWithTitel:response.regeocode.formattedAddress];
+    
+    self.response = response;
  
         
-    [HKMapManager shareMgr].address = response.regeocode.formattedAddress;
-    
-    [HKMapManager shareMgr].regeocode = response.regeocode;
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReGeocode" object:[HKMapManager shareMgr].address];
+//    [HKMapManager shareMgr].address = response.regeocode.formattedAddress;
+//    
+//    [HKMapManager shareMgr].regeocode = response.regeocode;
+//    
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReGeocode" object:[HKMapManager shareMgr].address];
    
     
 }

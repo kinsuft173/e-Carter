@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="天河区" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHS-NI-JwR">
-                        <rect key="frame" x="105" y="0.0" width="210" height="44"/>
+                        <rect key="frame" x="105" y="0.0" width="200" height="44"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.37647058823529411" green="0.37647058823529411" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -42,7 +42,7 @@
                 <constraints>
                     <constraint firstItem="lVJ-H2-agw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="3Aw-bu-aBT"/>
                     <constraint firstAttribute="trailingMargin" secondItem="fSm-1d-l9z" secondAttribute="trailing" constant="-8" id="Ojl-nG-gIY"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="bHS-NI-JwR" secondAttribute="trailing" constant="-3" id="ZH8-DZ-5zB"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="bHS-NI-JwR" secondAttribute="trailing" constant="7" id="ZH8-DZ-5zB"/>
                     <constraint firstItem="fSm-1d-l9z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="c2K-Oj-UML"/>
                     <constraint firstItem="fSm-1d-l9z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="36" id="g98-9q-ewB"/>
                     <constraint firstItem="bHS-NI-JwR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="hiU-Gv-4U0"/>
@@ -74,7 +74,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="广东省广州市天河区客运中路大黄村站192号" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WrF-gR-Adz">
-                        <rect key="frame" x="105" y="-7" width="210" height="71"/>
+                        <rect key="frame" x="105" y="-7" width="200" height="71"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.37647058820000001" green="0.37647058820000001" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -92,7 +92,7 @@
                     <constraint firstItem="Yje-oW-dx0" firstAttribute="leading" secondItem="ng1-Tl-zHP" secondAttribute="leadingMargin" constant="2" id="8Ng-Ad-ilB"/>
                     <constraint firstItem="mJV-0Q-zJ8" firstAttribute="leading" secondItem="ng1-Tl-zHP" secondAttribute="leadingMargin" constant="-8" id="FOH-N1-Ntr"/>
                     <constraint firstItem="WrF-gR-Adz" firstAttribute="leading" secondItem="ng1-Tl-zHP" secondAttribute="leadingMargin" constant="97" id="Iy8-zU-tT3"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="WrF-gR-Adz" secondAttribute="trailing" constant="-3" id="No1-cx-Arx"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="WrF-gR-Adz" secondAttribute="trailing" constant="7" id="No1-cx-Arx"/>
                     <constraint firstItem="WrF-gR-Adz" firstAttribute="top" secondItem="ng1-Tl-zHP" secondAttribute="topMargin" constant="-15" id="UwJ-ko-WZ9"/>
                     <constraint firstItem="Yje-oW-dx0" firstAttribute="top" secondItem="ng1-Tl-zHP" secondAttribute="topMargin" constant="-8" id="e00-Vg-txc"/>
                     <constraint firstAttribute="bottomMargin" secondItem="WrF-gR-Adz" secondAttribute="bottom" constant="-9" id="j3r-sy-igR"/>
