@@ -200,14 +200,14 @@
     }
     
     Shop* shop = [Shop objectWithKeyValues:[self.arrayModel  objectAtIndex:indexPath.row]];
-    
-    if ([shop.distance floatValue] > [shop.serviceScope floatValue]) {
-        
-        [HKCommen addAlertViewWithTitel:@"不在商家的服务范围,请选择其他商家"];
-        
-        return;
-        
-    }
+//
+//    if ([shop.distance floatValue] > [shop.serviceScope floatValue]) {
+//        
+//        [HKCommen addAlertViewWithTitel:@"不在商家的服务范围,请选择其他商家"];
+//        
+//        return;
+//        
+//    }
     
     [self performSegueWithIdentifier:@"goShopDetails" sender:[NSNumber numberWithInteger:[shop.id integerValue]]];
     
@@ -240,16 +240,16 @@
                     
                     Shop* shop = [Shop objectWithKeyValues:[tempArray objectAtIndex:i]];
                     
-                    if ([shop.distance floatValue] > [shop.serviceScope floatValue]) {
+                   // if ([shop.distance floatValue] > [shop.serviceScope floatValue]) {
                         
                         
                         
-                    }else{
+                   // }else{
                         
                         [self.arrayModel addObject:[tempArray objectAtIndex:i]];
                         
                         
-                    }
+                   // }
                     
                 }
                 

@@ -40,6 +40,10 @@
 
 @property (nonatomic, strong) NSArray *serviceItemList;
 
+@property (nonatomic, copy) NSString * dimensions_x;
+@property (nonatomic, copy) NSString * dimensions_y;
+
+
 @end
 
 @interface Reviewslist : NSObject
@@ -73,6 +77,9 @@
 @property (nonatomic, copy) NSString *storeName;
 
 @property (nonatomic, copy) NSString *startBusinessTime;
+
+@property (nonatomic, copy) NSString * dimensions_x;
+@property (nonatomic, copy) NSString * dimensions_y;
 
 @end
 

@@ -506,8 +506,8 @@
         //    self.startCoordinate = point ;
         
         CLLocationCoordinate2D desPoint ;
-        desPoint.latitude =   23.137888;
-        desPoint.longitude = 113.329231;
+        desPoint.latitude =   self.shopDetail.dimensions_y.floatValue;
+        desPoint.longitude = self.shopDetail.dimensions_x.floatValue;
         //    self.destinationCoordinate = pointD ;
         
         if (![[HKMapManager shareMgr] openAMAPWihStartCoordinate:startPoint AndEndCoordinate:desPoint]) {
