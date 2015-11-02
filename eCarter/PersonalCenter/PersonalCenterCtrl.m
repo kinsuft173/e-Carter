@@ -248,6 +248,13 @@
                 
                 }
                 
+                if ([[UserDataManager shareManager].userLoginInfo.user.nickname isEqualToString:[UserDataManager shareManager].userLoginInfo.user.phone]) {
+                    
+                    
+                    cell.lblName.text = [UserDataManager shareManager].userLoginInfo.user.phone;
+                    
+                }
+                
 
                 
             }
