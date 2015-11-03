@@ -93,6 +93,8 @@
 
 @property (nonatomic, copy) NSString *serviceItemName;
 
+@property (nonatomic, copy) NSString *originalAmount;
+
 
 
 

@@ -383,6 +383,11 @@
             cell.lblServerPrice.text = [NSString stringWithFormat:@"¥%@",item.amount];
             cell.lblSeverName.text = item.serviceItemName;
             
+            cell.lblSeverOriginPrice.hidden = NO;
+            cell.lblSeverLine.hidden = NO;
+            
+            cell.lblSeverOriginPrice.text = [NSString stringWithFormat:@"原价¥%@",item.originalAmount];
+            
         }
         
         return cell;

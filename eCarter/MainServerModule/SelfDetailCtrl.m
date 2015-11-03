@@ -463,6 +463,12 @@
         cell.lblServerPrice.text = [NSString stringWithFormat:@"¥%@",item.amount];
         cell.lblSeverName.text = item.serviceItemName;
         
+        
+        cell.lblSeverOriginPrice.hidden = NO;
+        cell.lblSeverLine.hidden = NO;
+        
+        cell.lblSeverOriginPrice.text = [NSString stringWithFormat:@"原价¥%@",item.originalAmount];
+        
         if ([[self.arraySelectedSevice objectAtIndex:indexPath.row] isEqualToString:@"0"]) {
             
             cell.img_Button.image = [UIImage imageNamed:@"but_Unchecked"];
@@ -499,13 +505,11 @@
         
         cell.lblServerPrice.text = [NSString stringWithFormat:@"¥%@",self.shopDetail.serviceCharge];
         cell.lblSeverName.text = @"服务费";
+        cell.lblSeverOriginPrice.hidden = YES;
+        cell.lblSeverLine.hidden = YES;
         
-
-            
         cell.img_Button.image = [UIImage imageNamed:@"but_checked"];
-            
-  
-            
+        
        // }
         
         return cell;

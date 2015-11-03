@@ -13,5 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *img_Button;
 @property (strong, nonatomic) IBOutlet UILabel* lblSeverName;
 @property (strong, nonatomic) IBOutlet UILabel* lblServerPrice;
+@property (strong, nonatomic) IBOutlet UILabel* lblSeverOriginPrice;
+@property (strong, nonatomic) IBOutlet UILabel* lblSeverLine;
 
 @end

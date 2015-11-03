@@ -403,7 +403,7 @@
         
         [HKCommen addAlertViewWithTitel:@"您选择的位置暂未提供服务，已反馈给商家，敬请期待"];
         
-        return;
+     //   return;
         
     };
     
