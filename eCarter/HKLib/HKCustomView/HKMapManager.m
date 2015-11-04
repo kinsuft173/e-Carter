@@ -230,6 +230,13 @@
              
              self.strCity = city;
              
+             if (self.strCity.length > 2) {
+                 
+                 self.strCity = [self.strCity substringToIndex:2];
+             }
+             
+             [[NSNotificationCenter defaultCenter] postNotificationName:@"hehe" object:nil];
+             
          }
          
          else if (error == nil && [array count] == 0)

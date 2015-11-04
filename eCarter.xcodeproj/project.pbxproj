@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B4A59FE5E3923AFF3BA7FAB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA8F7F1A0C3E67F78D061FC8 /* libPods.a */; };
+		B91937BB1BE99F6F0074B57F /* abountUs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B91937BA1BE99F6F0074B57F /* abountUs.jpg */; settings = {ASSET_TAGS = (); }; };
 		B944BFB71B9FFC0200D66D42 /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B944BFB41B9FFC0200D66D42 /* SIAlertView.bundle */; };
 		B944BFB81B9FFC0200D66D42 /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B944BFB61B9FFC0200D66D42 /* SIAlertView.m */; };
 		B944BFBB1BA021BD00D66D42 /* ConsulationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B944BFBA1BA021BD00D66D42 /* ConsulationManager.m */; };
@@ -647,6 +648,7 @@
 /* Begin PBXFileReference section */
 		89320E9E3422FB0DACAE4240 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A81116FB39819334A18ABA35 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B91937BA1BE99F6F0074B57F /* abountUs.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = abountUs.jpg; sourceTree = "<group>"; };
 		B944BFB41B9FFC0200D66D42 /* SIAlertView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SIAlertView.bundle; sourceTree = "<group>"; };
 		B944BFB51B9FFC0200D66D42 /* SIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAlertView.h; sourceTree = "<group>"; };
 		B944BFB61B9FFC0200D66D42 /* SIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIAlertView.m; sourceTree = "<group>"; };
@@ -3288,6 +3290,7 @@
 		E9F9CE321B74D8C0007781AC /* image */ = {
 			isa = PBXGroup;
 			children = (
+				B91937BA1BE99F6F0074B57F /* abountUs.jpg */,
 				E9F9D0391B74F32C007781AC /* share_pengyouquan@2x.png */,
 				E9F9D03A1B74F32C007781AC /* share_pengyouquan@3x.png */,
 				E9F9D03B1B74F32C007781AC /* Share_qq@2x.png */,
@@ -3696,6 +3699,7 @@
 				DEE3373F1B4C40D900357253 /* Share_qq@3x.png in Resources */,
 				DEE337381B4C40D900357253 /* Process_History@2x.png in Resources */,
 				DEE337321B4C40D900357253 /* mine_phone@2x.png in Resources */,
+				B91937BB1BE99F6F0074B57F /* abountUs.jpg in Resources */,
 				DE31D67F1BA09232003DD3EA /* night-cloudy@3x.png in Resources */,
 				DED7F55B1B4760DB0005019C /* but_Navigation@3x.png in Resources */,
 				DEE48BA51B39A56600458D6F /* CouponSlectedCell.xib in Resources */,
@@ -4277,7 +4281,7 @@
 					"$(PROJECT_DIR)/eCarter/ThirdLib/thirdLib/WxPayLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0f627bf9-b441-40ac-8f5f-200348fd133f";
+				PROVISIONING_PROFILE = "3d62df13-9f14-4417-a597-9181471f16b8";
 			};
 			name = Debug;
 		};
@@ -4326,7 +4330,7 @@
 					"$(PROJECT_DIR)/eCarter/ThirdLib/thirdLib/WxPayLib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0f627bf9-b441-40ac-8f5f-200348fd133f";
+				PROVISIONING_PROFILE = "3d62df13-9f14-4417-a597-9181471f16b8";
 			};
 			name = Release;
 		};

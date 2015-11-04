@@ -476,10 +476,10 @@
                                         <rect key="frame" x="48" y="30" width="16" height="16"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="广州" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4A-tq-gKz">
-                                        <rect key="frame" x="8" y="28" width="34" height="21"/>
+                                        <rect key="frame" x="8" y="28" width="51" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="39i-X7-aWo"/>
-                                            <constraint firstAttribute="width" constant="34" id="hn4-f8-b6O"/>
+                                            <constraint firstAttribute="width" constant="51" id="hn4-f8-b6O"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

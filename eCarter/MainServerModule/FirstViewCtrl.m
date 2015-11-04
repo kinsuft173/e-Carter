@@ -20,6 +20,7 @@
 #import "EventBanerCtrl.h"
 #import "PersonalCenterCtrl.h"
 #import "Weather.h"
+#import "HKMapManager.h"
 
 
 
@@ -68,8 +69,18 @@
         
         
     }else{
-    
-        [UserDataManager shareManager].city = @"广州";//dicCity[@"cityName"];
+        
+        if ([HKMapManager shareMgr].strCity) {
+            
+            [UserDataManager shareManager].city = [HKMapManager shareMgr].strCity;
+            
+        }else{
+        
+            [UserDataManager shareManager].city = @"广州";//[HKMapManager shareMgr].strCity; //dicCity[@"cityName"];
+        
+        }
+        
+        
         [UserDataManager shareManager].cityId = @"101280101";//dicCity[@"cityId"];
     
     }
@@ -81,9 +92,20 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goPersonalCenter:) name:@"goLogin" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goPersonalCenteWithNotify) name:@"goMyOrder" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(heihei) name:@"zhenligezha" object:nil];
+      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(freshCity) name:@"hehe" object:nil];
     
 //    [self scrollViewSetImages];
     
+}
+
+- (void)freshCity
+{
+    [UserDataManager shareManager].city = [HKMapManager shareMgr].strCity;
+    
+    self.lblCity.text = [UserDataManager shareManager].city;
+    
+    [self getModel];
+
 }
 
 - (void)heihei
