@@ -226,7 +226,7 @@
              
              self.strProvince = placemark.administrativeArea;
              
-            NSLog(@"省份信息%@",self.strProvince);
+            NSLog(@"省份信息%@ %@",self.strProvince,city);
              
              self.strCity = city;
              

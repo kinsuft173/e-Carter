@@ -76,7 +76,7 @@
             
         }else{
         
-            [UserDataManager shareManager].city = @"广州";//[HKMapManager shareMgr].strCity; //dicCity[@"cityName"];
+            [UserDataManager shareManager].city = @"北京";//[HKMapManager shareMgr].strCity; //dicCity[@"cityName"];
         
         }
         

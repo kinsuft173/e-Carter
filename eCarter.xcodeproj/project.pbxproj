@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5B4A59FE5E3923AFF3BA7FAB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA8F7F1A0C3E67F78D061FC8 /* libPods.a */; };
-		B91937BB1BE99F6F0074B57F /* abountUs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B91937BA1BE99F6F0074B57F /* abountUs.jpg */; settings = {ASSET_TAGS = (); }; };
+		B91937BB1BE99F6F0074B57F /* abountUs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B91937BA1BE99F6F0074B57F /* abountUs.jpg */; };
 		B944BFB71B9FFC0200D66D42 /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B944BFB41B9FFC0200D66D42 /* SIAlertView.bundle */; };
 		B944BFB81B9FFC0200D66D42 /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = B944BFB61B9FFC0200D66D42 /* SIAlertView.m */; };
 		B944BFBB1BA021BD00D66D42 /* ConsulationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B944BFBA1BA021BD00D66D42 /* ConsulationManager.m */; };
-		B9C664721BC8A45A00D3EA92 /* OrderDetailsCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C664701BC8A45A00D3EA92 /* OrderDetailsCtrl.m */; settings = {ASSET_TAGS = (); }; };
-		B9C664731BC8A45A00D3EA92 /* OrderDetailsCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C664711BC8A45A00D3EA92 /* OrderDetailsCtrl.xib */; settings = {ASSET_TAGS = (); }; };
-		B9C664751BC8B2B800D3EA92 /* MoneyReturnDetailCtrl1.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C664741BC8B2B800D3EA92 /* MoneyReturnDetailCtrl1.xib */; settings = {ASSET_TAGS = (); }; };
+		B9C664721BC8A45A00D3EA92 /* OrderDetailsCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C664701BC8A45A00D3EA92 /* OrderDetailsCtrl.m */; };
+		B9C664731BC8A45A00D3EA92 /* OrderDetailsCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C664711BC8A45A00D3EA92 /* OrderDetailsCtrl.xib */; };
+		B9C664751BC8B2B800D3EA92 /* MoneyReturnDetailCtrl1.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C664741BC8B2B800D3EA92 /* MoneyReturnDetailCtrl1.xib */; };
 		B9D2B4C91BA6A05B0090A306 /* NewCommentCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2B4C71BA6A05B0090A306 /* NewCommentCtrl.m */; };
 		B9D2B4CA1BA6A05B0090A306 /* NewCommentCtrl.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9D2B4C81BA6A05B0090A306 /* NewCommentCtrl.xib */; };
 		DE06386C1B6D19C900EFB576 /* iToast.m in Sources */ = {isa = PBXBuildFile; fileRef = DE06386B1B6D19C900EFB576 /* iToast.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -426,7 +426,7 @@
 		DEE52ED91B390AF400C90BA3 /* ShopGetCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE52ED81B390AF400C90BA3 /* ShopGetCtrl.m */; };
 		DEE52EDD1B39119500C90BA3 /* ShopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE52EDB1B39119500C90BA3 /* ShopCell.m */; };
 		DEE52EDE1B39119500C90BA3 /* ShopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEE52EDC1B39119500C90BA3 /* ShopCell.xib */; };
-		DEE5C3CA1BC6F74100F65682 /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE5C3C91BC6F74100F65682 /* Weather.m */; settings = {ASSET_TAGS = (); }; };
+		DEE5C3CA1BC6F74100F65682 /* Weather.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE5C3C91BC6F74100F65682 /* Weather.m */; };
 		DEE719AF1B3ED21D003221A8 /* PersonalCenterCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE719AE1B3ED21D003221A8 /* PersonalCenterCtrl.m */; };
 		DEE719B11B3ED2E2003221A8 /* PersonalCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEE719B01B3ED2E2003221A8 /* PersonalCenter.storyboard */; };
 		DEE719B61B3ED50D003221A8 /* PersonInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEE719B41B3ED50D003221A8 /* PersonInfoCell.m */; };
