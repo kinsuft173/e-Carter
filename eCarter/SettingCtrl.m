@@ -280,7 +280,7 @@
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
                                                 title:@"E车夫"
-                                                  url:@"http://www.mob.com"
+                                                  url:@"http://mp.weixin.qq.com/s?__biz=MzIwMTEzMjY4Nw==&mid=400928440&idx=1&sn=acb63cd870f28ab529254a3f477e39e6&scene=0#wechat_redirect"
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
     
@@ -307,8 +307,8 @@
     id<ISSContent> publishContent = [ShareSDK content:@"分享"
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
-                                                title:@"E车夫"
-                                                  url:@"http://www.mob.com"
+                                                title:@"e车夫"
+                                                  url:@"http://mp.weixin.qq.com/s?__biz=MzIwMTEzMjY4Nw==&mid=400928440&idx=1&sn=acb63cd870f28ab529254a3f477e39e6&scene=0#wechat_redirect"
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
     
@@ -335,8 +335,8 @@
     id<ISSContent> publishContent = [ShareSDK content:@"分享"
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
-                                                title:@"E车夫"
-                                                  url:@"http://www.mob.com"
+                                                title:@"e车夫"
+                                                  url:@"http://mp.weixin.qq.com/s?__biz=MzIwMTEzMjY4Nw==&mid=400928440&idx=1&sn=acb63cd870f28ab529254a3f477e39e6&scene=0#wechat_redirect"
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
     
@@ -363,8 +363,8 @@
     id<ISSContent> publishContent = [ShareSDK content:@"分享"
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:imagePath]
-                                                title:@"ShareSDK"
-                                                  url:@"http://www.mob.com"
+                                                title:@"e车夫"
+                                                  url:@"http://mp.weixin.qq.com/s?__biz=MzIwMTEzMjY4Nw==&mid=400928440&idx=1&sn=acb63cd870f28ab529254a3f477e39e6&scene=0#wechat_redirect"
                                           description:NSLocalizedString(@"TEXT_TEST_MSG", @"这是一条测试信息")
                                             mediaType:SSPublishContentMediaTypeNews];
     
